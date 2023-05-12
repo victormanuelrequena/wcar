@@ -1,0 +1,32 @@
+.navbar {
+    background-color: transparent;
+    z-index: 999;
+
+    .account-mobile {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+
+            i {
+                color: #fff;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        .account-mobile {
+            display: none;
+        }
+    }
+}

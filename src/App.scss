@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Trebuchet+MS:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --color-yellow: #FDB649;
+  --color-orange: #EC671B;
+  --color-orange-dark: #D65A1E;
+  --color-gray-light: #F6F7F9;
+}
+
+.App {
+  font-family: 'Trebuchet MS', sans-serif;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+@media screen and (min-width: 576px) {
+  .position-sm-absolute {
+    position: absolute !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .position-md-absolute {
+    position: absolute !important;
+  }
+}
+
+.side {
+  padding: 0.5em 1em 0.5em 0;
+  width: fit-content;
+
+  &.side_top {
+    border-top: 3px solid var(--color-orange);
+  }
+}
+
+.text {
+  &_italic {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-style: italic;
+  }
+
+  &_orange {
+    color: var(--color-orange);
+  }
+}
+
+.btn {
+
+  &.btn_orange {
+    background-color: var(--color-orange);
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+    &.btn_cut {
+      clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
+    }
+  
+    &.btn_shadow {
+      border-bottom: solid 3px black;
+      border-left: solid 3px black;
+    }
+
+
+    &:hover {
+      cursor: pointer;
+      border-color: var(--color-orange-dark);
+    }
+  }
+
+  &.btn_orange_outline {
+    color: var(--color-orange);
+    border: solid 1px var(--color-orange);
+    border-radius: 0;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+
+    &.btn_shadow {
+      border-bottom: solid 3px var(--color-yellow);
+      border-left: solid 3px var(--color-yellow);
+    }
+
+    &.btn_cut {
+      clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
+      box-shadow: 0 0 0 3px var(--color-orange);
+      background: linear-gradient(315deg, var(--color-orange) 0.65em, var(--color-gray-light) 0.65em, var(--color-gray-light) 100%);
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--color-orange);
+      color: #fff;
+    }
+  }
+}
