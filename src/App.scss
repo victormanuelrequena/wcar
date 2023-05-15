@@ -28,9 +28,16 @@
 .side {
   padding: 0.5em 1em 0.5em 0;
   width: fit-content;
+  position: relative;
 
-  &.side_top {
-    border-top: 3px solid var(--color-orange);
+  &.side_top::before {
+    content: '';
+    height: 0.2em;
+    width: 4em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--color-orange);
   }
 }
 
@@ -81,6 +88,7 @@
     &.btn_shadow {
       border-bottom: solid 3px var(--color-yellow);
       border-left: solid 3px var(--color-yellow);
+
     }
 
     &.btn_cut {
@@ -93,6 +101,25 @@
       cursor: pointer;
       background-color: var(--color-orange);
       color: #fff;
+    }
+  }
+}
+
+.indicator_slide {
+  height: 0.3em;
+  background-color: var(--color-gray-light);
+  transition: background-color 0.3s ease-in-out;
+
+  &.active {
+    background-color: var(--color-orange);
+  }
+
+  @keyframes colorAnimation {
+    0% {
+      background-color: var(--color-gray-light);
+    }
+    100% {
+      background-color: var(--color-orange);
     }
   }
 }
