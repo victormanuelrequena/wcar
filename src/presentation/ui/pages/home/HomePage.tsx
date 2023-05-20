@@ -39,10 +39,10 @@ const HomePage: FC<{}> = () => {
                 </div>
             </div>
         </section>
-        <section className='second_section mt-3'>
+        <section className='second_section mt-3 car_02'>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-3 d-flex d-md-block justify-content-center">
+                    <div className="col-md-3 d-flex d-md-block justify-content-center ">
                         <div className="side side_top text_black text_md_white">
                             <h2 className='d-flex flex-md-column flex-row'>
                                 <b className='me-2 me-md-0'>¿Por qué</b>
@@ -90,6 +90,28 @@ const HomePage: FC<{}> = () => {
                                     return <div className={`flex-grow-1 indicator_slide ${currentSideServices == index && 'active'}`} key={index}></div>
                                 })}
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section className='third_section mt-3'>
+            <img src="./assets/recs/lines_box.png" className='d-none d-md-block' alt="" style={{ position: 'absolute', right: 0, bottom: 0 }} />
+            <div className="container">
+                <div className="row d-flex flex-column-reverse flex-md-row">
+                    <div className="px-0 px-md-3 col-md-3 position-relative"><img src="./assets/home/car_03.png" alt="" className="object_cover img_section" /></div>
+                    <div className="col-md-9 position-relative text-white px-5 ps-md-5 px-md-3 py-5">
+                        <img src="./assets/recs/lines_zigs.png" alt="" style={{ position: 'absolute', right: '5vw', top: '2vw' }} />
+                        <img src="./assets/recs/lines_box.png" className='d-block d-md-none' alt="" style={{ position: 'absolute', right: 0, bottom: 0 }} />
+                        <div className="line_left_orange">Nosotros</div>
+                        <h3>Razones para comprar y <br /><i>vender con wcar</i></h3>
+                        <div>
+                            <p>¡Somos el anti-dealer para que compres y vendas cero estrés! </p>
+                            <p>En este revolucionario ecosistema encuentras una consejería personalizada. Somos brutalmente transparentes, dando a conocer el estado real del vehículo y ofreciendo precios razonables con un alto estándar de calidad.</p>
+                        </div>
+                        <div className="d-flex flex-column flex-md-row">
+                            <a href="#" className="btn btn_in_black_orange btn_cut btn_shadow me-3 my-2 w_fit_content">COMPRA TU CARRO</a>
+                            <a href="#" className="btn btn_black  btn_cut btn_shadow my-2 w_fit_content">VENDE TU CARRO</a>
                         </div>
                     </div>
                 </div>
