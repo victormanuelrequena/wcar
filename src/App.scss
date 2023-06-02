@@ -5,6 +5,7 @@
   --color-orange: #EC671B;
   --color-orange-dark: #D65A1E;
   --color-gray-light: #F6F7F9;
+  --color-gray: #90A3BF;
 }
 
 .App {
@@ -47,6 +48,10 @@
     font-style: italic;
   }
 
+  &_nowrap {
+    white-space: nowrap;
+  }
+
   &_orange {
     color: var(--color-orange);
   }
@@ -55,11 +60,24 @@
     color: black;
   }
 
+  &_gray {
+    color: var(--color-gray);
+  }
+
+  &_red {
+    color: red;
+  }
+
+  &_ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   @media screen and (min-width: 768px) {
     &_md_white{
       color: white;
     }
-    
   }
 }
 
@@ -194,4 +212,14 @@
   &_fit_content{
     width: fit-content;
   }
+}
+
+.bg{
+  &_gray{
+    background-color: var(--color-gray-light);
+  }
+}
+
+.hover:hover{
+  cursor: pointer;
 }

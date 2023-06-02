@@ -1,19 +1,30 @@
 import './HomeStyles.scss';
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import CardServiceComponent from './components/cardService/CardServiceComponent';
-
-const _responsive_carrousel = {
-    mobile: {
-        breakpoint: { max: 3000, min: 0 },
-        items: 1,
-        slidesToSlide: 1, // optional, default to 1.
-    },
-};
+import SliderComponent from '../../components/slider/SliderComponent';
+import CarEntity from '../../../../domain/entities/CarEntity';
+import di from '../../../../di/DependencyInjection';
+import GetSomeRandomCarsUseCase from '../../../../domain/use_cases/car/GetSomeRandomCarsUseCase';
+import CarCardComponent from '../../components/carCard/CarCardComponent';
 
 const HomePage: FC<{}> = () => {
-    const [currentSideServices, setCurrentSideServices] = useState(0);
+    const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
+
+    const _getSomeCars = async () => {
+        try {
+            const response = await di.get<GetSomeRandomCarsUseCase>(GetSomeRandomCarsUseCase.name).call();
+            setCars(response);
+        } catch (error) {
+            console.log('error', error);
+            setCars([]);
+        }
+    }
+
+    useEffect(() => {
+        _getSomeCars();
+    }, []);
 
     return <div className="home_page">
         <section className='first_section position-relative d-md-block d-flex flex-column-reverse'>
@@ -51,46 +62,34 @@ const HomePage: FC<{}> = () => {
                         </div>
                     </div>
                     <div className="col-md-9">
-                        <div className="w-100">
-                            <Carousel
-                                arrows={false}
-                                swipeable={true}
-                                responsive={_responsive_carrousel} beforeChange={(slide, _) => setCurrentSideServices(slide)}>
-                                <div>
-                                    <div className="row">
-                                        <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
-                                        </div>
-                                        <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
-                                        </div>
-                                        <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
-                                        </div>
+                        <SliderComponent>
+                            <div>
+                                <div className="row">
+                                    <div className="col-md-4 my-3">
+                                        <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
+                                    </div>
+                                    <div className="col-md-4 my-3">
+                                        <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
+                                    </div>
+                                    <div className="col-md-4 my-3">
+                                        <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="row">
-                                        <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
-                                        </div>
-                                        <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
-                                        </div>
-                                        <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
-                                        </div>
-                                    </div>
-                                </div>
-                            </Carousel>
-                        </div>
-                        <div className="px-5 d-md-none">
-                            <div className="w-100 d-flex">
-                                {Array(2).fill(0).map((_, index) => {
-                                    return <div className={`flex-grow-1 indicator_slide ${currentSideServices == index && 'active'}`} key={index}></div>
-                                })}
                             </div>
-                        </div>
+                            <div>
+                                <div className="row">
+                                    <div className="col-md-4 my-3">
+                                        <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
+                                    </div>
+                                    <div className="col-md-4 my-3">
+                                        <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
+                                    </div>
+                                    <div className="col-md-4 my-3">
+                                        <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
+                                    </div>
+                                </div>
+                            </div>
+                        </SliderComponent>
                     </div>
                 </div>
             </div>
@@ -115,6 +114,42 @@ const HomePage: FC<{}> = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section className="forth_section">
+            <div className="d-flex justify-content-center py-5">
+                <div className="side side_top">
+                    <h3>Vehiculos <i className="text_orange">en venta</i></h3>
+                </div>
+            </div>
+            <div className="px-3 py-2 bg_gray">
+                {cars ? <SliderComponent responsive={{
+                    mobile: {
+                        breakpoint: { max: 769, min: 0 },
+                        items: 1,
+                        slidesToSlide: 1, // optional, default to 1.
+                    },
+                    tablet: {
+                        breakpoint: { max: 1024, min: 769 },
+                        items: 2,
+                        slidesToSlide: 2, // optional, default to 1.
+                    },
+                    desktop: {
+                        breakpoint: { max: 1280, min: 1024 },
+                        items: 3,
+                        slidesToSlide: 3, // optional, default to 1.
+                    },
+                    largeDesktop: {
+                        breakpoint: { max: 3000, min: 1280 },
+                        items: 4,
+                        slidesToSlide: 4, // optional, default to 1.
+                    },
+                }}>
+                    {cars?.map((car, index) => <div className="m-3" key={index} >
+                        <CarCardComponent car={car} />
+                    </div>)}
+                </SliderComponent>
+                    : <div>loading</div>}
             </div>
         </section>
     </div>
