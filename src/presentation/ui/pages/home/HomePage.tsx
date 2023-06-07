@@ -152,6 +152,26 @@ const HomePage: FC<{}> = () => {
                     : <div>loading</div>}
             </div>
         </section>
+        <section className="fifth_section mt-3">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-3 d-flex d-md-block justify-content-center ">
+                        <div className="side side_top text_black text_md_white">
+                            <h2 className='d-flex flex-md-column flex-row'>
+                                <b className='me-2 me-md-0'>Nuestros</b>
+                                <div className="text_wcar">Aliados</div>
+                            </h2>
+                        </div>
+                    </div>
+                    <div className="col-md-9">
+                        <SliderComponent >
+                            <>sds</>
+                            <>sds</>
+                        </SliderComponent>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 }
 
