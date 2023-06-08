@@ -1,0 +1,1 @@
+export const SLOGAN = "Más que vender, te aconsejamos;"

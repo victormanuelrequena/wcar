@@ -25,7 +25,7 @@
             left: 0;
             top: -70%;
             bottom: -125%;
-            right: 74%;
+            right: 72%;
             background-size: cover;
             z-index: 0;
         }
@@ -77,6 +77,28 @@
             }
 
         }
+    }
+
+    .fifth_section {
+        background-color: white;
+        position: relative;
+
+        @media screen and (min-width: 768px) {
+            &::before {
+                content: '';
+                background-color: black;
+                background-image: url('./../../../../../public/assets/recs/lines_box_large.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+                position: absolute;
+                right: 74%;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 0;
+            }
+        }
+
     }
 }
 

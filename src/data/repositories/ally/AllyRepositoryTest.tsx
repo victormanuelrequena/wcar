@@ -8,7 +8,7 @@ const _allyTest:AllyEntity = {
 @injectable()
 class AllyRepositoryTest implements AllyRepository{
     async getAll(): Promise<AllyEntity[]> {
-        return [_allyTest];
+        return [_allyTest, _allyTest, _allyTest, _allyTest, _allyTest, _allyTest, _allyTest, _allyTest, _allyTest, _allyTest];
     }
 }
 

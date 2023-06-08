@@ -74,8 +74,12 @@
     white-space: nowrap;
   }
 
+  &_underline {
+    text-decoration: underline;
+  }
+
   @media screen and (min-width: 768px) {
-    &_md_white{
+    &_md_white {
       color: white;
     }
   }
@@ -90,10 +94,11 @@
     border-radius: 0;
     padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
+
     &.btn_cut {
       clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
     }
-  
+
     &.btn_shadow {
       border-bottom: solid 3px black;
       border-left: solid 3px black;
@@ -113,10 +118,11 @@
     border-radius: 0;
     padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
+
     &.btn_cut {
       clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
     }
-  
+
     &.btn_shadow {
       border-bottom: solid 3px rgb(255, 255, 255);
       border-left: solid 3px white;
@@ -197,6 +203,7 @@
     0% {
       background-color: var(--color-gray-light);
     }
+
     100% {
       background-color: var(--color-orange);
     }
@@ -204,22 +211,36 @@
 }
 
 
-.object_cover{
+.object_cover {
   object-fit: cover;
 }
 
-.w{
-  &_fit_content{
+.w {
+  &_fit_content {
     width: fit-content;
   }
 }
 
-.bg{
-  &_gray{
+.bg {
+  &_gray {
     background-color: var(--color-gray-light);
+  }
+
+  &_black {
+    background-color: black;
   }
 }
 
-.hover:hover{
+.hover:hover {
   cursor: pointer;
+}
+
+body a {
+  text-decoration: none;
+  color: currentColor;
+
+  &:hover {
+    text-decoration: none;
+    color: var(--color-yellow);
+  }
 }

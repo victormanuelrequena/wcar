@@ -11,6 +11,8 @@ const _Actions: AlliesContextType = {
 }
 const _Provider: FC<ProviderProps> = ({ children }) => { 
     const [_allies, setAllies] = useState<AllyEntity[]>([]);
+    _Actions.setAllies = setAllies;
+    _Actions.allies = _allies;
 
     return <AlliesContext.Provider value={{ allies: _allies, setAllies }}>
         {children}

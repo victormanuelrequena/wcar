@@ -9,6 +9,7 @@ import AlliesProviderImpl from "../presentation/providers/allies/AlliesProviderI
 import GetAllAlliesUseCase from "../domain/use_cases/ally/GetAllAlliesUseCase";
 import AllyRepository, { AllyRepositoryName } from "../domain/repositories/AllyRepository";
 import AllyRepositoryTest from "../data/repositories/ally/AllyRepositoryTest";
+import LoadUseCase from "../domain/use_cases/default/LoadUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -26,6 +27,14 @@ di.bind<AlliesProvider>(AlliesProviderName).toConstantValue(AlliesProviderImpl);
 
 //------------------ USE CASES ------------------//
 
+//allies
+di.bind<GetAllAlliesUseCase>(GetAllAlliesUseCase.name).toDynamicValue((context) => {
+    return new GetAllAlliesUseCase({
+        allyRepository: context.container.get(AllyRepositoryName),
+        alliesProvider: context.container.get(AlliesProviderName)
+    });
+}).inSingletonScope();
+
 //Car  
 di.bind<GetSomeRandomCarsUseCase>(GetSomeRandomCarsUseCase.name).toDynamicValue((context) => {
     return new GetSomeRandomCarsUseCase({ carRepository: context.container.get(CarRepositoryName) });
@@ -34,12 +43,9 @@ di.bind<LikeCarUseCase>(LikeCarUseCase.name).toDynamicValue((context) => {
     return new LikeCarUseCase({ carRepository: context.container.get(CarRepositoryName) });
 });
 
-//allies
-di.bind<GetAllAlliesUseCase>(GetAllAlliesUseCase.name).toDynamicValue((context) => {
-    return new GetAllAlliesUseCase({
-        allyRepository: context.container.get(AllyRepositoryName),
-        alliesProvider: context.container.get(AlliesProviderName)
-    });
-}).inSingletonScope();
+//default
+di.bind<LoadUseCase>(LoadUseCase.name).toDynamicValue((context) => {
+    return new LoadUseCase({ getAllAlliesUseCase: context.container.get(GetAllAlliesUseCase.name) });
+});
 
 export default di;

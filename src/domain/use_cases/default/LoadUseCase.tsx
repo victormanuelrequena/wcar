@@ -11,7 +11,7 @@ export default class LoadUseCase {
         this._getAllAlliesUseCase = _.getAllAlliesUseCase;
     }
 
-    async execute() {
+    async call() {
         await this._getAllAlliesUseCase.call();
     }
 }

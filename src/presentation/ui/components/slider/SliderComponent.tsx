@@ -12,10 +12,13 @@ const SliderComponent: FC<SliderComponentProps> = ({ children, responsive, befor
         setCurrentSlide(nextSlide);
     }
 
+    if(children == null || children.length == 0) return <div></div>;
+
     return <div className="slider_component">
         <div className="w-100">
             <Carousel
                 arrows={false}
+                draggable
                 swipeable={true}
                 responsive={responsive!} beforeChange={(slide, _) => _onChange(slide)}>
                     {children}
@@ -24,7 +27,7 @@ const SliderComponent: FC<SliderComponentProps> = ({ children, responsive, befor
         <div className="px-5 d-md-none">
             <div className="w-100 d-flex">
                 {children.map((_, index) => {
-                    return <div className={`flex-grow-1 indicator_slide ${currentSlide == index && 'active'}`} key={index}></div>
+                    return <div className={`flex-grow-1 mx-1 indicator_slide ${currentSlide == index && 'active'}`} key={index}></div>
                 })}
             </div>
         </div>
