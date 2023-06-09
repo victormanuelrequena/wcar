@@ -5,6 +5,7 @@
   --color-orange: #EC671B;
   --color-orange-dark: #D65A1E;
   --color-gray-light: #F6F7F9;
+  --color-gray: #90A3BF;
 }
 
 .App {
@@ -28,9 +29,16 @@
 .side {
   padding: 0.5em 1em 0.5em 0;
   width: fit-content;
+  position: relative;
 
-  &.side_top {
-    border-top: 3px solid var(--color-orange);
+  &.side_top::before {
+    content: '';
+    height: 0.2em;
+    width: 4em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--color-orange);
   }
 }
 
@@ -40,8 +48,40 @@
     font-style: italic;
   }
 
+  &_nowrap {
+    white-space: nowrap;
+  }
+
   &_orange {
     color: var(--color-orange);
+  }
+
+  &_black {
+    color: black;
+  }
+
+  &_gray {
+    color: var(--color-gray);
+  }
+
+  &_red {
+    color: red;
+  }
+
+  &_ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &_underline {
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 768px) {
+    &_md_white {
+      color: white;
+    }
   }
 }
 
@@ -54,10 +94,11 @@
     border-radius: 0;
     padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
+
     &.btn_cut {
       clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
     }
-  
+
     &.btn_shadow {
       border-bottom: solid 3px black;
       border-left: solid 3px black;
@@ -67,6 +108,57 @@
     &:hover {
       cursor: pointer;
       border-color: var(--color-orange-dark);
+    }
+  }
+
+  &.btn_in_black_orange {
+    background-color: var(--color-orange);
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+
+    &.btn_cut {
+      clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
+    }
+
+    &.btn_shadow {
+      border-bottom: solid 3px rgb(255, 255, 255);
+      border-left: solid 3px white;
+    }
+
+
+    &:hover {
+      cursor: pointer;
+      border-color: var(--color-orange-dark);
+    }
+  }
+
+  &.btn_black {
+    color: white;
+    border: solid 1px var(--color-orange);
+    border-radius: 0;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+
+    &.btn_shadow {
+      border-bottom: solid 3px var(--color-yellow);
+      border-left: solid 3px var(--color-yellow);
+
+    }
+
+    &.btn_cut {
+      clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
+      box-shadow: 0 0 0 3px var(--color-orange);
+      background: linear-gradient(315deg, var(--color-orange) 0.65em, black 0.65em, black 100%);
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--color-orange);
+      color: #fff;
     }
   }
 
@@ -81,6 +173,7 @@
     &.btn_shadow {
       border-bottom: solid 3px var(--color-yellow);
       border-left: solid 3px var(--color-yellow);
+
     }
 
     &.btn_cut {
@@ -94,5 +187,82 @@
       background-color: var(--color-orange);
       color: #fff;
     }
+  }
+}
+
+.indicator_slide {
+  height: 0.3em;
+  background-color: var(--color-gray-light);
+  transition: background-color 0.3s ease-in-out;
+
+  &.active {
+    background-color: var(--color-orange);
+  }
+
+  @keyframes colorAnimation {
+    0% {
+      background-color: var(--color-gray-light);
+    }
+
+    100% {
+      background-color: var(--color-orange);
+    }
+  }
+}
+
+
+.object_cover {
+  object-fit: cover;
+}
+
+.w {
+  &_fit_content {
+    width: fit-content;
+  }
+}
+
+.bg {
+  &_gray {
+    background-color: var(--color-gray-light);
+  }
+
+  &_black {
+    background-color: black;
+  }
+
+  &_white {
+    background-color: white;
+  }
+
+  &_md {
+    @media screen and (min-width: 768px) {
+
+      &_gray {
+        background-color: var(--color-gray-light);
+      }
+
+      &_black {
+        background-color: black;
+      }
+
+      &_white {
+        background-color: white;
+      }
+
+    }
+  }
+}
+
+.hover:hover {
+  cursor: pointer;
+}
+
+body a {
+  text-decoration: none;
+  color: currentColor;
+
+  &:hover {
+    text-decoration: none;
+    color: var(--color-yellow);
   }
 }
