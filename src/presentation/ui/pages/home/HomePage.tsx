@@ -173,7 +173,7 @@ const HomePage: FC<{}> = () => {
                                 </h2>
                             </div>
                         </div>
-                        <div className="col-md-9 pb-5">
+                        <div className="col-md-9 pt-5 pb-4">
                             <SliderComponent responsive={{
                                 mobile: {
                                     breakpoint: { max: 769, min: 0 },
@@ -187,8 +187,8 @@ const HomePage: FC<{}> = () => {
                                 },
                                 desktop: {
                                     breakpoint: { max: 1280, min: 1024 },
-                                    items: 5,
-                                    slidesToSlide: 5, // optional, default to 1.
+                                    items: 6,
+                                    slidesToSlide: 6, // optional, default to 1.
                                 },
                                 largeDesktop: {
                                     breakpoint: { max: 3000, min: 1280 },

@@ -1,0 +1,23 @@
+.arrow_slider{
+    border-radius: 100%;
+    height: 1.7em;
+    width: 1.7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-orange);
+    font-size: 0.8em;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.previous{
+        opacity: .3;
+    }
+
+    &.disabled {
+        background-color: var(--color-gray);
+    }
+}
