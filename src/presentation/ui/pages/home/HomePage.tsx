@@ -60,7 +60,7 @@ const HomePage: FC<{}> = () => {
                     </div>
                 </div>
             </section>
-            <section className='second_section mt-3 car_02'>
+            <section className='second_section mt-3 car_02 from_left_3'>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-3 d-flex d-md-block justify-content-center ">
@@ -108,8 +108,12 @@ const HomePage: FC<{}> = () => {
                 <img src="./assets/recs/lines_box.png" className='d-none d-md-block' alt="" style={{ position: 'absolute', right: 0, bottom: 0 }} />
                 <div className="container">
                     <div className="row d-flex flex-column-reverse flex-md-row">
-                        <div className="px-0 px-md-3 col-md-3 position-relative"><img src="./assets/home/car_03.png" alt="" className="object_cover img_section" /></div>
-                        <div className="col-md-9 position-relative text-white px-5 ps-md-5 px-md-3 py-5">
+                        <div className="px-0 px-md-3 col-md-4 position-relative">
+                            <div className='img_section'>
+                                <img src="./assets/home/car_03.png" alt="" className="object_cover" />
+                            </div>
+                        </div>
+                        <div className="col-md-8 position-relative text-white px-5 ps-md-5 px-md-3 py-5">
                             <img src="./assets/recs/lines_zigs.png" alt="" style={{ position: 'absolute', right: '5vw', top: '2vw' }} />
                             <img src="./assets/recs/lines_box.png" className='d-block d-md-none' alt="" style={{ position: 'absolute', right: 0, bottom: 0 }} />
                             <div className="line_left_orange">Nosotros</div>
@@ -133,39 +137,41 @@ const HomePage: FC<{}> = () => {
                     </div>
                 </div>
                 <div className="px-3 py-2 bg_gray">
-                    {cars ? <SliderComponent responsive={{
-                        mobile: {
-                            breakpoint: { max: 769, min: 0 },
-                            items: 1,
-                            slidesToSlide: 1, // optional, default to 1.
-                        },
-                        tablet: {
-                            breakpoint: { max: 1024, min: 769 },
-                            items: 2,
-                            slidesToSlide: 2, // optional, default to 1.
-                        },
-                        desktop: {
-                            breakpoint: { max: 1280, min: 1024 },
-                            items: 3,
-                            slidesToSlide: 3, // optional, default to 1.
-                        },
-                        largeDesktop: {
-                            breakpoint: { max: 3000, min: 1280 },
-                            items: 4,
-                            slidesToSlide: 4, // optional, default to 1.
-                        },
-                    }}>
-                        {cars?.map((car, index) => <div className="m-3" key={index} >
-                            <CarCardComponent car={car} />
-                        </div>)}
-                    </SliderComponent>
-                        : <div>loading</div>}
+                    <div className="container">
+                        {cars ? <SliderComponent responsive={{
+                            mobile: {
+                                breakpoint: { max: 769, min: 0 },
+                                items: 1,
+                                slidesToSlide: 1, // optional, default to 1.
+                            },
+                            tablet: {
+                                breakpoint: { max: 1024, min: 769 },
+                                items: 2,
+                                slidesToSlide: 2, // optional, default to 1.
+                            },
+                            desktop: {
+                                breakpoint: { max: 1280, min: 1024 },
+                                items: 3,
+                                slidesToSlide: 3, // optional, default to 1.
+                            },
+                            largeDesktop: {
+                                breakpoint: { max: 3000, min: 1280 },
+                                items: 4,
+                                slidesToSlide: 4, // optional, default to 1.
+                            },
+                        }}>
+                            {cars?.map((car, index) => <div className="m-3" key={index} >
+                                <CarCardComponent car={car} />
+                            </div>)}
+                        </SliderComponent>
+                            : <div>loading</div>}
+                    </div>
                 </div>
             </section>
-            <section className="fifth_section">
+            <section className="fifth_section from_left_3">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-3 d-flex justify-content-center py-5 bg_black">
+                        <div className="col-md-3 d-flex justify-content-center py-5 bg_black align-items-center">
                             <div className="side side_top text_black text_md_white">
                                 <h2 className='d-flex flex-md-column justify-content-center align-items-center flex-row'>
                                     <b className='me-2 me-md-0'>Nuestros</b>

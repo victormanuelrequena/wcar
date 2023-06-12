@@ -1,8 +1,9 @@
 import { injectable } from "inversify";
 import CarEntity, { TransmissionCar } from "../../../domain/entities/CarEntity";
 import CarRepository from "../../../domain/repositories/CarRepository";
+import sleeper from "../../../domain/repositories/utils/Sleeper";
 
-const _testCar:CarEntity = {
+const _testCar: CarEntity = {
     id: "1",
     name: "Mercedez Benz C 180 Mt 20 1.6 156cv 4p",
     type: "Sedan",
@@ -16,6 +17,33 @@ const _testCar:CarEntity = {
 
 @injectable()
 class CarRepositoryTest implements CarRepository {
+    search(page: number, search?: string | undefined, brand?: string | undefined, year?: string | undefined, price?: number | undefined, type?: string[] | undefined, transmission?: TransmissionCar | undefined, availability?: string | undefined): Promise<{ cars: CarEntity[], maxPages: number }> {
+        return new Promise<{ cars: CarEntity[], maxPages: number }>(async (resolve, reject) => {
+            //add a delay of 1s
+            await sleeper(1000)(1);
+
+            return resolve({
+                cars: [
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                    _testCar,
+                ], maxPages: 10
+            });
+        });
+    }
     public async getSomeRandomCars(): Promise<CarEntity[]> {
         return new Promise<CarEntity[]>((resolve, reject) => {
             return resolve([

@@ -7,6 +7,7 @@ import LoadUseCase from "../../../domain/use_cases/default/LoadUseCase";
 import NotFoundComponent from "../components/notFound/NotFoundComponent";
 import LoadingComponent from "../components/LoadingComponent/LoadingComponent";
 import di from "../../../di/DependencyInjection";
+import BuyYourCarPage from "../pages/buyYourCar/BuyYourCarPage";
 
 export interface iRoute {
     name: string,
@@ -33,6 +34,12 @@ const routes = {
         path: "/",
         relativePath: '/',
         component: HomePage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    buyYourCarPage: {
+        path: "/comprar",
+        relativePath: '/comprar',
+        component: BuyYourCarPage,
         auth: (user: UserEntity | undefined) => true,
     },
     

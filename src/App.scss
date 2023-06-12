@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Trebuchet+MS:ital,wght@0,400;0,700;1,400&display=swap');
 
+.container {
+  max-width: 1700px;
+}
+
 :root {
   --color-yellow: #FDB649;
   --color-orange: #EC671B;
@@ -264,5 +268,13 @@ body a {
   &:hover {
     text-decoration: none;
     color: var(--color-yellow);
+  }
+}
+
+.from_left_3::before {
+  
+
+  @media screen and (min-width: 1300px) {
+    right: calc(((100vw - 1300px) / 2) + ((1300px / 12) * 3));
   }
 }

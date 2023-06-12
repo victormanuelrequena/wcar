@@ -27,17 +27,17 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
             </div>
             <img src={car.photoUrl} alt="" className="img-fluid img_car" />
             <div className="row" style={{fontSize: '.9em'}}>
-                <div className="col-4 d-flex align-items-center text_gray ">
+            <div className="col-4 d-flex align-items-center text_gray p-0">
+                    <img src="./assets/icons/year.svg" alt="" className="img-fluid img_icon  me-2 ms-3" />
+                    <span>{car.year}</span>
+                </div>
+                <div className="col-4 d-flex align-items-center text_gray p-0">
                     <img src="./assets/icons/odometer.svg" alt="" className="img-fluid img_icon me-2" />
                     <span className='text_nowrap'>{car.odometer} Km.</span>
                 </div>
                 <div className="col-4 d-flex align-items-center text_gray p-0">
-                    <img src="./assets/icons/transmission.svg" alt="" className="img-fluid img_icon mx-2" />
+                    <img src="./assets/icons/transmission.svg" alt="" className="img-fluid img_icon me-1" />
                     <span className='text_nowrap'>{car.transmission}</span>
-                </div>
-                <div className="col-4 d-flex align-items-center text_gray">
-                    <img src="./assets/icons/year.svg" alt="" className="img-fluid img_icon  me-2 ms-3" />
-                    <span>{car.year}</span>
                 </div>
             </div>
             <div className="w-100 d-flex align-items-center justfy-content-between mt-3">

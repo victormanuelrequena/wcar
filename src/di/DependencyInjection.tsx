@@ -10,6 +10,7 @@ import GetAllAlliesUseCase from "../domain/use_cases/ally/GetAllAlliesUseCase";
 import AllyRepository, { AllyRepositoryName } from "../domain/repositories/AllyRepository";
 import AllyRepositoryTest from "../data/repositories/ally/AllyRepositoryTest";
 import LoadUseCase from "../domain/use_cases/default/LoadUseCase";
+import SearchCarsUseCase from "../domain/use_cases/car/SearchCarsUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -41,6 +42,9 @@ di.bind<GetSomeRandomCarsUseCase>(GetSomeRandomCarsUseCase.name).toDynamicValue(
 }).inSingletonScope();
 di.bind<LikeCarUseCase>(LikeCarUseCase.name).toDynamicValue((context) => {
     return new LikeCarUseCase({ carRepository: context.container.get(CarRepositoryName) });
+});
+di.bind<SearchCarsUseCase>(SearchCarsUseCase.name).toDynamicValue((context) => {
+    return new SearchCarsUseCase({ carRepository: context.container.get(CarRepositoryName) });
 });
 
 //default
