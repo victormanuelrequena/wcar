@@ -51,6 +51,7 @@ const BuyYourCarPage: FC<{}> = () => {
         <form onSubmit={handleSubmit(_handleSearch)}>
             <div className="w-100 position-relative buy_your_car_page bg_gray">
                 <div className="w-100 car_search">
+                    Search
                 </div>
                 <div className="car_list from_left_3  container">
                     <div className="row">
