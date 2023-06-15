@@ -16,18 +16,18 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
 
     return <div className="w-100 card car_card_component">
         <div className="card-body">
+            <img src={car.photoUrl} alt="" className="img-fluid img_car" />
             <div className="d-flex w-100 align-items-center">
                 <div className="flex-grow overflow-hidden me-3">
                     <h5 className="text_ellipsis">{car.name}</h5>
                 </div>
                 {_like ? <IoMdHeart size={32} className="text_red hover" onClick={_handleLike} /> : <IoMdHeartEmpty size={32} className="text_gray hover" onClick={_handleLike} />}
             </div>
-            <div className="w-100 text_gray my-1">
-                {car.type}
+            <div className="w-100 text_bold mb-1">
+                {car.type.name}
             </div>
-            <img src={car.photoUrl} alt="" className="img-fluid img_car" />
-            <div className="row" style={{fontSize: '.9em'}}>
-            <div className="col-4 d-flex align-items-center text_gray p-0">
+            <div className="row" style={{ fontSize: '.9em' }}>
+                <div className="col-4 d-flex align-items-center text_gray p-0">
                     <img src="./assets/icons/year.svg" alt="" className="img-fluid img_icon  me-2 ms-3" />
                     <span>{car.year}</span>
                 </div>

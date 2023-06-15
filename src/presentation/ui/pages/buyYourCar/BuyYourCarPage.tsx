@@ -9,13 +9,35 @@ import LoadingComponent from '../../components/LoadingComponent/LoadingComponent
 import CarCardComponent from '../../components/carCard/CarCardComponent';
 import di from '../../../../di/DependencyInjection';
 import SearchCarsUseCase from '../../../../domain/use_cases/car/SearchCarsUseCase';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import OrderByEntity from '../../../../domain/entities/OrderByEntity';
+import FilterComponent from './components/filterComponent/FilterComponent';
+
+const orderingOptions: OrderByEntity[] = [
+    {
+        label: 'Relevancia',
+        value: {
+            keyname: 'relevanece',
+            desc: true
+        },
+    },
+    {
+        label: 'Reciente',
+        value: {
+            keyname: 'created_at',
+            desc: true,
+        }
+    }
+];
 
 const BuyYourCarPage: FC<{}> = () => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const formFunctions = useForm()
+    const { register, handleSubmit, formState: { errors }, reset, setValue, watch } = formFunctions;
 
     const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
     const [page, setPage] = useState<number>(1);
     const [openFilters, setOpenFilters] = useState<boolean>(false);
+    const [openOrderBy, setOpenOrderBy] = useState(false);
     const [maxPages, setMaxPages] = useState<number>(1);
 
     const _handleSearch = async (data: any) => {
@@ -42,6 +64,11 @@ const BuyYourCarPage: FC<{}> = () => {
         _handleSearch({});
     }
 
+    const _handlePickOrderBy = (orderByValue: OrderByEntity) => {
+        setOpenOrderBy(false);
+        setValue('orderBy', orderByValue.value);
+    }
+
     useEffect(() => {
         _handleSearch({});
     }, [page]);
@@ -50,20 +77,45 @@ const BuyYourCarPage: FC<{}> = () => {
     return <Layout>
         <form onSubmit={handleSubmit(_handleSearch)}>
             <div className="w-100 position-relative buy_your_car_page bg_gray">
-                <div className="w-100 car_search">
-                    Search
+                <div className="w-100 car_search bg_search py-3">
+                    <div className="container d-flex flex-column flex-md-row px-md-5 justify-content-between align-items-center">
+                        <div className="input_search">
+                            <img src="/assets/icons/search.svg" className='text_orange' alt="" />
+                            <input type="text" placeholder='Buscar por marca, modelo, color...' />
+                        </div>
+                        <div className="order_by_container my-3 my-md-0">
+                            <Dropdown isOpen={openOrderBy} toggle={() => setOpenOrderBy(!openOrderBy)}>
+                                <DropdownToggle caret>
+                                    Ordenar por: <strong className='hover'>{orderingOptions.find((orderItem) => orderItem.value.keyname == watch('orderBy')?.keyname && orderItem.value.desc == watch('orderBy')?.desc)?.label ?? orderingOptions?.[0]?.label ?? ''}</strong>
+                                </DropdownToggle>
+
+                                <DropdownMenu>
+                                    {orderingOptions.map((option, index) => (
+                                        <DropdownItem
+                                            key={index}
+                                            active={watch('orderBy') === option.value}
+                                            onClick={() => _handlePickOrderBy(option)}
+                                        >
+                                            {option.label}
+                                        </DropdownItem>
+                                    ))}
+                                </DropdownMenu>
+                            </Dropdown>
+                        </div>
+                    </div>
                 </div>
                 <div className="car_list from_left_3  container">
                     <div className="row">
-                        <div className={`col-md-3 ${openFilters ? 'bg_white':''}`}>
-                            <div className="side_filter hover" onClick={() => setOpenFilters(!openFilters)}>
+                        <div className={`col-md-3 ${openFilters ? 'bg_white' : ''}`}>
+                            {!openFilters && <div className="side_filter hover" onClick={() => setOpenFilters(!openFilters)}>
                                 filtro
                             </div>
+                            }
                         </div>
                         <div className="col-md-9">
                             <div className="w-100 filters d-flex justify-content-between">
                                 <div className="d-flex flex-grow-1">
-                                    filtros activos
+                                    Filtros seleccionados
                                 </div>
                                 <div className="btn_light" onClick={_handleClearFilters}>
                                     <IoMdTrash /> Limpiar filtros
@@ -73,7 +125,7 @@ const BuyYourCarPage: FC<{}> = () => {
                     </div>
                     <div className="row">
                         <div className={`bg_white ${openFilters ? 'col-md-3' : 'd-none'}`}>
-                            Filtros
+                            <FilterComponent formFunctions={formFunctions} isOpen={openFilters} setIsOpen={setOpenFilters} />
                         </div>
                         <div className={`${openFilters ? 'col-md-9' : 'col-md-12'}`}>
                             <div className="row">

@@ -1,4 +1,41 @@
 .buy_your_car_page {
+    .bg_search {
+        background-image: url(../../../../../public/assets/recs/bg_search.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .input_search{
+
+            background-color: white;
+            border: solid thin black;
+            border-radius: 2.5em;
+            padding: 0.5em;
+            display: flex;
+            align-items: center;
+            max-width: 100%;
+            min-width: 350px;
+
+            input{
+                border: none;
+                flex-grow: 1;
+                margin-left: 0.5em;
+                
+                &:focus, &:active, &:focus-visible{
+                    outline: none;
+                    border: none;
+                }
+            }
+        }
+
+        .order_by_container {
+            color: white;
+
+            .btn{
+                background-color: transparent;
+                border: none;
+            }
+        }
+    }
 
     .car_list {
         position: relative;
