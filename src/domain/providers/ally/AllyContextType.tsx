@@ -1,9 +1,9 @@
 import AllyEntity from "../../entities/AllyEntity";
 
-type AlliesContextType = {
+type AllyContextType = {
   allies: AllyEntity[];
   setAllies: (localization: AllyEntity[]) => void;
 };
 
 
-export default AlliesContextType;
+export default AllyContextType;

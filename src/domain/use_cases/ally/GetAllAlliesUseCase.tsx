@@ -1,4 +1,4 @@
-import AlliesProvider from "../../providers/allies/AlliesProvider";
+import AlliesProvider from "../../providers/ally/AllyProvider";
 import AllyRepository from "../../repositories/AllyRepository";
 
 interface props { allyRepository: AllyRepository, alliesProvider: AlliesProvider }

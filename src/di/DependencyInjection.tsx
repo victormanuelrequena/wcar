@@ -4,8 +4,8 @@ import GetSomeRandomCarsUseCase from "../domain/use_cases/car/GetSomeRandomCarsU
 import CarRepository, { CarRepositoryName } from "../domain/repositories/CarRepository";
 import CarRepositoryTest from "../data/repositories/car/CarRepositoryTest";
 import LikeCarUseCase from "../domain/use_cases/car/LikeCarUseCase";
-import AlliesProvider, { AlliesProviderName } from "../domain/providers/allies/AlliesProvider";
-import AlliesProviderImpl from "../presentation/providers/allies/AlliesProviderImpl";
+import AllyProvider, { AllyProviderName } from "../domain/providers/ally/AllyProvider";
+import AllyProviderImpl from "../presentation/providers/ally/AllyProviderImpl";
 import GetAllAlliesUseCase from "../domain/use_cases/ally/GetAllAlliesUseCase";
 import AllyRepository, { AllyRepositoryName } from "../domain/repositories/AllyRepository";
 import AllyRepositoryTest from "../data/repositories/ally/AllyRepositoryTest";
@@ -24,7 +24,7 @@ di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonSc
 di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
 
 // ------------------ PROVIDERS ------------------ //
-di.bind<AlliesProvider>(AlliesProviderName).toConstantValue(AlliesProviderImpl);
+di.bind<AllyProvider>(AllyProviderName).toConstantValue(AllyProviderImpl);
 
 //------------------ USE CASES ------------------//
 
@@ -32,7 +32,7 @@ di.bind<AlliesProvider>(AlliesProviderName).toConstantValue(AlliesProviderImpl);
 di.bind<GetAllAlliesUseCase>(GetAllAlliesUseCase.name).toDynamicValue((context) => {
     return new GetAllAlliesUseCase({
         allyRepository: context.container.get(AllyRepositoryName),
-        alliesProvider: context.container.get(AlliesProviderName)
+        alliesProvider: context.container.get(AllyProviderName)
     });
 }).inSingletonScope();
 

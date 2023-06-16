@@ -1,10 +1,10 @@
 import React from "react";
-import AlliesContextType from "./AlliesContextType";
+import AllyContextType from "./AllyContextType";
 import AllyEntity from "../../entities/AllyEntity";
 
-const AlliesContext = React.createContext<AlliesContextType>({
+const AllyContext = React.createContext<AllyContextType>({
     allies: [],
     setAllies: (allies: AllyEntity[]) => {}
 });
 
-export default AlliesContext;
+export default AllyContext;

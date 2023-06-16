@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.scss';
 import NavbarComponent from './presentation/ui/components/navbar/NavbarComponent';
 import HomePage from './presentation/ui/pages/home/HomePage';
-import AlliesProvider, { AlliesProviderName } from './domain/providers/allies/AlliesProvider';
+import AlliesProvider, { AlliesProviderName } from './domain/providers/ally/AllyProvider';
 import di from './di/DependencyInjection';
 import { Provider } from 'inversify-react';
 import RoutesComponent from './presentation/ui/routes/RoutesComponent';

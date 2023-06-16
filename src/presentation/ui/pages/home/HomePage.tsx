@@ -8,8 +8,8 @@ import CarEntity from '../../../../domain/entities/CarEntity';
 import di from '../../../../di/DependencyInjection';
 import GetSomeRandomCarsUseCase from '../../../../domain/use_cases/car/GetSomeRandomCarsUseCase';
 import CarCardComponent from '../../components/carCard/CarCardComponent';
-import AlliesContextType from '../../../../domain/providers/allies/AlliesContextType';
-import AlliesContext from '../../../../domain/providers/allies/AlliesContext';
+import AlliesContextType from '../../../../domain/providers/ally/AllyContextType';
+import AlliesContext from '../../../../domain/providers/ally/AllyContext';
 import LoadUseCase from '../../../../domain/use_cases/default/LoadUseCase';
 import Layout from '../../layout/Layout';
 
