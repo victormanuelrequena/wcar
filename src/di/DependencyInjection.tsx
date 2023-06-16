@@ -11,6 +11,14 @@ import AllyRepository, { AllyRepositoryName } from "../domain/repositories/AllyR
 import AllyRepositoryTest from "../data/repositories/ally/AllyRepositoryTest";
 import LoadUseCase from "../domain/use_cases/default/LoadUseCase";
 import SearchCarsUseCase from "../domain/use_cases/car/SearchCarsUseCase";
+import BrandProvider, { BrandProviderName } from "../domain/providers/brand/BrandProvider";
+import BrandProviderImpl from "../presentation/providers/brand/BrandProviderImpl";
+import ColorProvider, { ColorProviderName } from "../domain/providers/color/ColorProvider";
+import ColorProviderImpl from "../presentation/providers/color/ColorProviderImpl";
+import TypeOfFuelProvider, { TypeOfFuelProviderName } from "../domain/providers/typeOfFuel/TypeOfFuelProvider";
+import TypeOfFuelProviderImpl from "../presentation/providers/typeOfFuel/TypeOfFuelProviderImpl";
+import TypeVehicleProvider, { TypeVehicleProviderName } from "../domain/providers/typeVehicle/TypeVehicleProvider";
+import TypeVehicleProviderImpl from "../presentation/providers/typeVehicle/TypeVehicleProviderImpl";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -25,6 +33,10 @@ di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope
 
 // ------------------ PROVIDERS ------------------ //
 di.bind<AllyProvider>(AllyProviderName).toConstantValue(AllyProviderImpl);
+di.bind<BrandProvider>(BrandProviderName).toConstantValue(BrandProviderImpl);
+di.bind<ColorProvider>(ColorProviderName).toConstantValue(ColorProviderImpl);
+di.bind<TypeOfFuelProvider>(TypeOfFuelProviderName).toConstantValue(TypeOfFuelProviderImpl);
+di.bind<TypeVehicleProvider>(TypeVehicleProviderName).toConstantValue(TypeVehicleProviderImpl);
 
 //------------------ USE CASES ------------------//
 
