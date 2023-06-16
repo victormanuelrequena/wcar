@@ -4,7 +4,7 @@ import ColorEntity from "../../../domain/entities/ColorEntity";
 
 const _colorTest:ColorEntity = {
     id:"1",
-    name:"Mercedez"
+    name:"Rojo"
 }
 @injectable()
 class ColorRepositoryTest implements ColorRepository{

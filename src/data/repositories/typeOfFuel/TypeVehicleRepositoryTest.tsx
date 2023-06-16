@@ -4,7 +4,7 @@ import TypeVehicleRepository from "../../../domain/repositories/TypeVehicleRepos
 
 const _typevehicleTest:TypeVehicleEntity = {
     id:"1",
-    name:"Mercedez"
+    name:"Gasolina"
 }
 @injectable()
 class TypeVehicleRepositoryTest implements TypeVehicleRepository {
