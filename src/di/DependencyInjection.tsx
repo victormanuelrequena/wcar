@@ -19,6 +19,13 @@ import TypeOfFuelProvider, { TypeOfFuelProviderName } from "../domain/providers/
 import TypeOfFuelProviderImpl from "../presentation/providers/typeOfFuel/TypeOfFuelProviderImpl";
 import TypeVehicleProvider, { TypeVehicleProviderName } from "../domain/providers/typeVehicle/TypeVehicleProvider";
 import TypeVehicleProviderImpl from "../presentation/providers/typeVehicle/TypeVehicleProviderImpl";
+import GetAllBrandsUseCase from "../domain/use_cases/brand/GetAllBrandsUseCase";
+import GetAllColorsUseCase from "../domain/use_cases/color/GetAllColorsUseCase";
+import GetAllTypeOfFuelsUseCase from "../domain/use_cases/typeOfFuel/GetAllTypeOfFuelsUseCase";
+import GetAllTypeVehiclesUseCase from "../domain/use_cases/typeVehicle/GetAllTypeVehiclesUseCase";
+import { BrandRepositoryName } from "../domain/repositories/BrandRepository";
+import { ColorRepositoryName } from "../domain/repositories/ColorRepository";
+import { TypeOfFuelRepositoryName } from "../domain/repositories/TypeOfFuelRepository";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -48,6 +55,14 @@ di.bind<GetAllAlliesUseCase>(GetAllAlliesUseCase.name).toDynamicValue((context) 
     });
 }).inSingletonScope();
 
+//brands
+di.bind<GetAllBrandsUseCase>(GetAllBrandsUseCase.name).toDynamicValue((context) => {
+    return new GetAllBrandsUseCase({
+        brandRepository: context.container.get(BrandRepositoryName),
+        brandProvider: context.container.get(BrandProviderName)
+    });
+}).inSingletonScope();
+
 //Car  
 di.bind<GetSomeRandomCarsUseCase>(GetSomeRandomCarsUseCase.name).toDynamicValue((context) => {
     return new GetSomeRandomCarsUseCase({ carRepository: context.container.get(CarRepositoryName) });
@@ -59,9 +74,39 @@ di.bind<SearchCarsUseCase>(SearchCarsUseCase.name).toDynamicValue((context) => {
     return new SearchCarsUseCase({ carRepository: context.container.get(CarRepositoryName) });
 });
 
+//colors
+di.bind<GetAllColorsUseCase>(GetAllColorsUseCase.name).toDynamicValue((context) => {
+    return new GetAllColorsUseCase({
+        colorRepository: context.container.get(ColorRepositoryName),
+        colorProvider: context.container.get(ColorProviderName)
+    });
+}).inSingletonScope();
+
 //default
 di.bind<LoadUseCase>(LoadUseCase.name).toDynamicValue((context) => {
-    return new LoadUseCase({ getAllAlliesUseCase: context.container.get(GetAllAlliesUseCase.name) });
+    return new LoadUseCase({ 
+        getAllAlliesUseCase: context.container.get(GetAllAlliesUseCase.name),
+        getAllBrandsUseCase: context.container.get(GetAllBrandsUseCase.name),
+        getAllColorsUseCase: context.container.get(GetAllColorsUseCase.name),
+        getAllTypeOfFueslUseCase: context.container.get(GetAllTypeOfFuelsUseCase.name),
+        getAllTypeOfVehiclesUseCase: context.container.get(GetAllTypeVehiclesUseCase.name),
+     });
 });
+
+//type of fuel
+di.bind<GetAllTypeOfFuelsUseCase>(GetAllTypeOfFuelsUseCase.name).toDynamicValue((context) => {
+    return new GetAllTypeOfFuelsUseCase({
+        typeOfFuelRepository: context.container.get(TypeOfFuelRepositoryName),
+        typeOfFuelProvider: context.container.get(TypeOfFuelProviderName)
+    });
+}).inSingletonScope();
+
+//type of vehicle
+di.bind<GetAllTypeVehiclesUseCase>(GetAllTypeVehiclesUseCase.name).toDynamicValue((context) => {
+    return new GetAllTypeVehiclesUseCase({
+        typeVehicleRepository: context.container.get(TypeOfFuelRepositoryName),
+        typeVehicleProvider: context.container.get(TypeVehicleProviderName)
+    });
+}).inSingletonScope();
 
 export default di;

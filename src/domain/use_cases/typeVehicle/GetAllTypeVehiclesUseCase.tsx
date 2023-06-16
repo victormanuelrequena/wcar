@@ -1,7 +1,7 @@
 import TypeVehicleProvider from "../../providers/typeVehicle/TypeVehicleProvider";
 import TypeVehicleRepository from "../../repositories/TypeVehicleRepository";
 
-interface props { typeVehicleRepository: TypeVehicleRepository, typeVehiclesProvider: TypeVehicleProvider }
+interface props { typeVehicleRepository: TypeVehicleRepository, typeVehicleProvider: TypeVehicleProvider }
 
 export default class GetAllTypeVehiclesUseCase{
     
@@ -10,7 +10,7 @@ export default class GetAllTypeVehiclesUseCase{
 
     constructor(_:props) {
         this._typeVehicleRepository = _.typeVehicleRepository;
-        this._typeVehicleProvider = _.typeVehiclesProvider;
+        this._typeVehicleProvider = _.typeVehicleProvider;
     }
     async call() {
         try {

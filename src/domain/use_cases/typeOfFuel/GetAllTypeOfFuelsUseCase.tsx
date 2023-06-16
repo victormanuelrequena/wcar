@@ -1,16 +1,16 @@
 import TypeOfFuelProvider from "../../providers/typeOfFuel/TypeOfFuelProvider";
 import TypeOfFuelRepository from "../../repositories/TypeOfFuelRepository";
 
-interface props { typeOfFuelRepository: TypeOfFuelRepository, typeOfFuelsProvider: TypeOfFuelProvider }
+interface props { typeOfFuelRepository: TypeOfFuelRepository, typeOfFuelProvider: TypeOfFuelProvider }
 
-export default class GetAllTypeOfFuelsUseCase{
-    
+export default class GetAllTypeOfFuelsUseCase {
+
     _typeOfFuelRepository: TypeOfFuelRepository;
     _typeOfFuelProvider: TypeOfFuelProvider;
 
-    constructor(_:props) {
+    constructor(_: props) {
         this._typeOfFuelRepository = _.typeOfFuelRepository;
-        this._typeOfFuelProvider = _.typeOfFuelsProvider;
+        this._typeOfFuelProvider = _.typeOfFuelProvider;
     }
     async call() {
         try {

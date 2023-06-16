@@ -1,7 +1,7 @@
 import ColorsProvider from "../../providers/color/ColorProvider";
 import ColorRepository from "../../repositories/ColorRepository";
 
-interface props { colorRepository: ColorRepository, colorsProvider: ColorsProvider }
+interface props { colorRepository: ColorRepository, colorProvider: ColorsProvider }
 
 export default class GetAllColorsUseCase{
     
@@ -10,7 +10,7 @@ export default class GetAllColorsUseCase{
 
     constructor(_:props) {
         this._colorRepository = _.colorRepository;
-        this._colorsProvider = _.colorsProvider;
+        this._colorsProvider = _.colorProvider;
     }
     async call() {
         try {
