@@ -36,7 +36,7 @@ const BuyYourCarPage: FC<{}> = () => {
 
     const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
     const [page, setPage] = useState<number>(1);
-    const [openFilters, setOpenFilters] = useState<boolean>(false);
+    const [openFilters, setOpenFilters] = useState<boolean>(true);
     const [openOrderBy, setOpenOrderBy] = useState(false);
     const [maxPages, setMaxPages] = useState<number>(1);
 

@@ -325,3 +325,26 @@ body a {
     right: calc(((100vw - 1300px) / 2) + ((1300px / 12) * 3));
   }
 }
+
+.form{
+  &_underline{
+    border: none;
+    border-bottom: solid 1px var(--color-gray);
+  }
+}
+
+select.form_underline {
+  //show arrows
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input{
+  &[type="checkbox"]{
+    &:checked{
+      background-color: var(--color-orange);
+      border: var(--color-orange);
+    }
+  }
+}

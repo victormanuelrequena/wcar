@@ -30,7 +30,6 @@ const HomePage: FC<{}> = () => {
     }
 
     useEffect(() => {
-        di.get<LoadUseCase>(LoadUseCase.name).call();
         _getSomeCars();
     }, []);
 

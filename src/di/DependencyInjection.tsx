@@ -23,9 +23,14 @@ import GetAllBrandsUseCase from "../domain/use_cases/brand/GetAllBrandsUseCase";
 import GetAllColorsUseCase from "../domain/use_cases/color/GetAllColorsUseCase";
 import GetAllTypeOfFuelsUseCase from "../domain/use_cases/typeOfFuel/GetAllTypeOfFuelsUseCase";
 import GetAllTypeVehiclesUseCase from "../domain/use_cases/typeVehicle/GetAllTypeVehiclesUseCase";
-import { BrandRepositoryName } from "../domain/repositories/BrandRepository";
-import { ColorRepositoryName } from "../domain/repositories/ColorRepository";
-import { TypeOfFuelRepositoryName } from "../domain/repositories/TypeOfFuelRepository";
+import BrandRepository, { BrandRepositoryName } from "../domain/repositories/BrandRepository";
+import ColorRepository, { ColorRepositoryName } from "../domain/repositories/ColorRepository";
+import TypeOfFuelRepository, { TypeOfFuelRepositoryName } from "../domain/repositories/TypeOfFuelRepository";
+import BrandRepositoryTest from "../data/repositories/brand/BrandRepositoryTest";
+import ColorRepositoryTest from "../data/repositories/color/ColorRepositoryTest";
+import TypeVehicleRepository, { TypeVehicleRepositoryName } from "../domain/repositories/TypeVehicleRepository";
+import TypeOfFuelRepositoryTest from "../data/repositories/typeOfFuel/TypeOfFuelRepositoryTest";
+import TypeVehicleRepositoryTest from "../data/repositories/typeOfVehicle/TypeVehicleRepositoryTest";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -36,7 +41,11 @@ const di = new Container();
 if (mode === MODE_DI.DEVELOPMENT) {
 }
 di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
+di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
 di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
+di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
+di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
+di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
 
 // ------------------ PROVIDERS ------------------ //
 di.bind<AllyProvider>(AllyProviderName).toConstantValue(AllyProviderImpl);

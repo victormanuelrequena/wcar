@@ -10,6 +10,9 @@ import BrandProvider, { BrandProviderName } from './domain/providers/brand/Brand
 import ColorProvider, { ColorProviderName } from './domain/providers/color/ColorProvider';
 import TypeOfFuelProvider, { TypeOfFuelProviderName } from './domain/providers/typeOfFuel/TypeOfFuelProvider';
 import TypeVehicleProvider, { TypeVehicleProviderName } from './domain/providers/typeVehicle/TypeVehicleProvider';
+import { useEffect, useState } from 'react';
+import LoadingComponent from './presentation/ui/components/LoadingComponent/LoadingComponent';
+import LoadUseCase from './domain/use_cases/default/LoadUseCase';
 
 function App() {
   const allyProvider = di.get<AllyProvider>(AllyProviderName);
@@ -17,6 +20,19 @@ function App() {
   const colorProvider = di.get<ColorProvider>(ColorProviderName);
   const typeOfFuelProvider = di.get<TypeOfFuelProvider>(TypeOfFuelProviderName);
   const typeVehicleProvider = di.get<TypeVehicleProvider>(TypeVehicleProviderName);
+
+  const [loaded, setLoaded] = useState<boolean>(false);
+
+  const _loadApp = async () => {
+    await di.get<LoadUseCase>(LoadUseCase.name).call();
+    setLoaded(true);
+  }
+
+  useEffect(() => {
+    _loadApp();
+  }, []);
+
+  if (!loaded) return <LoadingComponent />
 
   return (
     <Provider container={di}>
