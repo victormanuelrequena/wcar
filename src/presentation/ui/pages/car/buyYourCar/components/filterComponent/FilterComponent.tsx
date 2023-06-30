@@ -1,14 +1,14 @@
 import { FC, useContext } from "react";
 import FilterComponentProps from "./FilterComponentProps";
-import BrandContext from "../../../../../../domain/providers/brand/BrandContext";
-import BrandContextType from "../../../../../../domain/providers/brand/BrandContextType";
-import ColorContext from "../../../../../../domain/providers/color/ColorContext";
-import ColorContextType from "../../../../../../domain/providers/color/ColorContextType";
-import TypeOfFuelContext from "../../../../../../domain/providers/typeOfFuel/TypeOfFuelContext";
-import TypeOfFuelContextType from "../../../../../../domain/providers/typeOfFuel/TypeOfFuelContextType";
-import TypeVehicleContext from "../../../../../../domain/providers/typeVehicle/TypeVehicleContext";
-import TypeVehicleContextType from "../../../../../../domain/providers/typeVehicle/TypeVehicleContextType";
-import { TransmissionCar } from "../../../../../../domain/entities/CarEntity";
+import BrandContext from "../../../../../../../domain/providers/brand/BrandContext";
+import BrandContextType from "../../../../../../../domain/providers/brand/BrandContextType";
+import ColorContext from "../../../../../../../domain/providers/color/ColorContext";
+import ColorContextType from "../../../../../../../domain/providers/color/ColorContextType";
+import TypeOfFuelContext from "../../../../../../../domain/providers/typeOfFuel/TypeOfFuelContext";
+import TypeOfFuelContextType from "../../../../../../../domain/providers/typeOfFuel/TypeOfFuelContextType";
+import TypeVehicleContext from "../../../../../../../domain/providers/typeVehicle/TypeVehicleContext";
+import TypeVehicleContextType from "../../../../../../../domain/providers/typeVehicle/TypeVehicleContextType";
+import { TransmissionCar } from "../../../../../../../domain/entities/CarEntity";
 
 const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setIsOpen }) => {
     const { register, setValue } = formFunctions;

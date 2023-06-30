@@ -1,0 +1,34 @@
+.detailed_car_page {
+    .section_2 {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background-color: black;
+            right: 74%;
+            background-size: cover;
+            z-index: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            &::before {
+                content: none;
+                display: none;
+            }
+        }
+
+        .bg_black{
+            position: relative;
+
+            &>img.bg_img{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                top: 0;
+            }
+        }
+    }
+}

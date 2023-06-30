@@ -10,12 +10,26 @@ const _testCar: CarEntity = {
         id: "1",
         name: "Sedan"
     },
+    rating: 3,
+    images: [
+        "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
+        "https://images.pexels.com/photos/5086489/pexels-photo-5086489.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
+        "https://images.pexels.com/photos/5086489/pexels-photo-5086489.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
+        "https://images.pexels.com/photos/5086489/pexels-photo-5086489.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
+        "https://images.pexels.com/photos/5086489/pexels-photo-5086489.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
+        "https://images.pexels.com/photos/5086489/pexels-photo-5086489.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    ],
     photoUrl: "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
     price: 120000000,
     transmission: TransmissionCar.AUTOMATIC,
     year: 2020,
     like: false,
     odometer: 6800,
+    outstanding: true,
     brand: {
         id: "1",
         name: "Mercedez"
@@ -73,10 +87,14 @@ class CarRepositoryTest implements CarRepository {
             ])
         });
     }
-
     public async likeCar(id: string, like: boolean): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             return resolve();
+        });
+    }
+    public async getCarById(id: string): Promise<CarEntity> {
+        return new Promise<CarEntity>((resolve, reject) => {
+            return resolve(_testCar);
         });
     }
 }

@@ -18,7 +18,7 @@
     .car_02 {
         position: relative;
 
-    &::before {
+        &::before {
             content: '';
             background-image: url('./../../../../../public/assets/home/car_02.png');
             position: absolute;
@@ -64,7 +64,7 @@
             width: 100%;
             height: 200px;
 
-            img{
+            img {
                 width: 100%;
                 height: 100%;
             }
@@ -81,7 +81,7 @@
                 top: -20%;
                 bottom: 0;
                 border-right: solid 1em white;
-                
+
             }
 
         }
@@ -131,5 +131,9 @@
                 z-index: 0;
             }
         }
+    }
+
+    .footer {
+        background-color: var(--color-gray-light) !important;
     }
 }

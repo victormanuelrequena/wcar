@@ -1,12 +1,13 @@
 import './SliderStyles.scss';
 import Carousel from "react-multi-carousel";
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import SliderComponentProps from "./SliderComponentProps";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
 
 const SliderComponent: FC<SliderComponentProps> = ({ children, responsive, beforeChange }) => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
+    const carouselRef = useRef<Carousel>(null);
 
     const _onChange = (nextSlide: number) => {
         beforeChange?.(currentSlide, nextSlide);
@@ -15,11 +16,13 @@ const SliderComponent: FC<SliderComponentProps> = ({ children, responsive, befor
 
     const _handlePrevious = () => {
         if (currentSlide <= 0) return;
+        carouselRef.current!.goToSlide(currentSlide - 1);
         _onChange(currentSlide - 1);
     }
 
     const _handleNext = () => {
         if (currentSlide >= children.length - 1) return;
+        carouselRef.current!.goToSlide(currentSlide + 1);
         _onChange(currentSlide + 1);
     }
 
@@ -28,6 +31,7 @@ const SliderComponent: FC<SliderComponentProps> = ({ children, responsive, befor
     return <div className="slider_component">
         <div className="w-100">
             <Carousel
+                ref={carouselRef}
                 arrows={false}
                 draggable
                 swipeable={true}

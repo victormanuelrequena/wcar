@@ -13,12 +13,15 @@ export default interface CarEntity {
     name: string;
     type: TypeVehicleEntity;
     photoUrl: string;
+    images: string[];
     price: number;
     transmission: TransmissionCar;
     year: number;
     like: boolean;
+    rating: number;
     odometer: number;
     brand: BrandEntity;
     typeOfFuel: TypeOfFuelEntity;
     color: ColorEntity;
+    outstanding: boolean;
 }

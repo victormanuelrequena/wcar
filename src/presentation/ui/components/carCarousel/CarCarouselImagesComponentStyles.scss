@@ -1,0 +1,66 @@
+.car_carousel_images_component {
+    .container_image_showing {
+        max-height: 600px;
+        position: relative;
+
+        .arrows_container {
+            position: absolute;
+            right: 1em;
+            bottom: 1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel_thumbail {
+            max-height: 280px;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &.active img {
+                border: solid 2px var(--color-orange);
+            }
+
+            img {
+                height: 100%;
+                max-width: 100%;
+                object-fit: cover;
+
+            }
+        }
+    }
+
+    .images_thumbails {
+        max-height: 50px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        overflow-x: auto;
+
+        .carousel_thumbail {
+            &.active img {
+                border: solid 2px var(--color-orange);
+            }
+
+
+
+            img {
+                margin: 10px;
+                border-radius: 15px;
+                height: 50px;
+                width: 95px;
+                object-fit: cover;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &.active {
+                    border: solid 2px var(--color-orange);
+                }
+            }
+        }
+    }
+}

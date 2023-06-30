@@ -7,7 +7,8 @@ import LoadUseCase from "../../../domain/use_cases/default/LoadUseCase";
 import NotFoundComponent from "../components/notFound/NotFoundComponent";
 import LoadingComponent from "../components/LoadingComponent/LoadingComponent";
 import di from "../../../di/DependencyInjection";
-import BuyYourCarPage from "../pages/buyYourCar/BuyYourCarPage";
+import BuyYourCarPage from "../pages/car/buyYourCar/BuyYourCarPage";
+import DetailedCarPage from "../pages/car/detailedCar/DetailedCarPage";
 
 export interface iRoute {
     name: string,
@@ -36,14 +37,30 @@ const routes = {
         component: HomePage,
         auth: (user: UserEntity | undefined) => true,
     },
-    buyYourCarPage: {
+    buyYourCar: {
         path: "/comprar",
         relativePath: '/comprar',
         component: BuyYourCarPage,
         auth: (user: UserEntity | undefined) => true,
     },
-    
-
+    detailedCar: {
+        path: "/carro/:id",
+        relativePath: '/carro',
+        component: DetailedCarPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    bookCar: {
+        path: "/carro/separar/:id",
+        relativePath: '/carro/separar',
+        component: DetailedCarPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    dateForCar: {
+        path: "/carro/ver/:id",
+        relativePath: '/carro/ver',
+        component: DetailedCarPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
 
 }
 

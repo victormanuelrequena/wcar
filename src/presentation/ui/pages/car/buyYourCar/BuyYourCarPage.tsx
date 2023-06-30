@@ -1,17 +1,18 @@
 import './BuyYourCarStyles.scss';
 import { FC, useEffect, useState } from "react";
-import Layout from "../../layout/Layout";
+import Layout from "../../../layout/Layout";
 import { useForm } from 'react-hook-form';
 import { IoMdTrash } from 'react-icons/io';
-import CarEntity from '../../../../domain/entities/CarEntity';
-import NotResultsComponent from '../../components/notResults/NotResultsComponent';
-import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
-import CarCardComponent from '../../components/carCard/CarCardComponent';
-import di from '../../../../di/DependencyInjection';
-import SearchCarsUseCase from '../../../../domain/use_cases/car/SearchCarsUseCase';
+import CarEntity from '../../../../../domain/entities/CarEntity';
+import NotResultsComponent from '../../../components/notResults/NotResultsComponent';
+import LoadingComponent from '../../../components/LoadingComponent/LoadingComponent';
+import CarCardComponent from '../../../components/carCard/CarCardComponent';
+import di from '../../../../../di/DependencyInjection';
+import SearchCarsUseCase from '../../../../../domain/use_cases/car/SearchCarsUseCase';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import OrderByEntity from '../../../../domain/entities/OrderByEntity';
+import OrderByEntity from '../../../../../domain/entities/OrderByEntity';
 import FilterComponent from './components/filterComponent/FilterComponent';
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -86,7 +87,7 @@ const BuyYourCarPage: FC<{}> = () => {
                         <div className="order_by_container my-3 my-md-0">
                             <Dropdown isOpen={openOrderBy} toggle={() => setOpenOrderBy(!openOrderBy)}>
                                 <DropdownToggle caret>
-                                    Ordenar por: <strong className='hover'>{orderingOptions.find((orderItem) => orderItem.value.keyname == watch('orderBy')?.keyname && orderItem.value.desc == watch('orderBy')?.desc)?.label ?? orderingOptions?.[0]?.label ?? ''}</strong>
+                                    Ordenar por: <strong className='order_button hover'>{orderingOptions.find((orderItem) => orderItem.value.keyname == watch('orderBy')?.keyname && orderItem.value.desc == watch('orderBy')?.desc)?.label ?? orderingOptions?.[0]?.label ?? ''}</strong>
                                 </DropdownToggle>
 
                                 <DropdownMenu>
@@ -127,7 +128,7 @@ const BuyYourCarPage: FC<{}> = () => {
                         <div className={`bg_white ${openFilters ? 'col-md-3' : 'd-none'}`}>
                             <FilterComponent formFunctions={formFunctions} isOpen={openFilters} setIsOpen={setOpenFilters} />
                         </div>
-                        <div className={`${openFilters ? 'col-md-9' : 'col-md-12'}`}>
+                        <div className={`${openFilters ? 'col-md-9' : 'col-md-12'} container_cars`}>
                             <div className="row">
                                 {cars == undefined && <LoadingComponent />}
                                 {cars != undefined && cars.length == 0 && <NotResultsComponent />}
@@ -135,8 +136,24 @@ const BuyYourCarPage: FC<{}> = () => {
                                     <CarCardComponent car={car} />
                                 </div>)}
                             </div>
+                            {maxPages > 1 && <div className="w-100 d-flex justify-content-center my-3">
+                                <div className="d-none d-md-flex me-3">
+                                    <div className={`arrow_slider previous me-1 ${page <= 1 ? 'disabled' : ''}`}>
+                                        <AiOutlineArrowLeft onClick={_handlePreviousPage} />
+                                    </div>
+                                    <div>
+                                        {page} de {maxPages}
+                                    </div>
+                                    <div className={`arrow_slider next ms-1 ${page >= maxPages - 1 ? 'disabled' : ''}`}>
+                                        <AiOutlineArrowRight onClick={_handleNextPage} />
+                                    </div>
+                                </div>
+                            </div>}
+
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </form>

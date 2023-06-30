@@ -10,6 +10,7 @@
   --color-orange-dark: #D65A1E;
   --color-gray-light: #F6F7F9;
   --color-gray: #90A3BF;
+  --color-gray-light: #F6F7F9;
   --color-blue-neon: #00FEFE;
 }
 
@@ -92,18 +93,18 @@
 
 .btn {
 
+  border-radius: 0;
+  border-bottom-left-radius: 2em;
+  border-top-right-radius: 2em;
+
   &.btn_orange {
     background-color: var(--color-orange);
     color: #fff;
     border: none;
-    border-radius: 0;
     padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
 
-    &.btn_cut {
-      clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
-    }
-
+ 
     &.btn_shadow {
       border-bottom: solid 3px black;
       border-left: solid 3px black;
@@ -116,17 +117,31 @@
     }
   }
 
+  &.btn_cyan {
+    background-color: var(--color-blue-neon);
+    color: black;
+    border: none;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+
+    &.btn_shadow {
+      border-bottom: solid 3px black;
+      border-left: solid 3px black;
+    }
+  }
+
+  // &.btn_cut {
+  //   clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
+  // }
+
+
   &.btn_in_black_orange {
     background-color: var(--color-orange);
     color: #fff;
     border: none;
-    border-radius: 0;
     padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
 
-    &.btn_cut {
-      clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
-    }
 
     &.btn_shadow {
       border-bottom: solid 3px rgb(255, 255, 255);
@@ -143,7 +158,6 @@
   &.btn_black {
     color: white;
     border: solid 1px var(--color-orange);
-    border-radius: 0;
     padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
     background-color: black;
@@ -154,11 +168,6 @@
 
     }
 
-    &.btn_cut {
-      clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
-      box-shadow: 0 0 0 3px var(--color-orange);
-      background: linear-gradient(315deg, var(--color-orange) 0.65em, black 0.65em, black 100%);
-    }
 
     &:hover {
       cursor: pointer;
@@ -170,7 +179,6 @@
   &.btn_orange_outline {
     color: var(--color-orange);
     border: solid 1px var(--color-orange);
-    border-radius: 0;
     padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
     background-color: white;

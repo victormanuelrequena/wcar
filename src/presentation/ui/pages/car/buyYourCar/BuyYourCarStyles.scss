@@ -1,6 +1,6 @@
 .buy_your_car_page {
     .bg_search {
-        background-image: url(../../../../../public/assets/recs/bg_search.png);
+        background-image: url(../../../../../../public/assets/recs/bg_search.png);
         background-repeat: no-repeat;
         background-size: cover;
 
@@ -33,12 +33,26 @@
             .btn{
                 background-color: transparent;
                 border: none;
+                padding-right: 2em;
+
+                &.dropdown-toggle::after{
+                    margin-left: -2em;
+                }
+
+                .order_button {
+                    background-color: #666C8966;
+                    padding: 0.8em 2em 0.8em 1em;
+                    border-radius: 0.5em;
+                    margin-right: 1em;
+                }
             }
         }
     }
 
     .car_list {
         position: relative;
+        background-image: url(../../../../../../public/assets/recs/bg_car_list.svg);
+        background-size: cover;
 
         &::after {
             content: '';
