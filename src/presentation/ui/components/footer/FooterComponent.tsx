@@ -4,7 +4,7 @@ import { SLOGAN } from "../../../utils/Contants";
 
 const FooterComponent: FC<{}> = () => {
     return (
-        <footer className="footer pt-5 bg_gray">
+        <footer className="footer pt-5 bg_white">
             <div className="container">
                 <div className="row">
                     <div className="col-md-3 col-lg-6 mb-4 mb-md-0">
