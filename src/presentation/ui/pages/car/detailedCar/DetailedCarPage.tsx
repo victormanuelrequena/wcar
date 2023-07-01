@@ -11,10 +11,14 @@ import CarCarouselImagesComponent from '../../../components/carCarousel/CarCarou
 import StarRatingComponent from '../../../components/starRating/StarRatingComponent';
 import CurrencyParse from '../../../../utils/CurrencyParse';
 import { routes } from '../../../routes/RoutesComponent';
+import CarCardComponent from '../../../components/carCard/CarCardComponent';
+import SliderComponent from '../../../components/slider/SliderComponent';
+import GetRelatedCarsByCardIdUseCase from '../../../../../domain/use_cases/car/GetRelatedCarsByCardIdUseCase';
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
     const [car, setCar] = useState<CarEntity | undefined | null>(undefined);
+    const [relatedCars, setRelatedCars] = useState<CarEntity[] | undefined | null>(undefined);
 
     const _getCar = async () => {
         try {
@@ -25,9 +29,19 @@ const DetailedCarPage: FC<{}> = () => {
         }
     }
 
+    const _getRelatedCars = async () => {
+        try {
+            const cars = await di.get<GetRelatedCarsByCardIdUseCase>(GetRelatedCarsByCardIdUseCase.name).call(id!);
+            setRelatedCars(cars);
+        } catch (error) {
+            setRelatedCars([]);
+        }
+    }
+
     useEffect(() => {
         if (id) {
             _getCar();
+            _getRelatedCars();
         } else {
             setCar(null);
         }
@@ -193,18 +207,69 @@ const DetailedCarPage: FC<{}> = () => {
                                                 </span>
                                                 {/* <strong>{car.status}</strong> */}
                                             </div>
-                                            <div className="d-flex">
-                                                <div className="btn btn_cyan">CONTACTA UN ASESOR</div>
-
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div className="col-md-3"></div>
+                        <div className="col-md-9">
+                            <div className="d-flex jusstify-content-center justify-content-md-start p-3">
+                                <div className="btn btn_cyan">CONTACTA UN ASESOR</div>
+                            </div>
+                        </div>
+
+                        <div className="col-md-2"></div>
+                        <div className="col-md-10 bg_gray">
+                            <div className="p-5">
+                                <h3 className="text_bold side side_top">
+                                    <strong>Descripción</strong>
+                                </h3>
+                                <ul>
+                                    {car.description.map((item, index) => <li key={index}>{item}</li>)}
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div className="col-md-3"></div>
+                        <div className="col-md-9 p-5">
+                            <div className="side side_top">
+                                <h2 className='text_bold'>Vehiculos<span className="text_orange"> relacionados</span></h2>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
+            <div className="container">
+                {relatedCars ? <SliderComponent responsive={{
+                    mobile: {
+                        breakpoint: { max: 769, min: 0 },
+                        items: 1,
+                        slidesToSlide: 1, // optional, default to 1.
+                    },
+                    tablet: {
+                        breakpoint: { max: 1024, min: 769 },
+                        items: 2,
+                        slidesToSlide: 2, // optional, default to 1.
+                    },
+                    desktop: {
+                        breakpoint: { max: 1280, min: 1024 },
+                        items: 3,
+                        slidesToSlide: 3, // optional, default to 1.
+                    },
+                    largeDesktop: {
+                        breakpoint: { max: 3000, min: 1280 },
+                        items: 4,
+                        slidesToSlide: 4, // optional, default to 1.
+                    },
+                }}>
+                    {relatedCars?.map((car, index) => <div className="m-3" key={index} >
+                        <CarCardComponent car={car} />
+                    </div>)}
+                </SliderComponent>
+                    : <div>loading</div>}
+            </div>
+
         </div>}
 
     </Layout>

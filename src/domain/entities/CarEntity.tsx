@@ -24,4 +24,5 @@ export default interface CarEntity {
     typeOfFuel: TypeOfFuelEntity;
     color: ColorEntity;
     outstanding: boolean;
+    description: string[];
 }

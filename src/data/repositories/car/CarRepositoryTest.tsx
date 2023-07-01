@@ -23,6 +23,20 @@ const _testCar: CarEntity = {
         "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
         "https://images.pexels.com/photos/5086489/pexels-photo-5086489.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
+    description: [
+        'Version Renault Life',
+        'Motor 1.6 16v 115cv',
+        'Caja Manual de 5 marchas',
+        'Llantas de aleación de 15"',
+        'Faros antiniebla delanteros',
+        'Computadora de abordo',
+        'Limitador y regulador de velocidad',
+        'Cierre centralizado de puertas',
+        'Levantacristales eléctricos delanteros',
+        'Espejos exteriores eléctricos',
+        'Volante regulable en altura',
+        'Asiento del conductor regulable en altura',
+    ],
     photoUrl: "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
     price: 120000000,
     transmission: TransmissionCar.AUTOMATIC,
@@ -74,6 +88,20 @@ class CarRepositoryTest implements CarRepository {
         });
     }
     public async getSomeRandomCars(): Promise<CarEntity[]> {
+        return new Promise<CarEntity[]>((resolve, reject) => {
+            return resolve([
+                _testCar,
+                _testCar,
+                _testCar,
+                _testCar,
+                _testCar,
+                _testCar,
+                _testCar,
+                _testCar,
+            ])
+        });
+    }
+    public async getRelatedCarsByCardIdUseCase(id: string): Promise<CarEntity[]> {
         return new Promise<CarEntity[]>((resolve, reject) => {
             return resolve([
                 _testCar,

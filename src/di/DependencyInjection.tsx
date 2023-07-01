@@ -32,6 +32,7 @@ import TypeVehicleRepository, { TypeVehicleRepositoryName } from "../domain/repo
 import TypeOfFuelRepositoryTest from "../data/repositories/typeOfFuel/TypeOfFuelRepositoryTest";
 import TypeVehicleRepositoryTest from "../data/repositories/typeOfVehicle/TypeVehicleRepositoryTest";
 import GetCarByIdUseCase from "../domain/use_cases/car/GetCarByIdUseCase";
+import GetRelatedCarsByCardIdUseCase from "../domain/use_cases/car/GetRelatedCarsByCardIdUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -79,6 +80,9 @@ di.bind<GetSomeRandomCarsUseCase>(GetSomeRandomCarsUseCase.name).toDynamicValue(
 }).inSingletonScope();
 di.bind<GetCarByIdUseCase>(GetCarByIdUseCase.name).toDynamicValue((context) => {
     return new GetCarByIdUseCase({ carRepository: context.container.get(CarRepositoryName) });
+}).inSingletonScope();
+di.bind<GetRelatedCarsByCardIdUseCase>(GetRelatedCarsByCardIdUseCase.name).toDynamicValue((context) => {
+    return new GetRelatedCarsByCardIdUseCase({ carRepository: context.container.get(CarRepositoryName) });
 }).inSingletonScope();
 di.bind<LikeCarUseCase>(LikeCarUseCase.name).toDynamicValue((context) => {
     return new LikeCarUseCase({ carRepository: context.container.get(CarRepositoryName) });
