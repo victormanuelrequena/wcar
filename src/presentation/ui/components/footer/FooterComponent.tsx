@@ -8,7 +8,7 @@ const FooterComponent: FC<{}> = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-3 col-lg-6 mb-4 mb-md-0">
-                        <img className="mb-3" src="./assets/logos/horizontal.svg" alt="" /><br />
+                        <img className="mb-3" src="/assets/logos/horizontal.svg" alt="" /><br />
                         <span>{SLOGAN}</span>
                     </div>
                     <div className="col-6 col-md-3 col-lg-2">
@@ -36,7 +36,7 @@ const FooterComponent: FC<{}> = () => {
             <div className="container">
                 <div className="row d-flex flex-column-reverse flex-md-row pt-3 pb-md-5">
                     <div className="col-md-4 d-flex flex-column aling-items-center align-items-md-start bg_white bg_md_gray text_gray py-3">
-                        <img src="./assets/logos/industria_y_comercio.png" alt="" className="img_fluid mb-3 px-5 px-md-0" />
+                        <img src="/assets/logos/industria_y_comercio.png" alt="" className="img_fluid mb-3 px-5 px-md-0" />
                         <div className="text-center text-md-start">
                             <span className="text_wcar">wcar</span> -
                             <span> Todos los derechos reservados © 2023</span>

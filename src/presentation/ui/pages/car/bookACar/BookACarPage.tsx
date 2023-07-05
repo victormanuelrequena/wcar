@@ -1,0 +1,262 @@
+import './BookACarPageStyles.scss';
+import { FC, useContext, useEffect, useState } from "react";
+import di from "../../../../../di/DependencyInjection";
+import GetCarByIdUseCase from "../../../../../domain/use_cases/car/GetCarByIdUseCase";
+import { Link, useParams } from "react-router-dom";
+import CarEntity from "../../../../../domain/entities/CarEntity";
+import LoadingComponent from "../../../components/LoadingComponent/LoadingComponent";
+import NotResultsComponent from "../../../components/notResults/NotResultsComponent";
+import Layout from "../../../layout/Layout";
+import { useForm } from 'react-hook-form';
+import Validators from '../../../../utils/Validators';
+import { ErrorMessage } from "@hookform/error-message";
+import DepartmentContext from '../../../../../domain/providers/department/DepartmentContext';
+import DepartmentContextType from '../../../../../domain/providers/department/DepartmentContextType';
+import GetAllDepartmentsUseCase from '../../../../../domain/use_cases/department/GetAllDepartmentsUseCase';
+
+const BookACarPage: FC<{}> = () => {
+    const { id } = useParams<{ id: string }>();
+    const { departments } = useContext(DepartmentContext) as DepartmentContextType;
+
+    const [car, setCar] = useState<CarEntity | undefined | null>(undefined);
+    const { register, setValue, handleSubmit, watch, formState: { errors } } = useForm();
+    const typePayent = watch("paymentMethod");
+
+    const _getCar = async () => {
+        try {
+            const car = await di.get<GetCarByIdUseCase>(GetCarByIdUseCase.name).call(id!);
+            setCar(car);
+        } catch (error) {
+            setCar(null);
+        }
+    }
+
+    const _getDepartments = async () => {
+        await di.get<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCase.name).call();
+    }
+
+    const _formatCreditCarNumber = (value: string) => {
+        const numbers = value.replace(/\D/g, '');
+        const char: any = { 4: ' ', 8: ' ', 12: ' ' };
+        let number = '';
+        for (let i = 0; i < numbers.length; i++) {
+            number += (char[i] || '') + numbers[i];
+        }
+        if (number.length > 19) setValue('paymentCard.number', number.substring(0, 19));
+        else setValue('paymentCard.number', number);
+    }
+
+    const _formatdMMyy = (value: string) => {
+        const numbers = value.replace(/\D/g, '');
+        const char: any = { 2: '/', 4: '/' };
+        let number = '';
+        for (let i = 0; i < numbers.length; i++) {
+            number += (char[i] || '') + numbers[i];
+        }
+        if (number.length > 5) setValue('paymentCard.expires', number.substring(0, 5));
+        else setValue('paymentCard.expires', number);
+    }
+
+
+
+
+
+    useEffect(() => {
+        _getDepartments();
+        if (id) {
+            _getCar();
+        } else {
+            setCar(null);
+        }
+    }, [id]);
+
+    return <Layout>
+        {id === undefined || car === null && <NotResultsComponent />}
+        {car === undefined && <LoadingComponent />}
+        {car !== null && car !== undefined && <div className="book_a_car bg_gray">
+            <div className="container py-5">
+                <form action="">
+                    <div className="row d-flex flex-column-reverse flex-md-row">
+                        <div className="col-md-7">
+                            <div className="p-3 bg_white border-radius">
+                                <div>
+                                    <h1>Detalles de facturación</h1>
+                                    <span className='text_gray me-2'>¿Eres cliente?</span>
+                                    <Link to="#" className='text_orange'>Inicia sesión </Link>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group my-3">
+                                            <label className='mandatory'>Nombre</label>
+                                            <input type="text" placeholder='nombre' className="form-control" {...register("name", Validators({
+                                                required: true,
+                                            }))} />
+                                            <ErrorMessage as="aside" errors={errors} name="email" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="form-group my-3">
+                                            <label className='mandatory'>Apellido</label>
+                                            <input type="text" placeholder='apellido' className="form-control" {...register("lastname", Validators({
+                                                required: true,
+                                            }))} />
+                                        </div>
+                                    </div>
+                                    <div className="col-12">
+                                        <div className="form-group my-3">
+                                            <label className='optional'>Nombre de la compañia</label>
+                                            <input type="text" placeholder='nombre de la compañia' className="form-control" {...register("companyName")} />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="form-group my-3">
+                                            <label className='mandatory'>Dirección</label>
+                                            <input type="text" placeholder='dirección' className="form-control" {...register("address", Validators({
+                                                required: true,
+                                            }))} />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="form-group my-3">
+                                            <label className='optional'>Detalles</label>
+                                            <input type="text" placeholder='apartamento, habitación etc' className="form-control" {...register("apartment")} />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="form-group my-3">
+                                            <label className='mandatory'>Ciudad</label>
+                                            <input type="text" placeholder='ciudad' className="form-control" {...register("city", Validators({
+                                                required: true,
+                                            }))} />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="form-group my-3">
+                                            <label className='optional'>Código postal</label>
+                                            <input type="text" placeholder='código postal' className="form-control" {...register("postal_code")} />
+                                        </div>
+                                    </div>
+                                    <div className="col-12">
+                                        <div className="form-group my-3">
+                                            <label className="mandatory">Departamento</label>
+                                            <select className='form-control' defaultValue={""} {...register('deparment', Validators({ required: true }))}>
+                                                <option value="" disabled>Distrito capital</option>
+                                                {departments.map((department) => <option value={department.id}>{department.name}</option>)}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="form-group my-3">
+                                            <label className='mandatory'>Télefono</label>
+                                            <input type="text" placeholder='número de télefono' className="form-control" {...register("phone", Validators({
+                                                required: true,
+                                                phone: true,
+                                            }))} />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="form-group my-3">
+                                            <label className='mandatory'>Email</label>
+                                            <input type="text" placeholder='ejemplo@gmail.com' className="form-control" {...register("email", Validators({
+                                                required: true,
+                                                email: true,
+                                            }))} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="p-3 bg_white border-radius">
+                                <div>
+                                    <h1>Método de pago</h1>
+                                    <span className='text_gray me-2'>Seleccionar método de pago</span>
+                                </div>
+                                <div className="row payment_form">
+                                    <div className="col-12">
+                                        <div className="form-group my-3 bg_gray hover " onClick={() => setValue("paymentMethod", "contra")}>
+                                            <div className="d-flex p-3 align-items-center">
+                                                <input type="radio" className="form-check" value={"contra"} {...register("paymentMethod", Validators({
+                                                    required: true,
+                                                }))} />
+                                                <label className='flex-grow-1 mx-2'>Contra reembolso</label>
+                                                <img src="/assets/icons/store.svg" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-12">
+                                        <div className="form-group my-3 bg_gray hover" onClick={() => setValue("paymentMethod", "mercado_pago")}>
+                                            <div className="d-flex p-3 align-items-center">
+                                                <input type="radio" value={"mercado_pago"} className="form-check" {...register("paymentMethod", Validators({
+                                                    required: true,
+                                                }))} />
+                                                <label className='flex-grow-1 mx-2'>Compras con tarjetas guardadas o saldo en Mercado Pago</label>
+                                                <img src="/assets/icons/mercado_pago.svg" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-12">
+                                        <div className=" my-3 bg_gray">
+                                            <div className="form-group d-flex p-3 align-items-center hover" onClick={() => setValue("paymentMethod", "credit_card")}>
+                                                <input type="radio" className="form-check" value={"credit_card"} {...register("paymentMethod", Validators({
+                                                    required: true,
+                                                }))} />
+                                                <label className='flex-grow-1 mx-2'>Débito o crédito</label>
+                                                <img src="/assets/icons/credit_card.svg" alt="" />
+                                            </div>
+                                            <div className="container">
+                                                {typePayent === "credit_card" && <div className="row pb-3">
+                                                    <div className="col-md-6 my-1">
+                                                        <div className="form-group">
+                                                            <label className='mandatory'>Número de tarjeta</label>
+                                                            <input type="text" placeholder='000 000 000 0000' value={watch('paymentCard.number') ?? ""} className="form-control" {...register('paymentCard.number', Validators({ required: true, minLength: 19, onChange: (val) => _formatCreditCarNumber(val.target.value) }))} /></div>
+                                                        <ErrorMessage as="aside" errors={errors} name="paymentCard.number" />
+                                                    </div>
+                                                    <div className="col-md-6 my-1">
+                                                        <div className="form-group">
+                                                            <label className='mandatory'>Nombre del titular</label>
+                                                            <input type="text" placeholder='Ejm: Martha López' className="form-control" {...register('paymentCard.name', Validators({ required: true }))} /></div>
+                                                        <ErrorMessage as="aside" errors={errors} name="paymentCard.name" />
+                                                    </div>
+                                                    <div className="col-md-6 my-1">
+                                                        <div className="form-group">
+                                                            <label className='mandatory'>Vencimiento</label>
+                                                            <input type="text" placeholder='mm/aa' value={watch('paymentCard.expires') ?? ""} className="form-control" {...register('paymentCard.expires', Validators({ required: true, minLength: 5, onChange: (val) => _formatdMMyy(val.target.value) }))} /></div>
+                                                        <ErrorMessage as="aside" errors={errors} name="paymentCard.expires" />
+                                                    </div>
+                                                    <div className="col-md-6 my-1">
+                                                        <div className="form-group">
+                                                            <label className='mandatory'>Código de seguridad</label>
+                                                            <input type="text" placeholder='123s' className="form-control" {...register('paymentCard.security_code', Validators({ required: true, maxLength: 3 }))} /></div>
+                                                    </div>
+                                                </div>}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-12">
+                                        <div className="form-group my-3 bg_gray" onClick={() => setValue("paymentMethod", "money")}>
+                                            <div className="d-flex p-3 align-items-center">
+                                                <input type="radio" className="form-check" value={"money"} {...register("paymentMethod", Validators({
+                                                    required: true,
+                                                }))} />
+                                                <label className='flex-grow-1 mx-2'>Efectivo</label>
+                                                <img src="/assets/icons/money.svg" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-5">
+                            <div className="p-3 bg_white border-radius">
+                                carro
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div >}
+    </Layout >
+
+}
+
+export default BookACarPage;

@@ -104,7 +104,7 @@
     padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
 
- 
+
     &.btn_shadow {
       border-bottom: solid 3px black;
       border-left: solid 3px black;
@@ -334,8 +334,8 @@ body a {
   }
 }
 
-.form{
-  &_underline{
+.form {
+  &_underline {
     border: none;
     border-bottom: solid 1px var(--color-gray);
   }
@@ -348,11 +348,30 @@ select.form_underline {
   appearance: none;
 }
 
-input{
-  &[type="checkbox"]{
-    &:checked{
+input {
+  &[type="checkbox"] {
+    &:checked {
       background-color: var(--color-orange);
       border: var(--color-orange);
     }
   }
+}
+
+.form-group {
+  label.optional::after {
+    content: ' (opcional)';
+    color: var(--color-gray);
+    font-weight: 400;
+  }
+
+  label.mandatory::after {
+    content: ' *';
+    color: var(--color-orange);
+  }
+
+  .form-control {
+    background-color: var(--color-gray-light);
+    border: none;
+  }
+
 }

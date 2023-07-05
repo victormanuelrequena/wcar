@@ -33,6 +33,11 @@ import TypeOfFuelRepositoryTest from "../data/repositories/typeOfFuel/TypeOfFuel
 import TypeVehicleRepositoryTest from "../data/repositories/typeOfVehicle/TypeVehicleRepositoryTest";
 import GetCarByIdUseCase from "../domain/use_cases/car/GetCarByIdUseCase";
 import GetRelatedCarsByCardIdUseCase from "../domain/use_cases/car/GetRelatedCarsByCardIdUseCase";
+import GetAllDepartmentsUseCase from "../domain/use_cases/department/GetAllDepartmentsUseCase";
+import DepartmentRepository, { DepartmentRepositoryName } from "../domain/repositories/DepartmentRepository";
+import DepartmentProvider, { DepartmentProviderName } from "../domain/providers/department/DepartmentProvider";
+import DepartmentRepositoryTest from "../data/repositories/deparment/DepartmentRepositoryTest";
+import DepartmentProviderImpl from "../presentation/providers/deparment/DepartmentProviderImpl";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -44,6 +49,7 @@ if (mode === MODE_DI.DEVELOPMENT) {
 }
 di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
 di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
+di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
 di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
 di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
 di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
@@ -52,6 +58,7 @@ di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleReposito
 // ------------------ PROVIDERS ------------------ //
 di.bind<AllyProvider>(AllyProviderName).toConstantValue(AllyProviderImpl);
 di.bind<BrandProvider>(BrandProviderName).toConstantValue(BrandProviderImpl);
+di.bind<DepartmentProvider>(DepartmentProviderName).toConstantValue(DepartmentProviderImpl);
 di.bind<ColorProvider>(ColorProviderName).toConstantValue(ColorProviderImpl);
 di.bind<TypeOfFuelProvider>(TypeOfFuelProviderName).toConstantValue(TypeOfFuelProviderImpl);
 di.bind<TypeVehicleProvider>(TypeVehicleProviderName).toConstantValue(TypeVehicleProviderImpl);
@@ -90,6 +97,13 @@ di.bind<LikeCarUseCase>(LikeCarUseCase.name).toDynamicValue((context) => {
 di.bind<SearchCarsUseCase>(SearchCarsUseCase.name).toDynamicValue((context) => {
     return new SearchCarsUseCase({ carRepository: context.container.get(CarRepositoryName) });
 });
+
+di.bind<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCase.name).toDynamicValue((context) => {
+    return new GetAllDepartmentsUseCase({
+        departmentRepository: context.container.get(DepartmentRepositoryName),
+        departmentProvider: context.container.get(DepartmentProviderName)
+    });
+}).inSingletonScope();
 
 //colors
 di.bind<GetAllColorsUseCase>(GetAllColorsUseCase.name).toDynamicValue((context) => {

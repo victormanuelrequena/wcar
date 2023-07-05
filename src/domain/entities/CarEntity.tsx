@@ -1,5 +1,6 @@
 import BrandEntity from "./BrandEntity";
 import ColorEntity from "./ColorEntity";
+import PriceBookEntity from "./PriceBoookEntity";
 import TypeOfFuelEntity from "./TypeOfFuelEntity";
 import TypeVehicleEntity from "./TypeVehicleEntity";
 
@@ -24,5 +25,6 @@ export default interface CarEntity {
     typeOfFuel: TypeOfFuelEntity;
     color: ColorEntity;
     outstanding: boolean;
+    priceBook?: PriceBookEntity | undefined;
     description: string[];
 }

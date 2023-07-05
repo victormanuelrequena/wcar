@@ -39,6 +39,11 @@ const _testCar: CarEntity = {
     ],
     photoUrl: "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
     price: 120000000,
+    priceBook: {
+        subtotal: 758000,
+        rest: 242000,
+        total: 1000000
+    },
     transmission: TransmissionCar.AUTOMATIC,
     year: 2020,
     like: false,

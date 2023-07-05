@@ -9,6 +9,7 @@ import LoadingComponent from "../components/LoadingComponent/LoadingComponent";
 import di from "../../../di/DependencyInjection";
 import BuyYourCarPage from "../pages/car/buyYourCar/BuyYourCarPage";
 import DetailedCarPage from "../pages/car/detailedCar/DetailedCarPage";
+import BookACarPage from "../pages/car/bookACar/BookACarPage";
 
 export interface iRoute {
     name: string,
@@ -52,7 +53,7 @@ const routes = {
     bookCar: {
         path: "/carro/separar/:id",
         relativePath: '/carro/separar',
-        component: DetailedCarPage,
+        component: BookACarPage,
         auth: (user: UserEntity | undefined) => true,
     },
     dateForCar: {
