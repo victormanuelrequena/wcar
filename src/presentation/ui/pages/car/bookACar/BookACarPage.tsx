@@ -13,6 +13,8 @@ import { ErrorMessage } from "@hookform/error-message";
 import DepartmentContext from '../../../../../domain/providers/department/DepartmentContext';
 import DepartmentContextType from '../../../../../domain/providers/department/DepartmentContextType';
 import GetAllDepartmentsUseCase from '../../../../../domain/use_cases/department/GetAllDepartmentsUseCase';
+import StarRatingComponent from '../../../components/starRating/StarRatingComponent';
+import CurrencyParse from '../../../../utils/CurrencyParse';
 
 const BookACarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -74,7 +76,7 @@ const BookACarPage: FC<{}> = () => {
         {id === undefined || car === null && <NotResultsComponent />}
         {car === undefined && <LoadingComponent />}
         {car !== null && car !== undefined && <div className="book_a_car bg_gray">
-            <div className="container py-5">
+            <div className="container py-5 bg_lines">
                 <form action="">
                     <div className="row d-flex flex-column-reverse flex-md-row">
                         <div className="col-md-7">
@@ -243,12 +245,53 @@ const BookACarPage: FC<{}> = () => {
                                             </div>
                                         </div>
                                     </div>
+                                    <div className="d-block d-md-none mt-3">
+                                        <button className="btn btn_orange" type='submit'>FINALIZAR COMPRA</button>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-5">
-                            <div className="p-3 bg_white border-radius">
-                                carro
+                        <div className="col-md-5 preview_card">
+                            <div className="p-4 bg_white border-radius">
+                                <div>
+                                    <h3 className="font_bold">Tu reserva</h3>
+                                    <span className='text_gray'>{car.name} {car.year}</span>
+                                </div>
+                                <div className="row mt-3">
+                                    <div className="col-8 col-md-5">
+                                        <img src={car.images.at(0)} alt="" className="img-fluid border_radius prev_image" />
+                                    </div>
+                                    <div className="col-12 col-md-7 d-flex flex-column justify-content-end pb-5">
+                                        <h4 className="font_bold">
+                                            {car.brand.name} {car.model}
+                                        </h4>
+                                        <StarRatingComponent rating={car.rating} />
+                                    </div>
+                                    <hr />
+                                    <div className="d-flex justify-content-between my-3">
+                                        <span>Subtotal</span>
+                                        <strong>{car.priceBook && CurrencyParse.toCop(car.priceBook?.subtotal)}</strong>
+                                    </div>
+                                    <div className="d-flex justify-content-between my-3">
+                                        <span>Restante</span>
+                                        <strong>{car.priceBook && CurrencyParse.toCop(car.priceBook?.rest)}</strong>
+                                    </div>
+                                    <div className="d-flex justify-content-between my-3 py-3 bg_gray border_radius_1">
+                                        <span className='text_gray'>Precio completo</span>
+                                        <strong>{car.priceBook && CurrencyParse.toCop(car.priceBook?.total)}</strong>
+                                    </div>
+                                    <div className="d-flex my-3 align-items-center justify-content-between">
+                                        <div>
+                                            <h3 className="text_bold mb-0">Total a pagar</h3>
+                                            <span className="text_gray">Depósito</span>
+                                        </div>
+                                        <h1 className="text_bold">{car.priceBook && CurrencyParse.toCop(car.priceBook?.total)}</h1>
+                                    </div>
+                                    <div className="d-none d-md-block">
+                                        <button className="btn btn_orange" type='submit'>FINALIZAR COMPRA</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

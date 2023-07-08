@@ -375,3 +375,11 @@ input {
   }
 
 }
+
+.border_radius {
+    border-radius: 2em;
+
+    &_1{
+      border-radius: 1em;
+    }
+}

@@ -6,13 +6,14 @@ import sleeper from "../../../domain/repositories/utils/Sleeper";
 const _testCar: CarEntity = {
     id: "1",
     name: "Mercedez Benz C 180 Mt 20 1.6 156cv 4p",
+    model: 'Class C',
     type: {
         id: "1",
         name: "Sedan"
     },
     rating: 3,
     images: [
-        "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
+        "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNhcnN8ZW58MHx8MHx8fDA%3D&w=1000&q=80",
         "https://images.pexels.com/photos/5086489/pexels-photo-5086489.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
         "https://images.pexels.com/photos/5086489/pexels-photo-5086489.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",

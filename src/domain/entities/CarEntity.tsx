@@ -12,6 +12,7 @@ export enum TransmissionCar {
 export default interface CarEntity {
     id: string;
     name: string;
+    model: string;
     type: TypeVehicleEntity;
     photoUrl: string;
     images: string[];
