@@ -67,7 +67,7 @@ const BookADatePage: FC<{}> = () => {
 
     return <Layout>
         <div className="book_a_date_page gray_footer">
-            <form className="container">
+            <form className="container" onSubmit={handleSubmit(_handleConfirmBook)}>
                 <VerticalStepperComponent currentStep={2}>
                     <section>
                         <h5 className="mb-0">Agendar cita</h5>
@@ -97,7 +97,7 @@ const BookADatePage: FC<{}> = () => {
                         </> : <div>Selecciona una fecha para conocer las franjas de horario</div>}
                     </section>
                     {dateValue != undefined && availableHours != undefined && availableHours.length > 0 ? <section>
-                        
+
                     </section> : <></> }
                 </VerticalStepperComponent>
             </form>

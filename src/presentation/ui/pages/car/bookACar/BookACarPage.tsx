@@ -64,7 +64,7 @@ const BookACarPage: FC<{}> = () => {
         try {
             //TODO book a car
         } catch (error) {
-            
+
         }
     }
 
@@ -111,6 +111,7 @@ const BookACarPage: FC<{}> = () => {
                                             <input type="text" placeholder='apellido' className="form-control" {...register("lastname", Validators({
                                                 required: true,
                                             }))} />
+                                            <ErrorMessage as="aside" errors={errors} name="lastname" />
                                         </div>
                                     </div>
                                     <div className="col-12">
@@ -125,6 +126,7 @@ const BookACarPage: FC<{}> = () => {
                                             <input type="text" placeholder='dirección' className="form-control" {...register("address", Validators({
                                                 required: true,
                                             }))} />
+                                            <ErrorMessage as="aside" errors={errors} name="address" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
@@ -139,6 +141,7 @@ const BookACarPage: FC<{}> = () => {
                                             <input type="text" placeholder='ciudad' className="form-control" {...register("city", Validators({
                                                 required: true,
                                             }))} />
+                                            <ErrorMessage as="aside" errors={errors} name="city" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
@@ -154,6 +157,7 @@ const BookACarPage: FC<{}> = () => {
                                                 <option value="" disabled>Distrito capital</option>
                                                 {departments.map((department) => <option value={department.id}>{department.name}</option>)}
                                             </select>
+                                            <ErrorMessage as="aside" errors={errors} name="deparment" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
@@ -163,6 +167,7 @@ const BookACarPage: FC<{}> = () => {
                                                 required: true,
                                                 phone: true,
                                             }))} />
+                                            <ErrorMessage as="aside" errors={errors} name="phone" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
@@ -172,6 +177,7 @@ const BookACarPage: FC<{}> = () => {
                                                 required: true,
                                                 email: true,
                                             }))} />
+                                            <ErrorMessage as="aside" errors={errors} name="email" />
                                         </div>
                                     </div>
                                 </div>
@@ -218,25 +224,29 @@ const BookACarPage: FC<{}> = () => {
                                                     <div className="col-md-6 my-1">
                                                         <div className="form-group">
                                                             <label className='mandatory'>Número de tarjeta</label>
-                                                            <input type="text" placeholder='000 000 000 0000' value={watch('paymentCard.number') ?? ""} className="form-control" {...register('paymentCard.number', Validators({ required: true, minLength: 19, onChange: (val) => _formatCreditCarNumber(val.target.value) }))} /></div>
-                                                        <ErrorMessage as="aside" errors={errors} name="paymentCard.number" />
-                                                    </div>
+                                                            <input type="text" placeholder='000 000 000 0000' value={watch('paymentCard.number') ?? ""} className="form-control" {...register('paymentCard.number', Validators({ required: true, minLength: 19, onChange: (val) => _formatCreditCarNumber(val.target.value) }))} />
+                                                            <ErrorMessage as="aside" errors={errors} name="paymentCard.number" />
+                                                        </div>                                                    </div>
                                                     <div className="col-md-6 my-1">
                                                         <div className="form-group">
                                                             <label className='mandatory'>Nombre del titular</label>
-                                                            <input type="text" placeholder='Ejm: Martha López' className="form-control" {...register('paymentCard.name', Validators({ required: true }))} /></div>
-                                                        <ErrorMessage as="aside" errors={errors} name="paymentCard.name" />
+                                                            <input type="text" placeholder='Ejm: Martha López' className="form-control" {...register('paymentCard.name', Validators({ required: true }))} />
+                                                            <ErrorMessage as="aside" errors={errors} name="paymentCard.name" />
+                                                        </div>
                                                     </div>
                                                     <div className="col-md-6 my-1">
                                                         <div className="form-group">
                                                             <label className='mandatory'>Vencimiento</label>
-                                                            <input type="text" placeholder='mm/aa' value={watch('paymentCard.expires') ?? ""} className="form-control" {...register('paymentCard.expires', Validators({ required: true, minLength: 5, onChange: (val) => _formatdMMyy(val.target.value) }))} /></div>
-                                                        <ErrorMessage as="aside" errors={errors} name="paymentCard.expires" />
+                                                            <input type="text" placeholder='mm/aa' value={watch('paymentCard.expires') ?? ""} className="form-control" {...register('paymentCard.expires', Validators({ required: true, minLength: 5, onChange: (val) => _formatdMMyy(val.target.value) }))} />
+                                                            <ErrorMessage as="aside" errors={errors} name="paymentCard.expires" />
+                                                        </div>
                                                     </div>
                                                     <div className="col-md-6 my-1">
                                                         <div className="form-group">
                                                             <label className='mandatory'>Código de seguridad</label>
-                                                            <input type="text" placeholder='123s' className="form-control" {...register('paymentCard.security_code', Validators({ required: true, maxLength: 3 }))} /></div>
+                                                            <input type="text" placeholder='123' className="form-control" {...register('paymentCard.security_code', Validators({ required: true, minLength: 3, maxLength: 3 }))} />
+                                                            <ErrorMessage as="aside" errors={errors} name="paymentCard.security_code" />
+                                                        </div>
                                                     </div>
                                                 </div>}
 
@@ -253,6 +263,12 @@ const BookACarPage: FC<{}> = () => {
                                                 <img src="/assets/icons/money.svg" alt="" />
                                             </div>
                                         </div>
+                                    </div>
+                                    <div className="col-12 form-group">
+                                        <input type="hidden" className="form-control" {...register("paymentMethod", Validators({
+                                            required: true,
+                                        }))} />
+                                        <ErrorMessage as="aside" errors={errors} name="paymentMethod" />
                                     </div>
                                     <div className="d-block d-md-none mt-3">
                                         <button className="btn btn_orange" type='submit'>FINALIZAR COMPRA <Icons.Lock /> </button>

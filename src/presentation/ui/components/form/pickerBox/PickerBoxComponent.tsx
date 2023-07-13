@@ -13,7 +13,7 @@ const PickerBoxComponent: FC<PickerBoxComponentProps> = ({ formFunctions, option
         onChange(option.value);
     }
 
-    return <div className="picker_box">
+    return <div className="picker_box form-group">
         <div className="w-100 d-flex flex-wrap">
             {options.map((option, index) => <div key={index}
                 onClick={() => _handleClick(option)}
@@ -21,7 +21,7 @@ const PickerBoxComponent: FC<PickerBoxComponentProps> = ({ formFunctions, option
                 {option.label}
             </div>)}
         </div>
-        <input type="hidden" {...register(keyName)} />
+        <input className='form-control' type="hidden" {...register(keyName)} />
         <ErrorMessage as="aside" errors={errors} name={keyName} />
     </div>
 

@@ -379,6 +379,12 @@ input {
   .form-control {
     background-color: var(--color-gray-light);
     border: none;
+
+    ~aside{
+      margin-top: 0.3em;
+      font-size: 0.95em;
+      color: red;
+    }
   }
 
 }
