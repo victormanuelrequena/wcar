@@ -38,6 +38,14 @@ import DepartmentRepository, { DepartmentRepositoryName } from "../domain/reposi
 import DepartmentProvider, { DepartmentProviderName } from "../domain/providers/department/DepartmentProvider";
 import DepartmentRepositoryTest from "../data/repositories/deparment/DepartmentRepositoryTest";
 import DepartmentProviderImpl from "../presentation/providers/deparment/DepartmentProviderImpl";
+import GetAvailableDatesForBuyUseCase from "../domain/use_cases/book/GetAvailableDatesForBuyUseCase";
+import BookRepository, { BookRepositoryName } from "../domain/repositories/BookRepository";
+import GetAvailableDatesForSellUseCase from "../domain/use_cases/book/GetAvailableDatesForSellUseCase";
+import GetAvailableHoursForBuyUseCase from "../domain/use_cases/book/GetAvailableHoursForBuyUseCase";
+import GetAvailableHoursForSellUseCase from "../domain/use_cases/book/GetAvailableHoursForSellUseCase";
+import ModalsProvider, { ModalsProviderName } from "../domain/providers/modal/ModalsProvider";
+import ModalsProviderImpl from "../presentation/providers/modals/ModalsProviderImpl";
+import BookRepositoryTest from "../data/repositories/book/BookRepositoryTest";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -49,6 +57,7 @@ if (mode === MODE_DI.DEVELOPMENT) {
 }
 di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
 di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
+di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
 di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
 di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
 di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
@@ -60,6 +69,7 @@ di.bind<AllyProvider>(AllyProviderName).toConstantValue(AllyProviderImpl);
 di.bind<BrandProvider>(BrandProviderName).toConstantValue(BrandProviderImpl);
 di.bind<DepartmentProvider>(DepartmentProviderName).toConstantValue(DepartmentProviderImpl);
 di.bind<ColorProvider>(ColorProviderName).toConstantValue(ColorProviderImpl);
+di.bind<ModalsProvider>(ModalsProviderName).toConstantValue(ModalsProviderImpl);
 di.bind<TypeOfFuelProvider>(TypeOfFuelProviderName).toConstantValue(TypeOfFuelProviderImpl);
 di.bind<TypeVehicleProvider>(TypeVehicleProviderName).toConstantValue(TypeVehicleProviderImpl);
 
@@ -70,6 +80,28 @@ di.bind<GetAllAlliesUseCase>(GetAllAlliesUseCase.name).toDynamicValue((context) 
     return new GetAllAlliesUseCase({
         allyRepository: context.container.get(AllyRepositoryName),
         alliesProvider: context.container.get(AllyProviderName)
+    });
+}).inSingletonScope();
+
+//book
+di.bind<GetAvailableDatesForBuyUseCase>(GetAvailableDatesForBuyUseCase.name).toDynamicValue((context) => {
+    return new GetAvailableDatesForBuyUseCase({
+        bookRepository: context.container.get(BookRepositoryName)
+    });
+}).inSingletonScope();
+di.bind<GetAvailableDatesForSellUseCase>(GetAvailableDatesForSellUseCase.name).toDynamicValue((context) => {
+    return new GetAvailableDatesForSellUseCase({
+        bookRepository: context.container.get(BookRepositoryName)
+    });
+}).inSingletonScope();
+di.bind<GetAvailableHoursForBuyUseCase>(GetAvailableHoursForBuyUseCase.name).toDynamicValue((context) => {
+    return new GetAvailableHoursForBuyUseCase({
+        bookRepository: context.container.get(BookRepositoryName)
+    });
+}).inSingletonScope();
+di.bind<GetAvailableHoursForSellUseCase>(GetAvailableHoursForSellUseCase.name).toDynamicValue((context) => {
+    return new GetAvailableHoursForSellUseCase({
+        bookRepository: context.container.get(BookRepositoryName)
     });
 }).inSingletonScope();
 

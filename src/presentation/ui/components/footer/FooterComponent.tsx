@@ -35,7 +35,7 @@ const FooterComponent: FC<{}> = () => {
 
             <div className="container">
                 <div className="row d-flex flex-column-reverse flex-md-row pt-3 pb-md-5">
-                    <div className="col-md-4 d-flex flex-column aling-items-center align-items-md-start bg_white bg_md_gray text_gray py-3">
+                    <div className="col-md-4 d-flex flex-column aling-items-center align-items-md-start text_gray py-3 pb-md-0">
                         <img src="/assets/logos/industria_y_comercio.png" alt="" className="img_fluid mb-3 px-5 px-md-0" />
                         <div className="text-center text-md-start">
                             <span className="text_wcar">wcar</span> -
@@ -43,14 +43,17 @@ const FooterComponent: FC<{}> = () => {
                         </div>
                     </div>
                     <div className="col-md-8 d-flex pb-5 pb-md-0">
-                        <div className="row text_underline text_gray d-flex align-items-end">
-                            <div className="col-md-4 my-2 my-md-0">
+                        <div className="w-100 text_underline text_gray d-flex flex-column flex-md-row align-items-center align-items-md-end">
+                            <div className="mx-3 mt-3 mt-md-0">
+                            {/* <div className="col-md-4 my-2 my-md-0"> */}
                                 <Link to="#">Políticas y tratamiento de datos</Link>
                             </div>
-                            <div className="col-md-4 my-2 my-md-0">
+                            <div className="mx-3 mt-3 mt-md-0">
+                            {/* <div className="col-md-4 my-2 my-md-0"> */}
                                 <Link to="#">Términos y condiciones comprador</Link>
                             </div>
-                            <div className="col-md-4 my-2 my-md-0">
+                            <div className="mx-3 mt-3 mt-md-0">
+                            {/* <div className="col-md-4 my-2 my-md-0"> */}
                                 <Link to="#">Términos y condiciones vendedor</Link>
                             </div>
                         </div>

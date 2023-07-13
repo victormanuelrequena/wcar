@@ -15,6 +15,7 @@ import DepartmentContextType from '../../../../../domain/providers/department/De
 import GetAllDepartmentsUseCase from '../../../../../domain/use_cases/department/GetAllDepartmentsUseCase';
 import StarRatingComponent from '../../../components/starRating/StarRatingComponent';
 import CurrencyParse from '../../../../utils/CurrencyParse';
+import Icons from '../../../assets/Icons';
 
 const BookACarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -59,6 +60,14 @@ const BookACarPage: FC<{}> = () => {
         else setValue('paymentCard.expires', number);
     }
 
+    const _bookADate = async (data: any) => {
+        try {
+            //TODO book a car
+        } catch (error) {
+            
+        }
+    }
+
 
 
 
@@ -77,7 +86,7 @@ const BookACarPage: FC<{}> = () => {
         {car === undefined && <LoadingComponent />}
         {car !== null && car !== undefined && <div className="book_a_car bg_gray">
             <div className="container py-5 bg_lines">
-                <form action="">
+                <form onSubmit={handleSubmit(_bookADate)} >
                     <div className="row d-flex flex-column-reverse flex-md-row">
                         <div className="col-md-7">
                             <div className="p-3 bg_white border-radius">
@@ -246,7 +255,7 @@ const BookACarPage: FC<{}> = () => {
                                         </div>
                                     </div>
                                     <div className="d-block d-md-none mt-3">
-                                        <button className="btn btn_orange" type='submit'>FINALIZAR COMPRA</button>
+                                        <button className="btn btn_orange" type='submit'>FINALIZAR COMPRA <Icons.Lock /> </button>
                                     </div>
 
                                 </div>
@@ -289,7 +298,7 @@ const BookACarPage: FC<{}> = () => {
                                         <h1 className="text_bold">{car.priceBook && CurrencyParse.toCop(car.priceBook?.total)}</h1>
                                     </div>
                                     <div className="d-none d-md-block">
-                                        <button className="btn btn_orange" type='submit'>FINALIZAR COMPRA</button>
+                                        <button className="btn btn_orange" type='submit'>FINALIZAR COMPRA <Icons.Lock /> </button>
                                     </div>
                                 </div>
                             </div>

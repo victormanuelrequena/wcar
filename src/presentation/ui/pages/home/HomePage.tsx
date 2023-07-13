@@ -12,7 +12,7 @@ import AlliesContextType from '../../../../domain/providers/ally/AllyContextType
 import AlliesContext from '../../../../domain/providers/ally/AllyContext';
 import LoadUseCase from '../../../../domain/use_cases/default/LoadUseCase';
 import Layout from '../../layout/Layout';
-
+import Icons from '../../assets/Icons';
 const HomePage: FC<{}> = () => {
 
     const { allies } = useContext(AlliesContext) as AlliesContextType;
@@ -49,10 +49,10 @@ const HomePage: FC<{}> = () => {
                                     <span className="my-3 text_orange text_italic">aconsejamos</span>
                                 </h1>
                                 <div>
-                                    <button className="my-3 btn btn_orange btn_shadow btn_cut">COMPRA TU CARRO</button>
+                                    <button className="my-3 btn btn_orange btn_shadow btn_cut">COMPRA TU CARRO <Icons.ArrowCircle /> </button>
                                 </div>
                                 <div className='mb-5'>
-                                    <button className="my-3 btn btn_orange_outline btn_cut btn_shadow">VENDE TU CARRO</button>
+                                    <button className="my-3 btn btn_orange_outline btn_shadow">VENDE TU CARRO <Icons.ArrowCircle /> </button>
                                 </div>
                             </div>
                         </div>
@@ -122,8 +122,8 @@ const HomePage: FC<{}> = () => {
                                 <p>En este revolucionario ecosistema encuentras una consejería personalizada. Somos brutalmente transparentes, dando a conocer el estado real del vehículo y ofreciendo precios razonables con un alto estándar de calidad.</p>
                             </div>
                             <div className="d-flex flex-column flex-md-row">
-                                <a href="#" className="btn btn_in_black_orange btn_cut btn_shadow me-3 my-2 w_fit_content">COMPRA TU CARRO</a>
-                                <a href="#" className="btn btn_black  btn_cut btn_shadow my-2 w_fit_content">VENDE TU CARRO</a>
+                                <a href="#" className="btn btn_in_black_orange btn_cut btn_shadow me-3 my-2 w_fit_content">COMPRA TU CARRO <Icons.ArrowCircle /></a>
+                                <a href="#" className="btn btn_black  btn_cut btn_shadow my-2 w_fit_content">VENDE TU CARRO <Icons.ArrowCircle /></a>
                             </div>
                         </div>
                     </div>

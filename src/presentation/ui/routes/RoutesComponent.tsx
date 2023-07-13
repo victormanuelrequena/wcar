@@ -10,6 +10,7 @@ import di from "../../../di/DependencyInjection";
 import BuyYourCarPage from "../pages/car/buyYourCar/BuyYourCarPage";
 import DetailedCarPage from "../pages/car/detailedCar/DetailedCarPage";
 import BookACarPage from "../pages/car/bookACar/BookACarPage";
+import BookADatePage from "../pages/car/bookADate/BookADatePage";
 
 export interface iRoute {
     name: string,
@@ -57,9 +58,9 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
     },
     dateForCar: {
-        path: "/carro/ver/:id",
-        relativePath: '/carro/ver',
-        component: DetailedCarPage,
+        path: "/carro/cita/:id",
+        relativePath: '/carro/cita',
+        component: BookADatePage,
         auth: (user: UserEntity | undefined) => true,
     },
 
