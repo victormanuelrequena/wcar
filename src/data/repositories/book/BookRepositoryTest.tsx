@@ -60,7 +60,7 @@ export default class BookRepositoryTest implements BookRepository {
         await sleeper(1000)(1);
         return _testHours;
     }
-    async bookADateForBuy(date: Date, hour: string, carId: string): Promise<void> {
+    async bookADateForBuy(date: Date, hour: string, carId: string, paymentId: string | undefined, contactInfo: any): Promise<void> {
         await sleeper(1000)(1);
         return;
     }
@@ -72,7 +72,7 @@ export default class BookRepositoryTest implements BookRepository {
         await sleeper(1000)(1);
         return _testHours;
     }
-    async bookADateForSell(date: Date, hour: string, cotizationId: string | undefined): Promise<void> {
+    async bookADateForSell(date: Date, hour: string, cotizationId: string | undefined, contactInfo: any ): Promise<void> {
         await sleeper(1000)(1);
         return;
      }

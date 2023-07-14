@@ -59,7 +59,7 @@ const BookADatePage: FC<{}> = () => {
         console.log('llega a confirmar', data);
         setLoading(true);
         try {
-            await di.get<BookADateForBuyUseCase>(BookADateForBuyUseCase.name).call(data.date, data.hour, id!, buyNumberId);
+            await di.get<BookADateForBuyUseCase>(BookADateForBuyUseCase.name).call(data.date, data.hour, id!, buyNumberId, data.contact);
             addToast("Reserva realizada", "success", undefined);
             navigate(routes.home.relativePath);
         } catch (error) {
