@@ -16,6 +16,8 @@ import GetAllDepartmentsUseCase from '../../../../../domain/use_cases/department
 import StarRatingComponent from '../../../components/starRating/StarRatingComponent';
 import CurrencyParse from '../../../../utils/CurrencyParse';
 import Icons from '../../../assets/Icons';
+import BookACarWithPaymentUseCase from '../../../../../domain/use_cases/car/BookACarWithPaymentUseCase';
+import ModalsProvider, { ModalsProviderName } from '../../../../../domain/providers/modal/ModalsProvider';
 
 const BookACarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -62,9 +64,9 @@ const BookACarPage: FC<{}> = () => {
 
     const _bookADate = async (data: any) => {
         try {
-            //TODO book a car
+            await di.get<BookACarWithPaymentUseCase>(BookACarWithPaymentUseCase.name).call(id!, data);
         } catch (error) {
-
+            di.get<ModalsProvider>(ModalsProviderName).Actions.addToast("Error en reserva", "error", undefined);
         }
     }
 
@@ -91,7 +93,7 @@ const BookACarPage: FC<{}> = () => {
                         <div className="col-md-7">
                             <div className="p-3 bg_white border-radius">
                                 <div>
-                                    <h1>Detalles de facturación</h1>
+                                    <h1>Detalles de facturación</h1>               
                                     <span className='text_gray me-2'>¿Eres cliente?</span>
                                     <Link to="#" className='text_orange'>Inicia sesión </Link>
                                 </div>
@@ -155,7 +157,7 @@ const BookACarPage: FC<{}> = () => {
                                             <label className="mandatory">Departamento</label>
                                             <select className='form-control' defaultValue={""} {...register('deparment', Validators({ required: true }))}>
                                                 <option value="" disabled>Distrito capital</option>
-                                                {departments.map((department) => <option value={department.id}>{department.name}</option>)}
+                                                {departments.map((department, index) => <option value={department.id} key={index}>{department.name}</option>)}
                                             </select>
                                             <ErrorMessage as="aside" errors={errors} name="deparment" />
                                         </div>
@@ -265,9 +267,10 @@ const BookACarPage: FC<{}> = () => {
                                         </div>
                                     </div>
                                     <div className="col-12 form-group">
-                                        <input type="hidden" className="form-control" {...register("paymentMethod", Validators({
+                                        {/* <input type="hidden" className="form-control" value={watch("paymentMethod")} {...register("paymentMethod", Validators({
                                             required: true,
-                                        }))} />
+                                        }))} /> */}
+                                        <input type="hidden" className='form-control' />
                                         <ErrorMessage as="aside" errors={errors} name="paymentMethod" />
                                     </div>
                                     <div className="d-block d-md-none mt-3">

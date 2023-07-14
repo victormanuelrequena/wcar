@@ -2,6 +2,7 @@ import { injectable } from "inversify";
 import BookDateEntity from "../../../domain/entities/BookDateEntity";
 import BookHourEntity from "../../../domain/entities/BookHourEntity";
 import BookRepository from "../../../domain/repositories/BookRepository";
+import sleeper from "../../../domain/repositories/utils/Sleeper";
 
 const _testHours: BookHourEntity[] = [
     {
@@ -52,21 +53,27 @@ const _testDates: BookDateEntity[] = [
 @injectable()
 export default class BookRepositoryTest implements BookRepository {
     async getAvailableDatesForBuy(carId: string): Promise<BookDateEntity[]> {
+        await sleeper(1000)(1);
         return _testDates;
     }
     async getAvailableHoursForBuy(date: Date, carId: string): Promise<BookHourEntity[]> {
+        await sleeper(1000)(1);
         return _testHours;
     }
     async bookADateForBuy(date: Date, hour: string, carId: string): Promise<void> {
+        await sleeper(1000)(1);
         return;
     }
     async getavailableDatesForSell(cotizationId: string | undefined): Promise<BookDateEntity[]> {
+        await sleeper(1000)(1);
         return _testDates;
     }
     async getAvailableHoursForSell(date: Date, cotizationId: string | undefined): Promise<BookHourEntity[]> {
+        await sleeper(1000)(1);
         return _testHours;
     }
     async bookADateForSell(date: Date, hour: string, cotizationId: string | undefined): Promise<void> {
+        await sleeper(1000)(1);
         return;
      }
     

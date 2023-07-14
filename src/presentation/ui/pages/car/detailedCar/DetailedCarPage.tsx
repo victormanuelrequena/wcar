@@ -216,7 +216,7 @@ const DetailedCarPage: FC<{}> = () => {
                         <div className="col-md-3"></div>
                         <div className="col-md-9">
                             <div className="d-flex jusstify-content-center justify-content-md-start p-3">
-                                <div className="btn btn_cyan">CONTACTA UN ASESOR <Icons.Contact /></div>
+                            <Link to={routes.dateForCar.relativePath + '/' + id} className="btn btn_cyan">CONTACTA UN ASESOR <Icons.Contact /></Link>
                             </div>
                         </div>
 

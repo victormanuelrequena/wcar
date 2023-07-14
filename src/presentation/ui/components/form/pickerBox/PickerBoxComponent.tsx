@@ -10,7 +10,7 @@ const PickerBoxComponent: FC<PickerBoxComponentProps> = ({ formFunctions, option
     const _handleClick = (option: any) => {
         if (!option.enabled) return;
         setValue(keyName, option.value);
-        onChange(option.value);
+        onChange?.(option.value);
     }
 
     return <div className="picker_box form-group">
@@ -25,6 +25,10 @@ const PickerBoxComponent: FC<PickerBoxComponentProps> = ({ formFunctions, option
         <ErrorMessage as="aside" errors={errors} name={keyName} />
     </div>
 
+}
+
+PickerBoxComponent.defaultProps = {
+    onChange: undefined,
 }
 
 export default PickerBoxComponent;

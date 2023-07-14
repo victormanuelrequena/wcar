@@ -2,6 +2,7 @@ import { injectable } from "inversify";
 import CarEntity, { TransmissionCar } from "../../../domain/entities/CarEntity";
 import CarRepository from "../../../domain/repositories/CarRepository";
 import sleeper from "../../../domain/repositories/utils/Sleeper";
+import { routes } from "../../../presentation/ui/routes/RoutesComponent";
 
 const _testCar: CarEntity = {
     id: "1",
@@ -129,6 +130,13 @@ class CarRepositoryTest implements CarRepository {
     public async getCarById(id: string): Promise<CarEntity> {
         return new Promise<CarEntity>((resolve, reject) => {
             return resolve(_testCar);
+        });
+    }
+
+    public async bookACarPayment(carId: string, paymentInfo: any): Promise<void> {
+        return new Promise<void>((resolve, reject) => {
+            window.location.href = routes.dateForCar.relativePath + '/' + carId + '/' + 'dsdsdssd';
+            return resolve();
         });
     }
 }

@@ -14,7 +14,6 @@
                 top: 8px;
                 z-index: -1;
                 bottom: 0;
-                background-color: var(--color-gray-dark);
             }
         }
 
@@ -41,15 +40,22 @@
         }
 
         &.next {
-            .step_indicator .img_container {
-                .step_pending {
+            .step_indicator {
+                &::before {
+                    background-color: var(--color-gray);
                     opacity: .4;
-                    border-radius: 100%;
-                    background: white;
-                    border: solid 1.5px var(--color-gray);
-                    width: 20px;
-                    height: 20px;
-                    background-color: white;
+                }
+
+                .img_container {
+                    .step_pending {
+                        opacity: .4;
+                        border-radius: 100%;
+                        background: white;
+                        border: solid 1.5px var(--color-gray);
+                        width: 20px;
+                        height: 20px;
+                        background-color: white;
+                    }
                 }
             }
         }
@@ -62,21 +68,29 @@
         }
 
         &.prev {
-            .step_indicator .img_container {
-                padding: 3px;
-                border-radius: 100%;
-                background-color: var(--color-blue-neon);
+            .step_indicator {
+                &::before {
+                    background-color: var(--color-gray);
+                    opacity: 1;
+                }
 
-                img {
-                    width: 14px;
-                    height: 14px;
+                .img_container {
+                    padding: 3px;
+                    border-radius: 100%;
+                    background-color: var(--color-blue-neon);
+
+                    img {
+                        width: 14px;
+                        height: 14px;
+                    }
                 }
             }
         }
 
     }
 
-    .step_content{
+    .step_content {
         padding: 0em 1em 1em 1em;
+        flex-grow: 1;
     }
 }
