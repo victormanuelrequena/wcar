@@ -11,9 +11,9 @@ export default class BookADateForSellUseCase {
     constructor(_: props) {
         this._bookRepository = _.bookRepository;
     }
-    async call(date: Date, hour: string, cotizationId: string | undefined):Promise<void> {
+    async call(date: Date, hour: string, cotizationId: string | undefined, contactInfo: any):Promise<void> {
         try {
-            const response = await this._bookRepository.bookADateForSell(date, hour, cotizationId);
+            const response = await this._bookRepository.bookADateForSell(date, hour, cotizationId, contactInfo);
             return response;
         } catch (error) {
             throw error;
