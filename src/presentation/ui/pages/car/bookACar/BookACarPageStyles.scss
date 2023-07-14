@@ -1,0 +1,27 @@
+@media screen and (min-width: 768px) {
+
+    .footer {
+        // background-color: var(--color-gray-light) !important;
+    }
+}
+
+.book_a_car {
+    .bg_lines{
+        background-image: url(../../../../../../public/assets/recs/bg_car_list.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .payment_form{
+        .form-control {
+            background-color: white;
+        }
+    }
+
+    .preview_card {
+        .prev_image{
+            height: 170px;
+            object-fit: contain;
+        }
+    }
+}

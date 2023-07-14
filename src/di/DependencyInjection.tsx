@@ -33,6 +33,23 @@ import TypeOfFuelRepositoryTest from "../data/repositories/typeOfFuel/TypeOfFuel
 import TypeVehicleRepositoryTest from "../data/repositories/typeOfVehicle/TypeVehicleRepositoryTest";
 import GetCarByIdUseCase from "../domain/use_cases/car/GetCarByIdUseCase";
 import GetRelatedCarsByCardIdUseCase from "../domain/use_cases/car/GetRelatedCarsByCardIdUseCase";
+import GetAllDepartmentsUseCase from "../domain/use_cases/department/GetAllDepartmentsUseCase";
+import DepartmentRepository, { DepartmentRepositoryName } from "../domain/repositories/DepartmentRepository";
+import DepartmentProvider, { DepartmentProviderName } from "../domain/providers/department/DepartmentProvider";
+import DepartmentRepositoryTest from "../data/repositories/deparment/DepartmentRepositoryTest";
+import DepartmentProviderImpl from "../presentation/providers/deparment/DepartmentProviderImpl";
+import GetAvailableDatesForBuyUseCase from "../domain/use_cases/book/GetAvailableDatesForBuyUseCase";
+import BookRepository, { BookRepositoryName } from "../domain/repositories/BookRepository";
+import GetAvailableDatesForSellUseCase from "../domain/use_cases/book/GetAvailableDatesForSellUseCase";
+import GetAvailableHoursForBuyUseCase from "../domain/use_cases/book/GetAvailableHoursForBuyUseCase";
+import GetAvailableHoursForSellUseCase from "../domain/use_cases/book/GetAvailableHoursForSellUseCase";
+import ModalsProvider, { ModalsProviderName } from "../domain/providers/modal/ModalsProvider";
+import ModalsProviderImpl from "../presentation/providers/modals/ModalsProviderImpl";
+import BookRepositoryTest from "../data/repositories/book/BookRepositoryTest";
+import BookACarWithPaymentUseCase from "../domain/use_cases/car/BookACarWithPaymentUseCase";
+import UserProvider, { UserProviderName } from "../domain/providers/user/UserProvider";
+import UserProviderImpl from "../presentation/providers/user/UserProviderImpl";
+import BookADateForBuyUseCase from "../domain/use_cases/book/BookADateForBuyUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -44,6 +61,8 @@ if (mode === MODE_DI.DEVELOPMENT) {
 }
 di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
 di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
+di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
+di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
 di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
 di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
 di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
@@ -52,9 +71,12 @@ di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleReposito
 // ------------------ PROVIDERS ------------------ //
 di.bind<AllyProvider>(AllyProviderName).toConstantValue(AllyProviderImpl);
 di.bind<BrandProvider>(BrandProviderName).toConstantValue(BrandProviderImpl);
+di.bind<DepartmentProvider>(DepartmentProviderName).toConstantValue(DepartmentProviderImpl);
 di.bind<ColorProvider>(ColorProviderName).toConstantValue(ColorProviderImpl);
+di.bind<ModalsProvider>(ModalsProviderName).toConstantValue(ModalsProviderImpl);
 di.bind<TypeOfFuelProvider>(TypeOfFuelProviderName).toConstantValue(TypeOfFuelProviderImpl);
 di.bind<TypeVehicleProvider>(TypeVehicleProviderName).toConstantValue(TypeVehicleProviderImpl);
+di.bind<UserProvider>(UserProviderName).toConstantValue(UserProviderImpl);
 
 //------------------ USE CASES ------------------//
 
@@ -63,6 +85,33 @@ di.bind<GetAllAlliesUseCase>(GetAllAlliesUseCase.name).toDynamicValue((context) 
     return new GetAllAlliesUseCase({
         allyRepository: context.container.get(AllyRepositoryName),
         alliesProvider: context.container.get(AllyProviderName)
+    });
+}).inSingletonScope();
+
+//book
+di.bind<BookADateForBuyUseCase>(BookADateForBuyUseCase.name).toDynamicValue((context) => {
+    return new BookADateForBuyUseCase({
+        bookRepository: context.container.get(BookRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<GetAvailableDatesForBuyUseCase>(GetAvailableDatesForBuyUseCase.name).toDynamicValue((context) => {
+    return new GetAvailableDatesForBuyUseCase({
+        bookRepository: context.container.get(BookRepositoryName)
+    });
+}).inSingletonScope();
+di.bind<GetAvailableDatesForSellUseCase>(GetAvailableDatesForSellUseCase.name).toDynamicValue((context) => {
+    return new GetAvailableDatesForSellUseCase({
+        bookRepository: context.container.get(BookRepositoryName)
+    });
+}).inSingletonScope();
+di.bind<GetAvailableHoursForBuyUseCase>(GetAvailableHoursForBuyUseCase.name).toDynamicValue((context) => {
+    return new GetAvailableHoursForBuyUseCase({
+        bookRepository: context.container.get(BookRepositoryName)
+    });
+}).inSingletonScope();
+di.bind<GetAvailableHoursForSellUseCase>(GetAvailableHoursForSellUseCase.name).toDynamicValue((context) => {
+    return new GetAvailableHoursForSellUseCase({
+        bookRepository: context.container.get(BookRepositoryName)
     });
 }).inSingletonScope();
 
@@ -75,6 +124,11 @@ di.bind<GetAllBrandsUseCase>(GetAllBrandsUseCase.name).toDynamicValue((context) 
 }).inSingletonScope();
 
 //Car  
+di.bind<BookACarWithPaymentUseCase>(BookACarWithPaymentUseCase.name).toDynamicValue((context) => {
+    return new BookACarWithPaymentUseCase({
+        carRepository: context.container.get(CarRepositoryName),
+    });
+}).inSingletonScope();
 di.bind<GetSomeRandomCarsUseCase>(GetSomeRandomCarsUseCase.name).toDynamicValue((context) => {
     return new GetSomeRandomCarsUseCase({ carRepository: context.container.get(CarRepositoryName) });
 }).inSingletonScope();
@@ -90,6 +144,13 @@ di.bind<LikeCarUseCase>(LikeCarUseCase.name).toDynamicValue((context) => {
 di.bind<SearchCarsUseCase>(SearchCarsUseCase.name).toDynamicValue((context) => {
     return new SearchCarsUseCase({ carRepository: context.container.get(CarRepositoryName) });
 });
+
+di.bind<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCase.name).toDynamicValue((context) => {
+    return new GetAllDepartmentsUseCase({
+        departmentRepository: context.container.get(DepartmentRepositoryName),
+        departmentProvider: context.container.get(DepartmentProviderName)
+    });
+}).inSingletonScope();
 
 //colors
 di.bind<GetAllColorsUseCase>(GetAllColorsUseCase.name).toDynamicValue((context) => {

@@ -1,5 +1,6 @@
 import BrandEntity from "./BrandEntity";
 import ColorEntity from "./ColorEntity";
+import PriceBookEntity from "./PriceBoookEntity";
 import TypeOfFuelEntity from "./TypeOfFuelEntity";
 import TypeVehicleEntity from "./TypeVehicleEntity";
 
@@ -11,6 +12,7 @@ export enum TransmissionCar {
 export default interface CarEntity {
     id: string;
     name: string;
+    model: string;
     type: TypeVehicleEntity;
     photoUrl: string;
     images: string[];
@@ -24,5 +26,6 @@ export default interface CarEntity {
     typeOfFuel: TypeOfFuelEntity;
     color: ColorEntity;
     outstanding: boolean;
+    priceBook?: PriceBookEntity | undefined;
     description: string[];
 }

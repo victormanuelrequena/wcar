@@ -1,0 +1,16 @@
+.book_a_date_page{
+    .loading_container{
+        z-index: 100;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    .personal_data_container{
+        .form-control{
+            background-color: white;
+        }
+    }
+}

@@ -1,13 +1,15 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './NavbarStyles.scss'; // Custom CSS file for Navbar
+import { Link } from 'react-router-dom';
+import { routes } from '../../routes/RoutesComponent';
 
 const NavbarComponent = () => {
   return (
     <nav className="navbar navbar-expand-lg  bg-transparent px-3 position-md-fixed w-100">
-      <a className="navbar-brand me-5" href="#">
+      <Link className="navbar-brand me-5" to={routes.home.relativePath} >
         <img src="/assets/logos/horizontal.svg" alt="Logo" height="50" /> {/* Add the logo image */}
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"

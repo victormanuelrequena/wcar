@@ -1,0 +1,29 @@
+.picker_box{
+    .card_option_picker{
+        padding: 0.5em 0.8em;
+        border-radius: 0.5em;
+        color: var(--color-orange);
+        background-color: white;
+        border: solid thin var(--color-gray);
+        margin: 1em 0.5em 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+        &:not(:last-child){
+            margin-right: 0.5em;
+        }
+
+        &.selected{
+            background-color: var(--color-orange);
+            border: none;
+            color: white;
+        }
+
+        &.disabled{
+            background-color: var(--color-gray-light);
+            color: var(--color-gray);
+            border: none;
+        }
+    }
+}

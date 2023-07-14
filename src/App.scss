@@ -10,6 +10,7 @@
   --color-orange-dark: #D65A1E;
   --color-gray-light: #F6F7F9;
   --color-gray: #90A3BF;
+  --color-gray-dark: #666C89;
   --color-gray-light: #F6F7F9;
   --color-blue-neon: #00FEFE;
 }
@@ -84,6 +85,12 @@
     text-decoration: underline;
   }
 
+  &_light {
+    font-weight: 300;
+    color: #666C89;
+    font-size: 0.95em;
+  }
+
   @media screen and (min-width: 768px) {
     &_md_white {
       color: white;
@@ -104,7 +111,7 @@
     padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
 
- 
+
     &.btn_shadow {
       border-bottom: solid 3px black;
       border-left: solid 3px black;
@@ -177,7 +184,7 @@
   }
 
   &.btn_orange_outline {
-    color: var(--color-orange);
+    color: black;
     border: solid 1px var(--color-orange);
     padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
@@ -334,8 +341,8 @@ body a {
   }
 }
 
-.form{
-  &_underline{
+.form {
+  &_underline {
     border: none;
     border-bottom: solid 1px var(--color-gray);
   }
@@ -348,11 +355,48 @@ select.form_underline {
   appearance: none;
 }
 
-input{
-  &[type="checkbox"]{
-    &:checked{
+input {
+  &[type="checkbox"] {
+    &:checked {
       background-color: var(--color-orange);
       border: var(--color-orange);
     }
   }
+}
+
+.form-group {
+  label.optional::after {
+    content: ' (opcional)';
+    color: var(--color-gray);
+    font-weight: 400;
+  }
+
+  label.mandatory::after {
+    content: ' *';
+    color: var(--color-orange);
+  }
+
+  .form-control {
+    background-color: var(--color-gray-light);
+    border: none;
+
+    ~aside{
+      margin-top: 0.3em;
+      font-size: 0.95em;
+      color: red;
+    }
+  }
+
+}
+
+.border_radius {
+    border-radius: 2em;
+
+    &_1{
+      border-radius: 1em;
+    }
+}
+
+.gray_footer ~ .footer{
+  background-color: var(--color-gray-light);
 }

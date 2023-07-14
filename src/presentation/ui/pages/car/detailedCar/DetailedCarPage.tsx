@@ -14,6 +14,7 @@ import { routes } from '../../../routes/RoutesComponent';
 import CarCardComponent from '../../../components/carCard/CarCardComponent';
 import SliderComponent from '../../../components/slider/SliderComponent';
 import GetRelatedCarsByCardIdUseCase from '../../../../../domain/use_cases/car/GetRelatedCarsByCardIdUseCase';
+import Icons from '../../../assets/Icons';
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -90,8 +91,8 @@ const DetailedCarPage: FC<{}> = () => {
                                             </span>
                                         </div>
                                         <div className="d-md-flex align-items-center">
-                                            <Link to={routes.bookCar.relativePath + '/' + id} className="btn btn_orange my-3 me-3">SEPÁRALO AQUÍ</Link>
-                                            <Link to={routes.dateForCar.relativePath + '/' + id} className="btn btn_orange_outline my-3">QUIERO CONOCERLO</Link>
+                                            <Link to={routes.bookCar.relativePath + '/' + id} className="btn btn_orange my-3 me-3">SEPÁRALO AQUÍ <Icons.ArrowCircle /></Link>
+                                            <Link to={routes.dateForCar.relativePath + '/' + id} className="btn btn_orange_outline my-3">QUIERO CONOCERLO <Icons.ArrowCircle /></Link>
                                         </div>
                                     </div>
                                 </div>
@@ -110,7 +111,7 @@ const DetailedCarPage: FC<{}> = () => {
                                     <h3 className="text-white"><strong>Caracteristicas</strong><br />
                                         <i>del vehiculo</i></h3>
                                 </div>
-                                <div className="btn btn_orange">DESCARGAR PERITAJE</div>
+                                <div className="btn btn_orange">DESCARGAR PERITAJE <Icons.Download /> </div>
                             </div>
                         </div>
                         <hr className="d-md-none" />
@@ -215,7 +216,7 @@ const DetailedCarPage: FC<{}> = () => {
                         <div className="col-md-3"></div>
                         <div className="col-md-9">
                             <div className="d-flex jusstify-content-center justify-content-md-start p-3">
-                                <div className="btn btn_cyan">CONTACTA UN ASESOR</div>
+                            <Link to={routes.dateForCar.relativePath + '/' + id} className="btn btn_cyan">CONTACTA UN ASESOR <Icons.Contact /></Link>
                             </div>
                         </div>
 

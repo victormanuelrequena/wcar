@@ -7,6 +7,7 @@ export default interface CarRepository {
     likeCar(id: string, like: boolean): Promise<void>;
     search(page:number, search?: string, brand?: string | undefined, year?: string | undefined, price?: number | undefined, type?: string[], transmission?: TransmissionCar, availability?: string | undefined): Promise<{cars: CarEntity[], maxPages: number}>;
     getCarById(id: string): Promise<CarEntity>;
+    bookACarPayment(carId: string, paymentInfo: any): Promise<void>;
 }
 
 export const CarRepositoryName = "CarRepository";
