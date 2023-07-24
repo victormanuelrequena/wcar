@@ -11,6 +11,7 @@ import BuyYourCarPage from "../pages/car/buyYourCar/BuyYourCarPage";
 import DetailedCarPage from "../pages/car/detailedCar/DetailedCarPage";
 import BookACarPage from "../pages/car/bookACar/BookACarPage";
 import BookADatePage from "../pages/car/bookADate/BookADatePage";
+import SellYourCarPage from "../pages/car/sellYourCar/SellYourCarPage";
 
 export interface iRoute {
     name: string,
@@ -63,6 +64,12 @@ const routes = {
         component: BookADatePage,
         auth: (user: UserEntity | undefined) => true,
     },
+    sellYourCar: {
+        path: "/vender",
+        relativePath: '/vender',
+        component: SellYourCarPage,
+        auth: (user: UserEntity | undefined) => true,
+    }
 
 }
 

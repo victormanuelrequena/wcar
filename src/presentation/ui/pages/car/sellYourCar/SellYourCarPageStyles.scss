@@ -1,0 +1,21 @@
+.sell_your_car_page {
+    section.section_1 {
+        .contact_fixed {
+            position: absolute;
+            right: 0;
+            top: 37%;
+            height: fit-content;
+            transform: translateX(40%) rotate(90deg);
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .img_section_1 {
+            position: absolute;
+            right: -2em;
+            top: 0;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

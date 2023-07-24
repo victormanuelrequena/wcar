@@ -50,6 +50,9 @@ import BookACarWithPaymentUseCase from "../domain/use_cases/car/BookACarWithPaym
 import UserProvider, { UserProviderName } from "../domain/providers/user/UserProvider";
 import UserProviderImpl from "../presentation/providers/user/UserProviderImpl";
 import BookADateForBuyUseCase from "../domain/use_cases/book/BookADateForBuyUseCase";
+import CommentRepository, { CommentRepositoryName } from "../domain/repositories/CommentRepository";
+import CommentRepositoryTest from "../data/repositories/comment/CommentRepositoryTest";
+import GetAllCommentsUseCase from "../domain/use_cases/comment/GetAllCommentsUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -64,6 +67,7 @@ di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingleto
 di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
 di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
 di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
+di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
 di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
 di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
 di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
@@ -157,6 +161,13 @@ di.bind<GetAllColorsUseCase>(GetAllColorsUseCase.name).toDynamicValue((context) 
     return new GetAllColorsUseCase({
         colorRepository: context.container.get(ColorRepositoryName),
         colorProvider: context.container.get(ColorProviderName)
+    });
+}).inSingletonScope();
+
+//comments
+di.bind<GetAllCommentsUseCase>(GetAllCommentsUseCase.name).toDynamicValue((context) => {
+    return new GetAllCommentsUseCase({
+        commentRepository: context.container.get(CommentRepositoryName),
     });
 }).inSingletonScope();
 
