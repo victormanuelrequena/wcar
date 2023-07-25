@@ -97,10 +97,10 @@ const BookACarPage: FC<{}> = () => {
                             <div className="p-3 bg_white border-radius">
                                 <div>
                                     <h1>Detalles de facturación</h1>
-                                    {user != undefined ? <>
-                                        <span className='text_gray me-2'>¿Eres cliente?</span>
-                                        <Link to="#" className='text_orange'>Inicia sesión </Link></> :
-                                        <span className='text_gray me-2'>Bienvenido {user!.name}</span>
+                                    {user != null ?
+                                        <span className='text_gray me-2'>Bienvenido {user!.name}</span> :
+                                        <><span className='text_gray me-2'>¿Eres cliente?</span>
+                                            <Link to="#" className='text_orange'>Inicia sesión </Link></>
                                     }
                                 </div>
                                 <div className="row">

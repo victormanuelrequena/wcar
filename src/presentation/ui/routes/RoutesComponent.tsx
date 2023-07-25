@@ -12,6 +12,7 @@ import DetailedCarPage from "../pages/car/detailedCar/DetailedCarPage";
 import BookACarPage from "../pages/car/bookACar/BookACarPage";
 import BookADatePage from "../pages/car/bookADate/BookADatePage";
 import SellYourCarPage from "../pages/car/sellYourCar/SellYourCarPage";
+import QuoteYourCarPage from "../pages/sell/quote/QuoteYourCarPage";
 
 export interface iRoute {
     name: string,
@@ -68,6 +69,12 @@ const routes = {
         path: "/vender",
         relativePath: '/vender',
         component: SellYourCarPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    quoteYourCar: {
+        path: "/cotizar",
+        relativePath: '/cotizar',
+        component: QuoteYourCarPage,
         auth: (user: UserEntity | undefined) => true,
     }
 

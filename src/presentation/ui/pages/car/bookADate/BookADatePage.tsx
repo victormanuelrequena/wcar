@@ -20,6 +20,7 @@ import Icons from '../../../assets/Icons';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
 import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import { routes } from '../../../routes/RoutesComponent';
+import Validators from '../../../../utils/Validators';
 
 const BookADatePage: FC<{}> = () => {
     const formFunctions = useForm();
@@ -124,22 +125,36 @@ const BookADatePage: FC<{}> = () => {
                                     <div className="row">
                                         <div className="form-group col-md-6 my-3">
                                             <label className="mandatory">Nombre</label>
-                                            <input type="text" className="form-control" placeholder='nombre' {...register("contact.name", { required: true })} />
+                                            <input type="text" className="form-control" placeholder='nombre' {...register("contact.name", Validators({
+                                                required: true,
+                                                minLength: 2,
+                                                maxLength: 20,
+                                            }))} />
                                             <ErrorMessage as="aside" errors={errors} name="contact.name" />
                                         </div>
                                         <div className="form-group col-md-6 my-3">
                                             <label className="mandatory">Apellido</label>
-                                            <input type="text" className="form-control" placeholder='apellido' {...register("contact.lastname", { required: true })} />
+                                            <input type="text" className="form-control" placeholder='apellido' {...register("contact.lastname", Validators({
+                                                required: true,
+                                                minLength: 2,
+                                                maxLength: 20,
+                                            }))} />
                                             <ErrorMessage as="aside" errors={errors} name="contact.lastName" />
                                         </div>
                                         <div className="form-group col-md-6 my-3">
                                             <label className="mandatory">Número de contacto</label>
-                                            <input type="text" className="form-control" placeholder='número de celular o telefono' {...register("contact.phone", { required: true })} />
+                                            <input type="text" className="form-control" placeholder='número de celular o telefono' {...register("contact.phone", Validators({
+                                                required: true,
+                                                phone: true,
+                                            }))} />
                                             <ErrorMessage as="aside" errors={errors} name="contact.phone" />
                                         </div>
                                         <div className="form-group col-md-6 my-3">
                                             <label className="mandatory">Email</label>
-                                            <input type="text" className="form-control" placeholder='ejemplo@gmail.com' {...register("contact.email", { required: true })} />
+                                            <input type="text" className="form-control" placeholder='ejemplo@gmail.com' {...register("contact.email", Validators({
+                                                required: true,
+                                                email: true,
+                                            }))} />
                                             <ErrorMessage as="aside" errors={errors} name="contact.email" />
                                         </div>
                                     </div>

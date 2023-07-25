@@ -380,7 +380,7 @@ input {
     background-color: var(--color-gray-light);
     border: none;
 
-    ~aside{
+    ~aside {
       margin-top: 0.3em;
       font-size: 0.95em;
       color: red;
@@ -390,13 +390,13 @@ input {
 }
 
 .border_radius {
-    border-radius: 2em;
+  border-radius: 2em;
 
-    &_1{
-      border-radius: 1em;
-    }
+  &_1 {
+    border-radius: 1em;
+  }
 }
 
-.gray_footer ~ .footer{
+.gray_footer~.footer {
   background-color: var(--color-gray-light);
 }
