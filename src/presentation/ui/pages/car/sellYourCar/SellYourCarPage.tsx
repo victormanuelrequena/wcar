@@ -4,6 +4,7 @@ import Layout from '../../../layout/Layout';
 import './SellYourCarPageStyles.scss';
 import { FC, useState } from "react";
 import Icons from '../../../assets/Icons';
+import ServicesComponent from './components/servicesComponent/ServicesComponent';
 
 const SellYourCarPage: FC<{}> = () => {
     const [comments, setComments] = useState<CommentEntity[]>([]);
@@ -30,13 +31,16 @@ const SellYourCarPage: FC<{}> = () => {
                 </div>
             </section>
             <section className='banner_section'>
-                <div className='d-flex flex-row'>
-                    <img src="/assets/recs/sell_img.png" alt="" className="img_banner_1 img-fluid" />
-                    <img src="/assets/recs/sell_bc_img.png" alt="" className="img_banner_2 img-fluid" />
+                <div className='d-flex flex-row w-100 h-100'>
+                    <img src="/assets/recs/sell_img.png" alt="" className="img_banner_1 img-fluid"/>
+                    <div className='banner_background'></div>
                 </div>
                 <div className="container banner_content position-absolute">
-                    <p className="text_bold bg-black py-1 px-5 banner_text">Vende tu carro fácil y seguro</p>
+                    <p className="text_bold bg-black px-4 banner_text">Vende tu carro fácil y seguro</p>
                 </div>
+            </section>
+            <section>
+                <ServicesComponent/>
             </section>
         </div>
     </Layout>

@@ -17,6 +17,26 @@
             height: 100%;
             object-fit: cover;
         }
+
+        .banner_background {
+            height: auto;
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .img_banner_1 {
+            display: none;
+        }
+
+        .banner_background{
+            flex: 1;
+            height: 8vh;
+        }
+    }
+
+    .banner_background {
+        background-color: #EC671B;
     }
 
     .banner_section {
@@ -32,6 +52,7 @@
         @extend .banner_section;
         color: white;
         height: 100%;
+        font-size: 1.2rem;
     }
 
     section.banner_section{
@@ -41,11 +62,4 @@
             }
         }
     }
-
-    .img_banner_1
-    .img_banner_2 {
-        max-width: 100%;
-        height: auto;
-    }
-    
 }
