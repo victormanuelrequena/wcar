@@ -29,6 +29,15 @@ const SellYourCarPage: FC<{}> = () => {
                     <a href="" className="btn btn_cyan">Contacta un asesor</a>
                 </div>
             </section>
+            <section className='banner_section'>
+                <div className='d-flex flex-row'>
+                    <img src="/assets/recs/sell_img.png" alt="" className="img_banner_1 img-fluid" />
+                    <img src="/assets/recs/sell_bc_img.png" alt="" className="img_banner_2 img-fluid" />
+                </div>
+                <div className="container banner_content position-absolute">
+                    <p className="text_bold bg-black py-1 px-5 banner_text">Vende tu carro fácil y seguro</p>
+                </div>
+            </section>
         </div>
     </Layout>
 };
