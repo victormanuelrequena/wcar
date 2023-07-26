@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Trebuchet+MS:ital,wght@0,400;0,700;1,400&display=swap');
 
 .container {
-  max-width: 1700px;
+  // max-width: 1200px;
 }
 
 :root {
@@ -50,6 +50,9 @@
 }
 
 .text {
+  &_bold{
+    font-weight: 700;
+  }
   &_italic {
     font-family: 'Trebuchet MS', sans-serif;
     font-style: italic;
@@ -89,6 +92,10 @@
     font-weight: 300;
     color: #666C89;
     font-size: 0.95em;
+  }
+
+  &_reduced {
+    font-size: 0.9em;
   }
 
   @media screen and (min-width: 768px) {
@@ -399,4 +406,12 @@ input {
 
 .gray_footer~.footer {
   background-color: var(--color-gray-light);
+}
+
+.loading_container{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }

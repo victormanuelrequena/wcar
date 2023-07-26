@@ -16,12 +16,14 @@ import LoadUseCase from './domain/use_cases/default/LoadUseCase';
 import DepartmentProvider, { DepartmentProviderName } from './domain/providers/department/DepartmentProvider';
 import UserProvider, { UserProviderName } from './domain/providers/user/UserProvider';
 import ModalsProvider, { ModalsProviderName } from './domain/providers/modal/ModalsProvider';
+import CityProvider, { CityProviderName } from './domain/providers/city/CityProvider';
 
 function App() {
   const allyProvider = di.get<AllyProvider>(AllyProviderName);
   const brandProvider = di.get<BrandProvider>(BrandProviderName);
-  const departmentProvider = di.get<DepartmentProvider>(DepartmentProviderName);
   const colorProvider = di.get<ColorProvider>(ColorProviderName);
+  const cityProvider = di.get<CityProvider>(CityProviderName);
+  const departmentProvider = di.get<DepartmentProvider>(DepartmentProviderName);
   const modalsProvider = di.get<ModalsProvider>(ModalsProviderName);
   const typeOfFuelProvider = di.get<TypeOfFuelProvider>(TypeOfFuelProviderName);
   const typeVehicleProvider = di.get<TypeVehicleProvider>(TypeVehicleProviderName);
@@ -46,17 +48,19 @@ function App() {
         <brandProvider.Provider>
           <departmentProvider.Provider>
             <colorProvider.Provider>
-              <typeOfFuelProvider.Provider>
-                <typeVehicleProvider.Provider>
-                  <userProvider.Provider>
-                    <modalsProvider.Provider>
-                    <div className="App">
-                      <RoutesComponent />
-                    </div>
-                    </modalsProvider.Provider>
-                  </userProvider.Provider>
-                </typeVehicleProvider.Provider>
-              </typeOfFuelProvider.Provider>
+              <cityProvider.Provider>
+                <typeOfFuelProvider.Provider>
+                  <typeVehicleProvider.Provider>
+                    <userProvider.Provider>
+                      <modalsProvider.Provider>
+                        <div className="App">
+                          <RoutesComponent />
+                        </div>
+                      </modalsProvider.Provider>
+                    </userProvider.Provider>
+                  </typeVehicleProvider.Provider>
+                </typeOfFuelProvider.Provider>
+              </cityProvider.Provider>
             </colorProvider.Provider>
           </departmentProvider.Provider>
         </brandProvider.Provider>

@@ -53,6 +53,16 @@ import BookADateForBuyUseCase from "../domain/use_cases/book/BookADateForBuyUseC
 import CommentRepository, { CommentRepositoryName } from "../domain/repositories/CommentRepository";
 import CommentRepositoryTest from "../data/repositories/comment/CommentRepositoryTest";
 import GetAllCommentsUseCase from "../domain/use_cases/comment/GetAllCommentsUseCase";
+import GetModelsByBrandUseCase from "../domain/use_cases/brand/GetModelsByBrandUseCase";
+import GetModelVersionByModelAndBrandIdUseCase from "../domain/use_cases/brand/GetModelVersionByModelAndBrandIdUseCase";
+import GetAllCitiesUseCase from "../domain/use_cases/city/GetAllCitiesUseCase";
+import CityProvider, { CityProviderName } from "../domain/providers/city/CityProvider";
+import CityRepository, { CityRepositoryName } from "../domain/repositories/CityRepository";
+import { CityRepositoryTest } from "../data/repositories/city/CityRepositoryTest";
+import CityProviderImpl from "../presentation/providers/city/CityProviderImpl";
+import CalculatorRepository, { CalculateOfferForCarProps, CalculatorRepositoryName } from "../domain/repositories/CalculatorRepository";
+import CalculatorRepositoryTest from "../data/repositories/calculator/CalculatorRepositoryTest";
+import CalculateOfferForCarUseCase from "../domain/use_cases/calculator/CalculateOfferForCarUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -65,18 +75,21 @@ if (mode === MODE_DI.DEVELOPMENT) {
 di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
 di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
 di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
-di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
+di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
 di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
+di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
 di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
 di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
+di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
 di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
 di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
 
 // ------------------ PROVIDERS ------------------ //
 di.bind<AllyProvider>(AllyProviderName).toConstantValue(AllyProviderImpl);
 di.bind<BrandProvider>(BrandProviderName).toConstantValue(BrandProviderImpl);
-di.bind<DepartmentProvider>(DepartmentProviderName).toConstantValue(DepartmentProviderImpl);
 di.bind<ColorProvider>(ColorProviderName).toConstantValue(ColorProviderImpl);
+di.bind<CityProvider>(CityProviderName).toConstantValue(CityProviderImpl);
+di.bind<DepartmentProvider>(DepartmentProviderName).toConstantValue(DepartmentProviderImpl);
 di.bind<ModalsProvider>(ModalsProviderName).toConstantValue(ModalsProviderImpl);
 di.bind<TypeOfFuelProvider>(TypeOfFuelProviderName).toConstantValue(TypeOfFuelProviderImpl);
 di.bind<TypeVehicleProvider>(TypeVehicleProviderName).toConstantValue(TypeVehicleProviderImpl);
@@ -126,6 +139,23 @@ di.bind<GetAllBrandsUseCase>(GetAllBrandsUseCase.name).toDynamicValue((context) 
         brandProvider: context.container.get(BrandProviderName)
     });
 }).inSingletonScope();
+di.bind<GetModelsByBrandUseCase>(GetModelsByBrandUseCase.name).toDynamicValue((context) => {
+    return new GetModelsByBrandUseCase({
+        brandRepository: context.container.get(BrandRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<GetModelVersionByModelAndBrandIdUseCase>(GetModelVersionByModelAndBrandIdUseCase.name).toDynamicValue((context) => {
+    return new GetModelVersionByModelAndBrandIdUseCase({
+        brandRepository: context.container.get(BrandRepositoryName),
+    });
+}).inSingletonScope();
+
+//calculator
+di.bind<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCase.name).toDynamicValue((context) => {
+    return new CalculateOfferForCarUseCase({
+        calculatorRepository: context.container.get(CalculatorRepositoryName),
+    });
+}).inSingletonScope();
 
 //Car  
 di.bind<BookACarWithPaymentUseCase>(BookACarWithPaymentUseCase.name).toDynamicValue((context) => {
@@ -149,6 +179,7 @@ di.bind<SearchCarsUseCase>(SearchCarsUseCase.name).toDynamicValue((context) => {
     return new SearchCarsUseCase({ carRepository: context.container.get(CarRepositoryName) });
 });
 
+//departments
 di.bind<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCase.name).toDynamicValue((context) => {
     return new GetAllDepartmentsUseCase({
         departmentRepository: context.container.get(DepartmentRepositoryName),
@@ -156,6 +187,13 @@ di.bind<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCase.name).toDynamicValue(
     });
 }).inSingletonScope();
 
+//cities
+di.bind<GetAllCitiesUseCase>(GetAllCitiesUseCase.name).toDynamicValue((context) => {
+    return new GetAllCitiesUseCase({
+        cityProvider: context.container.get(CityProviderName),
+        cityRepository: context.container.get(CityRepositoryName),
+    });
+}).inSingletonScope();
 //colors
 di.bind<GetAllColorsUseCase>(GetAllColorsUseCase.name).toDynamicValue((context) => {
     return new GetAllColorsUseCase({
@@ -173,13 +211,14 @@ di.bind<GetAllCommentsUseCase>(GetAllCommentsUseCase.name).toDynamicValue((conte
 
 //default
 di.bind<LoadUseCase>(LoadUseCase.name).toDynamicValue((context) => {
-    return new LoadUseCase({ 
+    return new LoadUseCase({
         getAllAlliesUseCase: context.container.get(GetAllAlliesUseCase.name),
         getAllBrandsUseCase: context.container.get(GetAllBrandsUseCase.name),
         getAllColorsUseCase: context.container.get(GetAllColorsUseCase.name),
         getAllTypeOfFueslUseCase: context.container.get(GetAllTypeOfFuelsUseCase.name),
         getAllTypeOfVehiclesUseCase: context.container.get(GetAllTypeVehiclesUseCase.name),
-     });
+        getAllCitiesUseCase: context.container.get(GetAllCitiesUseCase.name),
+    });
 });
 
 //type of fuel

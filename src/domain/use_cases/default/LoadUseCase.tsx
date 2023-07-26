@@ -10,6 +10,7 @@ interface props {
     getAllColorsUseCase: GetAllColorsUseCase,
     getAllTypeOfFueslUseCase: GetAllTypeOfFuelsUseCase,
     getAllTypeOfVehiclesUseCase: GetAllTypeVehiclesUseCase,
+    getAllCitiesUseCase: GetAllTypeVehiclesUseCase,
 }
 
 export default class LoadUseCase {
@@ -18,6 +19,7 @@ export default class LoadUseCase {
     _getAllColorsUseCase: GetAllColorsUseCase;
     _getAllTypeOfFueslUseCase: GetAllTypeOfFuelsUseCase;
     _getAllTypeOfVehiclesUseCase: GetAllTypeVehiclesUseCase;
+    _getAllCitiesUseCase: GetAllTypeVehiclesUseCase;
 
     constructor(_: props) {
         this._getAllAlliesUseCase = _.getAllAlliesUseCase;
@@ -25,15 +27,20 @@ export default class LoadUseCase {
         this._getAllColorsUseCase = _.getAllColorsUseCase;
         this._getAllTypeOfFueslUseCase = _.getAllTypeOfFueslUseCase;
         this._getAllTypeOfVehiclesUseCase = _.getAllTypeOfVehiclesUseCase;
+        this._getAllCitiesUseCase = _.getAllCitiesUseCase;
     }
 
     async call() {
-        await Promise.all([
-            await this._getAllAlliesUseCase.call(),
-            await this._getAllBrandsUseCase.call(),
-            await this._getAllColorsUseCase.call(),
-            await this._getAllTypeOfFueslUseCase.call(),
-            await this._getAllTypeOfVehiclesUseCase.call(),
-        ])
+        try {
+            await Promise.all([
+                await this._getAllAlliesUseCase.call(),
+                await this._getAllBrandsUseCase.call(),
+                await this._getAllColorsUseCase.call(),
+                await this._getAllTypeOfFueslUseCase.call(),
+                await this._getAllTypeOfVehiclesUseCase.call(),
+                await this._getAllCitiesUseCase.call(),
+            ]);
+        } catch (error) {
+        }
     }
 }
