@@ -62,4 +62,82 @@
             }
         }
     }
+
+    section.sell_section {
+
+        position: relative;
+
+        div.image_decoration{
+            height: auto;
+            width: 100%;
+            margin-bottom: 1rem;
+    
+            @media screen and (min-width: 576px) {
+                
+                img.img_decoration_md{
+                    display: block;
+                    width: 100%;
+                }
+    
+                img.img_decoration_sm{
+                    display: none;
+                }
+    
+            }
+    
+            @media screen and (max-width: 576px) {
+    
+                img.img_decoration_md{
+                    display: none;
+                }
+    
+                img.img_decoration_sm{
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+
+        div.sell_car_container{
+            background-color: var(--color-dark-gray);
+            display: flex;
+            flex-direction: row;
+
+            div.sell_car_description_container{
+                padding: 6% 25% 6% 5%;
+                color: white;
+
+                div.sell_title_container{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-bottom: 1rem;
+                }
+                
+                h1.sell_car_title{
+                    font-weight: 700;
+                }
+
+                h1.sell_car_subtitle{
+                    font-weight: 400;
+                    font-style: italic;
+                }
+
+                div.sell_buttons{
+                    button.btn_orange{
+                        margin-right: 1rem;
+                    }
+                }
+            }
+        }
+
+        img.lines_sell{
+            position: absolute;
+            right: 0;
+            top: 12%;
+            z-index: 2;
+            width: 9%;
+            height: 50%;
+        }
+    }
 }

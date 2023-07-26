@@ -42,6 +42,35 @@ const SellYourCarPage: FC<{}> = () => {
             <section>
                 <ServicesComponent/>
             </section>
+            {/* Sell your car */}
+            <section className='sell_section'>
+                <div className='image_decoration'>
+                    <img src="/assets/recs/md_bg_sell_decoration.png" className='img_decoration_md img-fluid'/>
+                    <img src="/assets/recs/sm_bg_sell_decoration.png" className='img_decoration_sm img-fluid'/>
+                    <div className='cross_line'/>
+                </div>
+                <img src="/assets/recs/lines_sell.png" alt="" className='lines_sell'/>
+                <div className='sell_car_container'>
+                    <img src="/assets/recs/car_sell_tires_img.png" alt="" className='img-fluid'/>
+                    <div className='sell_car_description_container'>
+                        {/* venta */}
+                        <div className='sell_title_container'>
+                            <div className='side side_blue_neon'/>
+                            <p className='m-0'>Venta</p>
+                        </div> 
+                        {/* Vende tu carro */}
+                        <h1 className='sell_car_title'>Vende tu carro de manera segura,</h1>
+                        <h1 className='sell_car_subtitle mb-4'>rápida, confiable y justa.</h1>
+                        <p className='mb-4'>En wcar nos preocupamos por la seguridad en cada servicio, el asesoramiento en cada negocio que un proceso tan tedioso como lo es la venta de carros en Colombia se hace fácil y sencillo</p>
+                        <p className='mb-5'>Te ayudamos desde el primer contacto y gestionamos todos los procesos que requiere la venta de tu vehiculo, el comerciar con carros usados no es una tarea sencilla, pero conocemos el mercado y sabemos como ayudarte.</p>
+                        {/* Botones */}
+                        <div className='sell_buttons'>
+                            <button className='btn btn_orange'>Vende tu carro</button>
+                            <button className='btn btn_orange_outline'>Contacta a un asesor</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </Layout>
 };

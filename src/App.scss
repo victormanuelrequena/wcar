@@ -13,6 +13,7 @@
   --color-gray-dark: #666C89;
   --color-gray-light: #F6F7F9;
   --color-blue-neon: #00FEFE;
+  --color-dark-gray: #1E1E1E;
 }
 
 .App {
@@ -46,6 +47,15 @@
     left: 0;
     top: 0;
     background-color: var(--color-orange);
+  }
+
+  &.side_blue_neon::before {
+    content: '';
+    display: inline-block;
+    height: 0.1em;
+    width: 4em;
+    position: relative;
+    background-color: var(--color-blue-neon);
   }
 }
 
