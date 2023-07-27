@@ -32,7 +32,7 @@ const SellYourCarPage: FC<{}> = () => {
             </section>
             <section className='banner_section'>
                 <div className='d-flex flex-row w-100 h-100'>
-                    <img src="/assets/recs/sell_img.png" alt="" className="img_banner_1 img-fluid"/>
+                    <img src="/assets/sellCar/sell_img.png" alt="" className="img_banner_1 img-fluid"/>
                     <div className='banner_background'></div>
                 </div>
                 <div className="container banner_content position-absolute">
@@ -45,14 +45,16 @@ const SellYourCarPage: FC<{}> = () => {
             {/* Sell your car */}
             <section className='sell_section'>
                 <div className='image_decoration'>
-                    <img src="/assets/recs/md_bg_sell_decoration.png" className='img_decoration_md img-fluid'/>
-                    <img src="/assets/recs/sm_bg_sell_decoration.png" className='img_decoration_sm img-fluid'/>
+                    <img src="/assets/sellCar/md_bg_sell_decoration.png" className='img_decoration_md img-fluid'/>
+                    <img src="/assets/sellCar/sm_bg_sell_decoration.png" className='img_decoration_sm img-fluid'/>
                     <div className='cross_line'/>
                 </div>
-                <img src="/assets/recs/lines_sell.png" alt="" className='lines_sell'/>
                 <div className='sell_car_container'>
-                    <img src="/assets/recs/car_sell_tires_img.png" alt="" className='img-fluid'/>
+                    <img src="/assets/recs/lines_sell.png" alt="" className='lines_sell'/>
+                    <img src='assets/recs/lines_zigs.png' alt='' className='lines_zigs_sell'/>
+                    <img src="/assets/sellCar/car_sell_tires_img.png" alt="" className='img-fluid d-none d-md-inline-block'/>
                     <div className='sell_car_description_container'>
+                        <img src="/assets/recs/lines_box.png" alt="" className='little_sell_box img-fluid'/>
                         {/* venta */}
                         <div className='sell_title_container'>
                             <div className='side side_blue_neon'/>
@@ -65,10 +67,11 @@ const SellYourCarPage: FC<{}> = () => {
                         <p className='mb-5'>Te ayudamos desde el primer contacto y gestionamos todos los procesos que requiere la venta de tu vehiculo, el comerciar con carros usados no es una tarea sencilla, pero conocemos el mercado y sabemos como ayudarte.</p>
                         {/* Botones */}
                         <div className='sell_buttons'>
-                            <button className='btn btn_orange'>Vende tu carro</button>
-                            <button className='btn btn_orange_outline'>Contacta a un asesor</button>
+                            <button className='btn btn_orange me-0 me-sm-4 px-5 my-2'>Vende tu carro <Icons.ArrowCircle /> </button>
+                            <button className='btn btn_orange_transparent px-5 my-2'>Contacta a un asesor <Icons.arrowCrossUp/></button>
                         </div>
                     </div>
+                    <img src="/assets/sellCar/car_sell_tires_little.png" alt="" className='img-fluid d-inline-block d-md-none'/>
                 </div>
             </section>
         </div>

@@ -97,14 +97,92 @@
                 }
             }
         }
+    
 
         div.sell_car_container{
+            position: relative;
             background-color: var(--color-dark-gray);
             display: flex;
             flex-direction: row;
 
+            img.lines_zigs_sell {
+
+                position: absolute;
+                z-index: 1;
+            }
+
+            @media screen and (min-width: 768px) {
+                div.sell_car_description_container{
+                    padding: 5.5rem 23rem 5.5rem 4.5rem;
+
+                    img.little_sell_box{
+                        display: none;
+                    }
+                }
+
+                img.lines_zigs_sell {
+                    right: 16rem;
+                    top: 28rem;  
+                }
+                
+                img.lines_sell {
+                    position: absolute;
+                    z-index: 1;
+                    right: 0;
+                    top: -9rem;
+                    width: 7rem;
+                    height: 28rem;
+                }
+                
+            }
+
+            @media screen and (max-width: 768px) {
+
+                flex-direction: column;
+
+                div.sell_car_description_container{
+                    padding: 6rem 2rem 7rem 2rem;
+                    align-items: center;
+                    position: relative;
+
+                    img.little_sell_box{
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        height: 5rem;
+                    }
+                }
+                
+                img.lines_zigs_sell {
+                    top: 1rem;
+                    right: 2.5rem;
+                    transform: rotate(270deg);
+                }
+
+                img.lines_sell {
+                    display: none;
+                }
+            }
+
+            @media screen and (min-width:768px) and (max-width: 1200px) {
+                div.sell_car_description_container{
+                    padding: 5rem 2rem 3rem 2rem;
+                }
+
+                img.lines_sell{
+                    display: none;
+                }
+
+                img.lines_zigs_sell{
+                    transform: rotate(270deg);
+                    right: 2.5rem;
+                    top: 0.5rem;
+                }
+
+            }
+
             div.sell_car_description_container{
-                padding: 6% 25% 6% 5%;
+
                 color: white;
 
                 div.sell_title_container{
@@ -123,21 +201,8 @@
                     font-style: italic;
                 }
 
-                div.sell_buttons{
-                    button.btn_orange{
-                        margin-right: 1rem;
-                    }
-                }
             }
         }
-
-        img.lines_sell{
-            position: absolute;
-            right: 0;
-            top: 12%;
-            z-index: 2;
-            width: 9%;
-            height: 50%;
-        }
+    
     }
 }
