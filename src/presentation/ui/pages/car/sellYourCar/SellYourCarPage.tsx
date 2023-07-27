@@ -5,6 +5,7 @@ import './SellYourCarPageStyles.scss';
 import { FC, useState } from "react";
 import Icons from '../../../assets/Icons';
 import ServicesComponent from './components/servicesComponent/ServicesComponent';
+import SliderComponent from '../../../components/slider/SliderComponent';
 
 const SellYourCarPage: FC<{}> = () => {
     const [comments, setComments] = useState<CommentEntity[]>([]);
@@ -72,6 +73,25 @@ const SellYourCarPage: FC<{}> = () => {
                         </div>
                     </div>
                     <img src="/assets/sellCar/car_sell_tires_little.png" alt="" className='img-fluid d-inline-block d-md-none'/>
+                </div>
+            </section>
+            <section className='allies-say'>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-md-3 d-flex justify-content-center bg_gray align-items-start px-0 position-relative'>
+                            <img src='assets/recs/lines_box_large.png' className='position-absolute start-0 allies_say_lines_img h-100'/>
+                            <div className='side side_blue_neon text_black text_md_white justify-content-center allies_says_content'>
+                                <h2 className='d-flex flex-md-column justify-content-center align-items-start flex-row mt-3'>
+                                    <b className='me-2 me-md-0'>¿Qué</b>
+                                    <div className="text_wcar fst-italic">dicen de</div>
+                                    <div className="text_wcar fst-italic">wcar?</div>
+                                </h2>
+                            </div>
+                        </div>
+                        <div className='col-md-9 pt-5 pb-4'>
+                            <SliderComponent children={[]}></SliderComponent>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
