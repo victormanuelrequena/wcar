@@ -22,6 +22,7 @@ import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
 import { routes } from '../../../routes/RoutesComponent';
 
+const _min_year = 1999;
 const QuoteYourCarPage: FC<{}> = () => {
 
     const navigate = useNavigate();
@@ -167,11 +168,11 @@ const QuoteYourCarPage: FC<{}> = () => {
                                                 <label className='mandatory'>Año</label>
                                                 <select className="form-control" {...register('car.year', Validators({
                                                     required: true,
-                                                    minValue: 1920,
+                                                    minValue: _min_year,
                                                     maxValue: (new Date().getFullYear()) + 1,
                                                 }))}>
                                                     <option value="">Selecciona un año</option>
-                                                    {Array.from(Array((new Date().getFullYear()) - 1920 + 1).keys()).map((year, index) => <option key={index} value={(new Date().getFullYear() + 1 - index)}>{(new Date().getFullYear() + 1 - index)}</option>)}
+                                                    {Array.from(Array((new Date().getFullYear()) - _min_year + 1).keys()).map((year, index) => <option key={index} value={(new Date().getFullYear() + 1 - index)}>{(new Date().getFullYear() + 1 - index)}</option>)}
                                                 </select>
                                                 <ErrorMessage as="aside" errors={errors} name="car.year" />
                                             </div>
