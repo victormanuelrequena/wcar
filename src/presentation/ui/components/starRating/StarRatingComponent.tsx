@@ -1,11 +1,16 @@
 import './StarRatingComponentStyles.scss';
 import React from "react";
 import StarRatingComponentProps from "./StarRatingComponentProps";
+import Icons from '../../assets/Icons';
 
 const StarRatingComponent: React.FC<StarRatingComponentProps> = ({ rating }) => {
 
   return <div className="star_rating_component">{
-    [...Array(5)].map((_, index) => <img key={index} src={index < Math.floor(rating) ? '/assets/icons/star_rating.svg' : '/assets/icons/star_clear.svg'} alt="" className="img-fluid img_star me-1" />)
+    [...Array(5)].map((_, index) => <div className="d-flex align-items-center me-1">
+      {(index + 0.5) > rating ? 
+        <Icons.StarEmpty />
+      : ((index + 1) <= rating ? <Icons.StarFull /> : <Icons.StarHalf />)}
+    </div>)
   }
   </div>;
 };

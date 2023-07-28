@@ -63,6 +63,9 @@ import CityProviderImpl from "../presentation/providers/city/CityProviderImpl";
 import CalculatorRepository, { CalculateOfferForCarProps, CalculatorRepositoryName } from "../domain/repositories/CalculatorRepository";
 import CalculatorRepositoryTest from "../data/repositories/calculator/CalculatorRepositoryTest";
 import CalculateOfferForCarUseCase from "../domain/use_cases/calculator/CalculateOfferForCarUseCase";
+import FrequentQuestionRepository, { FrequentQuestionRepositoryName } from "../domain/repositories/FrequentQuestionRepository";
+import FrequentQuestionRepositoryTest from "../data/repositories/frequentQuestion/FrequentQuestionRepositoryTest";
+import GetAllFrequentQuestionsUseCase from "../domain/use_cases/frequentQuestion/GetAllFrequentQuestionsUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -81,6 +84,7 @@ di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonSc
 di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
 di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
 di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
+di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryTest).inSingletonScope();
 di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
 di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
 
@@ -220,6 +224,13 @@ di.bind<LoadUseCase>(LoadUseCase.name).toDynamicValue((context) => {
         getAllCitiesUseCase: context.container.get(GetAllCitiesUseCase.name),
     });
 });
+
+//frequent
+di.bind<GetAllFrequentQuestionsUseCase>(GetAllFrequentQuestionsUseCase.name).toDynamicValue((context) => {
+    return new GetAllFrequentQuestionsUseCase({
+        frequentQuestionRepository: context.container.get(FrequentQuestionRepositoryName),
+    });
+}).inSingletonScope();
 
 //type of fuel
 di.bind<GetAllTypeOfFuelsUseCase>(GetAllTypeOfFuelsUseCase.name).toDynamicValue((context) => {

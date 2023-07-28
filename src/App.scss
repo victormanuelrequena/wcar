@@ -13,6 +13,7 @@
   --color-gray-dark: #666C89;
   --color-gray-light: #F6F7F9;
   --color-blue-neon: #00FEFE;
+  --color-dark-gray: #1E1E1E;
 }
 
 .App {
@@ -35,10 +36,10 @@
 
 .side {
   padding: 0.5em 1em 0.5em 0;
-  width: fit-content;
+  // width: fit-content;
   position: relative;
 
-  &.side_top::before {
+  &_top::before {
     content: '';
     height: 0.2em;
     width: 4em;
@@ -46,6 +47,18 @@
     left: 0;
     top: 0;
     background-color: var(--color-orange);
+  }
+
+  &_blue_neon::before {
+    background-color: var(--color-blue-neon);
+  }
+
+  &_md {
+    @media screen and (min-width: 768px) {
+      &_blue_neon::before {
+        background-color: var(--color-blue-neon);
+      }
+    }
   }
 }
 
@@ -96,6 +109,10 @@
 
   &_reduced {
     font-size: 0.9em;
+  }
+  
+  &_bold {
+    font-weight: 700;
   }
 
   @media screen and (min-width: 768px) {
@@ -214,6 +231,14 @@
       background-color: var(--color-orange);
       color: #fff;
     }
+  }
+
+  &.btn_orange_transparent {
+    color: white;
+    border: solid 1px var(--color-orange);
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
   }
 
   position: relative;
