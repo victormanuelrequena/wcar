@@ -1,0 +1,44 @@
+.accordeon_component {
+    .item {
+        border-bottom: solid thin #CDD6DA;
+        padding-bottom: 1em;
+        padding-top: 1em;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &.active {
+            border-top: solid thin #CDD6DA;
+
+            .header {
+                padding-bottom: 0.75em;
+                border-bottom: solid thin #CDD6DA;
+            }
+
+            .content {
+                display: block;
+            }
+        }
+
+        &:first-of-type {
+            border-top: solid thin #CDD6DA;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+
+            .title {
+                flex-grow: 1;
+                padding-right: 1em;
+            }
+        }
+
+        .content {
+            display: none;
+        }
+    }
+}

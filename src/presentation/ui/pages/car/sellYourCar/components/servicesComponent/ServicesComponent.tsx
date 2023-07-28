@@ -8,17 +8,17 @@ const ServicesComponent: FC = () => {
         {
             title: "Soluciones integrales a la medida", 
             description: "Te contamos las cosas importantes del carro tal y como son.", 
-            icon: <Icons.car/>
+            icon: <Icons.Car/>
         },
         {
             title: "Alternativa honesta y con precios justos",
             description: "A través de nuestro algoritmo calculamos precios de venta reales de mercado.",
-            icon: <Icons.money/>
+            icon: <Icons.Money/>
         },
         {
             title: "Uso de la tecnología para facilitar procesos",
             description: "La tecnología es para nosotros un camino para mejorar el servicio, no para reemplazar las interacciones.",
-            icon: <Icons.computer/>
+            icon: <Icons.Computer/>
         }
 ];
 
