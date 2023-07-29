@@ -11,6 +11,7 @@ import GetAllCommentsUseCase from '../../../../../domain/use_cases/comment/GetAl
 import StarRatingComponent from '../../../components/starRating/StarRatingComponent';
 import DateParse from '../../../../utils/DateParse';
 import FrequentQuestionsComponent from '../../../components/frequentQuestions/FrequentQuestionsComponent';
+import { routes } from '../../../routes/RoutesComponent';
 
 const SellYourCarPage: FC<{}> = () => {
     const [comments, setComments] = useState<CommentEntity[]>([]);
@@ -38,7 +39,7 @@ const SellYourCarPage: FC<{}> = () => {
                                 a un precio</span>
                                 <br /><span className="text_italic">razonable</span>
                             </h1>
-                            <Link to="#" className='btn btn_orange'>
+                            <Link to={routes.quoteYourCar.relativePath} className='btn btn_orange'>
                                 VENDE TU CARRO <Icons.ArrowCircle />
                             </Link>
                         </div>
@@ -86,8 +87,8 @@ const SellYourCarPage: FC<{}> = () => {
                         <p className='mb-5'>Te ayudamos desde el primer contacto y gestionamos todos los procesos que requiere la venta de tu vehiculo, el comerciar con carros usados no es una tarea sencilla, pero conocemos el mercado y sabemos como ayudarte.</p>
                         {/* Botones */}
                         <div className='sell_buttons'>
-                            <button className='btn btn_orange me-0 me-sm-4 px-5 my-2'>Vende tu carro <Icons.ArrowCircle /> </button>
-                            <button className='btn btn_orange_transparent px-5 my-2'>Contacta a un asesor <Icons.ArrowCrossUp /></button>
+                            <Link to={routes.quoteYourCar.relativePath} className='btn btn_orange me-0 me-sm-4 px-5 my-2'>Vende tu carro <Icons.ArrowCircle /> </Link>
+                            <Link to={"#"} className='btn btn_orange_transparent px-5 my-2'>Contacta a un asesor <Icons.ArrowCrossUp /></Link>
                         </div>
                     </div>
                     <img src="/assets/sellCar/car_sell_tires_little.png" alt="" className='img-fluid d-inline-block d-md-none' />
@@ -98,7 +99,7 @@ const SellYourCarPage: FC<{}> = () => {
                     <div className='row'>
                         <div className="col-md-3 d-md-flex justify-content-start justify-content-md-end align-items-center black_side">
                             <img src='assets/recs/lines_box_large.png' className='position-absolute start-0 allies_say_lines_img h-100' />
-                            <div className="side side_top side_md_blue_neon text_black text_md_white mt-5 ms-3 mt-md-0">
+                            <div className="side side_top side_md_blue_neon text_black text_md_white mt-5 ms-3 mt-md-0 pe-5">
                                 <h2>
                                     <b className='me-2 me-md-0 d-none d-md-block'>¿Qué</b>
                                     <span className='me-2 me-md-0 d-none d-md-block'>dicen de</span>
