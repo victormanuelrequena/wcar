@@ -1,0 +1,49 @@
+.comments_line_component {
+    background-color: #f6f7f9;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: black;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 76%;
+        background-size: cover;
+        z-index: 0;
+    }
+
+
+    @media screen and (max-width: 768px) {
+        &::before {
+            content: none;
+            display: none;
+        }
+
+    }
+
+    .black_side {
+        position: relative;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        background: linear-gradient(90deg, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 90%);
+
+        @media screen and (max-width: 768px) {
+            background: transparent;
+        }
+
+        .side{
+            padding-right: 2em;
+            padding-bottom: 2em;
+        }
+    }
+
+    .img_rounded {
+        border-radius: 100%;
+        width: 3em;
+        height: 3em;
+        object-fit: cover;
+    }
+}

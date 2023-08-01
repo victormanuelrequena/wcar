@@ -63,9 +63,10 @@
 }
 
 .text {
-  &_bold{
+  &_bold {
     font-weight: 700;
   }
+
   &_italic {
     font-family: 'Trebuchet MS', sans-serif;
     font-style: italic;
@@ -110,7 +111,7 @@
   &_reduced {
     font-size: 0.9em;
   }
-  
+
   &_bold {
     font-weight: 700;
   }
@@ -127,12 +128,12 @@
   border-radius: 0;
   border-bottom-left-radius: 2em;
   border-top-right-radius: 2em;
+  padding: 0.7em 2em;
 
   &.btn_orange {
     background-color: var(--color-orange);
     color: #fff;
     border: none;
-    padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
 
 
@@ -152,12 +153,15 @@
     background-color: var(--color-blue-neon);
     color: black;
     border: none;
-    padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
 
     &.btn_shadow {
       border-bottom: solid 3px black;
       border-left: solid 3px black;
+    }
+
+    & svg {
+      margin-left: 0.8em;
     }
   }
 
@@ -433,10 +437,109 @@ input {
   background-color: var(--color-gray-light);
 }
 
-.loading_container{
+.loading_container {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+}
+
+.left_line {
+  margin-left: 3.5em;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 3em;
+    height: 0.1em;
+    top: calc(50% - 0.05em);
+    left: -3.5em;
+    background-color: var(--color-orange);
+  }
+
+  &_blue_neon {
+    &::before {
+      background-color: var(--color-blue-neon);
+    }
+  }
+}
+
+.sized_infinited {
+  height: 100%;
+
+  @mixin responsive-width($data-columns) {
+    @media screen and (min-width: 1400px) {
+      width: calc(((100vw - 1320px) / 2) + ((1320px / 12) * #{$data-columns}));
+    }
+
+    @media screen and (min-width: 1200px) and (max-width: 1399px) {
+      width: calc(((100vw - 1140px) / 2) + ((1140px / 12) * #{$data-columns}));
+    }
+
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      width: calc(((100vw - 960px) / 2) + ((960px / 12) * #{$data-columns}));
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      width: calc(((100vw - 720px) / 2) + ((720px / 12) * #{$data-columns}));
+    }
+
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+      width: calc(((100vw - 540px) / 2) + ((540px / 12) * #{$data-columns}));
+    }
+
+    @media screen and (max-width: 576px) {
+      width: calc(100vw - 2em);
+    }
+  }
+
+  &.c1 {
+    @include responsive-width(1);
+  }
+
+  &.c2 {
+    @include responsive-width(2);
+  }
+
+  &.c3 {
+    @include responsive-width(3);
+  }
+
+  &.c4 {
+    @include responsive-width(4);
+  }
+
+  &.c5 {
+    @include responsive-width(5);
+  }
+
+  &.c6 {
+    @include responsive-width(6);
+  }
+
+  &.c7 {
+    @include responsive-width(7);
+  }
+
+  &.c8 {
+    @include responsive-width(8);
+  }
+
+  &.c9 {
+    @include responsive-width(9);
+  }
+
+  &.c10 {
+    @include responsive-width(10);
+  }
+
+  &.c11 {
+    @include responsive-width(11);
+  }
+
+  &.c12 {
+    @include responsive-width(12);
+  }
 }

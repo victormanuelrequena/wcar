@@ -12,23 +12,9 @@ import StarRatingComponent from '../../../components/starRating/StarRatingCompon
 import DateParse from '../../../../utils/DateParse';
 import FrequentQuestionsComponent from '../../../components/frequentQuestions/FrequentQuestionsComponent';
 import { routes } from '../../../routes/RoutesComponent';
+import CommenstLineComponent from '../../../components/commentsLine/CommentsLineComponent';
 
 const SellYourCarPage: FC<{}> = () => {
-    const [comments, setComments] = useState<CommentEntity[]>([]);
-
-    const _getComments = async () => {
-        try {
-            const response = await di.get<GetAllCommentsUseCase>(GetAllCommentsUseCase.name).call();
-            setComments(response);
-        } catch (e) {
-            setComments([]);
-        }
-    };
-
-    useEffect(() => {
-        _getComments();
-    }, [])
-
     return <Layout>
         <div className="sell_your_car_page">
             <section className="bg_black position-relative section_1">
@@ -88,78 +74,13 @@ const SellYourCarPage: FC<{}> = () => {
                         {/* Botones */}
                         <div className='sell_buttons'>
                             <Link to={routes.quoteYourCar.relativePath} className='btn btn_orange me-0 me-sm-4 px-5 my-2'>Vende tu carro <Icons.ArrowCircle /> </Link>
-                            <Link to={"#"} className='btn btn_orange_transparent px-5 my-2'>Contacta a un asesor <Icons.ArrowCrossUp /></Link>
+                            <Link to={routes.contact.relativePath} className='btn btn_orange_transparent px-5 my-2'>Contacta a un asesor <Icons.ArrowCrossUp /></Link>
                         </div>
                     </div>
                     <img src="/assets/sellCar/car_sell_tires_little.png" alt="" className='img-fluid d-inline-block d-md-none' />
                 </div>
             </section>
-            <section className='allies-say'>
-                <div className='container'>
-                    <div className='row'>
-                        <div className="col-md-3 d-md-flex justify-content-start justify-content-md-end align-items-center black_side">
-                            <img src='assets/recs/lines_box_large.png' className='position-absolute start-0 allies_say_lines_img h-100' />
-                            <div className="side side_top side_md_blue_neon text_black text_md_white mt-5 ms-3 mt-md-0 pe-5">
-                                <h2>
-                                    <b className='me-2 me-md-0 d-none d-md-block'>¿Qué</b>
-                                    <span className='me-2 me-md-0 d-none d-md-block'>dicen de</span>
-                                    <b className='me-2 me-md-0 d-block d-md-none'>¿Qué dicen de</b>
-                                    <div className="text_wcar">wcar?</div>
-                                </h2>
-                            </div>
-                        </div>
-                        <div className='col-md-9 pt-md-5 px-3 px-md-1 pb-4'>
-                            <SliderComponent responsive={{
-                                mobile: {
-                                    breakpoint: { max: 769, min: 0 },
-                                    items: 1,
-                                    slidesToSlide: 1, // optional, default to 1.
-                                },
-                                tablet: {
-                                    breakpoint: { max: 1024, min: 769 },
-                                    items: 2,
-                                    slidesToSlide: 2, // optional, default to 1.
-                                },
-                                desktop: {
-                                    breakpoint: { max: 1280, min: 1024 },
-                                    items: 2,
-                                    slidesToSlide: 2, // optional, default to 1.
-                                },
-                                largeDesktop: {
-                                    breakpoint: { max: 3000, min: 1280 },
-                                    items: 3,
-                                    slidesToSlide: 3, // optional, default to 1.
-                                },
-                            }}>
-                                {comments.map((comment, index) => <div className="comment px-3 mb-4" key={index}>
-                                    <div className="card border-0">
-                                        <div className="card-body">
-                                            <div className="d-flex mb-3">
-                                                <div>
-                                                    <img src={comment.photoUrl} alt="" className=" img_rounded" />
-                                                </div>
-                                                <div className="flex-grow-1 d-flex flex-column px-2">
-                                                    <strong>{comment.name}</strong>
-                                                    <div className="d-flex align-items-star">
-                                                        <div className="me-1"><strong>{comment.calification}</strong></div>
-                                                        <StarRatingComponent rating={comment.calification} />
-                                                    </div>
-                                                </div>
-                                                <Icons.Quote />
-                                            </div>
-                                            <p>{comment.content}</p>
-                                            <p className="text_gray">
-                                                {DateParse.dateToMonthDayYear(comment.date)}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>)}
-                            </SliderComponent>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+            <CommenstLineComponent />
             <section className="frequent_questions px-md-5 py-5">
                 <div className="container">
                     <div className="row d-flex justify-content-center">

@@ -14,6 +14,8 @@ import BookADatePage from "../pages/car/bookADate/BookADatePage";
 import SellYourCarPage from "../pages/car/sellYourCar/SellYourCarPage";
 import QuoteYourCarPage from "../pages/sell/quote/QuoteYourCarPage";
 import QuoteSuccessfulPage from "../pages/sell/sucessfullQuote/QuoteSuccessfulPage";
+import AboutUsPage from "../pages/aboutUs/AboutUsPage";
+import ServicesPage from "../pages/services/ServicesPage";
 
 export interface iRoute {
     name: string,
@@ -88,6 +90,24 @@ const routes = {
         path: "/cotizar/resultado",
         relativePath: '/cotizar/resultado',
         component: QuoteSuccessfulPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    aboutUs: {
+        path: "/sobre-nosotros",
+        relativePath: '/sobre-nosotros',
+        component: AboutUsPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    services: {
+        path: "/servicios",
+        relativePath: '/servicios',
+        component: ServicesPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    contact: {
+        path: "/contacto",
+        relativePath: '/contacto',
+        component: ServicesPage,
         auth: (user: UserEntity | undefined) => true,
     }
 
