@@ -18,7 +18,7 @@ export interface CalculateOfferForCarProps {
     }
 }
 export default interface CalculatorRepository {
-    // calculateCredit(): Promise<void>;
+    calculateCredit(vehicleValue: number, initialQuote: number, months: number, insuranceId: string): Promise<number>;
     calculateOfferForCar(_: CalculateOfferForCarProps): Promise<CalculatedEntity>;
 }
 

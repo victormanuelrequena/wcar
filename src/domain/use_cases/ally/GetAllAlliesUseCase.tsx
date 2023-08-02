@@ -1,3 +1,4 @@
+import AllyEntity from "../../entities/AllyEntity";
 import AlliesProvider from "../../providers/ally/AllyProvider";
 import AllyRepository from "../../repositories/AllyRepository";
 
@@ -12,7 +13,7 @@ export default class GetAllAlliesUseCase{
         this._allyRepository = _.allyRepository;
         this._alliesProvider = _.alliesProvider;
     }
-    async call() {
+    async call(): Promise<AllyEntity[]> {
         try {
             const response = await this._allyRepository.getAll();
             this._alliesProvider.Actions.setAllies(response);

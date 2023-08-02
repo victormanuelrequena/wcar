@@ -1,3 +1,4 @@
+import CityEntity from "../../entities/CityEntity";
 import CityProvider from "../../providers/city/CityProvider";
 import CityRepository from "../../repositories/CityRepository";
 
@@ -15,7 +16,7 @@ export default class GetAllCitiesUseCase {
         this._cityProvider = _.cityProvider;
     }
 
-    async call(){
+    async call(): Promise<CityEntity[]>{
         try {
             if(this._cityProvider.Actions.cities.length > 0){
                 console.log('dssa')

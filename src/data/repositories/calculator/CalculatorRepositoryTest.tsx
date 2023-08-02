@@ -8,6 +8,9 @@ const _test:CalculatedEntity = {
 }
 @injectable()
 export default class CalculatorRepositoryTest implements CalculatorRepository{
+    calculateCredit(vehicleValue: number, initialQuote: number, months: number, insuranceId: string): Promise<number> {
+        return Promise.resolve(320000);
+    }
     async calculateOfferForCar(_: any): Promise<CalculatedEntity> {
         return Promise.resolve(_test);
     }

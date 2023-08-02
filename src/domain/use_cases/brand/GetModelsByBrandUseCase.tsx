@@ -11,7 +11,7 @@ export default class GetModelsByBrandUseCase {
     constructor(_: props) {
         this._brandRepository = _.brandRepository;
     }
-    async call(brandId: string) {
+    async call(brandId: string): Promise<string[]> {
         try {
             const response = await this._brandRepository.getModelsOfBrand(brandId);
             return response;

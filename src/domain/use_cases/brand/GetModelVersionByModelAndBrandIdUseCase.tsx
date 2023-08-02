@@ -11,7 +11,7 @@ export default class GetModelVersionByModelAndBrandIdUseCase {
     constructor(_: props) {
         this._brandRepository = _.brandRepository;
     }
-    async call(brandId: string, model: string) {
+    async call(brandId: string, model: string): Promise<string[]> {
         try {
             const response = await this._brandRepository.getVersionOfModel(brandId, model);
             return response;

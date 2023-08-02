@@ -1,3 +1,4 @@
+import DepartmentEntity from "../../entities/DepartmentEntity";
 import DepartmentProvider from "../../providers/department/DepartmentProvider";
 import DepartmentRepository from "../../repositories/DepartmentRepository";
 
@@ -12,7 +13,7 @@ export default class GetAllDepartmentsUseCase {
         this._departmentRepository = _.departmentRepository;
         this._departmentProvider = _.departmentProvider;
     }
-    async call() {
+    async call(): Promise<DepartmentEntity[]> {
         try {
             if (this._departmentProvider.Actions.departments.length > 0) {
                 return this._departmentProvider.Actions.departments;

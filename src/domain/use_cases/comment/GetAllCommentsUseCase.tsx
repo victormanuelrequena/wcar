@@ -1,5 +1,6 @@
 import { injectable } from "inversify";
 import CommentRepository from "../../repositories/CommentRepository";
+import CommentEntity from "../../entities/CommentEntity";
 
 interface props {
     commentRepository: CommentRepository;
@@ -12,7 +13,7 @@ export default class GetAllCommentsUseCase {
         this._commentRepository = _.commentRepository;
     }
 
-    async call() {
+    async call(): Promise<CommentEntity[]> {
         return await this._commentRepository.getall();
     }
 }

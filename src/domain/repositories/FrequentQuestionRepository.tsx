@@ -1,7 +1,7 @@
-import FrequentQuestion from "../entities/FrequentQuestionEntity";
+import FrequentQuestionEntity from "../entities/FrequentQuestionEntity";
 
 export default interface FrequentQuestionRepository {
-    getAll(): Promise<FrequentQuestion[]>;
+    getAll(): Promise<FrequentQuestionEntity[]>;
 }
 
 export const FrequentQuestionRepositoryName = "FrequentQuestionRepository";

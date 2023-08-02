@@ -1,3 +1,4 @@
+import TypeOfFuelEntity from "../../entities/TypeOfFuelEntity";
 import TypeOfFuelProvider from "../../providers/typeOfFuel/TypeOfFuelProvider";
 import TypeOfFuelRepository from "../../repositories/TypeOfFuelRepository";
 
@@ -12,8 +13,9 @@ export default class GetAllTypeOfFuelsUseCase {
         this._typeOfFuelRepository = _.typeOfFuelRepository;
         this._typeOfFuelProvider = _.typeOfFuelProvider;
     }
-    async call() {
+    async call():Promise<TypeOfFuelEntity[]> {
         try {
+            if(this._typeOfFuelProvider.Actions.typeOfFuels.length > 0) return this._typeOfFuelProvider.Actions.typeOfFuels;
             const response = await this._typeOfFuelRepository.getAll();
             this._typeOfFuelProvider.Actions.setTypeOfFuels(response);
             return response;

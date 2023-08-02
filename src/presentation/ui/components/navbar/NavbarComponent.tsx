@@ -27,7 +27,7 @@ const NavbarComponent = () => {
             <a className="nav-link" href="#">Sobre Nosotros</a>
           </li>
           <li className="nav-item mx-3">
-            <Link to={routes.quoteYourCar.relativePath} className="nav-link">Vende tu carro</Link>
+            <Link to={routes.sellYourCar.relativePath} className="nav-link">Vende tu carro</Link>
           </li>
           <li className="nav-item mx-3">
             <Link to={routes.buyYourCar.relativePath} className="nav-link">Compra tu carro</Link>

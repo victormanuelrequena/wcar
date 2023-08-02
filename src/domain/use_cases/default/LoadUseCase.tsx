@@ -30,7 +30,7 @@ export default class LoadUseCase {
         this._getAllCitiesUseCase = _.getAllCitiesUseCase;
     }
 
-    async call() {
+    async call(): Promise<void> {
         try {
             await Promise.all([
                 await this._getAllAlliesUseCase.call(),

@@ -66,6 +66,10 @@ import CalculateOfferForCarUseCase from "../domain/use_cases/calculator/Calculat
 import FrequentQuestionRepository, { FrequentQuestionRepositoryName } from "../domain/repositories/FrequentQuestionRepository";
 import FrequentQuestionRepositoryTest from "../data/repositories/frequentQuestion/FrequentQuestionRepositoryTest";
 import GetAllFrequentQuestionsUseCase from "../domain/use_cases/frequentQuestion/GetAllFrequentQuestionsUseCase";
+import InsuranceRepository, { InsuranceRepositoryName } from "../domain/repositories/InsuranceRepository";
+import { InsuranceRepositoryTest } from "../data/repositories/insurance/InsuranceRepositoryTest";
+import GetAllInsurancesUseCase from "../domain/use_cases/insurance/GetAllInsurancesUseCase";
+import CalculateCreditForCarUseCase from "../domain/use_cases/calculator/CalculateCreditForCarUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -85,6 +89,7 @@ di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSi
 di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
 di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
 di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryTest).inSingletonScope();
+di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryTest).inSingletonScope();
 di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
 di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
 
@@ -155,6 +160,11 @@ di.bind<GetModelVersionByModelAndBrandIdUseCase>(GetModelVersionByModelAndBrandI
 }).inSingletonScope();
 
 //calculator
+di.bind<CalculateCreditForCarUseCase>(CalculateCreditForCarUseCase.name).toDynamicValue((context) => {
+    return new CalculateCreditForCarUseCase({
+        calculatorRepository: context.container.get(CalculatorRepositoryName),
+    });
+}).inSingletonScope();
 di.bind<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCase.name).toDynamicValue((context) => {
     return new CalculateOfferForCarUseCase({
         calculatorRepository: context.container.get(CalculatorRepositoryName),
@@ -229,6 +239,13 @@ di.bind<LoadUseCase>(LoadUseCase.name).toDynamicValue((context) => {
 di.bind<GetAllFrequentQuestionsUseCase>(GetAllFrequentQuestionsUseCase.name).toDynamicValue((context) => {
     return new GetAllFrequentQuestionsUseCase({
         frequentQuestionRepository: context.container.get(FrequentQuestionRepositoryName),
+    });
+}).inSingletonScope();
+
+//insurance
+di.bind<GetAllInsurancesUseCase>(GetAllInsurancesUseCase.name).toDynamicValue((context) => {
+    return new GetAllInsurancesUseCase({
+        insuranceRepository: context.container.get(InsuranceRepositoryName),
     });
 }).inSingletonScope();
 
