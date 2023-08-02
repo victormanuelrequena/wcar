@@ -16,6 +16,7 @@ import QuoteYourCarPage from "../pages/sell/quote/QuoteYourCarPage";
 import QuoteSuccessfulPage from "../pages/sell/sucessfullQuote/QuoteSuccessfulPage";
 import AboutUsPage from "../pages/aboutUs/AboutUsPage";
 import ServicesPage from "../pages/services/ServicesPage";
+import ProceduresPage from "../pages/services/procedures/ProceduresPage";
 
 export interface iRoute {
     name: string,
@@ -108,6 +109,12 @@ const routes = {
         path: "/contacto",
         relativePath: '/contacto',
         component: ServicesPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    procedures: {
+        path: "/tramites",
+        relativePath: '/tramites',
+        component: ProceduresPage,
         auth: (user: UserEntity | undefined) => true,
     }
 

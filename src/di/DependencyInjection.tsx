@@ -70,6 +70,7 @@ import InsuranceRepository, { InsuranceRepositoryName } from "../domain/reposito
 import { InsuranceRepositoryTest } from "../data/repositories/insurance/InsuranceRepositoryTest";
 import GetAllInsurancesUseCase from "../domain/use_cases/insurance/GetAllInsurancesUseCase";
 import CalculateCreditForCarUseCase from "../domain/use_cases/calculator/CalculateCreditForCarUseCase";
+import GetAllProcedureQuestionsUseCase from "../domain/use_cases/frequentQuestion/GetAllProcedureQuestionsUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -238,6 +239,11 @@ di.bind<LoadUseCase>(LoadUseCase.name).toDynamicValue((context) => {
 //frequent
 di.bind<GetAllFrequentQuestionsUseCase>(GetAllFrequentQuestionsUseCase.name).toDynamicValue((context) => {
     return new GetAllFrequentQuestionsUseCase({
+        frequentQuestionRepository: context.container.get(FrequentQuestionRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<GetAllProcedureQuestionsUseCase>(GetAllProcedureQuestionsUseCase.name).toDynamicValue((context) => {
+    return new GetAllProcedureQuestionsUseCase({
         frequentQuestionRepository: context.container.get(FrequentQuestionRepositoryName),
     });
 }).inSingletonScope();

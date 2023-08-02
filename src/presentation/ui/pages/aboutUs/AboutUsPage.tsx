@@ -7,6 +7,7 @@ import { routes } from '../../routes/RoutesComponent';
 import CommenstLineComponent from '../../components/commentsLine/CommentsLineComponent';
 import FrequentQuestionsComponent from '../../components/frequentQuestions/FrequentQuestionsComponent';
 import CardVisionComponent from './components/cardVision/CardVisionComponent';
+import CardContactComponent from '../../components/cardContact/CardContactComponent';
 
 const AboutUsPage: FC<{}> = () => {
     return <div className="about_us_page">
@@ -113,16 +114,7 @@ const AboutUsPage: FC<{}> = () => {
                         </div>
                         <div className="col-md-1"></div>
                         <div className="col-md-4 d-flex align-items-center">
-                            <div className="bg_black card_contact">
-                                <div className="left_line left_line_blue_neon text-white">Hablemos</div>
-                                <h4 className="text-white">¿Necesitas asesoría? </h4>
-                                <a href='#' className="d-flex align-items-center pe-4 mt-3">
-                                    <Icons.Phone width={80} />
-                                    <span className="text-white ps-1">Si tienes alguna pregunta <br />
-                                        (00) 112 365 489</span>
-                                </a>
-                                <Link to={routes.contact.relativePath} className='btn btn_orange mt-4'>CONTÁCTA A UN ASESOR <Icons.Contact /> </Link>
-                            </div>
+                            <CardContactComponent />
                         </div>
                     </div>
                 </div>

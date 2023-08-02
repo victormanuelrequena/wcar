@@ -13,6 +13,10 @@ class FrequentQuestionRepositoryTest implements FrequentQuestionRepository{
     async getAll(): Promise<FrequentQuestion[]> {
         return [_test, _test, _test, _test, _test, _test, _test, _test,];
     }
+
+    async getProcedures(): Promise<FrequentQuestion[]> {
+        return [_test, _test, _test, _test, _test, _test, _test, _test,];
+    }
 }
 
 export default FrequentQuestionRepositoryTest;

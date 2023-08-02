@@ -18,6 +18,9 @@ const AccordeonComponent: FC<AccordeonComponentProps> = ({ title, subtitle, opti
                 {title}
             </div>
             <div className="container">
+                <div className="pb-5">
+                    {subtitle}
+                </div>
                 {
                     options.map((option, index) => <div className={`item ${index == open && 'active'}`} key={index} onClick={() => _handleOpen(index)}>
                         <div className="header">
