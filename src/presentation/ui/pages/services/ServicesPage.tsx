@@ -9,6 +9,7 @@ import { FC, useEffect, useState } from "react";
 import CalculateCreditForCarUseCase from '../../../../domain/use_cases/calculator/CalculateCreditForCarUseCase';
 import FrequentQuestionsComponent from '../../components/frequentQuestions/FrequentQuestionsComponent';
 import Layout from '../../layout/Layout';
+import FinancingServicesLineComponent from '../../components/financingServicesLine/FinancingServicesLineComponent';
 const steps: CardWithIconComponentProps[] = [];
 const ServicesPage: FC = () => {
 
@@ -49,7 +50,7 @@ const ServicesPage: FC = () => {
 
     return <div className="services_page">
         <Layout>
-            <section className="section_1 position-relative w-100">
+            <section className="section_1 position-relative w-100 mb-5">
                 <img src="/assets/services/bg_services_financing_pc.jpg" className='img-fluid w-100 d-none d-md-block bg_1' alt="" />
                 <div className="container">
                     <div className="col-md-4 position-absolute d-none d-md-block top-50 translate-middle-y">
@@ -64,8 +65,14 @@ const ServicesPage: FC = () => {
                     </div>
                 </div>
             </section>
-            <section className="section_2">Slider con cards</section>
-            <section className="section_3">Calculadora</section>
+            <FinancingServicesLineComponent/>
+            <section className="section_3 py-5">
+                <div className="container">
+                    <div className="row">
+                        
+                    </div>
+                </div>
+            </section>
             <section className="section_4">
                 <div className="container py-5">
                     <FrequentQuestionsComponent />
