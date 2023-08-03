@@ -49,7 +49,21 @@ const ServicesPage: FC = () => {
 
     return <div className="services_page">
         <Layout>
-            <section className="section_1">Aqui va el banner con texto</section>
+            <section className="section_1 position-relative w-100">
+                <img src="/assets/services/bg_services_financing_pc.jpg" className='img-fluid w-100 d-none d-md-block bg_1' alt="" />
+                <div className="container">
+                    <div className="col-md-4 position-absolute d-none d-md-block top-50 translate-middle-y">
+                        <div className="side side_top side_blue_neon mb-3" />
+                        <h1 className="text_md_white text_bold">¿Cómo funciona nuestro proceso<span className="text_md_white text_light text_italic"> de financiación?</span></h1>
+                    </div>
+                </div>
+                <img src="/assets/services/bg_services_financing_mobile.jpg" alt="" className="img-fluid w-100 d-block d-md-none" />
+                <div className="container">
+                    <div className="col-12 mt-3 d-flex d-md-none align-items-center">
+                        <h1 className="text_black text_bold text-center">¿Cómo funciona nuestro proceso de <span className="fw-light text_orange text_italic text-center">financiación?</span></h1>
+                    </div>
+                </div>
+            </section>
             <section className="section_2">Slider con cards</section>
             <section className="section_3">Calculadora</section>
             <section className="section_4">
