@@ -543,3 +543,33 @@ input {
     @include responsive-width(12);
   }
 }
+
+.blog_info_user{
+  display: flex;
+  align-items: center;
+  font-size: 0.8em;
+
+  img{
+    width: 2em;
+    height: 2em;
+    border-radius: 100%;
+    margin-right: 0.5em;
+  }
+
+  .date{
+    position: relative;
+    margin-left: 2em;
+
+    &::before{
+      position: absolute;
+      content: '';
+      width: 0.3em;
+      height: 0.3em;
+      top: calc(50% - 0.15em);
+      left: -1em;
+      background-color: var(--color-gray);
+    }
+  }
+
+
+}

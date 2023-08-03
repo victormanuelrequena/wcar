@@ -147,12 +147,12 @@ const HomePage: FC<{}> = () => {
                                 slidesToSlide: 2, // optional, default to 1.
                             },
                             desktop: {
-                                breakpoint: { max: 1280, min: 1024 },
+                                breakpoint: { max: 1500, min: 1024 },
                                 items: 3,
                                 slidesToSlide: 3, // optional, default to 1.
                             },
                             largeDesktop: {
-                                breakpoint: { max: 3000, min: 1280 },
+                                breakpoint: { max: 3000, min: 1500 },
                                 items: 4,
                                 slidesToSlide: 4, // optional, default to 1.
                             },

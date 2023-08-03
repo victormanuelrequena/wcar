@@ -18,6 +18,7 @@ import AboutUsPage from "../pages/aboutUs/AboutUsPage";
 import ServicesPage from "../pages/services/ServicesPage";
 import ProceduresPage from "../pages/services/procedures/ProceduresPage";
 import InsurancePage from "../pages/services/insurances/InsurancePage";
+import BlogPage from "../pages/blog/home/BlogPage";
 
 export interface iRoute {
     name: string,
@@ -124,7 +125,18 @@ const routes = {
         component: InsurancePage,
         auth: (user: UserEntity | undefined) => true,
     },
-
+    blog: {
+        path: "/blog",
+        relativePath: '/blog',
+        component: BlogPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    detailedBlog: {
+        path: "/blog/:id",
+        relativePath: '/blog',
+        component: BlogPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
 }
 
 const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {
@@ -134,15 +146,15 @@ const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {
     const _load = async () => {
         try {
             await di.get<LoadUseCase>(LoadUseCase.name).call();
-        } catch (_){}
+        } catch (_) { }
         setLoaded(true);
     }
     useEffect(() => {
         _load();
     }, []);
 
-    if (!loaded) return <div className="bg_1" style={{width: '100vw', height: '100vh'}}>
-        <LoadingComponent showLogo/>
+    if (!loaded) return <div className="bg_1" style={{ width: '100vw', height: '100vh' }}>
+        <LoadingComponent showLogo />
     </div>
     return <>
         <BrowserRouter>

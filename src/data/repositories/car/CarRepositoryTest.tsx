@@ -12,6 +12,11 @@ const _testCar: CarEntity = {
         id: "1",
         name: "Sedan"
     },
+    tag: {
+        id: "1",
+        name: "new",
+        color: "#00FEFE"
+    },
     rating: 3,
     images: [
         "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNhcnN8ZW58MHx8MHx8fDA%3D&w=1000&q=80",
@@ -137,6 +142,12 @@ class CarRepositoryTest implements CarRepository {
         return new Promise<void>((resolve, reject) => {
             window.location.href = routes.dateForCar.relativePath + '/' + carId + '/' + 'dsdsdssd';
             return resolve();
+        });
+    }
+
+    public async getFavoriteCars(): Promise<CarEntity[]> {
+        return new Promise<CarEntity[]>((resolve, reject) => {
+            resolve([_testCar, _testCar]);
         });
     }
 }

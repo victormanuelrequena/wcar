@@ -12,7 +12,7 @@ const dateToMonthDayYear = (date: Date): string => {
     const month = months[date.getMonth()];
     const day = date.getDate();
     const year = date.getFullYear();
-    return `${month} ${day} / ${year}`;
+    return `${month} ${day}, ${year}`;
 }
 
 const dateToMMDDYYYY = (date: Date): string => {
