@@ -10,6 +10,7 @@ import CardContactComponent from '../../../components/cardContact/CardContactCom
 
 const ProceduresPage: FC<{}> = () => {
     const [procudesQuestions, setProcudesQuestions] = useState<FrequentQuestionEntity[]>([]);
+    
     const _getProceduresQuestions = async () => {
         try {
             const response = await di.get<GetAllProcedureQuestionsUseCase>(GetAllProcedureQuestionsUseCase.name).call();

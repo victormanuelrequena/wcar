@@ -17,6 +17,7 @@ import QuoteSuccessfulPage from "../pages/sell/sucessfullQuote/QuoteSuccessfulPa
 import AboutUsPage from "../pages/aboutUs/AboutUsPage";
 import ServicesPage from "../pages/services/ServicesPage";
 import ProceduresPage from "../pages/services/procedures/ProceduresPage";
+import InsurancePage from "../pages/services/insurances/InsurancePage";
 
 export interface iRoute {
     name: string,
@@ -116,7 +117,13 @@ const routes = {
         relativePath: '/tramites',
         component: ProceduresPage,
         auth: (user: UserEntity | undefined) => true,
-    }
+    },
+    insurance: {
+        path: "/seguro-todo-riesgo",
+        relativePath: '/seguro-todo-riesgo',
+        component: InsurancePage,
+        auth: (user: UserEntity | undefined) => true,
+    },
 
 }
 
