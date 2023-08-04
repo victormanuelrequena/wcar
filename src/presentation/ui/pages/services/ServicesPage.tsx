@@ -77,7 +77,7 @@ const ServicesPage: FC = () => {
                 <div className="container">
                     <div className="row">
                         <ServicesCalculatorFormComponent formFunctions={formFunctions} insuranceList={insurances} className='d-none d-md-block' _handleOnFormChange={_handleOnFormChange} />
-                        <div className="col-12 col-md-6 col-lg-4 d-flex flex-column justify-content-center align-items-start">
+                        <div className="col-12 col-md-6 col-lg-5 col-xl-4 d-flex flex-column justify-content-center align-items-start">
                             <div className="side side_top side_blue_neon mb-3" />
                             <div className="h1 text_black text_bold">Calcula tu <span className="fw-lighter text_italic">préstamo</span></div>
                             <p className="text_light">Nada como saber desde el primer momento cuanto debes pagar mensual. Conoce el valor de tu cuota con estos datos, de manera fácil y sencilla.</p>
