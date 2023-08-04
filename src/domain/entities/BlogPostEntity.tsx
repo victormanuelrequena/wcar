@@ -7,4 +7,5 @@ export default interface BlogPostEntity {
     createdAt: Date,
     photoUrl: string,
     user: UserEntity,
+    content?: string | undefined,
 }

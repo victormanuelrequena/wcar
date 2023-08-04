@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 import CarEntity from "../../../domain/entities/CarEntity";
+import ProviderProps from '../../../domain/providers/ProviderProps';
 import FavoriteCarsContextType from "../../../domain/providers/favoriteCars/FavoriteCarsContextType";
 import FavoriteCarsContext from "../../../domain/providers/favoriteCars/FavoriteCarsContext";
 import FavoriteCarsProvider from "../../../domain/providers/favoriteCars/FavoriteCarsProviderName";
-import ProviderProps from '../../../domain/providers/ProviderProps';
 
 const _Actions: FavoriteCarsContextType = {
     favoriteCars: [],

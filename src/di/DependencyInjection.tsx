@@ -74,10 +74,10 @@ import GetAllProcedureQuestionsUseCase from "../domain/use_cases/frequentQuestio
 import GetAllBlogsAndMainPostUseCase from "../domain/use_cases/blog/GetAllBlogsAndMainPostUseCase";
 import BlogPostRepository, { BlogPostRepositoryName } from "../domain/repositories/BlogPostRepository";
 import BlogPostRepositoryTest from "../data/repositories/blogPost/BlogPostRepositoryTest";
-import NotificationRepository, { NotificationRepositoryName } from "../domain/repositories/NotificationRepository";
-import FavoriteCarsProvider, { FavoriteCarsProviderName } from "../domain/providers/favoriteCars/FavoriteCarsProviderName";
 import FavoriteCarsProviderImpl from "../presentation/providers/favoriteCars/FavoriteCarsProviderImpl";
 import GetFavoriteCarsUseCase from "../domain/use_cases/car/GetFavoriteCarsUseCase";
+import GetBlogPostByIdUseCase from "../domain/use_cases/blog/GetBlogPostByIdUseCase.tsx";
+import FavoriteCarsProvider, { FavoriteCarsProviderName } from "../domain/providers/favoriteCars/FavoriteCarsProviderName";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -125,6 +125,11 @@ di.bind<GetAllAlliesUseCase>(GetAllAlliesUseCase.name).toDynamicValue((context) 
 }).inSingletonScope();
 
 //blog post
+di.bind<GetBlogPostByIdUseCase>(GetBlogPostByIdUseCase.name).toDynamicValue((context) => {
+    return new GetBlogPostByIdUseCase({
+        blogPostRepository: context.container.get(BlogPostRepositoryName),
+    });
+}).inSingletonScope();
 di.bind<GetAllBlogsAndMainPostUseCase>(GetAllBlogsAndMainPostUseCase.name).toDynamicValue((context) => {
     return new GetAllBlogsAndMainPostUseCase({
         blogPostRepository: context.container.get(BlogPostRepositoryName),
@@ -292,7 +297,7 @@ di.bind<GetAllTypeOfFuelsUseCase>(GetAllTypeOfFuelsUseCase.name).toDynamicValue(
 //type of vehicle
 di.bind<GetAllTypeVehiclesUseCase>(GetAllTypeVehiclesUseCase.name).toDynamicValue((context) => {
     return new GetAllTypeVehiclesUseCase({
-        typeVehicleRepository: context.container.get(TypeOfFuelRepositoryName),
+        typeVehicleRepository: context.container.get(TypeVehicleRepositoryName),
         typeVehicleProvider: context.container.get(TypeVehicleProviderName)
     });
 }).inSingletonScope();

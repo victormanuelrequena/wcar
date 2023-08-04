@@ -32,8 +32,15 @@ const NavbarComponent = () => {
           <li className="nav-item mx-3">
             <Link to={routes.buyYourCar.relativePath} className="nav-link">Compra tu carro</Link>
           </li>
-          <li className="nav-item mx-3">
-            <a className="nav-link" href="#">Servicios</a>
+          <li className="nav-item mx-3 dropdown">
+            <div className="dropdown-title">
+              <div className="nav-link">Servicios <span className="text_reduced" style={{fontSize: 10}}>&#9660;</span> </div>
+            </div>
+            <div className="dropdown_content">
+              <Link to={routes.services.relativePath} className="dropdown-item">Financiación</Link>
+              <Link to={routes.insurance.relativePath} className="dropdown-item">Seguros</Link>
+              <Link to={routes.procedures.relativePath} className="dropdown-item">Trámintes</Link>
+            </div>
           </li>
           <li className="nav-item mx-3">
             <a className="nav-link" href="#">Blog</a>
@@ -54,7 +61,7 @@ const NavbarComponent = () => {
           Account
         </button>
       </div>
-    </nav>
+    </nav >
   );
 };
 

@@ -4,7 +4,8 @@ import ColorEntity from "../../../domain/entities/ColorEntity";
 
 const _colorTest:ColorEntity = {
     id:"1",
-    name:"Rojo"
+    name:"Rojo",
+    colorHex:"#FF0000"
 }
 @injectable()
 class ColorRepositoryTest implements ColorRepository{

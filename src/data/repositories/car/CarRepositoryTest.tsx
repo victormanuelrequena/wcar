@@ -10,7 +10,8 @@ const _testCar: CarEntity = {
     model: 'Class C',
     type: {
         id: "1",
-        name: "Sedan"
+        name: "Sedan",
+        photo: '/data/typeVehicles/suv.svg',
     },
     tag: {
         id: "1",
@@ -58,11 +59,13 @@ const _testCar: CarEntity = {
     outstanding: true,
     brand: {
         id: "1",
-        name: "Mercedez"
+        name: "Mercedez",
+        image: "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png"
     },
     color: {
         id: "1",
         name: "gray",
+        colorHex: "#00FEFE",
     },
     typeOfFuel: {
         id: "1",

@@ -4,7 +4,8 @@ import BrandEntity from "../../../domain/entities/BrandEntity";
 
 const _brandTest:BrandEntity = {
     id:"1",
-    name:"Mercedez"
+    name:"Mercedez",
+    image: "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png"
 }
 @injectable()
 class BrandRepositoryTest implements BrandRepository{

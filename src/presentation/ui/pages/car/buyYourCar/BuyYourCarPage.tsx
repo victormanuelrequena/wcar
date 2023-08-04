@@ -13,6 +13,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import OrderByEntity from '../../../../../domain/entities/OrderByEntity';
 import FilterComponent from './components/filterComponent/FilterComponent';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
+import GetModelsByBrandUseCase from '../../../../../domain/use_cases/brand/GetModelsByBrandUseCase';
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -132,7 +133,7 @@ const BuyYourCarPage: FC<{}> = () => {
                             <div className="row">
                                 {cars == undefined && <LoadingComponent />}
                                 {cars != undefined && cars.length == 0 && <NotResultsComponent />}
-                                {cars != undefined && cars.length > 0 && cars.map((car, index) => <div className={`mb-3 ${openFilters ? 'col-md-6 col-xl-4' : 'col-md-4 col-xl-3'}`} key={index}>
+                                {cars != undefined && cars.length > 0 && cars.map((car, index) => <div className={`mb-3 ${openFilters ? 'col-md-12 col-lg-3 col-xl-4' : 'col-md-4 col-xl-3'}`} key={index}>
                                     <CarCardComponent car={car} />
                                 </div>)}
                             </div>

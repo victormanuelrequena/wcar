@@ -4,11 +4,15 @@ import TypeVehicleRepository from "../../../domain/repositories/TypeVehicleRepos
 
 const _typevehicleTest:TypeVehicleEntity = {
     id:"1",
-    name:"Gasolina"
+    name:"SUV",
+    photo: '/data/typeVehicles/suv.svg',
+    count: 340,
 }
+
 @injectable()
 class TypeVehicleRepositoryTest implements TypeVehicleRepository {
     async getAll(): Promise<TypeVehicleEntity[]> {
+        console.log('is getting this', _typevehicleTest);
         return [_typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest];
     }
 }
