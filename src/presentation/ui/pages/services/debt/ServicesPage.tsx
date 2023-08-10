@@ -1,26 +1,28 @@
-import { set, useForm } from 'react-hook-form';
-import di from '../../../../di/DependencyInjection';
-import InsuranceEntity from '../../../../domain/entities/InsuranceEntity';
-import GetAllInsurancesUseCase from '../../../../domain/use_cases/insurance/GetAllInsurancesUseCase';
-import Icons from '../../assets/Icons';
-import CardWithIconComponentProps from '../../components/cardWithIcon/CardWithIconComponentProps';
+import { useForm } from 'react-hook-form';
+import di from '../../../../../di/DependencyInjection';
+import InsuranceEntity from '../../../../../domain/entities/InsuranceEntity';
+import GetAllInsurancesUseCase from '../../../../../domain/use_cases/insurance/GetAllInsurancesUseCase';
+import Icons from '../../../assets/Icons';
 import './ServicesPageStyles.scss';
-import { FC, useEffect, useState } from "react";
-import CalculateCreditForCarUseCase from '../../../../domain/use_cases/calculator/CalculateCreditForCarUseCase';
-import FrequentQuestionsComponent from '../../components/frequentQuestions/FrequentQuestionsComponent';
-import Layout from '../../layout/Layout';
-import FinancingServicesLineComponent from '../../components/financingServicesLine/FinancingServicesLineComponent';
-import ServicesCalculatorFormComponent from './components/ServicesCalculatorFormComponent';
-import Validators from '../../../utils/Validators';
+import { FC, useContext, useEffect, useState } from "react";
+import CalculateCreditForCarUseCase from '../../../../../domain/use_cases/calculator/CalculateCreditForCarUseCase';
+import FrequentQuestionsComponent from '../../../components/frequentQuestions/FrequentQuestionsComponent';
+import Layout from '../../../layout/Layout';
+import FinancingServicesLineComponent from '../../../components/financingServicesLine/FinancingServicesLineComponent';
+import ServicesCalculatorFormComponent from './components/calculator/ServicesCalculatorFormComponent';
+import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
+import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
+import CalculatorTitleComponent from './components/message/CalculatorTitleComponent';
+import CurrencyParse from '../../../../utils/CurrencyParse';
 
-const steps: CardWithIconComponentProps[] = [];
 const ServicesPage: FC = () => {
 
-    const formFunctions = useForm();
+    const { addToast } = useContext(ModalsContext) as ModalsContextType;
 
+    const formFunctions = useForm();
     const [estimatedDebt, setEstimatedDebt] = useState<number | undefined>(undefined);
     const [insurances, setInsurances] = useState<InsuranceEntity[]>([]);
-    const { register, setValue, handleSubmit, watch, getValues, formState: { errors } } = formFunctions;
+    const { getValues } = formFunctions;
 
     const _getAllInsurances = async () => {
         try {
@@ -36,13 +38,13 @@ const ServicesPage: FC = () => {
             const response = await di.get<CalculateCreditForCarUseCase>(CalculateCreditForCarUseCase.name).call(data.vehicleValue, data.initialQuote, data.months, data.insuranceId);
             setEstimatedDebt(response);
         } catch (error) {
-
+            addToast('Ha ocurrido un error al calcular el crédito', 'error', undefined);
         }
     }
 
     const _handleOnFormChange = () => {
         const values = getValues();
-        if (values.vehicleValue && values.initialQuote && values.months && values.insuranceId) {
+        if (values.vehicleValue && values.initialValue && values.months && values.insuranceId) {
             _handleSubmit(values);
         } else {
             setEstimatedDebt(undefined);
@@ -76,24 +78,29 @@ const ServicesPage: FC = () => {
             <section className="section_3 py-5 position-relative">
                 <div className="container">
                     <div className="row">
-                        <ServicesCalculatorFormComponent formFunctions={formFunctions} insuranceList={insurances} className='d-none d-md-block' _handleOnFormChange={_handleOnFormChange} />
+                        <div className="d-md-none col-12">
+                            <CalculatorTitleComponent />
+                        </div>
+                        <div className="col-12 col-md-6 my-3">
+                            <ServicesCalculatorFormComponent formFunctions={formFunctions} insuranceList={insurances} handleOnFormChange={_handleOnFormChange} />
+
+                        </div>
                         <div className="col-12 col-md-6 col-lg-5 col-xl-4 d-flex flex-column justify-content-center align-items-start">
-                            <div className="side side_top side_blue_neon mb-3" />
-                            <div className="h1 text_black text_bold">Calcula tu <span className="fw-lighter text_italic">préstamo</span></div>
-                            <p className="text_light">Nada como saber desde el primer momento cuanto debes pagar mensual. Conoce el valor de tu cuota con estos datos, de manera fácil y sencilla.</p>
-                            <ServicesCalculatorFormComponent formFunctions={formFunctions} insuranceList={insurances} className='d-block d-md-none mb-4' _handleOnFormChange={_handleOnFormChange} />
+                            <div className="d-md-block d-none">
+                                <CalculatorTitleComponent />
+                            </div>
                             <div className="card shadow-sm px-0 px-md-2 px-lg-4 position-relative calculator_card">
                                 <div className="card-body">
                                     <div className="row d-flex align-items-center justify-content-center mt-3">
                                         <div className="col-3 d-flex justify-content-md-end">
-                                                <Icons.MoneyHand />
+                                            <Icons.MoneyHand />
                                         </div>
                                         <div className="col-1">
                                             <div className="line_gray line_gray_vertical" />
                                         </div>
                                         <div className="col-8 d-flex flex-column">
                                             <p className="text_light mb-1">Tu cuota mensual sería de:</p>
-                                            <h2 className="text_orange mb-0">{estimatedDebt ?? 0}</h2>
+                                            <h2 className="text_orange mb-0">{CurrencyParse.toCop(estimatedDebt ?? 0)}</h2>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -119,7 +126,7 @@ const ServicesPage: FC = () => {
                 </div>
             </section>
         </Layout>
-    </div>
+    </div >
 }
 
 export default ServicesPage;

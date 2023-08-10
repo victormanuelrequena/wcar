@@ -15,7 +15,7 @@ import SellYourCarPage from "../pages/car/sellYourCar/SellYourCarPage";
 import QuoteYourCarPage from "../pages/sell/quote/QuoteYourCarPage";
 import QuoteSuccessfulPage from "../pages/sell/sucessfullQuote/QuoteSuccessfulPage";
 import AboutUsPage from "../pages/aboutUs/AboutUsPage";
-import ServicesPage from "../pages/services/ServicesPage";
+import ServicesPage from "../pages/services/debt/ServicesPage";
 import ProceduresPage from "../pages/services/procedures/ProceduresPage";
 import InsurancePage from "../pages/services/insurances/InsurancePage";
 import BlogPage from "../pages/blog/home/BlogPage";

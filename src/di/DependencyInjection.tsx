@@ -60,7 +60,7 @@ import CityProvider, { CityProviderName } from "../domain/providers/city/CityPro
 import CityRepository, { CityRepositoryName } from "../domain/repositories/CityRepository";
 import { CityRepositoryTest } from "../data/repositories/city/CityRepositoryTest";
 import CityProviderImpl from "../presentation/providers/city/CityProviderImpl";
-import CalculatorRepository, { CalculateOfferForCarProps, CalculatorRepositoryName } from "../domain/repositories/CalculatorRepository";
+import CalculatorRepository, { CalculatorRepositoryName } from "../domain/repositories/CalculatorRepository";
 import CalculatorRepositoryTest from "../data/repositories/calculator/CalculatorRepositoryTest";
 import CalculateOfferForCarUseCase from "../domain/use_cases/calculator/CalculateOfferForCarUseCase";
 import FrequentQuestionRepository, { FrequentQuestionRepositoryName } from "../domain/repositories/FrequentQuestionRepository";
@@ -78,6 +78,7 @@ import FavoriteCarsProviderImpl from "../presentation/providers/favoriteCars/Fav
 import GetFavoriteCarsUseCase from "../domain/use_cases/car/GetFavoriteCarsUseCase";
 import GetBlogPostByIdUseCase from "../domain/use_cases/blog/GetBlogPostByIdUseCase.tsx";
 import FavoriteCarsProvider, { FavoriteCarsProviderName } from "../domain/providers/favoriteCars/FavoriteCarsProviderName";
+import CalculateInsuranceUseCase from "../domain/use_cases/calculator/CalculateInsuranceUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -184,6 +185,11 @@ di.bind<GetModelVersionByModelAndBrandIdUseCase>(GetModelVersionByModelAndBrandI
 //calculator
 di.bind<CalculateCreditForCarUseCase>(CalculateCreditForCarUseCase.name).toDynamicValue((context) => {
     return new CalculateCreditForCarUseCase({
+        calculatorRepository: context.container.get(CalculatorRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<CalculateInsuranceUseCase>(CalculateInsuranceUseCase.name).toDynamicValue((context) => {
+    return new CalculateInsuranceUseCase({
         calculatorRepository: context.container.get(CalculatorRepositoryName),
     });
 }).inSingletonScope();

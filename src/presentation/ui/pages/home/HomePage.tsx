@@ -22,7 +22,6 @@ const HomePage: FC<{}> = () => {
             const response = await di.get<GetSomeRandomCarsUseCase>(GetSomeRandomCarsUseCase.name).call();
             setCars(response);
         } catch (error) {
-            console.log('error', error);
             setCars([]);
         }
     }

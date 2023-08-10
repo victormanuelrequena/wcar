@@ -24,7 +24,7 @@ const NavbarComponent = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item mx-3">
-            <a className="nav-link" href="#">Sobre Nosotros</a>
+            <Link className="nav-link" to={routes.aboutUs.relativePath}>Sobre Nosotros</Link>
           </li>
           <li className="nav-item mx-3">
             <Link to={routes.sellYourCar.relativePath} className="nav-link">Vende tu carro</Link>
@@ -43,7 +43,7 @@ const NavbarComponent = () => {
             </div>
           </li>
           <li className="nav-item mx-3">
-            <a className="nav-link" href="#">Blog</a>
+            <Link className="nav-link" to={routes.blog.relativePath}>Blog</Link>
           </li>
           <li className="nav-item mx-3">
             <a className="nav-link" href="#">Contacto</a>

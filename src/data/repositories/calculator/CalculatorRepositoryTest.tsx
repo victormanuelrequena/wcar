@@ -8,6 +8,9 @@ const _test:CalculatedEntity = {
 }
 @injectable()
 export default class CalculatorRepositoryTest implements CalculatorRepository{
+    calculateInsurance(name: string, phone: string, email: string, cityId: string, licensePlate: string): Promise<void> {
+        return Promise.resolve(undefined);
+    }
     calculateCredit(vehicleValue: number, initialQuote: number, months: number, insuranceId: string): Promise<number> {
         return Promise.resolve(320000);
     }

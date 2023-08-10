@@ -13,6 +13,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import Icons from '../../../assets/Icons';
 import { routes } from '../../../routes/RoutesComponent';
 import { Link } from 'react-router-dom';
+import CalculateInsuranceUseCase from '../../../../../domain/use_cases/calculator/CalculateInsuranceUseCase';
 
 const InsurancePage: FC<{}> = () => {
 
@@ -22,7 +23,7 @@ const InsurancePage: FC<{}> = () => {
 
     const _handleSubmit = async (data: any) => {
         try {
-            // const response = await di.get<GetCalculatedInsuranceUseCase>(GetCalculatedInsuranceUseCase.name).call(data);
+            const response = await di.get<CalculateInsuranceUseCase>(CalculateInsuranceUseCase.name).call(data.name, data.phone, data.email, data.cityId, data.vehicle_plates);
             addToast('Su cotización ha sido enviada, pronto nos pondremos en contacto con usted', 'success', null);
             reset();
         } catch (error) {
@@ -123,13 +124,13 @@ const InsurancePage: FC<{}> = () => {
                                         </div>
                                         <div className="form-group my-3">
                                             <label className='mandatory'>Ciudad</label>
-                                            <select className="form-control" {...register('city', Validators({
+                                            <select className="form-control" {...register('cityId', Validators({
                                                 required: true,
                                             }))}>
                                                 <option value="">Seleccione una ciudad</option>
                                                 {cities.map((city, index) => <option key={index} value={city.id}>{city.name}</option>)}
                                             </select>
-                                            <ErrorMessage as="aside" errors={errors} name='city' />
+                                            <ErrorMessage as="aside" errors={errors} name='cityId' />
                                         </div>
                                         <div className="form-group my-3">
                                             <label className='mandatory'>Placas del vehículo</label>
@@ -155,6 +156,7 @@ const InsurancePage: FC<{}> = () => {
                                     <label className="form-check-label text_gray">
                                         Acepto que un asesor de wcar me contacte por WhatsApp.
                                     </label>
+                                    <ErrorMessage as="aside" errors={errors} name='contact_by_whatsapp' />
                                 </div>
                             </form>
                         </div>

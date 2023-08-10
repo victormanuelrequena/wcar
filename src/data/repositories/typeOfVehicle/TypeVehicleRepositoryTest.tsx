@@ -12,7 +12,6 @@ const _typevehicleTest:TypeVehicleEntity = {
 @injectable()
 class TypeVehicleRepositoryTest implements TypeVehicleRepository {
     async getAll(): Promise<TypeVehicleEntity[]> {
-        console.log('is getting this', _typevehicleTest);
         return [_typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest, _typevehicleTest];
     }
 }

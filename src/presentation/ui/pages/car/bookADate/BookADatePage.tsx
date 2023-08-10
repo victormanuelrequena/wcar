@@ -53,7 +53,6 @@ const BookADatePage: FC<{}> = () => {
                 setAvailableDates(response);
             }
         } catch (error) {
-            console.log('error on getAvailableDates', error);
             setAvailableDates([]);
         }
     }

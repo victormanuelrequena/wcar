@@ -19,7 +19,6 @@ export default class GetAllCitiesUseCase {
     async call(): Promise<CityEntity[]>{
         try {
             if(this._cityProvider.Actions.cities.length > 0){
-                console.log('dssa')
                 return this._cityProvider.Actions.cities;
             }else{
                 const cities = await this._cityRepository.getAll();

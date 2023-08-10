@@ -61,7 +61,6 @@ const _Provider: React.FC<ProviderProps> = ({ children }) => {
     </ModalsContext.Provider>;
 }
 
-console.log('set actions', _Actions);
 
 class ModalsProviderImpl implements ModalsProvider {
     public context = ModalsContext;
