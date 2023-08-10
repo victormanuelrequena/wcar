@@ -159,10 +159,12 @@
       border-bottom: solid 3px black;
       border-left: solid 3px black;
     }
+  }
 
-    & svg {
-      margin-left: 0.8em;
-    }
+
+  & svg {
+    margin-left: 0.8em;
+    width: 2em;
   }
 
   // &.btn_cut {
