@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './NavbarStyles.scss'; // Custom CSS file for Navbar
 import { Link } from 'react-router-dom';
@@ -6,9 +6,11 @@ import { routes } from '../../routes/RoutesComponent';
 import { Collapse, Navbar, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 import Icons from '../../assets/Icons';
 import CardFavoriteComponent from './components/cardFavorite/CardFavoriteComponent';
+import UserContext from '../../../../domain/providers/user/UserContext';
+import UserContextType from '../../../../domain/providers/user/UserContextType';
 
 const NavbarComponent = () => {
-
+  const {user} = useContext(UserContext) as UserContextType;
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -65,7 +67,7 @@ const NavbarComponent = () => {
         <div className="btn d-flex align-items-center">
           <Icons.PersonRounded width={20} height={20} />
           <div className="d-none d-xl-block">
-            Cuenta
+            {user?.name ?? 'Cuenta'}
           </div>
         </div>
         <button

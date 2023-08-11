@@ -21,6 +21,7 @@ import InsurancePage from "../pages/services/insurances/InsurancePage";
 import BlogPage from "../pages/blog/home/BlogPage";
 import BlogDetailedPage from "../pages/blog/detailed/BlogDetailedPage";
 import ContactPage from "../pages/contact/ContactPage";
+import SignInPage from "../pages/auth/signIn/SignInPage";
 
 export interface iRoute {
     name: string,
@@ -139,6 +140,12 @@ const routes = {
         component: BlogDetailedPage,
         auth: (user: UserEntity | undefined) => true,
     },
+    signIn: {
+        path: "/iniciar-sesion",
+        relativePath: '/iniciar-sesion',
+        component: SignInPage,
+        auth: (user: UserEntity | undefined) => !user,
+    }
 }
 
 const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {

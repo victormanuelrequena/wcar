@@ -15,6 +15,7 @@ export default class LikeCarUseCase {
     }
     async call(car: CarEntity, like: boolean): Promise<void> {
         const response = await this._carRepository.likeCar(car.id, like);
+        console.log(this._favoriteCarProvider.Actions);
         if(like) this._favoriteCarProvider.Actions.addCar(car);
         else this._favoriteCarProvider.Actions.removeCar(car);
         return response;

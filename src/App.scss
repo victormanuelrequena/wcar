@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Trebuchet+MS:ital,wght@0,400;0,700;1,400&display=swap');
 
-.container {
-  // max-width: 1200px;
-}
 
 :root {
   --color-yellow: #FDB649;
@@ -132,7 +129,7 @@
   border-radius: 0;
   border-bottom-left-radius: 2em;
   border-top-right-radius: 2em;
-  padding: 0.7em 1em;
+  padding: 0.5em 1em;
 
   &.btn_orange {
     background-color: var(--color-orange);
@@ -174,6 +171,11 @@
   // &.btn_cut {
   //   clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
   // }
+
+  &.btn_gray_light {
+    background-color: var(--color-gray-light);
+    color: black;
+  }
 
 
   &.btn_in_black_orange {
@@ -444,6 +446,12 @@ input {
   background-color: var(--color-gray-light);
 }
 
+.footer .footer_sic {
+  @media screen and (max-width: 768px) {
+    background-color: white;
+  }
+}
+
 .loading_container {
   position: absolute;
   left: 0;
@@ -591,7 +599,7 @@ body {
     margin-left: -6px;
   }
 
-  .rs-slider-handle[data-key="end"]{
+  .rs-slider-handle[data-key="end"] {
     margin-left: -10px;
   }
 
@@ -602,4 +610,8 @@ body {
       background-color: var(--color-orange);
     }
   }
+}
+
+body h2 {
+  line-height: 1.1em;
 }

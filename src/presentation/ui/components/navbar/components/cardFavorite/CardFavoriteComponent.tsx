@@ -9,7 +9,7 @@ import { routes } from '../../../../routes/RoutesComponent';
 const CardFavoriteComponent: FC<CardFavoriteComponentProps> = ({ }) => {
     const { favoriteCars } = useContext(FavoriteCarsContext) as FavoriteCarsContextType;
 
-    if(!favoriteCars.length) return <div className="card_favorite_component">Agrega tus favoritos para verlos aquí </div>
+    if(!favoriteCars.length) return <div className="card_favorite_component p-4">Agrega tus favoritos para verlos aquí </div>
     return <div className="card_favorite_component">
         {favoriteCars.map((favoriteCar, index) => <Link to={routes.detailedCar.relativePath + '/' + favoriteCar.id} className="car_item d-flex" key={index}>
             <div className="car_image d-flex justify-content-center align-items-center">

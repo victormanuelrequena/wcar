@@ -230,7 +230,7 @@ di.bind<GetRelatedCarsByCardIdUseCase>(GetRelatedCarsByCardIdUseCase.name).toDyn
 di.bind<LikeCarUseCase>(LikeCarUseCase.name).toDynamicValue((context) => {
     return new LikeCarUseCase({
         carRepository: context.container.get(CarRepositoryName),
-        favoriteCarProvider: context.container.get(UserProviderName)
+        favoriteCarProvider: context.container.get(FavoriteCarsProviderName)
     });
 });
 di.bind<SearchCarsUseCase>(SearchCarsUseCase.name).toDynamicValue((context) => {

@@ -3,6 +3,7 @@ import CarEntity, { TransmissionCar } from "../../../domain/entities/CarEntity";
 import CarRepository from "../../../domain/repositories/CarRepository";
 import sleeper from "../../../domain/repositories/utils/Sleeper";
 import { routes } from "../../../presentation/ui/routes/RoutesComponent";
+import OrderByEntity from "../../../domain/entities/OrderByEntity";
 
 const _testCar: CarEntity = {
     id: "1",
@@ -75,7 +76,14 @@ const _testCar: CarEntity = {
 
 @injectable()
 class CarRepositoryTest implements CarRepository {
-    search(page: number, search?: string | undefined, brand?: string | undefined, year?: string | undefined, price?: number | undefined, type?: string[] | undefined, transmission?: TransmissionCar | undefined, availability?: string | undefined): Promise<{ cars: CarEntity[], maxPages: number }> {
+    search(page: number, search: string, brand: string | undefined,
+        year: string | undefined,
+        price: { min: number, max: number } | undefined,
+        type: string, transmission: TransmissionCar | undefined,
+        tag: string | undefined, km: { min: number, max: number } | undefined,
+        fuelId: string | undefined, colorId: string | undefined,
+        plateNumber: string | undefined, orderBy: OrderByEntity | undefined,
+    ): Promise<{ cars: CarEntity[], maxPages: number }> {
         return new Promise<{ cars: CarEntity[], maxPages: number }>(async (resolve, reject) => {
             //add a delay of 1s
             await sleeper(1000)(1);

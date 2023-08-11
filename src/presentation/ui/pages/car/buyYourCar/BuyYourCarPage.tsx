@@ -50,7 +50,7 @@ const BuyYourCarPage: FC<{}> = () => {
                 behavior: 'auto'
             });
             setCars(undefined);
-            const response = await di.get<SearchCarsUseCase>(SearchCarsUseCase.name).call(page);
+            const response = await di.get<SearchCarsUseCase>(SearchCarsUseCase.name).call(page, data.search, data.brand_id, data.year, data.price, data.type_vehcile_id, data.type_transmission, data.tag_id, data.km, data.type_fuel_id, data.color_id, data.plate_number, data.orderBy);
             setCars(response.cars);
             setMaxPages(response.maxPages);
         } catch (error) {
