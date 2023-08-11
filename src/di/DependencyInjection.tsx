@@ -79,6 +79,11 @@ import GetFavoriteCarsUseCase from "../domain/use_cases/car/GetFavoriteCarsUseCa
 import GetBlogPostByIdUseCase from "../domain/use_cases/blog/GetBlogPostByIdUseCase.tsx";
 import FavoriteCarsProvider, { FavoriteCarsProviderName } from "../domain/providers/favoriteCars/FavoriteCarsProviderName";
 import CalculateInsuranceUseCase from "../domain/use_cases/calculator/CalculateInsuranceUseCase";
+import TagRepository, { TagRepositoryName } from "../domain/repositories/TagRepository";
+import TagRepositoryTest from "../data/repositories/tag/TagRepositoryTest";
+import TagProvider, { TagProviderName } from "../domain/providers/tag/TagProvider";
+import TagProviderImpl from "../presentation/providers/tag/TagProviderImpl";
+import GetAllTagsUseCase from "../domain/use_cases/tag/GetAllTagsUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -100,6 +105,7 @@ di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingleto
 di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
 di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryTest).inSingletonScope();
 di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryTest).inSingletonScope();
+di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryTest).inSingletonScope();
 di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
 di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
 
@@ -111,6 +117,7 @@ di.bind<CityProvider>(CityProviderName).toConstantValue(CityProviderImpl);
 di.bind<DepartmentProvider>(DepartmentProviderName).toConstantValue(DepartmentProviderImpl);
 di.bind<FavoriteCarsProvider>(FavoriteCarsProviderName).toConstantValue(FavoriteCarsProviderImpl);
 di.bind<ModalsProvider>(ModalsProviderName).toConstantValue(ModalsProviderImpl);
+di.bind<TagProvider>(TagProviderName).toConstantValue(TagProviderImpl);
 di.bind<TypeOfFuelProvider>(TypeOfFuelProviderName).toConstantValue(TypeOfFuelProviderImpl);
 di.bind<TypeVehicleProvider>(TypeVehicleProviderName).toConstantValue(TypeVehicleProviderImpl);
 di.bind<UserProvider>(UserProviderName).toConstantValue(UserProviderImpl);
@@ -270,6 +277,7 @@ di.bind<LoadUseCase>(LoadUseCase.name).toDynamicValue((context) => {
         getAllTypeOfVehiclesUseCase: context.container.get(GetAllTypeVehiclesUseCase.name),
         getAllCitiesUseCase: context.container.get(GetAllCitiesUseCase.name),
         getFavoriteCarsUseCase: context.container.get(GetFavoriteCarsUseCase.name),
+        getAllTagsUseCase: context.container.get(GetAllTagsUseCase.name),
     });
 });
 
@@ -289,6 +297,14 @@ di.bind<GetAllProcedureQuestionsUseCase>(GetAllProcedureQuestionsUseCase.name).t
 di.bind<GetAllInsurancesUseCase>(GetAllInsurancesUseCase.name).toDynamicValue((context) => {
     return new GetAllInsurancesUseCase({
         insuranceRepository: context.container.get(InsuranceRepositoryName),
+    });
+}).inSingletonScope();
+
+//tags
+di.bind<GetAllTagsUseCase>(GetAllTagsUseCase.name).toDynamicValue((context) => {
+    return new GetAllTagsUseCase({
+        tagRepository: context.container.get(TagRepositoryName),
+        tagProvider: context.container.get(TagProviderName)
     });
 }).inSingletonScope();
 

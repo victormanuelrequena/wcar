@@ -109,8 +109,10 @@ const BookACarPage: FC<{}> = () => {
                                             <label className='mandatory'>Nombre</label>
                                             <input type="text" placeholder='nombre' className="form-control" {...register("name", Validators({
                                                 required: true,
+                                                maxLength: 50,
+                                                minLength: 3
                                             }))} />
-                                            <ErrorMessage as="aside" errors={errors} name="email" />
+                                            <ErrorMessage as="aside" errors={errors} name="name" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">

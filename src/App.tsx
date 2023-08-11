@@ -17,6 +17,8 @@ import DepartmentProvider, { DepartmentProviderName } from './domain/providers/d
 import UserProvider, { UserProviderName } from './domain/providers/user/UserProvider';
 import ModalsProvider, { ModalsProviderName } from './domain/providers/modal/ModalsProvider';
 import CityProvider, { CityProviderName } from './domain/providers/city/CityProvider';
+import FavoriteCarsProvider, { FavoriteCarsProviderName } from './domain/providers/favoriteCars/FavoriteCarsProviderName';
+import TagProvider, { TagProviderName } from './domain/providers/tag/TagProvider';
 
 function App() {
   const allyProvider = di.get<AllyProvider>(AllyProviderName);
@@ -24,7 +26,9 @@ function App() {
   const colorProvider = di.get<ColorProvider>(ColorProviderName);
   const cityProvider = di.get<CityProvider>(CityProviderName);
   const departmentProvider = di.get<DepartmentProvider>(DepartmentProviderName);
+  const favoriteCarsProvider = di.get<FavoriteCarsProvider>(FavoriteCarsProviderName);
   const modalsProvider = di.get<ModalsProvider>(ModalsProviderName);
+  const tagProvider = di.get<TagProvider>(TagProviderName);
   const typeOfFuelProvider = di.get<TypeOfFuelProvider>(TypeOfFuelProviderName);
   const typeVehicleProvider = di.get<TypeVehicleProvider>(TypeVehicleProviderName);
   const userProvider = di.get<UserProvider>(UserProviderName);
@@ -49,17 +53,21 @@ function App() {
           <departmentProvider.Provider>
             <colorProvider.Provider>
               <cityProvider.Provider>
-                <typeOfFuelProvider.Provider>
-                  <typeVehicleProvider.Provider>
-                    <userProvider.Provider>
-                      <modalsProvider.Provider>
-                        <div className="App">
-                          <RoutesComponent />
-                        </div>
-                      </modalsProvider.Provider>
-                    </userProvider.Provider>
-                  </typeVehicleProvider.Provider>
-                </typeOfFuelProvider.Provider>
+                <tagProvider.Provider>
+                  <typeOfFuelProvider.Provider>
+                    <typeVehicleProvider.Provider>
+                      <userProvider.Provider>
+                        <modalsProvider.Provider>
+                          <favoriteCarsProvider.Provider>
+                            <div className="App">
+                              <RoutesComponent />
+                            </div>
+                          </favoriteCarsProvider.Provider>
+                        </modalsProvider.Provider>
+                      </userProvider.Provider>
+                    </typeVehicleProvider.Provider>
+                  </typeOfFuelProvider.Provider>
+                </tagProvider.Provider>
               </cityProvider.Provider>
             </colorProvider.Provider>
           </departmentProvider.Provider>

@@ -1,3 +1,4 @@
+import './RangePickerComponentStyles.scss';
 import { FC } from "react";
 import RangePickerComponentProps from "./RangePickerComponentProps";
 import { Slider, RangeSlider } from 'rsuite';
@@ -17,8 +18,7 @@ const RangePickerComponent: FC<RangePickerComponentProps> = ({ formFunctions, ke
     }
 
     return <div className="range_picker_component my-3">
-
-        <RangeSlider defaultValue={[minValue ?? min, maxValue ?? max]} min={min} max={max} onChange={_handleChange} />
+        <RangeSlider value={[minValue ?? min, maxValue == "" ? max : maxValue]} min={min} max={max} onChange={_handleChange}  />
         <div className="div d-flex justify-content-between my-2">
             <div className="flex-grow-1 me-2">
                 <input type="number" value={minValue} min={min} max={maxValue ?? max} className="form-control" placeholder="Minimo" {...register(`${keyName}.min`, Validators({

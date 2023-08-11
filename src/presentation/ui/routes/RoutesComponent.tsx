@@ -20,6 +20,7 @@ import ProceduresPage from "../pages/services/procedures/ProceduresPage";
 import InsurancePage from "../pages/services/insurances/InsurancePage";
 import BlogPage from "../pages/blog/home/BlogPage";
 import BlogDetailedPage from "../pages/blog/detailed/BlogDetailedPage";
+import ContactPage from "../pages/contact/ContactPage";
 
 export interface iRoute {
     name: string,
@@ -111,7 +112,7 @@ const routes = {
     contact: {
         path: "/contacto",
         relativePath: '/contacto',
-        component: ServicesPage,
+        component: ContactPage,
         auth: (user: UserEntity | undefined) => true,
     },
     procedures: {

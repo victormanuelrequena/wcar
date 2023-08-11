@@ -1,3 +1,69 @@
-.filter_styles{
+.filter_component {
+    .model_filter {
+        .img_filter {
+            width: 2em;
+        }
+    }
 
+    label {
+        // font-size: 0.8em;
+        color: var(--color-gray);
+    }
+
+
+    .options_box_container {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 0.5em;
+
+        .option_picker {
+            padding: 0.5em 1em;
+            background-color: var(--color-gray-light);
+            color: black;
+            border-radius: 5px;
+            margin: 0.5em 0.5em 0.5em 0em;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            &.active {
+                background-color: var(--color-orange);
+                color: white;
+            }
+        }
+    }
+
+    .color_filter {
+        .colors_container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 0.5em;
+
+            .color {
+                margin: 0.5em 0.6em 0.5em 0;
+                width: 2.7em;
+                height: 2.7em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 100%;
+                border: solid thin var(--color-gray);
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &.active {
+                    border: solid thin black;
+                }
+
+                .fill {
+                    width: 2em;
+                    height: 2em;
+                    border-radius: 100%;
+                }
+            }
+        }
+    }
 }

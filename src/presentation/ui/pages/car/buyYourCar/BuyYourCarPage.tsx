@@ -13,7 +13,8 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import OrderByEntity from '../../../../../domain/entities/OrderByEntity';
 import FilterComponent from './components/filterComponent/FilterComponent';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
-import GetModelsByBrandUseCase from '../../../../../domain/use_cases/brand/GetModelsByBrandUseCase';
+import Icons from '../../../assets/Icons';
+import DeleteFilterComponent from './components/deleteComponent/DeleteFilterComponent';
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -44,6 +45,11 @@ const BuyYourCarPage: FC<{}> = () => {
 
     const _handleSearch = async (data: any) => {
         try {
+            window.scrollTo({
+                top: 0,
+                behavior: 'auto'
+            });
+            setCars(undefined);
             const response = await di.get<SearchCarsUseCase>(SearchCarsUseCase.name).call(page);
             setCars(response.cars);
             setMaxPages(response.maxPages);
@@ -108,28 +114,28 @@ const BuyYourCarPage: FC<{}> = () => {
                 </div>
                 <div className="car_list from_left_3  container">
                     <div className="row">
-                        <div className={`col-md-3 ${openFilters ? 'bg_white' : ''}`}>
+                        <div className={`col-md-4 col-lg-3 ${openFilters ? 'bg_white' : ''}`}>
                             {!openFilters && <div className="side_filter hover" onClick={() => setOpenFilters(!openFilters)}>
                                 filtro
                             </div>
                             }
                         </div>
-                        <div className="col-md-9">
+                        <div className="col-md-8 col-lg-9">
                             <div className="w-100 filters d-flex justify-content-between">
                                 <div className="d-flex flex-grow-1">
-                                    Filtros seleccionados
+                                    <DeleteFilterComponent formFunctions={formFunctions} />
                                 </div>
-                                <div className="btn_light" onClick={_handleClearFilters}>
-                                    <IoMdTrash /> Limpiar filtros
+                                <div className="btn btn_light" onClick={_handleClearFilters}>
+                                    <Icons.Trash /> Limpiar filtros
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="row">
-                        <div className={`bg_white ${openFilters ? 'col-md-3' : 'd-none'}`}>
+                        <div className={`bg_white ${openFilters ? 'col-md-4 col-lg-3' : 'd-none'}`}>
                             <FilterComponent formFunctions={formFunctions} isOpen={openFilters} setIsOpen={setOpenFilters} />
                         </div>
-                        <div className={`${openFilters ? 'col-md-9' : 'col-md-12'} container_cars`}>
+                        <div className={`${openFilters ? 'col-md-8 col-lg-9' : 'col-md-12'} container_cars`}>
                             <div className="row">
                                 {cars == undefined && <LoadingComponent />}
                                 {cars != undefined && cars.length == 0 && <NotResultsComponent />}

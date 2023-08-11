@@ -2,6 +2,12 @@
     background-color: transparent;
     z-index: 999;
 
+    .navbar_icons{
+        position: absolute;
+        right: 1em;
+        top: 1em;
+    }
+
     .dropdown-container {
         position: relative;
         display: inline-block;
