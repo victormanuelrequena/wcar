@@ -1,4 +1,5 @@
 import GetAllAlliesUseCase from "../ally/GetAllAlliesUseCase";
+import GetCurrentUserUseCase from "../auth/GetCurrentUserUseCase";
 import GetAllBrandsUseCase from "../brand/GetAllBrandsUseCase";
 import GetFavoriteCarsUseCase from "../car/GetFavoriteCarsUseCase";
 import GetAllColorsUseCase from "../color/GetAllColorsUseCase";
@@ -15,6 +16,7 @@ interface props {
     getAllCitiesUseCase: GetAllTypeVehiclesUseCase,
     getFavoriteCarsUseCase: GetFavoriteCarsUseCase,
     getAllTagsUseCase: GetAllTagsUseCase,
+    getCurrentUserUseCase: GetCurrentUserUseCase;
 }
 
 export default class LoadUseCase {
@@ -26,6 +28,8 @@ export default class LoadUseCase {
     _getAllCitiesUseCase: GetAllTypeVehiclesUseCase;
     _getFavoriteCarsUseCase: GetFavoriteCarsUseCase;
     _getAllTagsUseCase: GetAllTagsUseCase;
+    _getCurrentUserUseCase: GetCurrentUserUseCase;
+
 
     constructor(_: props) {
         this._getAllAlliesUseCase = _.getAllAlliesUseCase;
@@ -36,6 +40,7 @@ export default class LoadUseCase {
         this._getAllCitiesUseCase = _.getAllCitiesUseCase;
         this._getFavoriteCarsUseCase = _.getFavoriteCarsUseCase;
         this._getAllTagsUseCase = _.getAllTagsUseCase;
+        this._getCurrentUserUseCase = _.getCurrentUserUseCase;
     }
 
     async call(): Promise<void> {
@@ -49,6 +54,7 @@ export default class LoadUseCase {
                 await this._getAllCitiesUseCase.call(),
                 await this._getFavoriteCarsUseCase.call(),
                 await this._getAllTagsUseCase.call(),
+                await this._getCurrentUserUseCase.call()
             ]);
         } catch (error) {
         }

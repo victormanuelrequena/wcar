@@ -6,5 +6,5 @@ export enum UserPermision {
 export default interface UserEntity extends UserAccountEntity {
     permisions: UserPermision[],
     status: UserEntityStatus,
-    photo: string,
+    photo?: string | undefined,
 }

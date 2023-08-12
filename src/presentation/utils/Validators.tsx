@@ -69,38 +69,38 @@ const Validators = ({ ...props }: Props): any => {
         let selectionStart = inputElement.selectionStart;
         let selectionEnd = inputElement.selectionEnd;
         let value = inputElement.value;
-    
+
         // Remove all characters before the dollar sign $
         value = value.replace(/.*\$/g, '');
         // Remove all characters except numbers
         value = value.replace(/[^0-9]/g, '');
 
-        if(maxValue && parseInt(value) > maxValue) {
+        if (maxValue && parseInt(value) > maxValue) {
           //slice based on the length of the maxValue
           value = value.substring(0, maxValue.toString().length);
         }
 
-        if(minValue && parseInt(value) < minValue) {
+        if (minValue && parseInt(value) < minValue) {
           value = value.slice(0, -1);
         }
 
         valueAsNumber = parseInt(value);
-    
+
         if (value !== '') {
-            // Convert to currency
-            value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value).replace(',00', '');
-    
-            // Adjust selection range based on the currency formatting
-            selectionStart = selectionStart + value.length - inputElement.value.length;
-            selectionEnd = selectionEnd + value.length - inputElement.value.length;
+          // Convert to currency
+          value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value).replace(',00', '');
+
+          // Adjust selection range based on the currency formatting
+          selectionStart = selectionStart + value.length - inputElement.value.length;
+          selectionEnd = selectionEnd + value.length - inputElement.value.length;
         }
-    
+
         inputElement.value = value;
-    
+
         // Restore selection range
         inputElement.setSelectionRange(selectionStart, selectionEnd);
-    }
-    
+      }
+
 
       if (onChange) {
         onChange(valueAsNumber ?? event.target.value);
@@ -297,14 +297,12 @@ const Validators = ({ ...props }: Props): any => {
   }
 
   if (validate) {
-    validateInside = { ...validateInside, custom: validate };
+    validateInside = { ...validateInside, validate: validate };
   }
 
 
-  return {
-    ...validator,
-    validateInside,
-  };
+  validator = { ...validator, validate: validateInside };
+  return validator;
 };
 
 export default Validators;

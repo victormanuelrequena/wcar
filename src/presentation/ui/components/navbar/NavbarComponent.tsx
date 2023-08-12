@@ -1,21 +1,35 @@
 import React, { useContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './NavbarStyles.scss'; // Custom CSS file for Navbar
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { routes } from '../../routes/RoutesComponent';
 import { Collapse, Navbar, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 import Icons from '../../assets/Icons';
 import CardFavoriteComponent from './components/cardFavorite/CardFavoriteComponent';
 import UserContext from '../../../../domain/providers/user/UserContext';
 import UserContextType from '../../../../domain/providers/user/UserContextType';
+import di from '../../../../di/DependencyInjection';
+import SignOutUseCase from '../../../../domain/use_cases/auth/SignOutUseCase';
 
 const NavbarComponent = () => {
-  const {user} = useContext(UserContext) as UserContextType;
+  const { user } = useContext(UserContext) as UserContextType;
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
+
+  const _handleAccountButton = async () => {
+    console.log('clicked button' , user);
+    if (user == null) {
+      navigate(routes.signIn.relativePath);
+    } else {
+      await di.get<SignOutUseCase>(SignOutUseCase.name).call();
+      navigate(routes.home.relativePath);
+    }
+  }
+
 
   return (
     <Navbar className="bg-transparent px-3 position-md-fixed w-100" expand="lg">
@@ -60,11 +74,11 @@ const NavbarComponent = () => {
           <div className="">
             <Icons.FavoriteHearth width={20} height={20} />
           </div>
-          <div className="dropdown_content" style={{left: '-180px'}}>
+          <div className="dropdown_content" style={{ left: '-180px' }}>
             <CardFavoriteComponent />
           </div>
         </div>
-        <div className="btn d-flex align-items-center">
+        <div className="btn d-flex align-items-center" onClick={_handleAccountButton}>
           <Icons.PersonRounded width={20} height={20} />
           <div className="d-none d-xl-block">
             {user?.name ?? 'Cuenta'}

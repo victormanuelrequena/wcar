@@ -1,4 +1,4 @@
-import './SignInPageStyles.scss';
+import './SignUpPageStyles.scss';
 import { FC, useContext } from "react";
 import Layout from "../../../layout/Layout";
 import { useForm } from "react-hook-form";
@@ -8,19 +8,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import Icons from '../../../assets/Icons';
 import SocialLoginComponent from '../../../components/socialLogin/SocialloginComponent';
 import di from '../../../../../di/DependencyInjection';
-import SignInUseCase from '../../../../../domain/use_cases/auth/SignInUseCase';
+import SignUpUseCase from '../../../../../domain/use_cases/auth/SignUpUseCase';
 import { Either, isRight, left } from "fp-ts/lib/Either";
 import { routes } from '../../../routes/RoutesComponent';
 import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
 
-const SignInPage: FC<{}> = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+const SignUpPage: FC<{}> = () => {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
 
     const _handleSubmit = async (data: any) => {
-        const response = await di.get<SignInUseCase>(SignInUseCase.name).call(data.email, data.password);
+        const response = await di.get<SignUpUseCase>(SignUpUseCase.name).call(data.email, data.password);
         if (isRight(response)) {
             navigate(routes.home.relativePath);
         } else {
@@ -28,7 +28,7 @@ const SignInPage: FC<{}> = () => {
         }
     }
 
-    return <div className="sign_in_page">
+    return <div className="sign_up_page">
         <Layout>
             <div className="container py-4">
                 <div className="row d-flex flex-md-row-reverse">
@@ -37,15 +37,14 @@ const SignInPage: FC<{}> = () => {
                     </div>
                     <div className="col-md-1"></div>
                     <div className="col-md-4 content_page">
-                        <h2 className="text_bold mb-3">Inicia sesión o
-                            <br />crea tu cuenta</h2>
+                        <h2 className="text_bold mb-3">Crea una cuenta</h2>
                         <p>Nibh quisque suscipit fermentum netus nulla cras porttitor euismod nulla. </p>
                         <form onSubmit={handleSubmit(_handleSubmit)}>
                             <div className="form-group my-3">
                                 <label className="mandatory">
                                     Email
                                 </label>
-                                <input type="emai" placeholder='ejemplo@gmail.com' className="form-control" {...register("email", Validators({
+                                <input type="text" placeholder='ejemplo@gmail.com' className="form-control" {...register("email", Validators({
                                     email: true,
                                     required: true,
                                 }))} />
@@ -55,17 +54,31 @@ const SignInPage: FC<{}> = () => {
                                 <label className="mandatory">
                                     Contraseña
                                 </label>
-                                <input type="password" className="form-control" {...register("password", Validators({
-                                    required: true,
-                                }))} />
+                                <input type="password" className="form-control" placeholder={"Contraseña"}
+                                    {...register('password', Validators({ isPassword: true, required: true }))} />
                                 <ErrorMessage as="aside" errors={errors} name="password" />
                             </div>
+                            <div className="form-group my-3">
+                                <label className="mandatory">
+                                    Confirmar Contraseña
+                                </label>
+                                <input type="password" {...register("confirm_password", Validators({
+                                    isPassword: true,
+                                    required: true, minLength: 6, validate: (val: string) => {
+                                        console.log('validator pass', val, watch('password'));
+                                        if (watch('password') != val) {
+                                            return "Las contraseñas no coinciden"
+                                        }
+                                    },
+                                }))} className="form-control" placeholder="Confirmar contraseña" />
+                                <ErrorMessage as="aside" errors={errors} name="confirm_password" />
+                            </div>
                             <div className="w-100 d-flex justify-content-center">
-                                <Link to={routes.sendRecoveryCode.relativePath} className="text-center text_orange my-3">¿Olvidaste la contraseña?</Link>
+                                <Link to={routes.signIn.relativePath} className="text-center text_orange my-3">¿Ya tienes una cuenta?</Link>
                             </div>
                             <div className="w-100 d-flex justify-content-center">
                                 <button className="btn btn_orange" type='submit'>
-                                    INICIAR SESIÓN
+                                    REGISTRARSE
                                     <Icons.PersonRounded />
                                 </button>
                             </div>
@@ -79,4 +92,4 @@ const SignInPage: FC<{}> = () => {
     </div>
 }
 
-export default SignInPage;
+export default SignUpPage;

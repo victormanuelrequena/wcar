@@ -21,7 +21,10 @@ import InsurancePage from "../pages/services/insurances/InsurancePage";
 import BlogPage from "../pages/blog/home/BlogPage";
 import BlogDetailedPage from "../pages/blog/detailed/BlogDetailedPage";
 import ContactPage from "../pages/contact/ContactPage";
+import SignUpPage from "../pages/auth/signUp/SignUpPage";
 import SignInPage from "../pages/auth/signIn/SignInPage";
+import SendRecoveryCodePage from "../pages/auth/sendRecoveryCode/SendRecoveryCodePage";
+import CheckRecoveryCodePage from "../pages/auth/checkRecoveryCode/CheckRecoveryCodePage";
 
 export interface iRoute {
     name: string,
@@ -144,7 +147,25 @@ const routes = {
         path: "/iniciar-sesion",
         relativePath: '/iniciar-sesion',
         component: SignInPage,
-        auth: (user: UserEntity | undefined) => !user,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    signUp: {
+        path: "/registrarse",
+        relativePath: '/registrarse',
+        component: SignUpPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    sendRecoveryCode: {
+        path: "/recuperar-contraseña",
+        relativePath: "/recuperar-contraseña",
+        component: SendRecoveryCodePage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    updatePasswordRecovery: {
+        path: "/recuperar-contraseña/:email",
+        relativePath: "/recuperar-contraseña",
+        component: CheckRecoveryCodePage,
+        auth: (user: UserEntity | undefined) => true,
     }
 }
 
