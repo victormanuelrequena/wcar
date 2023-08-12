@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import CurrencyParse from "./CurrencyParse";
 
 interface Props {
   required?: boolean | undefined;
@@ -23,6 +24,7 @@ interface Props {
   pattern?: RegExp | undefined;
   validate?: Function | undefined;
   onChange?: (event: any) => void;
+  price?: boolean | undefined;
 }
 
 const Validators = ({ ...props }: Props): any => {
@@ -34,6 +36,7 @@ const Validators = ({ ...props }: Props): any => {
     validate,
     email,
     onChange,
+    price,
     minValue,
     maxValue,
     mustBeNumber,
@@ -58,8 +61,52 @@ const Validators = ({ ...props }: Props): any => {
     validator = { ...validator, required: "El campo es obligatorio" };
   }
 
-  if (onChange) {
-    validator = { ...validator, onChange: onChange };
+  if (onChange || price) {
+    const onChangeFunction = (event: any) => {
+      let valueAsNumber;
+      if (price) {
+        let inputElement = event.target;
+        let selectionStart = inputElement.selectionStart;
+        let selectionEnd = inputElement.selectionEnd;
+        let value = inputElement.value;
+
+        // Remove all characters before the dollar sign $
+        value = value.replace(/.*\$/g, '');
+        // Remove all characters except numbers
+        value = value.replace(/[^0-9]/g, '');
+
+        if (maxValue && parseInt(value) > maxValue) {
+          //slice based on the length of the maxValue
+          value = value.substring(0, maxValue.toString().length);
+        }
+
+        if (minValue && parseInt(value) < minValue) {
+          value = value.slice(0, -1);
+        }
+
+        valueAsNumber = parseInt(value);
+
+        if (value !== '') {
+          // Convert to currency
+          value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value).replace(',00', '');
+
+          // Adjust selection range based on the currency formatting
+          selectionStart = selectionStart + value.length - inputElement.value.length;
+          selectionEnd = selectionEnd + value.length - inputElement.value.length;
+        }
+
+        inputElement.value = value;
+
+        // Restore selection range
+        inputElement.setSelectionRange(selectionStart, selectionEnd);
+      }
+
+
+      if (onChange) {
+        onChange(valueAsNumber ?? event.target.value);
+      }
+    }
+    validator = { ...validator, onChange: onChangeFunction };
   }
 
 
@@ -250,14 +297,12 @@ const Validators = ({ ...props }: Props): any => {
   }
 
   if (validate) {
-    validateInside = { ...validateInside, custom: validate };
+    validateInside = { ...validateInside, validate: validate };
   }
 
 
-  return {
-    ...validator,
-    validateInside,
-  };
+  validator = { ...validator, validate: validateInside };
+  return validator;
 };
 
 export default Validators;

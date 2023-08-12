@@ -18,10 +18,13 @@ import CurrencyParse from '../../../../utils/CurrencyParse';
 import Icons from '../../../assets/Icons';
 import BookACarWithPaymentUseCase from '../../../../../domain/use_cases/car/BookACarWithPaymentUseCase';
 import ModalsProvider, { ModalsProviderName } from '../../../../../domain/providers/modal/ModalsProvider';
+import UserContext from '../../../../../domain/providers/user/UserContext';
+import UserContextType from '../../../../../domain/providers/user/UserContextType';
 
 const BookACarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
     const { departments } = useContext(DepartmentContext) as DepartmentContextType;
+    const { user } = useContext(UserContext) as UserContextType;
 
     const [car, setCar] = useState<CarEntity | undefined | null>(undefined);
     const { register, setValue, handleSubmit, watch, formState: { errors } } = useForm();
@@ -93,9 +96,12 @@ const BookACarPage: FC<{}> = () => {
                         <div className="col-md-7">
                             <div className="p-3 bg_white border-radius">
                                 <div>
-                                    <h1>Detalles de facturación</h1>               
-                                    <span className='text_gray me-2'>¿Eres cliente?</span>
-                                    <Link to="#" className='text_orange'>Inicia sesión </Link>
+                                    <h1>Detalles de facturación</h1>
+                                    {user != null ?
+                                        <span className='text_gray me-2'>Bienvenido {user!.name}</span> :
+                                        <><span className='text_gray me-2'>¿Eres cliente?</span>
+                                            <Link to="#" className='text_orange'>Inicia sesión </Link></>
+                                    }
                                 </div>
                                 <div className="row">
                                     <div className="col-md-6">
@@ -103,8 +109,10 @@ const BookACarPage: FC<{}> = () => {
                                             <label className='mandatory'>Nombre</label>
                                             <input type="text" placeholder='nombre' className="form-control" {...register("name", Validators({
                                                 required: true,
+                                                maxLength: 50,
+                                                minLength: 3
                                             }))} />
-                                            <ErrorMessage as="aside" errors={errors} name="email" />
+                                            <ErrorMessage as="aside" errors={errors} name="name" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">

@@ -9,7 +9,6 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
     const carouselRef = React.useRef<Carousel>(null);
 
     const _onChange = (slide: number) => {
-        console.log('slide', slide);
         setImageShowing(slide);
     }
 

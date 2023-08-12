@@ -1,3 +1,4 @@
+import CarEntity from "../../entities/CarEntity";
 import CarRepository from "../../repositories/CarRepository";
 
 interface props { carRepository: CarRepository }
@@ -9,7 +10,7 @@ export default class GetSomeRandomCarsUseCase{
     constructor(_:props) {
         this._carRepository = _.carRepository;
     }
-    async call() {
+    async call() : Promise<CarEntity[]>{
         return await this._carRepository.getSomeRandomCars();
     }
 }

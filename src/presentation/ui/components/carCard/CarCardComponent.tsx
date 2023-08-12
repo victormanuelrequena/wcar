@@ -12,12 +12,13 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
     const [_like, _setLike] = useState<boolean>(car.like);
 
     const _handleLike = () => {
-        di.get<LikeCarUseCase>(LikeCarUseCase.name).call(car.id, !_like);
+        di.get<LikeCarUseCase>(LikeCarUseCase.name).call(car, !_like);
         _setLike(!_like);
     }
 
     return <div className="w-100 card car_card_component">
         <div className="card-body">
+            {car.tag && <div className="tag" style={{backgroundColor: car.tag.color}}>{car.tag.name}</div> }
             <img src={car.photoUrl} alt="" className="img-fluid img_car" />
             <div className="d-flex w-100 align-items-center">
                 <div className="flex-grow overflow-hidden me-3">

@@ -5,7 +5,7 @@ import Layout from "../../../layout/Layout";
 import { set, useForm } from "react-hook-form";
 import di from "../../../../../di/DependencyInjection";
 import GetAvailableHoursForBuyUseCase from "../../../../../domain/use_cases/book/GetAvailableHoursForBuyUseCase";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import BookDateEntity from "../../../../../domain/entities/BookDateEntity";
 import BookHourEntity from "../../../../../domain/entities/BookHourEntity";
 import BookADateForBuyUseCase from "../../../../../domain/use_cases/book/BookADateForBuyUseCase";
@@ -20,14 +20,22 @@ import Icons from '../../../assets/Icons';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
 import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import { routes } from '../../../routes/RoutesComponent';
+import Validators from '../../../../utils/Validators';
+import GetAvailableDatesForSellUseCase from '../../../../../domain/use_cases/book/GetAvailableDatesForSellUseCase';
+import GetAvailableHoursForSellUseCase from '../../../../../domain/use_cases/book/GetAvailableHoursForSellUseCase';
+import BookADateForSellUseCase from '../../../../../domain/use_cases/book/BookADateForSellUseCase';
+import CalculatedEntity from '../../../../../domain/entities/CalculatedEntity';
 
 const BookADatePage: FC<{}> = () => {
     const formFunctions = useForm();
     const { register, handleSubmit, getValues, formState: { errors }, reset, setValue, watch } = formFunctions;
-    const { id, buyNumberId } = useParams<{ id: string, buyNumberId: string | undefined }>();
+    const { id, buyNumberId } = useParams<{ id: string | undefined, buyNumberId: string | undefined }>();
     const navigate = useNavigate();
+    const location = useLocation();
 
-    const {addToast} = useContext(ModalsContext) as ModalsContextType;
+    const { calculated } = location.state as { calculated: CalculatedEntity };
+    const cotizationId = calculated?.id;
+    const { addToast } = useContext(ModalsContext) as ModalsContextType;
 
     const [availableDates, setAvailableDates] = useState<BookDateEntity[] | undefined>(undefined);
     const [availableHours, setAvailableHours] = useState<BookHourEntity[] | undefined>(undefined);
@@ -37,10 +45,14 @@ const BookADatePage: FC<{}> = () => {
 
     const getAvailableDates = async () => {
         try {
-            const response = await di.get<GetAvailableDatesForBuyUseCase>(GetAvailableDatesForBuyUseCase.name).call(id!);
-            setAvailableDates(response);
+            if (cotizationId != undefined && cotizationId.length > 0) {
+                const response = await di.get<GetAvailableDatesForSellUseCase>(GetAvailableDatesForSellUseCase.name).call(cotizationId!);
+                setAvailableDates(response);
+            } else {
+                const response = await di.get<GetAvailableDatesForBuyUseCase>(GetAvailableDatesForBuyUseCase.name).call(id!);
+                setAvailableDates(response);
+            }
         } catch (error) {
-            console.log('error on getAvailableDates', error);
             setAvailableDates([]);
         }
     }
@@ -48,18 +60,24 @@ const BookADatePage: FC<{}> = () => {
     const _handleDateChange = async (date: Date) => {
         try {
             if (dateValue != date) setValue('hour', undefined);
-            const response = await di.get<GetAvailableHoursForBuyUseCase>(GetAvailableHoursForBuyUseCase.name).call(date, id!);
-            setAvailableHours(response);
+            if (cotizationId != undefined && cotizationId.length > 0) {
+                const response = await di.get<GetAvailableHoursForSellUseCase>(GetAvailableHoursForSellUseCase.name).call(date, cotizationId!);
+                setAvailableHours(response);
+            } else {
+                const response = await di.get<GetAvailableHoursForBuyUseCase>(GetAvailableHoursForBuyUseCase.name).call(date, id!);
+                setAvailableHours(response);
+            }
         } catch (error) {
             setAvailableHours([]);
         }
     }
 
     const _handleConfirmBook = async (data: any) => {
-        console.log('llega a confirmar', data);
         setLoading(true);
         try {
-            await di.get<BookADateForBuyUseCase>(BookADateForBuyUseCase.name).call(data.date, data.hour, id!, buyNumberId, data.contact);
+            if (cotizationId != undefined && cotizationId.length > 0)
+                await di.get<BookADateForSellUseCase>(BookADateForSellUseCase.name).call(data.date, data.hour, cotizationId, data.contact);
+            else await di.get<BookADateForBuyUseCase>(BookADateForBuyUseCase.name).call(data.date, data.hour, id!, buyNumberId, data.contact);
             addToast("Reserva realizada", "success", undefined);
             navigate(routes.home.relativePath);
         } catch (error) {
@@ -79,7 +97,7 @@ const BookADatePage: FC<{}> = () => {
 
     useEffect(() => {
         getAvailableDates();
-    }, [id]);
+    }, [id, calculated]);
 
     return <Layout>
         <div className="book_a_date_page gray_footer">
@@ -124,22 +142,36 @@ const BookADatePage: FC<{}> = () => {
                                     <div className="row">
                                         <div className="form-group col-md-6 my-3">
                                             <label className="mandatory">Nombre</label>
-                                            <input type="text" className="form-control" placeholder='nombre' {...register("contact.name", { required: true })} />
+                                            <input type="text" className="form-control" placeholder='nombre' {...register("contact.name", Validators({
+                                                required: true,
+                                                minLength: 2,
+                                                maxLength: 20,
+                                            }))} />
                                             <ErrorMessage as="aside" errors={errors} name="contact.name" />
                                         </div>
                                         <div className="form-group col-md-6 my-3">
                                             <label className="mandatory">Apellido</label>
-                                            <input type="text" className="form-control" placeholder='apellido' {...register("contact.lastname", { required: true })} />
+                                            <input type="text" className="form-control" placeholder='apellido' {...register("contact.lastname", Validators({
+                                                required: true,
+                                                minLength: 2,
+                                                maxLength: 20,
+                                            }))} />
                                             <ErrorMessage as="aside" errors={errors} name="contact.lastName" />
                                         </div>
                                         <div className="form-group col-md-6 my-3">
                                             <label className="mandatory">Número de contacto</label>
-                                            <input type="text" className="form-control" placeholder='número de celular o telefono' {...register("contact.phone", { required: true })} />
+                                            <input type="text" className="form-control" placeholder='número de celular o telefono' {...register("contact.phone", Validators({
+                                                required: true,
+                                                phone: true,
+                                            }))} />
                                             <ErrorMessage as="aside" errors={errors} name="contact.phone" />
                                         </div>
                                         <div className="form-group col-md-6 my-3">
                                             <label className="mandatory">Email</label>
-                                            <input type="text" className="form-control" placeholder='ejemplo@gmail.com' {...register("contact.email", { required: true })} />
+                                            <input type="text" className="form-control" placeholder='ejemplo@gmail.com' {...register("contact.email", Validators({
+                                                required: true,
+                                                email: true,
+                                            }))} />
                                             <ErrorMessage as="aside" errors={errors} name="contact.email" />
                                         </div>
                                     </div>

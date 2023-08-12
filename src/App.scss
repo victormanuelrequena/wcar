@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Trebuchet+MS:ital,wght@0,400;0,700;1,400&display=swap');
 
-.container {
-  max-width: 1700px;
-}
 
 :root {
   --color-yellow: #FDB649;
@@ -13,6 +10,7 @@
   --color-gray-dark: #666C89;
   --color-gray-light: #F6F7F9;
   --color-blue-neon: #00FEFE;
+  --color-dark-gray: #1E1E1E;
 }
 
 .App {
@@ -35,10 +33,10 @@
 
 .side {
   padding: 0.5em 1em 0.5em 0;
-  width: fit-content;
+  // width: fit-content;
   position: relative;
 
-  &.side_top::before {
+  &_top::before {
     content: '';
     height: 0.2em;
     width: 4em;
@@ -47,9 +45,25 @@
     top: 0;
     background-color: var(--color-orange);
   }
+
+  &_blue_neon::before {
+    background-color: var(--color-blue-neon);
+  }
+
+  &_md {
+    @media screen and (min-width: 768px) {
+      &_blue_neon::before {
+        background-color: var(--color-blue-neon);
+      }
+    }
+  }
 }
 
 .text {
+  &_bold {
+    font-weight: 700;
+  }
+
   &_italic {
     font-family: 'Trebuchet MS', sans-serif;
     font-style: italic;
@@ -75,6 +89,10 @@
     color: red;
   }
 
+  &_white {
+    color: white;
+  }
+
   &_ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -91,6 +109,14 @@
     font-size: 0.95em;
   }
 
+  &_reduced {
+    font-size: 0.9em;
+  }
+
+  &_bold {
+    font-weight: 700;
+  }
+
   @media screen and (min-width: 768px) {
     &_md_white {
       color: white;
@@ -103,12 +129,12 @@
   border-radius: 0;
   border-bottom-left-radius: 2em;
   border-top-right-radius: 2em;
+  padding: 0.5em 1em;
 
   &.btn_orange {
     background-color: var(--color-orange);
     color: #fff;
     border: none;
-    padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
 
 
@@ -128,7 +154,6 @@
     background-color: var(--color-blue-neon);
     color: black;
     border: none;
-    padding: 0.5em 1em;
     transition: all 0.3s ease-in-out;
 
     &.btn_shadow {
@@ -137,9 +162,20 @@
     }
   }
 
+
+  & svg {
+    margin-left: 0.8em;
+    width: 2em;
+  }
+
   // &.btn_cut {
   //   clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
   // }
+
+  &.btn_gray_light {
+    background-color: var(--color-gray-light);
+    color: black;
+  }
 
 
   &.btn_in_black_orange {
@@ -207,6 +243,14 @@
       background-color: var(--color-orange);
       color: #fff;
     }
+  }
+
+  &.btn_orange_transparent {
+    color: white;
+    border: solid 1px var(--color-orange);
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
   }
 
   position: relative;
@@ -377,10 +421,11 @@ input {
   }
 
   .form-control {
+    margin-top: 0.2em;
     background-color: var(--color-gray-light);
     border: none;
 
-    ~aside{
+    ~aside {
       margin-top: 0.3em;
       font-size: 0.95em;
       color: red;
@@ -390,13 +435,183 @@ input {
 }
 
 .border_radius {
-    border-radius: 2em;
+  border-radius: 2em;
 
-    &_1{
-      border-radius: 1em;
-    }
+  &_1 {
+    border-radius: 1em;
+  }
 }
 
-.gray_footer ~ .footer{
+.gray_footer~.footer {
   background-color: var(--color-gray-light);
+}
+
+.footer .footer_sic {
+  @media screen and (max-width: 768px) {
+    background-color: white;
+  }
+}
+
+.loading_container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.left_line {
+  margin-left: 3.5em;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 3em;
+    height: 0.1em;
+    top: calc(50% - 0.05em);
+    left: -3.5em;
+    background-color: var(--color-orange);
+  }
+
+  &_blue_neon {
+    &::before {
+      background-color: var(--color-blue-neon);
+    }
+  }
+}
+
+.sized_infinited {
+  height: 100%;
+
+  @mixin responsive-width($data-columns) {
+    @media screen and (min-width: 1400px) {
+      width: calc(((100vw - 1320px) / 2) + ((1320px / 12) * #{$data-columns}));
+    }
+
+    @media screen and (min-width: 1200px) and (max-width: 1399px) {
+      width: calc(((100vw - 1140px) / 2) + ((1140px / 12) * #{$data-columns}));
+    }
+
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+      width: calc(((100vw - 960px) / 2) + ((960px / 12) * #{$data-columns}));
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      width: calc(((100vw - 720px) / 2) + ((720px / 12) * #{$data-columns}));
+    }
+
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+      width: calc(((100vw - 540px) / 2) + ((540px / 12) * #{$data-columns}));
+    }
+
+    @media screen and (max-width: 576px) {
+      width: calc(100vw - 2em);
+    }
+  }
+
+  &.c1 {
+    @include responsive-width(1);
+  }
+
+  &.c2 {
+    @include responsive-width(2);
+  }
+
+  &.c3 {
+    @include responsive-width(3);
+  }
+
+  &.c4 {
+    @include responsive-width(4);
+  }
+
+  &.c5 {
+    @include responsive-width(5);
+  }
+
+  &.c6 {
+    @include responsive-width(6);
+  }
+
+  &.c7 {
+    @include responsive-width(7);
+  }
+
+  &.c8 {
+    @include responsive-width(8);
+  }
+
+  &.c9 {
+    @include responsive-width(9);
+  }
+
+  &.c10 {
+    @include responsive-width(10);
+  }
+
+  &.c11 {
+    @include responsive-width(11);
+  }
+
+  &.c12 {
+    @include responsive-width(12);
+  }
+}
+
+.blog_info_user {
+  display: flex;
+  align-items: center;
+  font-size: 0.8em;
+
+  img {
+    width: 2em;
+    height: 2em;
+    border-radius: 100%;
+    margin-right: 0.5em;
+  }
+
+  .date {
+    position: relative;
+    margin-left: 2em;
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 0.3em;
+      height: 0.3em;
+      top: calc(50% - 0.15em);
+      left: -1em;
+      background-color: var(--color-gray);
+    }
+  }
+
+
+}
+
+body {
+  .rs-slider-handle::before {
+    background-color: var(--color-orange);
+    border: solid 2px white;
+    width: 20px;
+    height: 20px;
+    top: -5px;
+    margin-left: -6px;
+  }
+
+  .rs-slider-handle[data-key="end"] {
+    margin-left: -10px;
+  }
+
+  .rs-slider-bar {
+    background-color: var(--color-gray);
+
+    .rs-slider-progress-bar {
+      background-color: var(--color-orange);
+    }
+  }
+}
+
+body h2 {
+  line-height: 1.1em;
 }

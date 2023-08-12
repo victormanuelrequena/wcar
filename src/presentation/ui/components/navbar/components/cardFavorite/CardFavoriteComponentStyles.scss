@@ -1,0 +1,22 @@
+.card_favorite_component{
+    position: absolute;
+    background-color: white;
+    border-radius: 15px;
+    min-width: 200px;
+
+    .car_item {
+        min-width: 170px;
+        margin-bottom: 1em;
+        padding: 1em;
+
+        &:hover{
+            background-color: #EC671B22;
+        }
+        img{
+            width: 2em;
+            height: 2em;
+            object-fit: cover;
+            border-radius: 100%;
+        }
+    }
+}

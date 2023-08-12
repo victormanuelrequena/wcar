@@ -1,0 +1,41 @@
+.insurance_page {
+
+    .section_1 {
+        position: relative;
+
+        .bg_1{
+            position: absolute;
+            height: 100%;
+
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .rec_1 {
+            position: absolute;
+            top: 2em;
+            right: 0;
+            max-width: 30%;
+
+            @media screen and (min-width: 768px) {
+                top: 6em;
+                transform: rotate(90deg);
+                right: 3em;
+            }
+        }
+
+        .rec_2 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            max-width: 40%;
+        }
+    }
+
+    .section_3 {
+        background-color: var(--color-gray-light);
+    }
+}

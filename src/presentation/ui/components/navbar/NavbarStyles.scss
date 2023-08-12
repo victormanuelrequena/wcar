@@ -2,6 +2,50 @@
     background-color: transparent;
     z-index: 999;
 
+    .navbar_icons{
+        position: absolute;
+        right: 1em;
+        top: 1em;
+    }
+
+    .dropdown-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Style for the dropdown content (hidden by default) */
+    .dropdown {
+        position: relative;
+
+        &:hover {
+            cursor: pointer;
+
+            .dropdown_content {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                background-color: white;
+                top: 90%;
+                right: 0;
+                width: fit-content;
+
+                a {
+                    &:hover {
+                        background-color: #EC671B22;
+                    }
+
+                    padding: 1em;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        .dropdown_content {
+            display: none;
+        }
+    }
+
+
     .account-mobile {
         position: absolute;
         bottom: 0;

@@ -11,6 +11,20 @@ import BuyYourCarPage from "../pages/car/buyYourCar/BuyYourCarPage";
 import DetailedCarPage from "../pages/car/detailedCar/DetailedCarPage";
 import BookACarPage from "../pages/car/bookACar/BookACarPage";
 import BookADatePage from "../pages/car/bookADate/BookADatePage";
+import SellYourCarPage from "../pages/car/sellYourCar/SellYourCarPage";
+import QuoteYourCarPage from "../pages/sell/quote/QuoteYourCarPage";
+import QuoteSuccessfulPage from "../pages/sell/sucessfullQuote/QuoteSuccessfulPage";
+import AboutUsPage from "../pages/aboutUs/AboutUsPage";
+import ServicesPage from "../pages/services/debt/ServicesPage";
+import ProceduresPage from "../pages/services/procedures/ProceduresPage";
+import InsurancePage from "../pages/services/insurances/InsurancePage";
+import BlogPage from "../pages/blog/home/BlogPage";
+import BlogDetailedPage from "../pages/blog/detailed/BlogDetailedPage";
+import ContactPage from "../pages/contact/ContactPage";
+import SignUpPage from "../pages/auth/signUp/SignUpPage";
+import SignInPage from "../pages/auth/signIn/SignInPage";
+import SendRecoveryCodePage from "../pages/auth/sendRecoveryCode/SendRecoveryCodePage";
+import CheckRecoveryCodePage from "../pages/auth/checkRecoveryCode/CheckRecoveryCodePage";
 
 export interface iRoute {
     name: string,
@@ -63,7 +77,96 @@ const routes = {
         component: BookADatePage,
         auth: (user: UserEntity | undefined) => true,
     },
-
+    dateForSell: {
+        path: "/vender/cita",
+        relativePath: '/vender/cita',
+        component: BookADatePage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    sellYourCar: {
+        path: "/vender",
+        relativePath: '/vender',
+        component: SellYourCarPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    quoteYourCar: {
+        path: "/cotizar",
+        relativePath: '/cotizar',
+        component: QuoteYourCarPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    quoteSuccessful: {
+        path: "/cotizar/resultado",
+        relativePath: '/cotizar/resultado',
+        component: QuoteSuccessfulPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    aboutUs: {
+        path: "/sobre-nosotros",
+        relativePath: '/sobre-nosotros',
+        component: AboutUsPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    services: {
+        path: "/servicios",
+        relativePath: '/servicios',
+        component: ServicesPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    contact: {
+        path: "/contacto",
+        relativePath: '/contacto',
+        component: ContactPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    procedures: {
+        path: "/tramites",
+        relativePath: '/tramites',
+        component: ProceduresPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    insurance: {
+        path: "/seguro-todo-riesgo",
+        relativePath: '/seguro-todo-riesgo',
+        component: InsurancePage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    blog: {
+        path: "/blog",
+        relativePath: '/blog',
+        component: BlogPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    detailedBlog: {
+        path: "/blog/:id",
+        relativePath: '/blog',
+        component: BlogDetailedPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    signIn: {
+        path: "/iniciar-sesion",
+        relativePath: '/iniciar-sesion',
+        component: SignInPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    signUp: {
+        path: "/registrarse",
+        relativePath: '/registrarse',
+        component: SignUpPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    sendRecoveryCode: {
+        path: "/recuperar-contraseña",
+        relativePath: "/recuperar-contraseña",
+        component: SendRecoveryCodePage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    updatePasswordRecovery: {
+        path: "/recuperar-contraseña/:email",
+        relativePath: "/recuperar-contraseña",
+        component: CheckRecoveryCodePage,
+        auth: (user: UserEntity | undefined) => true,
+    }
 }
 
 const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {
@@ -73,15 +176,15 @@ const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {
     const _load = async () => {
         try {
             await di.get<LoadUseCase>(LoadUseCase.name).call();
-        } catch (_){}
+        } catch (_) { }
         setLoaded(true);
     }
     useEffect(() => {
         _load();
     }, []);
 
-    if (!loaded) return <div className="bg_1" style={{width: '100vw', height: '100vh'}}>
-        <LoadingComponent showLogo/>
+    if (!loaded) return <div className="bg_1" style={{ width: '100vw', height: '100vh' }}>
+        <LoadingComponent showLogo />
     </div>
     return <>
         <BrowserRouter>

@@ -1,0 +1,24 @@
+.blog_page {
+
+    .section_1 {
+        .outstanding_container {
+            margin-top: -3em;
+
+            @media screen and (min-width: 768px) {
+                margin-top: -12em;
+            }
+
+            .tag{
+                border-radius: 5px;
+                background-color: var(--color-orange);
+                color: white;
+                padding: 0.5em 1em;
+                width: fit-content;
+            }
+        }
+    }
+
+    .footer {
+        background-color: var(--color-gray-light);
+    }
+}

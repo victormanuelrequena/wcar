@@ -1,3 +1,4 @@
+import TypeVehicleEntity from "../../entities/TypeVehicleEntity";
 import TypeVehicleProvider from "../../providers/typeVehicle/TypeVehicleProvider";
 import TypeVehicleRepository from "../../repositories/TypeVehicleRepository";
 
@@ -12,8 +13,9 @@ export default class GetAllTypeVehiclesUseCase{
         this._typeVehicleRepository = _.typeVehicleRepository;
         this._typeVehicleProvider = _.typeVehicleProvider;
     }
-    async call() {
+    async call(): Promise<TypeVehicleEntity[]> {
         try {
+            if(this._typeVehicleProvider.Actions.typeVehicles.length > 0) return this._typeVehicleProvider.Actions.typeVehicles;
             const response = await this._typeVehicleRepository.getAll();
             this._typeVehicleProvider.Actions.setTypeVehicles(response);
             return response;

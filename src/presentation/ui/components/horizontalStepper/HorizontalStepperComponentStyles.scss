@@ -1,0 +1,45 @@
+.horizontal_stepper_compoonent {
+    .steps {
+        min-width: 100%;
+        overflow-x: auto;
+        display: flex;
+
+        .step {
+            display: flex;
+            align-items: center;
+            color: var(--color-gray);
+
+            &.active {
+                color: black;
+
+                .step_circle{
+                    background-color: var(--color-blue-neon);
+                }
+            }
+
+            .step_circle {
+                padding: 0.2em;
+                height: 1.8em;
+                width: 1.8em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 100%;
+                margin-right: 0.5em;
+                background-color: var(--color-gray-light);
+            }
+
+            .step_text{
+                white-space: nowrap;
+            }
+        }
+
+        .step_line {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 6em;
+        }
+    }
+}

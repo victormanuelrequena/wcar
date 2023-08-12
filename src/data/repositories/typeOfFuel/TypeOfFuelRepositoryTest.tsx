@@ -4,7 +4,7 @@ import TypeOfFuelEntity from "../../../domain/entities/TypeOfFuelEntity";
 
 const _typeoffuelTest:TypeOfFuelEntity = {
     id:"1",
-    name:"SUV"
+    name:"Gasolina"
 }
 @injectable()
 class TypeOfFuelRepositoryTest implements TypeOfFuelRepository{

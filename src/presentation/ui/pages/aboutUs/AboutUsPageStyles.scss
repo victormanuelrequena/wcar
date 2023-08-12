@@ -1,0 +1,77 @@
+.about_us_page {
+    section.section_1 {
+        img.src_1 {
+            position: absolute;
+            right: 0;
+            top: 2em;
+
+            @media screen and (max-width: 768px) {
+                display: none;
+            }
+        }
+    }
+
+    section.section_2 {
+        position: relative;
+
+        .our_company {
+            position: relative;
+
+            .bg_2 {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: calc(100% - 4em);
+                width: 100%;
+                object-fit: cover;
+            }
+
+            @media screen and (min-width: 768px) {
+                margin-top: -14em;
+
+                .info {
+                    padding: 6em 7em 0 7em;
+                }
+
+            }
+        }
+
+        .sized_infinited {
+            position: absolute;
+            // z-index: 1;
+            left: 0;
+            top: 40%;
+            height: calc(60% + 1rem);
+            background-color: black;
+        }
+    }
+
+    section.section_3 {
+        img {
+            // min-height: 109px;
+
+            @media screen and (min-width: 768px) {
+
+                min-height: 102px;
+            }
+        }
+
+        .asset_4 {
+            height: calc(100% - 1rem);
+        }
+    }
+
+    section.section_4 {
+        .bg_3 {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+    }
+
+
+    .modals_component footer{
+    background-color: var(--color-gray-light);
+    }
+}

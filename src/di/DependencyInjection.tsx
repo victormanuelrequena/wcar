@@ -50,45 +50,169 @@ import BookACarWithPaymentUseCase from "../domain/use_cases/car/BookACarWithPaym
 import UserProvider, { UserProviderName } from "../domain/providers/user/UserProvider";
 import UserProviderImpl from "../presentation/providers/user/UserProviderImpl";
 import BookADateForBuyUseCase from "../domain/use_cases/book/BookADateForBuyUseCase";
+import CommentRepository, { CommentRepositoryName } from "../domain/repositories/CommentRepository";
+import CommentRepositoryTest from "../data/repositories/comment/CommentRepositoryTest";
+import GetAllCommentsUseCase from "../domain/use_cases/comment/GetAllCommentsUseCase";
+import GetModelsByBrandUseCase from "../domain/use_cases/brand/GetModelsByBrandUseCase";
+import GetModelVersionByModelAndBrandIdUseCase from "../domain/use_cases/brand/GetModelVersionByModelAndBrandIdUseCase";
+import GetAllCitiesUseCase from "../domain/use_cases/city/GetAllCitiesUseCase";
+import CityProvider, { CityProviderName } from "../domain/providers/city/CityProvider";
+import CityRepository, { CityRepositoryName } from "../domain/repositories/CityRepository";
+import { CityRepositoryTest } from "../data/repositories/city/CityRepositoryTest";
+import CityProviderImpl from "../presentation/providers/city/CityProviderImpl";
+import CalculatorRepository, { CalculatorRepositoryName } from "../domain/repositories/CalculatorRepository";
+import CalculatorRepositoryTest from "../data/repositories/calculator/CalculatorRepositoryTest";
+import CalculateOfferForCarUseCase from "../domain/use_cases/calculator/CalculateOfferForCarUseCase";
+import FrequentQuestionRepository, { FrequentQuestionRepositoryName } from "../domain/repositories/FrequentQuestionRepository";
+import FrequentQuestionRepositoryTest from "../data/repositories/frequentQuestion/FrequentQuestionRepositoryTest";
+import GetAllFrequentQuestionsUseCase from "../domain/use_cases/frequentQuestion/GetAllFrequentQuestionsUseCase";
+import InsuranceRepository, { InsuranceRepositoryName } from "../domain/repositories/InsuranceRepository";
+import { InsuranceRepositoryTest } from "../data/repositories/insurance/InsuranceRepositoryTest";
+import GetAllInsurancesUseCase from "../domain/use_cases/insurance/GetAllInsurancesUseCase";
+import CalculateCreditForCarUseCase from "../domain/use_cases/calculator/CalculateCreditForCarUseCase";
+import GetAllProcedureQuestionsUseCase from "../domain/use_cases/frequentQuestion/GetAllProcedureQuestionsUseCase";
+import GetAllBlogsAndMainPostUseCase from "../domain/use_cases/blog/GetAllBlogsAndMainPostUseCase";
+import BlogPostRepository, { BlogPostRepositoryName } from "../domain/repositories/BlogPostRepository";
+import BlogPostRepositoryTest from "../data/repositories/blogPost/BlogPostRepositoryTest";
+import FavoriteCarsProviderImpl from "../presentation/providers/favoriteCars/FavoriteCarsProviderImpl";
+import GetFavoriteCarsUseCase from "../domain/use_cases/car/GetFavoriteCarsUseCase";
+import GetBlogPostByIdUseCase from "../domain/use_cases/blog/GetBlogPostByIdUseCase.tsx";
+import FavoriteCarsProvider, { FavoriteCarsProviderName } from "../domain/providers/favoriteCars/FavoriteCarsProviderName";
+import CalculateInsuranceUseCase from "../domain/use_cases/calculator/CalculateInsuranceUseCase";
+import TagRepository, { TagRepositoryName } from "../domain/repositories/TagRepository";
+import TagRepositoryTest from "../data/repositories/tag/TagRepositoryTest";
+import TagProvider, { TagProviderName } from "../domain/providers/tag/TagProvider";
+import TagProviderImpl from "../presentation/providers/tag/TagProviderImpl";
+import GetAllTagsUseCase from "../domain/use_cases/tag/GetAllTagsUseCase";
+import AuthRepositoryTest from "../data/repositories/auth/AuthRepositoryTest";
+import AuthRepository, { AuthRepositoryName } from "../domain/repositories/AuthRepository";
+import ConfirmUserUseCase from "../domain/use_cases/auth/ConfirmUserUseCase";
+import DeleteUserUseCase from "../domain/use_cases/auth/DeleteUserUseCase";
+import GetCurrentUserUseCase from "../domain/use_cases/auth/GetCurrentUserUseCase";
+import SendConfirmCodeUseCase from "../domain/use_cases/auth/SendConfirmCodeUseCase";
+import SendRecoveryPasswordCodeUseCase from "../domain/use_cases/auth/SendRecoveryPasswordCodeUseCase";
+import SignInUseCase from "../domain/use_cases/auth/SignInUseCase";
+import SignOutUseCase from "../domain/use_cases/auth/SignOutUseCase";
+import SignUpUseCase from "../domain/use_cases/auth/SignUpUseCase";
+import UpdatePasswordByRecoveryUseCase from "../domain/use_cases/auth/UpdatePasswordByRecoveryUseCase";
+import SignInWithFacebookUseCase from "../domain/use_cases/auth/SignInWithFacebookUseCase";
+import SignInWithGoogleUseCase from "../domain/use_cases/auth/SignInWithGoogleUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
 const mode = MODE_DI.DEVELOPMENT;
 const di = new Container();
 
-// ------------------ REPOSITORIES ------------------ //
+//#region ------------------ REPOSITORIES ------------------ //
 if (mode === MODE_DI.DEVELOPMENT) {
 }
 di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
+di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryTest).inSingletonScope();
+di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryTest).inSingletonScope();
 di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
 di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
-di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
+di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
 di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
+di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
+di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
 di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
+di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
+di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryTest).inSingletonScope();
+di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryTest).inSingletonScope();
+di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryTest).inSingletonScope();
 di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
 di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
+//#endregion
 
-// ------------------ PROVIDERS ------------------ //
+//#region ------------------ PROVIDERS ------------------ //
 di.bind<AllyProvider>(AllyProviderName).toConstantValue(AllyProviderImpl);
 di.bind<BrandProvider>(BrandProviderName).toConstantValue(BrandProviderImpl);
-di.bind<DepartmentProvider>(DepartmentProviderName).toConstantValue(DepartmentProviderImpl);
 di.bind<ColorProvider>(ColorProviderName).toConstantValue(ColorProviderImpl);
+di.bind<CityProvider>(CityProviderName).toConstantValue(CityProviderImpl);
+di.bind<DepartmentProvider>(DepartmentProviderName).toConstantValue(DepartmentProviderImpl);
+di.bind<FavoriteCarsProvider>(FavoriteCarsProviderName).toConstantValue(FavoriteCarsProviderImpl);
 di.bind<ModalsProvider>(ModalsProviderName).toConstantValue(ModalsProviderImpl);
+di.bind<TagProvider>(TagProviderName).toConstantValue(TagProviderImpl);
 di.bind<TypeOfFuelProvider>(TypeOfFuelProviderName).toConstantValue(TypeOfFuelProviderImpl);
 di.bind<TypeVehicleProvider>(TypeVehicleProviderName).toConstantValue(TypeVehicleProviderImpl);
 di.bind<UserProvider>(UserProviderName).toConstantValue(UserProviderImpl);
+//#endregion
 
-//------------------ USE CASES ------------------//
-
-//allies
+//#region ------------------ USE CASES ------------------//
+//#region Auth  
+di.bind<ConfirmUserUseCase>(ConfirmUserUseCase.name).toDynamicValue((context) => {
+    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
+    return new ConfirmUserUseCase({ authRepository });
+}).inSingletonScope();
+di.bind<DeleteUserUseCase>(DeleteUserUseCase.name).toDynamicValue((context) => {
+    const userProvider = context.container.get<UserProvider>(UserProviderName);
+    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
+    return new DeleteUserUseCase({ userProvider, authRepository });
+}).inSingletonScope();
+di.bind<GetCurrentUserUseCase>(GetCurrentUserUseCase.name).toDynamicValue((context) => {
+    const userProvider = context.container.get<UserProvider>(UserProviderName);
+    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
+    return new GetCurrentUserUseCase({ userProvider, authRepository });
+}).inSingletonScope();
+di.bind<SendConfirmCodeUseCase>(SendConfirmCodeUseCase.name).toDynamicValue((context) => {
+    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
+    return new SendConfirmCodeUseCase({ authRepository });
+}).inSingletonScope();
+di.bind<SendRecoveryPasswordCodeUseCase>(SendRecoveryPasswordCodeUseCase.name).toDynamicValue((context) => {
+    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
+    return new SendRecoveryPasswordCodeUseCase({ authRepository });
+}).inSingletonScope();
+di.bind<SignInUseCase>(SignInUseCase.name).toDynamicValue((context) => {
+    const userProvider = context.container.get<UserProvider>(UserProviderName);
+    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
+    return new SignInUseCase({ userProvider, authRepository });
+}).inSingletonScope();
+di.bind<SignInWithFacebookUseCase>(SignInWithFacebookUseCase.name).toDynamicValue((context) => {
+    const userProvider = context.container.get<UserProvider>(UserProviderName);
+    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
+    return new SignInWithFacebookUseCase({ userProvider, authRepository });
+}).inSingletonScope();
+di.bind<SignInWithGoogleUseCase>(SignInWithGoogleUseCase.name).toDynamicValue((context) => {
+    const userProvider = context.container.get<UserProvider>(UserProviderName);
+    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
+    return new SignInWithGoogleUseCase({ userProvider, authRepository });
+}).inSingletonScope();
+di.bind<SignOutUseCase>(SignOutUseCase.name).toDynamicValue((context) => {
+    const userProvider = context.container.get<UserProvider>(UserProviderName);
+    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
+    return new SignOutUseCase({ userProvider, authRepository });
+}).inSingletonScope();
+di.bind<SignUpUseCase>(SignUpUseCase.name).toDynamicValue((context) => {
+    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
+    return new SignUpUseCase({ authRepository });
+}).inSingletonScope();
+di.bind<UpdatePasswordByRecoveryUseCase>(UpdatePasswordByRecoveryUseCase.name).toDynamicValue((context) => {
+    const userProvider = context.container.get<UserProvider>(UserProviderName);
+    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
+    return new UpdatePasswordByRecoveryUseCase({ userProvider, authRepository });
+}).inSingletonScope();
+//#endregion
+//#region allies
 di.bind<GetAllAlliesUseCase>(GetAllAlliesUseCase.name).toDynamicValue((context) => {
     return new GetAllAlliesUseCase({
         allyRepository: context.container.get(AllyRepositoryName),
         alliesProvider: context.container.get(AllyProviderName)
     });
 }).inSingletonScope();
-
-//book
+//#endregion
+//#region blog post
+di.bind<GetBlogPostByIdUseCase>(GetBlogPostByIdUseCase.name).toDynamicValue((context) => {
+    return new GetBlogPostByIdUseCase({
+        blogPostRepository: context.container.get(BlogPostRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<GetAllBlogsAndMainPostUseCase>(GetAllBlogsAndMainPostUseCase.name).toDynamicValue((context) => {
+    return new GetAllBlogsAndMainPostUseCase({
+        blogPostRepository: context.container.get(BlogPostRepositoryName),
+    });
+}).inSingletonScope();
+//#endregion
+//#region book
 di.bind<BookADateForBuyUseCase>(BookADateForBuyUseCase.name).toDynamicValue((context) => {
     return new BookADateForBuyUseCase({
         bookRepository: context.container.get(BookRepositoryName),
@@ -114,19 +238,52 @@ di.bind<GetAvailableHoursForSellUseCase>(GetAvailableHoursForSellUseCase.name).t
         bookRepository: context.container.get(BookRepositoryName)
     });
 }).inSingletonScope();
-
-//brands
+//#endregion
+//#region brands
 di.bind<GetAllBrandsUseCase>(GetAllBrandsUseCase.name).toDynamicValue((context) => {
     return new GetAllBrandsUseCase({
         brandRepository: context.container.get(BrandRepositoryName),
         brandProvider: context.container.get(BrandProviderName)
     });
 }).inSingletonScope();
-
-//Car  
+di.bind<GetModelsByBrandUseCase>(GetModelsByBrandUseCase.name).toDynamicValue((context) => {
+    return new GetModelsByBrandUseCase({
+        brandRepository: context.container.get(BrandRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<GetModelVersionByModelAndBrandIdUseCase>(GetModelVersionByModelAndBrandIdUseCase.name).toDynamicValue((context) => {
+    return new GetModelVersionByModelAndBrandIdUseCase({
+        brandRepository: context.container.get(BrandRepositoryName),
+    });
+}).inSingletonScope();
+//#endregion
+//#region calculator
+di.bind<CalculateCreditForCarUseCase>(CalculateCreditForCarUseCase.name).toDynamicValue((context) => {
+    return new CalculateCreditForCarUseCase({
+        calculatorRepository: context.container.get(CalculatorRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<CalculateInsuranceUseCase>(CalculateInsuranceUseCase.name).toDynamicValue((context) => {
+    return new CalculateInsuranceUseCase({
+        calculatorRepository: context.container.get(CalculatorRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCase.name).toDynamicValue((context) => {
+    return new CalculateOfferForCarUseCase({
+        calculatorRepository: context.container.get(CalculatorRepositoryName),
+    });
+}).inSingletonScope();
+//#endregion
+//#region Car  
 di.bind<BookACarWithPaymentUseCase>(BookACarWithPaymentUseCase.name).toDynamicValue((context) => {
     return new BookACarWithPaymentUseCase({
         carRepository: context.container.get(CarRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<GetFavoriteCarsUseCase>(GetFavoriteCarsUseCase.name).toDynamicValue((context) => {
+    return new GetFavoriteCarsUseCase({
+        carRepository: context.container.get(CarRepositoryName),
+        favoriteCarProvider: context.container.get(FavoriteCarsProviderName)
     });
 }).inSingletonScope();
 di.bind<GetSomeRandomCarsUseCase>(GetSomeRandomCarsUseCase.name).toDynamicValue((context) => {
@@ -139,52 +296,103 @@ di.bind<GetRelatedCarsByCardIdUseCase>(GetRelatedCarsByCardIdUseCase.name).toDyn
     return new GetRelatedCarsByCardIdUseCase({ carRepository: context.container.get(CarRepositoryName) });
 }).inSingletonScope();
 di.bind<LikeCarUseCase>(LikeCarUseCase.name).toDynamicValue((context) => {
-    return new LikeCarUseCase({ carRepository: context.container.get(CarRepositoryName) });
+    return new LikeCarUseCase({
+        carRepository: context.container.get(CarRepositoryName),
+        favoriteCarProvider: context.container.get(FavoriteCarsProviderName)
+    });
 });
 di.bind<SearchCarsUseCase>(SearchCarsUseCase.name).toDynamicValue((context) => {
     return new SearchCarsUseCase({ carRepository: context.container.get(CarRepositoryName) });
 });
-
+//#endregion
+//#region departments
 di.bind<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCase.name).toDynamicValue((context) => {
     return new GetAllDepartmentsUseCase({
         departmentRepository: context.container.get(DepartmentRepositoryName),
         departmentProvider: context.container.get(DepartmentProviderName)
     });
 }).inSingletonScope();
-
-//colors
+//#endregion
+//#region cities
+di.bind<GetAllCitiesUseCase>(GetAllCitiesUseCase.name).toDynamicValue((context) => {
+    return new GetAllCitiesUseCase({
+        cityProvider: context.container.get(CityProviderName),
+        cityRepository: context.container.get(CityRepositoryName),
+    });
+}).inSingletonScope();
+//#endregion
+//#region colors
 di.bind<GetAllColorsUseCase>(GetAllColorsUseCase.name).toDynamicValue((context) => {
     return new GetAllColorsUseCase({
         colorRepository: context.container.get(ColorRepositoryName),
         colorProvider: context.container.get(ColorProviderName)
     });
 }).inSingletonScope();
-
-//default
+//#endregion
+//#region comments
+di.bind<GetAllCommentsUseCase>(GetAllCommentsUseCase.name).toDynamicValue((context) => {
+    return new GetAllCommentsUseCase({
+        commentRepository: context.container.get(CommentRepositoryName),
+    });
+}).inSingletonScope();
+//#endregion
+//#region defaultf
 di.bind<LoadUseCase>(LoadUseCase.name).toDynamicValue((context) => {
-    return new LoadUseCase({ 
+    return new LoadUseCase({
         getAllAlliesUseCase: context.container.get(GetAllAlliesUseCase.name),
         getAllBrandsUseCase: context.container.get(GetAllBrandsUseCase.name),
         getAllColorsUseCase: context.container.get(GetAllColorsUseCase.name),
         getAllTypeOfFueslUseCase: context.container.get(GetAllTypeOfFuelsUseCase.name),
         getAllTypeOfVehiclesUseCase: context.container.get(GetAllTypeVehiclesUseCase.name),
-     });
+        getAllCitiesUseCase: context.container.get(GetAllCitiesUseCase.name),
+        getFavoriteCarsUseCase: context.container.get(GetFavoriteCarsUseCase.name),
+        getAllTagsUseCase: context.container.get(GetAllTagsUseCase.name),
+        getCurrentUserUseCase: context.container.get(GetCurrentUserUseCase.name),
+    });
 });
-
-//type of fuel
+//#endregion
+//#region frequent
+di.bind<GetAllFrequentQuestionsUseCase>(GetAllFrequentQuestionsUseCase.name).toDynamicValue((context) => {
+    return new GetAllFrequentQuestionsUseCase({
+        frequentQuestionRepository: context.container.get(FrequentQuestionRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<GetAllProcedureQuestionsUseCase>(GetAllProcedureQuestionsUseCase.name).toDynamicValue((context) => {
+    return new GetAllProcedureQuestionsUseCase({
+        frequentQuestionRepository: context.container.get(FrequentQuestionRepositoryName),
+    });
+}).inSingletonScope();
+//#endregion
+//#region insurance
+di.bind<GetAllInsurancesUseCase>(GetAllInsurancesUseCase.name).toDynamicValue((context) => {
+    return new GetAllInsurancesUseCase({
+        insuranceRepository: context.container.get(InsuranceRepositoryName),
+    });
+}).inSingletonScope();
+//#endregion
+//#region tags
+di.bind<GetAllTagsUseCase>(GetAllTagsUseCase.name).toDynamicValue((context) => {
+    return new GetAllTagsUseCase({
+        tagRepository: context.container.get(TagRepositoryName),
+        tagProvider: context.container.get(TagProviderName)
+    });
+}).inSingletonScope();
+//#endregion
+//#region type of fuel
 di.bind<GetAllTypeOfFuelsUseCase>(GetAllTypeOfFuelsUseCase.name).toDynamicValue((context) => {
     return new GetAllTypeOfFuelsUseCase({
         typeOfFuelRepository: context.container.get(TypeOfFuelRepositoryName),
         typeOfFuelProvider: context.container.get(TypeOfFuelProviderName)
     });
 }).inSingletonScope();
-
-//type of vehicle
+//#endregion
+//#region type of vehicle
 di.bind<GetAllTypeVehiclesUseCase>(GetAllTypeVehiclesUseCase.name).toDynamicValue((context) => {
     return new GetAllTypeVehiclesUseCase({
-        typeVehicleRepository: context.container.get(TypeOfFuelRepositoryName),
+        typeVehicleRepository: context.container.get(TypeVehicleRepositoryName),
         typeVehicleProvider: context.container.get(TypeVehicleProviderName)
     });
 }).inSingletonScope();
-
+//#endregion
+//#endregion usecases
 export default di;

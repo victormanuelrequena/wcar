@@ -1,4 +1,5 @@
-import { FieldValues, UseFormReturn } from "react-hook-form";
+import { Props } from "@hookform/error-message";
+import { FieldValues, RegisterOptions, UseFormReturn } from "react-hook-form";
 
 export default interface PickerBoxComponentProps {
     formFunctions:UseFormReturn<FieldValues, any, undefined>,

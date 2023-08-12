@@ -3,6 +3,7 @@ import CarEntity, { TransmissionCar } from "../../../domain/entities/CarEntity";
 import CarRepository from "../../../domain/repositories/CarRepository";
 import sleeper from "../../../domain/repositories/utils/Sleeper";
 import { routes } from "../../../presentation/ui/routes/RoutesComponent";
+import OrderByEntity from "../../../domain/entities/OrderByEntity";
 
 const _testCar: CarEntity = {
     id: "1",
@@ -10,7 +11,13 @@ const _testCar: CarEntity = {
     model: 'Class C',
     type: {
         id: "1",
-        name: "Sedan"
+        name: "Sedan",
+        photo: '/data/typeVehicles/suv.svg',
+    },
+    tag: {
+        id: "1",
+        name: "new",
+        color: "#00FEFE"
     },
     rating: 3,
     images: [
@@ -53,11 +60,13 @@ const _testCar: CarEntity = {
     outstanding: true,
     brand: {
         id: "1",
-        name: "Mercedez"
+        name: "Mercedez",
+        image: "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png"
     },
     color: {
         id: "1",
         name: "gray",
+        colorHex: "#00FEFE",
     },
     typeOfFuel: {
         id: "1",
@@ -67,7 +76,14 @@ const _testCar: CarEntity = {
 
 @injectable()
 class CarRepositoryTest implements CarRepository {
-    search(page: number, search?: string | undefined, brand?: string | undefined, year?: string | undefined, price?: number | undefined, type?: string[] | undefined, transmission?: TransmissionCar | undefined, availability?: string | undefined): Promise<{ cars: CarEntity[], maxPages: number }> {
+    search(page: number, search: string, brand: string | undefined,
+        year: string | undefined,
+        price: { min: number, max: number } | undefined,
+        type: string, transmission: TransmissionCar | undefined,
+        tag: string | undefined, km: { min: number, max: number } | undefined,
+        fuelId: string | undefined, colorId: string | undefined,
+        plateNumber: string | undefined, orderBy: OrderByEntity | undefined,
+    ): Promise<{ cars: CarEntity[], maxPages: number }> {
         return new Promise<{ cars: CarEntity[], maxPages: number }>(async (resolve, reject) => {
             //add a delay of 1s
             await sleeper(1000)(1);
@@ -137,6 +153,12 @@ class CarRepositoryTest implements CarRepository {
         return new Promise<void>((resolve, reject) => {
             window.location.href = routes.dateForCar.relativePath + '/' + carId + '/' + 'dsdsdssd';
             return resolve();
+        });
+    }
+
+    public async getFavoriteCars(): Promise<CarEntity[]> {
+        return new Promise<CarEntity[]>((resolve, reject) => {
+            resolve([_testCar, _testCar]);
         });
     }
 }

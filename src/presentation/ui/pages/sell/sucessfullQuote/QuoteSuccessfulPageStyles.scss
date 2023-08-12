@@ -1,0 +1,34 @@
+.quote_succesful_page {
+    position: relative;
+
+    .bg_image {
+        position: absolute;
+        right: -1em;
+        bottom: 30%;
+    }
+
+    .card {
+        .clear {
+            position: absolute;
+            right: 1em;
+            top: 1em;
+        }
+
+        .card_header {
+            .divider {
+                width: 1px;
+                height: 67%;
+                margin-top: 7%;
+                background-color: var(--color-gray);
+            }
+
+            .container_offer {
+                padding: 0.2em 0.4em;
+            }
+        }
+
+        .card_body{
+            text-align: center;
+        }
+    }
+}
