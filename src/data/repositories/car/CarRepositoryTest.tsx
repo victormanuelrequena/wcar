@@ -6,6 +6,10 @@ import { routes } from "../../../presentation/ui/routes/RoutesComponent";
 import OrderByEntity from "../../../domain/entities/OrderByEntity";
 
 const _testCar: CarEntity = {
+    doors: 4,
+    motor: '1.6 16v 115cv',
+    plate: '8 de Bogota',
+    status: 'nuevo',
     id: "1",
     name: "Mercedez Benz C 180 Mt 20 1.6 156cv 4p",
     model: 'Class C',
@@ -17,7 +21,8 @@ const _testCar: CarEntity = {
     tag: {
         id: "1",
         name: "new",
-        color: "#00FEFE"
+        color: "#00FEFE",
+        description: "new",
     },
     rating: 3,
     images: [
@@ -32,20 +37,20 @@ const _testCar: CarEntity = {
         "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
         "https://images.pexels.com/photos/5086489/pexels-photo-5086489.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
-    description: [
-        'Version Renault Life',
-        'Motor 1.6 16v 115cv',
-        'Caja Manual de 5 marchas',
-        'Llantas de aleación de 15"',
-        'Faros antiniebla delanteros',
-        'Computadora de abordo',
-        'Limitador y regulador de velocidad',
-        'Cierre centralizado de puertas',
-        'Levantacristales eléctricos delanteros',
-        'Espejos exteriores eléctricos',
-        'Volante regulable en altura',
-        'Asiento del conductor regulable en altura',
-    ],
+    description: 
+        'Version Renault Life' + "\n" +
+        'Motor 1.6 16v 115cv' + "\n" +
+        'Caja Manual de 5 marchas' + "\n" +
+        'Llantas de aleación de 15"' + "\n" +
+        'Faros antiniebla delanteros' + "\n" +
+        'Computadora de abordo' + "\n" +
+        'Limitador y regulador de velocidad' + "\n" +
+        'Cierre centralizado de puertas' + "\n" +
+        'Levantacristales eléctricos delanteros' + "\n" +
+        'Espejos exteriores eléctricos' + "\n" +
+        'Volante regulable en altura' + "\n" +
+        'Asiento del conductor regulable en altura' 
+    ,
     photoUrl: "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
     price: 120000000,
     priceBook: {
@@ -55,9 +60,7 @@ const _testCar: CarEntity = {
     },
     transmission: TransmissionCar.AUTOMATIC,
     year: 2020,
-    like: false,
     odometer: 6800,
-    outstanding: true,
     brand: {
         id: "1",
         name: "Mercedez",

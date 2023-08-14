@@ -97,6 +97,7 @@ import SignUpUseCase from "../domain/use_cases/auth/SignUpUseCase";
 import UpdatePasswordByRecoveryUseCase from "../domain/use_cases/auth/UpdatePasswordByRecoveryUseCase";
 import SignInWithFacebookUseCase from "../domain/use_cases/auth/SignInWithFacebookUseCase";
 import SignInWithGoogleUseCase from "../domain/use_cases/auth/SignInWithGoogleUseCase";
+import BrandRepositoryImpl from "../data/repositories/brand/impl/BrandRepositoryImpl";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -105,11 +106,13 @@ const di = new Container();
 
 //#region ------------------ REPOSITORIES ------------------ //
 if (mode === MODE_DI.DEVELOPMENT) {
+    di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryImpl).inSingletonScope();
+}else{
+    di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
 }
 di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
 di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryTest).inSingletonScope();
 di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryTest).inSingletonScope();
-di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
 di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
 di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
 di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
@@ -298,6 +301,7 @@ di.bind<GetRelatedCarsByCardIdUseCase>(GetRelatedCarsByCardIdUseCase.name).toDyn
 di.bind<LikeCarUseCase>(LikeCarUseCase.name).toDynamicValue((context) => {
     return new LikeCarUseCase({
         carRepository: context.container.get(CarRepositoryName),
+        userProvider: context.container.get(UserProviderName),
         favoriteCarProvider: context.container.get(FavoriteCarsProviderName)
     });
 });
