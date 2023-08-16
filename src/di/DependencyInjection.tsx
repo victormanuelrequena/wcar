@@ -146,7 +146,6 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryDev).inSingletonScope();
     di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryDev).inSingletonScope();
     di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryDev).inSingletonScope();
-
     di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryDev).inSingletonScope();
     di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryDev).inSingletonScope();
     di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryDev).inSingletonScope();
@@ -164,7 +163,6 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryImpl).inSingletonScope();
     di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryImpl).inSingletonScope();
     di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryImpl).inSingletonScope();
-
     di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryImpl).inSingletonScope();
     di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryImpl).inSingletonScope();
     di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryImpl).inSingletonScope();
@@ -182,19 +180,13 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
     di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
     di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
-
     di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
     di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryTest).inSingletonScope();
     di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryTest).inSingletonScope();
     di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryTest).inSingletonScope();
     di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
     di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
-
 }
-di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
-di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
-di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
-di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
 //#endregion
 
 //#region ------------------ PROVIDERS ------------------ //
