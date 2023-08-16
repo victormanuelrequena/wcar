@@ -1,5 +1,6 @@
 import AllyEntity from "../../../domain/entities/AllyEntity";
 
+//TODO CREATE
 const fromJson = (json: any): AllyEntity => {
     return {
         url_image: json.image,
