@@ -118,6 +118,8 @@ import { InsuranceRepositoryDev } from "../data/repositories/insurance/Insurance
 import InsuranceRepositoryImpl from "../data/repositories/insurance/impl/InsuranceRepositoryImpl";
 import FrequentQuestionRepositoryDev from "../data/repositories/frequentQuestion/FrequentQuestionRepositoryDev";
 import FrequentQuestionRepositoryImpl from "../data/repositories/frequentQuestion/impl/FrequentQuestionRepositoryImpl";
+import DepartmentRepositoryDev from "../data/repositories/deparment/DepartmentRepositoryDev";
+import DepartmentRepositoryImpl from "../data/repositories/deparment/impl/DepartmentRepositoryImpl";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -133,6 +135,7 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryDev).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryDev).inSingletonScope();
 
+    di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryDev).inSingletonScope();
     di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryDev).inSingletonScope();
     di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryDev).inSingletonScope();
     di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryDev).inSingletonScope();
@@ -146,6 +149,7 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryImpl).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryImpl).inSingletonScope();
 
+    di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryImpl).inSingletonScope();
     di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryImpl).inSingletonScope();
     di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryImpl).inSingletonScope();
     di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryImpl).inSingletonScope();
@@ -159,6 +163,7 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryTest).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
 
+    di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
     di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryTest).inSingletonScope();
     di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryTest).inSingletonScope();
     di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryTest).inSingletonScope();
@@ -170,7 +175,6 @@ di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryT
 di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
 di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
 di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
-di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
 //#endregion
 
 //#region ------------------ PROVIDERS ------------------ //
