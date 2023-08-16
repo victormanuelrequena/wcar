@@ -49,7 +49,7 @@ const DetailedCarPage: FC<{}> = () => {
     }, [id]);
 
     return <Layout>
-        {id === undefined || car === null && <NotResultsComponent />}
+        {(id === undefined || car === null) && <NotResultsComponent />}
         {car === undefined && <LoadingComponent />}
         {car !== null && car !== undefined && <div className="detailed_car_page">
             <section>
@@ -132,14 +132,14 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <img src="/assets/icons/door.svg" className='img-fluid me-2' alt="" />
                                                     Puertas:
                                                 </span>
-                                                {/* <strong>{car.doors}</strong> */}
+                                                <strong>{car.doors}</strong>
                                             </div>
                                             <div className="col-6 my-3">
                                                 <span className='text_gray me-2'>
                                                     <img src="/assets/icons/reference.svg" className='img-fluid me-2' alt="" />
                                                     Referencia:
                                                 </span>
-                                                {/* <strong>{car.model}</strong> */}
+                                                <strong>{car.model}</strong>
                                             </div>
                                             <div className="col-6 my-3">
                                                 <span className='text_gray me-2'>
@@ -160,7 +160,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <img src="/assets/icons/motor.svg" className='img-fluid me-2' alt="" />
                                                     Motor:
                                                 </span>
-                                                {/* <strong>{car.motor}</strong> */}
+                                                <strong>{car.motor}</strong>
                                             </div>
                                             <div className="col-6 my-3">
                                                 <span className='text_gray me-2'>
@@ -174,7 +174,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <img src="/assets/icons/plate.svg" className='img-fluid me-2' alt="" />
                                                     Placa:
                                                 </span>
-                                                {/* <strong>{car.plate}</strong> */}
+                                                <strong>{car.plate}</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -206,7 +206,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <img src="/assets/icons/status.svg" className='img-fluid me-2' alt="" />
                                                     Estado:
                                                 </span>
-                                                {/* <strong>{car.status}</strong> */}
+                                                <strong>{car.status}</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -216,7 +216,7 @@ const DetailedCarPage: FC<{}> = () => {
                         <div className="col-md-3"></div>
                         <div className="col-md-9">
                             <div className="d-flex jusstify-content-center justify-content-md-start p-3">
-                            <Link to={routes.contact.relativePath} className="btn btn_cyan">CONTACTA UN ASESOR <Icons.Contact /></Link>
+                                <Link to={routes.contact.relativePath} className="btn btn_cyan">CONTACTA UN ASESOR <Icons.Contact /></Link>
                             </div>
                         </div>
 
@@ -226,10 +226,7 @@ const DetailedCarPage: FC<{}> = () => {
                                 <h3 className="text_bold side side_top">
                                     <strong>Descripción</strong>
                                 </h3>
-                                <ul>
-                                    {car.description.map((item, index) => <li key={index}>{item}</li>)}
-                                </ul>
-
+                                <div dangerouslySetInnerHTML={{ __html: car.description ?? '' }} ></div>
                             </div>
                         </div>
                         <div className="col-md-3"></div>

@@ -88,16 +88,6 @@ class AuthRepositoryTest implements AuthRepository {
     });
   }
 
-  public async addUser(user: UserEntity, password: string): Promise<Either<ExceptionEntity, void>> {
-    return right(undefined);
-
-  }
-
-  public async deleteUser(): Promise<Either<ExceptionEntity, void>> {
-    return right(undefined);
-
-  }
-
   public async refreshToken(): Promise<Either<ExceptionEntity, void>> {
     return right(undefined);
   }

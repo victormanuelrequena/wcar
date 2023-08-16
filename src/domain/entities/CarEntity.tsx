@@ -1,6 +1,6 @@
 import BrandEntity from "./BrandEntity";
 import ColorEntity from "./ColorEntity";
-import PriceBookEntity from "./PriceBoookEntity";
+import PriceBookEntity from "./PriceBookEntity";
 import TagEntity from "./TagEntity";
 import TypeOfFuelEntity from "./TypeOfFuelEntity";
 import TypeVehicleEntity from "./TypeVehicleEntity";
@@ -20,14 +20,16 @@ export default interface CarEntity {
     price: number;
     transmission: TransmissionCar;
     year: number;
-    like: boolean;
     rating: number;
     odometer: number;
     brand: BrandEntity;
     typeOfFuel: TypeOfFuelEntity;
     color: ColorEntity;
-    outstanding: boolean;
     priceBook?: PriceBookEntity | undefined;
-    description: string[];
+    description: string;
     tag?: TagEntity | undefined;
+    plate: string,
+    doors: number,
+    motor: string,
+    status: string,
 }

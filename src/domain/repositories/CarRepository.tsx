@@ -1,6 +1,8 @@
+import { Either } from "fp-ts/lib/Either";
 import CarEntity from "../entities/CarEntity";
 import { TransmissionCar } from "../entities/CarEntity";
 import OrderByEntity from "../entities/OrderByEntity";
+import ExceptionEntity from "../entities/ExceptionEntity";
 
 export default interface CarRepository {
     getSomeRandomCars(): Promise<CarEntity[]>;
@@ -14,8 +16,8 @@ export default interface CarRepository {
         fuelId: string | undefined, colorId: string | undefined,
         plateNumber: string | undefined, orderBy: OrderByEntity | undefined,
     ): Promise<{ cars: CarEntity[], maxPages: number }>;
-    getCarById(id: string): Promise<CarEntity>;
-    bookACarPayment(carId: string, paymentInfo: any): Promise<void>;
+    getCarById(id: string): Promise<CarEntity | undefined>;
+    bookACarPayment(carId: string, paymentInfo: any): Promise<Either<ExceptionEntity, void>>;
     getFavoriteCars(): Promise<CarEntity[]>;
 }
 

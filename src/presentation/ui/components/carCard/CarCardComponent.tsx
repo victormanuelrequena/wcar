@@ -1,5 +1,5 @@
 import './CardComponentStyles.scss';
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import CarCardComponentProps from "./CarCardComponentProps";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import di from "../../../../di/DependencyInjection";
@@ -7,14 +7,29 @@ import LikeCarUseCase from "../../../../domain/use_cases/car/LikeCarUseCase";
 import CurrencyParse from "../../../utils/CurrencyParse";
 import { Link } from 'react-router-dom';
 import { routes } from '../../routes/RoutesComponent';
+import { isLeft } from 'fp-ts/lib/Either';
+import FavoriteCarsContext from '../../../../domain/providers/favoriteCars/FavoriteCarsContext';
+import FavoriteCarsContextType from '../../../../domain/providers/favoriteCars/FavoriteCarsContextType';
 
 const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
-    const [_like, _setLike] = useState<boolean>(car.like);
+    const [_like, _setLike] = useState<boolean>(false);
+    const { favoriteCars } = useContext(FavoriteCarsContext) as FavoriteCarsContextType;
 
-    const _handleLike = () => {
-        di.get<LikeCarUseCase>(LikeCarUseCase.name).call(car, !_like);
+    const _checkLike = () => {
+        if (favoriteCars.find(favoriteCar => favoriteCar.id == car.id)) {
+            _setLike(true);
+        }
+    }
+
+    const _handleLike = async () => {
+         const response = await di.get<LikeCarUseCase>(LikeCarUseCase.name).call(car, !_like);
+         if(isLeft(response) && response.left.code == 'unauthorized') return alert(response.left.message);
         _setLike(!_like);
     }
+
+    useEffect(() => {
+        _checkLike();
+    }, [favoriteCars]);
 
     return <div className="w-100 card car_card_component">
         <div className="card-body">

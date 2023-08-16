@@ -28,11 +28,11 @@ export default class BlogPostRepositoryTest implements BlogPostRepository{
         await sleeper(1000)(1);
         return Array(20).fill(_testBlog);
     }
-    async getOutstandingBlog(): Promise<BlogPostEntity> {
+    async getOutstandingBlog(): Promise<BlogPostEntity | undefined> {
         await sleeper(1000)(1);
         return _testBlog;
     }
-    async getBlogById(id: string): Promise<BlogPostEntity> {
+    async getBlogById(id: string): Promise<BlogPostEntity | undefined> {
         await sleeper(1000)(1);
         return _testBlog;
     }

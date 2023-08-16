@@ -87,7 +87,6 @@ import GetAllTagsUseCase from "../domain/use_cases/tag/GetAllTagsUseCase";
 import AuthRepositoryTest from "../data/repositories/auth/AuthRepositoryTest";
 import AuthRepository, { AuthRepositoryName } from "../domain/repositories/AuthRepository";
 import ConfirmUserUseCase from "../domain/use_cases/auth/ConfirmUserUseCase";
-import DeleteUserUseCase from "../domain/use_cases/auth/DeleteUserUseCase";
 import GetCurrentUserUseCase from "../domain/use_cases/auth/GetCurrentUserUseCase";
 import SendConfirmCodeUseCase from "../domain/use_cases/auth/SendConfirmCodeUseCase";
 import SendRecoveryPasswordCodeUseCase from "../domain/use_cases/auth/SendRecoveryPasswordCodeUseCase";
@@ -97,6 +96,38 @@ import SignUpUseCase from "../domain/use_cases/auth/SignUpUseCase";
 import UpdatePasswordByRecoveryUseCase from "../domain/use_cases/auth/UpdatePasswordByRecoveryUseCase";
 import SignInWithFacebookUseCase from "../domain/use_cases/auth/SignInWithFacebookUseCase";
 import SignInWithGoogleUseCase from "../domain/use_cases/auth/SignInWithGoogleUseCase";
+import BrandRepositoryImpl from "../data/repositories/brand/impl/BrandRepositoryImpl";
+import CarRepositoryImpl from "../data/repositories/car/impl/CarRepositoryImpl";
+import AuthRepositoryDev from "../data/repositories/auth/AuthRepositoryDev";
+import AuthRepositoryImpl from "../data/repositories/auth/impl/AuthRepositoryImpl";
+import AllyRepositoryDev from "../data/repositories/ally/AllyRepositoryDev";
+import AllyRepositoryImpl from "../data/repositories/ally/impl/AllyRepositoryImpl";
+import BrandRepositoryDev from "../data/repositories/brand/BrandRepositoryDev";
+import CarRepositoryDev from "../data/repositories/car/CarRepositoryDev";
+import BookRepositoryImpl from "../data/repositories/book/impl/BookRepositoryImpl";
+import BookRepositoryDev from "../data/repositories/book/BookRepositoryDev";
+import BlogPostRepositoryImpl from "../data/repositories/blogPost/impl/BlogPostRepositoryImpl";
+import BlogPostRepositoryDev from "../data/repositories/blogPost/BlogPostRepositoryDev";
+import CalculatorRepositoryDev from "../data/repositories/calculator/CalculatorRepositoryDev";
+import CalculatorRepositoryImpl from "../data/repositories/calculator/impl/CalculatorRepositoryImpl";
+import { CityRepositoryDev } from "../data/repositories/city/CityRepositoryDev";
+import CityRepositoryImpl from "../data/repositories/city/impl/CityRepositoryImpl";
+import ColorRepositoryImpl from "../data/repositories/color/impl/ColorRepositoryImpl";
+import ColorRepositoryDev from "../data/repositories/color/ColorRepositoryDev";
+import CommentRepositoryDev from "../data/repositories/comment/CommentRepositoryDev";
+import CommentRepositoryImpl from "../data/repositories/comment/impl/CommentRepositoryImpl";
+import TypeVehicleRepositoryImpl from "../data/repositories/typeOfVehicle/impl/TypeVehicleRepositoryImpl";
+import TypeVehicleRepositoryDev from "../data/repositories/typeOfVehicle/TypeVehicleRepositoryDev";
+import TypeOfFuelRepositoryDev from "../data/repositories/typeOfFuel/TypeOfFuelRepositoryDev";
+import TypeOfFuelRepositoryImpl from "../data/repositories/typeOfFuel/impl/TypeOfFuelRepositoryImpl";
+import TagRepositoryDev from "../data/repositories/tag/TagRepositoryDev";
+import TagRepositoryImpl from "../data/repositories/tag/impl/TagRepositoryImpl";
+import { InsuranceRepositoryDev } from "../data/repositories/insurance/InsuranceRepositoryDev";
+import InsuranceRepositoryImpl from "../data/repositories/insurance/impl/InsuranceRepositoryImpl";
+import FrequentQuestionRepositoryDev from "../data/repositories/frequentQuestion/FrequentQuestionRepositoryDev";
+import FrequentQuestionRepositoryImpl from "../data/repositories/frequentQuestion/impl/FrequentQuestionRepositoryImpl";
+import DepartmentRepositoryDev from "../data/repositories/deparment/DepartmentRepositoryDev";
+import DepartmentRepositoryImpl from "../data/repositories/deparment/impl/DepartmentRepositoryImpl";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -105,23 +136,57 @@ const di = new Container();
 
 //#region ------------------ REPOSITORIES ------------------ //
 if (mode === MODE_DI.DEVELOPMENT) {
+    di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryDev).inSingletonScope();
+    di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryDev).inSingletonScope();
+    di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryDev).inSingletonScope();
+    di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryDev).inSingletonScope();
+    di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryDev).inSingletonScope();
+    di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryDev).inSingletonScope();
+    di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryDev).inSingletonScope();
+    di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryDev).inSingletonScope();
+    di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryDev).inSingletonScope();
+    di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryDev).inSingletonScope();
+    di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryDev).inSingletonScope();
+    di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryDev).inSingletonScope();
+    di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryDev).inSingletonScope();
+    di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryDev).inSingletonScope();
+    di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryDev).inSingletonScope();
+    di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryDev).inSingletonScope();
+} else if (mode === MODE_DI.PRODUCTION) {
+    di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryImpl).inSingletonScope();
+    di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryImpl).inSingletonScope();
+    di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryImpl).inSingletonScope();
+    di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryImpl).inSingletonScope();
+    di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryImpl).inSingletonScope();
+    di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryImpl).inSingletonScope();
+    di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryImpl).inSingletonScope();
+    di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryImpl).inSingletonScope();
+    di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryImpl).inSingletonScope();
+    di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryImpl).inSingletonScope();
+    di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryImpl).inSingletonScope();
+    di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryImpl).inSingletonScope();
+    di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryImpl).inSingletonScope();
+    di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryImpl).inSingletonScope();
+    di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryImpl).inSingletonScope();
+    di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryImpl).inSingletonScope();
+} else {
+    di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
+    di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryTest).inSingletonScope();
+    di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
+    di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
+    di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryTest).inSingletonScope();
+    di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
+    di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
+    di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
+    di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
+    di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
+    di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
+    di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryTest).inSingletonScope();
+    di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryTest).inSingletonScope();
+    di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryTest).inSingletonScope();
+    di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
+    di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
 }
-di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
-di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryTest).inSingletonScope();
-di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryTest).inSingletonScope();
-di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
-di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
-di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
-di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
-di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
-di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
-di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
-di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
-di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryTest).inSingletonScope();
-di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryTest).inSingletonScope();
-di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryTest).inSingletonScope();
-di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
-di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
 //#endregion
 
 //#region ------------------ PROVIDERS ------------------ //
@@ -143,11 +208,6 @@ di.bind<UserProvider>(UserProviderName).toConstantValue(UserProviderImpl);
 di.bind<ConfirmUserUseCase>(ConfirmUserUseCase.name).toDynamicValue((context) => {
     const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
     return new ConfirmUserUseCase({ authRepository });
-}).inSingletonScope();
-di.bind<DeleteUserUseCase>(DeleteUserUseCase.name).toDynamicValue((context) => {
-    const userProvider = context.container.get<UserProvider>(UserProviderName);
-    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
-    return new DeleteUserUseCase({ userProvider, authRepository });
 }).inSingletonScope();
 di.bind<GetCurrentUserUseCase>(GetCurrentUserUseCase.name).toDynamicValue((context) => {
     const userProvider = context.container.get<UserProvider>(UserProviderName);
@@ -298,6 +358,7 @@ di.bind<GetRelatedCarsByCardIdUseCase>(GetRelatedCarsByCardIdUseCase.name).toDyn
 di.bind<LikeCarUseCase>(LikeCarUseCase.name).toDynamicValue((context) => {
     return new LikeCarUseCase({
         carRepository: context.container.get(CarRepositoryName),
+        userProvider: context.container.get(UserProviderName),
         favoriteCarProvider: context.container.get(FavoriteCarsProviderName)
     });
 });

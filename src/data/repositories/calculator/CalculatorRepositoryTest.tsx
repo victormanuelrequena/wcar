@@ -1,6 +1,8 @@
 import { injectable } from "inversify";
 import CalculatorRepository from "../../../domain/repositories/CalculatorRepository";
 import CalculatedEntity from "../../../domain/entities/CalculatedEntity";
+import ExceptionEntity from "../../../domain/entities/ExceptionEntity";
+import { Either, right } from "fp-ts/lib/Either";
 
 const _test:CalculatedEntity = {
     id: "1",
@@ -8,13 +10,13 @@ const _test:CalculatedEntity = {
 }
 @injectable()
 export default class CalculatorRepositoryTest implements CalculatorRepository{
-    calculateInsurance(name: string, phone: string, email: string, cityId: string, licensePlate: string): Promise<void> {
-        return Promise.resolve(undefined);
+    async calculateInsurance(name: string, phone: string, email: string, cityId: string, licensePlate: string): Promise<Either<ExceptionEntity, void>> {
+        return right(undefined);
     }
-    calculateCredit(vehicleValue: number, initialQuote: number, months: number, insuranceId: string): Promise<number> {
-        return Promise.resolve(320000);
+    async calculateCredit(vehicleValue: number, initialQuote: number, months: number, insuranceId: string): Promise<Either<ExceptionEntity, number>> {
+        return right(32000);
     }
-    async calculateOfferForCar(_: any): Promise<CalculatedEntity> {
-        return Promise.resolve(_test);
+    async calculateOfferForCar(_: any): Promise<Either<ExceptionEntity, CalculatedEntity>> {
+        return right(_test);
     }
 }

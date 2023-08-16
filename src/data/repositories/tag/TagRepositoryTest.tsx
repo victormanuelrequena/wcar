@@ -5,7 +5,8 @@ import TagEntity from "../../../domain/entities/TagEntity";
 const _tagTest: TagEntity = {
     id: "1",
     name: "new",
-    color: "#00FEFE"
+    color: "#00FEFE",
+    description: "new",
 };
 @injectable()
 class TagRepositoryTest implements TagRepository {

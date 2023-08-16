@@ -22,8 +22,22 @@ const dateToMMDDYYYY = (date: Date): string => {
     return `${month}/${day}/${year}`;
 }
 
+const dateFromString = (date: string): Date => {
+    const [month, day, year] = date.split('/');
+    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+}
+
+const stringFromDate = (date: Date): string => {
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+}
+
 export default {
     dateToMonthDay,
     dateToMMDDYYYY,
     dateToMonthDayYear,
+    dateFromString,
+    stringFromDate,
 }
