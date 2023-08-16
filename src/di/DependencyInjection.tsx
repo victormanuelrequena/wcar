@@ -112,6 +112,10 @@ import CalculatorRepositoryDev from "../data/repositories/calculator/CalculatorR
 import CalculatorRepositoryImpl from "../data/repositories/calculator/impl/CalculatorRepositoryImpl";
 import { CityRepositoryDev } from "../data/repositories/city/CityRepositoryDev";
 import CityRepositoryImpl from "../data/repositories/city/impl/CityRepositoryImpl";
+import ColorRepositoryImpl from "../data/repositories/color/impl/ColorRepositoryImpl";
+import ColorRepositoryDev from "../data/repositories/color/ColorRepositoryDev";
+import CommentRepositoryDev from "../data/repositories/comment/CommentRepositoryDev";
+import CommentRepositoryImpl from "../data/repositories/comment/impl/CommentRepositoryImpl";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -126,8 +130,10 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryDev).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryDev).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryDev).inSingletonScope();
-    di.bind<CalculatorRepository>(BookRepositoryName).to(CalculatorRepositoryDev).inSingletonScope();
-    di.bind<CityRepository>(BookRepositoryName).to(CityRepositoryDev).inSingletonScope();
+    di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryDev).inSingletonScope();
+    di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryDev).inSingletonScope();
+    di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryDev).inSingletonScope();
+    di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryDev).inSingletonScope();
 } else if (mode === MODE_DI.PRODUCTION) {
     di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryImpl).inSingletonScope();
     di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryImpl).inSingletonScope();
@@ -135,8 +141,10 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryImpl).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryImpl).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryImpl).inSingletonScope();
-    di.bind<CalculatorRepository>(BookRepositoryName).to(CalculatorRepositoryImpl).inSingletonScope();
-    di.bind<CityRepository>(BookRepositoryName).to(CityRepositoryImpl).inSingletonScope();
+    di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryImpl).inSingletonScope();
+    di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryImpl).inSingletonScope();
+    di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryImpl).inSingletonScope();
+    di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryImpl).inSingletonScope();
 } else {
     di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
     di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryTest).inSingletonScope();
@@ -144,8 +152,10 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryTest).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
-    di.bind<CalculatorRepository>(BookRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
-    di.bind<CityRepository>(BookRepositoryName).to(CityRepositoryTest).inSingletonScope();
+    di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
+    di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
+    di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
+    di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
 }
 di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
 di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
