@@ -21,6 +21,7 @@ import CalculateOfferForCarUseCase from '../../../../../domain/use_cases/calcula
 import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
 import { routes } from '../../../routes/RoutesComponent';
+import { isRight } from 'fp-ts/lib/Either';
 
 const _min_year = 1999;
 const QuoteYourCarPage: FC<{}> = () => {
@@ -45,12 +46,13 @@ const QuoteYourCarPage: FC<{}> = () => {
     }
 
     const _handleSave = async (data: any) => {
-        try {
-            setLoading(true);
-            const calculated = await di.get<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCase.name).call(data);
+        setLoading(true);
+        const calculated = await di.get<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCase.name).call(data);
+        if (isRight(calculated)) {
             addToast("Cotización realizada", "success", undefined);
             navigate(routes.quoteSuccessful.relativePath, { state: { calculated } });
-        } catch (error) {
+        } else {
+            addToast(calculated.left.message ?? "Error creando cotización", "error", undefined);
             setLoading(false);
         }
     }

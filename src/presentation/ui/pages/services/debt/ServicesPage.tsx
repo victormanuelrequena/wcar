@@ -14,6 +14,7 @@ import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
 import CalculatorTitleComponent from './components/message/CalculatorTitleComponent';
 import CurrencyParse from '../../../../utils/CurrencyParse';
+import { isRight } from 'fp-ts/lib/Either';
 
 const ServicesPage: FC = () => {
 
@@ -34,11 +35,11 @@ const ServicesPage: FC = () => {
     }
 
     const _handleSubmit = async (data: any) => {
-        try {
-            const response = await di.get<CalculateCreditForCarUseCase>(CalculateCreditForCarUseCase.name).call(data.vehicleValue, data.initialQuote, data.months, data.insuranceId);
-            setEstimatedDebt(response);
-        } catch (error) {
-            addToast('Ha ocurrido un error al calcular el crédito', 'error', undefined);
+        const response = await di.get<CalculateCreditForCarUseCase>(CalculateCreditForCarUseCase.name).call(data.vehicleValue, data.initialQuote, data.months, data.insuranceId);
+        if (isRight(response)) {
+            setEstimatedDebt(response.right);
+        } else {
+            addToast(response.left.message ?? 'Ha ocurrido un error al calcular el crédito', 'error', undefined);
         }
     }
 

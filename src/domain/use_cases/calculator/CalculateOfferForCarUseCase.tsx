@@ -1,6 +1,8 @@
 import { injectable } from "inversify";
 import CalculatorRepository, { CalculateOfferForCarProps } from "../../repositories/CalculatorRepository";
 import CalculatedEntity from "../../entities/CalculatedEntity";
+import ExceptionEntity from "../../entities/ExceptionEntity";
+import { Either } from "fp-ts/lib/Either";
 
 interface props {
     calculatorRepository: CalculatorRepository;
@@ -14,7 +16,7 @@ export default class CalculateOfferForCarUseCase {
         this._calculatorRepository = _.calculatorRepository;
     }
 
-    async call(data: CalculateOfferForCarProps): Promise<CalculatedEntity> {
+    async call(data: CalculateOfferForCarProps): Promise<Either<ExceptionEntity, CalculatedEntity>> {
         return await this._calculatorRepository.calculateOfferForCar(data);
     }
 }
