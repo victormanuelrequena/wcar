@@ -108,6 +108,12 @@ import BookRepositoryImpl from "../data/repositories/book/impl/BookRepositoryImp
 import BookRepositoryDev from "../data/repositories/book/BookRepositoryDev";
 import BlogPostRepositoryImpl from "../data/repositories/blogPost/impl/BlogPostRepositoryImpl";
 import BlogPostRepositoryDev from "../data/repositories/blogPost/BlogPostRepositoryDev";
+import TypeVehicleRepositoryImpl from "../data/repositories/typeOfVehicle/impl/TypeVehicleRepositoryImpl";
+import TypeVehicleRepositoryDev from "../data/repositories/typeOfVehicle/TypeVehicleRepositoryDev";
+import TypeOfFuelRepositoryDev from "../data/repositories/typeOfFuel/TypeOfFuelRepositoryDev";
+import TypeOfFuelRepositoryImpl from "../data/repositories/typeOfFuel/impl/TypeOfFuelRepositoryImpl";
+import TagRepositoryDev from "../data/repositories/tag/TagRepositoryDev";
+import TagRepositoryImpl from "../data/repositories/tag/impl/TagRepositoryImpl";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -122,6 +128,10 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryDev).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryDev).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryDev).inSingletonScope();
+
+    di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryDev).inSingletonScope();
+    di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryDev).inSingletonScope();
+    di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryDev).inSingletonScope();
 } else if (mode === MODE_DI.PRODUCTION) {
     di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryImpl).inSingletonScope();
     di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryImpl).inSingletonScope();
@@ -129,6 +139,10 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryImpl).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryImpl).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryImpl).inSingletonScope();
+
+    di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryImpl).inSingletonScope();
+    di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryImpl).inSingletonScope();
+    di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryImpl).inSingletonScope();
 } else {
     di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
     di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryTest).inSingletonScope();
@@ -136,6 +150,11 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryTest).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
+
+    di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryTest).inSingletonScope();
+    di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
+    di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
+
 }
 di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
 di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
@@ -144,9 +163,6 @@ di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingleto
 di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
 di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryTest).inSingletonScope();
 di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryTest).inSingletonScope();
-di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryTest).inSingletonScope();
-di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
-di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
 //#endregion
 
 //#region ------------------ PROVIDERS ------------------ //
