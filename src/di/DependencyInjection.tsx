@@ -114,6 +114,10 @@ import TypeOfFuelRepositoryDev from "../data/repositories/typeOfFuel/TypeOfFuelR
 import TypeOfFuelRepositoryImpl from "../data/repositories/typeOfFuel/impl/TypeOfFuelRepositoryImpl";
 import TagRepositoryDev from "../data/repositories/tag/TagRepositoryDev";
 import TagRepositoryImpl from "../data/repositories/tag/impl/TagRepositoryImpl";
+import { InsuranceRepositoryDev } from "../data/repositories/insurance/InsuranceRepositoryDev";
+import InsuranceRepositoryImpl from "../data/repositories/insurance/impl/InsuranceRepositoryImpl";
+import FrequentQuestionRepositoryDev from "../data/repositories/frequentQuestion/FrequentQuestionRepositoryDev";
+import FrequentQuestionRepositoryImpl from "../data/repositories/frequentQuestion/impl/FrequentQuestionRepositoryImpl";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -129,6 +133,8 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryDev).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryDev).inSingletonScope();
 
+    di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryDev).inSingletonScope();
+    di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryDev).inSingletonScope();
     di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryDev).inSingletonScope();
     di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryDev).inSingletonScope();
     di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryDev).inSingletonScope();
@@ -140,6 +146,8 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryImpl).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryImpl).inSingletonScope();
 
+    di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryImpl).inSingletonScope();
+    di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryImpl).inSingletonScope();
     di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryImpl).inSingletonScope();
     di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryImpl).inSingletonScope();
     di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryImpl).inSingletonScope();
@@ -151,6 +159,8 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryTest).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
 
+    di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryTest).inSingletonScope();
+    di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryTest).inSingletonScope();
     di.bind<TagRepository>(TagRepositoryName).to(TagRepositoryTest).inSingletonScope();
     di.bind<TypeOfFuelRepository>(TypeOfFuelRepositoryName).to(TypeOfFuelRepositoryTest).inSingletonScope();
     di.bind<TypeVehicleRepository>(TypeVehicleRepositoryName).to(TypeVehicleRepositoryTest).inSingletonScope();
@@ -161,8 +171,6 @@ di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonSc
 di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
 di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
 di.bind<DepartmentRepository>(DepartmentRepositoryName).to(DepartmentRepositoryTest).inSingletonScope();
-di.bind<FrequentQuestionRepository>(FrequentQuestionRepositoryName).to(FrequentQuestionRepositoryTest).inSingletonScope();
-di.bind<InsuranceRepository>(InsuranceRepositoryName).to(InsuranceRepositoryTest).inSingletonScope();
 //#endregion
 
 //#region ------------------ PROVIDERS ------------------ //

@@ -9,7 +9,7 @@ const _test:FrequentQuestionEntity = {
 };
 
 @injectable()
-class FrequentQuestionRepositoryTest implements FrequentQuestionRepository{
+class FrequentQuestionRepositoryDev implements FrequentQuestionRepository{
     async getAll(): Promise<FrequentQuestionEntity[]> {
         return [_test, _test, _test, _test, _test, _test, _test, _test,];
     }
@@ -19,4 +19,4 @@ class FrequentQuestionRepositoryTest implements FrequentQuestionRepository{
     }
 }
 
-export default FrequentQuestionRepositoryTest;
+export default FrequentQuestionRepositoryDev;
