@@ -61,4 +61,5 @@ const toJson = (car: CarEntity): any => {
 
 export default {
     fromJson,
+    toJson,
 }
