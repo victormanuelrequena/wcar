@@ -23,7 +23,7 @@ const _testBlog:BlogPostEntity = {
     }
 }
 @injectable()
-export default class BlogPostRepositoryTest implements BlogPostRepository{
+export default class BlogPostRepositoryDev implements BlogPostRepository{
     async getLastBlogs(): Promise<BlogPostEntity[]> {
         await sleeper(1000)(1);
         return Array(20).fill(_testBlog);
