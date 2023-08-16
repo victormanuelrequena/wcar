@@ -108,6 +108,10 @@ import BookRepositoryImpl from "../data/repositories/book/impl/BookRepositoryImp
 import BookRepositoryDev from "../data/repositories/book/BookRepositoryDev";
 import BlogPostRepositoryImpl from "../data/repositories/blogPost/impl/BlogPostRepositoryImpl";
 import BlogPostRepositoryDev from "../data/repositories/blogPost/BlogPostRepositoryDev";
+import CalculatorRepositoryDev from "../data/repositories/calculator/CalculatorRepositoryDev";
+import CalculatorRepositoryImpl from "../data/repositories/calculator/impl/CalculatorRepositoryImpl";
+import { CityRepositoryDev } from "../data/repositories/city/CityRepositoryDev";
+import CityRepositoryImpl from "../data/repositories/city/impl/CityRepositoryImpl";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -122,6 +126,8 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryDev).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryDev).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryDev).inSingletonScope();
+    di.bind<CalculatorRepository>(BookRepositoryName).to(CalculatorRepositoryDev).inSingletonScope();
+    di.bind<CityRepository>(BookRepositoryName).to(CityRepositoryDev).inSingletonScope();
 } else if (mode === MODE_DI.PRODUCTION) {
     di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryImpl).inSingletonScope();
     di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryImpl).inSingletonScope();
@@ -129,6 +135,8 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryImpl).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryImpl).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryImpl).inSingletonScope();
+    di.bind<CalculatorRepository>(BookRepositoryName).to(CalculatorRepositoryImpl).inSingletonScope();
+    di.bind<CityRepository>(BookRepositoryName).to(CityRepositoryImpl).inSingletonScope();
 } else {
     di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
     di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryTest).inSingletonScope();
@@ -136,6 +144,8 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryTest).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
+    di.bind<CalculatorRepository>(BookRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
+    di.bind<CityRepository>(BookRepositoryName).to(CityRepositoryTest).inSingletonScope();
 }
 di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
 di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
