@@ -1,0 +1,18 @@
+import { injectable } from "inversify";
+import TagRepository from "../../../domain/repositories/TagRepository";
+import TagEntity from "../../../domain/entities/TagEntity";
+
+const _tagTest: TagEntity = {
+    id: "1",
+    name: "new",
+    color: "#00FEFE",
+    description: "new",
+};
+@injectable()
+class TagRepositoryDev implements TagRepository {
+    async getAll(): Promise<TagEntity[]> {
+        return [_tagTest, _tagTest, _tagTest, _tagTest, _tagTest, _tagTest, _tagTest, _tagTest, _tagTest, _tagTest];
+    }
+}
+
+export default TagRepositoryDev;
