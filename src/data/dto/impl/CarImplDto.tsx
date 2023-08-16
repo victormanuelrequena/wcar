@@ -6,6 +6,7 @@ import TagImplDto from "./TagImplDto";
 import TypeOfFueImpllDto from "./TypeOfFueImpllDto";
 import TypeVehicleImplDto from "./TypeVehicleImplDto";
 
+//TODO CREATE
 const fromJson = (json: any): CarEntity => {
     return {
         id: json.id,
@@ -29,6 +30,32 @@ const fromJson = (json: any): CarEntity => {
         doors: json.doors,
         motor: json.engine,
         status: json.status_vehicle == 1 ? 'Nuevo': 'Usado',
+    }
+}
+
+const toJson = (car: CarEntity): any => {
+    return {
+        id: car.id,
+        name: car.name,
+        model: car.model,
+        type: TypeVehicleImplDto.toJson(car.type),
+        photoUrl: car.photoUrl,
+        images: car.images,
+        price: car.price,
+        transmission: car.transmission,
+        year: car.year,
+        rating: car.rating,
+        odometer: car.odometer,
+        brand: BrandImplDto.toJson(car.brand),
+        typeOfFuel: TypeOfFueImpllDto.toJson(car.typeOfFuel),
+        color: ColorImplDto.toJson(car.color),
+        priceBook: car.priceBook ? PriceBookImplDto.toJson(car.priceBook) : undefined,
+        description: car.description,
+        tag: car.tag ? TagImplDto.toJson(car.tag) : undefined,
+        plate: car.plate,
+        doors: car.doors,
+        motor: car.motor,
+        status: car.status == "Nuevo" ? 1 : 2,
     }
 }
 
