@@ -14,8 +14,6 @@ export default interface AuthRepository {
     updatePassword: (oldPassword: string, newPassword: string) => Promise<Either<ExceptionEntity, void>>
     updatePasswordByRecovery: (email: string, newPassword: string, code: string) => Promise<Either<ExceptionEntity, void>>
     getCurrentUser: () => Promise<Either<ExceptionEntity, UserEntity>>
-    addUser: (user: UserEntity, password: string) => Promise<Either<ExceptionEntity, void>>
-    deleteUser: () => Promise<Either<ExceptionEntity, void>>
     refreshToken: () => Promise<Either<ExceptionEntity, void>>
 }
 

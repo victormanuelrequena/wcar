@@ -14,7 +14,7 @@ export default class GetBlogPostByIdUseCase {
         this._blogPostRepository = _.blogPostRepository;
     }
 
-    async call(id: string): Promise<BlogPostEntity> {
+    async call(id: string): Promise<BlogPostEntity | undefined> {
         return await this._blogPostRepository.getBlogById(id);
     }
 }

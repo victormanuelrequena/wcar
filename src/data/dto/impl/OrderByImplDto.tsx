@@ -1,0 +1,23 @@
+import OrderByEntity from "../../../domain/entities/OrderByEntity"
+
+const fromJson = (json: any): OrderByEntity => {
+    return {
+        label: json.label,
+        value: {
+            keyname: json.field,
+            desc: json.order === "desc",
+        }
+    }
+}
+
+const toJson = (orderBy: OrderByEntity): any => {
+    return {
+        field: orderBy.value.keyname,
+        order: orderBy.value.desc ? "desc" : "asc",
+    }
+}
+
+export default {
+    fromJson,
+    toJson,
+}

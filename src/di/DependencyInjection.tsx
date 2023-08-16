@@ -87,7 +87,6 @@ import GetAllTagsUseCase from "../domain/use_cases/tag/GetAllTagsUseCase";
 import AuthRepositoryTest from "../data/repositories/auth/AuthRepositoryTest";
 import AuthRepository, { AuthRepositoryName } from "../domain/repositories/AuthRepository";
 import ConfirmUserUseCase from "../domain/use_cases/auth/ConfirmUserUseCase";
-import DeleteUserUseCase from "../domain/use_cases/auth/DeleteUserUseCase";
 import GetCurrentUserUseCase from "../domain/use_cases/auth/GetCurrentUserUseCase";
 import SendConfirmCodeUseCase from "../domain/use_cases/auth/SendConfirmCodeUseCase";
 import SendRecoveryPasswordCodeUseCase from "../domain/use_cases/auth/SendRecoveryPasswordCodeUseCase";
@@ -98,6 +97,13 @@ import UpdatePasswordByRecoveryUseCase from "../domain/use_cases/auth/UpdatePass
 import SignInWithFacebookUseCase from "../domain/use_cases/auth/SignInWithFacebookUseCase";
 import SignInWithGoogleUseCase from "../domain/use_cases/auth/SignInWithGoogleUseCase";
 import BrandRepositoryImpl from "../data/repositories/brand/impl/BrandRepositoryImpl";
+import CarRepositoryImpl from "../data/repositories/car/impl/CarRepositoryImpl";
+import AuthRepositoryDev from "../data/repositories/auth/AuthRepositoryDev";
+import AuthRepositoryImpl from "../data/repositories/auth/impl/AuthRepositoryImpl";
+import AllyRepositoryDev from "../data/repositories/ally/AllyRepositoryDev";
+import AllyRepositoryImpl from "../data/repositories/ally/impl/AllyRepositoryImpl";
+import BrandRepositoryDev from "../data/repositories/brand/BrandRepositoryDev";
+import CarRepositoryDev from "../data/repositories/car/CarRepositoryDev";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -106,16 +112,24 @@ const di = new Container();
 
 //#region ------------------ REPOSITORIES ------------------ //
 if (mode === MODE_DI.DEVELOPMENT) {
+    di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryDev).inSingletonScope();
+    di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryDev).inSingletonScope();
+    di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryDev).inSingletonScope();
+    di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryDev).inSingletonScope();
+} else if (mode === MODE_DI.PRODUCTION) {
+    di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryImpl).inSingletonScope();
+    di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryImpl).inSingletonScope();
     di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryImpl).inSingletonScope();
-}else{
+    di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryImpl).inSingletonScope();
+} else {
+    di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
+    di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryTest).inSingletonScope();
     di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
+    di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
 }
-di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
-di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryTest).inSingletonScope();
 di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryTest).inSingletonScope();
 di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
 di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryTest).inSingletonScope();
-di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
 di.bind<CityRepository>(CityRepositoryName).to(CityRepositoryTest).inSingletonScope();
 di.bind<CommentRepository>(CommentRepositoryName).to(CommentRepositoryTest).inSingletonScope();
 di.bind<ColorRepository>(ColorRepositoryName).to(ColorRepositoryTest).inSingletonScope();
@@ -146,11 +160,6 @@ di.bind<UserProvider>(UserProviderName).toConstantValue(UserProviderImpl);
 di.bind<ConfirmUserUseCase>(ConfirmUserUseCase.name).toDynamicValue((context) => {
     const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
     return new ConfirmUserUseCase({ authRepository });
-}).inSingletonScope();
-di.bind<DeleteUserUseCase>(DeleteUserUseCase.name).toDynamicValue((context) => {
-    const userProvider = context.container.get<UserProvider>(UserProviderName);
-    const authRepository = context.container.get<AuthRepository>(AuthRepositoryName);
-    return new DeleteUserUseCase({ userProvider, authRepository });
 }).inSingletonScope();
 di.bind<GetCurrentUserUseCase>(GetCurrentUserUseCase.name).toDynamicValue((context) => {
     const userProvider = context.container.get<UserProvider>(UserProviderName);

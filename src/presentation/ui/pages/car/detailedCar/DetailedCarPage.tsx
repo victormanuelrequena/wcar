@@ -49,7 +49,7 @@ const DetailedCarPage: FC<{}> = () => {
     }, [id]);
 
     return <Layout>
-        {id === undefined || car === null && <NotResultsComponent />}
+        {(id === undefined || car === null) && <NotResultsComponent />}
         {car === undefined && <LoadingComponent />}
         {car !== null && car !== undefined && <div className="detailed_car_page">
             <section>

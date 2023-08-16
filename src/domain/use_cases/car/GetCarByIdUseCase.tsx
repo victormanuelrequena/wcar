@@ -10,7 +10,7 @@ export default class GetCarByIdUseCase {
     constructor(_: props) {
         this._carRepository = _.carRepository;
     }
-    async call(id: string): Promise<CarEntity> {
+    async call(id: string): Promise<CarEntity | undefined> {
         return await this._carRepository.getCarById(id);
     }
 }

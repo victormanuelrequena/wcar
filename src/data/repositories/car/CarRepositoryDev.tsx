@@ -4,6 +4,7 @@ import CarRepository from "../../../domain/repositories/CarRepository";
 import sleeper from "../../../domain/repositories/utils/Sleeper";
 import { routes } from "../../../presentation/ui/routes/RoutesComponent";
 import OrderByEntity from "../../../domain/entities/OrderByEntity";
+import GetSomeRandomCarsApiImpl from "./impl/api/GetSomeRandomCarsApiImpl";
 import { Either, right } from "fp-ts/lib/Either";
 import ExceptionEntity from "../../../domain/entities/ExceptionEntity";
 
@@ -80,7 +81,8 @@ const _testCar: CarEntity = {
 }
 
 @injectable()
-class CarRepositoryTest implements CarRepository {
+class CarRepositoryDev implements CarRepository {
+    getSomeRandomCars = (): Promise<CarEntity[]> => GetSomeRandomCarsApiImpl();
     search(page: number, search: string, brand: string | undefined,
         year: string | undefined,
         price: { min: number, max: number } | undefined,
@@ -113,20 +115,6 @@ class CarRepositoryTest implements CarRepository {
                     _testCar,
                 ], maxPages: 10
             });
-        });
-    }
-    public async getSomeRandomCars(): Promise<CarEntity[]> {
-        return new Promise<CarEntity[]>((resolve, reject) => {
-            return resolve([
-                _testCar,
-                _testCar,
-                _testCar,
-                _testCar,
-                _testCar,
-                _testCar,
-                _testCar,
-                _testCar,
-            ])
         });
     }
     public async getRelatedCarsByCardIdUseCase(id: string): Promise<CarEntity[]> {
@@ -166,4 +154,4 @@ class CarRepositoryTest implements CarRepository {
     }
 }
 
-export default CarRepositoryTest;
+export default CarRepositoryDev;

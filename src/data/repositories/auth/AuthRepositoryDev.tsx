@@ -5,7 +5,7 @@ import { Either, right } from "fp-ts/lib/Either";
 import ExceptionEntity from "../../../domain/entities/ExceptionEntity";
 
 @injectable()
-class AuthRepositoryTest implements AuthRepository {
+class AuthRepositoryDev implements AuthRepository {
   public async signInWithGoogle(): Promise<Either<ExceptionEntity, UserEntity>> {
     return right({
       id: '1',
@@ -87,7 +87,7 @@ class AuthRepositoryTest implements AuthRepository {
       status: UserEntityStatus.active,
     });
   }
-
+  
   public async refreshToken(): Promise<Either<ExceptionEntity, void>> {
     return right(undefined);
   }
@@ -97,4 +97,4 @@ class AuthRepositoryTest implements AuthRepository {
   }
 }
 
-export default AuthRepositoryTest;
+export default AuthRepositoryDev;
