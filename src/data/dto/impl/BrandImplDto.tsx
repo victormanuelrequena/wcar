@@ -1,5 +1,6 @@
 import BrandEntity from "../../../domain/entities/BrandEntity";
 
+//TODO CREATE
 const fromJson = (brand: any): BrandEntity => {
     return {
         id: brand.id,
