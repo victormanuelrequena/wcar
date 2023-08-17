@@ -12,6 +12,7 @@ import LoadUseCase from '../../../../domain/use_cases/default/LoadUseCase';
 import Layout from '../../layout/Layout';
 import Icons from '../../assets/Icons';
 import AlliesLineComponent from '../../components/alliesLine/AlliesLineComponent';
+import { routes } from '../../routes/RoutesComponent';
 const HomePage: FC<{}> = () => {
 
 
@@ -119,8 +120,8 @@ const HomePage: FC<{}> = () => {
                                 <p>En este revolucionario ecosistema encuentras una consejería personalizada. Somos brutalmente transparentes, dando a conocer el estado real del vehículo y ofreciendo precios razonables con un alto estándar de calidad.</p>
                             </div>
                             <div className="d-flex flex-column flex-md-row">
-                                <a href="#" className="btn btn_in_black_orange btn_cut btn_shadow me-3 my-2 w_fit_content">COMPRA TU CARRO <Icons.ArrowCircle /></a>
-                                <a href="#" className="btn btn_black  btn_cut btn_shadow my-2 w_fit_content">VENDE TU CARRO <Icons.ArrowCircle /></a>
+                                <a href={routes.buyYourCar.relativePath} className="btn btn_in_black_orange btn_cut btn_shadow me-3 my-2 w_fit_content">COMPRA TU CARRO <Icons.ArrowCircle /></a>
+                                <a href={routes.sellYourCar.relativePath} className="btn btn_black  btn_cut btn_shadow my-2 w_fit_content">VENDE TU CARRO <Icons.ArrowCircle /></a>
                             </div>
                         </div>
                     </div>

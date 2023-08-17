@@ -183,7 +183,7 @@ const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {
         _load();
     }, []);
 
-    if (!loaded) return <div className="bg_1" style={{ width: '100vw', height: '100vh' }}>
+    if (!loaded) return <div className="bg_1 d-flex justify-content-center" style={{ width: '100vw', height: '100vh' }}>
         <LoadingComponent showLogo />
     </div>
     return <>

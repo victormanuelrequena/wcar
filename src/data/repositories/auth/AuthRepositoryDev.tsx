@@ -3,6 +3,7 @@ import UserEntity, { UserEntityStatus, UserPermision } from "../../../domain/ent
 import AuthRepository from "../../../domain/repositories/AuthRepository";
 import { Either, right } from "fp-ts/lib/Either";
 import ExceptionEntity from "../../../domain/entities/ExceptionEntity";
+import SignInApiImpl from "./impl/api/SignInApiImpl";
 
 @injectable()
 class AuthRepositoryDev implements AuthRepository {
@@ -32,21 +33,8 @@ class AuthRepositoryDev implements AuthRepository {
       ],
     });
   }
-  public async signIn(email: string, password: string): Promise<Either<ExceptionEntity, UserEntity>> {
-    return right({
-      id: '1',
-      name: "Jhon Doe",
-      phone: 'phone',
-      email: email,
-      enabled: true,
-      status: UserEntityStatus.active,
-      photo: undefined,
-      permisions: [
-      ],
-    });
-  }
-
-  public async signUp(email: string, password: string): Promise<Either<ExceptionEntity, void>> {
+  signIn = (email: string, password: string): Promise<Either<ExceptionEntity, UserEntity>> => SignInApiImpl(email, password);
+  public async signUp(email: string, password: string, name: string): Promise<Either<ExceptionEntity, void>> {
     return right(undefined);
   }
 

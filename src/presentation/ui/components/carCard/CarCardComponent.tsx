@@ -22,8 +22,8 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
     }
 
     const _handleLike = async () => {
-         const response = await di.get<LikeCarUseCase>(LikeCarUseCase.name).call(car, !_like);
-         if(isLeft(response) && response.left.code == 'unauthorized') return alert(response.left.message);
+        const response = await di.get<LikeCarUseCase>(LikeCarUseCase.name).call(car, !_like);
+        if (isLeft(response) && response.left.code == 'unauthorized') return alert(response.left.message);
         _setLike(!_like);
     }
 
@@ -32,9 +32,9 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
     }, [favoriteCars]);
 
     return <div className="w-100 card car_card_component">
+        <img src={car.photoUrl} alt="" className="img-fluid img_car" />
         <div className="card-body">
-            {car.tag && <div className="tag" style={{backgroundColor: car.tag.color}}>{car.tag.name}</div> }
-            <img src={car.photoUrl} alt="" className="img-fluid img_car" />
+            {car.tag && <div className="tag" style={{ backgroundColor: car.tag.color }}>{car.tag.name}</div>}
             <div className="d-flex w-100 align-items-center">
                 <div className="flex-grow overflow-hidden me-3">
                     <h5 className="text_ellipsis">{car.name}</h5>

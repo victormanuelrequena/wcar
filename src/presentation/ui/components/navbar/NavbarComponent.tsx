@@ -64,7 +64,7 @@ const NavbarComponent = () => {
             <Link className="nav-link" to={routes.blog.relativePath}>Blog</Link>
           </NavItem>
           <NavItem className="mx-3">
-            <NavLink href="#">Contacto</NavLink>
+            <NavLink href={routes.contact.relativePath}>Contacto</NavLink>
           </NavItem>
         </Nav>
       </Collapse>

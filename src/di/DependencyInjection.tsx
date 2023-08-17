@@ -128,6 +128,11 @@ import FrequentQuestionRepositoryDev from "../data/repositories/frequentQuestion
 import FrequentQuestionRepositoryImpl from "../data/repositories/frequentQuestion/impl/FrequentQuestionRepositoryImpl";
 import DepartmentRepositoryDev from "../data/repositories/deparment/DepartmentRepositoryDev";
 import DepartmentRepositoryImpl from "../data/repositories/deparment/impl/DepartmentRepositoryImpl";
+import ContactRepository, { ContactRepositoryName } from "../domain/repositories/ContactRepository";
+import ContactRepositoryDev from "../data/repositories/contact/ContactRepositoryDev";
+import ContactRepositoryImpl from "../data/repositories/contact/impl/ContactRepositoryImpl";
+import ContactRepositoryTest from "../data/repositories/contact/ContactRepositoryTest";
+import ContactUseCase from "../domain/use_cases/contact/ContactUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -140,6 +145,7 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryDev).inSingletonScope();
     di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryDev).inSingletonScope();
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryDev).inSingletonScope();
+    di.bind<ContactRepository>(ContactRepositoryName).to(ContactRepositoryDev).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryDev).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryDev).inSingletonScope();
     di.bind<CalculatorRepository>(CalculatorRepositoryName).to(CalculatorRepositoryDev).inSingletonScope();
@@ -156,6 +162,7 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryImpl).inSingletonScope();
     di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryImpl).inSingletonScope();
     di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryImpl).inSingletonScope();
+    di.bind<ContactRepository>(ContactRepositoryName).to(ContactRepositoryImpl).inSingletonScope();
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryImpl).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryImpl).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryImpl).inSingletonScope();
@@ -173,6 +180,7 @@ if (mode === MODE_DI.DEVELOPMENT) {
     di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryTest).inSingletonScope();
     di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryTest).inSingletonScope();
     di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryTest).inSingletonScope();
+    di.bind<ContactRepository>(ContactRepositoryName).to(ContactRepositoryTest).inSingletonScope();
     di.bind<CarRepository>(CarRepositoryName).to(CarRepositoryTest).inSingletonScope();
     di.bind<BlogPostRepository>(BlogPostRepositoryName).to(BlogPostRepositoryTest).inSingletonScope();
     di.bind<BookRepository>(BookRepositoryName).to(BookRepositoryTest).inSingletonScope();
@@ -365,6 +373,13 @@ di.bind<LikeCarUseCase>(LikeCarUseCase.name).toDynamicValue((context) => {
 di.bind<SearchCarsUseCase>(SearchCarsUseCase.name).toDynamicValue((context) => {
     return new SearchCarsUseCase({ carRepository: context.container.get(CarRepositoryName) });
 });
+//#endregion
+//#region contact
+di.bind<ContactUseCase>(ContactUseCase.name).toDynamicValue((context) => {
+    return new ContactUseCase({
+        contactRepository: context.container.get(ContactRepositoryName),
+    });
+}).inSingletonScope();
 //#endregion
 //#region departments
 di.bind<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCase.name).toDynamicValue((context) => {
