@@ -12,6 +12,9 @@
     }
     .img_car{
         height: 160px;
-        object-fit: contain;
+        width: 100%;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        object-fit: cover;
     }
 }

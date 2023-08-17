@@ -25,7 +25,7 @@ class SignUpUseCase {
         this._authRepository = props.authRepository;
     }
 
-    public call = async (user: string, password: string): Promise<Either<ExceptionEntity, void>> => this._authRepository.signUp(user, password);
+    public call = async (user: string, password: string, name: string): Promise<Either<ExceptionEntity, void>> => this._authRepository.signUp(user, password, name);
 }
 
 export default SignUpUseCase;

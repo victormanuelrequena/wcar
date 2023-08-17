@@ -20,7 +20,7 @@ const SignUpPage: FC<{}> = () => {
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
 
     const _handleSubmit = async (data: any) => {
-        const response = await di.get<SignUpUseCase>(SignUpUseCase.name).call(data.email, data.password);
+        const response = await di.get<SignUpUseCase>(SignUpUseCase.name).call(data.email, data.password, data.name);
         if (isRight(response)) {
             navigate(routes.home.relativePath);
         } else {
@@ -42,9 +42,19 @@ const SignUpPage: FC<{}> = () => {
                         <form onSubmit={handleSubmit(_handleSubmit)}>
                             <div className="form-group my-3">
                                 <label className="mandatory">
+                                    Nombre
+                                </label>
+                                <input type="text" placeholder='Joe Doe' className="form-control" {...register("name", Validators({
+                                    noNumber: true,
+                                    required: true,
+                                }))} />
+                                <ErrorMessage as="aside" errors={errors} name="name" />
+                            </div>
+                            <div className="form-group my-3">
+                                <label className="mandatory">
                                     Email
                                 </label>
-                                <input type="text" placeholder='ejemplo@gmail.com' className="form-control" {...register("email", Validators({
+                                <input type="email" placeholder='ejemplo@gmail.com' className="form-control" {...register("email", Validators({
                                     email: true,
                                     required: true,
                                 }))} />

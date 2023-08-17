@@ -4,7 +4,7 @@ import ExceptionEntity from "../entities/ExceptionEntity";
 
 export default interface AuthRepository {
     signIn: (email: string, password: string) => Promise<Either<ExceptionEntity, UserEntity>>;
-    signUp: (email: string, password: string) => Promise<Either<ExceptionEntity, void>>;
+    signUp: (email: string, password: string, name: string) => Promise<Either<ExceptionEntity, void>>;
     signInWithGoogle(): Promise<Either<ExceptionEntity, UserEntity>>;
     signInWithFacebook(): Promise<Either<ExceptionEntity, UserEntity>>;
     signOut: () => Promise<Either<ExceptionEntity, void>>;

@@ -1,16 +1,16 @@
-import UserEntity from "../../../domain/entities/UserEntity";
+import UserEntity, { UserEntityStatus } from "../../../domain/entities/UserEntity";
 
 //TODO User Dto
 const fromJson = (json: any): UserEntity => {
     return {
         permisions: json.permisions,
-        status: json.status,
+        status: UserEntityStatus.active,
         photo: json.photo,
         id: json.id,
         name: json.name,
         phone: json.phone,
         email: json.email,
-        enabled: json.enabled,
+        enabled: true,
     }
 }
 

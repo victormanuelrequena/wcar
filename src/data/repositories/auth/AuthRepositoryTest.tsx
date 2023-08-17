@@ -46,7 +46,7 @@ class AuthRepositoryTest implements AuthRepository {
     });
   }
 
-  public async signUp(email: string, password: string): Promise<Either<ExceptionEntity, void>> {
+  public async signUp(email: string, password: string, name: string): Promise<Either<ExceptionEntity, void>> {
     return right(undefined);
   }
 

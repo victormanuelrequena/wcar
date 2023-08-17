@@ -1,15 +1,29 @@
 import './ContactPageStyles.scss';
-import { FC } from "react";
+import { FC, useContext } from "react";
 import Layout from "../../layout/Layout";
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import Validators from '../../../utils/Validators';
 import Icons from '../../assets/Icons';
+import di from '../../../../di/DependencyInjection';
+import ContactUseCase from '../../../../domain/use_cases/contact/ContactUseCase';
+import ModalsContext from '../../../../domain/providers/modal/ModalsContext';
+import ModalsContextType from '../../../../domain/providers/modal/ModalsContextType';
 
 const ContactPage: FC<{}> = () => {
-    const { register, setValue, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, setValue, handleSubmit, reset, watch, formState: { errors } } = useForm();
+    const { addToast } = useContext(ModalsContext) as ModalsContextType;
 
-    const _handleSubmit = (data: any) => { }
+    const _handleSubmit = async (data: any) => {
+        try {
+            await di.get<ContactUseCase>(ContactUseCase.name).call(data.name, data.lastname, data.phone, data.email, data.message);
+            addToast('Mensaje enviado', 'success', undefined);
+            reset();
+        } catch (error) {
+            addToast('Error al enviar el mensaje', 'error', undefined);
+        }
+
+    }
 
     return <div className="contact_page">
         <Layout >

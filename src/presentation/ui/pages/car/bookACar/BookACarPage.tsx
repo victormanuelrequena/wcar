@@ -20,6 +20,7 @@ import BookACarWithPaymentUseCase from '../../../../../domain/use_cases/car/Book
 import ModalsProvider, { ModalsProviderName } from '../../../../../domain/providers/modal/ModalsProvider';
 import UserContext from '../../../../../domain/providers/user/UserContext';
 import UserContextType from '../../../../../domain/providers/user/UserContextType';
+import { routes } from '../../../routes/RoutesComponent';
 
 const BookACarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -100,7 +101,7 @@ const BookACarPage: FC<{}> = () => {
                                     {user != null ?
                                         <span className='text_gray me-2'>Bienvenido {user!.name}</span> :
                                         <><span className='text_gray me-2'>¿Eres cliente?</span>
-                                            <Link to="#" className='text_orange'>Inicia sesión </Link></>
+                                            <Link to={routes.signIn.relativePath} className='text_orange'>Inicia sesión </Link></>
                                     }
                                 </div>
                                 <div className="row">

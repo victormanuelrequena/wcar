@@ -44,7 +44,9 @@ function App() {
     _loadApp();
   }, []);
 
-  if (!loaded) return <LoadingComponent />
+  if (!loaded) return <div className="bg_1 d-flex justify-content-center" style={{ width: '100vw', height: '100vh' }}>
+    <LoadingComponent showLogo />
+  </div>
 
   return (
     <Provider container={di}>

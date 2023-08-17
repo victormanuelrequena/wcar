@@ -19,7 +19,7 @@ import UpdatePasswordByRecoveryApiImpl from "./api/UpdatePasswordByRecoveryApiIm
 @injectable()
 export default class AuthRepositoryImpl implements AuthRepository {
     signIn = (email: string, password: string): Promise<Either<ExceptionEntity, UserEntity>> => SignInApiImpl(email, password);
-    signUp = (email: string, password: string): Promise<Either<ExceptionEntity, void>> => SignUpApiImpl(email, password);
+    signUp = (email: string, password: string, name: string): Promise<Either<ExceptionEntity, void>> => SignUpApiImpl(email, password, name);
     signInWithGoogle = (): Promise<Either<ExceptionEntity, UserEntity>> => SignInWithGoogleApiImpl();
     signInWithFacebook = (): Promise<Either<ExceptionEntity, UserEntity>> => SignInWithFacebookApiImpl();
     signOut = (): Promise<Either<ExceptionEntity, void>> => SignOutApiImpl();

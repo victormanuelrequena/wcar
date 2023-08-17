@@ -1,6 +1,7 @@
 import { FC } from "react"
 import { Link } from "react-router-dom"
 import { SLOGAN } from "../../../utils/Contants";
+import { routes } from "../../routes/RoutesComponent";
 
 const FooterComponent: FC<{}> = () => {
     return (
@@ -14,12 +15,11 @@ const FooterComponent: FC<{}> = () => {
                     <div className="col-6 col-md-3 col-lg-2">
                         <div className="d-flex flex-column w-100">
                             <h6 className="text_orange text_bold mb-3">Menú</h6>
-                            <Link to="#" className="my-1">Nuestra Empresa</Link>
-                            <Link to="#" className="my-1">Compra tu carro</Link>
-                            <Link to="#" className="my-1">Vende tu carro</Link>
-                            <Link to="#" className="my-1">Servicios</Link>
-                            <Link to="#" className="my-1"></Link>
-                            <Link to="#" className="my-1">Blog</Link>
+                            <Link to={routes.aboutUs.relativePath} className="my-1">Nuestra Empresa</Link>
+                            <Link to={routes.buyYourCar.relativePath} className="my-1">Compra tu carro</Link>
+                            <Link to={routes.sellYourCar.relativePath} className="my-1">Vende tu carro</Link>
+                            <Link to={routes.insurance.relativePath} className="my-1">Servicios</Link>
+                            <Link to={routes.blog.relativePath} className="my-1">Blog</Link>
                         </div>
                     </div>
                     <div className="col-6 col-md-3 col-lg-2">
