@@ -19,6 +19,15 @@ import ModalsProvider, { ModalsProviderName } from './domain/providers/modal/Mod
 import CityProvider, { CityProviderName } from './domain/providers/city/CityProvider';
 import FavoriteCarsProvider, { FavoriteCarsProviderName } from './domain/providers/favoriteCars/FavoriteCarsProviderName';
 import TagProvider, { TagProviderName } from './domain/providers/tag/TagProvider';
+import GetAllAlliesUseCase from './domain/use_cases/ally/GetAllAlliesUseCase';
+import GetCurrentUserUseCase from './domain/use_cases/auth/GetCurrentUserUseCase';
+import GetAllBrandsUseCase from './domain/use_cases/brand/GetAllBrandsUseCase';
+import GetFavoriteCarsUseCase from './domain/use_cases/car/GetFavoriteCarsUseCase';
+import GetAllCitiesUseCase from './domain/use_cases/city/GetAllCitiesUseCase';
+import GetAllColorsUseCase from './domain/use_cases/color/GetAllColorsUseCase';
+import GetAllTagsUseCase from './domain/use_cases/tag/GetAllTagsUseCase';
+import GetAllTypeVehiclesUseCase from './domain/use_cases/typeVehicle/GetAllTypeVehiclesUseCase';
+import GetAllTypeOfFuelsUseCase from './domain/use_cases/typeOfFuel/GetAllTypeOfFuelsUseCase';
 
 function App() {
   const allyProvider = di.get<AllyProvider>(AllyProviderName);
@@ -37,6 +46,51 @@ function App() {
 
   const _loadApp = async () => {
     try {
+      try {
+        await di.get<GetAllAlliesUseCase>(GetAllAlliesUseCase.name).call();
+      } catch (error) {
+        console.log('_getAllAlliesUseCase', error);
+      }
+      try {
+        await di.get<GetAllBrandsUseCase>(GetAllBrandsUseCase.name).call();
+      } catch (error) {
+        console.log('_getAllBrandsUseCase', error);
+      }
+      try {
+        await di.get<GetAllColorsUseCase>(GetAllColorsUseCase.name).call();
+      } catch (error) {
+        console.log('_getAllColorsUseCase', error);
+      }
+      try {
+        await di.get<GetAllTypeOfFuelsUseCase>(GetAllTypeOfFuelsUseCase.name).call();
+      } catch (error) {
+        console.log('_getAllTypeOfFueslUseCase', error);
+      }
+      try {
+        await di.get<GetAllTypeVehiclesUseCase>(GetAllTypeVehiclesUseCase.name).call();
+      } catch (error) {
+        console.log('_getAllTypeOfVehiclesUseCase', error);
+      }
+      try {
+        await di.get<GetAllCitiesUseCase>(GetAllCitiesUseCase.name).call();
+      } catch (error) {
+        console.log('_getAllCitiesUseCase', error);
+      }
+      try {
+        await di.get<GetFavoriteCarsUseCase>(GetFavoriteCarsUseCase.name).call();
+      } catch (error) {
+        console.log('_getFavoriteCarsUseCase', error);
+      }
+      try {
+        await di.get<GetAllTagsUseCase>(GetAllTagsUseCase.name).call();
+      } catch (error) {
+        console.log('_getAllTagsUseCase', error);
+      }
+      try {
+        await di.get<GetCurrentUserUseCase>(GetCurrentUserUseCase.name).call();
+      } catch (error) {
+        console.log('_getCurrentUserUseCase', error);
+      }
       await di.get<LoadUseCase>(LoadUseCase.name).call();
       setLoaded(true);
     } catch (error) {
