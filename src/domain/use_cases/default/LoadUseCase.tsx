@@ -45,6 +45,52 @@ export default class LoadUseCase {
 
     async call(): Promise<void> {
         try {
+            try {
+                await this._getAllAlliesUseCase.call();
+            } catch (error) {
+                console.log('_getAllAlliesUseCase', error);
+            }
+            try {
+                await this._getAllBrandsUseCase.call();
+            } catch (error) {
+                console.log('_getAllBrandsUseCase', error);
+            }
+            try {
+                await this._getAllColorsUseCase.call();
+            } catch (error) {
+                console.log('_getAllColorsUseCase', error);
+            }
+            try {
+                await this._getAllTypeOfFueslUseCase.call();
+            } catch (error) {
+                console.log('_getAllTypeOfFueslUseCase', error);
+            }
+            try {
+                await this._getAllTypeOfVehiclesUseCase.call();
+            } catch (error) {
+                console.log('_getAllTypeOfVehiclesUseCase', error);
+            }
+            try {
+                await this._getAllCitiesUseCase.call();
+            } catch (error) {
+                console.log('_getAllCitiesUseCase', error);
+            }
+            try {
+                await this._getFavoriteCarsUseCase.call();
+            } catch (error) {
+                console.log('_getFavoriteCarsUseCase', error);
+            }
+            try {
+                await this._getAllTagsUseCase.call();
+            } catch (error) {
+                console.log('_getAllTagsUseCase', error);
+            }
+            try {
+                await this._getCurrentUserUseCase.call();
+            } catch (error) {
+                console.log('_getCurrentUserUseCase', error);
+            }
+            
             await Promise.all([
                 await this._getAllAlliesUseCase.call(),
                 await this._getAllBrandsUseCase.call(),
@@ -57,6 +103,7 @@ export default class LoadUseCase {
                 await this._getCurrentUserUseCase.call()
             ]);
         } catch (error) {
+            console.log('error', error)
         }
     }
 }
