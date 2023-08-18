@@ -36,8 +36,13 @@ function App() {
   const [loaded, setLoaded] = useState<boolean>(false);
 
   const _loadApp = async () => {
-    await di.get<LoadUseCase>(LoadUseCase.name).call();
-    setLoaded(true);
+    try {
+      await di.get<LoadUseCase>(LoadUseCase.name).call();
+      setLoaded(true);
+    } catch (error) {
+      console.log('error inload app', error);
+      setLoaded(true);
+    }
   }
 
   useEffect(() => {
