@@ -37,3 +37,5 @@ class SignInUseCase {
 }
 
 export default SignInUseCase;
+
+export const SignInUseCaseName = "SignInUseCaseName";

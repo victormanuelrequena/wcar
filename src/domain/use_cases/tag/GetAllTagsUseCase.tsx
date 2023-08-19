@@ -27,4 +27,6 @@ export default class GetAllTagsUseCase {
         }
     }
 }
+
+export const GetAllTagsUseCaseName = "GetAllTagsUseCaseName";
     

@@ -27,3 +27,5 @@ export default class GetAllBlogsAndMainPostUseCase {
         return { blogs, mainPost };
     }
 }
+
+export const GetAllBlogsAndMainPostUseCaseName = "GetAllBlogsAndMainPostUseCaseName";

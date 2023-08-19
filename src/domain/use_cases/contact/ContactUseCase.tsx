@@ -16,3 +16,5 @@ export default class ContactUseCase {
         return await this._contactRepository.contact(name, lastname, phone, email, content);
     }
 }
+
+export const ContactUseCaseName = "ContactUseCaseName";

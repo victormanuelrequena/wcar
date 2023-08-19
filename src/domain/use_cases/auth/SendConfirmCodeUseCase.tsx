@@ -28,3 +28,5 @@ class SendConfirmCodeUseCase {
 }
 
 export default SendConfirmCodeUseCase;
+
+export const SendConfirmCodeUseCaseName = "SendConfirmCodeUseCaseName";

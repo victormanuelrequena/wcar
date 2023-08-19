@@ -10,14 +10,14 @@ import { ErrorMessage } from '@hookform/error-message';
 import BrandContext from '../../../../../domain/providers/brand/BrandContext';
 import BrandContextType from '../../../../../domain/providers/brand/BrandContextType';
 import di from '../../../../../di/DependencyInjection';
-import GetModelsByBrandUseCase from '../../../../../domain/use_cases/brand/GetModelsByBrandUseCase';
-import GetModelVersionByModelAndBrandIdUseCase from '../../../../../domain/use_cases/brand/GetModelVersionByModelAndBrandIdUseCase';
+import GetModelsByBrandUseCase, { GetModelsByBrandUseCaseName } from '../../../../../domain/use_cases/brand/GetModelsByBrandUseCase';
+import GetModelVersionByModelAndBrandIdUseCase, { GetModelVersionByModelAndBrandIdUseCaseName } from '../../../../../domain/use_cases/brand/GetModelVersionByModelAndBrandIdUseCase';
 import CityContext from '../../../../../domain/providers/city/CityContext';
 import CityContextType from '../../../../../domain/providers/city/CityContextType';
 import ColorContextType from '../../../../../domain/providers/color/ColorContextType';
 import ColorContext from '../../../../../domain/providers/color/ColorContext';
 import LoadingComponent from '../../../components/LoadingComponent/LoadingComponent';
-import CalculateOfferForCarUseCase from '../../../../../domain/use_cases/calculator/CalculateOfferForCarUseCase';
+import CalculateOfferForCarUseCase, { CalculateOfferForCarUseCaseName } from '../../../../../domain/use_cases/calculator/CalculateOfferForCarUseCase';
 import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
 import { routes } from '../../../routes/RoutesComponent';
@@ -47,7 +47,7 @@ const QuoteYourCarPage: FC<{}> = () => {
 
     const _handleSave = async (data: any) => {
         setLoading(true);
-        const calculated = await di.get<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCase.name).call(data);
+        const calculated = await di.get<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCaseName).call(data);
         if (isRight(calculated)) {
             addToast("Cotización realizada", "success", undefined);
             navigate(routes.quoteSuccessful.relativePath, { state: { calculated } });
@@ -63,7 +63,7 @@ const QuoteYourCarPage: FC<{}> = () => {
         setValue('car.model', undefined);
         setValue('car.version', undefined);
         try {
-            const response = await di.get<GetModelsByBrandUseCase>(GetModelsByBrandUseCase.name).call(brandId);
+            const response = await di.get<GetModelsByBrandUseCase>(GetModelsByBrandUseCaseName).call(brandId);
             setModels(response);
         } catch (error) {
         }
@@ -74,7 +74,7 @@ const QuoteYourCarPage: FC<{}> = () => {
         setVersions([]);
         const brandId = getValues()?.car?.brand;
         try {
-            const response = await di.get<GetModelVersionByModelAndBrandIdUseCase>(GetModelVersionByModelAndBrandIdUseCase.name).call(brandId, model);
+            const response = await di.get<GetModelVersionByModelAndBrandIdUseCase>(GetModelVersionByModelAndBrandIdUseCaseName).call(brandId, model);
             setVersions(response);
         } catch (error) {
         }

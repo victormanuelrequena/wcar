@@ -37,3 +37,5 @@ class SignInWithGoogleUseCase {
 }
 
 export default SignInWithGoogleUseCase;
+
+export const SignInWithGoogleUseCaseName = "SignInWithGoogleUseCaseName";

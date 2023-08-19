@@ -27,3 +27,5 @@ export default class GetAllInsurancesUseCase {
     }
 
 }
+
+export const GetAllInsurancesUseCaseName = "GetAllInsurancesUseCaseName";

@@ -9,7 +9,7 @@ import CardFavoriteComponent from './components/cardFavorite/CardFavoriteCompone
 import UserContext from '../../../../domain/providers/user/UserContext';
 import UserContextType from '../../../../domain/providers/user/UserContextType';
 import di from '../../../../di/DependencyInjection';
-import SignOutUseCase from '../../../../domain/use_cases/auth/SignOutUseCase';
+import SignOutUseCase, { SignOutUseCaseName } from '../../../../domain/use_cases/auth/SignOutUseCase';
 
 const NavbarComponent = () => {
   const { user } = useContext(UserContext) as UserContextType;
@@ -25,7 +25,7 @@ const NavbarComponent = () => {
     if (user == null) {
       navigate(routes.signIn.relativePath);
     } else {
-      await di.get<SignOutUseCase>(SignOutUseCase.name).call();
+      await di.get<SignOutUseCase>(SignOutUseCaseName).call();
       navigate(routes.home.relativePath);
     }
   }

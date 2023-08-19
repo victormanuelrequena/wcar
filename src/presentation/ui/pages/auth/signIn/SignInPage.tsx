@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Icons from '../../../assets/Icons';
 import SocialLoginComponent from '../../../components/socialLogin/SocialloginComponent';
 import di from '../../../../../di/DependencyInjection';
-import SignInUseCase from '../../../../../domain/use_cases/auth/SignInUseCase';
+import SignInUseCase, { SignInUseCaseName } from '../../../../../domain/use_cases/auth/SignInUseCase';
 import { Either, isRight, left } from "fp-ts/lib/Either";
 import { routes } from '../../../routes/RoutesComponent';
 import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
@@ -20,7 +20,7 @@ const SignInPage: FC<{}> = () => {
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
 
     const _handleSubmit = async (data: any) => {
-        const response = await di.get<SignInUseCase>(SignInUseCase.name).call(data.email, data.password);
+        const response = await di.get<SignInUseCase>(SignInUseCaseName).call(data.email, data.password);
         if (isRight(response)) {
             navigate(routes.home.relativePath);
         } else {

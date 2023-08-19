@@ -1,9 +1,13 @@
+import { injectable } from "inversify";
 import AllyEntity from "../../entities/AllyEntity";
-import AlliesProvider from "../../providers/ally/AllyProvider";
+import AlliesProvider, { AllyProviderName } from "../../providers/ally/AllyProvider";
 import AllyRepository from "../../repositories/AllyRepository";
+import di from "../../../di/DependencyInjection";
+import AllyProvider from "../../providers/ally/AllyProvider";
 
 interface props { allyRepository: AllyRepository, alliesProvider: AlliesProvider }
 
+@injectable()
 export default class GetAllAlliesUseCase{
     
     _allyRepository: AllyRepository;
@@ -23,3 +27,5 @@ export default class GetAllAlliesUseCase{
         }
     }
 }
+
+export const GetAllAlliesUseCaseName = "GetAllAlliesUseCaseName";

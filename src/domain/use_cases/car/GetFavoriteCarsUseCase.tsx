@@ -24,3 +24,5 @@ export default class GetFavoriteCarsUseCase {
         return favoriteCars;
     }
 }
+
+export const GetFavoriteCarsUseCaseName = "GetFavoriteCarsUseCaseName";

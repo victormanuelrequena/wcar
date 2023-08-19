@@ -6,7 +6,7 @@ import CardServiceComponent from './components/cardService/CardServiceComponent'
 import SliderComponent from '../../components/slider/SliderComponent';
 import CarEntity from '../../../../domain/entities/CarEntity';
 import di from '../../../../di/DependencyInjection';
-import GetSomeRandomCarsUseCase from '../../../../domain/use_cases/car/GetSomeRandomCarsUseCase';
+import GetSomeRandomCarsUseCase, { GetSomeRandomCarsUseCaseName } from '../../../../domain/use_cases/car/GetSomeRandomCarsUseCase';
 import CarCardComponent from '../../components/carCard/CarCardComponent';
 import LoadUseCase from '../../../../domain/use_cases/default/LoadUseCase';
 import Layout from '../../layout/Layout';
@@ -20,7 +20,7 @@ const HomePage: FC<{}> = () => {
 
     const _getSomeCars = async () => {
         try {
-            const response = await di.get<GetSomeRandomCarsUseCase>(GetSomeRandomCarsUseCase.name).call();
+            const response = await di.get<GetSomeRandomCarsUseCase>(GetSomeRandomCarsUseCaseName).call();
             setCars(response);
         } catch (error) {
             setCars([]);

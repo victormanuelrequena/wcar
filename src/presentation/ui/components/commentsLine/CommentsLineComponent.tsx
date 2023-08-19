@@ -1,6 +1,6 @@
 import di from '../../../../di/DependencyInjection';
 import CommentEntity from '../../../../domain/entities/CommentEntity';
-import GetAllCommentsUseCase from '../../../../domain/use_cases/comment/GetAllCommentsUseCase';
+import GetAllCommentsUseCase, { GetAllCommentsUseCaseName } from '../../../../domain/use_cases/comment/GetAllCommentsUseCase';
 import DateParse from '../../../utils/DateParse';
 import Icons from '../../assets/Icons';
 import SliderComponent from '../slider/SliderComponent';
@@ -13,7 +13,7 @@ const CommenstLineComponent: FC<{}> = () => {
 
     const _getComments = async () => {
         try {
-            const response = await di.get<GetAllCommentsUseCase>(GetAllCommentsUseCase.name).call();
+            const response = await di.get<GetAllCommentsUseCase>(GetAllCommentsUseCaseName).call();
             setComments(response);
         } catch (e) {
             setComments([]);

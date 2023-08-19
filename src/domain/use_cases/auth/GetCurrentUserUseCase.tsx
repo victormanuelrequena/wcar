@@ -38,3 +38,5 @@ export default class GetCurrentUserUseCase {
         return response;
     };
 }
+
+export const GetCurrentUserUseCaseName = "GetCurrentUserUseCaseName";

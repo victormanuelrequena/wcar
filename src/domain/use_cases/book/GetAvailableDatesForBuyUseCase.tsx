@@ -1,3 +1,4 @@
+import { injectable } from "inversify";
 import BookDateEntity from "../../entities/BookDateEntity";
 import BookRepository from "../../repositories/BookRepository";
 
@@ -5,6 +6,7 @@ interface props {
     bookRepository: BookRepository,
 }
 
+@injectable()
 export default class GetAvailableDatesForBuyUseCase {
 
     _bookRepository: BookRepository;
@@ -21,3 +23,5 @@ export default class GetAvailableDatesForBuyUseCase {
         }
     }
 }
+
+export const GetAvailableDatesForBuyUseCaseName = "GetAvailableDatesForBuyUseCaseName";

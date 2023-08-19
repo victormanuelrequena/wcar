@@ -19,3 +19,5 @@ export default class GetAllFrequentQuestionsUseCase {
     }
 
 }
+
+export const GetAllFrequentQuestionsUseCaseName = "GetAllFrequentQuestionsUseCaseName";

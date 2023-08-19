@@ -3,7 +3,7 @@ import './DetailedCarPageStyles.scss';
 import { FC, useEffect, useState } from "react";
 import Layout from '../../../layout/Layout';
 import di from '../../../../../di/DependencyInjection';
-import GetCarByIdUseCase from '../../../../../domain/use_cases/car/GetCarByIdUseCase';
+import GetCarByIdUseCase, { GetCarByIdUseCaseName } from '../../../../../domain/use_cases/car/GetCarByIdUseCase';
 import CarEntity from '../../../../../domain/entities/CarEntity';
 import NotResultsComponent from '../../../components/notResults/NotResultsComponent';
 import LoadingComponent from '../../../components/LoadingComponent/LoadingComponent';
@@ -13,7 +13,7 @@ import CurrencyParse from '../../../../utils/CurrencyParse';
 import { routes } from '../../../routes/RoutesComponent';
 import CarCardComponent from '../../../components/carCard/CarCardComponent';
 import SliderComponent from '../../../components/slider/SliderComponent';
-import GetRelatedCarsByCardIdUseCase from '../../../../../domain/use_cases/car/GetRelatedCarsByCardIdUseCase';
+import GetRelatedCarsByCardIdUseCase, { GetRelatedCarsByCardIdUseCaseName } from '../../../../../domain/use_cases/car/GetRelatedCarsByCardIdUseCase';
 import Icons from '../../../assets/Icons';
 
 const DetailedCarPage: FC<{}> = () => {
@@ -23,7 +23,7 @@ const DetailedCarPage: FC<{}> = () => {
 
     const _getCar = async () => {
         try {
-            const car = await di.get<GetCarByIdUseCase>(GetCarByIdUseCase.name).call(id!);
+            const car = await di.get<GetCarByIdUseCase>(GetCarByIdUseCaseName).call(id!);
             setCar(car);
         } catch (error) {
             setCar(null);
@@ -32,7 +32,7 @@ const DetailedCarPage: FC<{}> = () => {
 
     const _getRelatedCars = async () => {
         try {
-            const cars = await di.get<GetRelatedCarsByCardIdUseCase>(GetRelatedCarsByCardIdUseCase.name).call(id!);
+            const cars = await di.get<GetRelatedCarsByCardIdUseCase>(GetRelatedCarsByCardIdUseCaseName).call(id!);
             setRelatedCars(cars);
         } catch (error) {
             setRelatedCars([]);

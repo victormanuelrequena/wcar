@@ -20,3 +20,5 @@ export default class CalculateInsuranceUseCase {
         return await this._calculatorRepository.calculateInsurance(name, phone, email, cityId, licensePlate);
     }
 }
+
+export const CalculateInsuranceUseCaseName = "CalculateInsuranceUseCaseName";

@@ -20,3 +20,5 @@ export default class CalculateOfferForCarUseCase {
         return await this._calculatorRepository.calculateOfferForCar(data);
     }
 }
+
+export const CalculateOfferForCarUseCaseName = "CalculateOfferForCarUseCaseName";

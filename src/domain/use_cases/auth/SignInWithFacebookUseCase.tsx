@@ -37,3 +37,5 @@ class SignInWithFacebookUseCase {
 }
 
 export default SignInWithFacebookUseCase;
+
+export const SignInWithFacebookUseCaseName = "SignInWithFacebookUseCaseName";

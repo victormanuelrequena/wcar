@@ -4,18 +4,18 @@ import Icons from "../../assets/Icons";
 import { Link, useNavigate } from 'react-router-dom';
 import { routes } from '../../routes/RoutesComponent';
 import di from '../../../../di/DependencyInjection';
-import SignInWithGoogleUseCase from '../../../../domain/use_cases/auth/SignInWithGoogleUseCase';
+import SignInWithGoogleUseCase, { SignInWithGoogleUseCaseName } from '../../../../domain/use_cases/auth/SignInWithGoogleUseCase';
 import { isRight } from 'fp-ts/lib/Either';
 import ModalsContext from '../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../domain/providers/modal/ModalsContextType';
-import SignInWithFacebookUseCase from '../../../../domain/use_cases/auth/SignInWithFacebookUseCase';
+import SignInWithFacebookUseCase, { SignInWithFacebookUseCaseName } from '../../../../domain/use_cases/auth/SignInWithFacebookUseCase';
 
 const SocialLoginComponent: FC<{}> = () => {
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
     const navigate = useNavigate();
 
     const _handleSignInWithGoogle = async () => {
-        const response = await di.get<SignInWithGoogleUseCase>(SignInWithGoogleUseCase.name).call();
+        const response = await di.get<SignInWithGoogleUseCase>(SignInWithGoogleUseCaseName).call();
         if (isRight(response)) {
             navigate(routes.home.relativePath);
         } else {
@@ -24,7 +24,7 @@ const SocialLoginComponent: FC<{}> = () => {
     }
 
     const _handleSignInWithFacebook = async () => {
-        const response = await di.get<SignInWithFacebookUseCase>(SignInWithFacebookUseCase.name).call();
+        const response = await di.get<SignInWithFacebookUseCase>(SignInWithFacebookUseCaseName).call();
         if (isRight(response)) {
             navigate(routes.home.relativePath);
         } else {

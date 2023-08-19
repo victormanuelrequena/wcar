@@ -5,9 +5,11 @@ import UserProvider from "../../providers/user/UserProvider";
 import CarRepository from "../../repositories/CarRepository";
 import ExceptionEntity from "../../entities/ExceptionEntity";
 import { left, right } from "fp-ts/lib/Either";
+import { injectable } from "inversify";
 
 interface props { carRepository: CarRepository, favoriteCarProvider: FavoriteCarsProvider, userProvider: UserProvider }
 
+@injectable()
 export default class LikeCarUseCase {
 
     _carRepository: CarRepository;
@@ -28,3 +30,5 @@ export default class LikeCarUseCase {
         return right(response);
     }
 }
+
+export const LikeCarUseCaseName = "LikeCarUseCaseName";

@@ -1,9 +1,11 @@
+import { injectable } from "inversify";
 import TypeOfFuelEntity from "../../entities/TypeOfFuelEntity";
 import TypeOfFuelProvider from "../../providers/typeOfFuel/TypeOfFuelProvider";
 import TypeOfFuelRepository from "../../repositories/TypeOfFuelRepository";
 
 interface props { typeOfFuelRepository: TypeOfFuelRepository, typeOfFuelProvider: TypeOfFuelProvider }
 
+@injectable()
 export default class GetAllTypeOfFuelsUseCase {
 
     _typeOfFuelRepository: TypeOfFuelRepository;
@@ -24,3 +26,5 @@ export default class GetAllTypeOfFuelsUseCase {
         }
     }
 }
+
+export const GetAllTypeOfFuelsUseCaseName = "GetAllTypeOfFuelsUseCaseName";

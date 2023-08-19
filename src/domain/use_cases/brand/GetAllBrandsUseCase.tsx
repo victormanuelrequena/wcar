@@ -1,9 +1,11 @@
+import { injectable } from "inversify";
 import BrandEntity from "../../entities/BrandEntity";
 import BrandsProvider from "../../providers/brand/BrandProvider";
 import BrandRepository from "../../repositories/BrandRepository";
 
 interface props { brandRepository: BrandRepository, brandProvider: BrandsProvider }
 
+@injectable()
 export default class GetAllBrandsUseCase {
 
     _brandRepository: BrandRepository;
@@ -23,3 +25,5 @@ export default class GetAllBrandsUseCase {
         }
     }
 }
+
+export const GetAllBrandsUseCaseName = "GetAllBrandsUseCaseName";

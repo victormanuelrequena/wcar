@@ -4,13 +4,13 @@ import VerticalStepperComponent from "../../../components/verticalStepper/Vertic
 import Layout from "../../../layout/Layout";
 import { set, useForm } from "react-hook-form";
 import di from "../../../../../di/DependencyInjection";
-import GetAvailableHoursForBuyUseCase from "../../../../../domain/use_cases/book/GetAvailableHoursForBuyUseCase";
+import GetAvailableHoursForBuyUseCase, { GetAvailableHoursForBuyUseCaseName } from "../../../../../domain/use_cases/book/GetAvailableHoursForBuyUseCase";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import BookDateEntity from "../../../../../domain/entities/BookDateEntity";
 import BookHourEntity from "../../../../../domain/entities/BookHourEntity";
-import BookADateForBuyUseCase from "../../../../../domain/use_cases/book/BookADateForBuyUseCase";
+import BookADateForBuyUseCase, { BookADateForBuyUseCaseName } from "../../../../../domain/use_cases/book/BookADateForBuyUseCase";
 import ModalsProvider, { ModalsProviderName } from "../../../../../domain/providers/modal/ModalsProvider";
-import GetAvailableDatesForBuyUseCase from "../../../../../domain/use_cases/book/GetAvailableDatesForBuyUseCase";
+import GetAvailableDatesForBuyUseCase, { GetAvailableDatesForBuyUseCaseName } from "../../../../../domain/use_cases/book/GetAvailableDatesForBuyUseCase";
 import PickerBoxComponent from "../../../components/form/pickerBox/PickerBoxComponent";
 import LoadingComponent from "../../../components/LoadingComponent/LoadingComponent";
 import DateParse from "../../../../utils/DateParse";
@@ -21,9 +21,9 @@ import ModalsContextType from '../../../../../domain/providers/modal/ModalsConte
 import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import { routes } from '../../../routes/RoutesComponent';
 import Validators from '../../../../utils/Validators';
-import GetAvailableDatesForSellUseCase from '../../../../../domain/use_cases/book/GetAvailableDatesForSellUseCase';
-import GetAvailableHoursForSellUseCase from '../../../../../domain/use_cases/book/GetAvailableHoursForSellUseCase';
-import BookADateForSellUseCase from '../../../../../domain/use_cases/book/BookADateForSellUseCase';
+import GetAvailableDatesForSellUseCase, { GetAvailableDatesForSellUseCaseName } from '../../../../../domain/use_cases/book/GetAvailableDatesForSellUseCase';
+import GetAvailableHoursForSellUseCase, { GetAvailableHoursForSellUseCaseName } from '../../../../../domain/use_cases/book/GetAvailableHoursForSellUseCase';
+import BookADateForSellUseCase, { BookADateForSellUseCaseName } from '../../../../../domain/use_cases/book/BookADateForSellUseCase';
 import CalculatedEntity from '../../../../../domain/entities/CalculatedEntity';
 
 const BookADatePage: FC<{}> = () => {
@@ -46,10 +46,10 @@ const BookADatePage: FC<{}> = () => {
     const getAvailableDates = async () => {
         try {
             if (cotizationId != undefined && cotizationId.length > 0) {
-                const response = await di.get<GetAvailableDatesForSellUseCase>(GetAvailableDatesForSellUseCase.name).call(cotizationId!);
+                const response = await di.get<GetAvailableDatesForSellUseCase>(GetAvailableDatesForSellUseCaseName).call(cotizationId!);
                 setAvailableDates(response);
             } else {
-                const response = await di.get<GetAvailableDatesForBuyUseCase>(GetAvailableDatesForBuyUseCase.name).call(id!);
+                const response = await di.get<GetAvailableDatesForBuyUseCase>(GetAvailableDatesForBuyUseCaseName).call(id!);
                 setAvailableDates(response);
             }
         } catch (error) {
@@ -61,10 +61,10 @@ const BookADatePage: FC<{}> = () => {
         try {
             if (dateValue != date) setValue('hour', undefined);
             if (cotizationId != undefined && cotizationId.length > 0) {
-                const response = await di.get<GetAvailableHoursForSellUseCase>(GetAvailableHoursForSellUseCase.name).call(date, cotizationId!);
+                const response = await di.get<GetAvailableHoursForSellUseCase>(GetAvailableHoursForSellUseCaseName).call(date, cotizationId!);
                 setAvailableHours(response);
             } else {
-                const response = await di.get<GetAvailableHoursForBuyUseCase>(GetAvailableHoursForBuyUseCase.name).call(date, id!);
+                const response = await di.get<GetAvailableHoursForBuyUseCase>(GetAvailableHoursForBuyUseCaseName).call(date, id!);
                 setAvailableHours(response);
             }
         } catch (error) {
@@ -76,8 +76,8 @@ const BookADatePage: FC<{}> = () => {
         setLoading(true);
         try {
             if (cotizationId != undefined && cotizationId.length > 0)
-                await di.get<BookADateForSellUseCase>(BookADateForSellUseCase.name).call(data.date, data.hour, cotizationId, data.contact);
-            else await di.get<BookADateForBuyUseCase>(BookADateForBuyUseCase.name).call(data.date, data.hour, id!, buyNumberId, data.contact);
+                await di.get<BookADateForSellUseCase>(BookADateForSellUseCaseName).call(data.date, data.hour, cotizationId, data.contact);
+            else await di.get<BookADateForBuyUseCase>(BookADateForBuyUseCaseName).call(data.date, data.hour, id!, buyNumberId, data.contact);
             addToast("Reserva realizada", "success", undefined);
             navigate(routes.home.relativePath);
         } catch (error) {

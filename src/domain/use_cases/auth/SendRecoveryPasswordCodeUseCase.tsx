@@ -28,3 +28,5 @@ class SendRecoveryPasswordCodeUseCase {
 }
 
 export default SendRecoveryPasswordCodeUseCase;
+
+export const SendRecoveryPasswordCodeUseCaseName = "SendRecoveryPasswordCodeUseCaseName";

@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import RoutesComponentProps from "./RoutesComponentProps";
 import UserEntity from "../../../domain/entities/UserEntity";
 import HomePage from "../pages/home/HomePage";
-import LoadUseCase from "../../../domain/use_cases/default/LoadUseCase";
+import LoadUseCase, { LoadUseCaseName } from "../../../domain/use_cases/default/LoadUseCase";
 import NotFoundComponent from "../components/notFound/NotFoundComponent";
 import LoadingComponent from "../components/LoadingComponent/LoadingComponent";
 import di from "../../../di/DependencyInjection";
@@ -25,6 +25,7 @@ import SignUpPage from "../pages/auth/signUp/SignUpPage";
 import SignInPage from "../pages/auth/signIn/SignInPage";
 import SendRecoveryCodePage from "../pages/auth/sendRecoveryCode/SendRecoveryCodePage";
 import CheckRecoveryCodePage from "../pages/auth/checkRecoveryCode/CheckRecoveryCodePage";
+import GetAllAlliesUseCase from "../../../domain/use_cases/ally/GetAllAlliesUseCase";
 
 export interface iRoute {
     name: string,
@@ -175,7 +176,7 @@ const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {
 
     const _load = async () => {
         try {
-            await di.get<LoadUseCase>(LoadUseCase.name).call();
+            await di.get<LoadUseCase>(LoadUseCaseName).call();
         } catch (_) { }
         setLoaded(true);
     }

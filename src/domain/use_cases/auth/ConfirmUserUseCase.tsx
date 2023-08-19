@@ -28,3 +28,5 @@ class ConfirmUserUseCase {
 }
 
 export default ConfirmUserUseCase;
+
+export const ConfirmUserUseCaseName = "ConfirmUserUseCaseName";

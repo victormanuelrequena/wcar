@@ -24,3 +24,5 @@ export default class GetAllTypeVehiclesUseCase{
         }
     }
 }
+
+export const GetAllTypeVehiclesUseCaseName = "GetAllTypeVehiclesUseCaseName";

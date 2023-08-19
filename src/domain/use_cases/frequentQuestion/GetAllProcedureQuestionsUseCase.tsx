@@ -19,3 +19,5 @@ export default class GetAllProcedureQuestionsUseCase {
     }
 
 }
+
+export const GetAllProcedureQuestionsUseCaseName = "GetAllProcedureQuestionsUseCaseName";

@@ -1,3 +1,4 @@
+import { injectable } from "inversify";
 import GetAllAlliesUseCase from "../ally/GetAllAlliesUseCase";
 import GetCurrentUserUseCase from "../auth/GetCurrentUserUseCase";
 import GetAllBrandsUseCase from "../brand/GetAllBrandsUseCase";
@@ -19,6 +20,7 @@ interface props {
     getCurrentUserUseCase: GetCurrentUserUseCase;
 }
 
+@injectable()
 export default class LoadUseCase {
     _getAllAlliesUseCase: GetAllAlliesUseCase;
     _getAllBrandsUseCase: GetAllBrandsUseCase;
@@ -90,20 +92,22 @@ export default class LoadUseCase {
             } catch (error) {
                 console.log('_getCurrentUserUseCase', error);
             }
-            
-            await Promise.all([
-                await this._getAllAlliesUseCase.call(),
-                await this._getAllBrandsUseCase.call(),
-                await this._getAllColorsUseCase.call(),
-                await this._getAllTypeOfFueslUseCase.call(),
-                await this._getAllTypeOfVehiclesUseCase.call(),
-                await this._getAllCitiesUseCase.call(),
-                await this._getFavoriteCarsUseCase.call(),
-                await this._getAllTagsUseCase.call(),
-                await this._getCurrentUserUseCase.call()
-            ]);
+
+            // await Promise.all([
+            //     await this._getAllAlliesUseCase.call(),
+            //     await this._getAllBrandsUseCase.call(),
+            //     await this._getAllColorsUseCase.call(),
+            //     await this._getAllTypeOfFueslUseCase.call(),
+            //     await this._getAllTypeOfVehiclesUseCase.call(),
+            //     await this._getAllCitiesUseCase.call(),
+            //     await this._getFavoriteCarsUseCase.call(),
+            //     await this._getAllTagsUseCase.call(),
+            //     await this._getCurrentUserUseCase.call()
+            // ]);
         } catch (error) {
             console.log('error', error)
         }
     }
 }
+
+export const LoadUseCaseName = "LoadUseCase";

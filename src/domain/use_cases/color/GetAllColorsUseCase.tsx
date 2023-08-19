@@ -1,9 +1,11 @@
+import { injectable } from "inversify";
 import ColorEntity from "../../entities/ColorEntity";
 import ColorsProvider from "../../providers/color/ColorProvider";
 import ColorRepository from "../../repositories/ColorRepository";
 
 interface props { colorRepository: ColorRepository, colorProvider: ColorsProvider }
 
+@injectable()
 export default class GetAllColorsUseCase {
 
     _colorRepository: ColorRepository;
@@ -23,3 +25,5 @@ export default class GetAllColorsUseCase {
         }
     }
 }
+
+export const GetAllColorsUseCaseName = "GetAllColorsUseCaseName";

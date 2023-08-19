@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from "react";
 import FrequentQuestionEntity from "../../../../../domain/entities/FrequentQuestionEntity";
 import Layout from "../../../layout/Layout";
 import di from "../../../../../di/DependencyInjection";
-import GetAllProcedureQuestionsUseCase from "../../../../../domain/use_cases/frequentQuestion/GetAllProcedureQuestionsUseCase";
+import GetAllProcedureQuestionsUseCase, { GetAllProcedureQuestionsUseCaseName } from "../../../../../domain/use_cases/frequentQuestion/GetAllProcedureQuestionsUseCase";
 import AccordeonComponent from "../../../components/accordeon/AccordeonComponent";
 import CardContactComponent from '../../../components/cardContact/CardContactComponent';
 
@@ -13,7 +13,7 @@ const ProceduresPage: FC<{}> = () => {
     
     const _getProceduresQuestions = async () => {
         try {
-            const response = await di.get<GetAllProcedureQuestionsUseCase>(GetAllProcedureQuestionsUseCase.name).call();
+            const response = await di.get<GetAllProcedureQuestionsUseCase>(GetAllProcedureQuestionsUseCaseName).call();
             setProcudesQuestions(response);
         } catch (error) {
         }

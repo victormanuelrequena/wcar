@@ -12,7 +12,7 @@ import { Either, isRight, left } from "fp-ts/lib/Either";
 import { routes } from '../../../routes/RoutesComponent';
 import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
-import UpdatePasswordByRecoveryUseCase from '../../../../../domain/use_cases/auth/UpdatePasswordByRecoveryUseCase';
+import UpdatePasswordByRecoveryUseCase, { UpdatePasswordByRecoveryUseCaseName } from '../../../../../domain/use_cases/auth/UpdatePasswordByRecoveryUseCase';
 
 const CheckRecoveryCodePage: FC<{}> = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -21,7 +21,7 @@ const CheckRecoveryCodePage: FC<{}> = () => {
     const { email } = useParams<{ email: string }>();
 
     const _handleSubmit = async (data: any) => {
-        const response = await di.get<UpdatePasswordByRecoveryUseCase>(UpdatePasswordByRecoveryUseCase.name).call(email!, data.password, data.code);
+        const response = await di.get<UpdatePasswordByRecoveryUseCase>(UpdatePasswordByRecoveryUseCaseName).call(email!, data.password, data.code);
         if (isRight(response)) {
             navigate(routes.home.relativePath);
         } else {

@@ -1,9 +1,11 @@
+import { injectable } from "inversify";
 import BookRepository from "../../repositories/BookRepository";
 
 interface props {
     bookRepository: BookRepository,
 }
 
+@injectable()
 export default class BookADateForSellUseCase {
 
     _bookRepository: BookRepository;
@@ -20,3 +22,5 @@ export default class BookADateForSellUseCase {
         }
     }
 }
+
+export const BookADateForSellUseCaseName = "BookADateForSellUseCaseName";

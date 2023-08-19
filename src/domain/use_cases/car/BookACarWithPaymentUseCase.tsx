@@ -1,9 +1,11 @@
+import { injectable } from "inversify";
 import ExceptionEntity from "../../entities/ExceptionEntity";
 import CarRepository from "../../repositories/CarRepository";
 import { Either } from "fp-ts/lib/Either";
 
 interface props { carRepository: CarRepository }
 
+@injectable()
 export default class BookACarWithPaymentUseCase{
     
     _carRepository: CarRepository;
@@ -15,3 +17,5 @@ export default class BookACarWithPaymentUseCase{
         return await this._carRepository.bookACarPayment(carId, paymentInfo);
     }
 }
+
+export const BookACarWithPaymentUseCaseName = "BookACarWithPaymentUseCaseName";

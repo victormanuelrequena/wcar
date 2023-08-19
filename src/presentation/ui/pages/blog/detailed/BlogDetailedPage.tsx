@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import NotResultsComponent from '../../../components/notResults/NotResultsComponent';
 import LoadingComponent from '../../../components/LoadingComponent/LoadingComponent';
 import DateParse from '../../../../utils/DateParse';
-import GetBlogPostByIdUseCase from '../../../../../domain/use_cases/blog/GetBlogPostByIdUseCase.tsx';
+import GetBlogPostByIdUseCase, { GetBlogPostByIdUseCaseName } from '../../../../../domain/use_cases/blog/GetBlogPostByIdUseCase.tsx';
 import di from '../../../../../di/DependencyInjection';
 
 const BlogDetailedPage = () => {
@@ -15,7 +15,7 @@ const BlogDetailedPage = () => {
 
     const _getBlog = async () => {
         try {
-            const response = await di.get<GetBlogPostByIdUseCase>(GetBlogPostByIdUseCase.name).call(id!);
+            const response = await di.get<GetBlogPostByIdUseCase>(GetBlogPostByIdUseCaseName).call(id!);
             setBlog(response);
         } catch (error) {
             setBlog(null);

@@ -17,3 +17,5 @@ export default class GetAllCommentsUseCase {
         return await this._commentRepository.getall();
     }
 }
+
+export const GetAllCommentsUseCaseName = "GetAllCommentsUseCaseName";

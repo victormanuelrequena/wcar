@@ -1,3 +1,4 @@
+import { injectable } from "inversify";
 import CityEntity from "../../entities/CityEntity";
 import CityProvider from "../../providers/city/CityProvider";
 import CityRepository from "../../repositories/CityRepository";
@@ -7,6 +8,7 @@ interface props {
     cityProvider: CityProvider;
 }
 
+@injectable()
 export default class GetAllCitiesUseCase {
     _cityRepository: CityRepository;
     _cityProvider: CityProvider;
@@ -31,3 +33,5 @@ export default class GetAllCitiesUseCase {
         }
     }
 }
+
+export const GetAllCitiesUseCaseName = "GetAllCitiesUseCaseName";

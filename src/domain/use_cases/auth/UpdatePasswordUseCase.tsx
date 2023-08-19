@@ -33,3 +33,5 @@ class UpdatePasswordByRecoveryUseCase {
 }
 
 export default UpdatePasswordByRecoveryUseCase;
+
+export const UpdatePasswordByRecoveryUseCaseName = "UpdatePasswordByRecoveryUseCaseName";

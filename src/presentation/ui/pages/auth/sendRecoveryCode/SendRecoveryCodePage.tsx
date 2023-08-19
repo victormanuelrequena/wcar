@@ -12,7 +12,7 @@ import { Either, isRight, left } from "fp-ts/lib/Either";
 import { routes } from '../../../routes/RoutesComponent';
 import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
-import SendRecoveryPasswordCodeUseCase from '../../../../../domain/use_cases/auth/SendRecoveryPasswordCodeUseCase';
+import SendRecoveryPasswordCodeUseCase, { SendRecoveryPasswordCodeUseCaseName } from '../../../../../domain/use_cases/auth/SendRecoveryPasswordCodeUseCase';
 
 const SendRecoveryCodePage: FC<{}> = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -20,7 +20,7 @@ const SendRecoveryCodePage: FC<{}> = () => {
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
 
     const _handleSubmit = async (data: any) => {
-        const response = await di.get<SendRecoveryPasswordCodeUseCase>(SendRecoveryPasswordCodeUseCase.name).call(data.email);
+        const response = await di.get<SendRecoveryPasswordCodeUseCase>(SendRecoveryPasswordCodeUseCaseName).call(data.email);
         if (isRight(response)) {
             navigate(routes.updatePasswordRecovery.relativePath + '/' + data.email);
         } else {

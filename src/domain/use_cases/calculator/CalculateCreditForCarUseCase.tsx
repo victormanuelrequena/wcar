@@ -19,3 +19,5 @@ export default class CalculateCreditForCarUseCase {
         return await this._calculatorRepository.calculateCredit(vehicleValue, initialQuote, months, insuranceId);
     }
 }
+
+export const CalculateCreditForCarUseCaseName = "CalculateCreditForCarUseCaseName";

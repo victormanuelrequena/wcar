@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import FrequentQuestionEntity from "../../../../domain/entities/FrequentQuestionEntity";
 import di from "../../../../di/DependencyInjection";
-import GetAllFrequentQuestionsUseCase from "../../../../domain/use_cases/frequentQuestion/GetAllFrequentQuestionsUseCase";
+import GetAllFrequentQuestionsUseCase, { GetAllFrequentQuestionsUseCaseName } from "../../../../domain/use_cases/frequentQuestion/GetAllFrequentQuestionsUseCase";
 import AccordeonComponent from "../accordeon/AccordeonComponent";
 
 const FrequentQuestionsComponent: FC<{}> = () => {
@@ -9,7 +9,7 @@ const FrequentQuestionsComponent: FC<{}> = () => {
 
     const _getFrequentQuestions = async () => {
         try {
-            const respose = await di.get<GetAllFrequentQuestionsUseCase>(GetAllFrequentQuestionsUseCase.name).call();
+            const respose = await di.get<GetAllFrequentQuestionsUseCase>(GetAllFrequentQuestionsUseCaseName).call();
             setFrequentQuestions(respose);
         } catch (error) {
 

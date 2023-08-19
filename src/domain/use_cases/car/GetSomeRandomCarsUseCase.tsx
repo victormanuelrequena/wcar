@@ -1,8 +1,10 @@
+import { injectable } from "inversify";
 import CarEntity from "../../entities/CarEntity";
 import CarRepository from "../../repositories/CarRepository";
 
 interface props { carRepository: CarRepository }
 
+@injectable()
 export default class GetSomeRandomCarsUseCase{
     
     _carRepository: CarRepository;
@@ -14,3 +16,5 @@ export default class GetSomeRandomCarsUseCase{
         return await this._carRepository.getSomeRandomCars();
     }
 }
+
+export const GetSomeRandomCarsUseCaseName = "GetSomeRandomCarsUseCaseName";

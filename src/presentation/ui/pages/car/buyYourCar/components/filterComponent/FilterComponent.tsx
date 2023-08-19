@@ -11,7 +11,7 @@ import TypeVehicleContext from "../../../../../../../domain/providers/typeVehicl
 import TypeVehicleContextType from "../../../../../../../domain/providers/typeVehicle/TypeVehicleContextType";
 import { TransmissionCar } from "../../../../../../../domain/entities/CarEntity";
 import di from "../../../../../../../di/DependencyInjection";
-import GetModelsByBrandUseCase from "../../../../../../../domain/use_cases/brand/GetModelsByBrandUseCase";
+import GetModelsByBrandUseCase, { GetModelsByBrandUseCaseName } from "../../../../../../../domain/use_cases/brand/GetModelsByBrandUseCase";
 import RangePickerComponent from "../../../../../components/form/rangePicker/RangePickerComponent";
 import SelectOpenComponent from "../../../../../components/selectOpen/SelectOpenComponent";
 import TagContext from "../../../../../../../domain/providers/tag/TagContext";
@@ -35,7 +35,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
         setValue('model', undefined);
         setModels([]);
         try {
-            const response = await di.get<GetModelsByBrandUseCase>(GetModelsByBrandUseCase.name).call(brandId);
+            const response = await di.get<GetModelsByBrandUseCase>(GetModelsByBrandUseCaseName).call(brandId);
             setModels(response);
         } catch (error) {
         }

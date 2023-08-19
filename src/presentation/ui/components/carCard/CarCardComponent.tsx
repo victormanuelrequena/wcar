@@ -3,7 +3,7 @@ import { FC, useContext, useEffect, useState } from "react";
 import CarCardComponentProps from "./CarCardComponentProps";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import di from "../../../../di/DependencyInjection";
-import LikeCarUseCase from "../../../../domain/use_cases/car/LikeCarUseCase";
+import LikeCarUseCase, { LikeCarUseCaseName } from "../../../../domain/use_cases/car/LikeCarUseCase";
 import CurrencyParse from "../../../utils/CurrencyParse";
 import { Link } from 'react-router-dom';
 import { routes } from '../../routes/RoutesComponent';
@@ -22,7 +22,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
     }
 
     const _handleLike = async () => {
-        const response = await di.get<LikeCarUseCase>(LikeCarUseCase.name).call(car, !_like);
+        const response = await di.get<LikeCarUseCase>(LikeCarUseCaseName).call(car, !_like);
         if (isLeft(response) && response.left.code == 'unauthorized') return alert(response.left.message);
         _setLike(!_like);
     }

@@ -1,7 +1,7 @@
 import './BookACarPageStyles.scss';
 import { FC, useContext, useEffect, useState } from "react";
 import di from "../../../../../di/DependencyInjection";
-import GetCarByIdUseCase from "../../../../../domain/use_cases/car/GetCarByIdUseCase";
+import GetCarByIdUseCase, { GetCarByIdUseCaseName } from "../../../../../domain/use_cases/car/GetCarByIdUseCase";
 import { Link, useParams } from "react-router-dom";
 import CarEntity from "../../../../../domain/entities/CarEntity";
 import LoadingComponent from "../../../components/LoadingComponent/LoadingComponent";
@@ -12,11 +12,11 @@ import Validators from '../../../../utils/Validators';
 import { ErrorMessage } from "@hookform/error-message";
 import DepartmentContext from '../../../../../domain/providers/department/DepartmentContext';
 import DepartmentContextType from '../../../../../domain/providers/department/DepartmentContextType';
-import GetAllDepartmentsUseCase from '../../../../../domain/use_cases/department/GetAllDepartmentsUseCase';
+import GetAllDepartmentsUseCase, { GetAllDepartmentsUseCaseName } from '../../../../../domain/use_cases/department/GetAllDepartmentsUseCase';
 import StarRatingComponent from '../../../components/starRating/StarRatingComponent';
 import CurrencyParse from '../../../../utils/CurrencyParse';
 import Icons from '../../../assets/Icons';
-import BookACarWithPaymentUseCase from '../../../../../domain/use_cases/car/BookACarWithPaymentUseCase';
+import BookACarWithPaymentUseCase, { BookACarWithPaymentUseCaseName } from '../../../../../domain/use_cases/car/BookACarWithPaymentUseCase';
 import ModalsProvider, { ModalsProviderName } from '../../../../../domain/providers/modal/ModalsProvider';
 import UserContext from '../../../../../domain/providers/user/UserContext';
 import UserContextType from '../../../../../domain/providers/user/UserContextType';
@@ -33,7 +33,7 @@ const BookACarPage: FC<{}> = () => {
 
     const _getCar = async () => {
         try {
-            const car = await di.get<GetCarByIdUseCase>(GetCarByIdUseCase.name).call(id!);
+            const car = await di.get<GetCarByIdUseCase>(GetCarByIdUseCaseName).call(id!);
             setCar(car);
         } catch (error) {
             setCar(null);
@@ -41,7 +41,7 @@ const BookACarPage: FC<{}> = () => {
     }
 
     const _getDepartments = async () => {
-        await di.get<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCase.name).call();
+        await di.get<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCaseName).call();
     }
 
     const _formatCreditCarNumber = (value: string) => {
@@ -68,7 +68,7 @@ const BookACarPage: FC<{}> = () => {
 
     const _bookADate = async (data: any) => {
         try {
-            await di.get<BookACarWithPaymentUseCase>(BookACarWithPaymentUseCase.name).call(id!, data);
+            await di.get<BookACarWithPaymentUseCase>(BookACarWithPaymentUseCaseName).call(id!, data);
         } catch (error) {
             di.get<ModalsProvider>(ModalsProviderName).Actions.addToast("Error en reserva", "error", undefined);
         }

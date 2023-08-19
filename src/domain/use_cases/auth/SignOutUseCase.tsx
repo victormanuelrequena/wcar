@@ -36,3 +36,5 @@ class SignOutUseCase {
 }
 
 export default SignOutUseCase;
+
+export const SignOutUseCaseName = "SignOutUseCaseName";

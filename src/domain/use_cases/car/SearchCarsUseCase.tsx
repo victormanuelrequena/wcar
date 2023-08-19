@@ -1,3 +1,4 @@
+import { injectable } from "inversify";
 import CarEntity, { TransmissionCar } from "../../entities/CarEntity";
 import OrderByEntity from "../../entities/OrderByEntity";
 import CarRepository from "../../repositories/CarRepository";
@@ -8,6 +9,7 @@ interface Response {
     maxPages: number,
 }
 
+@injectable()
 export default class SearchCarsUseCase {
 
     _carRepository: CarRepository;
@@ -26,3 +28,5 @@ export default class SearchCarsUseCase {
         return await this._carRepository.search(page, search, brand, year, price, type, transmission, tag, km, fuelId, colorId, plateNumber, orderBy);
     }
 }
+
+export const SearchCarsUseCaseName = "SearchCarsUseCaseName";

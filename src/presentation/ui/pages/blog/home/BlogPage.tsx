@@ -2,7 +2,7 @@ import { FC, useContext, useEffect, useState } from 'react'
 import './BlogPageStyles.scss'
 import BlogPostEntity from '../../../../../domain/entities/BlogPostEntity'
 import di from '../../../../../di/DependencyInjection';
-import GetAllBlogsAndMainPostUseCase from '../../../../../domain/use_cases/blog/GetAllBlogsAndMainPostUseCase';
+import GetAllBlogsAndMainPostUseCase, { GetAllBlogsAndMainPostUseCaseName } from '../../../../../domain/use_cases/blog/GetAllBlogsAndMainPostUseCase';
 import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
 import Layout from '../../../layout/Layout';
@@ -20,7 +20,7 @@ const BlogPage: FC<{}> = () => {
 
     const _loadBlogs = async () => {
         try {
-            const response = await di.get<GetAllBlogsAndMainPostUseCase>(GetAllBlogsAndMainPostUseCase.name).call();
+            const response = await di.get<GetAllBlogsAndMainPostUseCase>(GetAllBlogsAndMainPostUseCaseName).call();
             setBlogs(response.blogs);
             setOutstandingBlog(response.mainPost);
         } catch (error) {

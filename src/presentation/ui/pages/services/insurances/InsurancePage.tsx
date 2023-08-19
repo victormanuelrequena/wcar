@@ -13,7 +13,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import Icons from '../../../assets/Icons';
 import { routes } from '../../../routes/RoutesComponent';
 import { Link } from 'react-router-dom';
-import CalculateInsuranceUseCase from '../../../../../domain/use_cases/calculator/CalculateInsuranceUseCase';
+import CalculateInsuranceUseCase, { CalculateInsuranceUseCaseName } from '../../../../../domain/use_cases/calculator/CalculateInsuranceUseCase';
 import { isRight } from 'fp-ts/lib/Either';
 
 const InsurancePage: FC<{}> = () => {
@@ -23,7 +23,7 @@ const InsurancePage: FC<{}> = () => {
     const { register, setValue, handleSubmit, watch, reset, formState: { errors } } = useForm();
 
     const _handleSubmit = async (data: any) => {
-        const response = await di.get<CalculateInsuranceUseCase>(CalculateInsuranceUseCase.name).call(data.name, data.phone, data.email, data.cityId, data.vehicle_plates);
+        const response = await di.get<CalculateInsuranceUseCase>(CalculateInsuranceUseCaseName).call(data.name, data.phone, data.email, data.cityId, data.vehicle_plates);
         if (isRight(response)) {
             addToast('Su cotización ha sido enviada, pronto nos pondremos en contacto con usted', 'success', null);
             reset();

@@ -6,7 +6,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import Validators from '../../../utils/Validators';
 import Icons from '../../assets/Icons';
 import di from '../../../../di/DependencyInjection';
-import ContactUseCase from '../../../../domain/use_cases/contact/ContactUseCase';
+import ContactUseCase, { ContactUseCaseName } from '../../../../domain/use_cases/contact/ContactUseCase';
 import ModalsContext from '../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../domain/providers/modal/ModalsContextType';
 
@@ -16,7 +16,7 @@ const ContactPage: FC<{}> = () => {
 
     const _handleSubmit = async (data: any) => {
         try {
-            await di.get<ContactUseCase>(ContactUseCase.name).call(data.name, data.lastname, data.phone, data.email, data.message);
+            await di.get<ContactUseCase>(ContactUseCaseName).call(data.name, data.lastname, data.phone, data.email, data.message);
             addToast('Mensaje enviado', 'success', undefined);
             reset();
         } catch (error) {

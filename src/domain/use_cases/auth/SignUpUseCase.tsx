@@ -29,3 +29,5 @@ class SignUpUseCase {
 }
 
 export default SignUpUseCase;
+
+export const SignUpUseCaseName = "SignUpUseCaseName";

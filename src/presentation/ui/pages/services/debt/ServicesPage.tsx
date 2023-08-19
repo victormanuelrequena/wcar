@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form';
 import di from '../../../../../di/DependencyInjection';
 import InsuranceEntity from '../../../../../domain/entities/InsuranceEntity';
-import GetAllInsurancesUseCase from '../../../../../domain/use_cases/insurance/GetAllInsurancesUseCase';
+import GetAllInsurancesUseCase, { GetAllInsurancesUseCaseName } from '../../../../../domain/use_cases/insurance/GetAllInsurancesUseCase';
 import Icons from '../../../assets/Icons';
 import './ServicesPageStyles.scss';
 import { FC, useContext, useEffect, useState } from "react";
-import CalculateCreditForCarUseCase from '../../../../../domain/use_cases/calculator/CalculateCreditForCarUseCase';
+import CalculateCreditForCarUseCase, { CalculateCreditForCarUseCaseName } from '../../../../../domain/use_cases/calculator/CalculateCreditForCarUseCase';
 import FrequentQuestionsComponent from '../../../components/frequentQuestions/FrequentQuestionsComponent';
 import Layout from '../../../layout/Layout';
 import FinancingServicesLineComponent from '../../../components/financingServicesLine/FinancingServicesLineComponent';
@@ -27,7 +27,7 @@ const ServicesPage: FC = () => {
 
     const _getAllInsurances = async () => {
         try {
-            const response = await di.get<GetAllInsurancesUseCase>(GetAllInsurancesUseCase.name).call();
+            const response = await di.get<GetAllInsurancesUseCase>(GetAllInsurancesUseCaseName).call();
             setInsurances(response);
         } catch (error) {
 
@@ -35,7 +35,7 @@ const ServicesPage: FC = () => {
     }
 
     const _handleSubmit = async (data: any) => {
-        const response = await di.get<CalculateCreditForCarUseCase>(CalculateCreditForCarUseCase.name).call(data.vehicleValue, data.initialQuote, data.months, data.insuranceId);
+        const response = await di.get<CalculateCreditForCarUseCase>(CalculateCreditForCarUseCaseName).call(data.vehicleValue, data.initialQuote, data.months, data.insuranceId);
         if (isRight(response)) {
             setEstimatedDebt(response.right);
         } else {

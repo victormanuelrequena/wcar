@@ -18,3 +18,5 @@ export default class GetBlogPostByIdUseCase {
         return await this._blogPostRepository.getBlogById(id);
     }
 }
+
+export const GetBlogPostByIdUseCaseName = "GetBlogPostByIdUseCaseName";
