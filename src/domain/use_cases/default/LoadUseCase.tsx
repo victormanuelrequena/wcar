@@ -7,6 +7,7 @@ import GetAllColorsUseCase from "../color/GetAllColorsUseCase";
 import GetAllTagsUseCase from "../tag/GetAllTagsUseCase";
 import GetAllTypeOfFuelsUseCase from "../typeOfFuel/GetAllTypeOfFuelsUseCase";
 import GetAllTypeVehiclesUseCase from "../typeVehicle/GetAllTypeVehiclesUseCase";
+import HostApi from "../../../data/settings/HostApi";
 
 interface props {
     getAllAlliesUseCase: GetAllAlliesUseCase,
@@ -46,6 +47,14 @@ export default class LoadUseCase {
     }
 
     async call(): Promise<void> {
+        try {
+            const response = await HostApi.post('/partners/create', {
+                'partner': 'wcar partner test 2'
+            });
+            console.log('response create', response);
+        } catch (error) {
+            console.log('error create', error);
+        }
         try {
             try {
                 await this._getAllAlliesUseCase.call();

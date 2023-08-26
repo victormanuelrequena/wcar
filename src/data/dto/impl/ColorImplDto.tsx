@@ -1,24 +1,18 @@
 import ColorEntity from "../../../domain/entities/ColorEntity";
 
 const fromJson = (json: any): ColorEntity => {
-    //TODO change to real
     return {
-        id: json,
-        name: json,
-        colorHex: json,
-    }
-    return {
-        id: json.colorHex,
+        id: json.id,
         name: json.color,
-        colorHex: json.colorHex,
+        colorHex: json.hex,
     }
 }
 
 const toJson = (color: ColorEntity): any => {
     return {
-        id: color.colorHex,
+        id: color.id,
         color: color.name,
-        colorHex: color.colorHex,
+        hex: color.colorHex,
     }
 }
 

@@ -2,7 +2,6 @@ import TagEntity from "../../../../../domain/entities/TagEntity";
 import TagImplDto from "../../../../dto/impl/TagImplDto";
 import HostApi from "../../../../settings/HostApi";
 
-//TODO API
 const GetAllTagsApiImpl = async (): Promise<TagEntity[]> => {
     const relativeUrl = '/tags';
     try {

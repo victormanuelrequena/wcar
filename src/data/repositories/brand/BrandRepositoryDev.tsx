@@ -2,6 +2,8 @@ import { injectable } from "inversify";
 import BrandRepository from "../../../domain/repositories/BrandRepository";
 import BrandEntity from "../../../domain/entities/BrandEntity";
 import GetAllBrandsApiImpl from "./impl/api/GetAllBrandsApiImpl";
+import ModelEntity from "../../../domain/entities/ModelEntity";
+import VersionModelEntity from "../../../domain/entities/VersionModelEntity";
 const _brandTest: BrandEntity = {
     id: "1",
     name: "Mercedez",
@@ -13,12 +15,12 @@ export default class BrandRepositoryDev implements BrandRepository {
     async getAll(): Promise<BrandEntity[]> {
         return [_brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest];
     }
-    async getModelsOfBrand(brandId: string): Promise<string[]> {
-        return ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+    async getModelsOfBrand(brandId: string): Promise<ModelEntity[]> {
+        return [_brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest];
     }
 
-    async getVersionOfModel(brandId: string, model: string): Promise<string[]> {
-        return ["1.0", "1.1", "1.2", "1.3", "1.4", "1.5"];
+    async getVersionOfModel(brandId: string, model: string): Promise<VersionModelEntity[]> {
+        return [_brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest, _brandTest];
     }
 
 }

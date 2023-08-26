@@ -109,7 +109,7 @@ import BookRepositoryDev from "../data/repositories/book/BookRepositoryDev";
 import BlogPostRepositoryImpl from "../data/repositories/blogPost/impl/BlogPostRepositoryImpl";
 import BlogPostRepositoryDev from "../data/repositories/blogPost/BlogPostRepositoryDev";
 import CalculatorRepositoryDev from "../data/repositories/calculator/CalculatorRepositoryDev";
-import CalculatorRepositoryImpl from "../data/repositories/calculator/impl/CalculatorRepositoryImpl";
+import CalculatorRepositoryImpl from "../data/repositories/calculator/CalculatorRepositoryImpl";
 import { CityRepositoryDev } from "../data/repositories/city/CityRepositoryDev";
 import CityRepositoryImpl from "../data/repositories/city/impl/CityRepositoryImpl";
 import ColorRepositoryImpl from "../data/repositories/color/impl/ColorRepositoryImpl";

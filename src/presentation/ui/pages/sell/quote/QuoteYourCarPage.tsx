@@ -22,6 +22,8 @@ import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
 import { routes } from '../../../routes/RoutesComponent';
 import { isRight } from 'fp-ts/lib/Either';
+import ModelEntity from '../../../../../domain/entities/ModelEntity';
+import VersionModelEntity from '../../../../../domain/entities/VersionModelEntity';
 
 const _min_year = 1999;
 const QuoteYourCarPage: FC<{}> = () => {
@@ -35,8 +37,8 @@ const QuoteYourCarPage: FC<{}> = () => {
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
 
     const [currentStep, setCurrentStep] = useState(0);
-    const [models, setModels] = useState<string[]>([]);
-    const [versions, setVersions] = useState<string[]>([]);
+    const [models, setModels] = useState<ModelEntity[]>([]);
+    const [versions, setVersions] = useState<VersionModelEntity[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
     const _handleOnSubmit = (data: any) => {
@@ -200,7 +202,7 @@ const QuoteYourCarPage: FC<{}> = () => {
                                                     onChange: (value: string) => _handleChangeModel(value),
                                                 }))}>
                                                     <option value="">Selecciona un modelo</option>
-                                                    {models.map((model, index) => <option key={index} value={model}>{model}</option>)}
+                                                    {models.map((model, index) => <option key={index} value={model.id}>{model.name}</option>)}
                                                 </select>
                                                 <ErrorMessage as="aside" errors={errors} name="car.model" />
                                             </div>
@@ -212,7 +214,7 @@ const QuoteYourCarPage: FC<{}> = () => {
                                                     required: true,
                                                 }))}>
                                                     <option value="">Selecciona una versión</option>
-                                                    {versions.map((version, index) => <option key={index} value={version}>{version}</option>)}
+                                                    {versions.map((version, index) => <option key={index} value={version.id}>{version.name}</option>)}
                                                 </select>
                                                 <ErrorMessage as="aside" errors={errors} name="car.version" />
                                             </div>

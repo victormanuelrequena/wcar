@@ -1,6 +1,5 @@
 import TagEntity from "../../../domain/entities/TagEntity";
 
-//TODO CREATE
 const fromJson = (json: any): TagEntity => {
     return {
         id: json.id,

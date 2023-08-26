@@ -1,13 +1,13 @@
+import ModelEntity from "../../../../../domain/entities/ModelEntity";
+import ModelImplDto from "../../../../dto/impl/ModelImplDto";
 import HostApi from "../../../../settings/HostApi";
 
 //TODO API
-const GetAllModelsOfBrandApiImpl = async (brandId: string): Promise<string[]> => {
-    const relativeUrl = "/brands";
+const GetAllModelsOfBrandApiImpl = async (brandId: string): Promise<ModelEntity[]> => {
+    let relativeUrl = `/brands/${brandId}`;
     try {
-        const response = await HostApi.post(relativeUrl, {
-            "brand_id": brandId,
-        });
-        return response;
+        const response = await HostApi.get(relativeUrl);
+        return response.map((model: any) => ModelImplDto.fromJson(model));
     } catch (error) {
         return [];
     }

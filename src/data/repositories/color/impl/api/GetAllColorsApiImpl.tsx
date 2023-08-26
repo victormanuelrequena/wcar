@@ -1,12 +1,12 @@
 import ColorEntity from "../../../../../domain/entities/ColorEntity";
+import ColorImplDto from "../../../../dto/impl/ColorImplDto";
 import HostApi from "../../../../settings/HostApi";
 
-//TODO API
 const GetAllColorsApiImpl = async (): Promise<ColorEntity[]> => {
-    const relativeUrl = '';
+    const relativeUrl = '/colors';
     try {
         const response = await HostApi.get(relativeUrl);
-        return response;
+        return response.map((item: any) => ColorImplDto.fromJson(item));
     } catch (error) {
         return [];
     }

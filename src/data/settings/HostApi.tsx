@@ -1,7 +1,7 @@
 import di from "../../di/DependencyInjection";
 import AuthRepository, { AuthRepositoryName } from "../../domain/repositories/AuthRepository";
 
-const url = "https://f1a5-190-207-59-154.ngrok-free.app/api";
+const url = "https://api.wcaronline.com/api";
 // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 const AWS_COGNITO_TOKEN_KEY = "aws_cognito_token";
 const AWS_COGNITO_EMAIL_KEY = "aws_cognito_email";

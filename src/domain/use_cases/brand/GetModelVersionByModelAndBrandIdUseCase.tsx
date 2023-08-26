@@ -1,6 +1,7 @@
 import { injectable } from "inversify";
 import BrandEntity from "../../entities/BrandEntity";
 import BrandRepository from "../../repositories/BrandRepository";
+import VersionModelEntity from "../../entities/VersionModelEntity";
 
 interface props {
     brandRepository: BrandRepository,
@@ -13,7 +14,7 @@ export default class GetModelVersionByModelAndBrandIdUseCase {
     constructor(_: props) {
         this._brandRepository = _.brandRepository;
     }
-    async call(brandId: string, model: string): Promise<string[]> {
+    async call(brandId: string, model: string): Promise<VersionModelEntity[]> {
         try {
             const response = await this._brandRepository.getVersionOfModel(brandId, model);
             return response;

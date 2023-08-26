@@ -16,6 +16,7 @@ import RangePickerComponent from "../../../../../components/form/rangePicker/Ran
 import SelectOpenComponent from "../../../../../components/selectOpen/SelectOpenComponent";
 import TagContext from "../../../../../../../domain/providers/tag/TagContext";
 import TagContextType from "../../../../../../../domain/providers/tag/TagContextType";
+import ModelEntity from '../../../../../../../domain/entities/ModelEntity';
 
 const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setIsOpen }) => {
     const { register, setValue, watch } = formFunctions;
@@ -24,7 +25,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
     const { tags } = useContext(TagContext) as TagContextType;
     const { typeOfFuels } = useContext(TypeOfFuelContext) as TypeOfFuelContextType;
     const { typeVehicles } = useContext(TypeVehicleContext) as TypeVehicleContextType;
-    const [models, setModels] = useState<string[]>([]);
+    const [models, setModels] = useState<ModelEntity[]>([]);
     const brandIdValue = watch('brand_id');
     const modelValue = watch('model');
     const plateNumberValue = watch('plate_number');
@@ -75,8 +76,8 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                             <img src={brand.image} alt="" className="img-fluid img_filter me-2" /><span>{brand.name}</span>
                         </div>
                         <div className="content options_box_container">
-                            {models.map((model, index) => <div key={index} className={`my-2 option_picker hover ${modelValue == model && 'active'}`} onClick={() => _handleChangeModel(model)}>
-                                {model}
+                            {models.map((model, index) => <div key={index} className={`my-2 option_picker hover ${modelValue == model && 'active'}`} onClick={() => _handleChangeModel(model.id)}>
+                                {model.name}
                             </div>)}
                         </div>
                     </div>

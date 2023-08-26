@@ -2,9 +2,8 @@ import TypeVehicleEntity from "../../../../../domain/entities/TypeVehicleEntity"
 import TypeVehicleImplDto from "../../../../dto/impl/TypeVehicleImplDto";
 import HostApi from "../../../../settings/HostApi";
 
-//TODO API
 const GetAllTypeOfVehicleApiImpl = async (): Promise<TypeVehicleEntity[]> => {
-    const relativeUrl = "/typevehicle";
+    const relativeUrl = "/type-cars";
     try {
         const response = await HostApi.get(relativeUrl);
         return response.map((type: any) => TypeVehicleImplDto.fromJson(type));

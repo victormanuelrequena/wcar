@@ -1,13 +1,21 @@
 import TypeOfFuelEntity from "../../../../../domain/entities/TypeOfFuelEntity";
-import TypeOfFueImpllDto from "../../../../dto/impl/TypeOfFueImpllDto";
-import HostApi from "../../../../settings/HostApi";
 
-//TODO API
 const GetAllTypeFuelApiImpl = async (): Promise<TypeOfFuelEntity[]> => {
-    const relativeUrl = '/typeFuel';
     try {
-        const response = await HostApi.get(relativeUrl);
-        return response.map((type:any) => TypeOfFueImpllDto.fromJson(type));
+        return [
+            {
+                id: '1',
+                name: 'Gasolina',
+            },
+            {
+                id: '2',
+                name: 'Diesel',
+            },
+            {
+                id: '3',
+                name: 'Hibrido',
+            }
+        ]
     } catch (error) {
         return [];
     }

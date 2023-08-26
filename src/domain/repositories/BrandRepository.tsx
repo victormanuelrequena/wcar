@@ -10,11 +10,13 @@
  ********************************************************************************/
 
 import BrandEntity from "../entities/BrandEntity";
+import ModelEntity from "../entities/ModelEntity";
+import VersionModelEntity from "../entities/VersionModelEntity";
 
 export default interface BrandRepository {
     getAll(): Promise<BrandEntity[]>;
-    getModelsOfBrand(brandId: string): Promise<string[]>;
-    getVersionOfModel(brandId: string, model: string): Promise<string[]>;
+    getModelsOfBrand(brandId: string): Promise<ModelEntity[]>;
+    getVersionOfModel(brandId: string, model: string): Promise<VersionModelEntity[]>;
 }
 
 export const BrandRepositoryName = "BrandRepository";
