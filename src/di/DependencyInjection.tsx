@@ -140,7 +140,7 @@ const mode = MODE_DI.PRODUCTION.toString();
 const di = new Container();
 
 //#region ------------------ REPOSITORIES ------------------ //
-if (mode === MODE_DI.DEVELOPMENT.toString()) {
+if (mode === MODE_DI.PRODUCTION.toString()) {
     di.bind<AllyRepository>(AllyRepositoryName).to(AllyRepositoryDev).inSingletonScope();
     di.bind<AuthRepository>(AuthRepositoryName).to(AuthRepositoryDev).inSingletonScope();
     di.bind<BrandRepository>(BrandRepositoryName).to(BrandRepositoryDev).inSingletonScope();
