@@ -13,7 +13,7 @@ export default class CalculatorRepositoryTest implements CalculatorRepository{
     async calculateInsurance(name: string, phone: string, email: string, cityId: string, licensePlate: string): Promise<Either<ExceptionEntity, void>> {
         return right(undefined);
     }
-    async calculateCredit(vehicleValue: number, initialQuote: number, months: number, insuranceId: string): Promise<Either<ExceptionEntity, number>> {
+    async calculateCredit(vehicleValue: number, initialQuote: number, months: number, insurance: number): Promise<Either<ExceptionEntity, number>> {
         return right(32000);
     }
     async calculateOfferForCar(_: any): Promise<Either<ExceptionEntity, CalculatedEntity>> {

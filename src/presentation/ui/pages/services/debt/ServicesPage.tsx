@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import di from '../../../../../di/DependencyInjection';
-import InsuranceEntity from '../../../../../domain/entities/InsuranceEntity';
 import GetAllInsurancesUseCase, { GetAllInsurancesUseCaseName } from '../../../../../domain/use_cases/insurance/GetAllInsurancesUseCase';
 import Icons from '../../../assets/Icons';
 import './ServicesPageStyles.scss';
@@ -22,20 +21,19 @@ const ServicesPage: FC = () => {
 
     const formFunctions = useForm();
     const [estimatedDebt, setEstimatedDebt] = useState<number | undefined>(undefined);
-    const [insurances, setInsurances] = useState<InsuranceEntity[]>([]);
     const { getValues } = formFunctions;
 
-    const _getAllInsurances = async () => {
-        try {
-            const response = await di.get<GetAllInsurancesUseCase>(GetAllInsurancesUseCaseName).call();
-            setInsurances(response);
-        } catch (error) {
+    // const _getAllInsurances = async () => {
+    //     try {
+    //         const response = await di.get<GetAllInsurancesUseCase>(GetAllInsurancesUseCaseName).call();
+    //         setInsurances(response);
+    //     } catch (error) {
 
-        }
-    }
+    //     }
+    // }
 
     const _handleSubmit = async (data: any) => {
-        const response = await di.get<CalculateCreditForCarUseCase>(CalculateCreditForCarUseCaseName).call(data.vehicleValue, data.initialQuote, data.months, data.insuranceId);
+        const response = await di.get<CalculateCreditForCarUseCase>(CalculateCreditForCarUseCaseName).call(data.vehicleValue, data.initialQuote, data.months, data.insurance);
         if (isRight(response)) {
             setEstimatedDebt(response.right);
         } else {
@@ -45,7 +43,8 @@ const ServicesPage: FC = () => {
 
     const _handleOnFormChange = () => {
         const values = getValues();
-        if (values.vehicleValue && values.initialValue && values.months && values.insuranceId) {
+        console.log(values);
+        if (values.vehicleValue && values.initialQuote && values.months && values.insurance) {
             _handleSubmit(values);
         } else {
             setEstimatedDebt(undefined);
@@ -53,7 +52,7 @@ const ServicesPage: FC = () => {
     }
 
     useEffect(() => {
-        _getAllInsurances();
+        // _getAllInsurances();
     }, []);
 
     return <div className="services_page">
@@ -83,7 +82,7 @@ const ServicesPage: FC = () => {
                             <CalculatorTitleComponent />
                         </div>
                         <div className="col-12 col-md-6 my-3">
-                            <ServicesCalculatorFormComponent formFunctions={formFunctions} insuranceList={insurances} handleOnFormChange={_handleOnFormChange} />
+                            <ServicesCalculatorFormComponent formFunctions={formFunctions} handleOnFormChange={_handleOnFormChange} />
 
                         </div>
                         <div className="col-12 col-md-6 col-lg-5 col-xl-4 d-flex flex-column justify-content-center align-items-start">
@@ -101,7 +100,7 @@ const ServicesPage: FC = () => {
                                         </div>
                                         <div className="col-8 d-flex flex-column">
                                             <p className="text_light mb-1">Tu cuota mensual sería de:</p>
-                                            <h2 className="text_orange mb-0">{CurrencyParse.toCop(estimatedDebt ?? 0)}</h2>
+                                            <h3 className="text_orange mb-0">{CurrencyParse.toCop(estimatedDebt ?? 0).slice(0,-3)}</h3>
                                         </div>
                                     </div>
                                     <div className="row">

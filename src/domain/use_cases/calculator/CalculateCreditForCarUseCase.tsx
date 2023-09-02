@@ -15,8 +15,8 @@ export default class CalculateCreditForCarUseCase {
         this._calculatorRepository = _.calculatorRepository;
     }
 
-    async call(vehicleValue: number, initialQuote: number, months: number, insuranceId: string): Promise<Either<ExceptionEntity, number>> {
-        return await this._calculatorRepository.calculateCredit(vehicleValue, initialQuote, months, insuranceId);
+    async call(vehicleValue: number, initialQuote: number, months: number, insurance: number): Promise<Either<ExceptionEntity, number>> {
+        return await this._calculatorRepository.calculateCredit(vehicleValue, initialQuote, months, insurance);
     }
 }
 

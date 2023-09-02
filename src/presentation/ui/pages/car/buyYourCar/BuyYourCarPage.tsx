@@ -1,5 +1,5 @@
 import './BuyYourCarStyles.scss';
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import Layout from "../../../layout/Layout";
 import { useForm } from 'react-hook-form';
 import { IoMdTrash } from 'react-icons/io';
@@ -15,6 +15,9 @@ import FilterComponent from './components/filterComponent/FilterComponent';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import Icons from '../../../assets/Icons';
 import DeleteFilterComponent from './components/deleteComponent/DeleteFilterComponent';
+import { useParams } from 'react-router-dom';
+import TypeVehicleContext from '../../../../../domain/providers/typeVehicle/TypeVehicleContext';
+import TypeVehicleContextType from '../../../../../domain/providers/typeVehicle/TypeVehicleContextType';
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -36,6 +39,8 @@ const orderingOptions: OrderByEntity[] = [
 const BuyYourCarPage: FC<{}> = () => {
     const formFunctions = useForm()
     const { register, handleSubmit, formState: { errors }, reset, setValue, watch } = formFunctions;
+    const { typeVehicles } = useContext(TypeVehicleContext) as TypeVehicleContextType;
+    const { typeVehicleName } = useParams();
 
     const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
     const [page, setPage] = useState<number>(1);
@@ -43,8 +48,15 @@ const BuyYourCarPage: FC<{}> = () => {
     const [openOrderBy, setOpenOrderBy] = useState(false);
     const [maxPages, setMaxPages] = useState<number>(1);
 
-    const _handleSearch = async (data: any) => {
+    const _handleChangeTypeVehicle = () => {
+        setValue('type_vehcile_id', typeVehicles.find((typeVehicle) => typeVehicle.name == typeVehicleName)?.id);
+        setPage(1);
+    }
+
+    const _handleSearch = async () => {
         try {
+            const data = formFunctions.getValues();
+            console.log('data', data);
             window.scrollTo({
                 top: 0,
                 behavior: 'auto'
@@ -58,6 +70,10 @@ const BuyYourCarPage: FC<{}> = () => {
         }
     }
 
+    const _handleOnSubmit = async (data: any) => {
+        _handleSearch();
+    }
+
     const _handleNextPage = async () => {
         setPage(page + 1);
     }
@@ -69,7 +85,7 @@ const BuyYourCarPage: FC<{}> = () => {
     const _handleClearFilters = async () => {
         reset();
         setPage(1);
-        _handleSearch({});
+        _handleSearch();
     }
 
     const _handlePickOrderBy = (orderByValue: OrderByEntity) => {
@@ -78,12 +94,16 @@ const BuyYourCarPage: FC<{}> = () => {
     }
 
     useEffect(() => {
-        _handleSearch({});
+        _handleSearch();
     }, [page]);
+
+    useEffect(() => {
+        _handleChangeTypeVehicle();
+    }, [typeVehicleName]);
 
 
     return <Layout>
-        <form onSubmit={handleSubmit(_handleSearch)}>
+        <form onSubmit={handleSubmit(_handleOnSubmit)}>
             <div className="w-100 position-relative buy_your_car_page bg_gray">
                 <div className="w-100 car_search bg_search py-3">
                     <div className="container d-flex flex-column flex-md-row px-md-5 justify-content-between align-items-center">

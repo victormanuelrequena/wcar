@@ -3,7 +3,7 @@ import { FieldValues, UseFormReturn } from "react-hook-form";
 
 export default interface ServiceCalculatorFormComponentProps {
     formFunctions:UseFormReturn<FieldValues, any, undefined>,
-    insuranceList: InsuranceEntity[];
+    // insuranceList: InsuranceEntity[];
     className?: string;
     handleOnFormChange: () => void;
 }

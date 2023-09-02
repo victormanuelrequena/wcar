@@ -55,7 +55,7 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
     },
     buyYourCar: {
-        path: "/comprar",
+        path: "/comprar/:typeVehicleName?",
         relativePath: '/comprar',
         component: BuyYourCarPage,
         auth: (user: UserEntity | undefined) => true,

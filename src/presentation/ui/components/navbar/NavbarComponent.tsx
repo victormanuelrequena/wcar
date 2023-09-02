@@ -10,9 +10,12 @@ import UserContext from '../../../../domain/providers/user/UserContext';
 import UserContextType from '../../../../domain/providers/user/UserContextType';
 import di from '../../../../di/DependencyInjection';
 import SignOutUseCase, { SignOutUseCaseName } from '../../../../domain/use_cases/auth/SignOutUseCase';
+import TypeVehicleContext from '../../../../domain/providers/typeVehicle/TypeVehicleContext';
+import TypeVehicleContextType from '../../../../domain/providers/typeVehicle/TypeVehicleContextType';
 
 const NavbarComponent = () => {
   const { user } = useContext(UserContext) as UserContextType;
+  const { typeVehicles } = useContext(TypeVehicleContext) as TypeVehicleContextType;
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -21,7 +24,7 @@ const NavbarComponent = () => {
   };
 
   const _handleAccountButton = async () => {
-    console.log('clicked button' , user);
+    console.log('clicked button', user);
     if (user == null) {
       navigate(routes.signIn.relativePath);
     } else {
@@ -46,9 +49,19 @@ const NavbarComponent = () => {
             <Link to={routes.sellYourCar.relativePath} className="nav-link">Vende tu carro</Link>
           </NavItem>
           <NavItem className="mx-3">
-            <Link to={routes.buyYourCar.relativePath} className="nav-link">Compra tu carro</Link>
+            <div className="dropdown">
+              <div className="dropdown-title">
+                <Link to={routes.buyYourCar.relativePath} className="nav-link">Compra tu carro<span className="text_reduced" style={{ fontSize: 10 }}>&#9660;</span> </Link>
+              </div>
+              <div className="dropdown_content">
+                {typeVehicles.map((typeVehicle, index) => <Link key={index} to={routes.buyYourCar.relativePath + '/' + typeVehicle.name} className="dropdown-item">
+                  <img src={typeVehicle.photo} alt={typeVehicle.name} className="me-2" />
+                  {typeVehicle.name} <span className="text_gray">({typeVehicle.count ?? 0})</span>
+                </Link>)}
+              </div>
+            </div>
           </NavItem>
-          <NavItem className="mx-3">
+          ˝          <NavItem className="mx-3">
             <div className="dropdown">
               <div className="dropdown-title">
                 <div className="nav-link">Servicios <span className="text_reduced" style={{ fontSize: 10 }}>&#9660;</span> </div>

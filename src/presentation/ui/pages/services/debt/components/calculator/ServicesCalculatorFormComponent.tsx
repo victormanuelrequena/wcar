@@ -4,7 +4,7 @@ import Validators from "../../../../../../utils/Validators";
 import PickerBoxComponent from "../../../../../components/form/pickerBox/PickerBoxComponent";
 import CurrencyParse from "../../../../../../utils/CurrencyParse";
 
-const ServicesCalculatorFormComponent: FC<ServicesCalculatorFormComponentProps> = ({ insuranceList, className, formFunctions, handleOnFormChange }) => {
+const ServicesCalculatorFormComponent: FC<ServicesCalculatorFormComponentProps> = ({ className, formFunctions, handleOnFormChange }) => {
 
     const { register, setValue, handleSubmit, watch, getValues, formState: { errors } } = formFunctions;
     const vehicleValue = watch('vehicleValue');
@@ -21,12 +21,17 @@ const ServicesCalculatorFormComponent: FC<ServicesCalculatorFormComponentProps> 
     ]
 
     const _handleChangePriceInitialValue = (value: string) => {
-        setValue('initialValue', parseInt(value));
+        setValue('initialQuote', parseInt(value));
         handleOnFormChange();
     }
 
     const _handleChangePriceVehicleValue = (value: string) => {
         setValue('vehicleValue', parseInt(value));
+        handleOnFormChange();
+    }
+
+    const _handleChangePriceInsurance = (value: string) => {
+        setValue('insurance', parseInt(value));
         handleOnFormChange();
     }
 
@@ -49,7 +54,7 @@ const ServicesCalculatorFormComponent: FC<ServicesCalculatorFormComponentProps> 
                     <div className="col-12 my-4">
                         <div className="form-group">
                             <label className="mandatory">Cuota inicial</label>
-                            <input type="text" min={0} max={vehicleValue} className="form-control" defaultValue={CurrencyParse.toCop(0)} {...register('_initialValue', Validators({
+                            <input type="text" min={0} max={vehicleValue} className="form-control" defaultValue={CurrencyParse.toCop(0)} {...register('_initialQuote', Validators({
                                 required: true,
                                 minValue: 0,
                                 maxValue: vehicleValue - 1,
@@ -65,11 +70,19 @@ const ServicesCalculatorFormComponent: FC<ServicesCalculatorFormComponentProps> 
                     <div className="col-12 my-4">
                         <div className="form-group">
                             <label>Seguro</label>
-                            <select className="form-select insurance_select" {...register('insuranceId', Validators({
+                            <input type="text" min={0} className="form-control" placeholder="$ 0" {...register('_insurance', Validators({
+                                required: false,
+                                maxValue: 1000000000,
+                                minValue: 0,
+                                price: true,
+                                mustBeNumber: true,
+                                onChange: _handleChangePriceInsurance
+                            }))} />
+                            {/* <select className="form-select insurance_select" {...register('insuranceId', Validators({
                                 onChange: handleOnFormChange,
                             }))}>
                                 {insuranceList.map((insurance, index) => <option key={index} value={insurance.id}>{insurance.name}</option>)}
-                            </select>
+                            </select> */}
                         </div>
                     </div>
                 </div>
