@@ -136,7 +136,7 @@ import ContactUseCase, { ContactUseCaseName } from "../domain/use_cases/contact/
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
-const mode = MODE_DI.DEVELOPMENT.toString();
+const mode = MODE_DI.PRODUCTION.toString();
 const di = new Container();
 
 //#region ------------------ REPOSITORIES ------------------ //
