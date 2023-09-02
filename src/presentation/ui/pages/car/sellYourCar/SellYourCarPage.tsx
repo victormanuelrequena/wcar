@@ -18,7 +18,8 @@ const SellYourCarPage: FC<{}> = () => {
     return <Layout>
         <div className="sell_your_car_page">
             <section className="bg_black position-relative section_1">
-                <div className="container py-5">
+                <img src="/assets/recs/bg_sell_car.jpeg" alt="" className="img_section_1 img-fluid" />
+                <div className="container py-5 position-relative">
                     <div className="row">
                         <div className="col-md-4 text-white py-3">
                             <h1> <span className='text_bold'> Vende tu Carro<br />
@@ -28,10 +29,10 @@ const SellYourCarPage: FC<{}> = () => {
                             <Link to={routes.quoteYourCar.relativePath} className='btn btn_orange'>
                                 VENDE TU CARRO <Icons.ArrowCircle />
                             </Link>
+                            <Link to={routes.contact.relativePath} className='btn btn_orange_transparent px-5 my-2'>Contacta a un asesor <Icons.ArrowCrossUp /></Link>
                         </div>
                     </div>
                 </div>
-                <img src="/assets/recs/bg_sell_car.jpeg" alt="" className="img_section_1 img-fluid" />
                 <div className="contact_fixed">
                     <a href="" className="btn btn_cyan">Contacta un asesor</a>
                 </div>

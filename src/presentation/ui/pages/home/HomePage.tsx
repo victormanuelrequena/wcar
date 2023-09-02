@@ -13,6 +13,7 @@ import Layout from '../../layout/Layout';
 import Icons from '../../assets/Icons';
 import AlliesLineComponent from '../../components/alliesLine/AlliesLineComponent';
 import { routes } from '../../routes/RoutesComponent';
+import { Link } from 'react-router-dom';
 const HomePage: FC<{}> = () => {
 
 
@@ -46,12 +47,12 @@ const HomePage: FC<{}> = () => {
                                     vender te <br />
                                     <span className="my-3 text_orange text_italic">aconsejamos</span>
                                 </h1>
-                                <div>
+                                <Link to={routes.buyYourCar.relativePath}>
                                     <button className="my-3 btn btn_orange btn_shadow btn_cut">COMPRA TU CARRO <Icons.ArrowCircle /> </button>
-                                </div>
-                                <div className='mb-5'>
+                                </Link>
+                                <Link to={routes.sellYourCar.relativePath} className='mb-5'>
                                     <button className="my-3 btn btn_orange_outline btn_shadow">VENDE TU CARRO <Icons.ArrowCircle /> </button>
-                                </div>
+                                </Link>
                             </div>
                         </div>
                     </div>

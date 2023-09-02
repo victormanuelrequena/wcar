@@ -33,7 +33,7 @@ const AboutUsPage: FC<{}> = () => {
                                     En Latam el mercado de autos usados es de 6 millones de transacciones al año. WCar es el primer phygital ecosystem que se dirige al 90% de las personas que hacen esas transacciones de compra y venta de manera informal corriendo grandes riesgos. También nos enfocamos en quienes no están conformes con los concesionarios tradicionales ni las nuevas plataformas completamente virtuales que deshumanizan el proceso.
                                     En este revolucionario ecosistema nuestros clientes encuentran consejería personalizada para adquirir autos usados puestos a punto, además de productos complementarios e indispensables como financiación, garantías, seguros y trámites.
                                 </p>
-                                <Link to={routes.contact.relativePath} className="btn btn_cyan">
+                                <Link to={routes.contact.relativePath} className="btn btn_cyan mt-4">
                                     CONTACTA UN ASESOR
                                     <Icons.Contact />
                                 </Link>

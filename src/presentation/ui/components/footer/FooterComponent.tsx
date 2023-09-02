@@ -18,7 +18,9 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.aboutUs.relativePath} className="my-1">Nuestra Empresa</Link>
                             <Link to={routes.buyYourCar.relativePath} className="my-1">Compra tu carro</Link>
                             <Link to={routes.sellYourCar.relativePath} className="my-1">Vende tu carro</Link>
-                            <Link to={routes.insurance.relativePath} className="my-1">Servicios</Link>
+                            <Link to={routes.services.relativePath} className="my-1">Financiación</Link>
+                            <Link to={routes.insurance.relativePath} className="my-1">Seguros</Link>
+                            <Link to={routes.procedures.relativePath} className="my-1">Trámintes</Link>
                             <Link to={routes.blog.relativePath} className="my-1">Blog</Link>
                         </div>
                     </div>
@@ -45,15 +47,15 @@ const FooterComponent: FC<{}> = () => {
                     <div className="col-md-8 d-flex pb-5 pb-md-0">
                         <div className="w-100 text_underline text_gray d-flex flex-column flex-md-row align-items-center align-items-md-end">
                             <div className="mx-3 mt-3 mt-md-0">
-                            {/* <div className="col-md-4 my-2 my-md-0"> */}
+                                {/* <div className="col-md-4 my-2 my-md-0"> */}
                                 <Link to="#">Políticas y tratamiento de datos</Link>
                             </div>
                             <div className="mx-3 mt-3 mt-md-0">
-                            {/* <div className="col-md-4 my-2 my-md-0"> */}
+                                {/* <div className="col-md-4 my-2 my-md-0"> */}
                                 <Link to="#">Términos y condiciones comprador</Link>
                             </div>
                             <div className="mx-3 mt-3 mt-md-0">
-                            {/* <div className="col-md-4 my-2 my-md-0"> */}
+                                {/* <div className="col-md-4 my-2 my-md-0"> */}
                                 <Link to="#">Términos y condiciones vendedor</Link>
                             </div>
                         </div>
