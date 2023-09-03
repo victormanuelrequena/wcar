@@ -175,6 +175,7 @@ const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {
     const [loaded, setLoaded] = useState<boolean>(false);
 
     const _load = async () => {
+        if(loaded) return;
         try {
             await di.get<LoadUseCase>(LoadUseCaseName).call();
         } catch (_) { }

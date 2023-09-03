@@ -48,14 +48,6 @@ export default class LoadUseCase {
 
     async call(): Promise<void> {
         try {
-            const response = await HostApi.post('/partners/create', {
-                'partner': 'wcar partner test 2'
-            });
-            console.log('response create', response);
-        } catch (error) {
-            console.log('error create', error);
-        }
-        try {
             try {
                 await this._getAllAlliesUseCase.call();
             } catch (error) {

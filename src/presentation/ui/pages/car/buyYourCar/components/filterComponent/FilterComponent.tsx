@@ -32,13 +32,15 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
 
     const _handleChangeBrand = async (brandId: string) => {
         if (brandId == brandIdValue) setValue('brand_id', undefined);
-        setValue('brand_id', brandId);
-        setValue('model', undefined);
-        setModels([]);
-        try {
-            const response = await di.get<GetModelsByBrandUseCase>(GetModelsByBrandUseCaseName).call(brandId);
-            setModels(response);
-        } catch (error) {
+        else {
+            setValue('brand_id', brandId);
+            setValue('model', undefined);
+            setModels([]);
+            try {
+                const response = await di.get<GetModelsByBrandUseCase>(GetModelsByBrandUseCaseName).call(brandId);
+                setModels(response);
+            } catch (error) {
+            }
         }
     }
 
@@ -75,11 +77,11 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                         <div className="d-flex align-items-center title hover title" onClick={() => _handleChangeBrand(brand.id)}>
                             <img src={brand.image} alt="" className="img-fluid img_filter me-2" /><span>{brand.name}</span>
                         </div>
-                        <div className="content options_box_container">
+                        {brandIdValue == brand.id && <div className="content options_box_container">
                             {models.map((model, index) => <div key={index} className={`my-2 option_picker hover ${modelValue == model && 'active'}`} onClick={() => _handleChangeModel(model.id)}>
                                 {model.name}
                             </div>)}
-                        </div>
+                        </div>}
                     </div>
                 </div>)}
             </SelectOpenComponent>
@@ -110,7 +112,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                     {typeVehicles.map((typeVehicle, index) => <div key={index} className="form-check my-2">
                         <input className="form-check-input" type="checkbox" value={typeVehicle.id} {...register('type_vehcile_id')} />
                         <label className="form-check-label">
-                            <img src={typeVehicle.photo} alt={typeVehicle.name} className="me-2" />
+                            <img src={typeVehicle.photo} alt={typeVehicle.name} width={25} className="me-2" />
                             {typeVehicle.name} <span className="text_gray">({typeVehicle.count ?? 0})</span>
                         </label>
                     </div>)}

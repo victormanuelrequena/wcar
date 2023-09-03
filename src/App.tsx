@@ -12,7 +12,6 @@ import TypeOfFuelProvider, { TypeOfFuelProviderName } from './domain/providers/t
 import TypeVehicleProvider, { TypeVehicleProviderName } from './domain/providers/typeVehicle/TypeVehicleProvider';
 import { useEffect, useState } from 'react';
 import LoadingComponent from './presentation/ui/components/LoadingComponent/LoadingComponent';
-import LoadUseCase from './domain/use_cases/default/LoadUseCase';
 import DepartmentProvider, { DepartmentProviderName } from './domain/providers/department/DepartmentProvider';
 import UserProvider, { UserProviderName } from './domain/providers/user/UserProvider';
 import ModalsProvider, { ModalsProviderName } from './domain/providers/modal/ModalsProvider';
@@ -42,78 +41,6 @@ function App() {
   const typeOfFuelProvider = di.get<TypeOfFuelProvider>(TypeOfFuelProviderName);
   const typeVehicleProvider = di.get<TypeVehicleProvider>(TypeVehicleProviderName);
   const userProvider = di.get<UserProvider>(UserProviderName);
-
-  const [loaded, setLoaded] = useState<boolean>(false);
-
-  const _loadApp = async () => {
-    try {
-      // try{
-      //   const response = await di.get<AllyRepository>(AllyRepositoryName).getAll();
-      //   console.log('response repository', response);
-      // }catch (error) {
-      //   console.log('error repository', error);
-      // }
-      // try {
-      //   const response = di.get<AllyProvider>(AllyProviderName).Actions.allies;
-      //   console.log('response provider', response);
-      // } catch (error) {
-      //   console.log('error provider', error);
-      // }
-      // try {
-      //   await di.get<GetAllBrandsUseCase>(GetAllBrandsUseCaseName).call();
-      // } catch (error) {
-      //   console.log('_getAllBrandsUseCase', error);
-      // }
-      // try {
-      //   await di.get<GetAllColorsUseCase>(GetAllColorsUseCaseName).call();
-      // } catch (error) {
-      //   console.log('_getAllColorsUseCase', error);
-      // }
-      // try {
-      //   await di.get<GetAllTypeOfFuelsUseCase>(GetAllTypeOfFuelsUseCaseName).call();
-      // } catch (error) {
-      //   console.log('_getAllTypeOfFueslUseCase', error);
-      // }
-      // try {
-      //   await di.get<GetAllTypeVehiclesUseCase>(GetAllTypeVehiclesUseCaseName).call();
-      // } catch (error) {
-      //   console.log('_getAllTypeOfVehiclesUseCase', error);
-      // }
-      // try {
-      //   await di.get<GetAllCitiesUseCase>(GetAllCitiesUseCaseName).call();
-      // } catch (error) {
-      //   console.log('_getAllCitiesUseCase', error);
-      // }
-      // try {
-      //   await di.get<GetFavoriteCarsUseCase>(GetFavoriteCarsUseCaseName).call();
-      // } catch (error) {
-      //   console.log('_getFavoriteCarsUseCase', error);
-      // }
-      // try {
-      //   await di.get<GetAllTagsUseCase>(GetAllTagsUseCaseName).call();
-      // } catch (error) {
-      //   console.log('_getAllTagsUseCase', error);
-      // }
-      // try {
-      //   await di.get<GetCurrentUserUseCase>(GetCurrentUserUseCaseName).call();
-      // } catch (error) {
-      //   console.log('_getCurrentUserUseCase', error);
-      // }
-      // await di.get<LoadUseCase>(LoadUseCaseName).call();
-      setLoaded(true);
-    } catch (error) {
-      // console.log('error inload app', error);
-      setLoaded(true);
-    }
-  }
-
-  useEffect(() => {
-    _loadApp();
-  }, []);
-
-  if (!loaded) return <div className="bg_1 d-flex justify-content-center" style={{ width: '100vw', height: '100vh' }}>
-    <LoadingComponent showLogo />
-  </div>
 
   return (
     <Provider container={di}>

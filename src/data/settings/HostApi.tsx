@@ -51,7 +51,7 @@ const get = (relativeUrl: string): Promise<any> => new Promise((resolve, reject)
         },).then(async response => {
             const body = await response.json();
             if (response.ok) {
-                resolve(body?.body?.data);
+                resolve(body);
             } else {
                 reject(body);
             }
@@ -70,7 +70,7 @@ const post = (relativeUrl: string, body: any): Promise<any> => new Promise((reso
         }).then(async response => {
             const body = await response.json();
             if (response.ok) {
-                resolve(body?.body);
+                resolve(body);
             } else {
                 reject(body);
             }

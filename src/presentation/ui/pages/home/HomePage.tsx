@@ -8,7 +8,6 @@ import CarEntity from '../../../../domain/entities/CarEntity';
 import di from '../../../../di/DependencyInjection';
 import GetSomeRandomCarsUseCase, { GetSomeRandomCarsUseCaseName } from '../../../../domain/use_cases/car/GetSomeRandomCarsUseCase';
 import CarCardComponent from '../../components/carCard/CarCardComponent';
-import LoadUseCase from '../../../../domain/use_cases/default/LoadUseCase';
 import Layout from '../../layout/Layout';
 import Icons from '../../assets/Icons';
 import AlliesLineComponent from '../../components/alliesLine/AlliesLineComponent';

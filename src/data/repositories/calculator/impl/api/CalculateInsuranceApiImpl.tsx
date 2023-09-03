@@ -3,7 +3,7 @@ import HostApi from "../../../../settings/HostApi";
 import ExceptionEntity from "../../../../../domain/entities/ExceptionEntity";
 
 const CalculateInsuranceApiImpl = async (name: string, phone: string, email: string, cityId: string, licensePlate: string): Promise<Either<ExceptionEntity, void>> => {
-    const relativeUrl = "/api/insurance-application/create/";
+    const relativeUrl = "/insurance-application/create/";
     try {
         const body = {
             "city": cityId,
