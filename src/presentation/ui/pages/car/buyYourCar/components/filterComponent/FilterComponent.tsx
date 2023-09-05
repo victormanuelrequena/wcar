@@ -64,11 +64,11 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
         else setValue('plate_number', plate);
     }
 
-    return <div className={`filter_component ps-5 pe-4 ${isOpen && 'open'}`}>
+    return <div className={`filter_component ps-5 pt-3 pe-4 ${isOpen && 'open'}`}>
         <div className="back_drop" onClick={() => setIsOpen(false)}></div>
-        <div className="w-100 d-flex align-items-center" onClick={() => setIsOpen(false)}>
+        <div className="w-100 d-flex align-items-center hover" onClick={() => setIsOpen(false)}>
             <img src="/assets/icons/filter.svg" alt="" />
-            <span className="ms-2"></span>Ocultar filtros
+            <span className="ms-2 py-3"></span>Ocultar filtros
         </div>
         <div className="my-3 model_filter">
             <SelectOpenComponent title="Marca y modelo">

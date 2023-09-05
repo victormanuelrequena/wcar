@@ -15,6 +15,7 @@ const _testCar: CarEntity = {
     id: "1",
     name: "Mercedez Benz C 180 Mt 20 1.6 156cv 4p",
     model: 'Class C',
+    discount: 108000000,
     type: {
         id: "1",
         name: "Sedan",

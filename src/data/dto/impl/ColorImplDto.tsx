@@ -3,7 +3,7 @@ import ColorEntity from "../../../domain/entities/ColorEntity";
 const fromJson = (json: any): ColorEntity => {
     return {
         id: json.id,
-        name: json.color,
+        name: json.name,
         colorHex: json.hex,
     }
 }
@@ -11,7 +11,7 @@ const fromJson = (json: any): ColorEntity => {
 const toJson = (color: ColorEntity): any => {
     return {
         id: color.id,
-        color: color.name,
+        name: color.name,
         hex: color.colorHex,
     }
 }

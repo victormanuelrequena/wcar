@@ -32,7 +32,7 @@ export interface CalculateOfferForCarProps {
 }
 export default interface CalculatorRepository {
     calculateCredit(vehicleValue: number, initialQuote: number, months: number, insurance: number): Promise<Either<ExceptionEntity, number>>;
-    calculateInsurance(name:string, phone: string, email: string, cityId: string, licensePlate: string): Promise<Either<ExceptionEntity, void>>;
+    calculateInsurance(name:string, phone: string, email: string, cityId: string, licensePlate: string, whatsApp: boolean): Promise<Either<ExceptionEntity, void>>;
     calculateOfferForCar(_: CalculateOfferForCarProps): Promise<Either<ExceptionEntity, CalculatedEntity>>;
 }
 

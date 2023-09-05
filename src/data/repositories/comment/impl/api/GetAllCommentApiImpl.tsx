@@ -4,6 +4,7 @@ import HostApi from "../../../../settings/HostApi";
 //TODO API
 const GetAllApiImpl = async (): Promise<CommentEntity[]> => {
     const relativeUrl = '';
+    return [];
     try {
         const response = await HostApi.get(relativeUrl);
         return response;

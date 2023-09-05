@@ -44,7 +44,7 @@ const BuyYourCarPage: FC<{}> = () => {
 
     const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
     const [page, setPage] = useState<number>(1);
-    const [openFilters, setOpenFilters] = useState<boolean>(true);
+    const [openFilters, setOpenFilters] = useState<boolean>(document.body.clientWidth > 968);
     const [openOrderBy, setOpenOrderBy] = useState(false);
     const [maxPages, setMaxPages] = useState<number>(1);
 
@@ -56,6 +56,7 @@ const BuyYourCarPage: FC<{}> = () => {
     const _handleSearch = async () => {
         try {
             const data = formFunctions.getValues();
+            console.log('get data', data);
             console.log('data', data);
             window.scrollTo({
                 top: 0,
@@ -94,11 +95,16 @@ const BuyYourCarPage: FC<{}> = () => {
     }
 
     useEffect(() => {
-        _handleSearch();
+        // _handleSearch();
     }, [page]);
 
     useEffect(() => {
+
+    }, []);
+
+    useEffect(() => {
         _handleChangeTypeVehicle();
+        _handleSearch();
     }, [typeVehicleName]);
 
 
@@ -111,8 +117,8 @@ const BuyYourCarPage: FC<{}> = () => {
                             <img src="/assets/icons/search.svg" className='text_orange' alt="" />
                             <input type="text" placeholder='Buscar por marca, modelo, color...' />
                         </div>
-                        <div className="order_by_container my-3 my-md-0">
-                            <Dropdown isOpen={openOrderBy} toggle={() => setOpenOrderBy(!openOrderBy)}>
+                        <div className="order_by_container my-3 my-md-0 d-none d-md-block">
+                            <Dropdown isOpen={openOrderBy} className='' toggle={() => setOpenOrderBy(!openOrderBy)}>
                                 <DropdownToggle caret>
                                     Ordenar por: <strong className='order_button hover'>{orderingOptions.find((orderItem) => orderItem.value.keyname == watch('orderBy')?.keyname && orderItem.value.desc == watch('orderBy')?.desc)?.label ?? orderingOptions?.[0]?.label ?? ''}</strong>
                                 </DropdownToggle>
@@ -134,28 +140,61 @@ const BuyYourCarPage: FC<{}> = () => {
                 </div>
                 <div className="car_list from_left_3  container">
                     <div className="row">
-                        <div className={`col-md-4 col-lg-3 ${openFilters ? 'bg_white' : ''}`}>
-                            {!openFilters && <div className="side_filter hover" onClick={() => setOpenFilters(!openFilters)}>
-                                filtro
-                            </div>
-                            }
-                        </div>
-                        <div className="col-md-8 col-lg-9">
-                            <div className="w-100 filters d-flex justify-content-between">
-                                <div className="d-flex flex-grow-1">
-                                    <DeleteFilterComponent formFunctions={formFunctions} />
-                                </div>
-                                <div className="btn btn_light" onClick={_handleClearFilters}>
-                                    <Icons.Trash /> Limpiar filtros
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className={`bg_white ${openFilters ? 'col-md-4 col-lg-3' : 'd-none'}`}>
+                        <div className={`bg_white mb-5 mb-md-0 ${openFilters ? 'col-md-4 col-lg-3' : 'd-none'}`}>
                             <FilterComponent formFunctions={formFunctions} isOpen={openFilters} setIsOpen={setOpenFilters} />
                         </div>
-                        <div className={`${openFilters ? 'col-md-8 col-lg-9' : 'col-md-12'} container_cars`}>
+                        <div className={` ${openFilters ? 'col-md-8 col-lg-9' : 'col-md-12'} container_cars`}>
+                            <div className="d-none d-md-flex justify-content-between">
+                                {!openFilters && <div className='mt-1'>
+                                    <div className="btn btn_light me-3 mt-2" onClick={() => setOpenFilters(true)}>
+                                        <img src="/assets/icons/filter.svg" alt="" />
+                                        <span className="ms-2">
+                                            Filtrar
+                                        </span>
+                                    </div>
+                                </div>}
+                                <div className="flex-grow-1">
+                                    <DeleteFilterComponent formFunctions={formFunctions} onChange={_handleSearch} />
+                                </div>
+                                <div>
+                                    <div className="btn btn_light mt-2" onClick={_handleClearFilters}>
+                                        <Icons.Trash /> Limpiar filtros
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div className="d-block d-md-none justify-content-between">
+                                {!openFilters && <div className='mt-1 d-flex justify-content-between'>
+                                    <div className="btn btn_light me-3 mt-2" onClick={() => setOpenFilters(true)}>
+                                        <img src="/assets/icons/filter.svg" alt="" />
+                                        <span className="ms-2">
+                                            Filtrar
+                                        </span>
+                                    </div>
+                                    <Dropdown isOpen={openOrderBy} toggle={() => setOpenOrderBy(!openOrderBy)}>
+                                        <DropdownToggle className='btn btn_light mt-2'>
+                                            Ordenar por: <strong className='order_button hover'>{orderingOptions.find((orderItem) => orderItem.value.keyname == watch('orderBy')?.keyname && orderItem.value.desc == watch('orderBy')?.desc)?.label ?? orderingOptions?.[0]?.label ?? ''}</strong>
+                                        </DropdownToggle>
+
+                                        <DropdownMenu>
+                                            {orderingOptions.map((option, index) => (
+                                                <DropdownItem
+                                                    key={index}
+                                                    active={watch('orderBy') === option.value}
+                                                    onClick={() => _handlePickOrderBy(option)}
+                                                >
+                                                    {option.label}
+                                                </DropdownItem>
+                                            ))}
+                                        </DropdownMenu>
+                                    </Dropdown>
+                                </div>}
+                                <div className="flex-grow-1">
+                                    <DeleteFilterComponent formFunctions={formFunctions} onChange={_handleSearch} />
+                                </div>
+                            </div>
+
                             <div className="row">
                                 {cars == undefined && <LoadingComponent />}
                                 {cars != undefined && cars.length == 0 && <NotResultsComponent />}

@@ -32,4 +32,5 @@ export default interface CarEntity {
     doors: number,
     motor: string,
     status: string,
+    discount?: number | undefined,
 }

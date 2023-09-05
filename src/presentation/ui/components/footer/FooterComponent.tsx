@@ -20,7 +20,7 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.sellYourCar.relativePath} className="my-1">Vende tu carro</Link>
                             <Link to={routes.services.relativePath} className="my-1">Financiación</Link>
                             <Link to={routes.insurance.relativePath} className="my-1">Seguros</Link>
-                            <Link to={routes.procedures.relativePath} className="my-1">Trámintes</Link>
+                            <Link to={routes.procedures.relativePath} className="my-1">Trámites</Link>
                             <Link to={routes.blog.relativePath} className="my-1">Blog</Link>
                         </div>
                     </div>

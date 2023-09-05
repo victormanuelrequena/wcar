@@ -11,7 +11,7 @@ const _test:CalculatedEntity = {
 }
 @injectable()
 export default class CalculatorRepositoryDev implements CalculatorRepository{
-    async calculateInsurance(name: string, phone: string, email: string, cityId: string, licensePlate: string): Promise<Either<ExceptionEntity, void>> {
+    async calculateInsurance(name: string, phone: string, email: string, cityId: string, licensePlate: string, whatsApp: boolean): Promise<Either<ExceptionEntity, void>> {
         return right(undefined);
     }
     calculateCredit = (vehicleValue: number, initialQuote: number, months: number, insurance: number): Promise<Either<ExceptionEntity, number>> => CalculateCreditApiImpl(vehicleValue, initialQuote, months, insurance);

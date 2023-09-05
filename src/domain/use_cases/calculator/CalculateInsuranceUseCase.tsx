@@ -16,8 +16,8 @@ export default class CalculateInsuranceUseCase {
         this._calculatorRepository = _.calculatorRepository;
     }
 
-    async call(name:string, phone: string, email: string, cityId: string, licensePlate: string): Promise<Either<ExceptionEntity, void>> {
-        return await this._calculatorRepository.calculateInsurance(name, phone, email, cityId, licensePlate);
+    async call(name:string, phone: string, email: string, cityId: string, licensePlate: string, whatsApp: boolean): Promise<Either<ExceptionEntity, void>> {
+        return await this._calculatorRepository.calculateInsurance(name, phone, email, cityId, licensePlate, whatsApp);
     }
 }
 

@@ -61,7 +61,7 @@ const NavbarComponent = () => {
               </div>
             </div>
           </NavItem>
-          ˝          <NavItem className="mx-3">
+          <NavItem className="mx-3">
             <div className="dropdown">
               <div className="dropdown-title">
                 <div className="nav-link">Servicios <span className="text_reduced" style={{ fontSize: 10 }}>&#9660;</span> </div>
@@ -69,7 +69,7 @@ const NavbarComponent = () => {
               <div className="dropdown_content">
                 <Link to={routes.services.relativePath} className="dropdown-item">Financiación</Link>
                 <Link to={routes.insurance.relativePath} className="dropdown-item">Seguros</Link>
-                <Link to={routes.procedures.relativePath} className="dropdown-item">Trámintes</Link>
+                <Link to={routes.procedures.relativePath} className="dropdown-item">Trámites</Link>
               </div>
             </div>
           </NavItem>

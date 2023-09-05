@@ -46,20 +46,23 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
             </div>
             <div className="row" style={{ fontSize: '.9em' }}>
                 <div className="col-4 d-flex align-items-center text_gray p-0">
-                    <img src="./assets/icons/year.svg" alt="" className="img-fluid img_icon  me-2 ms-3" />
+                    <img src="/assets/icons/year.svg" alt="" className="img-fluid img_icon  me-2 ms-3" />
                     <span>{car.year}</span>
                 </div>
                 <div className="col-4 d-flex align-items-center text_gray p-0">
-                    <img src="./assets/icons/odometer.svg" alt="" className="img-fluid img_icon me-2" />
+                    <img src="/assets/icons/odometer.svg" alt="" className="img-fluid img_icon me-2" />
                     <span className='text_nowrap'>{car.odometer} Km.</span>
                 </div>
                 <div className="col-4 d-flex align-items-center text_gray p-0">
-                    <img src="./assets/icons/transmission.svg" alt="" className="img-fluid img_icon me-1" />
+                    <img src="/assets/icons/transmission.svg" alt="" className="img-fluid img_icon me-1" />
                     <span className='text_nowrap'>{car.transmission}</span>
                 </div>
             </div>
             <div className="w-100 d-flex align-items-center justfy-content-between mt-3">
-                <div className="flex-grow-1 text_ellipsis"><h5 className='text_bold'>{CurrencyParse.toCop(car.price)}</h5></div>
+                <div className="flex-grow-1 text_ellipsis">
+                    <h5 className='text_bold'>{CurrencyParse.toCop(car.discount ?? car.price)}</h5>
+                    {car.discount && <span className='text_bold text_gray text_through'>{CurrencyParse.toCop(car.price)}</span>}
+                </div>
                 <Link to={routes.detailedCar.relativePath + '/' + car.id} className="ms-3 btn btn_orange">VER CARRO</Link>
             </div>
         </div>

@@ -16,7 +16,7 @@ import { set } from "react-hook-form";
 import { TransmissionCar } from "../../../../../../../domain/entities/CarEntity";
 import CurrencyParse from "../../../../../../utils/CurrencyParse";
 
-const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions }) => {
+const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, onChange }) => {
 
     const { setValue, watch } = formFunctions;
     const { brands } = useContext(BrandContext) as BrandContextType;
@@ -40,17 +40,19 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions }
     const _handleRemoveBrand = () => {
         setValue('brand_id', undefined);
         setValue('model', undefined);
+        onChange();
     }
-    const _handleRemoveModel = () => setValue('model', undefined);
-    const _handleRemoveYear = () => setValue('year', undefined);
-    const _handleRemovePrice = () => setValue('price', undefined);
-    const _handleRemoveType = () => setValue('type_vehcile_id', undefined);
-    const _handleRemoveTransmission = () => setValue('type_transmission', undefined);
-    const _handleRemoveTag = () => setValue('tag_id', undefined);
-    const _handleRemoveRangeMileage = () => setValue('km', undefined);
-    const _handleRemoveFuel = () => setValue('type_fuel_id', undefined);
-    const _handleRemoveColor = () => setValue('color_id', undefined);
-    const _handleRemovePlateNumber = () => setValue('plate_number', undefined);
+    const _handleRemoveModel = () => { setValue('model', undefined); onChange(); }
+
+    const _handleRemoveYear = () => { setValue('year', undefined); onChange(); }
+    const _handleRemovePrice = () => { setValue('price', undefined); onChange(); }
+    const _handleRemoveType = () => { setValue('type_vehcile_id', undefined); onChange(); }
+    const _handleRemoveTransmission = () => { setValue('type_transmission', undefined); onChange(); }
+    const _handleRemoveTag = () => { setValue('tag_id', undefined); onChange(); }
+    const _handleRemoveRangeMileage = () => { setValue('km', undefined); onChange(); }
+    const _handleRemoveFuel = () => { setValue('type_fuel_id', undefined); onChange(); }
+    const _handleRemoveColor = () => { setValue('color_id', undefined); onChange(); }
+    const _handleRemovePlateNumber = () => { setValue('plate_number', undefined); onChange(); }
 
     return <div className="delete_filter_component">
         {brand && <div className="delete_filter_item">
@@ -108,7 +110,7 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions }
             </div>
         </div>}
         {color && <div className="delete_filter_item">
-            <div className="color_fill" style={{ backgroundColor: color.colorHex }}></div>
+            <div className="color_fill me-2" style={{ backgroundColor: color.colorHex }}></div>
             <span>{color.name}</span>
             <div className="icon hover" onClick={_handleRemoveColor}>
                 <Icons.Clear />

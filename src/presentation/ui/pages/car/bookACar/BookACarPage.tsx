@@ -235,7 +235,7 @@ const BookACarPage: FC<{}> = () => {
                                                     <div className="col-md-6 my-1">
                                                         <div className="form-group">
                                                             <label className='mandatory'>Número de tarjeta</label>
-                                                            <input type="text" placeholder='000 000 000 0000' value={watch('paymentCard.number') ?? ""} className="form-control" {...register('paymentCard.number', Validators({ required: true, minLength: 19, onChange: (val) => _formatCreditCarNumber(val.target.value) }))} />
+                                                            <input type="text" placeholder='0000 0000 0000 0000' value={watch('paymentCard.number') ?? ""} className="form-control" {...register('paymentCard.number', Validators({ required: true, minLength: 19, creditCard: true, onChange: (val) => _formatCreditCarNumber(val.target.value) }))} />
                                                             <ErrorMessage as="aside" errors={errors} name="paymentCard.number" />
                                                         </div>                                                    </div>
                                                     <div className="col-md-6 my-1">

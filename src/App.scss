@@ -73,6 +73,10 @@
     white-space: nowrap;
   }
 
+  &_through {
+    text-decoration: line-through;
+  }
+
   &_orange {
     color: var(--color-orange);
   }
@@ -614,4 +618,12 @@ body {
 
 body h2 {
   line-height: 1.1em;
+}
+
+.dropdown {
+  .btn_light {
+    background-color: transparent;
+    border: none;
+    color: currentColor;
+  }
 }

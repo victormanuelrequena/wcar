@@ -83,7 +83,10 @@ const DetailedCarPage: FC<{}> = () => {
                                         <strong>
                                             Stock ID: {car.id}
                                         </strong> <br />
-                                        <h3 className='text_bold'><strong> {CurrencyParse.toCop(car.price)}</strong></h3>
+                                        <div className="text_ellipsis">
+                                            <h3 className='text_bold'>{CurrencyParse.toCop(car.discount ?? car.price)}</h3>
+                                            {car.discount && <h5 className='text_bold text_gray text_through'>{CurrencyParse.toCop(car.price)}</h5>}
+                                        </div>
                                         <div className="w-100 d-flex">
                                             <StarRatingComponent rating={car.rating} />
                                             <span className="ms-2 text_gray">

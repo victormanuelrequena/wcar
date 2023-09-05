@@ -24,6 +24,7 @@ interface Props {
   pattern?: RegExp | undefined;
   validate?: Function | undefined;
   onChange?: (event: any) => void;
+  creditCard? : boolean | undefined;
   price?: boolean | undefined;
 }
 
@@ -52,6 +53,7 @@ const Validators = ({ ...props }: Props): any => {
     name,
     phone,
     isPassword,
+    creditCard,
   } = props;
 
   let validator: any = {};
@@ -241,6 +243,44 @@ const Validators = ({ ...props }: Props): any => {
       ...validateInside,
       mustBeEqual: (value: string) =>
         value === mustBeEqual ? null : `Debe ser igual a ${mustBeEqual}`,
+    };
+  }
+
+  if (creditCard){
+    const validateLuhn = (value: string) => {
+      const digitsOnly = value.replace(/\D/g, '');
+    
+      if (digitsOnly.length < 2) {
+        return "El formato no es válido";
+      }
+    
+      const reversedDigits = digitsOnly.split('').reverse().join('');
+    
+      let total = 0;
+      let isSecondDigit = false;
+    
+      for (const char of reversedDigits) {
+        const digit = parseInt(char, 10);
+    
+        if (isSecondDigit) {
+          let doubledDigit = digit * 2;
+          if (doubledDigit > 9) {
+            doubledDigit -= 9;
+          }
+          total += doubledDigit;
+        } else {
+          total += digit;
+        }
+    
+        isSecondDigit = !isSecondDigit;
+      }
+    
+      return total % 10 === 0 ? true : "El número no es válido";
+
+    };
+    validateInside = {
+      ...validateInside,
+      creditCard: (value: string) => validateLuhn(value),
     };
   }
 

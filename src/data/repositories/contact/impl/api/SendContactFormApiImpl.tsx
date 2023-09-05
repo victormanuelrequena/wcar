@@ -1,16 +1,15 @@
 import HostApi from "../../../../settings/HostApi";
 
-//TODO API
 const SendContactFormApiImpl = async (name: string, lastname: string, phone: string, email: string, content: string): Promise<void> => {
-    const relativeUrl = "";
+    const relativeUrl = "/contact/create";
     const body = {
         "name": name,
-        "lastname": lastname,
+        "last_name": lastname,
         "phone": phone,
         "email": email,
         "content": content,
     };
-    const response = await HostApi.post(relativeUrl, body);
+    await HostApi.post(relativeUrl, body);
 }
 
 export default SendContactFormApiImpl;

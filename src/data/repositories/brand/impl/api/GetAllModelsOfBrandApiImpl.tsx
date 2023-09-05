@@ -2,7 +2,6 @@ import ModelEntity from "../../../../../domain/entities/ModelEntity";
 import ModelImplDto from "../../../../dto/impl/ModelImplDto";
 import HostApi from "../../../../settings/HostApi";
 
-//TODO API
 const GetAllModelsOfBrandApiImpl = async (brandId: string): Promise<ModelEntity[]> => {
     let relativeUrl = `/brands/${brandId}`;
     try {
