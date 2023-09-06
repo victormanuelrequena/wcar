@@ -1,9 +1,9 @@
-import UserEntity, { UserEntityStatus } from "../../../domain/entities/UserEntity";
+import UserEntity, { UserEntityStatus, UserRole } from "../../../domain/entities/UserEntity";
 
 //TODO User Dto
 const fromJson = (json: any): UserEntity => {
     return {
-        permisions: json.permisions,
+        role: json.role == "customer" ? UserRole.CUSTOMER : UserRole.CUSTOMER,
         status: UserEntityStatus.active,
         photo: json.photo,
         id: json.id,
@@ -13,10 +13,9 @@ const fromJson = (json: any): UserEntity => {
         enabled: true,
     }
 }
-
 const toJson = (entity: UserEntity): any => {
     return {
-        permisions: entity.permisions,
+        role: entity.role == UserRole.CUSTOMER ? "customer" : "customer",
         status: entity.status,
         photo: entity.photo,
         id: entity.id,

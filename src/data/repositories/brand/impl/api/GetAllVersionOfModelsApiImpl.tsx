@@ -2,7 +2,6 @@ import VersionModelEntity from "../../../../../domain/entities/VersionModelEntit
 import VersionModelImplDto from "../../../../dto/impl/VersionModelImplDto";
 import HostApi from "../../../../settings/HostApi";
 
-//TODO API
 const GetAllVersionOfModelsApiImpl = async (brandId: string, modelId: string): Promise<VersionModelEntity[]> => {
     let relativeUrl = `/models/${modelId}/${brandId}`;
     try {

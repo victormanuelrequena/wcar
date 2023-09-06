@@ -1,5 +1,5 @@
 import { injectable } from "inversify";
-import UserEntity, { UserEntityStatus, UserPermision } from "../../../domain/entities/UserEntity";
+import UserEntity, { UserEntityStatus, UserRole } from "../../../domain/entities/UserEntity";
 import AuthRepository from "../../../domain/repositories/AuthRepository";
 import { Either, right } from "fp-ts/lib/Either";
 import ExceptionEntity from "../../../domain/entities/ExceptionEntity";
@@ -16,8 +16,7 @@ class AuthRepositoryDev implements AuthRepository {
       enabled: true,
       status: UserEntityStatus.active,
       photo: undefined,
-      permisions: [
-      ],
+      role: UserRole.CUSTOMER,
     });
   }
   public async signInWithFacebook(): Promise<Either<ExceptionEntity, UserEntity>> {
@@ -29,8 +28,7 @@ class AuthRepositoryDev implements AuthRepository {
       enabled: true,
       status: UserEntityStatus.active,
       photo: undefined,
-      permisions: [
-      ],
+      role: UserRole.CUSTOMER,
     });
   }
   signIn = (email: string, password: string): Promise<Either<ExceptionEntity, UserEntity>> => SignInApiImpl(email, password);
@@ -70,8 +68,7 @@ class AuthRepositoryDev implements AuthRepository {
       phone: 'phone',
       email: 'email',
       enabled: true,
-      permisions: [
-      ],
+      role: UserRole.CUSTOMER,
       status: UserEntityStatus.active,
     });
   }

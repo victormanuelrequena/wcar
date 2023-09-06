@@ -97,6 +97,10 @@
     color: white;
   }
 
+  &_yellow {
+    color: var(--color-yellow);
+  }
+
   &_ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -434,6 +438,15 @@ input {
       font-size: 0.95em;
       color: red;
     }
+  }
+
+}
+
+.form-check-input {
+  ~aside {
+    margin-top: 0.3em;
+    font-size: 0.95em;
+    color: red;
   }
 
 }

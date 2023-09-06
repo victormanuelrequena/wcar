@@ -133,6 +133,7 @@ import ContactRepositoryDev from "../data/repositories/contact/ContactRepository
 import ContactRepositoryImpl from "../data/repositories/contact/impl/ContactRepositoryImpl";
 import ContactRepositoryTest from "../data/repositories/contact/ContactRepositoryTest";
 import ContactUseCase, { ContactUseCaseName } from "../domain/use_cases/contact/ContactUseCase";
+import GetCitiesByDepartmentIdUseCase, { GetCitiesByDepartmentIdUseCaseName } from "../domain/use_cases/city/GetCitiesByDepartmentIdUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -393,6 +394,11 @@ di.bind<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCaseName).toDynamicValue((
 di.bind<GetAllCitiesUseCase>(GetAllCitiesUseCaseName).toDynamicValue((context) => {
     return new GetAllCitiesUseCase({
         cityProvider: context.container.get(CityProviderName),
+        cityRepository: context.container.get(CityRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<GetCitiesByDepartmentIdUseCase>(GetCitiesByDepartmentIdUseCaseName).toDynamicValue((context) => {
+    return new GetCitiesByDepartmentIdUseCase({
         cityRepository: context.container.get(CityRepositoryName),
     });
 }).inSingletonScope();

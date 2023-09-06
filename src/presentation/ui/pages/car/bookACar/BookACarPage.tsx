@@ -2,12 +2,12 @@ import './BookACarPageStyles.scss';
 import { FC, useContext, useEffect, useState } from "react";
 import di from "../../../../../di/DependencyInjection";
 import GetCarByIdUseCase, { GetCarByIdUseCaseName } from "../../../../../domain/use_cases/car/GetCarByIdUseCase";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import CarEntity from "../../../../../domain/entities/CarEntity";
 import LoadingComponent from "../../../components/LoadingComponent/LoadingComponent";
 import NotResultsComponent from "../../../components/notResults/NotResultsComponent";
 import Layout from "../../../layout/Layout";
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import Validators from '../../../../utils/Validators';
 import { ErrorMessage } from "@hookform/error-message";
 import DepartmentContext from '../../../../../domain/providers/department/DepartmentContext';
@@ -21,13 +21,17 @@ import ModalsProvider, { ModalsProviderName } from '../../../../../domain/provid
 import UserContext from '../../../../../domain/providers/user/UserContext';
 import UserContextType from '../../../../../domain/providers/user/UserContextType';
 import { routes } from '../../../routes/RoutesComponent';
+import CityEntity from '../../../../../domain/entities/CityEntity';
+import GetCitiesByDepartmentIdUseCase, { GetCitiesByDepartmentIdUseCaseName } from '../../../../../domain/use_cases/city/GetCitiesByDepartmentIdUseCase';
 
 const BookACarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
     const { departments } = useContext(DepartmentContext) as DepartmentContextType;
     const { user } = useContext(UserContext) as UserContextType;
+    const navigate = useNavigate();
 
     const [car, setCar] = useState<CarEntity | undefined | null>(undefined);
+    const [cities, setCities] = useState<CityEntity[]>([]);
     const { register, setValue, handleSubmit, watch, formState: { errors } } = useForm();
     const typePayent = watch("paymentMethod");
 
@@ -42,6 +46,17 @@ const BookACarPage: FC<{}> = () => {
 
     const _getDepartments = async () => {
         await di.get<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCaseName).call();
+    }
+
+    const _handleSelectDepartment = async (id: string) => {
+        setValue("department", id);
+        setValue("city", undefined);
+        try {
+            const _cities = await di.get<GetCitiesByDepartmentIdUseCase>(GetCitiesByDepartmentIdUseCaseName).call(id);
+            setCities(_cities);
+        } catch (error) {
+            setCities([]);
+        }
     }
 
     const _formatCreditCarNumber = (value: string) => {
@@ -69,13 +84,11 @@ const BookACarPage: FC<{}> = () => {
     const _bookADate = async (data: any) => {
         try {
             await di.get<BookACarWithPaymentUseCase>(BookACarWithPaymentUseCaseName).call(id!, data);
+            navigate(routes.buyYourCar.relativePath + '/' + id!);
         } catch (error) {
             di.get<ModalsProvider>(ModalsProviderName).Actions.addToast("Error en reserva", "error", undefined);
         }
     }
-
-
-
 
 
     useEffect(() => {
@@ -131,6 +144,32 @@ const BookACarPage: FC<{}> = () => {
                                             <input type="text" placeholder='nombre de la compañia' className="form-control" {...register("companyName")} />
                                         </div>
                                     </div>
+                                    <div className="col-12">
+                                        <div className="form-group my-3">
+                                            <label className="mandatory">Departamento</label>
+                                            <select className='form-control' defaultValue={""} {...register('department', Validators({ required: true, onChange: (value) => _handleSelectDepartment(value) }))}>
+                                                <option value="" disabled>Distrito capital</option>
+                                                {departments.map((department, index) => <option value={department.id} key={index}>{department.name}</option>)}
+                                            </select>
+                                            <ErrorMessage as="aside" errors={errors} name="department" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="form-group my-3">
+                                            <label className='mandatory'>Ciudad</label>
+                                            <select className='form-control' defaultValue={""} {...register('city', Validators({ required: true }))}>
+                                                <option value="" disabled>Seleccionar ciudad</option>
+                                                {cities.map((city, index) => <option value={city.id} key={index}>{city.name}</option>)}
+                                            </select>
+                                            <ErrorMessage as="aside" errors={errors} name="city" />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="form-group my-3">
+                                            <label className='optional'>Código postal</label>
+                                            <input type="text" placeholder='código postal' className="form-control" {...register("postal_code")} />
+                                        </div>
+                                    </div>
                                     <div className="col-md-6">
                                         <div className="form-group my-3">
                                             <label className='mandatory'>Dirección</label>
@@ -144,31 +183,6 @@ const BookACarPage: FC<{}> = () => {
                                         <div className="form-group my-3">
                                             <label className='optional'>Detalles</label>
                                             <input type="text" placeholder='apartamento, habitación etc' className="form-control" {...register("apartment")} />
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="form-group my-3">
-                                            <label className='mandatory'>Ciudad</label>
-                                            <input type="text" placeholder='ciudad' className="form-control" {...register("city", Validators({
-                                                required: true,
-                                            }))} />
-                                            <ErrorMessage as="aside" errors={errors} name="city" />
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="form-group my-3">
-                                            <label className='optional'>Código postal</label>
-                                            <input type="text" placeholder='código postal' className="form-control" {...register("postal_code")} />
-                                        </div>
-                                    </div>
-                                    <div className="col-12">
-                                        <div className="form-group my-3">
-                                            <label className="mandatory">Departamento</label>
-                                            <select className='form-control' defaultValue={""} {...register('deparment', Validators({ required: true }))}>
-                                                <option value="" disabled>Distrito capital</option>
-                                                {departments.map((department, index) => <option value={department.id} key={index}>{department.name}</option>)}
-                                            </select>
-                                            <ErrorMessage as="aside" errors={errors} name="deparment" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
@@ -235,7 +249,7 @@ const BookACarPage: FC<{}> = () => {
                                                     <div className="col-md-6 my-1">
                                                         <div className="form-group">
                                                             <label className='mandatory'>Número de tarjeta</label>
-                                                            <input type="text" placeholder='0000 0000 0000 0000' value={watch('paymentCard.number') ?? ""} className="form-control" {...register('paymentCard.number', Validators({ required: true, minLength: 19, creditCard: true, onChange: (val) => _formatCreditCarNumber(val.target.value) }))} />
+                                                            <input type="text" placeholder='0000 0000 0000 0000' value={watch('paymentCard.number') ?? ""} className="form-control" {...register('paymentCard.number', Validators({ required: true, creditCard: true, minLength: 19, onChange: (val) => _formatCreditCarNumber(val) }))} />
                                                             <ErrorMessage as="aside" errors={errors} name="paymentCard.number" />
                                                         </div>                                                    </div>
                                                     <div className="col-md-6 my-1">
@@ -296,8 +310,8 @@ const BookACarPage: FC<{}> = () => {
                                     <span className='text_gray'>{car.name} {car.year}</span>
                                 </div>
                                 <div className="row mt-3">
-                                    <div className="col-8 col-md-5">
-                                        <img src={car.images.at(0)} alt="" className="img-fluid border_radius prev_image" />
+                                    <div className="col-12 col-md-5">
+                                        <img src={car.images.at(0)} alt="" className="img-fluid w-100 border_radius prev_image" />
                                     </div>
                                     <div className="col-12 col-md-7 d-flex flex-column justify-content-end pb-5">
                                         <h4 className="font_bold">

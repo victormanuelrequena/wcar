@@ -55,7 +55,7 @@ const NavbarComponent = () => {
               </div>
               <div className="dropdown_content">
                 {typeVehicles.map((typeVehicle, index) => <Link key={index} to={routes.buyYourCar.relativePath + '/' + typeVehicle.name} className="dropdown-item">
-                  <img src={typeVehicle.photo} alt={typeVehicle.name} className="me-2" />
+                  <img src={typeVehicle.photo} alt={typeVehicle.name} className="me-2" width={24} />
                   {typeVehicle.name} <span className="text_gray">({typeVehicle.count ?? 0})</span>
                 </Link>)}
               </div>

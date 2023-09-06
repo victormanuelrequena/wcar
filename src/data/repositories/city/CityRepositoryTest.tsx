@@ -9,6 +9,11 @@ const _test: CityEntity = {
 
 @injectable()
 export class CityRepositoryTest implements CityRepository {
+    getCitiesByDepartment(departmentId: string): Promise<CityEntity[]> {
+        return new Promise<CityEntity[]>((resolve, reject) => {
+            resolve([_test]);
+        });
+    }
     getAll(): Promise<CityEntity[]> {
         return new Promise<CityEntity[]>((resolve, reject) => {
             resolve([_test]);

@@ -1,0 +1,51 @@
+.error_404_page {
+
+    .wrapper {
+        position: relative;
+
+        .content {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+            min-height: 70vh;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+
+        .text_404 {
+            font-size: 22em;
+            font-weight: bold;
+            line-height: 0.9em;
+        }
+
+        .src_1 {
+            position: absolute;
+            left: -4em;
+            top: 24%;
+            height: 44%;
+        }
+
+        .src_2 {
+            position: absolute;
+            right: 0;
+            height: 30%;
+            bottom: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .text_404 {
+                font-size: 10em;
+            }
+
+            .src_1 {
+                left: -16em;
+            }
+
+        }
+    }
+}

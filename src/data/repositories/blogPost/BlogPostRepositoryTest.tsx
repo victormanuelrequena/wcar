@@ -1,7 +1,7 @@
 import { injectable } from "inversify";
 import BlogPostRepository from "../../../domain/repositories/BlogPostRepository";
 import BlogPostEntity from "../../../domain/entities/BlogPostEntity";
-import { UserEntityStatus } from "../../../domain/entities/UserEntity";
+import { UserEntityStatus, UserRole } from "../../../domain/entities/UserEntity";
 import sleeper from "../../../domain/repositories/utils/Sleeper";
 
 const _testBlog:BlogPostEntity = {
@@ -18,7 +18,7 @@ const _testBlog:BlogPostEntity = {
         email: "",
         photo: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
         status: UserEntityStatus.active,
-        permisions: [],
+        role: UserRole.CUSTOMER,
         enabled: true,
     }
 }

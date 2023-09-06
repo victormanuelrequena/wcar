@@ -6,7 +6,6 @@ import TagImplDto from "./TagImplDto";
 import TypeOfFueImpllDto from "./TypeOfFueImpllDto";
 import TypeVehicleImplDto from "./TypeVehicleImplDto";
 
-//TODO CREATE
 const fromJson = (json: any): CarEntity => {
     return {
         id: json.id,

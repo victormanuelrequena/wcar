@@ -31,7 +31,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
         _checkLike();
     }, [favoriteCars]);
 
-    return <div className="w-100 card car_card_component">
+    return <Link to={routes.detailedCar.relativePath + '/' + car.id} className="w-100 card car_card_component" >
         <img src={car.photoUrl} alt="" className="img-fluid img_car" />
         <div className="card-body">
             {car.tag && <div className="tag" style={{ backgroundColor: car.tag.color }}>{car.tag.name}</div>}
@@ -63,10 +63,10 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                     <h5 className='text_bold'>{CurrencyParse.toCop(car.discount ?? car.price)}</h5>
                     {car.discount && <span className='text_bold text_gray text_through'>{CurrencyParse.toCop(car.price)}</span>}
                 </div>
-                <Link to={routes.detailedCar.relativePath + '/' + car.id} className="ms-3 btn btn_orange">VER CARRO</Link>
+                <div className="ms-3 px-4 btn btn_orange">VER</div>
             </div>
         </div>
-    </div>
+    </Link>
 
 }
 

@@ -25,7 +25,7 @@ import SignUpPage from "../pages/auth/signUp/SignUpPage";
 import SignInPage from "../pages/auth/signIn/SignInPage";
 import SendRecoveryCodePage from "../pages/auth/sendRecoveryCode/SendRecoveryCodePage";
 import CheckRecoveryCodePage from "../pages/auth/checkRecoveryCode/CheckRecoveryCodePage";
-import GetAllAlliesUseCase from "../../../domain/use_cases/ally/GetAllAlliesUseCase";
+import Error404Page from "../pages/error404/Error404Page";
 
 export interface iRoute {
     name: string,
@@ -41,13 +41,13 @@ export interface iRouteModule {
 
 }
 const routes = {
-    // error_404: {
-    //     name: 'Error 404',
-    //     path: "/error/404",
-    //     relativePath: '/error/404',
-    //     component: NotFoundComponent,
-    //     users: [UserEntityRole.admin, UserEntityRole.normal, undefined],
-    // },
+    error_404: {
+        name: 'Error 404',
+        path: "/error/404",
+        relativePath: '/error/404',
+        component: Error404Page,
+        auth: (user: UserEntity | undefined) => true,
+    },
     home: {
         path: "/",
         relativePath: '/',
@@ -73,13 +73,13 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
     },
     dateForCar: {
-        path: "/carro/cita/:id/:buyNumberId?",
+        path: "/carro/cita/:action/:carId/",
         relativePath: '/carro/cita',
         component: BookADatePage,
         auth: (user: UserEntity | undefined) => true,
     },
     dateForSell: {
-        path: "/vender/cita",
+        path: "/:action/cita/",
         relativePath: '/vender/cita',
         component: BookADatePage,
         auth: (user: UserEntity | undefined) => true,
@@ -148,25 +148,25 @@ const routes = {
         path: "/iniciar-sesion",
         relativePath: '/iniciar-sesion',
         component: SignInPage,
-        auth: (user: UserEntity | undefined) => true,
+        auth: (user: UserEntity | undefined) => user == undefined,
     },
     signUp: {
         path: "/registrarse",
         relativePath: '/registrarse',
         component: SignUpPage,
-        auth: (user: UserEntity | undefined) => true,
+        auth: (user: UserEntity | undefined) => user == undefined,
     },
     sendRecoveryCode: {
         path: "/recuperar-contraseña",
         relativePath: "/recuperar-contraseña",
         component: SendRecoveryCodePage,
-        auth: (user: UserEntity | undefined) => true,
+        auth: (user: UserEntity | undefined) => user == undefined,
     },
     updatePasswordRecovery: {
         path: "/recuperar-contraseña/:email",
         relativePath: "/recuperar-contraseña",
         component: CheckRecoveryCodePage,
-        auth: (user: UserEntity | undefined) => true,
+        auth: (user: UserEntity | undefined) => user == undefined,
     }
 }
 
@@ -193,12 +193,9 @@ const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {
             <Routes>
                 {Object.values(routes).map((route: any) => <Route key={route.path} path={route.path} element={
                     React.createElement(route.component, {}, undefined)
-                    // route.auth(user) ? <LayoutComponent >
-                    //     {React.createElement(route.component, {}, undefined)}
-                    // </LayoutComponent > : <NotFoundComponent />
                 }>
                 </Route>)}
-                <Route path='*' element={<NotFoundComponent />} />
+                <Route path='*' element={<Error404Page />} />
             </Routes>
         </BrowserRouter>
     </>

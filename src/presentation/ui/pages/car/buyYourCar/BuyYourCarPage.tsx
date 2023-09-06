@@ -198,7 +198,7 @@ const BuyYourCarPage: FC<{}> = () => {
                             <div className="row">
                                 {cars == undefined && <LoadingComponent />}
                                 {cars != undefined && cars.length == 0 && <NotResultsComponent />}
-                                {cars != undefined && cars.length > 0 && cars.map((car, index) => <div className={`mb-3 ${openFilters ? 'col-md-12 col-lg-3 col-xl-4' : 'col-md-4 col-xl-3'}`} key={index}>
+                                {cars != undefined && cars.length > 0 && cars.map((car, index) => <div className={`mb-3 ${openFilters ? 'col-md-12 col-lg-6 col-xl-4' : 'col-md-4 col-xl-3'}`} key={index}>
                                     <CarCardComponent car={car} />
                                 </div>)}
                             </div>

@@ -143,7 +143,6 @@ class CarRepositoryDev implements CarRepository {
     }
 
     public async bookACarPayment(carId: string, paymentInfo: any): Promise<Either<ExceptionEntity, void>> {
-        window.location.href = routes.dateForCar.relativePath + '/' + carId + '/' + 'dsdsdssd';
         return right(undefined);
     }
 

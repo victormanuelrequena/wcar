@@ -1,17 +1,11 @@
 import { injectable } from "inversify";
 import CityRepository from "../../../domain/repositories/CityRepository";
 import CityEntity from "../../../domain/entities/CityEntity";
-
-const _test: CityEntity = {
-    id: "1",
-    name: "Cali"
-};
+import GetAllCitiesApiImpl from "./impl/api/GetAllCitiesApiImpl";
+import GetCitiesByDepartmentIdApiImpl from "./impl/api/GetCitiesByDepartmentIdApiImpl";
 
 @injectable()
 export class CityRepositoryDev implements CityRepository {
-    getAll(): Promise<CityEntity[]> {
-        return new Promise<CityEntity[]>((resolve, reject) => {
-            resolve([_test]);
-        });
-    }
+    getAll = (): Promise<CityEntity[]> => GetAllCitiesApiImpl();
+    getCitiesByDepartment = (departmentId: string): Promise<CityEntity[]> => GetCitiesByDepartmentIdApiImpl(departmentId);
 }

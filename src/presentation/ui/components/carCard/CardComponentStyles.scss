@@ -17,4 +17,9 @@
         border-top-right-radius: 0.5rem;
         object-fit: cover;
     }
+
+    &:hover{
+        text-decoration: none;
+        color: inherit;
+    }
 }

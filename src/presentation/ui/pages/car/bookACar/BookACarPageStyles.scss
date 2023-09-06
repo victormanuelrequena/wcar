@@ -20,7 +20,7 @@
 
     .preview_card {
         .prev_image{
-            height: 170px;
+            min-height: 170px;
             object-fit: contain;
         }
     }

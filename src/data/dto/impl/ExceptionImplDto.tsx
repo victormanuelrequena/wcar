@@ -1,6 +1,5 @@
 import ExceptionEntity from "../../../domain/entities/ExceptionEntity";
 
-//TODO CREATE
 const fromJson = (json: any): ExceptionEntity => {
     return {
         message: json.message,

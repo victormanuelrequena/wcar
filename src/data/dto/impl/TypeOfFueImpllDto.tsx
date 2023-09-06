@@ -1,6 +1,5 @@
 import TypeOfFuelEntity from "../../../domain/entities/TypeOfFuelEntity";
 
-//TODO CREATE
 const fromJson = (json: string): TypeOfFuelEntity => {
     const _dataParse = (type: string) => {
         switch (type) {

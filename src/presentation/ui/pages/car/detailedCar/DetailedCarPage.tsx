@@ -15,6 +15,7 @@ import CarCardComponent from '../../../components/carCard/CarCardComponent';
 import SliderComponent from '../../../components/slider/SliderComponent';
 import GetRelatedCarsByCardIdUseCase, { GetRelatedCarsByCardIdUseCaseName } from '../../../../../domain/use_cases/car/GetRelatedCarsByCardIdUseCase';
 import Icons from '../../../assets/Icons';
+import { BookADateActions } from '../bookADate/BookADatePage';
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -55,11 +56,11 @@ const DetailedCarPage: FC<{}> = () => {
             <section>
                 <div className="bg_gray py-5">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-12 col-md-6">
+                        <div className="row d-flex justify-content-center">
+                            <div className="col-12 col-md-5">
                                 <CarCarouselImagesComponent images={car.images} />
                             </div>
-                            <div className="col-12 col-md-6">
+                            <div className="col-12 col-md-5">
                                 <div className="px-3">
                                     <div className="p-3 bg-white">
                                         <h1>{car.name}</h1>
@@ -94,8 +95,8 @@ const DetailedCarPage: FC<{}> = () => {
                                             </span>
                                         </div>
                                         <div className="d-md-flex align-items-center">
-                                            <Link to={routes.bookCar.relativePath + '/' + id} className="btn btn_orange my-3 me-3">SEPÁRALO AQUÍ <Icons.ArrowCircle /></Link>
-                                            <Link to={routes.dateForCar.relativePath + '/' + id} className="btn btn_orange_outline my-3">QUIERO CONOCERLO <Icons.ArrowCircle /></Link>
+                                            <Link to={routes.dateForCar.relativePath + '/' + BookADateActions.book + '/' + id} state={{ cost: car.discount ?? car.price }} className="btn btn_orange my-3 me-3">SEPÁRALO AQUÍ <Icons.ArrowCircle /></Link>
+                                            <Link to={routes.dateForCar.relativePath + '/' + BookADateActions.see + '/' + id} className="btn btn_orange_outline my-3">QUIERO CONOCERLO <Icons.ArrowCircle /></Link>
                                         </div>
                                     </div>
                                 </div>

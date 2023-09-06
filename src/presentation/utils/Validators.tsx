@@ -24,7 +24,7 @@ interface Props {
   pattern?: RegExp | undefined;
   validate?: Function | undefined;
   onChange?: (event: any) => void;
-  creditCard? : boolean | undefined;
+  creditCard?: boolean | undefined;
   price?: boolean | undefined;
 }
 
@@ -56,6 +56,13 @@ const Validators = ({ ...props }: Props): any => {
     creditCard,
   } = props;
 
+  const priceToInt = (value: string) => {
+    value = value.replace(/.*\$/g, '');
+    value = value.replace(/[^0-9]/g, '');
+    return parseInt(value);
+  }
+
+
   let validator: any = {};
   let validateInside: any = {};
 
@@ -71,23 +78,26 @@ const Validators = ({ ...props }: Props): any => {
         let selectionStart = inputElement.selectionStart;
         let selectionEnd = inputElement.selectionEnd;
         let value = inputElement.value;
+        const originalString = value;
 
         // Remove all characters before the dollar sign $
-        value = value.replace(/.*\$/g, '');
-        // Remove all characters except numbers
-        value = value.replace(/[^0-9]/g, '');
+        value = value.replace(/.*\$/g, '').replace(/[^0-9]/g, '');
 
         if (maxValue && parseInt(value) > maxValue) {
-          //slice based on the length of the maxValue
-          value = value.substring(0, maxValue.toString().length);
+          if (selectionStart == originalString.length) {
+            console.log('is selected start');
+            value = value.slice(0, -1);
+          } else {
+            const leftPart = originalString.slice(0, selectionStart - 1);
+            const rightPart = originalString.slice(selectionStart);
+            //remove the character in selection range
+            value = leftPart + rightPart;
+            value = value.replace(/.*\$/g, '').replace(/[^0-9]/g, '');
+          }
         }
 
-        if (minValue && parseInt(value) < minValue) {
-          value = value.slice(0, -1);
-        }
 
         valueAsNumber = parseInt(value);
-
         if (value !== '') {
           // Convert to currency
           value = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(value).replace(',00', '');
@@ -143,6 +153,16 @@ const Validators = ({ ...props }: Props): any => {
   }
 
   if (minValue) {
+    if (price) {
+      validateInside = {
+        ...validateInside,
+        minPriceValue: (value: string) => {
+          const _value = priceToInt(value);
+          return _value >= minValue ? null : `Debe ser mayor o igual a ${new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(minValue).replace(',00', '')}`;
+        }
+      };
+
+    }
     validator = {
       ...validator,
       min: {
@@ -153,6 +173,17 @@ const Validators = ({ ...props }: Props): any => {
   }
 
   if (maxValue) {
+
+    if (price) {
+      validateInside = {
+        ...validateInside,
+        maxPriceValue: (value: string) => {
+          const _value = priceToInt(value);
+          return _value <= (maxValue * 10) ? null : `Debe ser menor o igual a ${new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(maxValue).replace(',00', '')}`;
+        }
+      };
+    }
+
     validator = {
       ...validator,
       max: {
@@ -246,22 +277,23 @@ const Validators = ({ ...props }: Props): any => {
     };
   }
 
-  if (creditCard){
+  if (creditCard) {
     const validateLuhn = (value: string) => {
       const digitsOnly = value.replace(/\D/g, '');
-    
+
+
       if (digitsOnly.length < 2) {
         return "El formato no es válido";
       }
-    
+
       const reversedDigits = digitsOnly.split('').reverse().join('');
-    
+
       let total = 0;
       let isSecondDigit = false;
-    
+
       for (const char of reversedDigits) {
         const digit = parseInt(char, 10);
-    
+
         if (isSecondDigit) {
           let doubledDigit = digit * 2;
           if (doubledDigit > 9) {
@@ -271,10 +303,10 @@ const Validators = ({ ...props }: Props): any => {
         } else {
           total += digit;
         }
-    
+
         isSecondDigit = !isSecondDigit;
       }
-    
+
       return total % 10 === 0 ? true : "El número no es válido";
 
     };

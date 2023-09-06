@@ -1,6 +1,5 @@
 import DepartmentEntity from "../../../domain/entities/DepartmentEntity";
 
-//TODO CREATE
 const fromJson = (json: any): DepartmentEntity => {
     return {
         id: json.id,
