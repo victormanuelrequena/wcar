@@ -1,15 +1,33 @@
 import './AboutUsPageStyles.scss';
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Layout from "../../layout/Layout";
 import Icons from '../../assets/Icons';
 import { Link } from 'react-router-dom';
 import { routes } from '../../routes/RoutesComponent';
 import CommenstLineComponent from '../../components/commentsLine/CommentsLineComponent';
-import FrequentQuestionsComponent from '../../components/frequentQuestions/FrequentQuestionsComponent';
 import CardVisionComponent from './components/cardVision/CardVisionComponent';
 import CardContactComponent from '../../components/cardContact/CardContactComponent';
+import AccordeonComponent from '../../components/accordeon/AccordeonComponent';
+import GetAllFrequentQuestionsAboutUsUseCase, { GetAllFrequentQuestionsAboutUsUseCaseName } from '../../../../domain/use_cases/frequentQuestion/GetAllFrequentQuestionsAboutUsUseCase';
+import di from '../../../../di/DependencyInjection';
+import FrequentQuestionEntity from '../../../../domain/entities/FrequentQuestionEntity';
 
 const AboutUsPage: FC<{}> = () => {
+    const [frequentQuestions, setFrequentQuestions] = useState<FrequentQuestionEntity[]>([]);
+
+    const _getFrequentQuestions = async () => {
+        try {
+            const respose = await di.get<GetAllFrequentQuestionsAboutUsUseCase>(GetAllFrequentQuestionsAboutUsUseCaseName).call();
+            setFrequentQuestions(respose);
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+        _getFrequentQuestions();
+    }, []);
+
     return <div className="about_us_page">
         <Layout>
             <section className="w-100 position-relative section_1">
@@ -110,7 +128,15 @@ const AboutUsPage: FC<{}> = () => {
                 <div className="container">
                     <div className="row d-flex">
                         <div className="col-md-6">
-                            <FrequentQuestionsComponent />
+                            <AccordeonComponent
+                                title={<h3 className="font_bold">Preguntas <span className="text_orange text_italic">frecuentes</span></h3>}
+                                options={frequentQuestions.map((frequentQuestion) => {
+                                    return {
+                                        title: frequentQuestion.question,
+                                        content: frequentQuestion.answer
+                                    }
+                                }
+                                )} />
                         </div>
                         <div className="col-md-1"></div>
                         <div className="col-md-4 d-flex align-items-center">

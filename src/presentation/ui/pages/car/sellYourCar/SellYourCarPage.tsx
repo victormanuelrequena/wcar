@@ -10,11 +10,28 @@ import di from '../../../../../di/DependencyInjection';
 import GetAllCommentsUseCase from '../../../../../domain/use_cases/comment/GetAllCommentsUseCase';
 import StarRatingComponent from '../../../components/starRating/StarRatingComponent';
 import DateParse from '../../../../utils/DateParse';
-import FrequentQuestionsComponent from '../../../components/frequentQuestions/FrequentQuestionsComponent';
 import { routes } from '../../../routes/RoutesComponent';
 import CommenstLineComponent from '../../../components/commentsLine/CommentsLineComponent';
+import GetAllProcedureQuestionsUseCase, { GetAllProcedureQuestionsUseCaseName } from '../../../../../domain/use_cases/frequentQuestion/GetAllProcedureQuestionsUseCase';
+import FrequentQuestionEntity from '../../../../../domain/entities/FrequentQuestionEntity';
+import AccordeonComponent from '../../../components/accordeon/AccordeonComponent';
 
 const SellYourCarPage: FC<{}> = () => {
+    const [frequentQuestions, setFrequentQuestions] = useState<FrequentQuestionEntity[]>([]);
+
+    const _getFrequentQuestions = async () => {
+        try {
+            const respose = await di.get<GetAllProcedureQuestionsUseCase>(GetAllProcedureQuestionsUseCaseName).call();
+            setFrequentQuestions(respose);
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+        _getFrequentQuestions();
+    }, []);
+
     return <Layout>
         <div className="sell_your_car_page">
             <section className="bg_black position-relative section_1">
@@ -86,7 +103,16 @@ const SellYourCarPage: FC<{}> = () => {
                 <div className="container">
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-8">
-                            <FrequentQuestionsComponent />
+                            <AccordeonComponent
+                                title={<h3 className="font_bold">Preguntas <span className="text_orange text_italic">frecuentes</span></h3>}
+                                subtitle={""}
+                                options={frequentQuestions.map((frequentQuestion) => {
+                                    return {
+                                        title: frequentQuestion.question,
+                                        content: frequentQuestion.answer
+                                    }
+                                }
+                                )} />
                         </div>
                     </div>
                 </div>

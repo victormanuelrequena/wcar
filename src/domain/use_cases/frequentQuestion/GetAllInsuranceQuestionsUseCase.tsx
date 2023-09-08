@@ -7,7 +7,7 @@ interface props {
 }
 
 @injectable()
-export default class GetAllFrequentQuestionsUseCase {
+export default class GetAllInsuranceQuestionsUseCase {
     _frequentQuestionRepository: FrequentQuestionRepository;
 
     constructor(_: props) {
@@ -15,9 +15,9 @@ export default class GetAllFrequentQuestionsUseCase {
     }
 
     async call(): Promise<FrequentQuestionEntity[]>{
-        return this._frequentQuestionRepository.getAll();
+        return this._frequentQuestionRepository.getInsurances();
     }
 
 }
 
-export const GetAllFrequentQuestionsUseCaseName = "GetAllFrequentQuestionsUseCaseName";
+export const GetAllInsuranceQuestionsUseCaseName = "GetAllInsuranceQuestionsUseCaseName";
