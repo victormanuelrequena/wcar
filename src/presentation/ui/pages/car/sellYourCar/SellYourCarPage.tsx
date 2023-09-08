@@ -105,7 +105,6 @@ const SellYourCarPage: FC<{}> = () => {
                         <div className="col-md-8">
                             <AccordeonComponent
                                 title={<h3 className="font_bold">Preguntas <span className="text_orange text_italic">frecuentes</span></h3>}
-                                subtitle={""}
                                 options={frequentQuestions.map((frequentQuestion) => {
                                     return {
                                         title: frequentQuestion.question,
