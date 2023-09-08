@@ -4,47 +4,63 @@ import BookHourEntity from "../../../domain/entities/BookHourEntity";
 import BookRepository from "../../../domain/repositories/BookRepository";
 import sleeper from "../../../domain/repositories/utils/Sleeper";
 
+
 const _testHours: BookHourEntity[] = [
     {
-        hour: "8am - 10am",
-        available: true
+        hourFrom: "8am",
+        hourTo: "10am",
+        id: "1",
+        available: true,
     },
     {
-        hour: "10am - 12pm",
+        hourFrom: "8am",
+        hourTo: "10am",
+        id: "1",
         available: false,
     },
     {
-        hour: "12pm - 2pm",
+        hourFrom: "8am",
+        hourTo: "10am",
+        id: "1",
         available: true
     },
     {
-        hour: "2pm - 4pm",
+        hourFrom: "8am",
+        hourTo: "10am",
+        id: "1",
         available: true
     },
     {
-        hour: "4pm - 6pm",
+        hourFrom: "8am",
+        hourTo: "10am",
+        id: "1",
         available: false
     },
 ];
 
 const _testDates: BookDateEntity[] = [
     {
+        id: "1",
         date: new Date(2020, 11, 1),
         available: true,
     },
     {
+        id: "1",
         date: new Date(2020, 11, 2),
         available: false,
     },
     {
+        id: "1",
         date: new Date(2020, 11, 3),
         available: true,
     },
     {
+        id: "1",
         date: new Date(2020, 11, 4),
         available: true,
     },
     {
+        id: "1",
         date: new Date(2020, 11, 5),
         available: false,
     },
@@ -56,11 +72,11 @@ export default class BookRepositoryTest implements BookRepository {
         await sleeper(1000)(1);
         return _testDates;
     }
-    async getAvailableHoursForBuy(date: Date, carId: string): Promise<BookHourEntity[]> {
+    async getAvailableHoursForBuy(bookDateId: string, carId: string): Promise<BookHourEntity[]> {
         await sleeper(1000)(1);
         return _testHours;
     }
-    async bookADateForBuy(date: Date, hour: string, carId: string, paymentId: string | undefined, contactInfo: any): Promise<void> {
+    async bookADateForBuy(bookDateId: string, bookHourId: string, carId: string, paymentId: string | undefined, contactInfo: any): Promise<void> {
         await sleeper(1000)(1);
         return;
     }
@@ -68,11 +84,11 @@ export default class BookRepositoryTest implements BookRepository {
         await sleeper(1000)(1);
         return _testDates;
     }
-    async getAvailableHoursForSell(date: Date, cotizationId: string | undefined): Promise<BookHourEntity[]> {
+    async getAvailableHoursForSell(bookDateId: string, cotizationId: string | undefined): Promise<BookHourEntity[]> {
         await sleeper(1000)(1);
         return _testHours;
     }
-    async bookADateForSell(date: Date, hour: string, cotizationId: string | undefined, contactInfo: any ): Promise<void> {
+    async bookADateForSell(bookDateId: string, bookHourId: string, cotizationId: string | undefined, contactInfo: any ): Promise<void> {
         await sleeper(1000)(1);
         return;
      }

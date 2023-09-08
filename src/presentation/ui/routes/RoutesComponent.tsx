@@ -26,6 +26,9 @@ import SignInPage from "../pages/auth/signIn/SignInPage";
 import SendRecoveryCodePage from "../pages/auth/sendRecoveryCode/SendRecoveryCodePage";
 import CheckRecoveryCodePage from "../pages/auth/checkRecoveryCode/CheckRecoveryCodePage";
 import Error404Page from "../pages/error404/Error404Page";
+import GeneralPoliciesPage from "../pages/policies/GeneralPoliciesPage";
+import SellerPoliciesPage from "../pages/policies/SellerPoliciesPage";
+import BuyerPolicies from "../pages/policies/BuyerPolicies";
 
 export interface iRoute {
     name: string,
@@ -167,7 +170,25 @@ const routes = {
         relativePath: "/recuperar-contraseña",
         component: CheckRecoveryCodePage,
         auth: (user: UserEntity | undefined) => user == undefined,
-    }
+    },
+    generalPolicies: {
+        path: "/politicas-generales",
+        relativePath: "/politicas-generales",
+        component: GeneralPoliciesPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    sellerPolicies: {
+        path: "/politicas-vendedor",
+        relativePath: "/politicas-vendedor",
+        component: SellerPoliciesPage,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    buyerPolicies: {
+        path: "/politicas-comprador",
+        relativePath: "/politicas-comprador",
+        component: BuyerPolicies,
+        auth: (user: UserEntity | undefined) => true,
+    },
 }
 
 const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {
@@ -175,7 +196,7 @@ const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {
     const [loaded, setLoaded] = useState<boolean>(false);
 
     const _load = async () => {
-        if(loaded) return;
+        if (loaded) return;
         try {
             await di.get<LoadUseCase>(LoadUseCaseName).call();
         } catch (_) { }

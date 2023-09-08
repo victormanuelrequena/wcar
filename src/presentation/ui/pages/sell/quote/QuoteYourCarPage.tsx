@@ -52,7 +52,7 @@ const QuoteYourCarPage: FC<{}> = () => {
         const calculated = await di.get<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCaseName).call(data);
         if (isRight(calculated)) {
             addToast("Cotización realizada", "success", undefined);
-            navigate(routes.quoteSuccessful.relativePath, { state: { calculated } });
+            navigate(routes.quoteSuccessful.relativePath, { state: { "calculated": calculated.right } });
         } else {
             addToast(calculated.left.message ?? "Error creando cotización", "error", undefined);
             setLoading(false);

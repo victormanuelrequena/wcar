@@ -32,8 +32,9 @@ const SocialLoginComponent: FC<{}> = () => {
         }
     }
 
+
     return <div className="social_login_component">
-        <div className="py-3 o_container text-center">
+        {/* <div className="py-3 o_container text-center">
             <div>o</div>
         </div>
         <div className="btn btn_gray_light w-100 my-2" onClick={_handleSignInWithGoogle}>
@@ -41,7 +42,7 @@ const SocialLoginComponent: FC<{}> = () => {
             <span className='ms-3'>Inicia sesión con Google</span></div>
         <div className="btn btn_gray_light w-100 my-2" onClick={_handleSignInWithFacebook}>
             <Icons.Facebook />
-            <span className='ms-3'>Inicia sesión con Facebook</span></div>
+            <span className='ms-3'>Inicia sesión con Facebook</span></div> */}
         {window.location.pathname != routes.signUp.relativePath &&
             <div className="d-flex justify-content-center my-4">
                 <span>

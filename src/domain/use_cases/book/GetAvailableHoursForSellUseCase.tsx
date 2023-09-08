@@ -14,10 +14,10 @@ export default class GetAvailableHoursForSellUseCase {
     constructor(_: props) {
         this._bookRepository = _.bookRepository;
     }
-    async call(date: Date, cotizationId: string| undefined):Promise<BookHourEntity[]> {
+    async call(bookDateId: string, cotizationId: string| undefined):Promise<BookHourEntity[]> {
         try {
             const response = await this._bookRepository.getAvailableHoursForSell
-            (date, cotizationId);
+            (bookDateId, cotizationId);
             return response;
         } catch (error) {
             throw error;

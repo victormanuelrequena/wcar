@@ -14,9 +14,9 @@ export default class GetAvailableHoursForBuyUseCase {
     constructor(_: props) {
         this._bookRepository = _.bookRepository;
     }
-    async call(date: Date, carId: string): Promise<BookHourEntity[]> {
+    async call(bookDateId: string, carId: string): Promise<BookHourEntity[]> {
         try {
-            const response = await this._bookRepository.getAvailableHoursForBuy(date, carId);
+            const response = await this._bookRepository.getAvailableHoursForBuy(bookDateId, carId);
             return response;
         } catch (error) {
             throw error;

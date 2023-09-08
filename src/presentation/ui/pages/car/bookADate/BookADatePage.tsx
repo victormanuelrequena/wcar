@@ -42,7 +42,7 @@ const BookADatePage: FC<{}> = () => {
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
 
     const [availableDates, setAvailableDates] = useState<BookDateEntity[] | undefined>(undefined);
-    const [availableHours, setAvailableHours] = useState<BookHourEntity[] | undefined>(undefined);
+    const [availableHours, setAvailableHours] = useState<BookHourEntity[] | undefined>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
     const dateValue = watch('date');
@@ -63,14 +63,15 @@ const BookADatePage: FC<{}> = () => {
         }
     }
 
-    const _handleDateChange = async (date: Date) => {
+    const _handleDateChange = async (bookDateId: string) => {
         try {
-            if (dateValue != date) setValue('hour', undefined);
+            if (dateValue != bookDateId) setValue('hour', undefined);
+            console.log('llama a get available hours');
             if (action == BookADateActions.sell) {
-                const response = await di.get<GetAvailableHoursForSellUseCase>(GetAvailableHoursForSellUseCaseName).call(date, cotizationId!);
+                const response = await di.get<GetAvailableHoursForSellUseCase>(GetAvailableHoursForSellUseCaseName).call(bookDateId, cotizationId!);
                 setAvailableHours(response);
             } else if (action == BookADateActions.book || action == BookADateActions.see) {
-                const response = await di.get<GetAvailableHoursForBuyUseCase>(GetAvailableHoursForBuyUseCaseName).call(date, carId!);
+                const response = await di.get<GetAvailableHoursForBuyUseCase>(GetAvailableHoursForBuyUseCaseName).call(bookDateId, carId!);
                 setAvailableHours(response);
             } else {
                 setAvailableHours([]);
@@ -108,6 +109,7 @@ const BookADatePage: FC<{}> = () => {
     }
 
     useEffect(() => {
+        console.log('state', location.state, 'action', action, 'carId', carId);
         if (((carId == null || carId.length <= 0) && (action == BookADateActions.see || action == BookADateActions.book))
             || ((cotizationId == null || cotizationId.length <= 0) && action == BookADateActions.sell)) navigate(routes.error_404.relativePath);
         getAvailableDates();
@@ -128,7 +130,7 @@ const BookADatePage: FC<{}> = () => {
                                 {availableDates ? <PickerBoxComponent formFunctions={formFunctions} keyName="date" onChange={_handleDateChange} options={availableDates.map((option) => {
                                     return {
                                         label: DateParse.dateToMonthDay(option.date),
-                                        value: option.date,
+                                        value: option.id,
                                         enabled: option.available,
                                     }
                                 })} /> : <LoadingComponent />}
@@ -136,16 +138,16 @@ const BookADatePage: FC<{}> = () => {
                             <section className='pb-4'>
                                 <h5 className="mb-0">Hora</h5>
                                 <span className="text_light">Selecciona una franja de horario disponible</span>
-                                {dateValue != undefined ? <>
+                                {dateValue != undefined && dateValue != "" ? <>
                                     {availableHours && availableHours.length > 0 &&
                                         <PickerBoxComponent formFunctions={formFunctions} keyName="hour" options={availableHours.map((option) => {
                                             return {
-                                                label: option.hour,
-                                                value: option.hour,
+                                                label: option.hourFrom + " - " + option.hourTo,
+                                                value: option.id,
                                                 enabled: option.available,
                                             }
                                         })} />}
-                                    {availableHours && availableHours.length == 0 && <NotResultsComponent />}
+                                    {availableHours && availableHours.length == 0 && <p>Sin Resultados</p>}
                                     {availableHours == undefined && <LoadingComponent />}
                                 </> : <div>Selecciona una fecha para conocer las franjas de horario</div>}
                             </section>

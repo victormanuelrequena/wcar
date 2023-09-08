@@ -12,10 +12,10 @@ import BookADateForSellApiImpl from "./api/BookADateForSellApiImpl";
 @injectable()
 export default class BookRepositoryImpl implements BookRepository {
     getAvailableDatesForBuy = (carId: string): Promise<BookDateEntity[]> => GetAvailableDatesForBuyApiIpml(carId);
-    getAvailableHoursForBuy = (date: Date, carId: string): Promise<BookHourEntity[]> => GetAvailableHoursForBuyApiImpl(date, carId);
-    bookADateForBuy = (date: Date, hour: string, carId: string, paymentId: string | undefined, contactInfo: any): Promise<void> => BookADateForBuy(date, hour, carId, paymentId, contactInfo);
+    getAvailableHoursForBuy = (bookDateId: string, carId: string): Promise<BookHourEntity[]> => GetAvailableHoursForBuyApiImpl(bookDateId, carId);
+    bookADateForBuy = (bookDateId: string, hour: string, carId: string, paymentId: string | undefined, contactInfo: any): Promise<void> => BookADateForBuy(bookDateId, hour, carId, paymentId, contactInfo);
     getavailableDatesForSell = (cotizationId: string | undefined): Promise<BookDateEntity[]> => GetAvailableDatesForSellApiImpl(cotizationId);
-    getAvailableHoursForSell = (date: Date, cotizationId: string | undefined): Promise<BookHourEntity[]> => GetAvailableHoursForSellApiImpl(date, cotizationId);
-    bookADateForSell = (date: Date, hour: string, cotizationId: string | undefined, contactInfo: any): Promise<void> => BookADateForSellApiImpl(date, hour, cotizationId, contactInfo);
+    getAvailableHoursForSell = (bookDateId: string, cotizationId: string | undefined): Promise<BookHourEntity[]> => GetAvailableHoursForSellApiImpl(bookDateId, cotizationId);
+    bookADateForSell = (bookDateId: string, hour: string, cotizationId: string | undefined, contactInfo: any): Promise<void> => BookADateForSellApiImpl(bookDateId, hour, cotizationId, contactInfo);
 
 }

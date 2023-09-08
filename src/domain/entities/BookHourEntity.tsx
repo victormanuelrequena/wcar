@@ -1,4 +1,7 @@
 export default interface BookHourEntity {
-    hour: string;
+    hourFrom: string;
+    hourTo: string;
     available: boolean;
+    id: string;
+    bookDateId?: string | undefined;
 }

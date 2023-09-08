@@ -27,7 +27,7 @@ const ContactPage: FC<{}> = () => {
 
     return <div className="contact_page">
         <Layout >
-            <div className="w-100" style={{ backgroundImage: 'url(/assets/pages/contact/bg_contact.jpg)' }}>
+            <div className="w-100" style={{ backgroundImage: 'url(/assets/pages/contact/bg_contact.jpg)', backgroundSize: 'contain' }}>
                 <div className="container px-0 px-md-5">
                     <div className="px-md-5">
                         <div className="bg_black text_white py-5  px-4 px-md-5">
