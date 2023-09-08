@@ -31,6 +31,26 @@ const DetailedCarPage: FC<{}> = () => {
         }
     }
 
+    const capitalizeFirstLetters=(str:string) =>{
+        // Split the string into words using a space as the delimiter
+        const words = str.split(' ');
+      
+        // Iterate over each word and capitalize the first letter
+        const capitalizedWords = words.map((word) => {
+          // Check if the word has at least one letter
+          if (word.length > 0) {
+            // Convert the first letter to uppercase and concatenate the rest of the word in lowercase
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+          }
+          return word; // Keep empty words as they are
+        });
+      
+        // Join the capitalized words into a single string, separated by a space
+        const result = capitalizedWords.join(' ');
+      
+        return result;
+      }
+
     const _getRelatedCars = async () => {
         try {
             const cars = await di.get<GetRelatedCarsByCardIdUseCase>(GetRelatedCarsByCardIdUseCaseName).call(id!);
@@ -63,7 +83,7 @@ const DetailedCarPage: FC<{}> = () => {
                             <div className="col-12 col-md-5">
                                 <div className="px-3">
                                     <div className="p-3 bg-white">
-                                        <h1>{car.name}</h1>
+                                        <h1 className="name-car-detail">{capitalizeFirstLetters(car.name)}</h1>
                                         <div className="row" style={{ fontSize: '.9em' }}>
                                             <div className="col-4 d-flex align-items-center text_gray p-0">
                                                 <img src="/assets/icons/year.svg" alt="" className="img-fluid img_icon  me-2 ms-3" />
