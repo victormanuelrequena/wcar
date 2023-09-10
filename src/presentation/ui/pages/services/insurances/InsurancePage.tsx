@@ -15,6 +15,7 @@ import { routes } from '../../../routes/RoutesComponent';
 import { Link } from 'react-router-dom';
 import CalculateInsuranceUseCase, { CalculateInsuranceUseCaseName } from '../../../../../domain/use_cases/calculator/CalculateInsuranceUseCase';
 import { isRight } from 'fp-ts/lib/Either';
+import { Helmet } from 'react-helmet-async';
 
 const InsurancePage: FC<{}> = () => {
 
@@ -33,6 +34,11 @@ const InsurancePage: FC<{}> = () => {
     }
 
     return <div className="insurance_page">
+        <Helmet>
+            <title>#1 en Seguros de Vehículos en Colombia </title>
+            <meta name='description' content='Conoce todo lo que necesitas saber sobre seguros de vehículos en Colombia, en wcar más que vender te asesoramos.' />
+            <meta name='keywords' content='Seguros de Vehículos, Qué es un seguro todo riesgo en Colombia, qué es un deducible, qué es un endoso de seguro, seguro del automóvil, Seguros patrimoniales, Seguros Multirriesgos, Seguros para patinetas, Seguro para mascotas, Seguro para motos, Seguro para bicicletas, Seguro todo riesgo' />
+        </Helmet>
         <Layout>
             <section className="section_1  bg_black">
                 <div className="position-relative">

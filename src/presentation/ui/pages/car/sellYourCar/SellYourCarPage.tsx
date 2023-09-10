@@ -10,12 +10,35 @@ import di from '../../../../../di/DependencyInjection';
 import GetAllCommentsUseCase from '../../../../../domain/use_cases/comment/GetAllCommentsUseCase';
 import StarRatingComponent from '../../../components/starRating/StarRatingComponent';
 import DateParse from '../../../../utils/DateParse';
-import FrequentQuestionsComponent from '../../../components/frequentQuestions/FrequentQuestionsComponent';
 import { routes } from '../../../routes/RoutesComponent';
 import CommenstLineComponent from '../../../components/commentsLine/CommentsLineComponent';
+import GetAllProcedureQuestionsUseCase, { GetAllProcedureQuestionsUseCaseName } from '../../../../../domain/use_cases/frequentQuestion/GetAllProcedureQuestionsUseCase';
+import FrequentQuestionEntity from '../../../../../domain/entities/FrequentQuestionEntity';
+import AccordeonComponent from '../../../components/accordeon/AccordeonComponent';
+import { Helmet } from 'react-helmet-async';
 
 const SellYourCarPage: FC<{}> = () => {
+    const [frequentQuestions, setFrequentQuestions] = useState<FrequentQuestionEntity[]>([]);
+
+    const _getFrequentQuestions = async () => {
+        try {
+            const respose = await di.get<GetAllProcedureQuestionsUseCase>(GetAllProcedureQuestionsUseCaseName).call();
+            setFrequentQuestions(respose);
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+        _getFrequentQuestions();
+    }, []);
+
     return <Layout>
+        <Helmet>
+            <title>Vende tu Carro en Colombia en 1, 2 por 3</title>
+            <meta name='description' content='Vende tu carro rápido y seguro, acá te explicamos todo lo necesario para realizar un negocio rentable en la venta de tu vehículo. ¡Contáctanos y di Voy a Vender!'/>
+            <meta name='keywords' content='Vende tu carro, Carros Usados, Venta de Carros en Colombia, venta de carros usados, Voy a Vender' />
+        </Helmet>
         <div className="sell_your_car_page">
             <section className="bg_black position-relative section_1">
                 <img src="/assets/recs/bg_sell_car.jpeg" alt="" className="img_section_1 img-fluid" />
@@ -86,7 +109,15 @@ const SellYourCarPage: FC<{}> = () => {
                 <div className="container">
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-8">
-                            <FrequentQuestionsComponent />
+                            <AccordeonComponent
+                                title={<h3 className="font_bold">Preguntas <span className="text_orange text_italic">frecuentes</span></h3>}
+                                options={frequentQuestions.map((frequentQuestion) => {
+                                    return {
+                                        title: frequentQuestion.question,
+                                        content: frequentQuestion.answer
+                                    }
+                                }
+                                )} />
                         </div>
                     </div>
                 </div>

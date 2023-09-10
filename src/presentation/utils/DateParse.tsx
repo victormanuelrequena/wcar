@@ -1,5 +1,5 @@
 const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-    'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre']
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
 const dateToMonthDay = (date: Date): string => {
     //date to month day in spanish
@@ -23,7 +23,7 @@ const dateToMMDDYYYY = (date: Date): string => {
 }
 
 const dateFromString = (date: string): Date => {
-    const [month, day, year] = date.split('/');
+    const [year, month, day] = date.split('-');
     return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
 }
 

@@ -47,16 +47,13 @@ const FooterComponent: FC<{}> = () => {
                     <div className="col-md-8 d-flex pb-5 pb-md-0">
                         <div className="w-100 text_underline text_gray d-flex flex-column flex-md-row align-items-center align-items-md-end">
                             <div className="mx-3 mt-3 mt-md-0">
-                                {/* <div className="col-md-4 my-2 my-md-0"> */}
-                                <Link to="#">Políticas y tratamiento de datos</Link>
+                                <Link to={routes.generalPolicies.relativePath}>Políticas y tratamiento de datos</Link>
                             </div>
                             <div className="mx-3 mt-3 mt-md-0">
-                                {/* <div className="col-md-4 my-2 my-md-0"> */}
-                                <Link to="#">Términos y condiciones comprador</Link>
+                                <Link to={routes.buyerPolicies.relativePath}>Términos y condiciones comprador</Link>
                             </div>
                             <div className="mx-3 mt-3 mt-md-0">
-                                {/* <div className="col-md-4 my-2 my-md-0"> */}
-                                <Link to="#">Términos y condiciones vendedor</Link>
+                                <Link to={routes.sellerPolicies.relativePath}>Términos y condiciones vendedor</Link>
                             </div>
                         </div>
                     </div>

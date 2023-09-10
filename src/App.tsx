@@ -1,7 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.scss';
-import NavbarComponent from './presentation/ui/components/navbar/NavbarComponent';
-import HomePage from './presentation/ui/pages/home/HomePage';
 import AllyProvider, { AllyProviderName } from './domain/providers/ally/AllyProvider';
 import di from './di/DependencyInjection';
 import { Provider } from 'inversify-react';
@@ -10,24 +8,13 @@ import BrandProvider, { BrandProviderName } from './domain/providers/brand/Brand
 import ColorProvider, { ColorProviderName } from './domain/providers/color/ColorProvider';
 import TypeOfFuelProvider, { TypeOfFuelProviderName } from './domain/providers/typeOfFuel/TypeOfFuelProvider';
 import TypeVehicleProvider, { TypeVehicleProviderName } from './domain/providers/typeVehicle/TypeVehicleProvider';
-import { useEffect, useState } from 'react';
-import LoadingComponent from './presentation/ui/components/LoadingComponent/LoadingComponent';
 import DepartmentProvider, { DepartmentProviderName } from './domain/providers/department/DepartmentProvider';
 import UserProvider, { UserProviderName } from './domain/providers/user/UserProvider';
 import ModalsProvider, { ModalsProviderName } from './domain/providers/modal/ModalsProvider';
 import CityProvider, { CityProviderName } from './domain/providers/city/CityProvider';
 import FavoriteCarsProvider, { FavoriteCarsProviderName } from './domain/providers/favoriteCars/FavoriteCarsProviderName';
 import TagProvider, { TagProviderName } from './domain/providers/tag/TagProvider';
-import GetAllAlliesUseCase from './domain/use_cases/ally/GetAllAlliesUseCase';
-import GetCurrentUserUseCase from './domain/use_cases/auth/GetCurrentUserUseCase';
-import GetAllBrandsUseCase from './domain/use_cases/brand/GetAllBrandsUseCase';
-import GetFavoriteCarsUseCase from './domain/use_cases/car/GetFavoriteCarsUseCase';
-import GetAllCitiesUseCase from './domain/use_cases/city/GetAllCitiesUseCase';
-import GetAllColorsUseCase from './domain/use_cases/color/GetAllColorsUseCase';
-import GetAllTagsUseCase from './domain/use_cases/tag/GetAllTagsUseCase';
-import GetAllTypeVehiclesUseCase from './domain/use_cases/typeVehicle/GetAllTypeVehiclesUseCase';
-import GetAllTypeOfFuelsUseCase from './domain/use_cases/typeOfFuel/GetAllTypeOfFuelsUseCase';
-import AllyRepository, { AllyRepositoryName } from './domain/repositories/AllyRepository';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   const allyProvider = di.get<AllyProvider>(AllyProviderName);
@@ -43,33 +30,35 @@ function App() {
   const userProvider = di.get<UserProvider>(UserProviderName);
 
   return (
-    <Provider container={di}>
-      <allyProvider.Provider>
-        <brandProvider.Provider>
-          <departmentProvider.Provider>
-            <colorProvider.Provider>
-              <cityProvider.Provider>
-                <tagProvider.Provider>
-                  <typeOfFuelProvider.Provider>
-                    <typeVehicleProvider.Provider>
-                      <userProvider.Provider>
-                        <modalsProvider.Provider>
-                          <favoriteCarsProvider.Provider>
-                            <div className="App">
-                              <RoutesComponent />
-                            </div>
-                          </favoriteCarsProvider.Provider>
-                        </modalsProvider.Provider>
-                      </userProvider.Provider>
-                    </typeVehicleProvider.Provider>
-                  </typeOfFuelProvider.Provider>
-                </tagProvider.Provider>
-              </cityProvider.Provider>
-            </colorProvider.Provider>
-          </departmentProvider.Provider>
-        </brandProvider.Provider>
-      </allyProvider.Provider>
-    </Provider >
+    <HelmetProvider>
+      <Provider container={di}>
+        <allyProvider.Provider>
+          <brandProvider.Provider>
+            <departmentProvider.Provider>
+              <colorProvider.Provider>
+                <cityProvider.Provider>
+                  <tagProvider.Provider>
+                    <typeOfFuelProvider.Provider>
+                      <typeVehicleProvider.Provider>
+                        <userProvider.Provider>
+                          <modalsProvider.Provider>
+                            <favoriteCarsProvider.Provider>
+                              <div className="App">
+                                <RoutesComponent />
+                              </div>
+                            </favoriteCarsProvider.Provider>
+                          </modalsProvider.Provider>
+                        </userProvider.Provider>
+                      </typeVehicleProvider.Provider>
+                    </typeOfFuelProvider.Provider>
+                  </tagProvider.Provider>
+                </cityProvider.Provider>
+              </colorProvider.Provider>
+            </departmentProvider.Provider>
+          </brandProvider.Provider>
+        </allyProvider.Provider>
+      </Provider >
+    </HelmetProvider>
   );
 }
 

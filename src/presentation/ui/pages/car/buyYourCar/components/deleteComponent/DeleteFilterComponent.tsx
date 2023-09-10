@@ -12,7 +12,7 @@ import TypeOfFuelContextType from "../../../../../../../domain/providers/typeOfF
 import TypeVehicleContext from "../../../../../../../domain/providers/typeVehicle/TypeVehicleContext";
 import TypeVehicleContextType from "../../../../../../../domain/providers/typeVehicle/TypeVehicleContextType";
 import Icons from "../../../../../assets/Icons";
-import { set } from "react-hook-form";
+import { Helmet } from 'react-helmet-async';
 import { TransmissionCar } from "../../../../../../../domain/entities/CarEntity";
 import CurrencyParse from "../../../../../../utils/CurrencyParse";
 
@@ -85,8 +85,23 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
                 <Icons.Clear />
             </div>
         </div>}
+        {type && <Helmet>
+            <title>{type.name} | wcar</title>
+            {type.id == "3" && <>
+                <meta name="description" content="¿Buscas Carros Sedan en Colombia? en wcar te entregamos toda la información que necesitas, porqué más que vender te aconsejamos.​" />
+                <meta name="keywords" content='Carros Sedan, Carros Sedan Colombia, Auto Sedan, Aveo Sedan, Joy Sedan, mazda 2 sedan, chevrolet onix sedan, kia rio sedan, Sedan Usados, Compra Sedan Usado, Qué es un sedan' />
+            </>}
+            {type.id == "6" && <>
+                <meta name="description" content="¡Carros Hatchback Colombia! En wcar te mostramos todas las opciones que hay en Colombia con carros usados 5 puertas con nuestra transparencia brutal. ​" />
+                <meta name="keywords" content='Hatchback Colombia, Hatchback, Carros Hatchback usados, Hatchback la mejor opción en Bogotá, Hatchback la mejor opción en Bogotá, Los Mejores Hatchback en Colombia, Hachback Carros, Kia Rio Hatchback, Hyundai Accent Hatchback, Chevrolet Onix Hatchback, Mazda 3 Hatchback' />
+            </>}
+            {type.id == "8" && <>
+                <meta name="description" content="¿Buscas Carros Sedan en Colombia? en wcar te entregamos toda la información que necesitas, porqué más que vender te aconsejamos.​" />
+                <meta name="keywords" content='Carros Sedan, Carros Sedan Colombia, Auto Sedan, Aveo Sedan, Joy Sedan, mazda 2 sedan, chevrolet onix sedan, kia rio sedan, Sedan Usados, Compra Sedan Usado, Qué es un sedan' />
+            </>}
+        </Helmet>}
         {transmission && <div className="delete_filter_item">
-            <span>{transmission === TransmissionCar.AUTOMATIC ? 'Automático' : 'Manual'}</span>
+            <span>{transmission == TransmissionCar.AUTOMATIC ? 'Automático' : 'Manual'}</span>
             <div className="icon hover" onClick={_handleRemoveTransmission}>
                 <Icons.Clear />
             </div>
@@ -96,6 +111,11 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
             <div className="icon hover" onClick={_handleRemoveTag}>
                 <Icons.Clear />
             </div>
+            {tag.id == "5" && <Helmet>
+                <title>#1 en Carros de lujo usados 2023 | wcar</title>
+                <meta name="description" content="¡Carros de lujo usados! En wcar te mostramos todas las opciones que hay en Colombia con los más exclusivos autos de gama alta del país.​" />
+                <meta name="keywords" content='Carros de lujo usados, carros de gama alta usados, autos de lujo usados, carros de lujo para mujeres, autos de lujo para hombres, Top 5 de carros alta gama en Colombia' />
+            </Helmet>}
         </div>}
         {(rangeMileage?.min || rangeMileage?.max) && <div className="delete_filter_item">
             <span>{rangeMileage.min ?? 0}km - {rangeMileage.max ?? '...'}km</span>
@@ -108,6 +128,10 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
             <div className="icon hover" onClick={_handleRemoveFuel}>
                 <Icons.Clear />
             </div>
+            {fuel.id == "3" && <Helmet>
+                <meta name='desciption' content='¡Carros Híbridos Colombia! En wcar te mostramos todas las opciones que hay en Colombia con carros usados híbridos y tecnologías limpias. ' />
+                <meta name='keywords' content='Carros Híbridos Colombia, Tecnologías Limpias, Híbrido, Carros Híbridos, Vehículos híbridos, Hyundai Híbrido, Suzuki Híbrido, Toyota Híbrido, Mazda Híbrido' />
+            </Helmet>}
         </div>}
         {color && <div className="delete_filter_item">
             <div className="color_fill me-2" style={{ backgroundColor: color.colorHex }}></div>

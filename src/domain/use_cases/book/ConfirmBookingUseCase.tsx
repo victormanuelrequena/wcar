@@ -1,5 +1,4 @@
 import { injectable } from "inversify";
-import BookHourEntity from "../../entities/BookHourEntity";
 import BookRepository from "../../repositories/BookRepository";
 
 interface props {
@@ -7,16 +6,16 @@ interface props {
 }
 
 @injectable()
-export default class GetAvailableHoursForBuyUseCase {
+export default class ConfirmBookingUseCase {
 
     _bookRepository: BookRepository;
 
     constructor(_: props) {
         this._bookRepository = _.bookRepository;
     }
-    async call(bookDateId: string, carId: string): Promise<BookHourEntity[]> {
+    async call(bookId: string):Promise<void> {
         try {
-            const response = await this._bookRepository.getAvailableHoursForBuy(bookDateId, carId);
+            const response = await this._bookRepository.confirmBookingBuy(bookId);
             return response;
         } catch (error) {
             throw error;
@@ -24,4 +23,4 @@ export default class GetAvailableHoursForBuyUseCase {
     }
 }
 
-export const GetAvailableHoursForBuyUseCaseName = "GetAvailableHoursForBuyUseCaseName";
+export const ConfirmBookingUseCaseName = "ConfirmBookingUseCaseName";

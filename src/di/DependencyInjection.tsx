@@ -65,7 +65,6 @@ import CalculatorRepositoryTest from "../data/repositories/calculator/Calculator
 import CalculateOfferForCarUseCase, { CalculateOfferForCarUseCaseName } from "../domain/use_cases/calculator/CalculateOfferForCarUseCase";
 import FrequentQuestionRepository, { FrequentQuestionRepositoryName } from "../domain/repositories/FrequentQuestionRepository";
 import FrequentQuestionRepositoryTest from "../data/repositories/frequentQuestion/FrequentQuestionRepositoryTest";
-import GetAllFrequentQuestionsUseCase, { GetAllFrequentQuestionsUseCaseName } from "../domain/use_cases/frequentQuestion/GetAllFrequentQuestionsUseCase";
 import InsuranceRepository, { InsuranceRepositoryName } from "../domain/repositories/InsuranceRepository";
 import { InsuranceRepositoryTest } from "../data/repositories/insurance/InsuranceRepositoryTest";
 import GetAllInsurancesUseCase, { GetAllInsurancesUseCaseName } from "../domain/use_cases/insurance/GetAllInsurancesUseCase";
@@ -134,6 +133,9 @@ import ContactRepositoryImpl from "../data/repositories/contact/impl/ContactRepo
 import ContactRepositoryTest from "../data/repositories/contact/ContactRepositoryTest";
 import ContactUseCase, { ContactUseCaseName } from "../domain/use_cases/contact/ContactUseCase";
 import GetCitiesByDepartmentIdUseCase, { GetCitiesByDepartmentIdUseCaseName } from "../domain/use_cases/city/GetCitiesByDepartmentIdUseCase";
+import GetAllFrequentQuestionsAboutUsUseCase, { GetAllFrequentQuestionsAboutUsUseCaseName } from "../domain/use_cases/frequentQuestion/GetAllFrequentQuestionsAboutUsUseCase";
+import GetAllInsuranceQuestionsUseCase, { GetAllInsuranceQuestionsUseCaseName } from "../domain/use_cases/frequentQuestion/GetAllInsuranceQuestionsUseCase";
+import ConfirmBookingUseCase, { ConfirmBookingUseCaseName } from "../domain/use_cases/book/ConfirmBookingUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -285,6 +287,12 @@ di.bind<GetAllBlogsAndMainPostUseCase>(GetAllBlogsAndMainPostUseCaseName).toDyna
 di.bind<BookADateForBuyUseCase>(BookADateForBuyUseCaseName).toDynamicValue((context) => {
     return new BookADateForBuyUseCase({
         bookRepository: context.container.get(BookRepositoryName),
+        userProvider: context.container.get(UserProviderName),
+    });
+}).inSingletonScope();
+di.bind<ConfirmBookingUseCase>(ConfirmBookingUseCaseName).toDynamicValue((context) => {
+    return new ConfirmBookingUseCase({
+        bookRepository: context.container.get(BookRepositoryName),
     });
 }).inSingletonScope();
 di.bind<GetAvailableDatesForBuyUseCase>(GetAvailableDatesForBuyUseCaseName).toDynamicValue((context) => {
@@ -434,13 +442,18 @@ di.bind<LoadUseCase>(LoadUseCaseName).toDynamicValue((context) => {
 });
 //#endregion
 //#region frequent
-di.bind<GetAllFrequentQuestionsUseCase>(GetAllFrequentQuestionsUseCaseName).toDynamicValue((context) => {
-    return new GetAllFrequentQuestionsUseCase({
+di.bind<GetAllFrequentQuestionsAboutUsUseCase>(GetAllFrequentQuestionsAboutUsUseCaseName).toDynamicValue((context) => {
+    return new GetAllFrequentQuestionsAboutUsUseCase({
         frequentQuestionRepository: context.container.get(FrequentQuestionRepositoryName),
     });
 }).inSingletonScope();
 di.bind<GetAllProcedureQuestionsUseCase>(GetAllProcedureQuestionsUseCaseName).toDynamicValue((context) => {
     return new GetAllProcedureQuestionsUseCase({
+        frequentQuestionRepository: context.container.get(FrequentQuestionRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<GetAllInsuranceQuestionsUseCase>(GetAllInsuranceQuestionsUseCaseName).toDynamicValue((context) => {
+    return new GetAllInsuranceQuestionsUseCase({
         frequentQuestionRepository: context.container.get(FrequentQuestionRepositoryName),
     });
 }).inSingletonScope();

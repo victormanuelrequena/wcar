@@ -22,7 +22,7 @@ const _getHeaders = () => {
     return {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        // 'Authorization': getToken(),
+        'Authorization': getToken(),
     };
 }
 
@@ -37,6 +37,9 @@ const checkToken = async (callback: Function): Promise<any> => {
             console.log('error', error);
             await refreshToken();
             return await callback();
+        }
+        else {
+            throw error;
         }
     }
 }
@@ -69,9 +72,12 @@ const post = (relativeUrl: string, body: any): Promise<any> => new Promise((reso
             body: JSON.stringify(body),
         }).then(async response => {
             const body = await response.json();
+            console.log('response post', response);
+            console.log('body post', body);
             if (response.ok) {
                 resolve(body);
             } else {
+                console.log('llega a false');
                 reject(body);
             }
         }).catch((error) => reject(error));

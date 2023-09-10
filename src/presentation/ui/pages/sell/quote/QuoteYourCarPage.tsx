@@ -49,14 +49,15 @@ const QuoteYourCarPage: FC<{}> = () => {
 
     const _handleSave = async (data: any) => {
         setLoading(true);
-        const calculated = await di.get<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCaseName).call(data);
-        if (isRight(calculated)) {
-            addToast("Cotización realizada", "success", undefined);
-            navigate(routes.quoteSuccessful.relativePath, { state: { calculated } });
-        } else {
-            addToast(calculated.left.message ?? "Error creando cotización", "error", undefined);
-            setLoading(false);
-        }
+        navigate(routes.dateForSell.relativePath, { state: { "buyData": data } });
+        // const calculated = await di.get<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCaseName).call(data);
+        // if (isRight(calculated)) {
+        //     addToast("Cotización realizada", "success", undefined);
+        //     navigate(routes.quoteSuccessful.relativePath, { state: { "calculated": calculated.right } });
+        // } else {
+        //     addToast(calculated.left.message ?? "Error creando cotización", "error", undefined);
+        //     setLoading(false);
+        // }
     }
 
     const _handleChangeBrand = async (brandId: string) => {
@@ -74,7 +75,7 @@ const QuoteYourCarPage: FC<{}> = () => {
     const _handleChangeModel = async (model: string) => {
         setValue('car.version', undefined);
         setVersions([]);
-        const brandId = getValues()?.car?.brand;
+        const brandId = getValues()?.car?.brandId;
         try {
             const response = await di.get<GetModelVersionByModelAndBrandIdUseCase>(GetModelVersionByModelAndBrandIdUseCaseName).call(brandId, model);
             setVersions(response);
@@ -184,14 +185,14 @@ const QuoteYourCarPage: FC<{}> = () => {
                                         <div className='col-md-6 my-2'>
                                             <div className="form-group">
                                                 <label className='mandatory'>Marca</label>
-                                                <select className="form-control" {...register('car.brand', Validators({
+                                                <select className="form-control" {...register('car.brandId', Validators({
                                                     onChange: (value: string) => _handleChangeBrand(value),
                                                     required: true,
                                                 }))}>
                                                     <option value="">Selecciona una marca</option>
                                                     {brands.map((brand, index) => <option key={index} value={brand.id}>{brand.name}</option>)}
                                                 </select>
-                                                <ErrorMessage as="aside" errors={errors} name="car.brand" />
+                                                <ErrorMessage as="aside" errors={errors} name="car.brandId" />
                                             </div>
                                         </div>
                                         <div className='col-md-6 my-2'>
@@ -234,25 +235,25 @@ const QuoteYourCarPage: FC<{}> = () => {
                                         <div className="col-md-6 my-2">
                                             <div className="form-group">
                                                 <label className='mandatory'>¿En qué ciudad está matriculado el carro?</label>
-                                                <select className="form-control" {...register('car.city', Validators({
+                                                <select className="form-control" {...register('car.cityId', Validators({
                                                     required: true,
                                                 }))}>
                                                     <option value="">seleccionar</option>
                                                     {cities.map((city, index) => <option key={index} value={city.id}>{city.name}</option>)}
                                                 </select>
-                                                <ErrorMessage as="aside" errors={errors} name="car.city" />
+                                                <ErrorMessage as="aside" errors={errors} name="car.cityId" />
                                             </div>
                                         </div>
                                         <div className="col-md-6 my-2">
                                             <div className="form-group">
                                                 <label className='mandatory'>Color</label>
-                                                <select className="form-control" {...register('car.color', Validators({
+                                                <select className="form-control" {...register('car.colorId', Validators({
                                                     required: true,
                                                 }))}>
                                                     <option value="">seleccionar</option>
                                                     {colors.map((color, index) => <option key={index} value={color.id}>{color.name}</option>)}
                                                 </select>
-                                                <ErrorMessage as="aside" errors={errors} name="car.color" />
+                                                <ErrorMessage as="aside" errors={errors} name="car.colorId" />
                                             </div>
                                         </div>
                                     </div> : <></>}

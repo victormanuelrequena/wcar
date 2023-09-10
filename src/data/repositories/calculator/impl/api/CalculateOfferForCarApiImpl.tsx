@@ -5,7 +5,7 @@ import ExceptionEntity from "../../../../../domain/entities/ExceptionEntity";
 import { CalculateOfferForCarProps } from "../../../../../domain/repositories/CalculatorRepository";
 
 const CalculateOfferForCarApiImpl = async (_: CalculateOfferForCarProps): Promise<Either<ExceptionEntity, CalculatedEntity>> => {
-    const relativeUrl = "/sale-cars/create";
+    const relativeUrl = "/sale-cars/create/";
     const body = {
         "year": _.car.year,
         "brand": _.car.brandId,
@@ -19,7 +19,10 @@ const CalculateOfferForCarApiImpl = async (_: CalculateOfferForCarProps): Promis
         "email": _.contact.email,
         "phone": _.contact.phone,
         "company": _.contact.companyName,
+        "hour_avaliable": _.book.hourId,
+        "date_avaliable": _.book.dateId,
     };
+
     try {
         const response = await HostApi.post(relativeUrl, body);
         const _test: CalculatedEntity = {

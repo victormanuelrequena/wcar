@@ -1,6 +1,6 @@
 export default interface AccordeonComponentProps {
     title: React.ReactNode;
-    subtitle: String;
+    subtitle?: String | undefined;
     options: {
         title: String;
         content: String;

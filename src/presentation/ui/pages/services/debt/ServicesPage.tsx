@@ -5,7 +5,6 @@ import Icons from '../../../assets/Icons';
 import './ServicesPageStyles.scss';
 import { FC, useContext, useEffect, useState } from "react";
 import CalculateCreditForCarUseCase, { CalculateCreditForCarUseCaseName } from '../../../../../domain/use_cases/calculator/CalculateCreditForCarUseCase';
-import FrequentQuestionsComponent from '../../../components/frequentQuestions/FrequentQuestionsComponent';
 import Layout from '../../../layout/Layout';
 import FinancingServicesLineComponent from '../../../components/financingServicesLine/FinancingServicesLineComponent';
 import ServicesCalculatorFormComponent from './components/calculator/ServicesCalculatorFormComponent';
@@ -14,6 +13,10 @@ import ModalsContextType from '../../../../../domain/providers/modal/ModalsConte
 import CalculatorTitleComponent from './components/message/CalculatorTitleComponent';
 import CurrencyParse from '../../../../utils/CurrencyParse';
 import { isRight } from 'fp-ts/lib/Either';
+import AccordeonComponent from '../../../components/accordeon/AccordeonComponent';
+import GetAllInsuranceQuestionsUseCase, { GetAllInsuranceQuestionsUseCaseName } from '../../../../../domain/use_cases/frequentQuestion/GetAllInsuranceQuestionsUseCase';
+import FrequentQuestionEntity from '../../../../../domain/entities/FrequentQuestionEntity';
+import { Helmet } from 'react-helmet-async';
 
 const ServicesPage: FC = () => {
 
@@ -23,14 +26,18 @@ const ServicesPage: FC = () => {
     const [estimatedDebt, setEstimatedDebt] = useState<number | undefined>(undefined);
     const { getValues } = formFunctions;
 
-    // const _getAllInsurances = async () => {
-    //     try {
-    //         const response = await di.get<GetAllInsurancesUseCase>(GetAllInsurancesUseCaseName).call();
-    //         setInsurances(response);
-    //     } catch (error) {
+    const [frequentQuestions, setFrequentQuestions] = useState<FrequentQuestionEntity[]>([]);
 
-    //     }
-    // }
+    const _getFrequentQuestions = async () => {
+        try {
+            const respose = await di.get<GetAllInsuranceQuestionsUseCase>(GetAllInsuranceQuestionsUseCaseName).call();
+            setFrequentQuestions(respose);
+        } catch (error) {
+
+        }
+    }
+
+
 
     const _handleSubmit = async (data: any) => {
         const response = await di.get<CalculateCreditForCarUseCase>(CalculateCreditForCarUseCaseName).call(data.vehicleValue, data.initialQuote, data.months, data.insurance);
@@ -52,10 +59,15 @@ const ServicesPage: FC = () => {
     }
 
     useEffect(() => {
-        // _getAllInsurances();
+        _getFrequentQuestions();
     }, []);
 
     return <div className="services_page">
+        <Helmet>
+            <title>Financiación con wcar, ¡estrena tu usado hoy!</title>
+            <meta name='description' content='¿Quieres saber todo acerca de la Financiación con wcar? te ofrecemos planes cómodos que te permitirán salir con tu vehículo a casa.' />
+            <meta name='keywords' content='Financiación, Cómo funciona nuestro proceso de financiación, Calcula tu Préstamo' />
+        </Helmet>
         <Layout>
             <section className="section_1 position-relative w-100 mb-5">
                 <img src="/assets/services/bg_services_financing_pc.jpg" className='img-fluid w-100 d-none d-md-block bg_1' alt="" />
@@ -100,7 +112,7 @@ const ServicesPage: FC = () => {
                                         </div>
                                         <div className="col-8 d-flex flex-column">
                                             <p className="text_light mb-1">Tu cuota mensual sería de:</p>
-                                            <h3 className="text_orange mb-0">{CurrencyParse.toCop(estimatedDebt ?? 0).slice(0,-3)}</h3>
+                                            <h3 className="text_orange mb-0">{CurrencyParse.toCop(estimatedDebt ?? 0).slice(0, -3)}</h3>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -121,7 +133,15 @@ const ServicesPage: FC = () => {
                 <img src="/assets/recs/bg_services_lines.png" className="bg_img_line translate-middle-y" />
                 <div className="container py-5">
                     <div className="row">
-                        <FrequentQuestionsComponent />
+                        <AccordeonComponent
+                            title={<h3 className="font_bold">Preguntas <span className="text_orange text_italic">frecuentes</span></h3>}
+                            options={frequentQuestions.map((frequentQuestion) => {
+                                return {
+                                    title: frequentQuestion.question,
+                                    content: frequentQuestion.answer
+                                }
+                            }
+                            )} />
                     </div>
                 </div>
             </section>

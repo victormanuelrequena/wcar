@@ -206,7 +206,7 @@ const DetailedCarPage: FC<{}> = () => {
                                         <div className="row">
                                             <div className="col-12 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/transmision.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/transmission.svg" className='img-fluid me-2' alt="" />
                                                     Transmisión:
                                                 </span>
                                                 <strong>{car.transmission}</strong>
