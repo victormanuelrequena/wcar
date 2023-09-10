@@ -6,11 +6,12 @@ import di from "../../../../../di/DependencyInjection";
 import GetAllProcedureQuestionsUseCase, { GetAllProcedureQuestionsUseCaseName } from "../../../../../domain/use_cases/frequentQuestion/GetAllProcedureQuestionsUseCase";
 import AccordeonComponent from "../../../components/accordeon/AccordeonComponent";
 import CardContactComponent from '../../../components/cardContact/CardContactComponent';
+import { Helmet } from 'react-helmet-async';
 
 
 const ProceduresPage: FC<{}> = () => {
     const [procudesQuestions, setProcudesQuestions] = useState<FrequentQuestionEntity[]>([]);
-    
+
     const _getProceduresQuestions = async () => {
         try {
             const response = await di.get<GetAllProcedureQuestionsUseCase>(GetAllProcedureQuestionsUseCaseName).call();
@@ -24,6 +25,12 @@ const ProceduresPage: FC<{}> = () => {
     }, []);
 
     return <div className="procedures_page">
+        <Helmet>
+            <title>Trámites de vehículos | te ahorramos tiempo y dinero en 2023</title>
+            <meta name='description' content='Realizamos todos tus trámites de vehículos al comprar o vender tu auto en Colombia, ahorramos tiempo y dinero en transacciones seguras para tu carro.' />
+            <meta name='keywords' content='Trámites de vehículos, trámite de tránsito' />
+        </Helmet>
+
         <Layout>
             <picture className='w-100'>
                 <source srcSet="/assets/services/bg_procedures_mobile.jpg" type="image/jpg" media="(max-width: 768px)" className='w-100' />

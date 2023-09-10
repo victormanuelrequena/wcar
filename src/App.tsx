@@ -14,6 +14,7 @@ import ModalsProvider, { ModalsProviderName } from './domain/providers/modal/Mod
 import CityProvider, { CityProviderName } from './domain/providers/city/CityProvider';
 import FavoriteCarsProvider, { FavoriteCarsProviderName } from './domain/providers/favoriteCars/FavoriteCarsProviderName';
 import TagProvider, { TagProviderName } from './domain/providers/tag/TagProvider';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   const allyProvider = di.get<AllyProvider>(AllyProviderName);
@@ -29,33 +30,35 @@ function App() {
   const userProvider = di.get<UserProvider>(UserProviderName);
 
   return (
-    <Provider container={di}>
-      <allyProvider.Provider>
-        <brandProvider.Provider>
-          <departmentProvider.Provider>
-            <colorProvider.Provider>
-              <cityProvider.Provider>
-                <tagProvider.Provider>
-                  <typeOfFuelProvider.Provider>
-                    <typeVehicleProvider.Provider>
-                      <userProvider.Provider>
-                        <modalsProvider.Provider>
-                          <favoriteCarsProvider.Provider>
-                            <div className="App">
-                              <RoutesComponent />
-                            </div>
-                          </favoriteCarsProvider.Provider>
-                        </modalsProvider.Provider>
-                      </userProvider.Provider>
-                    </typeVehicleProvider.Provider>
-                  </typeOfFuelProvider.Provider>
-                </tagProvider.Provider>
-              </cityProvider.Provider>
-            </colorProvider.Provider>
-          </departmentProvider.Provider>
-        </brandProvider.Provider>
-      </allyProvider.Provider>
-    </Provider >
+    <HelmetProvider>
+      <Provider container={di}>
+        <allyProvider.Provider>
+          <brandProvider.Provider>
+            <departmentProvider.Provider>
+              <colorProvider.Provider>
+                <cityProvider.Provider>
+                  <tagProvider.Provider>
+                    <typeOfFuelProvider.Provider>
+                      <typeVehicleProvider.Provider>
+                        <userProvider.Provider>
+                          <modalsProvider.Provider>
+                            <favoriteCarsProvider.Provider>
+                              <div className="App">
+                                <RoutesComponent />
+                              </div>
+                            </favoriteCarsProvider.Provider>
+                          </modalsProvider.Provider>
+                        </userProvider.Provider>
+                      </typeVehicleProvider.Provider>
+                    </typeOfFuelProvider.Provider>
+                  </tagProvider.Provider>
+                </cityProvider.Provider>
+              </colorProvider.Provider>
+            </departmentProvider.Provider>
+          </brandProvider.Provider>
+        </allyProvider.Provider>
+      </Provider >
+    </HelmetProvider>
   );
 }
 

@@ -135,6 +135,7 @@ import ContactUseCase, { ContactUseCaseName } from "../domain/use_cases/contact/
 import GetCitiesByDepartmentIdUseCase, { GetCitiesByDepartmentIdUseCaseName } from "../domain/use_cases/city/GetCitiesByDepartmentIdUseCase";
 import GetAllFrequentQuestionsAboutUsUseCase, { GetAllFrequentQuestionsAboutUsUseCaseName } from "../domain/use_cases/frequentQuestion/GetAllFrequentQuestionsAboutUsUseCase";
 import GetAllInsuranceQuestionsUseCase, { GetAllInsuranceQuestionsUseCaseName } from "../domain/use_cases/frequentQuestion/GetAllInsuranceQuestionsUseCase";
+import ConfirmBookingUseCase, { ConfirmBookingUseCaseName } from "../domain/use_cases/book/ConfirmBookingUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -285,6 +286,12 @@ di.bind<GetAllBlogsAndMainPostUseCase>(GetAllBlogsAndMainPostUseCaseName).toDyna
 //#region book
 di.bind<BookADateForBuyUseCase>(BookADateForBuyUseCaseName).toDynamicValue((context) => {
     return new BookADateForBuyUseCase({
+        bookRepository: context.container.get(BookRepositoryName),
+        userProvider: context.container.get(UserProviderName),
+    });
+}).inSingletonScope();
+di.bind<ConfirmBookingUseCase>(ConfirmBookingUseCaseName).toDynamicValue((context) => {
+    return new ConfirmBookingUseCase({
         bookRepository: context.container.get(BookRepositoryName),
     });
 }).inSingletonScope();

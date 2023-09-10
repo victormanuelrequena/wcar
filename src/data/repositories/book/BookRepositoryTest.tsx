@@ -68,6 +68,10 @@ const _testDates: BookDateEntity[] = [
 
 @injectable()
 export default class BookRepositoryTest implements BookRepository {
+    async confirmBookingBuy(bookId: string): Promise<void> {
+        await sleeper(1000)(1);
+        return;
+    }
     async getAvailableDatesForBuy(carId: string): Promise<BookDateEntity[]> {
         await sleeper(1000)(1);
         return _testDates;

@@ -6,16 +6,16 @@ interface props {
 }
 
 @injectable()
-export default class BookADateForSellUseCase {
+export default class ConfirmBookingUseCase {
 
     _bookRepository: BookRepository;
 
     constructor(_: props) {
         this._bookRepository = _.bookRepository;
     }
-    async call(bookDateId: string, bookHourId: string, cotizationId: string | undefined, password: string, contactInfo: any):Promise<void> {
+    async call(bookId: string):Promise<void> {
         try {
-            const response = await this._bookRepository.bookADateForSell(bookDateId, bookHourId, cotizationId, password, contactInfo);
+            const response = await this._bookRepository.confirmBookingBuy(bookId);
             return response;
         } catch (error) {
             throw error;
@@ -23,4 +23,4 @@ export default class BookADateForSellUseCase {
     }
 }
 
-export const BookADateForSellUseCaseName = "BookADateForSellUseCaseName";
+export const ConfirmBookingUseCaseName = "ConfirmBookingUseCaseName";

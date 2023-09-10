@@ -18,6 +18,7 @@ import DeleteFilterComponent from './components/deleteComponent/DeleteFilterComp
 import { useParams } from 'react-router-dom';
 import TypeVehicleContext from '../../../../../domain/providers/typeVehicle/TypeVehicleContext';
 import TypeVehicleContextType from '../../../../../domain/providers/typeVehicle/TypeVehicleContextType';
+import { Helmet } from 'react-helmet-async';
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -109,6 +110,11 @@ const BuyYourCarPage: FC<{}> = () => {
 
 
     return <Layout>
+        <Helmet>
+            {/* <title>Compra tu carro | wcar</title> */}
+            {/* <meta name='description' content='Si ya te dijiste ¡Compra o vende tu carro en Colombia! aquí te explicamos todo lo que debes tener en cuenta para realizar una transacción segura.' /> */}
+            {/* <meta name='keywords' content='Compra o vende tu carro en Colombia, Vende tu carro en Colombia, Compra tu carro en Colombia, consejos para comprar carros usados en colombia, consejos para vender carros usados en colombia' /> */}
+        </Helmet>
         <form onSubmit={handleSubmit(_handleOnSubmit)}>
             <div className="w-100 position-relative buy_your_car_page bg_gray">
                 <div className="w-100 car_search bg_search py-3">

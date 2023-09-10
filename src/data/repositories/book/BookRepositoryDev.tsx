@@ -87,9 +87,13 @@ export default class BookRepositoryDev implements BookRepository {
         await sleeper(1000)(1);
         return _testHours;
     }
-    async bookADateForSell(bookDateId: string, hour: string, cotizationId: string | undefined, contactInfo: any ): Promise<void> {
+    async bookADateForSell(bookDateId: string, hour: string, cotizationId: string | undefined, contactInfo: any): Promise<void> {
         await sleeper(1000)(1);
         return;
-     }
-    
+    }
+    async confirmBookingBuy(bookId: string): Promise<void> {
+        await sleeper(1000)(1);
+        return;
+    }
+
 }

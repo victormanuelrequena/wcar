@@ -15,10 +15,11 @@ import BookHourEntity from "../entities/BookHourEntity";
 export default interface BookRepository {
     getAvailableDatesForBuy(carId: string): Promise<BookDateEntity[]>;
     getAvailableHoursForBuy(bookDateId: string, carId: string): Promise<BookHourEntity[]>;
-    bookADateForBuy(bookDateId: string, bookHourId: string, carId: string, paymentId: string | undefined, contactInfo: any, separation: number | undefined): Promise<void>;
+    bookADateForBuy(bookDateId: string, bookHourId: string, carId: string, password: string, contactInfo: any, separation: number | undefined): Promise<void>;
     getavailableDatesForSell(cotizationId: string | undefined): Promise<BookDateEntity[]>;
     getAvailableHoursForSell(bookDateId: string, cotizationId: string | undefined): Promise<BookHourEntity[]>;
-    bookADateForSell(bookDateId: string, bookHourId: string, cotizationId: string | undefined, contactInfo: any): Promise<void>;
+    bookADateForSell(bookDateId: string, bookHourId: string, cotizationId: string | undefined, password: string, contactInfo: any): Promise<void>;
+    confirmBookingBuy(bookId: string): Promise<void>;
 }
 
 export const BookRepositoryName = "BookRepository";

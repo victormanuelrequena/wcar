@@ -29,6 +29,7 @@ import Error404Page from "../pages/error404/Error404Page";
 import GeneralPoliciesPage from "../pages/policies/GeneralPoliciesPage";
 import SellerPoliciesPage from "../pages/policies/SellerPoliciesPage";
 import BuyerPolicies from "../pages/policies/BuyerPolicies";
+import SuccesfulPaymentPage from "../pages/succesfulPayment/SuccesfulPaymentPage";
 
 export interface iRoute {
     name: string,
@@ -187,6 +188,12 @@ const routes = {
         path: "/politicas-comprador",
         relativePath: "/politicas-comprador",
         component: BuyerPolicies,
+        auth: (user: UserEntity | undefined) => true,
+    },
+    succesfulPayment: {
+        path: "/pago-exitoso/:bookingId",
+        relativePath: "/pago-exitoso",
+        component: SuccesfulPaymentPage,
         auth: (user: UserEntity | undefined) => true,
     },
 }

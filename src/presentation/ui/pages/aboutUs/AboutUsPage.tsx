@@ -11,6 +11,7 @@ import AccordeonComponent from '../../components/accordeon/AccordeonComponent';
 import GetAllFrequentQuestionsAboutUsUseCase, { GetAllFrequentQuestionsAboutUsUseCaseName } from '../../../../domain/use_cases/frequentQuestion/GetAllFrequentQuestionsAboutUsUseCase';
 import di from '../../../../di/DependencyInjection';
 import FrequentQuestionEntity from '../../../../domain/entities/FrequentQuestionEntity';
+import { Helmet } from 'react-helmet-async';
 
 const AboutUsPage: FC<{}> = () => {
     const [frequentQuestions, setFrequentQuestions] = useState<FrequentQuestionEntity[]>([]);
@@ -29,6 +30,11 @@ const AboutUsPage: FC<{}> = () => {
     }, []);
 
     return <div className="about_us_page">
+        <Helmet>
+            <title>Nuestra empresa wcar #1 en Transparencia brutal</title>
+            <meta name='description' content='En Latam el mercado de autos usados es de 6 millones de transacciones al año. wcar sas es el primer phygital ecosystem '/>
+            <meta name='keywords' content='Nuestra empresa wcar, Qué es wcar, Por qué wcar, valores wcar, misión wcar, visión wcar, wcar sas' />
+        </Helmet>
         <Layout>
             <section className="w-100 position-relative section_1">
                 <picture className='w-100'>
