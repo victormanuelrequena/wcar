@@ -24,15 +24,22 @@ const orderingOptions: OrderByEntity[] = [
     {
         label: 'Relevancia',
         value: {
-            keyname: 'relevanece',
-            desc: true
+            keyname: 'relevance',
+            desc: undefined,
         },
     },
     {
-        label: 'Reciente',
+        label: 'Mayor precio',
         value: {
-            keyname: 'created_at',
+            keyname: 'price',
             desc: true,
+        }
+    },
+    {
+        label: 'Menor precio',
+        value: {
+            keyname: 'price',
+            desc: false,
         }
     }
 ];
@@ -92,7 +99,10 @@ const BuyYourCarPage: FC<{}> = () => {
 
     const _handlePickOrderBy = (orderByValue: OrderByEntity) => {
         setOpenOrderBy(false);
-        setValue('orderBy', orderByValue.value);
+        if (watch('orderBy') == orderByValue) return;
+        setValue('orderBy', orderByValue);
+        setPage(1);
+        _handleSearch();
     }
 
     useEffect(() => {
@@ -121,20 +131,21 @@ const BuyYourCarPage: FC<{}> = () => {
                     <div className="container d-flex flex-column flex-md-row px-md-5 justify-content-between align-items-center">
                         <div className="input_search">
                             <img src="/assets/icons/search.svg" className='text_orange' alt="" />
-                            <input type="text" placeholder='Buscar por marca, modelo, color...' />
+                            <input type="text" placeholder='Buscar por marca, modelo, color...' {...register('search')} />
                         </div>
                         <div className="order_by_container my-3 my-md-0 d-none d-md-block">
-                            <Dropdown isOpen={openOrderBy} className='' toggle={() => setOpenOrderBy(!openOrderBy)}>
+                            <Dropdown isOpen={openOrderBy} className='' toggle={() => window.screen.width >= 768 ? setOpenOrderBy(!openOrderBy) : null}>
                                 <DropdownToggle caret>
-                                    Ordenar por: <strong className='order_button hover'>{orderingOptions.find((orderItem) => orderItem.value.keyname == watch('orderBy')?.keyname && orderItem.value.desc == watch('orderBy')?.desc)?.label ?? orderingOptions?.[0]?.label ?? ''}</strong>
+                                    Ordenar por: <strong className='order_button hover'>{orderingOptions.find((orderItem) => orderItem.value?.keyname == watch('orderBy')?.value?.keyname && orderItem.value?.desc == watch('orderBy')?.value?.desc)?.label ?? orderingOptions?.[0]?.label ?? ''}</strong>
                                 </DropdownToggle>
 
                                 <DropdownMenu>
                                     {orderingOptions.map((option, index) => (
                                         <DropdownItem
                                             key={index}
-                                            active={watch('orderBy') === option.value}
+                                            active={watch('orderBy') === option}
                                             onClick={() => _handlePickOrderBy(option)}
+
                                         >
                                             {option.label}
                                         </DropdownItem>
@@ -178,18 +189,17 @@ const BuyYourCarPage: FC<{}> = () => {
                                             Filtrar
                                         </span>
                                     </div>
-                                    <Dropdown isOpen={openOrderBy} toggle={() => setOpenOrderBy(!openOrderBy)}>
+                                    <Dropdown isOpen={openOrderBy} className='' toggle={() => window.screen.width < 768 ? setOpenOrderBy(!openOrderBy) : null}>
                                         <DropdownToggle className='btn btn_light mt-2'>
-                                            Ordenar por: <strong className='order_button hover'>{orderingOptions.find((orderItem) => orderItem.value.keyname == watch('orderBy')?.keyname && orderItem.value.desc == watch('orderBy')?.desc)?.label ?? orderingOptions?.[0]?.label ?? ''}</strong>
+                                            Ordenar por: <strong className='order_button hover'>{orderingOptions.find((orderItem) => orderItem.value?.keyname == watch('orderBy')?.value?.keyname && orderItem.value?.desc == watch('orderBy')?.value?.desc)?.label ?? orderingOptions?.[0]?.label ?? ''}</strong>
                                         </DropdownToggle>
 
                                         <DropdownMenu>
                                             {orderingOptions.map((option, index) => (
-                                                <DropdownItem
+                                                < DropdownItem
                                                     key={index}
-                                                    active={watch('orderBy') === option.value}
-                                                    onClick={() => _handlePickOrderBy(option)}
-                                                >
+                                                    active={watch('orderBy') === option}
+                                                    onClick={() => _handlePickOrderBy(option)}                                                >
                                                     {option.label}
                                                 </DropdownItem>
                                             ))}
@@ -227,9 +237,9 @@ const BuyYourCarPage: FC<{}> = () => {
                     </div>
 
                 </div>
-            </div>
-        </form>
-    </Layout>
+            </div >
+        </form >
+    </Layout >
 }
 
 export default BuyYourCarPage;

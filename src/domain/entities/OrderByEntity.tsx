@@ -2,6 +2,6 @@ export default interface OrderByEntity {
     label: string,
     value: {
         keyname: string,
-        desc: boolean,
+        desc: boolean | undefined,
     }
 }

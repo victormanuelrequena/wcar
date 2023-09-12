@@ -6,6 +6,7 @@ import HostApi from "../../../../settings/HostApi";
 
 const SearchCarApiImpl = async (page: number, search: string, brand: string | undefined, year: string | undefined, price: { min: number; max: number; } | undefined, type: string, transmission: TransmissionCar | undefined, tag: string | undefined, km: { min: number; max: number; } | undefined, fuelId: string | undefined, colorId: string | undefined, plateNumber: string | undefined, orderBy: OrderByEntity | undefined): Promise<{ cars: CarEntity[]; maxPages: number; }> => {
     try {
+        console.log('orderby getterd', orderBy)
         const relativeUrl = "/filter-cars/";
         const body = {
             brand: brand,
@@ -20,7 +21,9 @@ const SearchCarApiImpl = async (page: number, search: string, brand: string | un
             colors: colorId ? [] : undefined,
             fuel_type: fuelId,
             transmission: transmission,
-            orderBy: orderBy != undefined ? OrderByImplDto.toJson(orderBy) : undefined,
+            search_word: search,
+            page: page,
+            orderBy: orderBy?.value != undefined ? (orderBy.value?.desc ? "desc" : "asc") : undefined,
         }
         console.log('body', body);
         const response = await HostApi.post(relativeUrl, body);
