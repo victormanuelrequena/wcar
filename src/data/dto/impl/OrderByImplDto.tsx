@@ -14,7 +14,7 @@ const fromJson = (json: any): OrderByEntity => {
 const toJson = (orderBy: OrderByEntity): any => {
     return {
         field: orderBy.value.keyname,
-        order: orderBy.value.desc ? "desc" : "asc",
+        order: orderBy.value.desc === undefined ? undefined : (orderBy.value.desc ? "desc" : "asc"),
     }
 }
 
