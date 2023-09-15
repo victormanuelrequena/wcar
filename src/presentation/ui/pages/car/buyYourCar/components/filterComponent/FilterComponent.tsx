@@ -29,6 +29,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
     const brandIdValue = watch('brand_id');
     const modelValue = watch('model');
     const plateNumberValue = watch('plate_number');
+    const typeVehicleIdValue = watch('type_vehcile_id');
 
     const _handleChangeBrand = async (brandId: string) => {
         if (brandId == brandIdValue) setValue('brand_id', undefined);
@@ -109,8 +110,11 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
         <div className="my-3">
             <SelectOpenComponent title="Tipo">
                 <div className="form-check px-0">
-                    {typeVehicles.map((typeVehicle, index) => <div key={index} className="form-check my-2">
-                        <input className="form-check-input" type="checkbox" value={typeVehicle.id} {...register('type_vehcile_id')} />
+                    {typeVehicles.map((typeVehicle, index) => <div key={index} className="form-check my-2" >
+                        <input className="form-check-input" type="radio"
+                            value={typeVehicle.id}
+                            {...register('type_vehcile_id')}
+                        />
                         <label className="form-check-label">
                             <img src={typeVehicle.photo} alt={typeVehicle.name} width={25} className="me-2" />
                             {typeVehicle.name} <span className="text_gray">({typeVehicle.count ?? 0})</span>
@@ -124,7 +128,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
             <SelectOpenComponent title="Transmisión">
                 <div className="form-check px-0">
                     <div className="form-check my-2">
-                        <input className="form-check-input" type="checkbox" value={TransmissionCar.AUTOMATIC} {...register('type_transmission')} />
+                        <input className="form-check-input" type="radio" checked={watch("type_transmission") == TransmissionCar.AUTOMATIC} value={TransmissionCar.AUTOMATIC} {...register('type_transmission')} />
                         <label className="form-check-label">
                             Automática
                         </label>
@@ -132,7 +136,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                 </div>
                 <div className="form-check px-0">
                     <div className="form-check my-2">
-                        <input className="form-check-input" type="checkbox" value={TransmissionCar.MANUAL} {...register('type_transmission')} />
+                        <input className="form-check-input" type="radio" checked={watch("type_transmission") == TransmissionCar.MANUAL} value={TransmissionCar.MANUAL} {...register('type_transmission')} />
                         <label className="form-check-label">
                             Manual
                         </label>
@@ -145,7 +149,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
             <SelectOpenComponent title="Disponibilidad">
                 <div className="form-check px-0">
                     {tags.map((tag, index) => <div key={index} className="form-check my-2">
-                        <input className="form-check-input" type="checkbox" value={tag.id} {...register('tag_id')} />
+                        <input className="form-check-input" type="radio" value={tag.id} {...register('tag_id')} />
                         <label className="form-check-label">
                             {tag.name}
                         </label>
@@ -163,7 +167,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
             <SelectOpenComponent title="Combustible">
                 <div className="form-check px-0">
                     {typeOfFuels.map((typeOfFuel, index) => <div key={index} className="form-check my-2">
-                        <input className="form-check-input" type="checkbox" value={typeOfFuel.id} {...register('type_fuel_id')} />
+                        <input className="form-check-input" type="radio" value={typeOfFuel.id} {...register('type_fuel_id')} />
                         <label className="form-check-label">
                             {typeOfFuel.name}
                         </label>

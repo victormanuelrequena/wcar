@@ -19,6 +19,14 @@ import { useParams } from 'react-router-dom';
 import TypeVehicleContext from '../../../../../domain/providers/typeVehicle/TypeVehicleContext';
 import TypeVehicleContextType from '../../../../../domain/providers/typeVehicle/TypeVehicleContextType';
 import { Helmet } from 'react-helmet-async';
+import BrandContext from '../../../../../domain/providers/brand/BrandContext';
+import BrandContextType from '../../../../../domain/providers/brand/BrandContextType';
+import ColorContext from '../../../../../domain/providers/color/ColorContext';
+import ColorContextType from '../../../../../domain/providers/color/ColorContextType';
+import TagContext from '../../../../../domain/providers/tag/TagContext';
+import TagContextType from '../../../../../domain/providers/tag/TagContextType';
+import TypeOfFuelContext from '../../../../../domain/providers/typeOfFuel/TypeOfFuelContext';
+import TypeOfFuelContextType from '../../../../../domain/providers/typeOfFuel/TypeOfFuelContextType';
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -46,9 +54,10 @@ const orderingOptions: OrderByEntity[] = [
 
 const BuyYourCarPage: FC<{}> = () => {
     const formFunctions = useForm()
-    const { register, handleSubmit, formState: { errors }, reset, setValue, watch } = formFunctions;
+    const { register, handleSubmit, formState: { errors }, reset, setValue, watch, getValues } = formFunctions;
     const { typeVehicles } = useContext(TypeVehicleContext) as TypeVehicleContextType;
     const { typeVehicleName } = useParams();
+    const { brands } = useContext(BrandContext) as BrandContextType;
 
     const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
     const [page, setPage] = useState<number>(1);
@@ -56,22 +65,73 @@ const BuyYourCarPage: FC<{}> = () => {
     const [openOrderBy, setOpenOrderBy] = useState(false);
     const [maxPages, setMaxPages] = useState<number>(1);
 
+
+    const brand = brands.find(brand => brand.id === watch('brand_id'));
+    const model = watch('model');
+    const year = watch('year');
+    const price = watch('price');
+    const typeVehicleId = watch('type_vehcile_id');
+    const transmission = watch('type_transmission');
+    const tagId = watch('tag_id');
+    const rangeMileage = watch('km');
+    const fuelId = watch('type_fuel_id');
+    const colorId = watch('color_id');
+    const plateNumber = watch('plate_number');
+
+    //searcher filters
+    useEffect(() => {
+        setPage(1);
+        _handleSearch();
+    }, [brand, model, year, typeVehicleId, transmission, tagId, fuelId, colorId, plateNumber, page])
+
+    const [isTimerActive, setIsTimerActive] = useState(false);
+    let timer: NodeJS.Timeout | null = null; // Inicializa el temporizador
+
+    useEffect(() => {
+        if (isTimerActive) {
+            timer = setTimeout(() => {
+                console.log('Temporizador finalizado');
+                _handleSearch(); // Llama a la función _handleSearch después del tiempo especificado
+            }, 500);
+        } else if (timer !== null) {
+            clearTimeout(timer); // Detener el temporizador si isTimerActive cambia a false
+        }
+
+        return () => {
+            if (timer !== null) {
+                clearTimeout(timer); // Limpia el temporizador si el componente se desmonta o isTimerActive cambia
+            }
+        };
+    }, [isTimerActive]);
+
+
+
+    const handleToggleTimer = () => {
+        setIsTimerActive((prevState) => !prevState); // Iniciar o reiniciar el temporizador
+    };
+
+    useEffect(() => {
+        handleToggleTimer();
+    }, [price?.min, price?.max, rangeMileage?.min, rangeMileage?.max,])
+
+
     const _handleChangeTypeVehicle = () => {
         setValue('type_vehcile_id', typeVehicles.find((typeVehicle) => typeVehicle.name == typeVehicleName)?.id);
-        setPage(1);
     }
+
+    useEffect(() => {
+        _handleChangeTypeVehicle();
+    }, [typeVehicleName])
 
     const _handleSearch = async () => {
         try {
             const data = formFunctions.getValues();
-            console.log('get data', data);
-            console.log('data', data);
             window.scrollTo({
                 top: 0,
                 behavior: 'auto'
             });
             setCars(undefined);
-            const response = await di.get<SearchCarsUseCase>(SearchCarsUseCaseName).call(page, data.search, data.brand_id, data.year, data.price, data.type_vehcile_id, data.type_transmission, data.tag_id, data.km, data.type_fuel_id, data.color_id, data.plate_number, data.orderBy);
+            const response = await di.get<SearchCarsUseCase>(SearchCarsUseCaseName).call(page, data.search, data.brand_id, data.model, data.year, data.price, data.type_vehcile_id, data.type_transmission, data.tag_id, data.km, data.type_fuel_id, data.color_id, data.plate_number, data.orderBy);
             setCars(response.cars);
             setMaxPages(response.maxPages);
         } catch (error) {
@@ -94,7 +154,6 @@ const BuyYourCarPage: FC<{}> = () => {
     const _handleClearFilters = async () => {
         reset();
         setPage(1);
-        _handleSearch();
     }
 
     const _handlePickOrderBy = (orderByValue: OrderByEntity) => {
@@ -102,21 +161,7 @@ const BuyYourCarPage: FC<{}> = () => {
         if (watch('orderBy') == orderByValue) return;
         setValue('orderBy', orderByValue);
         setPage(1);
-        _handleSearch();
     }
-
-    useEffect(() => {
-        // _handleSearch();
-    }, [page]);
-
-    useEffect(() => {
-
-    }, []);
-
-    useEffect(() => {
-        _handleChangeTypeVehicle();
-        _handleSearch();
-    }, [typeVehicleName]);
 
 
     return <Layout>

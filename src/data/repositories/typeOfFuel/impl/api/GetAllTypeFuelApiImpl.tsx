@@ -4,15 +4,15 @@ const GetAllTypeFuelApiImpl = async (): Promise<TypeOfFuelEntity[]> => {
     try {
         return [
             {
-                id: '1',
+                id: 'Gasolina',
                 name: 'Gasolina',
             },
             {
-                id: '2',
+                id: 'Diesel',
                 name: 'Diesel',
             },
             {
-                id: '3',
+                id: 'Hibrido',
                 name: 'Hibrido',
             }
         ]

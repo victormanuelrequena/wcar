@@ -1,5 +1,5 @@
 import './DeleteFilterComponentStyles.scss';
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect } from "react";
 import DeleteFilterComponentProps from "./DeleteFilterComponentProps";
 import BrandContext from "../../../../../../../domain/providers/brand/BrandContext";
 import BrandContextType from "../../../../../../../domain/providers/brand/BrandContextType";
@@ -29,7 +29,7 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
     const model = watch('model');
     const year = watch('year');
     const price = watch('price');
-    const type = typeVehicles.find(type => type.id === watch('type_vehcile_id'));
+    const type = typeVehicles.find(type => type.id == watch('type_vehcile_id'));
     const transmission = watch('type_transmission');
     const tag = tags.find(tag => tag.id === watch('tag_id'));
     const rangeMileage = watch('km');
@@ -40,19 +40,19 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
     const _handleRemoveBrand = () => {
         setValue('brand_id', undefined);
         setValue('model', undefined);
-        onChange();
-    }
-    const _handleRemoveModel = () => { setValue('model', undefined); onChange(); }
 
-    const _handleRemoveYear = () => { setValue('year', undefined); onChange(); }
-    const _handleRemovePrice = () => { setValue('price', undefined); onChange(); }
-    const _handleRemoveType = () => { setValue('type_vehcile_id', undefined); onChange(); }
-    const _handleRemoveTransmission = () => { setValue('type_transmission', undefined); onChange(); }
-    const _handleRemoveTag = () => { setValue('tag_id', undefined); onChange(); }
-    const _handleRemoveRangeMileage = () => { setValue('km', undefined); onChange(); }
-    const _handleRemoveFuel = () => { setValue('type_fuel_id', undefined); onChange(); }
-    const _handleRemoveColor = () => { setValue('color_id', undefined); onChange(); }
-    const _handleRemovePlateNumber = () => { setValue('plate_number', undefined); onChange(); }
+    }
+    const _handleRemoveModel = () => { setValue('model', undefined); }
+
+    const _handleRemoveYear = () => { setValue('year', undefined); }
+    const _handleRemovePrice = () => { setValue('price', undefined); }
+    const _handleRemoveType = () => { setValue('type_vehcile_id', undefined); }
+    const _handleRemoveTransmission = () => { setValue('type_transmission', undefined); }
+    const _handleRemoveTag = () => { setValue('tag_id', undefined); }
+    const _handleRemoveRangeMileage = () => { setValue('km', undefined); }
+    const _handleRemoveFuel = () => { setValue('type_fuel_id', undefined); }
+    const _handleRemoveColor = () => { setValue('color_id', undefined); }
+    const _handleRemovePlateNumber = () => { setValue('plate_number', undefined); }
 
     return <div className="delete_filter_component">
         {brand && <div className="delete_filter_item">

@@ -83,6 +83,7 @@ const _testCar: CarEntity = {
 @injectable()
 class CarRepositoryTest implements CarRepository {
     search(page: number, search: string, brand: string | undefined,
+        modelId: string | undefined,
         year: string | undefined,
         price: { min: number, max: number } | undefined,
         type: string, transmission: TransmissionCar | undefined,

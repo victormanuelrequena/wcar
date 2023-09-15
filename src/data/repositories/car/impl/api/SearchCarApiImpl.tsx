@@ -1,15 +1,15 @@
 import CarEntity, { TransmissionCar } from "../../../../../domain/entities/CarEntity";
 import OrderByEntity from "../../../../../domain/entities/OrderByEntity";
 import CarImplDto from "../../../../dto/impl/CarImplDto";
-import OrderByImplDto from "../../../../dto/impl/OrderByImplDto";
 import HostApi from "../../../../settings/HostApi";
 
-const SearchCarApiImpl = async (page: number, search: string, brand: string | undefined, year: string | undefined, price: { min: number; max: number; } | undefined, type: string, transmission: TransmissionCar | undefined, tag: string | undefined, km: { min: number; max: number; } | undefined, fuelId: string | undefined, colorId: string | undefined, plateNumber: string | undefined, orderBy: OrderByEntity | undefined): Promise<{ cars: CarEntity[]; maxPages: number; }> => {
+const SearchCarApiImpl = async (page: number, search: string, brand: string | undefined, modelId: string | undefined, year: string | undefined, price: { min: number; max: number; } | undefined, type: string, transmission: TransmissionCar | undefined, tag: string | undefined, km: { min: number; max: number; } | undefined, fuelId: string | undefined, colorId: string | undefined, plateNumber: string | undefined, orderBy: OrderByEntity | undefined): Promise<{ cars: CarEntity[]; maxPages: number; }> => {
     try {
         console.log('orderby getterd', orderBy)
         const relativeUrl = "/filter-cars/";
         const body = {
             brand: brand,
+            model: modelId,
             tag: tag,
             price_from: price?.min ?? undefined,
             price_to: price?.max ?? undefined,
@@ -18,18 +18,19 @@ const SearchCarApiImpl = async (page: number, search: string, brand: string | un
             mileage_from: km?.min ?? undefined,
             mileage_to: km?.max ?? undefined,
             body_type: type,
-            colors: colorId ? [] : undefined,
+            colors: colorId ? [colorId] : [],
             fuel_type: fuelId,
-            transmission: transmission,
+            transmission: transmission == TransmissionCar.AUTOMATIC ? 1 : 0,
             search_word: search,
+            plate_number: plateNumber,
             page: page,
             orderBy: orderBy?.value != undefined ? (orderBy.value?.desc ? "desc" : "asc") : undefined,
         }
         console.log('body', body);
         const response = await HostApi.post(relativeUrl, body);
         return {
-            cars: response.data.map((car: any) => CarImplDto.fromJson(car)),
-            maxPages: response.maxPages
+            cars: response.results.map((car: any) => CarImplDto.fromJson(car)),
+            maxPages: response.num_pages
         }
     } catch (error) {
         return {

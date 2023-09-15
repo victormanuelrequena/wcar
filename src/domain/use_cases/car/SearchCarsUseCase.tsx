@@ -18,14 +18,15 @@ export default class SearchCarsUseCase {
         this._carRepository = _.carRepository;
     }
     async call(page: number, search: string, brand: string | undefined,
+        modelId: string | undefined,
         year: string | undefined,
         price: { min: number, max: number } | undefined,
         type: string, transmission: TransmissionCar | undefined,
         tag: string | undefined, km: { min: number, max: number } | undefined,
-        fuelId: string | undefined, colorId: string| undefined,
+        fuelId: string | undefined, colorId: string | undefined,
         plateNumber: string | undefined, orderBy: OrderByEntity | undefined,
-        ): Promise<Response> {
-        return await this._carRepository.search(page, search, brand, year, price, type, transmission, tag, km, fuelId, colorId, plateNumber, orderBy);
+    ): Promise<Response> {
+        return await this._carRepository.search(page, search, brand, modelId, year, price, type, transmission, tag, km, fuelId, colorId, plateNumber, orderBy);
     }
 }
 
