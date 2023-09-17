@@ -1,13 +1,12 @@
 import CommentEntity from "../../../../../domain/entities/CommentEntity";
-import HostApi from "../../../../settings/HostApi";
+import CommentImplDto from "../../../../dto/impl/CommentImplDto";
 
-//TODO API
 const GetAllApiImpl = async (): Promise<CommentEntity[]> => {
-    const relativeUrl = '';
-    return [];
+    const relativeUrl = 'https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJNxNRbCqbP44RoToUttvg5Nc&fields=reviews&key=AIzaSyA9lFZJE4wQ3Y2cVU3F8qP-e5ngOpkOLOc&reviews_no_translations=true';
     try {
-        const response = await HostApi.get(relativeUrl);
-        return response;
+        const response = await fetch(relativeUrl).then((response) => response.json());
+        const parsed =  response.result.reviews.map((comment: any) => CommentImplDto.fromJson(comment));
+        return parsed.filter((comment: CommentEntity) => comment.calification >3);
     } catch (error) {
         return [];
     }

@@ -24,6 +24,8 @@ const CommenstLineComponent: FC<{}> = () => {
         _getComments();
     }, [])
 
+    if (comments.length <= 0) return null;
+
     return <section className='comments_line_component'>
         <img src='assets/recs/lines_box_large.png' className='position-absolute start-0 allies_say_lines_img h-100' />
         <div className='container'>
@@ -71,13 +73,13 @@ const CommenstLineComponent: FC<{}> = () => {
                                         <div className="flex-grow-1 d-flex flex-column px-2">
                                             <strong>{comment.name}</strong>
                                             <div className="d-flex align-items-star">
-                                                <div className="me-1"><strong>{comment.calification}</strong></div>
+                                                <div className="me-1"><strong>{comment.calification}.0</strong></div>
                                                 <StarRatingComponent rating={comment.calification} />
                                             </div>
                                         </div>
                                         <Icons.Quote />
                                     </div>
-                                    <p>{comment.content}</p>
+                                    <p>{comment.content.length > 300 ? `${comment.content.substring(0, 300)}...` : comment.content}</p>
                                     <p className="text_gray">
                                         {DateParse.dateToMonthDayYear(comment.date)}
                                     </p>

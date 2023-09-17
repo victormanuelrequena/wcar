@@ -4,12 +4,12 @@ import DateParse from "../../../presentation/utils/DateParse";
 //TODO CREATE
 const fromJson = (json: any): CommentEntity => {
     return {
-        id: json.id,
-        photoUrl: json.photoUrl,
-        name: json.name,
-        calification: json.calification,
-        content: json.content,
-        date: DateParse.dateFromString(json.date),
+        id: json.author_url,
+        photoUrl: json.profile_photo_url,
+        name: json.author_name,
+        calification: json.rating,
+        content: json.text,
+        date: new Date(json.time * 1000),
     }
 }
 

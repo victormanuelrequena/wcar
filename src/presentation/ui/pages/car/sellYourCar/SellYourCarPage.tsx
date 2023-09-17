@@ -56,9 +56,6 @@ const SellYourCarPage: FC<{}> = () => {
                         </div>
                     </div>
                 </div>
-                <div className="contact_fixed">
-                    <a href="" className="btn btn_cyan">Contacta un asesor</a>
-                </div>
             </section>
             <section className='banner_section'>
                 <div className='d-flex flex-row w-100 h-100'>
