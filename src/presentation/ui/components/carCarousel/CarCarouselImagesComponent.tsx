@@ -1,5 +1,5 @@
 import './CarCarouselImagesComponentStyles.scss';
-import { FC, useRef, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import CarCarouselImagesComponentProps from './CarCarouselImagesComponentProps';
 import Carousel from 'react-multi-carousel';
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
@@ -10,15 +10,13 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
     const carouselRef = useRef<Carousel>(null);
     const imgContainerRef = useRef<HTMLDivElement>(null);
     const [postionMouse, setPositionMouse] = useState<{ x: number, y: number } | null>(null);
-    const rect = imgContainerRef.current?.getBoundingClientRect();
+    const [rect, setRect] = useState<DOMRect | null>(null);
 
     const _onChange = (slide: number) => {
         setImageShowing(slide);
     }
 
     const _handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        console.log("call to move mouse", e.clientX, e.clientY);
-        console.log("inner width", window.innerWidth, "imgContainerRef", imgContainerRef.current, "rect", rect);
         if (window.innerWidth < 768 || imgContainerRef.current == null || rect == null) {
             setPositionMouse(null);
             return;
@@ -76,6 +74,12 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
     const _handlePrevImage = () => {
         if (imageShowing > 0) carouselRef.current!.goToSlide(imageShowing - 1);
     }
+
+    useEffect(() => {
+        if (imgContainerRef.current) {
+            setRect(imgContainerRef.current.getBoundingClientRect());
+        }
+    }, [imgContainerRef.current]);
 
     return <div className="car_carousel_images_component">
         <div className="zoom_wrapper"
