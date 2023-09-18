@@ -18,6 +18,7 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
 
     const _handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         console.log("call to move mouse", e.clientX, e.clientY);
+        console.log("inner width", window.innerWidth, "imgContainerRef", imgContainerRef.current, "rect", rect);
         if (window.innerWidth < 768 || imgContainerRef.current == null || rect == null) {
             setPositionMouse(null);
             return;
