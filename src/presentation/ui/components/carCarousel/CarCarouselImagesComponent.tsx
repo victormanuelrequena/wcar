@@ -4,6 +4,7 @@ import CarCarouselImagesComponentProps from './CarCarouselImagesComponentProps';
 import Carousel from 'react-multi-carousel';
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
 import { set } from 'react-hook-form';
+import ZoomedCarComponent from '../../pages/car/detailedCar/component/zommedCar/ZoomedCarComponent';
 
 const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ images }) => {
     const [imageShowing, setImageShowing] = useState<number>(0);
@@ -11,20 +12,24 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
     const imgContainerRef = useRef<HTMLDivElement>(null);
     const [postionMouse, setPositionMouse] = useState<{ x: number, y: number } | null>(null);
     const [rect, setRect] = useState<DOMRect | null>(null);
+    const [openZoom, setOpenZoom] = useState<boolean>(false);
 
     const _onChange = (slide: number) => {
         setImageShowing(slide);
     }
 
     const _handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        console.log(rect, window.innerWidth, imgContainerRef.current);
         if (window.innerWidth < 768 || imgContainerRef.current == null || rect == null) {
             setPositionMouse(null);
+            // setPositionMouse({ x: 0, y: 0 });
             return;
         }
         let x = e.clientX - rect.left;
         let y = e.clientY - rect.top;
         if (x < 0 || y < 0 || x > rect.width - 1 || y > rect.height - 1) {
             setPositionMouse(null);
+            // setPositionMouse({ x: 0, y: 0 });
         } else {
             x = x > rect.height * .2 ? x : rect.height * .2;
             x = x < rect.width - (rect.height * .2) ? x : rect.width - (rect.height * .2);
@@ -75,6 +80,8 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
         if (imageShowing > 0) carouselRef.current!.goToSlide(imageShowing - 1);
     }
 
+    const _showCarousel = () => setOpenZoom(true);
+
     useEffect(() => {
         if (imgContainerRef.current) {
             setRect(imgContainerRef.current.getBoundingClientRect());
@@ -82,13 +89,36 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
     }, [imgContainerRef.current]);
 
     return <div className="car_carousel_images_component">
-        <div className="zoom_wrapper"
-            onMouseOut={() => setPositionMouse(null)}
-            onMouseMove={_handleMouseMove}
+        {openZoom && <ZoomedCarComponent
+            images={images}
+            close={() => setOpenZoom(false)}
+            isOpen={openZoom}
+            changeImage={_handleGoToImage}
+            currentImage={imageShowing} />}
+        <div className="container_image_showing"
+            ref={imgContainerRef}
         >
-            <div className="container_image_showing"
-                ref={imgContainerRef}
-            >
+            <div className="position-relative">
+                <div className="zoom_wrapper"
+                    onMouseOut={() => setPositionMouse(null)}
+                    onMouseMove={_handleMouseMove}
+                    onClick={() => setOpenZoom(true)}
+                >
+                    {postionMouse && <div className="zoom_loop"
+                        style={{ left: postionMouse?.x, top: postionMouse?.y }}
+                    ><div className="zoom_box"></div> </div>}
+
+                    {postionMouse && rect && <div className="zoom_shower"> <img src={images[imageShowing]}
+                        style={{
+                            marginLeft: _calculateLeftMarginZoom(),
+                            marginTop: _calculateTopMarginZoom(),
+                            width: rect.width * 2.5,
+                            height: rect.height * 2.5
+                        }}
+                        alt="" /> </div>}
+
+
+                </div>
                 <Carousel
                     ref={carouselRef}
                     arrows={false}
@@ -102,32 +132,20 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                             slidesToSlide: 1, // optional, default to 1.
                         },
                     }} beforeChange={(slide, _) => _onChange(slide)}>
-                    {images.map((image, index) => <div className="carousel_thumbail" key={index} >
+                    {images.map((image, index) => <div className="carousel_thumbail" key={index} onClick={() => setOpenZoom(true)}>
                         <img src={image} alt="" className='img-fluid' />
                     </div>)}
                 </Carousel>
+            </div>
 
-                <div className="arrows_container">
-                    <div className={`arrow_slider previous me-1 ${imageShowing <= 0 ? 'disabled' : ''}`}>
-                        <AiOutlineArrowLeft onClick={_handlePrevImage} />
-                    </div>
-                    <div className={`arrow_slider next ms-1 ${imageShowing >= images.length - 1 ? 'disabled' : ''}`}>
-                        <AiOutlineArrowRight onClick={_handleNextImage} />
-                    </div>
+            <div className="arrows_container">
+                <div className={`arrow_slider previous me-1 ${imageShowing <= 0 ? 'disabled' : ''}`}>
+                    <AiOutlineArrowLeft onClick={_handlePrevImage} />
+                </div>
+                <div className={`arrow_slider next ms-1 ${imageShowing >= images.length - 1 ? 'disabled' : ''}`}>
+                    <AiOutlineArrowRight onClick={_handleNextImage} />
                 </div>
             </div>
-            {postionMouse && <div className="zoom_loop"
-                style={{ left: postionMouse?.x, top: postionMouse?.y }}
-            ><div className="zoom_box"></div> </div>}
-
-            {postionMouse && rect && <div className="zoom_shower"> <img src={images[imageShowing]}
-                style={{
-                    marginLeft: _calculateLeftMarginZoom(),
-                    marginTop: _calculateTopMarginZoom(),
-                    width: rect.width * 2.5,
-                    height: rect.height * 2.5
-                }}
-                alt="" /> </div>}
 
         </div>
 

@@ -1,7 +1,12 @@
 .car_carousel_images_component {
+    user-select: none;
     .zoom_wrapper {
         cursor: zoom-in;
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         z-index: 100;
 
         .zoom_loop,
@@ -47,6 +52,7 @@
         position: relative;
 
         .arrows_container {
+            z-index: 101;
             position: absolute;
             right: 1em;
             bottom: 1em;
