@@ -175,7 +175,7 @@ const BuyYourCarPage: FC<{}> = () => {
                 <div className="w-100 car_search bg_search py-3">
                     <div className="container d-flex flex-column flex-md-row px-md-5 justify-content-between align-items-center">
                         <div className="input_search">
-                            <img src="/assets/icons/search.svg" className='text_orange' alt="" />
+                            <img src="/assets/icons/search.svg" className='text_orange' alt="Wcar" title="Wcar" />
                             <input type="text" placeholder='Buscar por marca, modelo, color...' {...register('search')} />
                         </div>
                         <div className="order_by_container my-3 my-md-0 d-none d-md-block">
@@ -209,7 +209,7 @@ const BuyYourCarPage: FC<{}> = () => {
                             <div className="d-none d-md-flex justify-content-between">
                                 {!openFilters && <div className='mt-1'>
                                     <div className="btn btn_light me-3 mt-2" onClick={() => setOpenFilters(true)}>
-                                        <img src="/assets/icons/filter.svg" alt="" />
+                                        <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
                                         <span className="ms-2">
                                             Filtrar
                                         </span>
@@ -229,7 +229,7 @@ const BuyYourCarPage: FC<{}> = () => {
                             <div className="d-block d-md-none justify-content-between">
                                 {!openFilters && <div className='mt-1 d-flex justify-content-between'>
                                     <div className="btn btn_light me-3 mt-2" onClick={() => setOpenFilters(true)}>
-                                        <img src="/assets/icons/filter.svg" alt="" />
+                                        <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
                                         <span className="ms-2">
                                             Filtrar
                                         </span>

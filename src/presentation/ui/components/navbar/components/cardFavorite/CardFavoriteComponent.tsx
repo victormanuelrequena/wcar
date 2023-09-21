@@ -13,7 +13,7 @@ const CardFavoriteComponent: FC<CardFavoriteComponentProps> = ({ }) => {
     return <div className="card_favorite_component">
         {favoriteCars.map((favoriteCar, index) => <Link to={routes.detailedCar.relativePath + '/' + favoriteCar.id} className="car_item d-flex" key={index}>
             <div className="car_image d-flex justify-content-center align-items-center">
-                <img src={favoriteCar.photoUrl} alt="" />
+                <img src={favoriteCar.photoUrl} alt="Wcar" title="Wcar" />
             </div>
             <div className="d-flex flex-column flex-grow-1 ms-3">
                 <strong>{favoriteCar.name}</strong>

@@ -40,7 +40,7 @@ const AlliesLineComponent: FC<{}> = () => {
                 },
             }}>
                 {allies.map((ally, index) => <div className="w-100 d-flex align-items-center justify-content-center p-3" key={index} >
-                    <img src={ally.url_image} alt={`logo ${ally.id}`} className="img-fluid" />
+                    <img src={ally.url_image} alt={`logo ${ally.id}`} title={`logo ${ally.id}`} className="img-fluid" />
                 </div>)}
             </SliderComponent>
 

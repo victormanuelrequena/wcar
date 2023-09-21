@@ -78,15 +78,15 @@ const DetailedCarPage: FC<{}> = () => {
                                         <h1 className="name-car-detail">{capitalizeFirstLetters(car.name)}</h1>
                                         <div className="row" style={{ fontSize: '.9em' }}>
                                             <div className="col-4 d-flex align-items-center text_gray p-0">
-                                                <img src="/assets/icons/year.svg" alt="" className="img-fluid img_icon  me-2 ms-3" />
+                                                <img src="/assets/icons/year.svg" alt="Wcar" title="Wcar" className="img-fluid img_icon  me-2 ms-3" />
                                                 <span>{car.year}</span>
                                             </div>
                                             <div className="col-4 d-flex align-items-center text_gray p-0">
-                                                <img src="/assets/icons/odometer.svg" alt="" className="img-fluid img_icon me-2" />
+                                                <img src="/assets/icons/odometer.svg" alt="Wcar" title="Wcar" className="img-fluid img_icon me-2" />
                                                 <span className='text_nowrap'>{car.odometer} Km.</span>
                                             </div>
                                             <div className="col-4 d-flex align-items-center text_gray p-0">
-                                                <img src="/assets/icons/transmission.svg" alt="" className="img-fluid img_icon me-1" />
+                                                <img src="/assets/icons/transmission.svg" alt="Wcar" title="Wcar" className="img-fluid img_icon me-1" />
                                                 <span className='text_nowrap'>{car.transmission}</span>
                                             </div>
                                         </div>
@@ -121,7 +121,7 @@ const DetailedCarPage: FC<{}> = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-md-3 bg_black">
-                            <img src="/assets/recs/lines_box_large.png" alt="" className="h-100 img-fluid bg_img" />
+                            <img src="/assets/recs/lines_box_large.png" alt="Wcar" title="Wcar" className="h-100 img-fluid bg_img" />
                             <div className="d-flex flex-column align-items-center p-4">
                                 <div className="side side_top">
                                     <h3 className="text-white"><strong>Caracteristicas</strong><br />
@@ -138,56 +138,56 @@ const DetailedCarPage: FC<{}> = () => {
                                         <div className="row">
                                             <div className="col-6 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/star.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/star.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Marca:
                                                 </span>
                                                 <strong>{car.brand.name}</strong>
                                             </div>
                                             <div className="col-6 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/door.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/door.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Puertas:
                                                 </span>
                                                 <strong>{car.doors}</strong>
                                             </div>
                                             <div className="col-6 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/reference.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/reference.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Referencia:
                                                 </span>
                                                 <strong>{car.model}</strong>
                                             </div>
                                             <div className="col-6 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/color.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/color.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Color:
                                                 </span>
                                                 <strong>{car.color.name}</strong>
                                             </div>
                                             <div className="col-6 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/year.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/year.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Modelo:
                                                 </span>
                                                 <strong>{car.year}</strong>
                                             </div>
                                             <div className="col-6 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/motor.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/motor.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Motor:
                                                 </span>
                                                 <strong>{car.motor}</strong>
                                             </div>
                                             <div className="col-6 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/type_vehicle.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/type_vehicle.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Carroceria:
                                                 </span>
                                                 <strong>{car.type.name}</strong>
                                             </div>
                                             <div className="col-6 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/plate.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/plate.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Placa:
                                                 </span>
                                                 <strong>{car.plate}</strong>
@@ -198,28 +198,28 @@ const DetailedCarPage: FC<{}> = () => {
                                         <div className="row">
                                             <div className="col-12 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/transmission.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/transmission.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Transmisión:
                                                 </span>
                                                 <strong>{car.transmission}</strong>
                                             </div>
                                             <div className="col-12 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/combustible.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/combustible.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Combustible:
                                                 </span>
                                                 <strong>{car.typeOfFuel.name}</strong>
                                             </div>
                                             <div className="col-12 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/odometer.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/odometer.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Kilometraje:
                                                 </span>
                                                 <strong>{car.odometer}</strong>
                                             </div>
                                             <div className="col-12 my-3">
                                                 <span className='text_gray me-2'>
-                                                    <img src="/assets/icons/status.svg" className='img-fluid me-2' alt="" />
+                                                    <img src="/assets/icons/status.svg" className='img-fluid me-2' alt="Wcar" title="Wcar" />
                                                     Estado:
                                                 </span>
                                                 <strong>{car.status}</strong>

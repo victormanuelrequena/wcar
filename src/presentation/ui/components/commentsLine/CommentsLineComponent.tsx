@@ -71,7 +71,7 @@ const CommenstLineComponent: FC<{}> = () => {
                                 <div className="card-body">
                                     <div className="d-flex mb-3">
                                         <div>
-                                            <img src={comment.photoUrl} alt="" className=" img_rounded" />
+                                            <img src={comment.photoUrl} alt="Wcar" title="Wcar" className=" img_rounded" />
                                         </div>
                                         <div className="flex-grow-1 d-flex flex-column px-2">
                                             <strong>{comment.name}</strong>

@@ -9,8 +9,8 @@ const Error404Page: React.FC = () => {
         <Layout>
             <div className="bg_gray">
                 <div className="wrapper">
-                    <img src="/assets/pages/error404/wcar.svg" alt="" className="src_1" />
-                    <img src="/assets/pages/error404/rombos.svg" alt="" className="src_2 d-none d-md-block" />
+                    <img src="/assets/pages/error404/wcar.svg" alt="Wcar" title="Wcar" className="src_1" />
+                    <img src="/assets/pages/error404/rombos.svg" alt="Wcar" title="Wcar" className="src_2 d-none d-md-block" />
                     <div className="content">
                         <span className="text_404">4<span className="text_yellow">0</span>4</span>
                         <h1>Oops! Página no encontrada</h1>

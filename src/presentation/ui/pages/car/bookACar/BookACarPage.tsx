@@ -220,7 +220,7 @@ const BookACarPage: FC<{}> = () => {
                                                     required: true,
                                                 }))} />
                                                 <label className='flex-grow-1 mx-2'>Contra reembolso</label>
-                                                <img src="/assets/icons/store.svg" alt="" />
+                                                <img src="/assets/icons/store.svg" alt="Wcar" title="Wcar" />
                                             </div>
                                         </div>
                                     </div>
@@ -231,7 +231,7 @@ const BookACarPage: FC<{}> = () => {
                                                     required: true,
                                                 }))} />
                                                 <label className='flex-grow-1 mx-2'>Compras con tarjetas guardadas o saldo en Mercado Pago</label>
-                                                <img src="/assets/icons/mercado_pago.svg" alt="" />
+                                                <img src="/assets/icons/mercado_pago.svg" alt="Wcar" title="Wcar" />
                                             </div>
                                         </div>
                                     </div>
@@ -242,7 +242,7 @@ const BookACarPage: FC<{}> = () => {
                                                     required: true,
                                                 }))} />
                                                 <label className='flex-grow-1 mx-2'>Débito o crédito</label>
-                                                <img src="/assets/icons/credit_card.svg" alt="" />
+                                                <img src="/assets/icons/credit_card.svg" alt="Wcar" title="Wcar" />
                                             </div>
                                             <div className="container">
                                                 {typePayent === "credit_card" && <div className="row pb-3">
@@ -285,7 +285,7 @@ const BookACarPage: FC<{}> = () => {
                                                     required: true,
                                                 }))} />
                                                 <label className='flex-grow-1 mx-2'>Efectivo</label>
-                                                <img src="/assets/icons/money.svg" alt="" />
+                                                <img src="/assets/icons/money.svg" alt="Wcar" title="Wcar" />
                                             </div>
                                         </div>
                                     </div>
@@ -311,7 +311,7 @@ const BookACarPage: FC<{}> = () => {
                                 </div>
                                 <div className="row mt-3">
                                     <div className="col-12 col-md-5">
-                                        <img src={car.images.at(0)} alt="" className="img-fluid w-100 border_radius prev_image" />
+                                        <img src={car.images.at(0)} alt="Wcar" title="Wcar" className="img-fluid w-100 border_radius prev_image" />
                                     </div>
                                     <div className="col-12 col-md-7 d-flex flex-column justify-content-end pb-5">
                                         <h4 className="font_bold">

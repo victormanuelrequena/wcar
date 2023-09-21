@@ -77,7 +77,7 @@ const ServicesPage: FC = () => {
                         <h2 className="text_md_white text_bold">¿Cómo funciona nuestro proceso<span className="text_md_white text_light text_italic"> de financiación?</span></h2>
                     </div>
                 </div>
-                <img src="/assets/services/bg_services_financing_mobile.jpg" alt="" className="img-fluid w-100 d-block d-md-none" />
+                <img src="/assets/services/bg_services_financing_mobile.jpg" alt="Wcar" title="Wcar" className="img-fluid w-100 d-block d-md-none" />
                 <div className="container">
                     <div className="col-12 mt-3 d-flex d-md-none align-items-center">
                         <h2 className="text_black h1 text_bold text-center">¿Cómo funciona nuestro proceso de <span className="fw-light text_orange text_italic text-center">financiación?</span></h2>

@@ -24,7 +24,6 @@ const NavbarComponent = () => {
   };
 
   const _handleAccountButton = async () => {
-    console.log('clicked button', user);
     if (user == null) {
       navigate(routes.signIn.relativePath);
     } else {
@@ -37,7 +36,7 @@ const NavbarComponent = () => {
   return (
     <Navbar className="bg-transparent px-3 position-md-fixed w-100" expand="lg">
       <Link className="navbar-brand me-5" to={routes.home.relativePath}>
-        <img src="/assets/logos/horizontal.svg" alt="Wcar" height="50" /> {/* Add the logo image */}
+        <img src="/assets/logos/horizontal.svg" title="Wcar" alt="Wcar" height="50" /> {/* Add the logo image */}
       </Link>
 
       <Collapse navbar id="navbarNav" isOpen={isOpen}>
@@ -55,7 +54,7 @@ const NavbarComponent = () => {
               </div>
               <div className="dropdown_content">
                 {typeVehicles.map((typeVehicle, index) => <Link key={index} to={routes.buyYourCar.relativePath + '/' + typeVehicle.name} className="dropdown-item">
-                  <img src={typeVehicle.photo} alt={typeVehicle.name} className="me-2" width={24} />
+                  <img src={typeVehicle.photo} alt={typeVehicle.name} title={typeVehicle.name} className="me-2" width={24} />
                   {typeVehicle.name} <span className="text_gray">({typeVehicle.count ?? 0})</span>
                 </Link>)}
               </div>

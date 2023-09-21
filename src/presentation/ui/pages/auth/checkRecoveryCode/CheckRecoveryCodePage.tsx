@@ -34,7 +34,7 @@ const CheckRecoveryCodePage: FC<{}> = () => {
             <div className="container py-4">
                 <div className="row d-flex flex-md-row-reverse">
                     <div className="col-md-6 px-0 px-md-3 mb-4">
-                        <img src="/assets/pages/signIn/bg_sign_in.jpeg" className="img-fluid h-100 object_cover" alt="" />
+                        <img src="/assets/pages/signIn/bg_sign_in.jpeg" className="img-fluid h-100 object_cover" alt="Wcar" title="Wcar" />
                     </div>
                     <div className="col-md-1"></div>
                     <div className="col-md-4 content_page">

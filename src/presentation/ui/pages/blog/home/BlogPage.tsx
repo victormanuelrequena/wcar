@@ -36,7 +36,7 @@ const BlogPage: FC<{}> = () => {
         <Layout>
             {outstandingBlog && <section className="section_1 mt-5">
                 <div className="container">
-                    <img src={outstandingBlog.photoUrl} alt="" className="img-fluid objet_cover w-100" />
+                    <img src={outstandingBlog.photoUrl} alt="Wcar" title="Wcar" className="img-fluid objet_cover w-100" />
                     <div className="outstanding_blog ms-md-5">
                         <div className="row">
                             <Link to={routes.detailedBlog.relativePath + '/' + outstandingBlog.id} className="col-md-6 ms-md-5">
@@ -45,7 +45,7 @@ const BlogPage: FC<{}> = () => {
                                     <h1 className="my-2 text_bold">{outstandingBlog.title}</h1>
                                     <div className="d-flex align-items-center">
                                         <div className="flex-grow-1 blog_info_user">
-                                            <img src={outstandingBlog.user.photo} alt="" className="img_rounded me-2" />
+                                            <img src={outstandingBlog.user.photo} alt="Wcar" title="Wcar" className="img_rounded me-2" />
                                             <span className="text_gray text_bold">{outstandingBlog.user.name}</span>
                                             <span className="text_gray date">{DateParse.dateToMonthDayYear(outstandingBlog.createdAt)}</span>
                                         </div>

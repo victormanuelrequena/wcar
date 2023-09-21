@@ -21,7 +21,7 @@ const NotFoundComponent: FC<NotFoundComponentProps> = () => {
   return <div className="not_found_component  d-flex align-items-center">
     <div className="container py-5">
       <div className="row">
-        <div className="col-md-6"><img src="/assets/images/404-error.png" className='img-fluid' alt="" /></div>
+        <div className="col-md-6"><img src="/assets/images/404-error.png" className='img-fluid' alt="Wcar" title="Wcar" /></div>
         <div className="col-md-6 d-flex align-items-center">
           <div className="">
           <h3 className="text-left">

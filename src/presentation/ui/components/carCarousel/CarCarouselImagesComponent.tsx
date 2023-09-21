@@ -115,7 +115,7 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                             width: rect.width * 2.5,
                             height: rect.height * 2.5
                         }}
-                        alt="" /> </div>}
+                        alt="Wcar" title="Wcar" /> </div>}
 
 
                 </div>
@@ -133,7 +133,7 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                         },
                     }} beforeChange={(slide, _) => _onChange(slide)}>
                     {images.map((image, index) => <div className="carousel_thumbail" key={index} onClick={() => setOpenZoom(true)}>
-                        <img src={image} alt="" className='img-fluid' />
+                        <img src={image} alt="Wcar" title="Wcar" className='img-fluid' />
                     </div>)}
                 </Carousel>
             </div>
@@ -151,7 +151,7 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
 
         <div className="images_thumbails mt-3">
             {images.map((image, index) => <div className={`carousel_thumbail ${imageShowing == index && 'active'}`} key={index} >
-                <img src={image} alt="" onClick={() => _handleGoToImage(index)} />
+                <img src={image} alt="Wcar" title="Wcar" onClick={() => _handleGoToImage(index)} />
             </div>)}
         </div>
     </div >

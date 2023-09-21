@@ -138,7 +138,7 @@ const ContactPage: FC<{}> = () => {
                             </form>
                         </div>
                     </div>
-                    <img src="/assets/pages/contact/bg_contact.jpg" alt="" className="img_fluid d-md-none w-100" />
+                    <img src="/assets/pages/contact/bg_contact.jpg" alt="Wcar" title="Wcar" className="img_fluid d-md-none w-100" />
                 </div>
             </div>
         </Layout >

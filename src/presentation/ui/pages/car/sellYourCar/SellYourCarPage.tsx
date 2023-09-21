@@ -54,7 +54,7 @@ const SellYourCarPage: FC<{}> = () => {
             </section>
             <section className='banner_section'>
                 <div className='d-flex flex-row w-100 h-100'>
-                    <img src="/assets/sellCar/sell_img.png" alt="" className="img_banner_1 img-fluid" />
+                    <img src="/assets/sellCar/sell_img.png" alt="Wcar" title="Wcar" className="img_banner_1 img-fluid" />
                     <div className='banner_background'></div>
                 </div>
                 <div className="container banner_content position-absolute">
@@ -72,11 +72,11 @@ const SellYourCarPage: FC<{}> = () => {
                     <div className='cross_line' />
                 </div>
                 <div className='sell_car_container'>
-                    <img src="/assets/recs/lines_sell.png" alt="" className='lines_sell' />
-                    <img src='assets/recs/lines_zigs.png' alt='' className='lines_zigs_sell' />
+                    <img src="/assets/recs/lines_sell.png" alt="Wcar" title="Wcar" className='lines_sell' />
+                    <img src='assets/recs/lines_zigs.png' alt="Wcar" title="Wcar" className='lines_zigs_sell' />
                     <img src="/assets/sellCar/car_sell_tires_img.png" alt="Venta de carros usados" title='Venta de carros usados' className='img-fluid d-none d-md-inline-block' />
                     <div className='sell_car_description_container'>
-                        <img src="/assets/recs/lines_box.png" alt="" className='little_sell_box img-fluid' />
+                        <img src="/assets/recs/lines_box.png" alt="Wcar" title="Wcar" className='little_sell_box img-fluid' />
                         {/* venta */}
                         <div className='sell_title_container'>
                             <div className='side side_blue_neon' />
@@ -92,7 +92,7 @@ const SellYourCarPage: FC<{}> = () => {
                             <Link to={routes.contact.relativePath} className='btn btn_orange_transparent px-5 my-2'>Contacta a un asesor <Icons.ArrowCrossUp /></Link>
                         </div>
                     </div>
-                    <img src="/assets/sellCar/car_sell_tires_little.png" alt="" className='img-fluid d-inline-block d-md-none' />
+                    <img src="/assets/sellCar/car_sell_tires_little.png" alt="Wcar" title="Wcar" className='img-fluid d-inline-block d-md-none' />
                 </div>
             </section>
             <CommenstLineComponent />

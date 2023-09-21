@@ -48,7 +48,7 @@ const InsurancePage: FC<{}> = () => {
                     <div className="container py-5">
                         <div className="row">
                             <div className="col-md-3 d-flex justify-content-end">
-                                <img src="" alt="" className="img-fluid d-md-none" />
+                                <img src="" alt="Wcar" title="Wcar" className="img-fluid d-md-none" />
                             </div>
                             <div className="col-md-7">
                                 <div className="px-md-5 mx-md-4">
@@ -83,10 +83,10 @@ const InsurancePage: FC<{}> = () => {
                                     </Link>
                                 </div>
                             </div>
-                            <div className="col-md-2 d-none d-md-flex justify-content-end"><img src="" alt="" className="img-fluid" /></div>
+                            <div className="col-md-2 d-none d-md-flex justify-content-end"><img src="" alt="Wcar" title="Wcar" className="img-fluid" /></div>
                         </div>
-                        <img src="/assets/services/insurance_rec_01.svg" alt="" className="img-fluid rec_1" />
-                        <img src="/assets/services/insurance_rec_02.png" alt="" className="img-fluid rec_2" />
+                        <img src="/assets/services/insurance_rec_01.svg" alt="Wcar" title="Wcar" className="img-fluid rec_1" />
+                        <img src="/assets/services/insurance_rec_02.png" alt="Wcar" title="Wcar" className="img-fluid rec_2" />
                     </div>
                 </div>
                 <img src="/assets/services/bg_insurance_mobile.jpg" alt="Necesitas seguro del automóvil" title='Necesitas seguro del automóvil' className="img-fluid d-md-none w-100" />
