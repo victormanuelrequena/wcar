@@ -1,0 +1,23 @@
+.buy_or_sell_page {
+    section.section_1 {
+        .bg_black {
+            background: #00000080;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .img_section_1 {
+            position: absolute;
+            // right: -2em;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .banner_background {
+            height: auto;
+            width: 100%;
+        }
+    }
+}
