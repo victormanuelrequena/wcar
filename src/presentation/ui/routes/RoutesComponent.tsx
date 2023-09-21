@@ -124,8 +124,8 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
     },
     procedures: {
-        path: "/tramites",
-        relativePath: '/tramites',
+        path: "/tramites-de-vehiculos",
+        relativePath: '/tramites-de-vehiculos',
         component: ProceduresPage,
         auth: (user: UserEntity | undefined) => true,
     },
