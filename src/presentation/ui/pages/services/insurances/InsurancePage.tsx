@@ -43,7 +43,7 @@ const InsurancePage: FC<{}> = () => {
             <section className="section_1  bg_black">
                 <div className="position-relative">
                     <div className="sized_infinited c3 d-none d-md-block bg_1">
-                        <img src="/assets/services/bg_insurance.jpg" alt="" />
+                        <img src="/assets/services/bg_insurance.jpg" alt="Necesitas seguro del automóvil" title='Necesitas seguro del automóvil' />
                     </div>
                     <div className="container py-5">
                         <div className="row">
@@ -53,8 +53,8 @@ const InsurancePage: FC<{}> = () => {
                             <div className="col-md-7">
                                 <div className="px-md-5 mx-md-4">
                                     <div className="text-white">
-                                        <div className="left_line left_line_blue_neon">Seguros</div>
-                                        <h1 className='my-3'><span className="text_bold">¿Qué es un seguro todo riesgo en </span>Colombia?</h1>
+                                        <h1 className="left_line left_line_blue_neon" style={{fontSize: '1rem'}}>Seguros de vehiculos</h1>
+                                        <h2 className='my-3'><span className="text_bold">¿Qué es un seguro todo riesgo en </span>Colombia?</h2>
                                         <p>Es una cobertura para los daños por accidentes de tránsito, el hurto del carro, los daños ocasionados a bienes de terceros y la muerte o lesiones ocasionados a terceros.</p>
                                         <p>Coberturas principales:</p>
                                         <div className="row">
@@ -89,7 +89,7 @@ const InsurancePage: FC<{}> = () => {
                         <img src="/assets/services/insurance_rec_02.png" alt="" className="img-fluid rec_2" />
                     </div>
                 </div>
-                <img src="/assets/services/bg_insurance_mobile.jpg" alt="" className="img-fluid d-md-none w-100" />
+                <img src="/assets/services/bg_insurance_mobile.jpg" alt="Necesitas seguro del automóvil" title='Necesitas seguro del automóvil' className="img-fluid d-md-none w-100" />
 
             </section>
             <section className="section_2 py-5">
