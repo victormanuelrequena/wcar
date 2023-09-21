@@ -49,7 +49,7 @@ const SuccesfulPaymentPage: React.FC = () => {
                     <img src="/assets/pages/error404/wcar.svg" alt="" className="src_1" />
                     <img src="/assets/pages/error404/rombos.svg" alt="" className="src_2 d-none d-md-block" />
                     <div className="content">
-                        <img src="/assets/logos/horizontal.svg" width={400} className='logo' alt="" />
+                        <img src="/assets/logos/horizontal.svg" width={400} className='Wcar' alt="" />
                         <h1>PAGO EXITOSO</h1>
                         <span>¡Tu cita ha sido agendada y tu abono ha sido recibido!. Serás redirigido automáticamente al inicio en breve. </span>
                         <div>

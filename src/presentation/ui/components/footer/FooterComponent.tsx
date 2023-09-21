@@ -9,7 +9,7 @@ const FooterComponent: FC<{}> = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-3 col-lg-6 mb-4 mb-md-0">
-                        <img className="mb-3" src="/assets/logos/horizontal.svg" alt="" /><br />
+                        <img className="mb-3" src="/assets/logos/horizontal.svg" alt="Wcar" /><br />
                         <span>{SLOGAN}</span>
                     </div>
                     <div className="col-6 col-md-3 col-lg-2">

@@ -18,7 +18,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     return (
         <>
             <div className="contact_fixed">
-                <Link to={routes.contact.relativePath} className="btn btn_cyan">Contacta un asesor</Link>
+                <a href="https://wa.me/573018063302?text=¡Hola%21+Quiero+recibir+asesoría+�&type=phone_number&app_absent=0" className="btn btn_cyan">Contacta un asesor</a>
             </div>
             <ModalsComponent>
                 <NavbarComponent />

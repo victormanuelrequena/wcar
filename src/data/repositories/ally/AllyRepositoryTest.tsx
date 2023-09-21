@@ -4,6 +4,7 @@ import AllyEntity from "../../../domain/entities/AllyEntity";
 
 const _allyTest:AllyEntity = {
     url_image: "https://logodownload.org/wp-content/uploads/2014/04/mercedes-benz-logo-1-1.png",
+    id: "1",
 }
 @injectable()
 class AllyRepositoryTest implements AllyRepository{

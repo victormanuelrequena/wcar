@@ -11,7 +11,7 @@ const AlliesLineComponent: FC<{}> = () => {
         <div className="col-md-3 d-flex justify-content-center pt-5 py-md-5 bg_md_black align-items-center">
             <div className="side side_top text_black text_md_white">
                 <h2 className='d-flex flex-md-column justify-content-center align-items-center flex-row'>
-                    <b className='me-2 me-md-0'>Nuestros</b>
+                    <b className='me-2 me-md-0'>Nuestros </b>
                     <div className="text_wcar">Aliados</div>
                 </h2>
             </div>
@@ -40,7 +40,7 @@ const AlliesLineComponent: FC<{}> = () => {
                 },
             }}>
                 {allies.map((ally, index) => <div className="w-100 d-flex align-items-center justify-content-center p-3" key={index} >
-                    <img src={ally.url_image} alt="aliado" className="img-fluid" />
+                    <img src={ally.url_image} alt={`logo ${ally.id}`} className="img-fluid" />
                 </div>)}
             </SliderComponent>
 

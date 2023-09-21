@@ -1,6 +1,5 @@
 import './HomeStyles.scss';
-import { FC, useContext, useEffect, useState } from "react";
-import Carousel from 'react-multi-carousel';
+import { FC, useEffect, useState } from "react";
 import 'react-multi-carousel/lib/styles.css';
 import CardServiceComponent from './components/cardService/CardServiceComponent';
 import SliderComponent from '../../components/slider/SliderComponent';
@@ -13,6 +12,7 @@ import Icons from '../../assets/Icons';
 import AlliesLineComponent from '../../components/alliesLine/AlliesLineComponent';
 import { routes } from '../../routes/RoutesComponent';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 const HomePage: FC<{}> = () => {
 
 
@@ -32,20 +32,21 @@ const HomePage: FC<{}> = () => {
     }, []);
 
     return <Layout>
-
+        <Helmet>
+            <title>wcar #1 Más que vender te aconsejamos</title>
+            <meta name='description' content='WCAR - tu mejor opción para comprar y vender carros usados! Conocemos el mercado y te asesoramos para que encuentres el auto perfecto. ¡Contáctanos ahora!' />
+        </Helmet>
         <div className="home_page">
             <section className='first_section position-relative d-md-block d-flex flex-column-reverse'>
-                <img src="/assets/home/car_01.png" alt="" className="position-sm-absolute img_car_01" />
+                <img src="/assets/home/car_01.png" alt="Comprar con wcar" className="position-sm-absolute img_car_01" />
                 <div className="container py-5">
                     <div className="row">
                         <div className="col-12 col-sm-6">
                             <div className="d-flex flex-column">
-                                <div className="side side_top">wcar</div>
-                                <h1 className='mt-3'>
-                                    Más que <br />
-                                    vender te <br />
-                                    <span className="my-3 text_orange text_italic">aconsejamos</span>
-                                </h1>
+                                <h1 className="side side_top h5">wcar</h1>
+                                <h2 className='mt-3 h1'>
+                                    Más que <br />vender te <br /> <span className="my-3 text_orange text_italic">aconsejamos</span>
+                                </h2>
                                 <Link to={routes.buyYourCar.relativePath}>
                                     <button className="my-3 btn btn_orange btn_shadow btn_cut">COMPRA TU CARRO <Icons.ArrowCircle /> </button>
                                 </Link>
@@ -107,14 +108,14 @@ const HomePage: FC<{}> = () => {
                     <div className="row d-flex flex-column-reverse flex-md-row">
                         <div className="px-0 px-md-3 col-md-4 position-relative">
                             <div className='img_section'>
-                                <img src="./assets/home/car_03.png" alt="" className="object_cover" />
+                                <img src="./assets/home/car_03.png" alt="Vender con wcar" className="object_cover" />
                             </div>
                         </div>
                         <div className="col-md-8 position-relative text-white px-5 ps-md-5 px-md-3 py-5">
                             <img src="./assets/recs/lines_zigs.png" alt="" style={{ position: 'absolute', right: '5vw', top: '2vw' }} />
                             <img src="./assets/recs/lines_box.png" className='d-block d-md-none' alt="" style={{ position: 'absolute', right: 0, bottom: 0 }} />
                             <div className="line_left_orange">Nosotros</div>
-                            <h3>Razones para comprar y <br /><i>vender con wcar</i></h3>
+                            <h3 className='h3'><b>Razones para comprar y</b> <br /><i>vender con wcar</i></h3>
                             <div>
                                 <p>¡Somos el anti-dealer para que compres y vendas cero estrés! </p>
                                 <p>En este revolucionario ecosistema encuentras una consejería personalizada. Somos brutalmente transparentes, dando a conocer el estado real del vehículo y ofreciendo precios razonables con un alto estándar de calidad.</p>
@@ -130,7 +131,7 @@ const HomePage: FC<{}> = () => {
             <section className="forth_section">
                 <div className="d-flex justify-content-center py-5">
                     <div className="side side_top">
-                        <h3>Vehiculos <i className="text_orange">en venta</i></h3>
+                        <h2 className='h3'>Vehiculos <i className="text_orange">en venta</i></h2>
                     </div>
                 </div>
                 <div className="px-3 py-2 bg_gray">
