@@ -9,6 +9,8 @@ import di from '../../../../di/DependencyInjection';
 import ContactUseCase, { ContactUseCaseName } from '../../../../domain/use_cases/contact/ContactUseCase';
 import ModalsContext from '../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../domain/providers/modal/ModalsContextType';
+import { routes } from '../../routes/RoutesComponent';
+import ContactByCRMUseCase, { ContactByCRMUseCaseName } from '../../../../domain/use_cases/contact/ContactByCRMUseCase';
 
 const ContactPage: FC<{}> = () => {
     const { register, setValue, handleSubmit, reset, watch, formState: { errors } } = useForm();
@@ -16,10 +18,11 @@ const ContactPage: FC<{}> = () => {
 
     const _handleSubmit = async (data: any) => {
         try {
-            await di.get<ContactUseCase>(ContactUseCaseName).call(data.name, data.lastname, data.phone, data.email, data.message);
+            await di.get<ContactByCRMUseCase>(ContactByCRMUseCaseName).call(data);
             addToast('Mensaje enviado', 'success', undefined);
             reset();
         } catch (error) {
+            console.log('error on contact', error);
             addToast('Error al enviar el mensaje', 'error', undefined);
         }
 
@@ -74,25 +77,28 @@ const ContactPage: FC<{}> = () => {
                                 </div>
                             </div>
                             <form onSubmit={handleSubmit(_handleSubmit)} >
+                                <input type="hidden" value="00DHs000000QMEB" {...register("oid")} />
+                                <input type="hidden" value={routes.contact.relativePath} {...register('retURL')} />
                                 <div className="row">
                                     <div className="col-md-6">
                                         <div className="form-group mb-3">
                                             <label className='mandatory'>Nombre</label>
-                                            <input type="text" placeholder='nombre' className="form-control" {...register("name", Validators({
+                                            <input type="text" placeholder='nombre' className="form-control" {...register("first_name", Validators({
                                                 required: true,
+                                                maxLength: 40,
                                             }))} />
-                                            <ErrorMessage as="aside" errors={errors} name="email" />
+                                            <ErrorMessage as="aside" errors={errors} name="first_name" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <div className="form-group mb-3">
                                             <label className='mandatory'>Apellido</label>
-                                            <input type="text" placeholder='apellido' className="form-control" {...register("lastname", Validators({
+                                            <input type="text" placeholder='apellido' className="form-control" {...register("last_name", Validators({
                                                 required: true,
-                                                maxLength: 50,
+                                                maxLength: 80,
                                                 minLength: 3
                                             }))} />
-                                            <ErrorMessage as="aside" errors={errors} name="lastname" />
+                                            <ErrorMessage as="aside" errors={errors} name="last_name" />
                                         </div>
                                     </div>
                                     <div className="col-md-6">
@@ -100,7 +106,7 @@ const ContactPage: FC<{}> = () => {
                                             <label className='mandatory'>Teléfono</label>
                                             <input type="text" placeholder='número de teléfono' className="form-control" {...register("phone", Validators({
                                                 required: true,
-                                                maxLength: 50,
+                                                maxLength: 40,
                                                 minLength: 3,
                                                 phone: true
                                             }))} />
@@ -112,21 +118,242 @@ const ContactPage: FC<{}> = () => {
                                             <label className='mandatory'>Email</label>
                                             <input type="email" placeholder='nombre' className="form-control" {...register("ejemplo@gmail.com", Validators({
                                                 required: true,
-                                                maxLength: 50,
+                                                maxLength: 80,
                                                 minLength: 3,
                                                 email: true
                                             }))} />
                                             <ErrorMessage as="aside" errors={errors} name="email" />
                                         </div>
                                     </div>
-                                    <div className="col-12">
+                                    <div className="col-md-6">
+                                        <div className="form-group mb-3">
+                                            <label className='optional'>Ciudad</label>
+                                            <select className="form-control" {...register("00NHs00000G976q", Validators({
+                                                //required: true,
+                                            }))}>
+                                                <option value="">Seleccione una ciudad</option>
+                                                <option value="Puerto Nariño">Puerto Nariño</option>
+                                                <option value="El Encanto">El Encanto</option>
+                                                <option value="Medellín">Medellín</option>
+                                                <option value="Bello">Bello</option>
+                                                <option value="Itagüí">Itagüí</option>
+                                                <option value="Envigado">Envigado</option>
+                                                <option value="Rionegro">Rionegro</option>
+                                                <option value="Arauca">Arauca</option>
+                                                <option value="Tame">Tame</option>
+                                                <option value="Saravena">Saravena</option>
+                                                <option value="Barranquilla">Barranquilla</option>
+                                                <option value="Soledad">Soledad</option>
+                                                <option value="Malambo">Malambo</option>
+                                                <option value="Bogotá">Bogotá</option>
+                                                <option value="Cartagena">Cartagena</option>
+                                                <option value="Magangué">Magangué</option>
+                                                <option value="Turbaco">Turbaco</option>
+                                                <option value="Tunja">Tunja</option>
+                                                <option value="Sogamoso">Sogamoso</option>
+                                                <option value="Duitama">Duitama</option>
+                                                <option value="Manizales">Manizales</option>
+                                                <option value="La Dorada">La Dorada</option>
+                                                <option value="Chinchiná">Chinchiná</option>
+                                                <option value="Florencia">Florencia</option>
+                                                <option value="Belén de los Andaquies">Belén de los Andaquies</option>
+                                                <option value="San Vicente del Caguán">San Vicente del Caguán</option>
+                                                <option value="Yopal">Yopal</option>
+                                                <option value="Aguazul">Aguazul</option>
+                                                <option value="Paz de Ariporo">Paz de Ariporo</option>
+                                                <option value="Popayán">Popayán</option>
+                                                <option value="Santander de Quilichao">Santander de Quilichao</option>
+                                                <option value="Puerto Tejada">Puerto Tejada</option>
+                                                <option value="Valledupar">Valledupar</option>
+                                                <option value="Aguachica">Aguachica</option>
+                                                <option value="Bosconia">Bosconia</option>
+                                                <option value="Quibdó">Quibdó</option>
+                                                <option value="Istmina">Istmina</option>
+                                                <option value="Tadó">Tadó</option>
+                                                <option value="Montería">Montería</option>
+                                                <option value="Sahagún">Sahagún</option>
+                                                <option value="Cereté">Cereté</option>
+                                                <option value="Soacha">Soacha</option>
+                                                <option value="Chía">Chía</option>
+                                                <option value="Zipaquirá">Zipaquirá</option>
+                                                <option value="Facatativá">Facatativá</option>
+                                                <option value="Fusagasugá">Fusagasugá</option>
+                                                <option value="Inírida">Inírida</option>
+                                                <option value="Morichal">Morichal</option>
+                                                <option value="Mapiripana">Mapiripana</option>
+                                                <option value="San José del Guaviare">San José del Guaviare</option>
+                                                <option value="Calamar">Calamar</option>
+                                                <option value="El Retorno">El Retorno</option>
+                                                <option value="Neiva">Neiva</option>
+                                                <option value="Pitalito">Pitalito</option>
+                                                <option value="Garzón">Garzón</option>
+                                                <option value="Riohacha">Riohacha</option>
+                                                <option value="Maicao">Maicao</option>
+                                                <option value="Albania">Albania</option>
+                                                <option value="Santa Marta">Santa Marta</option>
+                                                <option value="Ciénaga">Ciénaga</option>
+                                                <option value="Fundación">Fundación</option>
+                                                <option value="Villavicencio">Villavicencio</option>
+                                                <option value="Granada">Granada</option>
+                                                <option value="Acacías">Acacías</option>
+                                                <option value="Pasto">Pasto</option>
+                                                <option value="Tumaco">Tumaco</option>
+                                                <option value="Ipiales">Ipiales</option>
+                                                <option value="Cúcuta">Cúcuta</option>
+                                                <option value="Ocaña">Ocaña</option>
+                                                <option value="Villa del Rosario">Villa del Rosario</option>
+                                                <option value="Mocoa">Mocoa</option>
+                                                <option value="Puerto Asís">Puerto Asís</option>
+                                                <option value="Puerto Guzmán">Puerto Guzmán</option>
+                                                <option value="Armenia">Armenia</option>
+                                                <option value="Quimbaya">Quimbaya</option>
+                                                <option value="Pereira">Pereira</option>
+                                                <option value="Dosquebradas">Dosquebradas</option>
+                                                <option value="Santa Rosa de Cabal">Santa Rosa de Cabal</option>
+                                                <option value="San Andrés">San Andrés</option>
+                                                <option value="Providencia">Providencia</option>
+                                                <option value="Bucaramanga">Bucaramanga</option>
+                                                <option value="Floridablanca">Floridablanca</option>
+                                                <option value="Girón">Girón</option>
+                                                <option value="Sincelejo">Sincelejo</option>
+                                                <option value="Corozal">Corozal</option>
+                                                <option value="Sampués">Sampués</option>
+                                                <option value="Ibagué">Ibagué</option>
+                                                <option value="Espinal">Espinal</option>
+                                                <option value="Melgar">Melgar</option>
+                                                <option value="Cali">Cali</option>
+                                                <option value="Buenaventura">Buenaventura</option>
+                                                <option value="Palmira">Palmira</option>
+                                                <option value="Jamundí">Jamundí</option>
+                                                <option value="Tuluá">Tuluá</option>
+                                                <option value="Mitú">Mitú</option>
+                                                <option value="Carurú">Carurú</option>
+                                                <option value="Papunaua">Papunaua</option>
+                                                <option value="Puerto Carreño">Puerto Carreño</option>
+                                                <option value="Santa Rosalía">Santa Rosalía</option>
+                                                <option value="Cumaribo">Cumaribo</option>
+                                                <option value="Montenegro">Montenegro</option>
+                                            </select>
+                                            <ErrorMessage as="aside" errors={errors} name="00NHs00000G976q" />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="form-group mb-3">
+                                            <label className='optional'>Línea de negocio</label>
+                                            <select className="form-control" {...register("00NHs00000G8pgO", Validators({
+                                                //required: true,
+                                            }))}>
+                                                <option value="">Seleccione una línea de negocio</option>
+                                                <option value="Cliente interesado en vender un vehículo">Cliente interesado en vender un vehículo</option>
+                                                <option value="Adquisición de seguro">Adquisición de seguro</option>
+                                            </select>
+                                            <ErrorMessage as="aside" errors={errors} name="00NHs00000G8pgO" />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="form-group mb-3">
+                                            <label className='optional'>Año</label>
+                                            <select className="form-control" {...register("00NHs00000G97uJ", Validators({
+                                                //required: true,
+                                            }))}>
+                                                <option value="">Seleccione un año</option>
+                                                {Array.from({ length: new Date().getFullYear() - 2000 + 1 }, (_, index) => 2000 + index).map(
+                                                    (year, index) => <option key={index} value={year}>{year}</option>)}
+                                            </select>
+                                            <ErrorMessage as="aside" errors={errors} name="00NHs00000G97uJ" />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="form-group mb-3">
+                                            <label className='optional'>Marca</label>
+                                            <select className="form-control" {...register("00NHs00000G97uO", Validators({
+                                                //required: true,
+                                            }))}>
+                                                <option value="">Seleccione una marca</option>
+                                                <option value="Audi">Audi</option>
+                                                <option value="Bajaj">Bajaj</option>
+                                                <option value="BMW">BMW</option>
+                                                <option value="BYD">BYD</option>
+                                                <option value="Changan">Changan</option>
+                                                <option value="Chevrolet">Chevrolet</option>
+                                                <option value="CITROEN">CITROEN</option>
+                                                <option value="Citroën">Citroën</option>
+                                                <option value="CUPRA">CUPRA</option>
+                                                <option value="DFSK">DFSK</option>
+                                                <option value="Dodge">Dodge</option>
+                                                <option value="DS">DS</option>
+                                                <option value="Fiat">Fiat</option>
+                                                <option value="Ford">Ford</option>
+                                                <option value="Foton">Foton</option>
+                                                <option value="Honda">Honda</option>
+                                                <option value="Hyundai">Hyundai</option>
+                                                <option value="JAC">JAC</option>
+                                                <option value="Jaguar">Jaguar</option>
+                                                <option value="Jeep">Jeep</option>
+                                                <option value="KIA">KIA</option>
+                                                <option value="Land Rover">Land Rover</option>
+                                                <option value="Lexus">Lexus</option>
+                                                <option value="Mahindra">Mahindra</option>
+                                                <option value="Maserati">Maserati</option>
+                                                <option value="Mazda">Mazda</option>
+                                                <option value="Mercedes Benz">Mercedes Benz</option>
+                                                <option value="MG">MG</option>
+                                                <option value="Mini">Mini</option>
+                                                <option value="Mitsubishi">Mitsubishi</option>
+                                                <option value="Nissan">Nissan</option>
+                                                <option value="Opel">Opel</option>
+                                                <option value="Peugeot">Peugeot</option>
+                                                <option value="Porsche">Porsche</option>
+                                                <option value="Renault">Renault</option>
+                                                <option value="Seat">Seat</option>
+                                                <option value="Skoda">Skoda</option>
+                                                <option value="Smart">Smart</option>
+                                                <option value="Ssanyong">Ssanyong</option>
+                                                <option value="Subaru">Subaru</option>
+                                                <option value="Susuki">Susuki</option>
+                                                <option value="SUZUKI">SUZUKI</option>
+                                                <option value="Toyota">Toyota</option>
+                                                <option value="Volkswagen">Volkswagen</option>
+                                                <option value="Volvo">Volvo</option>
+                                            </select>
+                                            <ErrorMessage as="aside" errors={errors} name="00NHs00000G97uO" />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="form-group mb-3">
+                                            <label className='optional'>Referencia</label>
+                                            <input type="text" placeholder='referencia' className="form-control" {...register("00NHs00000G97uT", Validators({
+                                                //required: true,
+                                                maxLength: 255,
+                                            }))} />
+
+                                            <ErrorMessage as="aside" errors={errors} name="00NHs00000G97uT" />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="form-group mb-3">
+                                            <label className='optional'>Versión</label>
+                                            <input type="text" placeholder='versión' className="form-control" {...register("00NHs00000G97uY", Validators({
+                                                //required: true,
+                                                maxLength: 255,
+                                            }))} />
+                                            <ErrorMessage as="aside" errors={errors} name="00NHs00000G97uY" />
+                                        </div>
+                                    </div>
+
+                                    {/* <div className="col-12">
                                         <div className="form-group mb-3">
                                             <textarea placeholder='mensaje' className="form-control" {...register("message", Validators({
                                                 maxLength: 255,
                                             }))} />
                                             <ErrorMessage as="aside" errors={errors} name="message" />
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div className="mt-3 d-flex justify-content-center">

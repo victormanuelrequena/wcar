@@ -12,6 +12,7 @@
 
         @media screen and (max-width: 768px) {
             padding-bottom: 0;
+
             span {
                 display: none;
             }
@@ -20,12 +21,26 @@
     }
 
     form {
-        input.form-control{
+        input.form-control {
             background-color: var(--color-dark-gray);
             color: white;
+
+            &::placeholder {
+                color: #ffffff70;
+            }
         }
 
-        textarea.form-control{
+        select.form-control {
+            background-color: var(--color-dark-gray);
+            color: white;
+
+            // &::placeholder{
+            & option:disabled {
+                color: #ffffff70;
+            }
+        }
+
+        textarea.form-control {
             background-color: transparent;
             border: solid thin white;
             color: white;
@@ -35,7 +50,7 @@
                 background-color: var(--color-dark-gray);
             }
 
-            &::placeholder{
+            &::placeholder {
                 color: white;
             }
         }

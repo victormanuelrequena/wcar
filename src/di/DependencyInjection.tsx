@@ -136,6 +136,7 @@ import GetCitiesByDepartmentIdUseCase, { GetCitiesByDepartmentIdUseCaseName } fr
 import GetAllFrequentQuestionsAboutUsUseCase, { GetAllFrequentQuestionsAboutUsUseCaseName } from "../domain/use_cases/frequentQuestion/GetAllFrequentQuestionsAboutUsUseCase";
 import GetAllInsuranceQuestionsUseCase, { GetAllInsuranceQuestionsUseCaseName } from "../domain/use_cases/frequentQuestion/GetAllInsuranceQuestionsUseCase";
 import ConfirmBookingUseCase, { ConfirmBookingUseCaseName } from "../domain/use_cases/book/ConfirmBookingUseCase";
+import ContactByCRMUseCase, { ContactByCRMUseCaseName } from "../domain/use_cases/contact/ContactByCRMUseCase";
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
@@ -386,6 +387,11 @@ di.bind<SearchCarsUseCase>(SearchCarsUseCaseName).toDynamicValue((context) => {
 //#region contact
 di.bind<ContactUseCase>(ContactUseCaseName).toDynamicValue((context) => {
     return new ContactUseCase({
+        contactRepository: context.container.get(ContactRepositoryName),
+    });
+}).inSingletonScope();
+di.bind<ContactByCRMUseCase>(ContactByCRMUseCaseName).toDynamicValue((context) => {
+    return new ContactByCRMUseCase({
         contactRepository: context.container.get(ContactRepositoryName),
     });
 }).inSingletonScope();
