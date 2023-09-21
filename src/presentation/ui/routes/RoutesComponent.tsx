@@ -29,6 +29,7 @@ import GeneralPoliciesPage from "../pages/policies/GeneralPoliciesPage";
 import SellerPoliciesPage from "../pages/policies/SellerPoliciesPage";
 import BuyerPolicies from "../pages/policies/BuyerPolicies";
 import SuccesfulPaymentPage from "../pages/succesfulPayment/SuccesfulPaymentPage";
+import BuyOrSellPage from "../pages/landings/buyOrSellPage/BuyOrSellPage";
 
 export interface iRoute {
     name: string,
@@ -195,6 +196,12 @@ const routes = {
         component: SuccesfulPaymentPage,
         auth: (user: UserEntity | undefined) => true,
     },
+    buyOrSell: {
+        path: "/compra-o-vende",
+        relativePath: "/compra-o-vende",
+        component: BuyOrSellPage,
+        auth: (user: UserEntity | undefined) => true,
+    }
 }
 
 const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {

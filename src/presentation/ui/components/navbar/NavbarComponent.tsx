@@ -45,25 +45,30 @@ const NavbarComponent = () => {
             <Link className="nav-link" to={routes.aboutUs.relativePath}>Sobre Nosotros</Link>
           </NavItem>
           <NavItem className="mx-3">
-            <Link to={routes.sellYourCar.relativePath} className="nav-link">Vende tu carro</Link>
-          </NavItem>
-          <NavItem className="mx-3">
             <div className="dropdown">
               <div className="dropdown-title">
-                <Link to={routes.buyYourCar.relativePath} className="nav-link">Compra tu carro<span className="text_reduced" style={{ fontSize: 10 }}>&#9660;</span> </Link>
+                <Link to={routes.buyOrSell.relativePath} className="nav-link">Compra o Vende<span className="text_reduced ms-1" style={{ fontSize: 10 }}>&#9660;</span> </Link>
               </div>
               <div className="dropdown_content">
-                {typeVehicles.map((typeVehicle, index) => <Link key={index} to={routes.buyYourCar.relativePath + '/' + typeVehicle.name} className="dropdown-item">
-                  <img src={typeVehicle.photo} alt={typeVehicle.name} title={typeVehicle.name} className="me-2" width={24} />
-                  {typeVehicle.name} <span className="text_gray">({typeVehicle.count ?? 0})</span>
-                </Link>)}
+                <div className="dropdown">
+                  <div className="dropdown-title">
+                    <Link to={routes.buyYourCar.relativePath} className="nav-link">Compra tu carro<span className="text_reduced ms-1" style={{ fontSize: 10 }}>&#9654;</span> </Link>
+                  </div>
+                  <div className="dropdown_content right">
+                    {typeVehicles.map((typeVehicle, index) => <Link key={index} to={routes.buyYourCar.relativePath + '/' + typeVehicle.name} className="dropdown-item">
+                      <img src={typeVehicle.photo} alt={typeVehicle.name} title={typeVehicle.name} className="me-2" width={24} />
+                      {typeVehicle.name} <span className="text_gray">({typeVehicle.count ?? 0})</span>
+                    </Link>)}
+                  </div>
+                </div>
+                <Link to={routes.sellYourCar.relativePath} className="nav-link">Vende tu carro</Link>
               </div>
             </div>
           </NavItem>
           <NavItem className="mx-3">
             <div className="dropdown">
               <div className="dropdown-title">
-                <div className="nav-link">Servicios <span className="text_reduced" style={{ fontSize: 10 }}>&#9660;</span> </div>
+                <div className="nav-link">Servicios <span className="text_reduced ms-1" style={{ fontSize: 10 }}>&#9660;</span> </div>
               </div>
               <div className="dropdown_content">
                 <Link to={routes.services.relativePath} className="dropdown-item">Financiación</Link>
