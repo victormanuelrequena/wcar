@@ -1,15 +1,10 @@
 import { Link } from 'react-router-dom';
-import CommentEntity from '../../../../../domain/entities/CommentEntity';
 import Layout from '../../../layout/Layout';
 import './SellYourCarPageStyles.scss';
 import { FC, useEffect, useState } from "react";
 import Icons from '../../../assets/Icons';
 import ServicesComponent from './components/servicesComponent/ServicesComponent';
-import SliderComponent from '../../../components/slider/SliderComponent';
 import di from '../../../../../di/DependencyInjection';
-import GetAllCommentsUseCase from '../../../../../domain/use_cases/comment/GetAllCommentsUseCase';
-import StarRatingComponent from '../../../components/starRating/StarRatingComponent';
-import DateParse from '../../../../utils/DateParse';
 import { routes } from '../../../routes/RoutesComponent';
 import CommenstLineComponent from '../../../components/commentsLine/CommentsLineComponent';
 import GetAllProcedureQuestionsUseCase, { GetAllProcedureQuestionsUseCaseName } from '../../../../../domain/use_cases/frequentQuestion/GetAllProcedureQuestionsUseCase';
@@ -36,19 +31,19 @@ const SellYourCarPage: FC<{}> = () => {
     return <Layout>
         <Helmet>
             <title>Vende tu Carro en Colombia en 1, 2 por 3</title>
-            <meta name='description' content='Vende tu carro rápido y seguro, acá te explicamos todo lo necesario para realizar un negocio rentable en la venta de tu vehículo. ¡Contáctanos y di Voy a Vender!'/>
+            <meta name='description' content='Vende tu carro rápido y seguro, acá te explicamos todo lo necesario para realizar un negocio rentable en la venta de tu vehículo. ¡Contáctanos y di Voy a Vender!' />
             <meta name='keywords' content='Vende tu carro, Carros Usados, Venta de Carros en Colombia, venta de carros usados, Voy a Vender' />
         </Helmet>
         <div className="sell_your_car_page">
             <section className="bg_black position-relative section_1">
-                <img src="/assets/recs/bg_sell_car.jpeg" alt="" className="img_section_1 img-fluid" />
+                <img src="/assets/recs/bg_sell_car.jpeg" alt="Vende tu carro" title='Vende tu carro' className="img_section_1 img-fluid" />
                 <div className="container py-5 position-relative">
                     <div className="row">
                         <div className="col-md-4 text-white py-3">
-                            <h1> <span className='text_bold'> Vende tu Carro<br />
-                                a un precio</span>
-                                <br /><span className="text_italic">razonable</span>
-                            </h1>
+                            <div className="mb-3">
+                                <h1> <span className='text_bold'> Vende tu Carro<br /> a un precio</span> <br /><span className="text_italic">razonable</span>
+                                </h1>
+                            </div>
                             <Link to={routes.quoteYourCar.relativePath} className='btn btn_orange'>
                                 VENDE TU CARRO <Icons.ArrowCircle />
                             </Link>
@@ -72,14 +67,14 @@ const SellYourCarPage: FC<{}> = () => {
             {/* Sell your car */}
             <section className='sell_section'>
                 <div className='image_decoration'>
-                    <img src="/assets/sellCar/md_bg_sell_decoration.png" className='img_decoration_md img-fluid' />
-                    <img src="/assets/sellCar/sm_bg_sell_decoration.png" className='img_decoration_sm img-fluid' />
+                    <img src="/assets/sellCar/md_bg_sell_decoration.png" alt='Carros Usados' title='Carros Usados' className='img_decoration_md img-fluid' />
+                    <img src="/assets/sellCar/sm_bg_sell_decoration.png" alt='Carros Usados' title='Carros Usados' className='img_decoration_sm img-fluid' />
                     <div className='cross_line' />
                 </div>
                 <div className='sell_car_container'>
                     <img src="/assets/recs/lines_sell.png" alt="" className='lines_sell' />
                     <img src='assets/recs/lines_zigs.png' alt='' className='lines_zigs_sell' />
-                    <img src="/assets/sellCar/car_sell_tires_img.png" alt="" className='img-fluid d-none d-md-inline-block' />
+                    <img src="/assets/sellCar/car_sell_tires_img.png" alt="Venta de carros usados" title='Venta de carros usados' className='img-fluid d-none d-md-inline-block' />
                     <div className='sell_car_description_container'>
                         <img src="/assets/recs/lines_box.png" alt="" className='little_sell_box img-fluid' />
                         {/* venta */}
@@ -88,8 +83,7 @@ const SellYourCarPage: FC<{}> = () => {
                             <p className='m-0'>Venta</p>
                         </div>
                         {/* Vende tu carro */}
-                        <h1 className='sell_car_title'>Vende tu carro de manera segura,</h1>
-                        <h1 className='sell_car_subtitle mb-4'>rápida, confiable y justa.</h1>
+                        <h2 className='sell_car_title h1 mb-4'>Vende tu carro de manera segura, rápida, confiable y justa.</h2>
                         <p className='mb-4'>En wcar nos preocupamos por la seguridad en cada servicio, el asesoramiento en cada negocio que un proceso tan tedioso como lo es la venta de carros en Colombia se hace fácil y sencillo</p>
                         <p className='mb-5'>Te ayudamos desde el primer contacto y gestionamos todos los procesos que requiere la venta de tu vehiculo, el comerciar con carros usados no es una tarea sencilla, pero conocemos el mercado y sabemos como ayudarte.</p>
                         {/* Botones */}

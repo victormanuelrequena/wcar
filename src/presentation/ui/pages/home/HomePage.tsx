@@ -38,7 +38,7 @@ const HomePage: FC<{}> = () => {
         </Helmet>
         <div className="home_page">
             <section className='first_section position-relative d-md-block d-flex flex-column-reverse'>
-                <img src="/assets/home/car_01.png" alt="Comprar con wcar" className="position-sm-absolute img_car_01" />
+                <img src="/assets/home/car_01.png" alt="Comprar con wcar" title="Comprar con wcar" className="position-sm-absolute img_car_01" />
                 <div className="container py-5">
                     <div className="row">
                         <div className="col-12 col-sm-6">
@@ -103,17 +103,17 @@ const HomePage: FC<{}> = () => {
                 </div>
             </section>
             <section className='third_section mt-3'>
-                <img src="./assets/recs/lines_box.png" className='d-none d-md-block' alt="" style={{ position: 'absolute', right: 0, bottom: 0 }} />
+                <img src="./assets/recs/lines_box.png" className='d-none d-md-block' title='wcar' alt="wcar" style={{ position: 'absolute', right: 0, bottom: 0 }} />
                 <div className="container">
                     <div className="row d-flex flex-column-reverse flex-md-row">
                         <div className="px-0 px-md-3 col-md-4 position-relative">
                             <div className='img_section'>
-                                <img src="./assets/home/car_03.png" alt="Vender con wcar" className="object_cover" />
+                                <img src="./assets/home/car_03.png" title='wcar' alt="wcar" className="object_cover" />
                             </div>
                         </div>
                         <div className="col-md-8 position-relative text-white px-5 ps-md-5 px-md-3 py-5">
-                            <img src="./assets/recs/lines_zigs.png" alt="" style={{ position: 'absolute', right: '5vw', top: '2vw' }} />
-                            <img src="./assets/recs/lines_box.png" className='d-block d-md-none' alt="" style={{ position: 'absolute', right: 0, bottom: 0 }} />
+                            <img src="./assets/recs/lines_zigs.png" alt="wcar" title='wcar' style={{ position: 'absolute', right: '5vw', top: '2vw' }} />
+                            <img src="./assets/recs/lines_box.png" className='d-block d-md-none' alt="wcar" title='wcar' style={{ position: 'absolute', right: 0, bottom: 0 }} />
                             <div className="line_left_orange">Nosotros</div>
                             <h3 className='h3'><b>Razones para comprar y</b> <br /><i>vender con wcar</i></h3>
                             <div>

@@ -4,7 +4,6 @@ import RoutesComponentProps from "./RoutesComponentProps";
 import UserEntity from "../../../domain/entities/UserEntity";
 import HomePage from "../pages/home/HomePage";
 import LoadUseCase, { LoadUseCaseName } from "../../../domain/use_cases/default/LoadUseCase";
-import NotFoundComponent from "../components/notFound/NotFoundComponent";
 import LoadingComponent from "../components/LoadingComponent/LoadingComponent";
 import di from "../../../di/DependencyInjection";
 import BuyYourCarPage from "../pages/car/buyYourCar/BuyYourCarPage";
@@ -59,8 +58,8 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
     },
     buyYourCar: {
-        path: "/comprar/:typeVehicleName?",
-        relativePath: '/comprar',
+        path: "/compra-tu-carro/:typeVehicleName?",
+        relativePath: '/compra-tu-carro',
         component: BuyYourCarPage,
         auth: (user: UserEntity | undefined) => true,
     },
@@ -89,8 +88,8 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
     },
     sellYourCar: {
-        path: "/vender",
-        relativePath: '/vender',
+        path: "/vende-tu-carro",
+        relativePath: '/vende-tu-carro',
         component: SellYourCarPage,
         auth: (user: UserEntity | undefined) => true,
     },
@@ -107,8 +106,8 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
     },
     aboutUs: {
-        path: "/sobre-nosotros",
-        relativePath: '/sobre-nosotros',
+        path: "/nuestra-empresa",
+        relativePath: '/nuestra-empresa',
         component: AboutUsPage,
         auth: (user: UserEntity | undefined) => true,
     },

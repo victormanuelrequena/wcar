@@ -677,6 +677,7 @@ body h2 {
 // Style the radio buttons to look like checkboxes
 input[type="radio"] {
   opacity: 0;
+
   &:hover {
     cursor: pointer;
   }
@@ -694,7 +695,7 @@ input[type="radio"] {
     /* Adjust as needed */
     margin-right: 5px;
 
-    
+
   }
 
   +label {
@@ -711,21 +712,37 @@ input[type="radio"] {
   }
 }
 
-body .h{
-  font-weight: normal;
-  &1{
-    font-size: 2.5em;
+body {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    line-height: 1.2em;
   }
-  &2{
-    font-size: 2em;
-  }
-  &3{
-    font-size: calc(1.3rem + 0.6vw);
-  }
-  &4{
-    font-size: 1.25em;
-  }
-  &5{
-    font-size: 1em;
+
+  .h {
+    font-weight: normal;
+
+    &1 {
+      font-size: 2.5em;
+    }
+
+    &2 {
+      font-size: 2em;
+    }
+
+    &3 {
+      font-size: calc(1.3rem + 0.6vw);
+    }
+
+    &4 {
+      font-size: 1.25em;
+    }
+
+    &5 {
+      font-size: 1em;
+    }
   }
 }
