@@ -112,8 +112,8 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
     },
     services: {
-        path: "/servicios",
-        relativePath: '/servicios',
+        path: "/financiacion",
+        relativePath: '/financiacion',
         component: ServicesPage,
         auth: (user: UserEntity | undefined) => true,
     },

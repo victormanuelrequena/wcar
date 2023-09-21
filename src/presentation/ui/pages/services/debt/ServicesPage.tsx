@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import di from '../../../../../di/DependencyInjection';
-import GetAllInsurancesUseCase, { GetAllInsurancesUseCaseName } from '../../../../../domain/use_cases/insurance/GetAllInsurancesUseCase';
 import Icons from '../../../assets/Icons';
 import './ServicesPageStyles.scss';
 import { FC, useContext, useEffect, useState } from "react";
@@ -69,18 +68,19 @@ const ServicesPage: FC = () => {
             <meta name='keywords' content='Financiación, Cómo funciona nuestro proceso de financiación, Calcula tu Préstamo' />
         </Helmet>
         <Layout>
+            <h1 className="d-none">Financiación</h1>
             <section className="section_1 position-relative w-100 mb-5">
-                <img src="/assets/services/bg_services_financing_pc.jpg" className='img-fluid w-100 d-none d-md-block bg_1' alt="" />
+                <img src="/assets/services/bg_services_financing_pc.jpg" className='img-fluid w-100 d-none d-md-block bg_1' alt="Financiación con wcar" title='Financiación con wcar' />
                 <div className="container">
                     <div className="col-md-4 position-absolute d-none d-md-block top-50 translate-middle-y">
                         <div className="side side_top side_blue_neon mb-3" />
-                        <h1 className="text_md_white text_bold">¿Cómo funciona nuestro proceso<span className="text_md_white text_light text_italic"> de financiación?</span></h1>
+                        <h2 className="text_md_white text_bold">¿Cómo funciona nuestro proceso<span className="text_md_white text_light text_italic"> de financiación?</span></h2>
                     </div>
                 </div>
                 <img src="/assets/services/bg_services_financing_mobile.jpg" alt="" className="img-fluid w-100 d-block d-md-none" />
                 <div className="container">
                     <div className="col-12 mt-3 d-flex d-md-none align-items-center">
-                        <h1 className="text_black text_bold text-center">¿Cómo funciona nuestro proceso de <span className="fw-light text_orange text_italic text-center">financiación?</span></h1>
+                        <h2 className="text_black h1 text_bold text-center">¿Cómo funciona nuestro proceso de <span className="fw-light text_orange text_italic text-center">financiación?</span></h2>
                     </div>
                 </div>
             </section>
@@ -134,7 +134,7 @@ const ServicesPage: FC = () => {
                 <div className="container py-5">
                     <div className="row">
                         <AccordeonComponent
-                            title={<h3 className="font_bold">Preguntas <span className="text_orange text_italic">frecuentes</span></h3>}
+                            title={<h2 className="font_bold h1">Preguntas <span className="text_orange text_italic">frecuentes</span></h2>}
                             options={frequentQuestions.map((frequentQuestion) => {
                                 return {
                                     title: frequentQuestion.question,
