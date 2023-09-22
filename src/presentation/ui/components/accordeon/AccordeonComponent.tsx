@@ -25,7 +25,7 @@ const AccordeonComponent: FC<AccordeonComponentProps> = ({ title, subtitle, opti
                 {
                     options.map((option, index) => <div className={`item ${index == open && 'active'}`} key={index} onClick={() => _handleOpen(index)}>
                         <div className="header">
-                            <h5 className="title text_bold">{option.title}</h5>
+                            {typeof option.title == 'string' ? <h5 className="title">{option.title}</h5> : option.title}
                             <div>
                                 {index == open ? <Icons.Clear /> : <Icons.Plus />}
                             </div>
