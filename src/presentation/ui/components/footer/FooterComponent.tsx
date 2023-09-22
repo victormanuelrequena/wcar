@@ -21,7 +21,7 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.services.relativePath} className="my-1">Financiación</Link>
                             <Link to={routes.insurance.relativePath} className="my-1">Seguros</Link>
                             <Link to={routes.procedures.relativePath} className="my-1">Trámites</Link>
-                            <Link to={routes.blog.relativePath} className="my-1">Blog</Link>
+                            {/* <Link to={routes.blog.relativePath} className="my-1">Blog</Link> */}
                         </div>
                     </div>
                     <div className="col-6 col-md-3 col-lg-2">

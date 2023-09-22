@@ -78,7 +78,7 @@ const NavbarComponent = () => {
             </div>
           </NavItem>
           <NavItem className="mx-3">
-            <Link className="nav-link" to={routes.blog.relativePath}>Blog</Link>
+            {/* <Link className="nav-link" to={routes.blog.relativePath}>Blog</Link> */}
           </NavItem>
           <NavItem className="mx-3">
             <NavLink href={routes.contact.relativePath}>Contacto</NavLink>

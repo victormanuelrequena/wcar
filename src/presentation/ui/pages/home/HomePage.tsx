@@ -74,26 +74,23 @@ const HomePage: FC<{}> = () => {
                                 <div>
                                     <div className="row">
                                         <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
+                                            <CardServiceComponent title='Transparencia brutal. No omitimos ningún detalle.' image='/assets/icons/car.svg' description='Te contamos las cosas importantes del carro tal y como son.' />
                                         </div>
                                         <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
+                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/star.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
                                         </div>
                                         <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
+                                            <CardServiceComponent title='Peritaje online disponible.' image='/assets/icons/computer.svg' description='Publicamos nuestros peritajes  para que puedas comprar el carro con información completa.' />
                                         </div>
                                     </div>
                                 </div>
                                 <div>
                                     <div className="row">
                                         <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
+                                            <CardServiceComponent title='Precio realmente razonable.' image='/assets/icons/money.svg' description='No especulamos. A través de nuestro algoritmo calculamos precios de venta reales de mercado. Puedes comprar tu.' />
                                         </div>
                                         <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
-                                        </div>
-                                        <div className="col-md-4 my-3">
-                                            <CardServiceComponent title='Garantía light por seis meses.' image='/assets/icons/person.svg' description='Puedes extenderla hasta 2 años si lo deseas.' />
+                                            <CardServiceComponent title='Tecnología para brindar servicio personalizado.' image='/assets/icons/person.svg' description='La tecnología es para nosotros un camino para mejorar el servicio, no para reemplazar las interacciones.' />
                                         </div>
                                     </div>
                                 </div>
