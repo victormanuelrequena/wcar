@@ -29,7 +29,6 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
     const brandIdValue = watch('brand_id');
     const modelValue = watch('model');
     const plateNumberValue = watch('plate_number');
-    const typeVehicleIdValue = watch('type_vehcile_id');
 
     const _handleChangeBrand = async (brandId: string) => {
         if (brandId == brandIdValue) setValue('brand_id', undefined);

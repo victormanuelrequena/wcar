@@ -29,6 +29,7 @@ export default interface CarEntity {
     description: string;
     tag?: TagEntity | undefined;
     plate: string,
+    fullPlate?: string | undefined,
     doors: number,
     motor: string,
     status: string,

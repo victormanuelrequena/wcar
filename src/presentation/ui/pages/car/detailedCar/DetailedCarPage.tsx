@@ -16,6 +16,7 @@ import SliderComponent from '../../../components/slider/SliderComponent';
 import GetRelatedCarsByCardIdUseCase, { GetRelatedCarsByCardIdUseCaseName } from '../../../../../domain/use_cases/car/GetRelatedCarsByCardIdUseCase';
 import Icons from '../../../assets/Icons';
 import { BookADateActions } from '../bookADate/BookADatePage';
+import { Helmet } from 'react-helmet-async';
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -31,17 +32,17 @@ const DetailedCarPage: FC<{}> = () => {
         }
     }
 
-    const capitalizeFirstLetters=(str:string) =>{
+    const capitalizeFirstLetters = (str: string) => {
         const words = str.split(' ');
         const capitalizedWords = words.map((word) => {
-          if (word.length > 0) {
-            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-          }
-          return word; // Keep empty words as they are
+            if (word.length > 0) {
+                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            }
+            return word; // Keep empty words as they are
         });
         const result = capitalizedWords.join(' ');
         return result;
-      }
+    }
 
     const _getRelatedCars = async () => {
         try {
@@ -252,7 +253,12 @@ const DetailedCarPage: FC<{}> = () => {
                             </div>
                         </div>
                     </div>
+                    <div id='plateNumber' data-fullplate={car.fullPlate}>{car.fullPlate}</div>
                 </div>
+                <Helmet>
+                    <script src="https://integrator.swipetospin.com" />
+                </Helmet>
+
             </section>
             <div className="container">
                 {relatedCars ? <SliderComponent responsive={{

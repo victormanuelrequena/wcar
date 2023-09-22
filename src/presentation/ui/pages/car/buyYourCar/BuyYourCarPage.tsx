@@ -77,12 +77,13 @@ const BuyYourCarPage: FC<{}> = () => {
     const fuelId = watch('type_fuel_id');
     const colorId = watch('color_id');
     const plateNumber = watch('plate_number');
+    const orderBy = watch('orderBy');
 
     //searcher filters
     useEffect(() => {
         setPage(1);
         _handleSearch();
-    }, [brand, model, year, typeVehicleId, transmission, tagId, fuelId, colorId, plateNumber, page])
+    }, [brand, model, year, typeVehicleId, transmission, tagId, fuelId, colorId, plateNumber, page,  orderBy])
 
     const [isTimerActive, setIsTimerActive] = useState(false);
     let timer: NodeJS.Timeout | null = null; // Inicializa el temporizador
