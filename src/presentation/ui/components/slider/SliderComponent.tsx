@@ -4,7 +4,7 @@ import { FC, useRef, useState } from "react";
 import SliderComponentProps from "./SliderComponentProps";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from 'react-icons/ai';
 
-const SliderComponent: FC<SliderComponentProps> = ({ children, responsive, beforeChange }) => {
+const SliderComponent: FC<SliderComponentProps> = ({ children, responsive, beforeChange, infinite }) => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const carouselRef = useRef<Carousel>(null);
@@ -31,6 +31,7 @@ const SliderComponent: FC<SliderComponentProps> = ({ children, responsive, befor
     return <div className="slider_component">
         <div className="w-100">
             <Carousel
+                infinite={infinite}
                 ref={carouselRef}
                 arrows={false}
                 draggable
@@ -64,7 +65,8 @@ SliderComponent.defaultProps = {
             items: 1,
             slidesToSlide: 1, // optional, default to 1.
         },
-    }
+    },
+    infinite: false,
 };
 
 export default SliderComponent;

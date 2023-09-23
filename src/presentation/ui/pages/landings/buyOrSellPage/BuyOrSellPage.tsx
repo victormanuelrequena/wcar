@@ -74,7 +74,7 @@ const BuyOrSellPage: FC<{}> = () => {
                                 <Link to={routes.quoteYourCar.relativePath} className='btn btn_orange'>
                                     Vende tu carro <Icons.ArrowCircle />
                                 </Link>
-                                <Link to={routes.buyYourCar.relativePath} className='btn btn_orange px-5 my-2'>Compra tu carro <Icons.ArrowCrossUp /></Link>
+                                <Link to={routes.buyYourCar.relativePath} className='btn btn_orange px-5 my-2'>Compra tu carro <Icons.ArrowCircle /></Link>
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@ const BuyOrSellPage: FC<{}> = () => {
                     </div>
                 </div>
             </section>
-            <section className="buy_your_car py-5">
+            <section className="buy_your_car py-5 bg_gray">
                 <div className="container px-md-5">
                     <div className="px-md-5">
                         <div className="row">
@@ -146,7 +146,7 @@ const BuyOrSellPage: FC<{}> = () => {
                     </div>
                 </div>
             </section>
-            <section className="aditional_advices py-5">
+            <section className="aditional_advices py-5 bg_gray">
                 <div className="container px-md-5">
                     <div className="row">
                         <div className="col-12 py-4">

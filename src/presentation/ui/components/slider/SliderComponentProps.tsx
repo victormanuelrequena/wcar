@@ -5,4 +5,5 @@ export default interface SliderComponentProps {
     responsive?: ResponsiveType;
     beforeChange?: (currentSlide: number, nextSlide: number) => void;
     afterChange?: (currentSlide: number) => void;
+    infinite?: boolean;
 }
