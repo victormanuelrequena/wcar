@@ -23,6 +23,7 @@ const ServicesPage: FC = () => {
 
     const formFunctions = useForm();
     const [estimatedDebt, setEstimatedDebt] = useState<number | undefined>(undefined);
+    const [layoutWidth, setLayoutWidth] = useState<number>(0);
     const { getValues } = formFunctions;
 
     const [frequentQuestions, setFrequentQuestions] = useState<FrequentQuestionEntity[]>([]);
@@ -59,6 +60,10 @@ const ServicesPage: FC = () => {
     }
 
     useEffect(() => {
+        setLayoutWidth(refContainer.current?.getBoundingClientRect()?.width ?? 0);
+    }, [refContainer.current?.getBoundingClientRect()]);
+
+    useEffect(() => {
         _getFrequentQuestions();
     }, []);
 
@@ -89,7 +94,7 @@ const ServicesPage: FC = () => {
                 <div className="container">
                     <div className="row">
                         <div className="d-md-none col-12">
-                            {(refContainer.current?.getBoundingClientRect()?.width ?? 0) < 768 && <CalculatorTitleComponent />}
+                            {layoutWidth < 768 && <CalculatorTitleComponent />}
                         </div>
                         <div className="col-12 col-md-6 my-3">
                             <ServicesCalculatorFormComponent formFunctions={formFunctions} handleOnFormChange={_handleOnFormChange} />
@@ -97,7 +102,7 @@ const ServicesPage: FC = () => {
                         </div>
                         <div className="col-12 col-md-6 col-lg-5 col-xl-4 d-flex flex-column justify-content-center align-items-start">
                             <div className="d-md-block d-none">
-                                {(refContainer.current?.getBoundingClientRect()?.width ?? 0) > 768 && <CalculatorTitleComponent />}
+                                {layoutWidth > 768 && <CalculatorTitleComponent />}
                             </div>
                             <div className="card shadow-sm px-0 px-md-2 px-lg-4 position-relative calculator_card">
                                 <div className="card-body">

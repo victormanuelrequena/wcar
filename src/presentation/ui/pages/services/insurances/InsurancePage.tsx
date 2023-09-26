@@ -53,7 +53,7 @@ const InsurancePage: FC<{}> = () => {
                             <div className="col-md-7">
                                 <div className="px-md-5 mx-md-4">
                                     <div className="text-white">
-                                        <h1 className="left_line left_line_blue_neon" style={{fontSize: '1rem'}}>Seguros de vehiculos</h1>
+                                        <h1 className="left_line left_line_blue_neon" style={{fontSize: '1rem'}}>Seguros de vehículos</h1>
                                         <h2 className='my-3'><span className="text_bold">¿Qué es un seguro todo riesgo en </span>Colombia?</h2>
                                         <p>Es una cobertura para los daños por accidentes de tránsito, el hurto del carro, los daños ocasionados a bienes de terceros y la muerte o lesiones ocasionados a terceros.</p>
                                         <p>Coberturas principales:</p>

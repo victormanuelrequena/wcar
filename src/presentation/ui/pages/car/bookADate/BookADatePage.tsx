@@ -229,7 +229,7 @@ const BookADatePage: FC<{}> = () => {
                             {action == BookADateActions.book && <section>
                                 <div className="card-body w-100">
                                     <h5 className="mb-0">Reserva</h5>
-                                    <span className="text_light">Para reservar un vehiculo debes de abonar una parte de su costo total ({CurrencyParse.toCop(cost)}), por favor escoge la cantidad que deseas abonar. De no realizar el pago tu cita no será agendada.</span>
+                                    <span className="text_light">Para reservar un vehículo debes de abonar una parte de su costo total ({CurrencyParse.toCop(cost)}), por favor escoge la cantidad que deseas abonar. De no realizar el pago tu cita no será agendada.</span>
                                     <div className="row">
                                         <div className="form-group col-md-6 my-3">
                                             <label className="mandatory">Abono</label>

@@ -125,8 +125,8 @@ const DetailedCarPage: FC<{}> = () => {
                             <img src="/assets/recs/lines_box_large.png" alt="Wcar" title="Wcar" className="h-100 img-fluid bg_img" />
                             <div className="d-flex flex-column align-items-center p-4">
                                 <div className="side side_top">
-                                    <h3 className="text-white"><strong>Caracteristicas</strong><br />
-                                        <i>del vehiculo</i></h3>
+                                    <h3 className="text-white"><strong>Características</strong><br />
+                                        <i>del vehículo</i></h3>
                                 </div>
                                 <div className="btn btn_orange">DESCARGAR PERITAJE <Icons.Download /> </div>
                             </div>
@@ -249,7 +249,7 @@ const DetailedCarPage: FC<{}> = () => {
                         <div className="col-md-3"></div>
                         <div className="col-md-9 p-5">
                             <div className="side side_top">
-                                <h2 className='text_bold'>Vehiculos<span className="text_orange"> relacionados</span></h2>
+                                <h2 className='text_bold'>Vehículos<span className="text_orange"> relacionados</span></h2>
                             </div>
                         </div>
                     </div>

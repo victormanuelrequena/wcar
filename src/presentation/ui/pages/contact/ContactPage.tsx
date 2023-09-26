@@ -6,11 +6,11 @@ import { ErrorMessage } from '@hookform/error-message';
 import Validators from '../../../utils/Validators';
 import Icons from '../../assets/Icons';
 import di from '../../../../di/DependencyInjection';
-import ContactUseCase, { ContactUseCaseName } from '../../../../domain/use_cases/contact/ContactUseCase';
 import ModalsContext from '../../../../domain/providers/modal/ModalsContext';
 import ModalsContextType from '../../../../domain/providers/modal/ModalsContextType';
 import { routes } from '../../routes/RoutesComponent';
 import ContactByCRMUseCase, { ContactByCRMUseCaseName } from '../../../../domain/use_cases/contact/ContactByCRMUseCase';
+import { Helmet } from 'react-helmet-async';
 
 const ContactPage: FC<{}> = () => {
     const { register, setValue, handleSubmit, reset, watch, formState: { errors } } = useForm();
@@ -29,6 +29,10 @@ const ContactPage: FC<{}> = () => {
     }
 
     return <div className="contact_page">
+        <Helmet>
+            <title>Contacto - wcar</title>
+            <meta name='description' content='Por favor, completa nuestro formulario de contacto y nos pondremos en contacto contigo lo antes posible. ¡Tu opinión es importante para nosotros y estamos' />
+        </Helmet>
         <Layout >
             <div className="w-100" style={{ backgroundImage: 'url(/assets/pages/contact/bg_contact.jpg)', backgroundSize: 'contain' }}>
                 <div className="container px-0 px-md-5">

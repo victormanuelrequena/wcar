@@ -85,7 +85,7 @@ const SellYourCarPage: FC<{}> = () => {
                         {/* Vende tu carro */}
                         <h2 className='sell_car_title h1 mb-4'>Vende tu carro de manera segura, rápida, confiable y justa.</h2>
                         <p className='mb-4'>En wcar nos preocupamos por la seguridad en cada servicio, el asesoramiento en cada negocio que un proceso tan tedioso como lo es la venta de carros en Colombia se hace fácil y sencillo</p>
-                        <p className='mb-5'>Te ayudamos desde el primer contacto y gestionamos todos los procesos que requiere la venta de tu vehiculo, el comerciar con carros usados no es una tarea sencilla, pero conocemos el mercado y sabemos como ayudarte.</p>
+                        <p className='mb-5'>Te ayudamos desde el primer contacto y gestionamos todos los procesos que requiere la venta de tu vehículo, el comerciar con carros usados no es una tarea sencilla, pero conocemos el mercado y sabemos como ayudarte.</p>
                         {/* Botones */}
                         <div className='sell_buttons'>
                             <Link to={routes.quoteYourCar.relativePath} className='btn btn_orange me-0 me-sm-4 px-5 my-2'>Vende tu carro <Icons.ArrowCircle /> </Link>

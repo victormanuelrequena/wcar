@@ -76,7 +76,7 @@ const _testCar: CarEntity = {
     },
     typeOfFuel: {
         id: "1",
-        name: "hibrido"
+        name: "Híbrido"
     }
 }
 

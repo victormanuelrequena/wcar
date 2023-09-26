@@ -6,13 +6,13 @@ const fromJson = (json: string): TypeOfFuelEntity => {
             case 'gasolina':
                 return 'Gasolina'
             case 'diesel':
-                return 'Diesel'
+                return 'Diésel'
             case 'gas':
                 return 'Gas'
             case 'electrico':
                 return 'Electrico'
             case 'hibrido':
-                return 'Hibrido'
+                return 'Híbrido'
             default:
                 return type;
         }
@@ -23,7 +23,25 @@ const fromJson = (json: string): TypeOfFuelEntity => {
     }
 }
 
-const toJson = (typeOfFuel: TypeOfFuelEntity): any => typeOfFuel.id;
+const toJson = (typeOfFuel: TypeOfFuelEntity): string => {
+    const _dataParse = (type: string) => {
+        switch (type) {
+            case 'Gasolina':
+                return 'gasolina'
+            case 'Diésel':
+                return 'diesel'
+            case 'Gas':
+                return 'gas'
+            case 'Electrico':
+                return 'electrico'
+            case 'Híbrido':
+                return 'hibrido'
+            default:
+                return type;
+        }
+    }
+    return _dataParse(typeOfFuel.name)
+}
 
 export default {
     fromJson,

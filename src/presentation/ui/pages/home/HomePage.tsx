@@ -128,7 +128,7 @@ const HomePage: FC<{}> = () => {
             <section className="forth_section">
                 <div className="d-flex justify-content-center py-5">
                     <div className="side side_top">
-                        <h2 className='h3'>Vehiculos <i className="text_orange">en venta</i></h2>
+                        <h2 className='h3'>Vehículos <i className="text_orange">en venta</i></h2>
                     </div>
                 </div>
                 <div className="px-3 py-2 bg_gray">

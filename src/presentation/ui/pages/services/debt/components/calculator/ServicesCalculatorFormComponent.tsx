@@ -41,7 +41,7 @@ const ServicesCalculatorFormComponent: FC<ServicesCalculatorFormComponentProps> 
                 <div className="row">
                     <div className="col-12 my-3">
                         <div className="form-group">
-                            <label className="mandatory">Valor del vehiculo</label>
+                            <label className="mandatory">Valor del vehículo</label>
                             <input type="text" min={0} className="form-control" placeholder="$ 0" {...register('_vehicleValue', Validators({
                                 required: true,
                                 maxValue: 1000000000,

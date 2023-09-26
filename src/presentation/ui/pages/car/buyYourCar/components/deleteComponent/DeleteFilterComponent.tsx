@@ -101,7 +101,7 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
             </>}
         </Helmet>}
         {transmission && <div className="delete_filter_item">
-            <span>{transmission == TransmissionCar.AUTOMATIC ? 'Automático' : 'Manual'}</span>
+            <span>{transmission == TransmissionCar.AUTOMATIC ? 'Automática' : 'Manual'}</span>
             <div className="icon hover" onClick={_handleRemoveTransmission}>
                 <Icons.Clear />
             </div>

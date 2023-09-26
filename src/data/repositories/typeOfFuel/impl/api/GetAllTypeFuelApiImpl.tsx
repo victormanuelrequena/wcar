@@ -9,11 +9,11 @@ const GetAllTypeFuelApiImpl = async (): Promise<TypeOfFuelEntity[]> => {
             },
             {
                 id: 'Diesel',
-                name: 'Diesel',
+                name: 'Diésel',
             },
             {
                 id: 'Hibrido',
-                name: 'Hibrido',
+                name: 'Híbrido',
             }
         ]
     } catch (error) {

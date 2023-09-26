@@ -6,7 +6,7 @@ import TypeOfFuelEntity from "./TypeOfFuelEntity";
 import TypeVehicleEntity from "./TypeVehicleEntity";
 
 export enum TransmissionCar {
-    AUTOMATIC = 'Automatico',
+    AUTOMATIC = 'Automática',
     MANUAL = 'Manual'
 }
 
