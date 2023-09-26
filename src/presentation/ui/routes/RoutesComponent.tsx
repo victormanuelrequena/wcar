@@ -30,6 +30,7 @@ import SellerPoliciesPage from "../pages/policies/SellerPoliciesPage";
 import BuyerPolicies from "../pages/policies/BuyerPolicies";
 import SuccesfulPaymentPage from "../pages/succesfulPayment/SuccesfulPaymentPage";
 import BuyOrSellPage from "../pages/landings/buyOrSellPage/BuyOrSellPage";
+import { Helmet } from "react-helmet-async";
 
 export interface iRoute {
     name: string,
@@ -51,11 +52,13 @@ const routes = {
         relativePath: '/error/404',
         component: Error404Page,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     home: {
         path: "/",
         relativePath: '/',
         component: HomePage,
+        helmet: null,
         auth: (user: UserEntity | undefined) => true,
     },
     buyYourCar: {
@@ -63,144 +66,168 @@ const routes = {
         relativePath: '/compra-tu-carro',
         component: BuyYourCarPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     detailedCar: {
         path: "/carro/:id",
         relativePath: '/carro',
         component: DetailedCarPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     bookCar: {
         path: "/carro/separar/:id",
         relativePath: '/carro/separar',
         component: BookACarPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     dateForCar: {
         path: "/carro/cita/:action/:carId/",
         relativePath: '/carro/cita',
         component: BookADatePage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     dateForSell: {
         path: "/:action/cita/",
         relativePath: '/vender/cita',
         component: BookADatePage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     sellYourCar: {
         path: "/vende-tu-carro",
         relativePath: '/vende-tu-carro',
         component: SellYourCarPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     quoteYourCar: {
         path: "/cotizar",
         relativePath: '/cotizar',
         component: QuoteYourCarPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     quoteSuccessful: {
         path: "/cotizar/resultado",
         relativePath: '/cotizar/resultado',
         component: QuoteSuccessfulPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     aboutUs: {
         path: "/nuestra-empresa",
         relativePath: '/nuestra-empresa',
         component: AboutUsPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     services: {
         path: "/financiacion",
         relativePath: '/financiacion',
         component: ServicesPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     contact: {
         path: "/contacto",
         relativePath: '/contacto',
         component: ContactPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     procedures: {
         path: "/tramites-de-vehiculos",
         relativePath: '/tramites-de-vehiculos',
         component: ProceduresPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     insurance: {
         path: "/seguro-todo-riesgo",
         relativePath: '/seguro-todo-riesgo',
         component: InsurancePage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     blog: {
         path: "/blog",
         relativePath: '/blog',
         component: BlogPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     detailedBlog: {
         path: "/blog/:id",
         relativePath: '/blog',
         component: BlogDetailedPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     signIn: {
         path: "/iniciar-sesion",
         relativePath: '/iniciar-sesion',
         component: SignInPage,
         auth: (user: UserEntity | undefined) => user == undefined,
+        helmet: null,
     },
     signUp: {
         path: "/registrarse",
         relativePath: '/registrarse',
         component: SignUpPage,
         auth: (user: UserEntity | undefined) => user == undefined,
+        helmet: null,
     },
     sendRecoveryCode: {
         path: "/recuperar-contraseña",
         relativePath: "/recuperar-contraseña",
         component: SendRecoveryCodePage,
         auth: (user: UserEntity | undefined) => user == undefined,
+        helmet: null,
     },
     updatePasswordRecovery: {
         path: "/recuperar-contraseña/:email",
         relativePath: "/recuperar-contraseña",
         component: CheckRecoveryCodePage,
         auth: (user: UserEntity | undefined) => user == undefined,
+        helmet: null,
     },
     generalPolicies: {
         path: "/politicas-generales",
         relativePath: "/politicas-generales",
         component: GeneralPoliciesPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     sellerPolicies: {
         path: "/politicas-vendedor",
         relativePath: "/politicas-vendedor",
         component: SellerPoliciesPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     buyerPolicies: {
         path: "/politicas-comprador",
         relativePath: "/politicas-comprador",
         component: BuyerPolicies,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     succesfulPayment: {
         path: "/pago-exitoso/:bookingId",
         relativePath: "/pago-exitoso",
         component: SuccesfulPaymentPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     },
     buyOrSell: {
         path: "/compra-o-vende-tu-carro-en-colombia",
         relativePath: "/compra-o-vende-tu-carro-en-colombia",
         component: BuyOrSellPage,
         auth: (user: UserEntity | undefined) => true,
+        helmet: null,
     }
 }
 
@@ -226,7 +253,20 @@ const RoutesComponent: React.FC<RoutesComponentProps> = ({ children }) => {
         <BrowserRouter>
             <Routes>
                 {Object.values(routes).map((route: any) => <Route key={route.path} path={route.path} element={
-                    React.createElement(route.component, {}, undefined)
+                    //create dynamic route and add helmet to it with react.createElement
+                    <>
+                        <Helmet>
+                            {
+                                route.helmet != null ? route.helmet : <>
+                                    <title>wcar #1 Más que vender te aconsejamos</title>
+                                    <meta name="description"
+                                        content="¡WCAR - tu mejor opción para comprar y vender carros usados! Conocemos el mercado y te asesoramos para que encuentres el auto perfecto. ¡Contáctanos ahora!" />
+                                </>
+                            }
+                        </Helmet>
+                        {React.createElement(route.component)}
+                    </>
+
                 }>
                 </Route>)}
                 <Route path='*' element={<Error404Page />} />
