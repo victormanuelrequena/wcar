@@ -1,30 +1,46 @@
-.services_page{
-    .footer{
+.services_page {
+    .footer {
         background-color: var(--color-gray-light);
     }
 
-    .section_3{
+    .section_1 {
+        position: relative;
+
+        .bg_img{
+            object-fit: cover;
+        }
+
+        .content{
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .section_3 {
         background-color: #f6f7f9;
-        
-        .line_gray{
+
+        .line_gray {
             background-color: #90A3BF;
 
-            &_vertical{
+            &_vertical {
                 width: 1px;
                 height: 4rem;
             }
 
-            &_horizontal{
+            &_horizontal {
                 height: 1px;
             }
         }
 
-        .body_text{
+        .body_text {
             font-size: 0.75rem;
         }
     }
 
-    .bg_img_line{
+    .bg_img_line {
         position: absolute;
         right: 0;
         top: 0;
@@ -32,37 +48,37 @@
         width: 21%;
     }
 
-    .services_calculator_form_component{
-        
+    .services_calculator_form_component {
+
         height: fit-content;
         max-height: 100%;
 
-        .card_option_picker{
+        .card_option_picker {
             background-color: var(--color-gray-light);
             color: var(--color-gray-dark);
             border: none;
 
-            &.selected{
+            &.selected {
                 background-color: var(--color-orange);
                 color: white;
             }
         }
 
-        .insurance_select{
+        .insurance_select {
             background-color: var(--color-gray-light);
             color: var(--color-gray-dark);
             border: none;
         }
     }
 
-    .calculator_card{
+    .calculator_card {
         z-index: 1;
     }
 
-    .accordeon_component{
+    .accordeon_component {
         z-index: 1;
         background-color: white;
     }
 
-    
+
 }

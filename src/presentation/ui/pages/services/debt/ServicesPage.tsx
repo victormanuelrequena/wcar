@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import di from '../../../../../di/DependencyInjection';
 import Icons from '../../../assets/Icons';
 import './ServicesPageStyles.scss';
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useRef, useState } from "react";
 import CalculateCreditForCarUseCase, { CalculateCreditForCarUseCaseName } from '../../../../../domain/use_cases/calculator/CalculateCreditForCarUseCase';
 import Layout from '../../../layout/Layout';
 import FinancingServicesLineComponent from '../../../components/financingServicesLine/FinancingServicesLineComponent';
@@ -26,6 +26,7 @@ const ServicesPage: FC = () => {
     const { getValues } = formFunctions;
 
     const [frequentQuestions, setFrequentQuestions] = useState<FrequentQuestionEntity[]>([]);
+    const refContainer = useRef<HTMLDivElement | null>(null);
 
     const _getFrequentQuestions = async () => {
         try {
@@ -61,28 +62,25 @@ const ServicesPage: FC = () => {
         _getFrequentQuestions();
     }, []);
 
-    return <div className="services_page">
+    return <div className="services_page" ref={refContainer}>
         <Helmet>
             <title>Financiación con wcar, ¡estrena tu usado hoy!</title>
-            <meta name='description' content='¿Quieres saber todo acerca de la Financiación con wcar? te ofrecemos planes cómodos que te permitirán salir con tu vehículo a casa.' />
+            <meta name='description' content="Nada como saber desde el primer momento cuanto debes pagar mensual. Conoce el valor de tu cuota con estos datos, de manera fácil y sencilla." />
             <meta name='keywords' content='Financiación, Cómo funciona nuestro proceso de financiación, Calcula tu Préstamo' />
         </Helmet>
         <Layout>
             <h1 className="d-none">Financiación</h1>
-            <section className="section_1 position-relative w-100 mb-5">
-                <img src="/assets/services/bg_services_financing_pc.jpg" className='img-fluid w-100 d-none d-md-block bg_1' alt="Financiación con wcar" title='Financiación con wcar' />
-                <div className="container">
-                    <div className="col-md-4 position-absolute d-none d-md-block top-50 translate-middle-y">
-                        <div className="side side_top side_blue_neon mb-3" />
-                        <h2 className="text_md_white text_bold">¿Cómo funciona nuestro proceso<span className="text_md_white text_light text_italic"> de financiación?</span></h2>
+            <section className="section_1">
+                <img src="/assets/services/bg_services_financing_mobile.jpg" alt="Wcar" title="Wcar" className="img-fluid w-100 bg_img d-block d-md-none" />
+                <div className="content position-md-absolute">
+                    <div className="container">
+                        <div className="col-md-4">
+                            <div className="side side_top side_blue_neon mb-3" />
+                            <h2 className="text_md_white text_bold text-center text-md-start">¿Cómo funciona<br className='d-none d-md-block' /> nuestro proceso <br className='d-none d-md-block' /><span className="text_md_italic text_md_lighter"> de</span> <span className="text_md_white text_light text_italic text_orange"> financiación?</span></h2>
+                        </div>
                     </div>
                 </div>
-                <img src="/assets/services/bg_services_financing_mobile.jpg" alt="Wcar" title="Wcar" className="img-fluid w-100 d-block d-md-none" />
-                <div className="container">
-                    <div className="col-12 mt-3 d-flex d-md-none align-items-center">
-                        <h2 className="text_black h1 text_bold text-center">¿Cómo funciona nuestro proceso de <span className="fw-light text_orange text_italic text-center">financiación?</span></h2>
-                    </div>
-                </div>
+                <img src="/assets/services/bg_services_financing_pc.jpg" className='img-fluid w-100 d-none d-md-block bg_img bg_1' alt="Financiación con wcar" title='Financiación con wcar' />
             </section>
             <section className="section_2">
                 <FinancingServicesLineComponent />
@@ -91,7 +89,7 @@ const ServicesPage: FC = () => {
                 <div className="container">
                     <div className="row">
                         <div className="d-md-none col-12">
-                            <CalculatorTitleComponent />
+                            {(refContainer.current?.getBoundingClientRect()?.width ?? 0) < 768 && <CalculatorTitleComponent />}
                         </div>
                         <div className="col-12 col-md-6 my-3">
                             <ServicesCalculatorFormComponent formFunctions={formFunctions} handleOnFormChange={_handleOnFormChange} />
@@ -99,7 +97,7 @@ const ServicesPage: FC = () => {
                         </div>
                         <div className="col-12 col-md-6 col-lg-5 col-xl-4 d-flex flex-column justify-content-center align-items-start">
                             <div className="d-md-block d-none">
-                                <CalculatorTitleComponent />
+                                {(refContainer.current?.getBoundingClientRect()?.width ?? 0) > 768 && <CalculatorTitleComponent />}
                             </div>
                             <div className="card shadow-sm px-0 px-md-2 px-lg-4 position-relative calculator_card">
                                 <div className="card-body">

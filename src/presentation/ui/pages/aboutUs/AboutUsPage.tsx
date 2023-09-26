@@ -70,10 +70,10 @@ const AboutUsPage: FC<{}> = () => {
                     <div className="row">
                         <div className="col-md-2">
                             <div className="side side_top side_blue_neon">
-                                <h4>
+                                <h2>
                                     <span className="text_bold text_black text_md_white">Misión</span> <br className='d-none d-md-block' />
                                     <span className="text_orange text_md_white">& visión</span>
-                                </h4>
+                                </h2>
                             </div>
                         </div>
                         <div className="col-md-1"></div>

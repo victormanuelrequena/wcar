@@ -197,8 +197,8 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
     },
     buyOrSell: {
-        path: "/compra-o-vende",
-        relativePath: "/compra-o-vende",
+        path: "/compra-o-vende-tu-carro-en-colombia",
+        relativePath: "/compra-o-vende-tu-carro-en-colombia",
         component: BuyOrSellPage,
         auth: (user: UserEntity | undefined) => true,
     }

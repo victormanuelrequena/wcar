@@ -57,8 +57,8 @@ const BuyOrSellPage: FC<{}> = () => {
     return <div className="buy_or_sell_page">
         <Layout>
             <Helmet>
-                <title>Vende tu Carro en Colombia en 1, 2 por 3</title>
-                <meta name='description' content='Vende tu carro rápido y seguro, acá te explicamos todo lo necesario para realizar un negocio rentable en la venta de tu vehículo. ¡Contáctanos y di Voy a Vender!' />
+                <title>Compra o vende tu carro en Colombia en 2023</title>
+                <meta name='description' content='Si ya te dijiste ¡Compra o vende tu carro en Colombia! aquí te explicamos todo lo que debes tener en cuenta para realizar una transacción segura.' />
                 <meta name='keywords' content='Vende tu carro, Carros Usados, Venta de Carros en Colombia, venta de carros usados, Voy a Vender' />
             </Helmet>
             <section className="bg_black position-relative section_1">

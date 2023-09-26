@@ -32,14 +32,10 @@ const CommenstLineComponent: FC<{}> = () => {
             <div className='row'>
                 <div className="col-md-3 d-md-flex justify-content-start justify-content-md-end align-items-center black_side">
                     <div className="side side_top side_md_blue_neon text_black text_md_white mt-5 ms-3 mt-md-0 pe-5">
-                        <h2 className='d-none d-md-block'>
-                            <b className='me-2 me-md-0'>¿Qué </b>
-                            <span className='me-2 me-md-0'>dicen de </span>
-                            <div className="text_wcar">wcar?</div>
-                        </h2>
-                        <h2 className='d-block d-md-none'>
-                            <b className='me-2 me-md-0'>¿Qué dicen de </b>
-                            <div className="text_wcar">wcar?</div>
+                        <h2 >
+                            <b>¿Qué </b>
+                            <span className='text_bold text_md_lighter'><br className='d-none d-md-block' /> dicen de</span><br />
+                            <span className="text_lighter text_wcar"> wcar?</span>
                         </h2>
                     </div>
                 </div>
