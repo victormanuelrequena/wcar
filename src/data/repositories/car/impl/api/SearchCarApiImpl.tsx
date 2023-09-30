@@ -26,10 +26,9 @@ const SearchCarApiImpl = async (page: number, search: string, brand: string | un
             page: page,
             orderBy: orderBy?.value != undefined ? (orderBy.value?.desc ? "desc" : "asc") : undefined,
         }
-        console.log('body', body);
         const response = await HostApi.post(relativeUrl, body);
         return {
-            cars: response.results.map((car: any) => CarImplDto.fromJson(car)),
+            cars: response.results.map((car: any) => CarImplDto.fromJson(car)).filter((car: CarEntity) => car.id != "19"),
             maxPages: response.num_pages
         }
     } catch (error) {

@@ -6,7 +6,7 @@ const GetSomeRandomCarsApiImpl = async (): Promise<CarEntity[]> => {
     const relativeUrl = "/cars/";
     try {
         const response = await HostApi.get(relativeUrl);
-        return response.results.map((car: any) => CarImplDto.fromJson(car));
+        return response.results.map((car: any) => CarImplDto.fromJson(car)).filter((car: CarEntity) => car.id != "19");
     } catch (error) {
         return [];
     }
