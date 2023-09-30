@@ -26,7 +26,7 @@ const DetailedCarPage: FC<{}> = () => {
     const _getCar = async () => {
         try {
             const car = await di.get<GetCarByIdUseCase>(GetCarByIdUseCaseName).call(id!);
-            setCar(car);
+            setCar(car == null ? null : car);
         } catch (error) {
             setCar(null);
         }
