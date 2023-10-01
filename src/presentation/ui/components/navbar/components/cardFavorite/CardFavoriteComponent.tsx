@@ -5,13 +5,14 @@ import FavoriteCarsContextType from "../../../../../../domain/providers/favorite
 import FavoriteCarsContext from "../../../../../../domain/providers/favoriteCars/FavoriteCarsContext";
 import { Link } from 'react-router-dom';
 import { routes } from '../../../../routes/RoutesComponent';
+import { getUrlCar } from '../../../../../utils/Contants';
 
 const CardFavoriteComponent: FC<CardFavoriteComponentProps> = ({ }) => {
     const { favoriteCars } = useContext(FavoriteCarsContext) as FavoriteCarsContextType;
 
     if(!favoriteCars.length) return <div className="card_favorite_component p-4">Agrega tus favoritos para verlos aquí </div>
     return <div className="card_favorite_component">
-        {favoriteCars.map((favoriteCar, index) => <Link to={routes.detailedCar.relativePath + '/' + favoriteCar.id} className="car_item d-flex" key={index}>
+        {favoriteCars.map((favoriteCar, index) => <Link to={`${routes.detailedCar.relativePath}/${getUrlCar(favoriteCar)}`} className="car_item d-flex" key={index}>
             <div className="car_image d-flex justify-content-center align-items-center">
                 <img src={favoriteCar.photoUrl} alt="Wcar" title="Wcar" />
             </div>

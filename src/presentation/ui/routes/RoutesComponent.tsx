@@ -65,8 +65,8 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
     },
     detailedCar: {
-        path: "/carro/:id",
-        relativePath: '/carro',
+        path: "/compra-tu-carro/:typeVehicle/:nameVehicle/:id",
+        relativePath: '/compra-tu-carro',
         component: DetailedCarPage,
         auth: (user: UserEntity | undefined) => true,
     },
@@ -173,8 +173,8 @@ const routes = {
         auth: (user: UserEntity | undefined) => user == undefined,
     },
     generalPolicies: {
-        path: "/politicas-generales",
-        relativePath: "/politicas-generales",
+        path: "/politica-de-privacidad",
+        relativePath: "/politica-de-privacidad",
         component: GeneralPoliciesPage,
         auth: (user: UserEntity | undefined) => true,
     },
