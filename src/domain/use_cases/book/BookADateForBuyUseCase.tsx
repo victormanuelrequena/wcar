@@ -21,9 +21,9 @@ export default class BookADateForBuyUseCase {
         this._bookRepository = _.bookRepository;
         this._userProvider = _.userProvider;
     }
-    async call(bookDateId: string, bookHourId: string, carId: string, password: string, contactInfo: any, separation: number | undefined): Promise<void> {
+    async call(bookDateId: string, bookHourId: string, carId: string, contactInfo: any, paymentNumber: string): Promise<void> {
         try {
-            const responseBook = await this._bookRepository.bookADateForBuy(bookDateId, bookHourId, carId, password, contactInfo, separation);
+            const responseBook = await this._bookRepository.bookADateForBuy(bookDateId, bookHourId, carId, contactInfo, paymentNumber);
             // if (this._userProvider.Actions.user == null) {
             //     di.get<SignInUseCase>(SignInUseCaseName).call(contactInfo.email, password);
             // }

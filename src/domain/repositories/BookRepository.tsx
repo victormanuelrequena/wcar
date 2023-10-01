@@ -13,12 +13,14 @@ import BookDateEntity from "../entities/BookDateEntity";
 import BookHourEntity from "../entities/BookHourEntity";
 
 export default interface BookRepository {
+    bookACar(carId: string): Promise<void>;
     getAvailableDatesForBuy(carId: string): Promise<BookDateEntity[]>;
     getAvailableHoursForBuy(bookDateId: string, carId: string): Promise<BookHourEntity[]>;
-    bookADateForBuy(bookDateId: string, bookHourId: string, carId: string, password: string, contactInfo: any, separation: number | undefined): Promise<void>;
+    bookADateForBuy(bookDateId: string, bookHourId: string, carId: string, contactInfo: any, paymentNumber: string): Promise<void>;
+    bookADateForSee(bookDateId: string, bookHourId: string, carId: string, contactInfo: any): Promise<void>;
     getavailableDatesForSell(cotizationId: string | undefined): Promise<BookDateEntity[]>;
     getAvailableHoursForSell(bookDateId: string, cotizationId: string | undefined): Promise<BookHourEntity[]>;
-    bookADateForSell(bookDateId: string, bookHourId: string, cotizationId: string | undefined, password: string, contactInfo: any): Promise<void>;
+    bookADateForSell(bookDateId: string, bookHourId: string, cotizationId: string | undefined, contactInfo: any): Promise<void>;
     confirmBookingBuy(bookId: string): Promise<void>;
 }
 

@@ -9,14 +9,17 @@ import GetAvailableHoursForSellApiImpl from "./api/GetAvailableHoursForSellApiIm
 import GetAvailableDatesForSellApiImpl from "./api/GetAvailableDatesForSellApiImpl";
 import BookADateForSellApiImpl from "./api/BookADateForSellApiImpl";
 import ConfirmBookingBuyApiImpl from "./api/ConfirmBookingBuyApiImpl";
+import BookACarApiImpl from "./api/BookACarApiImpl";
 
 @injectable()
 export default class BookRepositoryImpl implements BookRepository {
-    getAvailableDatesForBuy = (carId: string): Promise<BookDateEntity[]> => GetAvailableDatesForBuyApiIpml(carId);
+    bookACar = (carId: string): Promise<void> => BookACarApiImpl(carId);
+    bookADateForSee = (bookDateId: string, bookHourId: string, carId: string, contactInfo: any): Promise<void> => BookADateForSellApiImpl(bookDateId, bookHourId, carId, contactInfo);
+    getAvailableDatesForBuy = (carId: string,): Promise<BookDateEntity[]> => GetAvailableDatesForBuyApiIpml(carId);
     getAvailableHoursForBuy = (bookDateId: string, carId: string): Promise<BookHourEntity[]> => GetAvailableHoursForBuyApiImpl(bookDateId, carId);
-    bookADateForBuy = (bookDateId: string, bookHourId: string, carId: string, password: string, contactInfo: any, separation: number | undefined): Promise<void> => BookADateForBuy(bookDateId, bookHourId, carId, password, contactInfo, separation);
+    bookADateForBuy = (bookDateId: string, bookHourId: string, carId: string, contactInfo: any, paymentId: string): Promise<void> => BookADateForBuy(bookDateId, bookHourId, carId, contactInfo, paymentId);
     getavailableDatesForSell = (cotizationId: string | undefined): Promise<BookDateEntity[]> => GetAvailableDatesForSellApiImpl(cotizationId);
     getAvailableHoursForSell = (bookDateId: string, cotizationId: string | undefined): Promise<BookHourEntity[]> => GetAvailableHoursForSellApiImpl(bookDateId, cotizationId);
-    bookADateForSell = (bookDateId: string, bookHourId: string, cotizationId: string | undefined, password: string, contactInfo: any): Promise<void> => BookADateForSellApiImpl(bookDateId, bookHourId, cotizationId, password, contactInfo);
+    bookADateForSell = (bookDateId: string, bookHourId: string, cotizationId: string | undefined, contactInfo: any): Promise<void> => BookADateForSellApiImpl(bookDateId, bookHourId, cotizationId, contactInfo);
     confirmBookingBuy = (bookId: string): Promise<void> => ConfirmBookingBuyApiImpl(bookId);
 }

@@ -67,6 +67,15 @@ const _testDates: BookDateEntity[] = [
 
 @injectable()
 export default class BookRepositoryDev implements BookRepository {
+    async bookACar(carId: string): Promise<void> {
+        await sleeper(1000)(1);
+        window.location.href = '/carro/cita/' + "separar" + '/' + carId
+        return;
+    }
+    async bookADateForSee(bookDateId: string, bookHourId: string, carId: string, contactInfo: any): Promise<void> {
+        await sleeper(1000)(1);
+        return;
+    }
     async getAvailableDatesForBuy(carId: string): Promise<BookDateEntity[]> {
         await sleeper(1000)(1);
         return _testDates;
@@ -75,7 +84,7 @@ export default class BookRepositoryDev implements BookRepository {
         await sleeper(1000)(1);
         return _testHours;
     }
-    async bookADateForBuy(bookDateId: string, bookHourId: string, carId: string, paymentId: string | undefined, contactInfo: any): Promise<void> {
+    async bookADateForBuy(bookDateId: string, bookHourId: string, carId: string, contactInfo: any, paymentNumber: string): Promise<void> {
         await sleeper(1000)(1);
         return;
     }

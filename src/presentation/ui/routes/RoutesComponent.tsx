@@ -77,7 +77,7 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
     },
     dateForCar: {
-        path: "/carro/cita/:action/:carId/",
+        path: "/carro/cita/:action/:carId",
         relativePath: '/carro/cita',
         component: BookADatePage,
         auth: (user: UserEntity | undefined) => true,

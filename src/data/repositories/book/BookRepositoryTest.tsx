@@ -4,13 +4,12 @@ import BookHourEntity from "../../../domain/entities/BookHourEntity";
 import BookRepository from "../../../domain/repositories/BookRepository";
 import sleeper from "../../../domain/repositories/utils/Sleeper";
 
-
 const _testHours: BookHourEntity[] = [
     {
         hourFrom: "8am",
         hourTo: "10am",
         id: "1",
-        available: true,
+        available: true
     },
     {
         hourFrom: "8am",
@@ -68,7 +67,12 @@ const _testDates: BookDateEntity[] = [
 
 @injectable()
 export default class BookRepositoryTest implements BookRepository {
-    async confirmBookingBuy(bookId: string): Promise<void> {
+    async bookACar(carId: string): Promise<void> {
+        await sleeper(1000)(1);
+        window.location.href = '/carro/cita/' + "separar" + '/' + carId
+        return;
+    }
+    async bookADateForSee(bookDateId: string, bookHourId: string, carId: string, contactInfo: any): Promise<void> {
         await sleeper(1000)(1);
         return;
     }
@@ -80,7 +84,7 @@ export default class BookRepositoryTest implements BookRepository {
         await sleeper(1000)(1);
         return _testHours;
     }
-    async bookADateForBuy(bookDateId: string, bookHourId: string, carId: string, paymentId: string | undefined, contactInfo: any): Promise<void> {
+    async bookADateForBuy(bookDateId: string, bookHourId: string, carId: string, contactInfo: any, paymentNumber: string): Promise<void> {
         await sleeper(1000)(1);
         return;
     }
@@ -92,9 +96,13 @@ export default class BookRepositoryTest implements BookRepository {
         await sleeper(1000)(1);
         return _testHours;
     }
-    async bookADateForSell(bookDateId: string, bookHourId: string, cotizationId: string | undefined, contactInfo: any ): Promise<void> {
+    async bookADateForSell(bookDateId: string, hour: string, cotizationId: string | undefined, contactInfo: any): Promise<void> {
         await sleeper(1000)(1);
         return;
-     }
-    
+    }
+    async confirmBookingBuy(bookId: string): Promise<void> {
+        await sleeper(1000)(1);
+        return;
+    }
+
 }
