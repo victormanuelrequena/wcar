@@ -13,7 +13,7 @@ const CardContactComponent: FC<{}> = () => {
             <span className="text-white ps-1">Si tienes alguna pregunta <br />
                 (+57) 301 8063302</span>
         </a>
-        <Link to={routes.contact.relativePath} className='btn btn_orange mt-4'>CONTÁCTA A UN ASESOR <Icons.Contact /> </Link>
+        <Link to={routes.contact.relativePath} className='btn btn_orange mt-4'>CONTACTA A UN ASESOR <Icons.Contact /> </Link>
     </div>
 }
 

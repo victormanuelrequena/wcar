@@ -26,7 +26,7 @@ const FooterComponent: FC<{}> = () => {
                     </div>
                     <div className="col-6 col-md-3 col-lg-2">
                         <div className="d-flex flex-column w-100">
-                            <h6 className="text_orange text_bold mb-3">Menú</h6>
+                            <h6 className="text_orange text_bold mb-3">Contacto</h6>
                             <a href="tel:+573244001212" className="my-1">+57 324 4001212</a>
                             <a href="mailto:contacto@wcar.co" className="my-1">contacto@wcar.co</a>
                             <a href="https://www.google.com/maps/search/?api=1&query=Calle+98a+%23+69B-35" target="_blank">Calle 98a # 69B-35</a>
