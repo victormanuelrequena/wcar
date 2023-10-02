@@ -10,6 +10,7 @@ import { routes } from '../../routes/RoutesComponent';
 import { isLeft } from 'fp-ts/lib/Either';
 import FavoriteCarsContext from '../../../../domain/providers/favoriteCars/FavoriteCarsContext';
 import FavoriteCarsContextType from '../../../../domain/providers/favoriteCars/FavoriteCarsContextType';
+import { getUrlCar } from '../../../utils/Contants';
 
 const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
     const [_like, _setLike] = useState<boolean>(false);
@@ -31,7 +32,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
         _checkLike();
     }, [favoriteCars]);
 
-    return <Link to={routes.detailedCar.relativePath + '/' + car.id} className="w-100 card car_card_component" >
+    return <Link to={`${routes.detailedCar.relativePath}/${getUrlCar(car)}`} className="w-100 card car_card_component" >
         <img src={car.photoUrl} alt={`${car.name} ${car.brand.name} ${car.type.name}`} title="Wcar" className="img-fluid img_car" />
         <div className="card-body">
             {car.tag && <div className="tag" style={{ backgroundColor: car.tag.color }}>{car.tag.name}</div>}
