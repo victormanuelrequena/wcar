@@ -1,7 +1,7 @@
 import HostApi from "../../../../settings/HostApi";
 
 //TODO API
-const BookADateForSellApiImpl = async (bookDateId: string, bookHourId: string, cotizationId: string | undefined, password: string, contactInfo: any): Promise<void> => {
+const BookADateForSellApiImpl = async (bookDateId: string, bookHourId: string, cotizationId: string | undefined, contactInfo: any): Promise<void> => {
     const relativeUrl = "/sale-cars/create/";
     const body = {
         "name": contactInfo.name,
@@ -13,12 +13,11 @@ const BookADateForSellApiImpl = async (bookDateId: string, bookHourId: string, c
         "role": "customer",
         "likes": [],
         "typeSell": true,
-        "password": password,
     }
 
     
     try {
-        const response = await HostApi.post(relativeUrl, "");
+        const response = await HostApi.post(relativeUrl, body);
     } catch (error) {
 
     }

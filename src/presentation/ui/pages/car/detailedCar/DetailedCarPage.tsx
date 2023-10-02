@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import './DetailedCarPageStyles.scss';
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import Layout from '../../../layout/Layout';
 import di from '../../../../../di/DependencyInjection';
 import GetCarByIdUseCase, { GetCarByIdUseCaseName } from '../../../../../domain/use_cases/car/GetCarByIdUseCase';
@@ -17,11 +17,15 @@ import GetRelatedCarsByCardIdUseCase, { GetRelatedCarsByCardIdUseCaseName } from
 import Icons from '../../../assets/Icons';
 import { BookADateActions } from '../bookADate/BookADatePage';
 import { Helmet } from 'react-helmet-async';
+import BookACarUseCase, { BookACarUseCaseName } from '../../../../../domain/use_cases/book/BookACarUseCase';
+import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
+import ModalsContext from '../../../../../domain/providers/modal/ModalsContext';
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
     const [car, setCar] = useState<CarEntity | undefined | null>(undefined);
     const [relatedCars, setRelatedCars] = useState<CarEntity[] | undefined | null>(undefined);
+    const {addToast} = useContext(ModalsContext) as ModalsContextType;
 
     const _getCar = async () => {
         try {
@@ -50,6 +54,14 @@ const DetailedCarPage: FC<{}> = () => {
             setRelatedCars(cars);
         } catch (error) {
             setRelatedCars([]);
+        }
+    }
+
+    const _bookCarWithPayment = async () => {
+        try {
+            await di.get<BookACarUseCase>(BookACarUseCaseName).call(id!);
+        } catch (error) {
+            addToast('Error al reservar el vehículo', "error", null);
         }
     }
 
@@ -108,7 +120,7 @@ const DetailedCarPage: FC<{}> = () => {
                                             </span>
                                         </div>
                                         <div className="d-md-flex align-items-center">
-                                            <Link to={routes.dateForCar.relativePath + '/' + BookADateActions.book + '/' + id} state={{ cost: car.discount ?? car.price }} className="btn btn_orange my-3 me-3">SEPÁRALO AQUÍ <Icons.ArrowCircle /></Link>
+                                            <div onClick={_bookCarWithPayment} className="btn btn_orange my-3 me-3">SEPÁRALO AQUÍ <Icons.ArrowCircle /></div>
                                             <Link to={routes.dateForCar.relativePath + '/' + BookADateActions.see + '/' + id} className="btn btn_orange_outline my-3">QUIERO CONOCERLO <Icons.ArrowCircle /></Link>
                                         </div>
                                     </div>

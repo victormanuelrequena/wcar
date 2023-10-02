@@ -13,7 +13,6 @@ import GetAvailableDatesForBuyUseCase, { GetAvailableDatesForBuyUseCaseName } fr
 import PickerBoxComponent from "../../../components/form/pickerBox/PickerBoxComponent";
 import LoadingComponent from "../../../components/LoadingComponent/LoadingComponent";
 import DateParse from "../../../../utils/DateParse";
-import NotResultsComponent from "../../../components/notResults/NotResultsComponent";
 import { ErrorMessage } from "@hookform/error-message";
 import Icons from '../../../assets/Icons';
 import ModalsContextType from '../../../../../domain/providers/modal/ModalsContextType';
@@ -22,9 +21,8 @@ import { routes } from '../../../routes/RoutesComponent';
 import Validators from '../../../../utils/Validators';
 import GetAvailableDatesForSellUseCase, { GetAvailableDatesForSellUseCaseName } from '../../../../../domain/use_cases/book/GetAvailableDatesForSellUseCase';
 import GetAvailableHoursForSellUseCase, { GetAvailableHoursForSellUseCaseName } from '../../../../../domain/use_cases/book/GetAvailableHoursForSellUseCase';
-import BookADateForSellUseCase, { BookADateForSellUseCaseName } from '../../../../../domain/use_cases/book/BookADateForSellUseCase';
-import CurrencyParse from '../../../../utils/CurrencyParse';
 import CalculateOfferForCarUseCase, { CalculateOfferForCarUseCaseName } from '../../../../../domain/use_cases/calculator/CalculateOfferForCarUseCase';
+import BookADateForSeeUseCase, { BookADateForSeeUseCaseName } from '../../../../../domain/use_cases/book/BookADateForSeeUseCase';
 
 export enum BookADateActions {
     book = "separar",
@@ -34,7 +32,7 @@ export enum BookADateActions {
 const BookADatePage: FC<{}> = () => {
     const formFunctions = useForm();
     const { register, handleSubmit, getValues, formState: { errors }, reset, setValue, watch } = formFunctions;
-    const { carId, action } = useParams<{ action: string, carId: string | undefined }>();
+    const { carId, action } = useParams<{ action: string, carId: string | undefined, paymentId: string | undefined }>();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -95,7 +93,8 @@ const BookADatePage: FC<{}> = () => {
                 console.log('buydata', buyData, 'data', data, 'book', _data);
                 await di.get<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCaseName).call(_data);
             }
-            else if (action == BookADateActions.book || action == BookADateActions.see) await di.get<BookADateForBuyUseCase>(BookADateForBuyUseCaseName).call(data.date, data.hour, carId!, data.password, data.contact, data.separation);
+            else if (action == BookADateActions.book) await di.get<BookADateForBuyUseCase>(BookADateForBuyUseCaseName).call(data.date, data.hour, carId!, data.contact, carId!);
+            else if (action == BookADateActions.see) await di.get<BookADateForSeeUseCase>(BookADateForSeeUseCaseName).call(data.date, data.hour, carId!, data.contact);
             else return;
             addToast("Realiza el pago para confirmar tu reserva", "success", undefined);
             navigate(routes.home.relativePath);
@@ -111,9 +110,7 @@ const BookADatePage: FC<{}> = () => {
         if (dateValue == undefined) return 0;
         else if (getValues()?.hour == undefined) return 1;
         else if (contact?.name == "" || contact?.lastname == "" || contact?.email == "" || contact?.phone == "") return 2;
-        else if ((action == BookADateActions.book && watch('separation') == null) || action != BookADateActions.book && watch('terms') != true) return 3;
-        else if (watch('terms') != true && action == BookADateActions.book) return 4;
-        else if (watch('terms') == true && action == BookADateActions.book) return 5;
+        else if (watch('terms') != true) return 3;
         else return 4;
     }
 
@@ -200,52 +197,9 @@ const BookADatePage: FC<{}> = () => {
                                                 }))} />
                                                 <ErrorMessage as="aside" errors={errors} name="contact.email" />
                                             </div>
-                                            <div className="form-group col-md-6 my-3">
-                                                <label className="mandatory">
-                                                    Contraseña
-                                                </label>
-                                                <input type="password" className="form-control" placeholder={"Contraseña"}
-                                                    {...register('password', Validators({ isPassword: true, required: true }))} />
-                                                <ErrorMessage as="aside" errors={errors} name="password" />
-                                            </div>
-                                            <div className="form-group col-md-6 my-3">
-                                                <label className="mandatory">
-                                                    Confirmar Contraseña
-                                                </label>
-                                                <input type="password" {...register("confirm_password", Validators({
-                                                    isPassword: true,
-                                                    required: true, minLength: 6, validate: (val: string) => {
-                                                        console.log('validator pass', val, watch('password'));
-                                                        if (watch('password') != val) {
-                                                            return "Las contraseñas no coinciden"
-                                                        }
-                                                    },
-                                                }))} className="form-control" placeholder="Confirmar contraseña" />
-                                                <ErrorMessage as="aside" errors={errors} name="confirm_password" />
-                                            </div>
                                         </div>
                                     </div>
                                 </section></>}
-                            {action == BookADateActions.book && <section>
-                                <div className="card-body w-100">
-                                    <h5 className="mb-0">Reserva</h5>
-                                    <span className="text_light">Para reservar un vehículo debes de abonar una parte de su costo total ({CurrencyParse.toCop(cost)}), por favor escoge la cantidad que deseas abonar. De no realizar el pago tu cita no será agendada.</span>
-                                    <div className="row">
-                                        <div className="form-group col-md-6 my-3">
-                                            <label className="mandatory">Abono</label>
-                                            <input type="text" min={1000000} max={cost} className="form-control" placeholder='$0' {...register("_separation", Validators({
-                                                required: true,
-                                                maxValue: cost,
-                                                minValue: 1000000,
-                                                price: true,
-                                                onChange: (value) => setValue("separation", value),
-                                            }))} />
-                                            <input type='hidden' {...register("separation", { required: true })} />
-                                            <ErrorMessage as="aside" errors={errors} name="_separation" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>}
                             <section>
                                 <div className="form-check mb-4">
                                     <input className="form-check-input" type="checkbox" {...register("terms", Validators({ required: true }))} />

@@ -83,7 +83,7 @@ const routes = {
         helmet: null,
     },
     dateForCar: {
-        path: "/carro/cita/:action/:carId/",
+        path: "/carro/cita/:action/:carId",
         relativePath: '/carro/cita',
         component: BookADatePage,
         auth: (user: UserEntity | undefined) => true,
