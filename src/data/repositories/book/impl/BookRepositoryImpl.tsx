@@ -10,11 +10,12 @@ import GetAvailableDatesForSellApiImpl from "./api/GetAvailableDatesForSellApiIm
 import BookADateForSellApiImpl from "./api/BookADateForSellApiImpl";
 import ConfirmBookingBuyApiImpl from "./api/ConfirmBookingBuyApiImpl";
 import BookACarApiImpl from "./api/BookACarApiImpl";
+import BookADateForSeeApiImlp from "./api/BookADateForSeeApiImlp";
 
 @injectable()
 export default class BookRepositoryImpl implements BookRepository {
     bookACar = (carId: string): Promise<void> => BookACarApiImpl(carId);
-    bookADateForSee = (bookDateId: string, bookHourId: string, carId: string, contactInfo: any): Promise<void> => BookADateForSellApiImpl(bookDateId, bookHourId, carId, contactInfo);
+    bookADateForSee = (bookDateId: string, bookHourId: string, carId: string, contactInfo: any): Promise<void> => BookADateForSeeApiImlp(bookDateId, bookHourId, carId, contactInfo);
     getAvailableDatesForBuy = (carId: string,): Promise<BookDateEntity[]> => GetAvailableDatesForBuyApiIpml(carId);
     getAvailableHoursForBuy = (bookDateId: string, carId: string): Promise<BookHourEntity[]> => GetAvailableHoursForBuyApiImpl(bookDateId, carId);
     bookADateForBuy = (bookDateId: string, bookHourId: string, carId: string, contactInfo: any, paymentId: string): Promise<void> => BookADateForBuy(bookDateId, bookHourId, carId, contactInfo, paymentId);

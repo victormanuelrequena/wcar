@@ -70,7 +70,7 @@ const ServicesPage: FC = () => {
     return <div className="services_page" ref={refContainer}>
         <Helmet>
             <title>Financiación con wcar, ¡estrena tu usado hoy!</title>
-            <meta name='description' content="Nada como saber desde el primer momento cuanto debes pagar mensual. Conoce el valor de tu cuota con estos datos, de manera fácil y sencilla." />
+            <meta name='description' content="Nada como saber desde el primer momento cuánto debes pagar mensual. Conoce el valor de tu cuota con estos datos, de manera fácil y sencilla." />
             <meta name='keywords' content='Financiación, Cómo funciona nuestro proceso de financiación, Calcula tu Préstamo' />
         </Helmet>
         <Layout>

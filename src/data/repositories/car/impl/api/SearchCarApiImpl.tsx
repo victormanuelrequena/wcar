@@ -28,7 +28,7 @@ const SearchCarApiImpl = async (page: number, search: string, brand: string | un
         }
         const response = await HostApi.post(relativeUrl, body);
         return {
-            cars: response.results.map((car: any) => CarImplDto.fromJson(car)).filter((car: CarEntity) => car.id != "19"),
+            cars: response.results.map((car: any) => CarImplDto.fromJson(car)),
             maxPages: response.num_pages
         }
     } catch (error) {

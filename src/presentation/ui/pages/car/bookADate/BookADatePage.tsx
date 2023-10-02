@@ -32,7 +32,7 @@ export enum BookADateActions {
 const BookADatePage: FC<{}> = () => {
     const formFunctions = useForm();
     const { register, handleSubmit, getValues, formState: { errors }, reset, setValue, watch } = formFunctions;
-    const { carId, action, paymentId } = useParams<{ action: string, carId: string | undefined, paymentId: string | undefined }>();
+    const { carId, action } = useParams<{ action: string, carId: string | undefined, paymentId: string | undefined }>();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -93,7 +93,7 @@ const BookADatePage: FC<{}> = () => {
                 console.log('buydata', buyData, 'data', data, 'book', _data);
                 await di.get<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCaseName).call(_data);
             }
-            else if (action == BookADateActions.book) await di.get<BookADateForBuyUseCase>(BookADateForBuyUseCaseName).call(data.date, data.hour, carId!, data.contact, paymentId!);
+            else if (action == BookADateActions.book) await di.get<BookADateForBuyUseCase>(BookADateForBuyUseCaseName).call(data.date, data.hour, carId!, data.contact, carId!);
             else if (action == BookADateActions.see) await di.get<BookADateForSeeUseCase>(BookADateForSeeUseCaseName).call(data.date, data.hour, carId!, data.contact);
             else return;
             addToast("Realiza el pago para confirmar tu reserva", "success", undefined);

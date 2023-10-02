@@ -142,7 +142,7 @@ import BookADateForSeeUseCase, { BookADateForSeeUseCaseName } from "../domain/us
 
 enum MODE_DI { PRODUCTION, DEVELOPMENT, TEST }
 
-const mode = MODE_DI.TEST.toString();
+const mode = MODE_DI.PRODUCTION.toString();
 const di = new Container();
 
 //#region ------------------ REPOSITORIES ------------------ //

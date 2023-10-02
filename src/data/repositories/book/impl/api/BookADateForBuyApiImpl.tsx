@@ -1,19 +1,19 @@
 import HostApi from "../../../../settings/HostApi";
 
 const BookADateForBuyApiImpl = async (bookDateId: string, bookHourId: string, carId: string, contactInfo: any, paymentId: string): Promise<void> => {
-    const relativeUrl = "/scheduling-review/create/";
+    const relativeUrl = `/confirm-review/${paymentId}/`;
     const body = {
         "name": contactInfo.name,
         "lastName": contactInfo.lastname,
         "phone": contactInfo.phone,
         "email": contactInfo.email,
-        "booking": true, //to separate
+        // "booking": true, //to separate
         "date_avaliable": bookDateId,
         "hour_avaliable": bookHourId,
-        "role": "customer",
-        "likes": [],
-        "typeSell": false,
-        "car": carId,
+        // "role": "customer",
+        // "likes": [],
+        // "typeSell": false,
+        // "car": carId,
     }
 
     try {
