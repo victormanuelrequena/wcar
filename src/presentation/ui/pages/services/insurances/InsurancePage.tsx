@@ -61,8 +61,8 @@ const InsurancePage: FC<{}> = () => {
                                             <div className="col-md-6">
                                                 <ul>
                                                     <li>Responsabilidad civil.</li>
-                                                    <li>Perdidas parciales.</li>
-                                                    <li>Perdidas totales.</li>
+                                                    <li>Pérdidas parciales.</li>
+                                                    <li>Pérdidas totales.</li>
                                                     <li>Daños propios del vehículo.</li>
                                                     <li>Seguro para el conductor.</li>
                                                 </ul>

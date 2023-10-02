@@ -81,7 +81,7 @@ const AboutUsPage: FC<{}> = () => {
                             <CardVisionComponent minTitle="Misión" title='Inspirar a la generación actual y futura de compradores.' image={<div className='text_orange'> <Icons.StarCircle /> </div>} description='Brindamos una experiencia física y digital única, emocionante, basada en la transparencia brutal y precios razonables, potenciada por la última tecnología en IA y blockchain.' />
                         </div>
                         <div className="col-md-4 my-3">
-                            <CardVisionComponent minTitle="Visión" title='Convertirnos en el referente en LATAM de la industria.' image={<div className='text_orange'> <Icons.HeartFilled /> </div>} description='Contruimos una comunidad de entusiastas del automóvil que celebre la innovación, la sostenibilidad y la tecnología, mientras transformamos la manera en que las personas compran y venden.' />
+                            <CardVisionComponent minTitle="Visión" title='Convertirnos en el referente en LATAM de la industria.' image={<div className='text_orange'> <Icons.HeartFilled /> </div>} description='Construimos una comunidad de entusiastas del automóvil que celebre la innovación, la sostenibilidad y la tecnología, mientras transformamos la manera en que las personas compran y venden.' />
                         </div>
                     </div>
                 </div>

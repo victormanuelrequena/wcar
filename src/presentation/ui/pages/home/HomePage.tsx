@@ -114,7 +114,7 @@ const HomePage: FC<{}> = () => {
                             <div className="line_left_orange">Nosotros</div>
                             <h3 className='h3'><b>Razones para comprar y</b> <br /><i>vender con wcar</i></h3>
                             <div>
-                                <p>¡Somos el anti-dealer para que compres y vendas cero estrés! </p>
+                                <p>¡Somos el anti-dealer para que compres y vendas con cero estrés! </p>
                                 <p>En este revolucionario ecosistema encuentras una consejería personalizada. Somos brutalmente transparentes, dando a conocer el estado real del vehículo y ofreciendo precios razonables con un alto estándar de calidad.</p>
                             </div>
                             <div className="d-flex flex-column flex-md-row">

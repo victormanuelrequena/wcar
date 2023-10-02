@@ -9,7 +9,7 @@ const _procedures: FrequentQuestionEntity[] = [
     {
         id: "tasa-de-interes",
         question: "¿Cuál es la tasa de interés que me aplica?",
-        answer: "Las tasas de interés pueden variar mucho dependiendo del perfil de cada cliente. Teniendo en cuenta factores de riesgo como nivel de ingresos, historial crediticio (puntaje y experiencia), edad, tipo de actividad (empleado), nivel de endeudamiento y monto de la cuota inicial. Las tasas de interés para crédito de carro hoy día están entre el 0,89 hasta el 1,98% Nominal mes vencido. Si tienes un excelente perfil, puedes aspirar a una tasa que se acerque al 0,89, pero si tu perfil debe mejorar, la tasa será de 1,6 en adelante."
+        answer: "Las tasas de interés pueden variar mucho dependiendo del perfil de cada cliente. Teniendo en cuenta factores de riesgo como nivel de ingresos, historial crediticio (puntaje y experiencia), edad, tipo de actividad (empleado), nivel de endeudamiento y monto de la cuota inicial. Las tasas de interés para crédito de carro hoy día están entre el 0,89 hasta el 1,98% nominal mes vencido. Si tienes un excelente perfil, puedes aspirar a una tasa que se acerque al 0,89, pero si tu perfil debe mejorar, la tasa será de 1,6 en adelante."
     },
     {
         id: "bancos-convenio",
