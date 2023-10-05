@@ -15,6 +15,7 @@ import CityProvider, { CityProviderName } from './domain/providers/city/CityProv
 import FavoriteCarsProvider, { FavoriteCarsProviderName } from './domain/providers/favoriteCars/FavoriteCarsProviderName';
 import TagProvider, { TagProviderName } from './domain/providers/tag/TagProvider';
 import { HelmetProvider } from 'react-helmet-async';
+import { useEffect } from 'react';
 
 function App() {
   const allyProvider = di.get<AllyProvider>(AllyProviderName);
@@ -29,6 +30,15 @@ function App() {
   const typeVehicleProvider = di.get<TypeVehicleProvider>(TypeVehicleProviderName);
   const userProvider = di.get<UserProvider>(UserProviderName);
 
+  useEffect(() => {
+    if (navigator.userAgent.indexOf("Win") !== -1) {
+      // Obtiene el elemento body
+      var body = document.getElementsByTagName("body")[0];
+      // Agrega el id "windows" al elemento body
+      body.setAttribute("id", "windows");
+    }
+  }, []);
+  
   return (
     <HelmetProvider>
       <Provider container={di}>

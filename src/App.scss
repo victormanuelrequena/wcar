@@ -23,7 +23,7 @@ body * {
 
 .App {
   font-family: 'Trebuchet MS', sans-serif;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
 }
 
@@ -73,7 +73,8 @@ body * {
     font-weight: 700;
   }
 
-  &_italic, &_wcar {
+  &_italic,
+  &_wcar {
     font-family: 'Trebuchet MS', sans-serif;
     font-style: italic;
   }
@@ -132,24 +133,30 @@ body * {
   &_bold {
     font-weight: 700;
   }
+
   &_normal {
     font-weight: 400 !important;
   }
+
   &_lighter {
     font-weight: 200 !important;
   }
+
   @media screen and (min-width: 768px) {
     &_md {
       &_white {
         color: white;
       }
+
       &_italic {
         font-family: 'Trebuchet MS', sans-serif;
         font-style: italic;
       }
+
       &_lighter {
         font-weight: 200 !important;
       }
+
       &_normal {
         font-weight: 400 !important;
       }
@@ -636,6 +643,9 @@ input {
 }
 
 body {
+  height: 100vh;
+  overflow-y: hidden;
+
   .rs-slider-handle::before {
     background-color: var(--color-orange);
     border: solid 2px white;
