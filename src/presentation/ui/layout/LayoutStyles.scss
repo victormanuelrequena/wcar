@@ -6,5 +6,7 @@
     .content_app{
         flex-grow: 1;
         overflow-y: auto;
+        width: 100%;
+        overflow-x: hidden;
     }
 }

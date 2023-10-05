@@ -134,7 +134,15 @@
         }
     }
 
-    .home_page ~ .footer {
+    .home_page~.footer {
         background-color: var(--color-gray-light) !important;
+    }
+}
+
+@media (min-width: 1300px) {
+    .no_scrolled {
+        .home_page {
+            padding-top: 100px;
+        }
     }
 }
