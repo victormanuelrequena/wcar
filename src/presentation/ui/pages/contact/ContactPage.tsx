@@ -121,7 +121,7 @@ const ContactPage: FC<{}> = () => {
                                     <div className="col-md-6">
                                         <div className="form-group mb-3">
                                             <label className='mandatory'>Email</label>
-                                            <input type="email" placeholder='nombre' className="form-control" {...register("ejemplo@gmail.com", Validators({
+                                            <input type="email" placeholder='ejemplo@gmail.com' className="form-control" {...register("email", Validators({
                                                 required: true,
                                                 maxLength: 80,
                                                 minLength: 3,
