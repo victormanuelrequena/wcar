@@ -86,8 +86,8 @@ const BuyOrSellPage: FC<{}> = () => {
                         <div className="row">
                             <div className="col-md-6 pb-5 pb-md-0">
                                 <h2>Vende tu carro en Colombia</h2>
-                                <p className='py-3 h4'>Cuando te dices ¡Vende tu carro en Colombia! puede ser un proceso desafiante, especialmente si no tienes experiencia en la venta de vehículos. Es importante tener en cuenta que, en la actualidad, la mayoría de las personas buscan información en línea antes de tomar una decisión de compra, por lo que es fundamental que tu vehículo tenga una presencia en línea sólida y efectiva.</p>
-                                <Link to={routes.sellYourCar.relativePath} className="btn btn_orange">Vende tu seguro aquí</Link>
+                                <p className='py-3 h4'>Cuando te dices ¡Vende tu carro en Colombia! Puede ser un proceso desafiante, especialmente si no tienes experiencia en la venta de vehículos. Es importante tener en cuenta que, en la actualidad, la mayoría de las personas buscan información en línea antes de tomar una decisión de compra, por lo que es fundamental que tu vehículo tenga una presencia en línea sólida y efectiva.</p>
+                                <Link to={routes.sellYourCar.relativePath} className="btn btn_orange">Vende seguro aquí</Link>
                             </div>
                             <div className="col-md-6">
                                 <div className="ps-md-5"><img src="/assets/pages/buyOrSell/buy_your_car.jpg" alt="Vende tu carro en Colombia" title='Vende tu carro en Colombia' className="img_rounded img-fluid" /></div>
@@ -105,11 +105,11 @@ const BuyOrSellPage: FC<{}> = () => {
                             </div>
                             <div className="col-md-6">
                                 <h2>Compra tu carro en Colombia</h2>
-                                <p className='py-3 h4'>Cuando te dices ¡Compra tu carro en Colombia! los carros usados pueden ser una excelente opción. No solo ofrecen un precio más cómodo que los vehículos nuevos, sino que también puedes encontrar modelos más antiguos o raros que ya no están disponibles en el mercado. </p>
+                                <p className='py-3 h4'>Cuando te dices ¡Compra tu carro en Colombia! Los carros usados pueden ser una excelente opción. No solo ofrecen un precio más cómodo que los vehículos nuevos, sino que también puedes encontrar modelos más antiguos o raros que ya no están disponibles en el mercado. </p>
                                 <p className='py-3 h4'>Sin embargo, al comprar un carro usado, es importante que tomes algunas precauciones para garantizar que estás haciendo una inversión segura y satisfactoria.</p>
                             </div>
                             <div className="col-md-6 py-2 pb-5 pb-md-2">
-                                <p className='py-3 h4'>Cuando te dices ¡Compra tu carro en Colombia! los carros usados pueden ser una excelente opción. No solo ofrecen un precio más cómodo que los vehículos nuevos, sino que también puedes encontrar modelos más antiguos o raros que ya no están disponibles en el mercado. </p>
+                                <p className='py-3 h4'>Cuando te dices ¡Compra tu carro en Colombia! Los carros usados pueden ser una excelente opción. No solo ofrecen un precio más cómodo que los vehículos nuevos, sino que también puedes encontrar modelos más antiguos o raros que ya no están disponibles en el mercado. </p>
                                 <p className='py-3 h4'>Sin embargo, al comprar un carro usado, es importante que tomes algunas precauciones para garantizar que estás haciendo una inversión segura y satisfactoria.</p>
                                 <Link to={routes.sellYourCar.relativePath} className="btn btn_orange">Compra seguro aquí</Link>
                                 <a href="https://listado.tucarro.com.co/wcar" className="ms-3 btn btn_orange">Listado tu carro.com</a>

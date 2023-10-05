@@ -21,7 +21,7 @@ const RangePickerComponent: FC<RangePickerComponentProps> = ({ formFunctions, ke
         <RangeSlider value={[minValue ?? min, maxValue == "" ? max : maxValue]} min={min} max={max} onChange={_handleChange}  />
         <div className="div d-flex justify-content-between my-2">
             <div className="flex-grow-1 me-2">
-                <input type="number" value={minValue} min={min} max={maxValue ?? max} className="form-control" placeholder="Minimo" {...register(`${keyName}.min`, Validators({
+                <input type="number" value={minValue} min={min} max={maxValue ?? max} className="form-control" placeholder="mínimo" {...register(`${keyName}.min`, Validators({
                     maxValue: maxValue ?? max
                 }))} />
             </div>
