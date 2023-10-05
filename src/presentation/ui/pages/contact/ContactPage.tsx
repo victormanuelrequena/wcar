@@ -82,6 +82,7 @@ const ContactPage: FC<{}> = () => {
                             </div>
                             <form onSubmit={handleSubmit(_handleSubmit)} >
                                 <input type="hidden" value="00DHs000000QMEB" {...register("oid")} />
+                                <input type="hidden" value="Web orgánico" {...register("lead_source")} />
                                 <input type="hidden" value={routes.contact.relativePath} {...register('retURL')} />
                                 <div className="row">
                                     <div className="col-md-6">
@@ -136,6 +137,7 @@ const ContactPage: FC<{}> = () => {
                                                 //required: true,
                                             }))}>
                                                 <option value="">Seleccione una ciudad</option>
+                                                <option value="Leticia">Leticia</option>
                                                 <option value="Puerto Nariño">Puerto Nariño</option>
                                                 <option value="El Encanto">El Encanto</option>
                                                 <option value="Medellín">Medellín</option>
@@ -277,6 +279,7 @@ const ContactPage: FC<{}> = () => {
                                                 //required: true,
                                             }))}>
                                                 <option value="">Seleccione una marca</option>
+                                                <option value="Alfa Romeo">Alfa Romeo</option>
                                                 <option value="Audi">Audi</option>
                                                 <option value="Bajaj">Bajaj</option>
                                                 <option value="BMW">BMW</option>
@@ -350,14 +353,15 @@ const ContactPage: FC<{}> = () => {
                                         </div>
                                     </div>
 
-                                    {/* <div className="col-12">
+                                    <div className="col-12">
                                         <div className="form-group mb-3">
-                                            <textarea placeholder='mensaje' className="form-control" {...register("message", Validators({
+                                            <label className='optional'>Descripción</label>
+                                            <textarea placeholder='Descripción' className="form-control" {...register("description", Validators({
                                                 maxLength: 255,
                                             }))} />
-                                            <ErrorMessage as="aside" errors={errors} name="message" />
+                                            <ErrorMessage as="aside" errors={errors} name="description" />
                                         </div>
-                                    </div> */}
+                                    </div>
                                 </div>
 
                                 <div className="mt-3 d-flex justify-content-center">
