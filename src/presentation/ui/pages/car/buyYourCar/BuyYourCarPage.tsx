@@ -83,7 +83,11 @@ const BuyYourCarPage: FC<{}> = () => {
     useEffect(() => {
         setPage(1);
         _handleSearch();
-    }, [brand, model, year, typeVehicleId, transmission, tagId, fuelId, colorId, plateNumber, page,  orderBy])
+    }, [brand, model, year, typeVehicleId, transmission, tagId, fuelId, colorId, plateNumber, orderBy])
+
+    useEffect(() => {
+        _handleSearch();
+    }, [page])
 
     const [isTimerActive, setIsTimerActive] = useState(false);
     let timer: NodeJS.Timeout | null = null; // Inicializa el temporizador
@@ -259,7 +263,7 @@ const BuyYourCarPage: FC<{}> = () => {
 
                             <div className="row">
                                 {cars == undefined && <LoadingComponent />}
-                                {cars != undefined && cars.length == 0 && <h5>NO HAY RESULTADOS</h5> }
+                                {cars != undefined && cars.length == 0 && <h5>NO HAY RESULTADOS</h5>}
                                 {cars != undefined && cars.length > 0 && cars.map((car, index) => <div className={`mb-3 ${openFilters ? 'col-md-12 col-lg-6 col-xl-4' : 'col-md-4 col-xl-3'}`} key={index}>
                                     <CarCardComponent car={car} />
                                 </div>)}
