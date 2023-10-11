@@ -19,7 +19,7 @@ export default interface CarEntity {
     images: string[];
     price: number;
     transmission: TransmissionCar;
-    year: number;
+    year: any;
     rating: number;
     odometer: number;
     brand: BrandEntity;
