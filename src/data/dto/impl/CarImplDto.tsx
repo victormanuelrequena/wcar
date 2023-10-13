@@ -1,5 +1,6 @@
 import CarEntity, { TransmissionCar } from "../../../domain/entities/CarEntity";
 import BrandImplDto from "./BrandImplDto";
+import ModelImplDto from "./ModelImplDto";
 import ColorImplDto from "./ColorImplDto";
 import PriceBookImplDto from "./PriceBookImplDto";
 import TagImplDto from "./TagImplDto";
@@ -16,7 +17,7 @@ const fromJson = (json: any): CarEntity => {
         images: json.files.map((file: any) => file.image),
         price: parseInt(json.price),
         transmission: json.transmission == 1 ? TransmissionCar.AUTOMATIC : TransmissionCar.MANUAL,
-        year: json.model,
+        year: ModelImplDto.fromJson(json.model_car).name,
         rating: parseFloat(json.stars),
         odometer: json.mileage,
         brand: BrandImplDto.fromJson(json.brand_car),

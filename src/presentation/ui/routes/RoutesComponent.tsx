@@ -26,11 +26,13 @@ import SendRecoveryCodePage from "../pages/auth/sendRecoveryCode/SendRecoveryCod
 import CheckRecoveryCodePage from "../pages/auth/checkRecoveryCode/CheckRecoveryCodePage";
 import Error404Page from "../pages/error404/Error404Page";
 import GeneralPoliciesPage from "../pages/policies/GeneralPoliciesPage";
+import CarForAllPoliciesPage from "../pages/policies/CarForAllPoliciesPage";
 import SellerPoliciesPage from "../pages/policies/SellerPoliciesPage";
 import BuyerPolicies from "../pages/policies/BuyerPolicies";
 import SuccesfulPaymentPage from "../pages/succesfulPayment/SuccesfulPaymentPage";
 import BuyOrSellPage from "../pages/landings/buyOrSellPage/BuyOrSellPage";
 import { Helmet } from "react-helmet-async";
+import SaleYourCarPage from "../pages/policies/SaleYourCarPage";
 
 export interface iRoute {
     name: string,
@@ -198,6 +200,20 @@ const routes = {
         path: "/politica-de-privacidad",
         relativePath: "/politica-de-privacidad",
         component: GeneralPoliciesPage,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    carForAllPolicies: {
+        path: "/auto-para-todos-beneficios-unicos",
+        relativePath: "/auto-para-todos-beneficios-unicos",
+        component: CarForAllPoliciesPage,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    saleYourCar: {
+        path: "/vende-tu-auto-sin-tanto-rollo",
+        relativePath: "/vende-tu-auto-sin-tanto-rollo",
+        component: SaleYourCarPage,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
