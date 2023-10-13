@@ -1,10 +1,11 @@
 const SendContactToCRMApiImpl = async (data: any): Promise<void> => {
     await fetch('https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
-            'Content-Type': 'text/html; charset=UTF-8',
+            'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify(data), // Convert the data to JSON
+        body: new URLSearchParams(data).toString(),
     });
 }
 

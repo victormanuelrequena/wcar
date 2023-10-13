@@ -22,8 +22,10 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.services.relativePath} className="my-1">Financiación</Link>
                             <Link to={routes.insurance.relativePath} className="my-1">Seguros</Link>
                             <Link to={routes.procedures.relativePath} className="my-1">Trámites</Link>
+
                             <Link to={routes.carForAllPolicies.relativePath} className="my-1">Términos y Condiciones “Auto para todos, beneficios únicos”</Link>
                             <Link to={routes.saleYourCar.relativePath} className="my-1">Términos y Condiciones "¡Vende tu auto sin tanto rollo!"</Link>
+
                             {/* <Link to={routes.blog.relativePath} className="my-1">Blog</Link> */}
                         </div>
                     </div>
