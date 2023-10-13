@@ -10,7 +10,8 @@ const FooterComponent: FC<{}> = () => {
                 <div className="row">
                     <div className="col-md-3 col-lg-6 mb-4 mb-md-0">
                         <img className="mb-3" src="/assets/logos/horizontal.svg" alt="Wcar" title="Wcar" /><br />
-                        <span>{SLOGAN}</span>
+                        <span className='d-block'>{SLOGAN}</span>
+      
                     </div>
                     <div className="col-6 col-md-3 col-lg-2">
                         <div className="d-flex flex-column w-100">
@@ -21,6 +22,8 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.services.relativePath} className="my-1">Financiación</Link>
                             <Link to={routes.insurance.relativePath} className="my-1">Seguros</Link>
                             <Link to={routes.procedures.relativePath} className="my-1">Trámites</Link>
+                            <Link to={routes.carForAllPolicies.relativePath} className="my-1">Términos y Condiciones “Auto para todos, beneficios únicos”</Link>
+                            <Link to={routes.saleYourCar.relativePath} className="my-1">Términos y Condiciones "¡Vende tu auto sin tanto rollo!"</Link>
                             {/* <Link to={routes.blog.relativePath} className="my-1">Blog</Link> */}
                         </div>
                     </div>
@@ -54,7 +57,8 @@ const FooterComponent: FC<{}> = () => {
                             </div>
                             <div className="mx-3 mt-3 mt-md-0">
                                 <Link to={routes.sellerPolicies.relativePath}>Términos y condiciones vendedor</Link>
-                            </div>
+                            </div>   
+                   
                         </div>
                     </div>
                 </div>
