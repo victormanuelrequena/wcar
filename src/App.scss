@@ -1,783 +1,779 @@
 // Import the Google Fonts link tag
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap");
 // Define a global font family variable
-$urbanist-font: 'Urbanist', sans-serif;
+$urbanist-font: "Urbanist", sans-serif;
 
 // Apply the font family to all elements
 body * {
-  font-family: $urbanist-font;
+    font-family: $urbanist-font;
 }
 
 // You can also apply it to specific elements
 :root {
-  --color-yellow: #FDB649;
-  --color-orange: #EC671B;
-  --color-orange-dark: #D65A1E;
-  --color-gray-light: #F6F7F9;
-  --color-gray: #90A3BF;
-  --color-gray-dark: #666C89;
-  --color-gray-light: #F6F7F9;
-  --color-blue-neon: #00FEFE;
-  --color-dark-gray: #1E1E1E;
+    --color-yellow: #fdb649;
+    --color-orange: #ec671b;
+    --color-orange-dark: #d65a1e;
+    --color-gray-light: #f6f7f9;
+    --color-gray: #90a3bf;
+    --color-gray-dark: #666c89;
+    --color-gray-light: #f6f7f9;
+    --color-blue-neon: #00fefe;
+    --color-dark-gray: #1e1e1e;
 }
 
 .App {
-  font-family: 'Trebuchet MS', sans-serif;
-  width: 100%;
-  overflow-x: hidden;
+    font-family: "Trebuchet MS", sans-serif;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 @media screen and (min-width: 576px) {
-  .position-sm-absolute {
-    position: absolute !important;
-  }
+    .position-sm-absolute {
+        position: absolute !important;
+    }
 }
 
 @media screen and (min-width: 768px) {
-  .position-md-absolute {
-    position: absolute !important;
-  }
+    .position-md-absolute {
+        position: absolute !important;
+    }
 }
 
 .side {
-  padding: 0.5em 1em 0.5em 0;
-  // width: fit-content;
-  position: relative;
+    padding: 0.5em 1em 0.5em 0;
+    // width: fit-content;
+    position: relative;
 
-  &_top::before {
-    content: '';
-    height: 0.2em;
-    width: 4em;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: var(--color-orange);
-  }
-
-  &_blue_neon::before {
-    background-color: var(--color-blue-neon);
-  }
-
-  &_md {
-    @media screen and (min-width: 768px) {
-      &_blue_neon::before {
-        background-color: var(--color-blue-neon);
-      }
+    &_top::before {
+        content: "";
+        height: 0.2em;
+        width: 4em;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: var(--color-orange);
     }
-  }
+
+    &_blue_neon::before {
+        background-color: var(--color-blue-neon);
+    }
+
+    &_md {
+        @media screen and (min-width: 768px) {
+            &_blue_neon::before {
+                background-color: var(--color-blue-neon);
+            }
+        }
+    }
 }
 
 .text {
-
-  &_bold {
-    font-weight: 700;
-  }
-
-  &_italic,
-  &_wcar {
-    font-family: 'Trebuchet MS', sans-serif;
-    font-style: italic;
-  }
-
-  &_nowrap {
-    white-space: nowrap;
-  }
-
-  &_through {
-    text-decoration: line-through;
-  }
-
-  &_orange {
-    color: var(--color-orange);
-  }
-
-  &_black {
-    color: black;
-  }
-
-  &_gray {
-    color: var(--color-gray);
-  }
-
-  &_red {
-    color: red;
-  }
-
-  &_white {
-    color: white;
-  }
-
-  &_yellow {
-    color: var(--color-yellow);
-  }
-
-  &_ellipsis {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  &_underline {
-    text-decoration: underline;
-  }
-
-  &_light {
-    font-weight: 300;
-    font-size: 0.95em;
-  }
-
-  &_reduced {
-    font-size: 0.9em;
-  }
-
-  &_bold {
-    font-weight: 700;
-  }
-
-  &_normal {
-    font-weight: 400 !important;
-  }
-
-  &_lighter {
-    font-weight: 200 !important;
-  }
-
-  @media screen and (min-width: 768px) {
-    &_md {
-      &_white {
-        color: white;
-      }
-
-      &_italic {
-        font-family: 'Trebuchet MS', sans-serif;
-        font-style: italic;
-      }
-
-      &_lighter {
-        font-weight: 200 !important;
-      }
-
-      &_normal {
-        font-weight: 400 !important;
-      }
-
-      &_bold {
-        font-weight: 700 !important;
-      }
+    &_bold {
+        font-weight: 700;
     }
-  }
+
+    &_italic,
+    &_wcar {
+        font-family: "Trebuchet MS", sans-serif;
+        font-style: italic;
+    }
+
+    &_nowrap {
+        white-space: nowrap;
+    }
+
+    &_through {
+        text-decoration: line-through;
+    }
+
+    &_orange {
+        color: var(--color-orange);
+    }
+
+    &_black {
+        color: black;
+    }
+
+    &_gray {
+        color: var(--color-gray);
+    }
+
+    &_red {
+        color: red;
+    }
+
+    &_white {
+        color: white;
+    }
+
+    &_yellow {
+        color: var(--color-yellow);
+    }
+
+    &_ellipsis {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &_underline {
+        text-decoration: underline;
+    }
+
+    &_light {
+        font-weight: 300;
+        font-size: 0.95em;
+    }
+
+    &_reduced {
+        font-size: 0.9em;
+    }
+
+    &_bold {
+        font-weight: 700;
+    }
+
+    &_normal {
+        font-weight: 400 !important;
+    }
+
+    &_lighter {
+        font-weight: 200 !important;
+    }
+
+    @media screen and (min-width: 768px) {
+        &_md {
+            &_white {
+                color: white;
+            }
+
+            &_italic {
+                font-family: "Trebuchet MS", sans-serif;
+                font-style: italic;
+            }
+
+            &_lighter {
+                font-weight: 200 !important;
+            }
+
+            &_normal {
+                font-weight: 400 !important;
+            }
+
+            &_bold {
+                font-weight: 700 !important;
+            }
+        }
+    }
 }
 
 .btn {
-
-  border-radius: 0;
-  border-bottom-left-radius: 2em;
-  border-top-right-radius: 2em;
-  padding: 0.5em 1em;
-
-  &.btn_orange {
-    background-color: var(--color-orange);
-    color: #fff;
-    border: none;
-    transition: all 0.3s ease-in-out;
-
-
-    &.btn_shadow {
-      border-bottom: solid 3px black;
-      border-left: solid 3px black;
-    }
-
-
-    &:hover {
-      cursor: pointer;
-      border-color: var(--color-orange-dark);
-    }
-  }
-
-  &.btn_cyan {
-    background-color: var(--color-blue-neon);
-    color: black;
-    border: none;
-    transition: all 0.3s ease-in-out;
-
-    &.btn_shadow {
-      border-bottom: solid 3px black;
-      border-left: solid 3px black;
-    }
-  }
-
-
-  & svg {
-    margin-left: 0.8em;
-    width: 2em;
-  }
-
-  // &.btn_cut {
-  //   clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
-  // }
-
-  &.btn_gray_light {
-    background-color: var(--color-gray-light);
-    color: black;
-  }
-
-
-  &.btn_in_black_orange {
-    background-color: var(--color-orange);
-    color: #fff;
-    border: none;
+    border-radius: 0;
+    border-bottom-left-radius: 2em;
+    border-top-right-radius: 2em;
     padding: 0.5em 1em;
-    transition: all 0.3s ease-in-out;
 
+    &.btn_orange {
+        background-color: var(--color-orange);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease-in-out;
 
-    &.btn_shadow {
-      border-bottom: solid 3px rgb(255, 255, 255);
-      border-left: solid 3px white;
+        &.btn_shadow {
+            border-bottom: solid 3px black;
+            border-left: solid 3px black;
+        }
+
+        &:hover {
+            cursor: pointer;
+            border-color: var(--color-orange-dark);
+        }
     }
 
+    &.btn_cyan {
+        background-color: var(--color-blue-neon);
+        color: black;
+        border: none;
+        transition: all 0.3s ease-in-out;
 
-    &:hover {
-      cursor: pointer;
-      border-color: var(--color-orange-dark);
-    }
-  }
-
-  &.btn_black {
-    color: white;
-    border: solid 1px var(--color-orange);
-    padding: 0.5em 1em;
-    transition: all 0.3s ease-in-out;
-    background-color: black;
-
-    &.btn_shadow {
-      border-bottom: solid 3px var(--color-yellow);
-      border-left: solid 3px var(--color-yellow);
-
+        &.btn_shadow {
+            border-bottom: solid 3px black;
+            border-left: solid 3px black;
+        }
     }
 
-
-    &:hover {
-      cursor: pointer;
-      background-color: var(--color-orange);
-      color: #fff;
-    }
-  }
-
-  &.btn_orange_outline {
-    color: black;
-    border: solid 1px var(--color-orange);
-    padding: 0.5em 1em;
-    transition: all 0.3s ease-in-out;
-    background-color: white;
-
-    &.btn_shadow {
-      border-bottom: solid 3px var(--color-yellow);
-      border-left: solid 3px var(--color-yellow);
-
+    & svg {
+        margin-left: 0.8em;
+        width: 2em;
     }
 
-    &.btn_cut {
-      clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
-      box-shadow: 0 0 0 3px var(--color-orange);
-      background: linear-gradient(315deg, var(--color-orange) 0.65em, var(--color-gray-light) 0.65em, var(--color-gray-light) 100%);
+    // &.btn_cut {
+    //   clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
+    // }
+
+    &.btn_gray_light {
+        background-color: var(--color-gray-light);
+        color: black;
     }
 
-    &:hover {
-      cursor: pointer;
-      background-color: var(--color-orange);
-      color: #fff;
-    }
-  }
+    &.btn_in_black_orange {
+        background-color: var(--color-orange);
+        color: #fff;
+        border: none;
+        padding: 0.5em 1em;
+        transition: all 0.3s ease-in-out;
 
-  &.btn_orange_transparent {
-    color: white;
-    border: solid 1px var(--color-orange);
-    padding: 0.5em 1em;
-    transition: all 0.3s ease-in-out;
-    background-color: transparent;
-  }
+        &.btn_shadow {
+            border-bottom: solid 3px rgb(255, 255, 255);
+            border-left: solid 3px white;
+        }
 
-  position: relative;
-  overflow: hidden;
-
-  &:hover::before {
-    position: absolute;
-    content: '';
-    width: 5em;
-    bottom: 0;
-    height: 100%;
-    background: transparent;
-    background: linear-gradient(145deg, transparent 0%, transparent 40%, var(--color-blue-neon) 40%, var(--color-blue-neon) 43%, transparent 43%, transparent 46%, var(--color-blue-neon) 46%, var(--color-blue-neon) 49%, transparent 49%, transparent 52%, var(--color-blue-neon) 52%, var(--color-blue-neon) 55%, transparent 55%);
-    animation: animationButton 2s linear infinite;
-
-  }
-
-  @keyframes animationButton {
-    0% {
-      transform: translateX(-100%) scale(1);
-      opacity: 0.3;
+        &:hover {
+            cursor: pointer;
+            border-color: var(--color-orange-dark);
+        }
     }
 
-    25% {
-      transform: translateX(10%) scale(2);
-      opacity: 0.7;
+    &.btn_black {
+        color: white;
+        border: solid 1px var(--color-orange);
+        padding: 0.5em 1em;
+        transition: all 0.3s ease-in-out;
+        background-color: black;
+
+        &.btn_shadow {
+            border-bottom: solid 3px var(--color-yellow);
+            border-left: solid 3px var(--color-yellow);
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: var(--color-orange);
+            color: #fff;
+        }
     }
 
-    50% {
-      transform: translateX(120%) scale(1);
-      opacity: 0.3;
+    &.btn_orange_outline {
+        color: black;
+        border: solid 1px var(--color-orange);
+        padding: 0.5em 1em;
+        transition: all 0.3s ease-in-out;
+        background-color: white;
+
+        &.btn_shadow {
+            border-bottom: solid 3px var(--color-yellow);
+            border-left: solid 3px var(--color-yellow);
+        }
+
+        &.btn_cut {
+            clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
+            box-shadow: 0 0 0 3px var(--color-orange);
+            background: linear-gradient(
+                315deg,
+                var(--color-orange) 0.65em,
+                var(--color-gray-light) 0.65em,
+                var(--color-gray-light) 100%
+            );
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: var(--color-orange);
+            color: #fff;
+        }
     }
 
-    75% {
-      transform: translateX(10%) scale(2);
-      opacity: 0.7;
+    &.btn_orange_transparent {
+        color: white;
+        border: solid 1px var(--color-orange);
+        padding: 0.5em 1em;
+        transition: all 0.3s ease-in-out;
+        background-color: transparent;
     }
 
-    100% {
-      transform: translateX(-100%) scale(1);
-      opacity: 0.3;
-    }
-  }
-
-  &::hover {
-    cursor: pointer;
     position: relative;
+    overflow: hidden;
 
-  }
+    &:hover::before {
+        position: absolute;
+        content: "";
+        width: 5em;
+        bottom: 0;
+        height: 100%;
+        background: transparent;
+        background: linear-gradient(
+            145deg,
+            transparent 0%,
+            transparent 40%,
+            var(--color-blue-neon) 40%,
+            var(--color-blue-neon) 43%,
+            transparent 43%,
+            transparent 46%,
+            var(--color-blue-neon) 46%,
+            var(--color-blue-neon) 49%,
+            transparent 49%,
+            transparent 52%,
+            var(--color-blue-neon) 52%,
+            var(--color-blue-neon) 55%,
+            transparent 55%
+        );
+        animation: animationButton 2s linear infinite;
+    }
+
+    @keyframes animationButton {
+        0% {
+            transform: translateX(-100%) scale(1);
+            opacity: 0.3;
+        }
+
+        25% {
+            transform: translateX(10%) scale(2);
+            opacity: 0.7;
+        }
+
+        50% {
+            transform: translateX(120%) scale(1);
+            opacity: 0.3;
+        }
+
+        75% {
+            transform: translateX(10%) scale(2);
+            opacity: 0.7;
+        }
+
+        100% {
+            transform: translateX(-100%) scale(1);
+            opacity: 0.3;
+        }
+    }
+
+    &::hover {
+        cursor: pointer;
+        position: relative;
+    }
 }
 
 .indicator_slide {
-  height: 0.3em;
-  background-color: var(--color-gray-light);
-  transition: background-color 0.3s ease-in-out;
+    height: 0.3em;
+    background-color: var(--color-gray-light);
+    transition: background-color 0.3s ease-in-out;
 
-  &.active {
-    background-color: var(--color-orange);
-  }
-
-  @keyframes colorAnimation {
-    0% {
-      background-color: var(--color-gray-light);
+    &.active {
+        background-color: var(--color-orange);
     }
 
-    100% {
-      background-color: var(--color-orange);
+    @keyframes colorAnimation {
+        0% {
+            background-color: var(--color-gray-light);
+        }
+
+        100% {
+            background-color: var(--color-orange);
+        }
     }
-  }
 }
 
-
 .object_cover {
-  object-fit: cover;
+    object-fit: cover;
 }
 
 .w {
-  &_fit_content {
-    width: fit-content;
-  }
+    &_fit_content {
+        width: fit-content;
+    }
 }
 
 .bg {
-  &_gray {
-    background-color: var(--color-gray-light);
-  }
-
-  &_black {
-    background-color: black;
-  }
-
-  &_white {
-    background-color: white;
-  }
-
-  &_md {
-    @media screen and (min-width: 768px) {
-
-      &_gray {
+    &_gray {
         background-color: var(--color-gray-light);
-      }
-
-      &_black {
-        background-color: black;
-      }
-
-      &_white {
-        background-color: white;
-      }
-
     }
-  }
+
+    &_black {
+        background-color: black;
+    }
+
+    &_white {
+        background-color: white;
+    }
+
+    &_md {
+        @media screen and (min-width: 768px) {
+            &_gray {
+                background-color: var(--color-gray-light);
+            }
+
+            &_black {
+                background-color: black;
+            }
+
+            &_white {
+                background-color: white;
+            }
+        }
+    }
 }
 
 .hover:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 body a {
-  text-decoration: none;
-  color: currentColor;
-
-  &:hover {
     text-decoration: none;
-    color: var(--color-yellow);
-  }
+    color: currentColor;
+
+    &:hover {
+        text-decoration: none;
+        color: var(--color-yellow);
+    }
 }
 
 .from_left_3::before {
-  @media screen and (min-width: 1300px) {
-    right: calc(((100vw - 1300px) / 2) + ((1300px / 12) * 3));
-  }
+    @media screen and (min-width: 1300px) {
+        right: calc(((100vw - 1300px) / 2) + ((1300px / 12) * 3));
+    }
 }
 
 .form {
-  &_underline {
-    border: none;
-    border-bottom: solid 1px var(--color-gray);
-  }
+    &_underline {
+        border: none;
+        border-bottom: solid 1px var(--color-gray);
+    }
 }
 
 select.form_underline {
-  //show arrows
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+    //show arrows
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 input {
-  &[type="checkbox"] {
-    &:checked {
-      background-color: var(--color-orange);
-      border: var(--color-orange);
+    &[type="checkbox"] {
+        &:checked {
+            background-color: var(--color-orange);
+            border: var(--color-orange);
+        }
     }
-  }
 }
 
 .form-group {
-  label.optional::after {
-    content: ' (opcional)';
-    color: var(--color-gray);
-    font-weight: 400;
-  }
-
-  label.mandatory::after {
-    content: ' *';
-    color: var(--color-orange);
-  }
-
-  .form-control {
-    margin-top: 0.2em;
-    background-color: var(--color-gray-light);
-    border: none;
-
-    ~aside {
-      margin-top: 0.3em;
-      font-size: 0.95em;
-      color: red;
+    label.optional::after {
+        content: " (opcional)";
+        color: var(--color-gray);
+        font-weight: 400;
     }
-  }
 
+    label.mandatory::after {
+        content: " *";
+        color: var(--color-orange);
+    }
+
+    .form-control {
+        margin-top: 0.2em;
+        background-color: var(--color-gray-light);
+        border: none;
+
+        ~ aside {
+            margin-top: 0.3em;
+            font-size: 0.95em;
+            color: red;
+        }
+    }
 }
 
 .form-check-input {
-  ~aside {
-    margin-top: 0.3em;
-    font-size: 0.95em;
-    color: red;
-  }
-
+    ~ aside {
+        margin-top: 0.3em;
+        font-size: 0.95em;
+        color: red;
+    }
 }
 
 .border_radius {
-  border-radius: 2em;
+    border-radius: 2em;
 
-  &_1 {
-    border-radius: 1em;
-  }
+    &_1 {
+        border-radius: 1em;
+    }
 }
 
-.gray_footer~.footer {
-  background-color: var(--color-gray-light);
+.gray_footer ~ .footer {
+    background-color: var(--color-gray-light);
 }
 
 .footer .footer_sic {
-  @media screen and (max-width: 768px) {
-    background-color: white;
-  }
+    @media screen and (max-width: 768px) {
+        background-color: white;
+    }
 }
 
 .loading_container {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
 .left_line {
-  margin-left: 3.5em;
-  position: relative;
+    margin-left: 3.5em;
+    position: relative;
 
-  &::before {
-    position: absolute;
-    content: '';
-    width: 3em;
-    height: 0.1em;
-    top: calc(50% - 0.05em);
-    left: -3.5em;
-    background-color: var(--color-orange);
-  }
-
-  &_blue_neon {
     &::before {
-      background-color: var(--color-blue-neon);
+        position: absolute;
+        content: "";
+        width: 3em;
+        height: 0.1em;
+        top: calc(50% - 0.05em);
+        left: -3.5em;
+        background-color: var(--color-orange);
     }
-  }
+
+    &_blue_neon {
+        &::before {
+            background-color: var(--color-blue-neon);
+        }
+    }
 }
 
 .sized_infinited {
-  height: 100%;
+    height: 100%;
 
-  @mixin responsive-width($data-columns) {
-    @media screen and (min-width: 1400px) {
-      width: calc(((100vw - 1320px) / 2) + ((1320px / 12) * #{$data-columns}));
+    @mixin responsive-width($data-columns) {
+        @media screen and (min-width: 1400px) {
+            width: calc(((100vw - 1320px) / 2) + ((1320px / 12) * #{$data-columns}));
+        }
+
+        @media screen and (min-width: 1200px) and (max-width: 1399px) {
+            width: calc(((100vw - 1140px) / 2) + ((1140px / 12) * #{$data-columns}));
+        }
+
+        @media screen and (min-width: 992px) and (max-width: 1199px) {
+            width: calc(((100vw - 960px) / 2) + ((960px / 12) * #{$data-columns}));
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            width: calc(((100vw - 720px) / 2) + ((720px / 12) * #{$data-columns}));
+        }
+
+        @media screen and (min-width: 576px) and (max-width: 767px) {
+            width: calc(((100vw - 540px) / 2) + ((540px / 12) * #{$data-columns}));
+        }
+
+        @media screen and (max-width: 576px) {
+            width: calc(100vw - 2em);
+        }
     }
 
-    @media screen and (min-width: 1200px) and (max-width: 1399px) {
-      width: calc(((100vw - 1140px) / 2) + ((1140px / 12) * #{$data-columns}));
+    &.c1 {
+        @include responsive-width(1);
     }
 
-    @media screen and (min-width: 992px) and (max-width: 1199px) {
-      width: calc(((100vw - 960px) / 2) + ((960px / 12) * #{$data-columns}));
+    &.c2 {
+        @include responsive-width(2);
     }
 
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-      width: calc(((100vw - 720px) / 2) + ((720px / 12) * #{$data-columns}));
+    &.c3 {
+        @include responsive-width(3);
     }
 
-    @media screen and (min-width: 576px) and (max-width: 767px) {
-      width: calc(((100vw - 540px) / 2) + ((540px / 12) * #{$data-columns}));
+    &.c4 {
+        @include responsive-width(4);
     }
 
-    @media screen and (max-width: 576px) {
-      width: calc(100vw - 2em);
+    &.c5 {
+        @include responsive-width(5);
     }
-  }
 
-  &.c1 {
-    @include responsive-width(1);
-  }
+    &.c6 {
+        @include responsive-width(6);
+    }
 
-  &.c2 {
-    @include responsive-width(2);
-  }
+    &.c7 {
+        @include responsive-width(7);
+    }
 
-  &.c3 {
-    @include responsive-width(3);
-  }
+    &.c8 {
+        @include responsive-width(8);
+    }
 
-  &.c4 {
-    @include responsive-width(4);
-  }
+    &.c9 {
+        @include responsive-width(9);
+    }
 
-  &.c5 {
-    @include responsive-width(5);
-  }
+    &.c10 {
+        @include responsive-width(10);
+    }
 
-  &.c6 {
-    @include responsive-width(6);
-  }
+    &.c11 {
+        @include responsive-width(11);
+    }
 
-  &.c7 {
-    @include responsive-width(7);
-  }
-
-  &.c8 {
-    @include responsive-width(8);
-  }
-
-  &.c9 {
-    @include responsive-width(9);
-  }
-
-  &.c10 {
-    @include responsive-width(10);
-  }
-
-  &.c11 {
-    @include responsive-width(11);
-  }
-
-  &.c12 {
-    @include responsive-width(12);
-  }
+    &.c12 {
+        @include responsive-width(12);
+    }
 }
 
 .blog_info_user {
-  display: flex;
-  align-items: center;
-  font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    font-size: 0.8em;
 
-  img {
-    width: 2em;
-    height: 2em;
-    border-radius: 100%;
-    margin-right: 0.5em;
-  }
-
-  .date {
-    position: relative;
-    margin-left: 2em;
-
-    &::before {
-      position: absolute;
-      content: '';
-      width: 0.3em;
-      height: 0.3em;
-      top: calc(50% - 0.15em);
-      left: -1em;
-      background-color: var(--color-gray);
+    img {
+        width: 2em;
+        height: 2em;
+        border-radius: 100%;
+        margin-right: 0.5em;
     }
-  }
 
+    .date {
+        position: relative;
+        margin-left: 2em;
 
+        &::before {
+            position: absolute;
+            content: "";
+            width: 0.3em;
+            height: 0.3em;
+            top: calc(50% - 0.15em);
+            left: -1em;
+            background-color: var(--color-gray);
+        }
+    }
 }
 
 body {
-  height: 100vh;
-  overflow-y: hidden;
+    height: 100vh;
+    overflow-y: hidden;
 
-  .rs-slider-handle::before {
-    background-color: var(--color-orange);
-    border: solid 2px white;
-    width: 20px;
-    height: 20px;
-    top: -5px;
-    margin-left: -6px;
-  }
-
-  .rs-slider-handle[data-key="end"] {
-    margin-left: -10px;
-  }
-
-  .rs-slider-bar {
-    background-color: var(--color-gray);
-
-    .rs-slider-progress-bar {
-      background-color: var(--color-orange);
+    .rs-slider-handle::before {
+        background-color: var(--color-orange);
+        border: solid 2px white;
+        width: 20px;
+        height: 20px;
+        top: -5px;
+        margin-left: -6px;
     }
-  }
+
+    .rs-slider-handle[data-key="end"] {
+        margin-left: -10px;
+    }
+
+    .rs-slider-bar {
+        background-color: var(--color-gray);
+
+        .rs-slider-progress-bar {
+            background-color: var(--color-orange);
+        }
+    }
 }
 
 body h2 {
-  line-height: 1.1em;
+    line-height: 1.1em;
 }
 
 .dropdown {
-  .btn_light {
-    background-color: transparent;
-    border: none;
-    color: currentColor;
-  }
+    .btn_light {
+        background-color: transparent;
+        border: none;
+        color: currentColor;
+    }
 }
 
 // change Eliezer
 .name-car-detail {
-  font-family: "Urbanist";
-  color: #1E1E1E
+    font-family: "Urbanist";
+    color: #1e1e1e;
+    font-size: 36px;
 }
 
 .p_spaced {
-
-  p,
-  li {
-    margin-bottom: 2em;
-  }
-
-  table {
-    border: solid thin #cecece;
-    table-layout: fixed;
-
-    td,
-    th {
-      padding: 1em;
-      border: solid thin #cecece;
+    p,
+    li {
+        margin-bottom: 2em;
     }
-  }
+
+    table {
+        border: solid thin #cecece;
+        table-layout: fixed;
+
+        td,
+        th {
+            padding: 1em;
+            border: solid thin #cecece;
+        }
+    }
 }
 
 // Style the radio buttons to look like checkboxes
 input[type="radio"] {
-  opacity: 0;
+    opacity: 0;
 
-  &:hover {
-    cursor: pointer;
-  }
+    &:hover {
+        cursor: pointer;
+    }
 
-  +label::before {
+    + label::before {
+        content: "";
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3e%3cpath fill=%27none%27 stroke=%27%23fff%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%273%27 d=%27m6 10 3 3 6-6%27/%3e%3c/svg%3e");
+        background-size: cover;
+        /* Adjust as needed */
+        margin-right: 5px;
+    }
 
-    content: "";
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    background-image: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3e%3cpath fill=%27none%27 stroke=%27%23fff%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%273%27 d=%27m6 10 3 3 6-6%27/%3e%3c/svg%3e');
-    background-size: cover;
-    /* Adjust as needed */
-    margin-right: 5px;
+    + label {
+        margin-left: -1.5em;
+        font-weight: normal;
+    }
 
-
-  }
-
-  +label {
-    margin-left: -1.5em;
-    font-weight: normal;
-  }
-
-  &:checked+label::before {
-    background-color: var(--color-orange);
-    border: 1px solid var(--color-orange);
-    /* Add a border for the checked state */
-    /* Use a checkmark character (optional) */
-    color: #fff;
-  }
+    &:checked + label::before {
+        background-color: var(--color-orange);
+        border: 1px solid var(--color-orange);
+        /* Add a border for the checked state */
+        /* Use a checkmark character (optional) */
+        color: #fff;
+    }
 }
 
 body {
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    line-height: 1.2em;
-  }
-
-  .h {
-    font-weight: normal;
-
-    &1 {
-      font-size: 2.5em;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        line-height: 1.2em;
     }
 
-    &2 {
-      font-size: 2em;
-    }
+    .h {
+        font-weight: normal;
 
-    &3 {
-      font-size: calc(1.3rem + 0.6vw);
-    }
+        &1 {
+            font-size: 2.5em;
+        }
 
-    &4 {
-      font-size: 1.25em;
-    }
+        &2 {
+            font-size: 2em;
+        }
 
-    &5 {
-      font-size: 1em;
+        &3 {
+            font-size: calc(1.3rem + 0.6vw);
+        }
+
+        &4 {
+            font-size: 1.25em;
+        }
+
+        &5 {
+            font-size: 1em;
+        }
     }
-  }
 }
 
 .img_rounded {
-  border-radius: 5px;
+    border-radius: 5px;
 }

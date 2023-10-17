@@ -91,44 +91,52 @@ const DetailedCarPage: FC<{}> = () => {
                                     </div>
                                     <div className="col-12 col-md-5">
                                         <div className="px-3">
-                                            <div className="p-3 bg-white">
+                                            <div className="p-3 bg-white rounded">
                                                 <h1 className="name-car-detail">{capitalizeFirstLetters(car.name)}</h1>
-                                                <div className="row" style={{ fontSize: ".9em" }}>
-                                                    <div className="col-4 d-flex align-items-center text_gray p-0">
+                                                <div
+                                                    className="d-flex flex-row mt-2 justify-content-start"
+                                                    style={{ fontSize: ".9em" }}
+                                                >
+                                                    <div className="d-flex align-items-center text_gray p-0">
                                                         <img
                                                             src="/assets/icons/year.svg"
                                                             alt="Wcar"
                                                             title="Wcar"
-                                                            className="img-fluid img_icon  me-2 ms-3"
+                                                            className="img-fluid img_icon me-2"
                                                         />
-                                                        <span>{car.year}</span>
+                                                        <span className="text-spec">{car.year}</span>
                                                     </div>
-                                                    <div className="col-4 d-flex align-items-center text_gray p-0">
+                                                    <div className="d-flex align-items-center text_gray p-0 ms-2">
                                                         <img
                                                             src="/assets/icons/odometer.svg"
                                                             alt="Wcar"
                                                             title="Wcar"
                                                             className="img-fluid img_icon me-2"
                                                         />
-                                                        <span className="text_nowrap">{car.odometer} Km.</span>
+                                                        <span className="text_nowrap text-spec">
+                                                            {car.odometer} Km.
+                                                        </span>
                                                     </div>
-                                                    <div className="col-4 d-flex align-items-center text_gray p-0">
+                                                    <div className="d-flex align-items-center text_gray p-0 ms-2">
                                                         <img
                                                             src="/assets/icons/transmission.svg"
                                                             alt="Wcar"
                                                             title="Wcar"
-                                                            className="img-fluid img_icon me-1"
+                                                            className="img-fluid img_icon me-2"
                                                         />
-                                                        <span className="text_nowrap">{car.transmission}</span>
+                                                        <span className="text_nowrap text-spec">
+                                                            {car.transmission}
+                                                        </span>
                                                     </div>
                                                 </div>
-                                                <span>
-                                                    {car.type.name} / {car.name} {car.year}
-                                                </span>{" "}
-                                                <br />
-                                                <strong>Stock ID: {car.id}</strong> <br />
+                                                <div className="mt-4">
+                                                    <p className="car-spec">
+                                                        {car.type.name} / {car.name} {car.year}
+                                                    </p>{" "}
+                                                    <strong>Stock ID: {car.id}</strong>
+                                                </div>
                                                 <div className="text_ellipsis">
-                                                    <h3 className="text_bold">
+                                                    <h3 className="text_bold car-price">
                                                         {CurrencyParse.toCop(car.discount ?? car.price)}
                                                     </h3>
                                                     {car.discount && (
@@ -141,10 +149,10 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <StarRatingComponent rating={car.rating} />
                                                     <span className="ms-2 text_gray">Estado del vehículo</span>
                                                 </div>
-                                                <div className="d-md-flex align-items-center">
+                                                <div className="d-inline-flex flex-column justify-content-start align-items-start mt-4">
                                                     <div
                                                         onClick={_bookCarWithPayment}
-                                                        className="btn btn_orange my-3 me-3"
+                                                        className="btn btn_orange my-3 me-3 btn-detailed-car"
                                                     >
                                                         SEPÁRALO AQUÍ <Icons.ArrowCircle />
                                                     </div>
@@ -156,7 +164,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                             "/" +
                                                             id
                                                         }
-                                                        className="btn btn_orange_outline my-3"
+                                                        className="btn btn_orange_outline my-2 btn-detailed-car"
                                                     >
                                                         QUIERO CONOCERLO <Icons.ArrowCircle />
                                                     </Link>
