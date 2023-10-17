@@ -10,14 +10,14 @@ import GetAllTypeVehiclesUseCase from "../typeVehicle/GetAllTypeVehiclesUseCase"
 import HostApi from "../../../data/settings/HostApi";
 
 interface props {
-    getAllAlliesUseCase: GetAllAlliesUseCase,
-    getAllBrandsUseCase: GetAllBrandsUseCase,
-    getAllColorsUseCase: GetAllColorsUseCase,
-    getAllTypeOfFueslUseCase: GetAllTypeOfFuelsUseCase,
-    getAllTypeOfVehiclesUseCase: GetAllTypeVehiclesUseCase,
-    getAllCitiesUseCase: GetAllTypeVehiclesUseCase,
-    getFavoriteCarsUseCase: GetFavoriteCarsUseCase,
-    getAllTagsUseCase: GetAllTagsUseCase,
+    getAllAlliesUseCase: GetAllAlliesUseCase;
+    getAllBrandsUseCase: GetAllBrandsUseCase;
+    getAllColorsUseCase: GetAllColorsUseCase;
+    getAllTypeOfFueslUseCase: GetAllTypeOfFuelsUseCase;
+    getAllTypeOfVehiclesUseCase: GetAllTypeVehiclesUseCase;
+    getAllCitiesUseCase: GetAllTypeVehiclesUseCase;
+    getFavoriteCarsUseCase: GetFavoriteCarsUseCase;
+    getAllTagsUseCase: GetAllTagsUseCase;
     getCurrentUserUseCase: GetCurrentUserUseCase;
 }
 
@@ -32,7 +32,6 @@ export default class LoadUseCase {
     _getFavoriteCarsUseCase: GetFavoriteCarsUseCase;
     _getAllTagsUseCase: GetAllTagsUseCase;
     _getCurrentUserUseCase: GetCurrentUserUseCase;
-
 
     constructor(_: props) {
         this._getAllAlliesUseCase = _.getAllAlliesUseCase;
@@ -51,47 +50,47 @@ export default class LoadUseCase {
             try {
                 await this._getAllAlliesUseCase.call();
             } catch (error) {
-                console.log('_getAllAlliesUseCase', error);
+                console.log("_getAllAlliesUseCase", error);
             }
             try {
                 await this._getAllBrandsUseCase.call();
             } catch (error) {
-                console.log('_getAllBrandsUseCase', error);
+                console.log("_getAllBrandsUseCase", error);
             }
             try {
                 await this._getAllColorsUseCase.call();
             } catch (error) {
-                console.log('_getAllColorsUseCase', error);
+                console.log("_getAllColorsUseCase", error);
             }
             try {
                 await this._getAllTypeOfFueslUseCase.call();
             } catch (error) {
-                console.log('_getAllTypeOfFueslUseCase', error);
+                console.log("_getAllTypeOfFueslUseCase", error);
             }
             try {
                 await this._getAllTypeOfVehiclesUseCase.call();
             } catch (error) {
-                console.log('_getAllTypeOfVehiclesUseCase', error);
+                console.log("_getAllTypeOfVehiclesUseCase", error);
             }
             try {
                 await this._getAllCitiesUseCase.call();
             } catch (error) {
-                console.log('_getAllCitiesUseCase', error);
+                console.log("_getAllCitiesUseCase", error);
             }
             try {
                 await this._getFavoriteCarsUseCase.call();
             } catch (error) {
-                console.log('_getFavoriteCarsUseCase', error);
+                console.log("_getFavoriteCarsUseCase", error);
             }
             try {
                 await this._getAllTagsUseCase.call();
             } catch (error) {
-                console.log('_getAllTagsUseCase', error);
+                console.log("_getAllTagsUseCase", error);
             }
             try {
                 await this._getCurrentUserUseCase.call();
             } catch (error) {
-                console.log('_getCurrentUserUseCase', error);
+                console.log("_getCurrentUserUseCase", error);
             }
 
             // await Promise.all([
@@ -106,7 +105,7 @@ export default class LoadUseCase {
             //     await this._getCurrentUserUseCase.call()
             // ]);
         } catch (error) {
-            console.log('error', error)
+            console.log("error", error);
         }
     }
 }
