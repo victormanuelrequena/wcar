@@ -2,7 +2,7 @@
     .section_2 {
         position: relative;
         &::before {
-            content: '';
+            content: "";
             position: absolute;
             left: 0;
             top: 0;
@@ -20,15 +20,45 @@
             }
         }
 
-        .bg_black{
+        .bg_black {
             position: relative;
 
-            &>img.bg_img{
+            & > img.bg_img {
                 position: absolute;
                 left: 0;
                 bottom: 0;
                 top: 0;
             }
         }
+    }
+    .car-price {
+        font-size: 36px;
+        color: #1e1e1e;
+        margin-top: 16px;
+        margin-bottom: 5px;
+    }
+    .car-spec {
+        font-size: 14px;
+        color: #666c89;
+        font-weight: 500;
+        line-height: 22px;
+        strong {
+            font-size: 16px;
+            color: #666c89;
+            font-weight: 700;
+        }
+    }
+    .btn-detailed-car {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 22px;
+        display: flex;
+        align-items: center;
+    }
+    .text-spec {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+        color: #90aebf;
     }
 }
