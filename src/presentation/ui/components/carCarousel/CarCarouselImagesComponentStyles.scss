@@ -14,7 +14,7 @@
             display: none;
         }
 
-        //zoom 
+        //zoom
         @media screen and (min-width: 768px) {
             .zoom_loop {
                 display: block;
@@ -48,25 +48,42 @@
     }
 
     .container_image_showing {
-        max-height: 600px;
+        // max-height: 600px;
         position: relative;
 
         .arrows_container {
             z-index: 101;
             position: absolute;
-            right: 1em;
+            right: 10px;
             bottom: 1em;
             display: flex;
             align-items: center;
+            @media (min-width: 768px) {
+                right: 80px;
+            }
+            @media (min-width: 1024px) {
+                right: 10px;
+            }
+            @media (min-width: 1280px) {
+                right: 90px;
+            }
+            @media (min-width: 1400px) {
+                right: 160px;
+            }
+            @media (min-width: 1439px) {
+                right: 60px;
+            }
         }
 
         .carousel_thumbail {
-            max-height: 450px;
+            // max-height: 450px;
             height: 100%;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 8px;
+            overflow: hidden;
 
             &.active img {
                 border: solid 2px var(--color-orange);
@@ -76,10 +93,19 @@
                 height: 100%;
                 max-width: 100%;
                 object-fit: cover;
-
+                @media (min-width: 768px) {
+                    max-width: 600px;
+                    max-height: 510px;
+                }
+                @media (min-width: 768px) {
+                    max-height: 510px;
+                }
+                @media (min-width: 1440px) {
+                    max-width: 787px;
+                    max-height: 600px;
+                }
             }
         }
-
     }
 
     .images_thumbails {
@@ -87,13 +113,21 @@
         align-items: center;
         width: 100%;
         overflow-x: auto;
+        max-width: 100%;
+        margin: auto;
+        @media (min-width: 768px) {
+            max-width: 600px;
+        }
+        @media (min-width: 768px) {
+        }
+        @media (min-width: 1440px) {
+            max-width: 787px;
+        }
 
         .carousel_thumbail {
             &.active img {
                 border: solid 2px var(--color-orange);
             }
-
-
 
             img {
                 margin: 10px;

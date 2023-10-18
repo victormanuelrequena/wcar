@@ -86,12 +86,12 @@ const DetailedCarPage: FC<{}> = () => {
                         <div className="bg_gray py-5">
                             <div className="container">
                                 <div className="row d-flex justify-content-center">
-                                    <div className="col-12 col-md-5">
+                                    <div className="col-12 col-lg-7 col-xl-8">
                                         <CarCarouselImagesComponent images={car.images} />
                                     </div>
-                                    <div className="col-12 col-md-5">
-                                        <div className="px-3">
-                                            <div className="p-3 bg-white rounded">
+                                    <div className="col-12 col-lg-5 col-xl-4">
+                                        <div>
+                                            <div className="p-3 bg-white rounded w-100">
                                                 <h1 className="name-car-detail">{capitalizeFirstLetters(car.name)}</h1>
                                                 <div
                                                     className="d-flex flex-row mt-2 justify-content-start"

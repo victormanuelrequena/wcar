@@ -146,7 +146,16 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                     >
                         {images.map((image, index) => (
                             <div className="carousel_thumbail" key={index} onClick={() => setOpenZoom(true)}>
-                                <img src={image} alt="Wcar" title="Wcar" className="img-fluid" />
+                                <img
+                                    src={image}
+                                    alt="Wcar"
+                                    title="Wcar"
+                                    className="img-fluid w-100"
+                                    style={{
+                                        objectFit: "fill",
+                                        borderRadius: "8px",
+                                    }}
+                                />
                             </div>
                         ))}
                     </Carousel>
