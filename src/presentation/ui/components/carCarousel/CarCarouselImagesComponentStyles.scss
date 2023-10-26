@@ -1,5 +1,18 @@
 .car_carousel_images_component {
     user-select: none;
+    .zoom_shower {
+        display: block;
+        position: absolute;
+        height: 100%;
+        aspect-ratio: 1/1;
+        top: 0;
+        left: calc(100% + 2em);
+        z-index: 1000;
+        overflow: hidden;
+
+        img {}
+    }
+
     .zoom_wrapper {
         cursor: zoom-in;
         position: absolute;
@@ -32,19 +45,6 @@
             }
         }
 
-        .zoom_shower {
-            display: block;
-            position: absolute;
-            height: 100%;
-            aspect-ratio: 1/1;
-            top: 0;
-            left: calc(100% + 2em);
-            z-index: 1000;
-            overflow: hidden;
-
-            img {
-            }
-        }
     }
 
     .container_image_showing {
@@ -58,18 +58,23 @@
             bottom: 1em;
             display: flex;
             align-items: center;
+
             @media (min-width: 768px) {
                 right: 80px;
             }
+
             @media (min-width: 1024px) {
                 right: 10px;
             }
+
             @media (min-width: 1280px) {
                 right: 90px;
             }
+
             @media (min-width: 1400px) {
                 right: 160px;
             }
+
             @media (min-width: 1439px) {
                 right: 60px;
             }
@@ -90,16 +95,21 @@
             }
 
             img {
+                user-select: none;
+                -webkit-user-drag: none;
                 height: 100%;
                 max-width: 100%;
                 object-fit: cover;
+
                 @media (min-width: 768px) {
                     max-width: 600px;
                     max-height: 510px;
                 }
+
                 @media (min-width: 768px) {
                     max-height: 510px;
                 }
+
                 @media (min-width: 1440px) {
                     max-width: 787px;
                     max-height: 600px;
@@ -115,11 +125,13 @@
         overflow-x: auto;
         max-width: 100%;
         margin: auto;
+
         @media (min-width: 768px) {
             max-width: 600px;
         }
-        @media (min-width: 768px) {
-        }
+
+        @media (min-width: 768px) {}
+
         @media (min-width: 1440px) {
             max-width: 787px;
         }

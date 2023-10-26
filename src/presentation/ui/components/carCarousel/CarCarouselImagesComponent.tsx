@@ -12,13 +12,20 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
     const [postionMouse, setPositionMouse] = useState<{ x: number; y: number } | null>(null);
     const [rect, setRect] = useState<DOMRect | null>(null);
     const [openZoom, setOpenZoom] = useState<boolean>(false);
+    const [openable, setOpenable] = useState<boolean>(true);
 
     const _onChange = (slide: number) => {
+        setOpenable(false);
         setImageShowing(slide);
     };
 
     const _handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        console.log(rect, window.innerWidth, imgContainerRef.current);
+        // console.log(rect, window.innerWidth, imgContainerRef.current);
+        if (!openable) {
+            setPositionMouse(null);
+            // setPositionMouse({ x: 0, y: 0 });
+            return;
+        }
         if (window.innerWidth < 768 || imgContainerRef.current == null || rect == null) {
             setPositionMouse(null);
             // setPositionMouse({ x: 0, y: 0 });
@@ -99,41 +106,29 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
             )}
             <div className="container_image_showing" ref={imgContainerRef}>
                 <div className="position-relative">
-                    <div
-                        className="zoom_wrapper"
-                        onMouseOut={() => setPositionMouse(null)}
-                        onMouseMove={_handleMouseMove}
-                        onClick={() => setOpenZoom(true)}
-                    >
-                        {postionMouse && (
-                            <div className="zoom_loop" style={{ left: postionMouse?.x, top: postionMouse?.y }}>
-                                <div className="zoom_box"></div>{" "}
-                            </div>
-                        )}
+                    {postionMouse && rect && (
+                        <div className="zoom_shower">
+                            <img
+                                src={images[imageShowing]}
+                                style={{
+                                    marginLeft: _calculateLeftMarginZoom(),
+                                    marginTop: _calculateTopMarginZoom(),
+                                    width: rect.width * 2.5,
+                                    height: rect.height * 2.5,
+                                }}
+                                alt="Wcar"
+                                title="Wcar"
+                            />
+                        </div>
+                    )}
 
-                        {postionMouse && rect && (
-                            <div className="zoom_shower">
-                                {" "}
-                                <img
-                                    src={images[imageShowing]}
-                                    style={{
-                                        marginLeft: _calculateLeftMarginZoom(),
-                                        marginTop: _calculateTopMarginZoom(),
-                                        width: rect.width * 2.5,
-                                        height: rect.height * 2.5,
-                                    }}
-                                    alt="Wcar"
-                                    title="Wcar"
-                                />{" "}
-                            </div>
-                        )}
-                    </div>
                     <Carousel
                         ref={carouselRef}
                         arrows={false}
                         draggable={true}
                         swipeable={true}
                         slidesToSlide={imageShowing}
+                        afterChange={() => setOpenable(true)}
                         responsive={{
                             mobile: {
                                 breakpoint: { max: 3000, min: 0 },
@@ -144,8 +139,23 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                         beforeChange={(slide, _) => _onChange(slide)}
                     >
                         {images.map((image, index) => (
-                            <div className="carousel_thumbail" key={index} onClick={() => setOpenZoom(true)}>
-                                <div className="image-container">
+                            <div className="position-relative" key={index}>
+                                <div
+                                    className="zoom_wrapper"
+                                    onMouseOut={() => setPositionMouse(null)}
+                                    onMouseMove={_handleMouseMove}
+                                    onClick={() => setOpenZoom(openable)}
+                                >
+                                    {postionMouse && (
+                                        <div
+                                            className="zoom_loop"
+                                            style={{ left: postionMouse?.x, top: postionMouse?.y }}
+                                        >
+                                            <div className="zoom_box"></div>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="carousel_thumbail" key={index} onClick={() => setOpenZoom(openable)}>
                                     <img
                                         src={image}
                                         alt="Wcar"
