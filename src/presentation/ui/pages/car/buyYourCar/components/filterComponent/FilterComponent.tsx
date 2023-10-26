@@ -119,7 +119,10 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                                 className={`my-2 option_picker hover ${
                                                     modelValue == model && "active"
                                                 }`}
-                                                onClick={() => _handleChangeModel(model.id)}
+                                                onClick={() => {
+                                                    console.log("MODEL____", model);
+                                                    _handleChangeModel(model.name);
+                                                }}
                                             >
                                                 {model.name}
                                             </div>

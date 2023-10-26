@@ -91,7 +91,7 @@ const DetailedCarPage: FC<{}> = () => {
                                     </div>
                                     <div className="col-12 col-lg-5 col-xl-4">
                                         <div>
-                                            <div className="p-3 bg-white rounded w-100">
+                                            <div className="p-3 bg-white rounded w-100 mt-5 mt-lg-0">
                                                 <h1 className="name-car-detail">{capitalizeFirstLetters(car.name)}</h1>
                                                 <div
                                                     className="d-flex flex-row mt-2 justify-content-start"

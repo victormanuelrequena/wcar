@@ -3,7 +3,6 @@ import { FC, useEffect, useRef, useState } from "react";
 import CarCarouselImagesComponentProps from "./CarCarouselImagesComponentProps";
 import Carousel from "react-multi-carousel";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
-import { set } from "react-hook-form";
 import ZoomedCarComponent from "../../pages/car/detailedCar/component/zommedCar/ZoomedCarComponent";
 
 const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ images }) => {
@@ -22,11 +21,10 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
 
     const _handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         // console.log(rect, window.innerWidth, imgContainerRef.current);
-        if(!openable){
+        if (!openable) {
             setPositionMouse(null);
             // setPositionMouse({ x: 0, y: 0 });
             return;
-
         }
         if (window.innerWidth < 768 || imgContainerRef.current == null || rect == null) {
             setPositionMouse(null);
@@ -140,34 +138,37 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                         }}
                         beforeChange={(slide, _) => _onChange(slide)}
                     >
-                        {images.map((image, index) => <div className="position-relative" key={index}>
-                            <div
-                                className="zoom_wrapper"
-                                onMouseOut={() => setPositionMouse(null)}
-                                onMouseMove={_handleMouseMove}
-                                onClick={() => setOpenZoom(openable)}
-                            >
-                                {postionMouse && (
-                                    <div className="zoom_loop" style={{ left: postionMouse?.x, top: postionMouse?.y }}>
-                                        <div className="zoom_box"></div>
-                                    </div>
-                                )}
-
+                        {images.map((image, index) => (
+                            <div className="position-relative" key={index}>
+                                <div
+                                    className="zoom_wrapper"
+                                    onMouseOut={() => setPositionMouse(null)}
+                                    onMouseMove={_handleMouseMove}
+                                    onClick={() => setOpenZoom(openable)}
+                                >
+                                    {postionMouse && (
+                                        <div
+                                            className="zoom_loop"
+                                            style={{ left: postionMouse?.x, top: postionMouse?.y }}
+                                        >
+                                            <div className="zoom_box"></div>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="carousel_thumbail" key={index} onClick={() => setOpenZoom(openable)}>
+                                    <img
+                                        src={image}
+                                        alt="Wcar"
+                                        title="Wcar"
+                                        className="img-fluid w-100"
+                                        style={{
+                                            objectFit: "fill",
+                                            borderRadius: "8px",
+                                        }}
+                                    />
+                                </div>
                             </div>
-                            <div className="carousel_thumbail" key={index} onClick={() => setOpenZoom(openable)}>
-                                <img
-                                    src={image}
-                                    alt="Wcar"
-                                    title="Wcar"
-                                    className="img-fluid w-100"
-                                    style={{
-                                        objectFit: "fill",
-                                        borderRadius: "8px",
-                                    }}
-                                />
-                            </div>
-                        </div>
-                        )}
+                        ))}
                     </Carousel>
                 </div>
 
