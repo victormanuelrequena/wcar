@@ -343,22 +343,22 @@ const BuyYourCarPage: FC<{}> = () => {
                                         ))}
                                 </div>
                                 {maxPages > 1 && (
-                                    <div className="w-100 d-flex justify-content-center my-3 ">
+                                    <div className="w-100 d-flex justify-content-center align-items-center my-3 ">
                                         <div className=" d-md-flex me-3 d-flex">
                                             <div
                                                 className={`arrow_slider previous me-1 ${page <= 1 ? "disabled" : ""}`}
                                             >
-                                                <AiOutlineArrowLeft onClick={_handlePreviousPage} />
+                                                <AiOutlineArrowLeft size={20} onClick={_handlePreviousPage} />
                                             </div>
-                                            <div>
+                                            <p className="d-flex align-items-center fs-6 px-2">
                                                 {page} de {maxPages}
-                                            </div>
+                                            </p>
                                             <div
                                                 className={`arrow_slider next ms-1 ${
                                                     page >= maxPages - 1 ? "disabled" : ""
                                                 }`}
                                             >
-                                                <AiOutlineArrowRight onClick={_handleNextPage} />
+                                                <AiOutlineArrowRight size={20} onClick={_handleNextPage} />
                                             </div>
                                         </div>
                                     </div>

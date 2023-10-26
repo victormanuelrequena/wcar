@@ -1,6 +1,6 @@
-.arrow_slider{
-    height: 1.7em;
-    width: 1.7em;
+.arrow_slider {
+    height: 2.6em;
+    width: 2.6em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,7 +12,7 @@
         cursor: pointer;
     }
 
-    &.previous{
+    &.previous {
         // opacity: .3;
     }
 

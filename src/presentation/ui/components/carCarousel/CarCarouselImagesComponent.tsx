@@ -3,7 +3,6 @@ import { FC, useEffect, useRef, useState } from "react";
 import CarCarouselImagesComponentProps from "./CarCarouselImagesComponentProps";
 import Carousel from "react-multi-carousel";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
-import { set } from "react-hook-form";
 import ZoomedCarComponent from "../../pages/car/detailedCar/component/zommedCar/ZoomedCarComponent";
 
 const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ images }) => {
@@ -132,7 +131,7 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                     <Carousel
                         ref={carouselRef}
                         arrows={false}
-                        draggable
+                        draggable={true}
                         swipeable={true}
                         slidesToSlide={imageShowing}
                         responsive={{
@@ -146,16 +145,18 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                     >
                         {images.map((image, index) => (
                             <div className="carousel_thumbail" key={index} onClick={() => setOpenZoom(true)}>
-                                <img
-                                    src={image}
-                                    alt="Wcar"
-                                    title="Wcar"
-                                    className="img-fluid w-100"
-                                    style={{
-                                        objectFit: "fill",
-                                        borderRadius: "8px",
-                                    }}
-                                />
+                                <div className="image-container">
+                                    <img
+                                        src={image}
+                                        alt="Wcar"
+                                        title="Wcar"
+                                        className="img-fluid w-100"
+                                        style={{
+                                            objectFit: "fill",
+                                            borderRadius: "8px",
+                                        }}
+                                    />
+                                </div>
                             </div>
                         ))}
                     </Carousel>
