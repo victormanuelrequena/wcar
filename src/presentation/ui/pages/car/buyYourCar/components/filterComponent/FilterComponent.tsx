@@ -57,9 +57,11 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
         // setIsOpen(false);
     };
 
-    const _handleChangeModel = (model: string) => {
-        if (model == modelValue) setValue("model", undefined);
-        else setValue("model", model);
+    const _handleChangeModel = (model: any) => {
+        if (model === modelValue?.id) setValue("model", undefined);
+        else {
+            setValue("model", model);
+        }
         handleClose();
     };
 
@@ -111,17 +113,17 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                     />
                                     <span>{brand.name}</span>
                                 </div>
-                                {brandIdValue == brand.id && (
+                                {brandIdValue === brand.id && (
                                     <div className="content options_box_container">
                                         {models.map((model, index) => (
                                             <div
                                                 key={index}
                                                 className={`my-2 option_picker hover ${
-                                                    modelValue == model && "active"
+                                                    modelValue?.id == model && "active"
                                                 }`}
                                                 onClick={() => {
                                                     console.log("MODEL____", model);
-                                                    _handleChangeModel(model.name);
+                                                    _handleChangeModel(model);
                                                 }}
                                             >
                                                 {model.name}
