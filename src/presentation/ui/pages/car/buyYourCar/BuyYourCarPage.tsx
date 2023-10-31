@@ -146,7 +146,7 @@ const BuyYourCarPage: FC<{}> = () => {
                     page,
                     data.search,
                     data.brand_id,
-                    data.model,
+                    data.model?.id,
                     data.year,
                     data.price,
                     data.type_vehcile_id,
