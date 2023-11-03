@@ -11,7 +11,10 @@ const CardBlogComponent: FC<CardBlogComponentProps> = ({ blog }) => {
     const year = new Intl.DateTimeFormat("es-ES", { year: "numeric" }).format(new Date(blog.created_at));
 
     return (
-        <Link to={routes.detailedBlog.relativePath + "/" + blog.id} className="card_blog_component">
+        <Link
+            to={routes.detailedBlog.relativePath + `/${blog.title.replace(/ /g, "-")}?id=${blog.id}`}
+            className="card_blog_component"
+        >
             <div className="card">
                 <div className="card_body p-3">
                     <img
