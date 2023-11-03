@@ -6,7 +6,6 @@
             color: white;
             padding: 0.5em 1em;
             width: fit-content;
-
         }
 
         .img_card_blog {
@@ -14,8 +13,8 @@
         }
     }
 
-    .section_2{
-        aside{
+    .section_2 {
+        aside {
             padding: 1em 2em 1em 1em;
             font-size: 1.2em;
             font-weight: bold;
@@ -25,16 +24,45 @@
             margin: 2em 0;
         }
 
-        img{
+        img {
             width: 100%;
             border-radius: 5px;
         }
 
-        h5{
+        h5 {
             font-size: 1.4em;
             font-weight: bold;
             margin-top: 2em;
             margin-bottom: 1em;
+        }
+    }
+    .section-content {
+        p {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            color: #666c89;
+        }
+        h6 {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 30px;
+            color: #1e1e1e;
+            margin-top: 32px;
+        }
+        .quote {
+            margin-top: 32px;
+            padding: 32px;
+            background-color: #f6f7f9;
+            border-radius: 12px;
+            border-left: 4px solid;
+            border-left-color: #00fefe;
+            p {
+                font-size: 22px;
+                font-weight: 700;
+                line-height: 30px;
+                color: #1e1e1e;
+            }
         }
     }
 }
