@@ -19,6 +19,7 @@ import SelectOpenComponent from "../../../../../components/selectOpen/SelectOpen
 import TagContext from "../../../../../../../domain/providers/tag/TagContext";
 import TagContextType from "../../../../../../../domain/providers/tag/TagContextType";
 import ModelEntity from "../../../../../../../domain/entities/ModelEntity";
+import { useSearchParams } from "react-router-dom";
 
 const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setIsOpen }) => {
     const { register, setValue, watch } = formFunctions;
@@ -35,6 +36,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
     const typeTransmission = watch("type_transmission");
     const availability = watch("tag_id");
     const typeFuelId = watch("type_fuel_id");
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const handleClose = () => {
         if (window.innerWidth < 700) {
@@ -42,15 +44,16 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
         }
     };
 
-    const _handleChangeBrand = async (brandId: string) => {
-        if (brandId == brandIdValue) {
+    const _handleChangeBrand = async (brand: any) => {
+        setSearchParams({ brand: brand.name });
+        if (brand.id === brandIdValue) {
             setValue("brand_id", undefined);
         } else {
-            setValue("brand_id", brandId);
+            setValue("brand_id", brand.id);
             setValue("model", undefined);
             setModels([]);
             try {
-                const response = await di.get<GetModelsByBrandUseCase>(GetModelsByBrandUseCaseName).call(brandId);
+                const response = await di.get<GetModelsByBrandUseCase>(GetModelsByBrandUseCaseName).call(brand.id);
                 setModels(response);
             } catch (error) {}
         }
@@ -58,6 +61,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
     };
 
     const _handleChangeModel = (model: any) => {
+        setSearchParams({ brand: brands.find((b) => b.id === brandIdValue)?.name, model: model.name });
         if (model === modelValue?.id) setValue("model", undefined);
         else {
             setValue("model", model);
@@ -89,6 +93,31 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
         }
     }, [typeVehicleId, typeTransmission, availability, typeFuelId]);
 
+    // Read query params
+    useEffect(() => {
+        const brand = searchParams.get("brand");
+        if (brand) {
+            const brandFound = brands.find((b) => b.name === brand);
+            if (brandFound) {
+                setValue("brand_id", brandFound.id);
+            }
+        }
+
+        (async () => {
+            const model = searchParams.get("model");
+            const brandFound = brands.find((b) => b.name === brand);
+            const modelsData = await di.get<GetModelsByBrandUseCase>(GetModelsByBrandUseCaseName).call(brandFound.id);
+            setModels(modelsData);
+            if (model) {
+                const modelFound = modelsData.find((m) => m.name === model);
+                console.log("🚀 ~ file: FilterComponent.tsx:113 ~ modelFound:", modelFound);
+                if (modelFound) {
+                    setValue("model", modelFound);
+                }
+            }
+        })();
+    }, []);
+
     return (
         <div className={`filter_component ps-5 pt-3 pe-4 ${isOpen && "open"}`}>
             <div className="back_drop" onClick={() => setIsOpen(false)}></div>
@@ -98,42 +127,47 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
             </div>
             <div className="my-3 model_filter">
                 <SelectOpenComponent title="Marca y modelo">
-                    {brands.map((brand, index) => (
-                        <div key={index} className={`form-check my-2 ps-0 ${brandIdValue == brand.id && "active"}`}>
-                            <div className="my-3">
-                                <div
-                                    className="d-flex align-items-center title hover title"
-                                    onClick={() => _handleChangeBrand(brand.id)}
-                                >
-                                    <img
-                                        src={brand.image}
-                                        alt="Wcar"
-                                        title="Wcar"
-                                        className="img-fluid img_filter me-2"
-                                    />
-                                    <span>{brand.name}</span>
-                                </div>
-                                {brandIdValue === brand.id && (
-                                    <div className="content options_box_container">
-                                        {models.map((model, index) => (
-                                            <div
-                                                key={index}
-                                                className={`my-2 option_picker hover ${
-                                                    modelValue?.id == model && "active"
-                                                }`}
-                                                onClick={() => {
-                                                    console.log("MODEL____", model);
-                                                    _handleChangeModel(model);
-                                                }}
-                                            >
-                                                {model.name}
-                                            </div>
-                                        ))}
+                    {brands.map((brand, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className={`form-check my-2 ps-0 ${brandIdValue === brand.id && "active"}`}
+                            >
+                                <div className="my-3">
+                                    <div
+                                        className="d-flex align-items-center title hover title"
+                                        onClick={() => _handleChangeBrand(brand)}
+                                    >
+                                        <img
+                                            src={brand.image}
+                                            alt="Wcar"
+                                            title="Wcar"
+                                            className="img-fluid img_filter me-2"
+                                        />
+                                        <span>{brand.name}</span>
                                     </div>
-                                )}
+                                    {brandIdValue === brand.id && (
+                                        <div className="content options_box_container">
+                                            {models.map((model, index) => (
+                                                <div
+                                                    key={index}
+                                                    className={`my-2 option_picker hover ${
+                                                        modelValue?.id == model && "active"
+                                                    }`}
+                                                    onClick={() => {
+                                                        console.log("MODEL____", model);
+                                                        _handleChangeModel(model);
+                                                    }}
+                                                >
+                                                    {model.name}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </SelectOpenComponent>
             </div>
 

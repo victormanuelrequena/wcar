@@ -1,6 +1,8 @@
 import { injectable } from "inversify";
 import BlogPostRepository from "../../repositories/BlogPostRepository";
 import BlogPostEntity from "../../entities/BlogPostEntity";
+import BlogPostImplDto from "../../../data/dto/impl/BlogPostImplDto";
+import HostApi from "../../../data/settings/HostApi";
 
 interface props {
     blogPostRepository: BlogPostRepository;
@@ -14,15 +16,12 @@ export default class GetAllBlogsAndMainPostUseCase {
         this._blogPostRepository = _.blogPostRepository;
     }
 
-    async call(): Promise<{ blogs: BlogPostEntity[], mainPost: BlogPostEntity | undefined }> {
+    async call(): Promise<{ blogs: BlogPostEntity[]; mainPost: BlogPostEntity | undefined }> {
         let blogs: BlogPostEntity[] = [];
         let mainPost: BlogPostEntity | undefined = undefined;
         try {
-            blogs = await this._blogPostRepository.getLastBlogs();
-        } catch (error) { }
-        try {
-            mainPost = await this._blogPostRepository.getOutstandingBlog();
         } catch (error) {
+            console.log(error);
         }
         return { blogs, mainPost };
     }

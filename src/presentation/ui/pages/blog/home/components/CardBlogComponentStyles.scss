@@ -1,13 +1,18 @@
-.card_blog_component{
-    .img_card_blog{
+.card_blog_component {
+    .card {
+        border: 1px solid #e8e8ea;
+    }
+    .img_card_blog {
         min-height: 10em;
         border-radius: 5px;
     }
-    .tag{
+    .tag {
         border-radius: 5px;
         background-color: var(--color-gray-light);
         color: var(--color-orange);
         padding: 0.3em 0.5em;
         width: fit-content;
+        font-size: 14px;
+        font-weight: 500;
     }
 }

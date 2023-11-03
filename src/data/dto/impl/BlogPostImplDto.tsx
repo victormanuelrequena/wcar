@@ -6,13 +6,13 @@ const fromJson = (json: any): BlogPostEntity => {
     return {
         id: json.id,
         title: json.title,
-        tagName: json.tag_name,
+        tagName: json.tagName,
         createdAt: json.created_at,
-        photoUrl: json.photo_url,
+        photoUrl: json.photoUrl,
         user: UserImplDto.fromJson(json.user),
-        content: json.content
-    }
-}
+        content: json.content,
+    };
+};
 
 const toJson = (blog: BlogPostEntity): any => {
     return {
@@ -22,11 +22,11 @@ const toJson = (blog: BlogPostEntity): any => {
         created_at: blog.createdAt,
         photo_url: blog.photoUrl,
         user: UserImplDto.toJson(blog.user),
-        content: blog.content
-    }
-}
+        content: blog.content,
+    };
+};
 
 export default {
     fromJson,
     toJson,
-}
+};

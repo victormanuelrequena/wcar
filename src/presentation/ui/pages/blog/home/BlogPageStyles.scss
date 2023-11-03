@@ -1,14 +1,14 @@
 .blog_page {
-
     .section_1 {
         .outstanding_container {
             margin-top: -3em;
+            max-width: 546px;
 
             @media screen and (min-width: 768px) {
                 margin-top: -12em;
             }
 
-            .tag{
+            .tag {
                 border-radius: 5px;
                 background-color: var(--color-orange);
                 color: white;
@@ -20,5 +20,52 @@
 
     .footer {
         background-color: var(--color-gray-light);
+    }
+}
+
+.outstanding_blog {
+    margin-top: -20%;
+    min-width: 100%;
+    min-height: 120px;
+}
+
+.outstandingBlog-main-image {
+    width: 100%;
+    min-height: 254px;
+    max-height: 400px;
+}
+
+.outstanding-title {
+    font-size: 22px;
+    color: #1e1e1e;
+    margin-top: 16px !important;
+    max-width: 24ch;
+}
+
+.blog_info_user {
+    margin-top: 24px !important;
+}
+
+.date {
+    font-size: 14px !important;
+}
+
+.last-articles-title {
+    font-size: 22px;
+    line-height: 30px;
+    color: #1e1e1e;
+}
+
+@media (min-width: 768px) {
+    .outstanding_blog {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .outstandingBlog-main-image {
+        width: 100%;
+        max-height: 600px;
     }
 }
