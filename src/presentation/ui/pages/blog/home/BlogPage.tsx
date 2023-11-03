@@ -57,7 +57,10 @@ const BlogPage: FC<{}> = () => {
                             <div className="outstanding_blog ms-md-5">
                                 <div className="row">
                                     <Link
-                                        to={routes.detailedBlog.relativePath + "/" + outstandingBlog.id}
+                                        to={
+                                            routes.detailedBlog.relativePath +
+                                            `/${outstandingBlog.title.replace(/ /g, "-")}?id=${outstandingBlog.id}`
+                                        }
                                         className="col-md-6 ms-md-5"
                                     >
                                         <div className="bg_white outstanding_container p-4">
