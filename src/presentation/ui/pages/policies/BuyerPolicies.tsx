@@ -1,144 +1,315 @@
-import { FC } from "react"
-import Layout from "../../layout/Layout"
+import { FC } from "react";
+import Layout from "../../layout/Layout";
 
 const BuyerPolicies: FC<{}> = () => {
-    return <Layout>
-        <div className="w-100 px-3 p_spaced" style={{ backgroundImage: 'url(/assets/pages/contact/bg_contact.jpg)', backgroundSize: 'contain' }}>
-            <div className="container">
-                <div className="bg-white p-5">
-                    <div className="side side_top mb-3">
-                        <h2>CONTRATO DE VINCULACIÓN VENDEDOR – WCAR SAS CONTRATO DE CORRETAJE</h2>
+    return (
+        <Layout>
+            <div
+                className="w-100 px-3 p_spaced"
+                style={{ backgroundImage: "url(/assets/pages/contact/bg_contact.jpg)", backgroundSize: "contain" }}
+            >
+                <div className="container">
+                    <div className="bg-white p-5">
+                        <div className="side side_top mb-3">
+                            <h2>TÉRMINOS Y CONDICIONES PLATAFORMA WCAR </h2>
+                        </div>
+                        <p>
+                            El presente documento, tiene por finalidad establecer los términos y condiciones de uso de
+                            la Aplicación WCAR (la “Aplicación”) así como de su página web (el “Sitio Web y en conjunto
+                            con la Aplicación, la “Plataforma Tecnológica”), desarrollos tecnológicos propiedad de WCAR
+                            S.A.S., sociedad comercial identificada con Nit. 901566049 – 8 (en adelante la
+                            “SociedadWCAR”).
+                        </p>
+                        <p>
+                            Se le informa a quienes ingresen o se registren en la Plataforma Tecnológica (en adelante
+                            los “Usuarios” o el “Usuario”), que el acceso a la misma implica el conocimiento,
+                            comprensión y aceptación de los términos y condiciones generales de uso (“Términos y
+                            Condiciones”) previstos en este documento. En caso de que el Usuario no esté de acuerdo,
+                            deberá abstenerse de utilizar la Plataforma Tecnológica.
+                        </p>
+                        <p>
+                            WCAR se reserva el derecho de actualizar o modificar los presentes Términos y Condiciones,
+                            en cualquier momento en que lo considere necesario. Estas modificaciones estarán disponibles
+                            al público a través de la página web Wcar.co.
+                        </p>
+
+                        <h3 className="mb-3">I. DEFINICIONES</h3>
+                        <p>
+                            <strong>Comprador:</strong> Persona natural o jurídica que efectúa el pago de la reserva y
+                            de la totalidad del precio del vehículo ofrecido en la Plataforma Tecnológica de WCAR.
+                        </p>
+                        <p>
+                            <strong>Plataforma tecnológica:</strong> Hace referencia al desarrollo tecnológico que
+                            despliega WCAR a favor del COMPRADOR, a través de una página web y aplicación móvil
+                            denominada Wcar.co que permite vincular a personas interesadas en vender un vehículo con
+                            aquellas interesadas en adquirirlo. Adicionalmente, permite prestar servicios de trámites de
+                            traspaso, intermediación en la consecución de créditos, entre otros.
+                        </p>
+                        <p>
+                            <strong>Usuario:</strong> Toda Persona natural o jurídica que, como destinatario final, usa
+                            la Plataforma Tecnológica de WCAR para interactuar con sus funcionalidades, y para adquirir
+                            los vehículos ofrecidos mediante la Plataforma Tecnológica.
+                        </p>
+                        <p>
+                            <strong>Vehículo:</strong> Hacer referencia al automotor usado ofrecido por el vendedor a
+                            través de la Plataforma Tecnológica.
+                        </p>
+                        <p>
+                            <strong>Vendedor:</strong> Persona natural o jurídica que tiene la calidad de propietario de
+                            un vehículo y desea venderlo a través de la Plataforma tecnológica de WCAR.
+                        </p>
+
+                        <h3 className="mb-3">II. SOBRE LA PLATAFORMA TECNOLÓGICA Y FUNCIONAMIENTO. </h3>
+                        <p>
+                            La Plataforma Tecnológica está compuesta por una aplicación para dispositivos móviles y una
+                            página web, que permite vincular a personas interesadas en vender un vehículo con aquellas
+                            interesadas en adquirirlo, y a su vez, prestar servicios de trámites de traspaso e
+                            intermediación en la consecución de créditos para la compra de los vehículos ofrecidos en la
+                            Plataforma Tecnológica.
+                        </p>
+                        <p>
+                            El Usuario declara y acepta que en cualquier momento y sin previo aviso, WCAR podrá
+                            modificar el diseño, los visuales y el arte de la Plataforma Tecnológica.
+                        </p>
+
+                        <h3 className="mb-3">III. ACCESO A LA PLATAFORMA TECNOLÓGICA. </h3>
+
+                        <ul>
+                            <li>
+                                <strong>3.1.</strong> El Usuario deberá crear una cuenta en la Plataforma Tecnológica, y
+                                será el único responsable por la gestión, conservación, confidencialidad y
+                                administración de la cuenta asignada.
+                            </li>
+                            <li>
+                                <strong>3.2.</strong> Al momento de la creación de la cuenta, el Usuario deberá
+                                proporcionar datos personales tales como nombre, correo electrónico, teléfono, entre
+                                otros. Esta información será tratada de conformidad con la Política de Tratamiento de
+                                Datos Personales disponible en https://www.wcar.co/politica-de-privacidad.
+                            </li>
+                            <li>
+                                <strong>3.3.</strong> WCAR se reserva el derecho de eliminar o suprimir de la Plataforma
+                                Tecnológica, cualquier contenido que infrinja las condiciones de uso señaladas en la
+                                Cláusula Cuarta.
+                            </li>
+                            <li>
+                                <strong>3.4.</strong> El registro y acceso a la Plataforma Tecnológica comporta una
+                                aceptación sin reservas de los Términos y Condiciones aquí contenidos.
+                            </li>
+                        </ul>
+
+                        <h3 className="mb-3">IV. CONDICIONES DE USO DE LA PLATAFORMA TECNOLÓGICA.</h3>
+                        <p>
+                            Las siguientes serán las restricciones y condiciones que el Usuario deberá observar durante
+                            el uso y acceso a la Plataforma Tecnológica:{" "}
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>
+                                    4.1. Restricciones relacionadas con el uso de la Plataforma Tecnológica.
+                                </strong>
+                                <br />
+                                El Usuario deberá abstenerse de: (i) utilizar la Plataforma Tecnológica con fines
+                                inmorales o ilícitos; (ii) intentar probar la vulnerabilidad de una funcionalidad de la
+                                Plataforma Tecnológica sin la debida autorización de WCAR, o violar las medidas de
+                                seguridad o autenticación dispuestas en la Plataforma Tecnológica; (iii) intentar
+                                interferir con las funcionalidades, servidor o red, incluyendo, pero sin limitarse al
+                                envío de virus a través de la Plataforma Tecnológica o sobrecarga de tráfico para
+                                denegación del servicio; (iv) suplantar la identidad de terceros de personas físicas o
+                                jurídicas de cualquier índole; (v) proporcionar información de identidad incorrecta o
+                                falsa; (vi) ofrecer Productos relacionados con actividades de explotación sexual,
+                                pornografía, proxenetismo, el turismo sexual y demás formas de abuso sexual, imágenes o
+                                videos con menores de edad, material que haga apología a la violencia, proselitismo
+                                armado o actividades de personas o grupos al margen de la ley, o que atenten contra los
+                                usos honestos y las buenas costumbres.
+                            </li>
+                            <li>
+                                <strong>
+                                    4.2. Restricciones relacionadas con la propiedad intelectual de la Plataforma
+                                    Tecnológica.
+                                </strong>
+                                <br />
+                                El Usuario deberá abstenerse de: (i) copiar, modificar, adaptar, traducir, descompilar,
+                                realizar ingeniería inversa o desensamblar cualquier parte del contenido y/o de las
+                                funcionalidades y/o de la Plataforma Tecnológica; (ii) reproducir o modificar por
+                                cualquier medio el contenido de la Plataforma Tecnológica; (iii) vender, licenciar,
+                                sublicenciar o explotar el contenido y/o cualquier tipo de acceso y/o uso de la
+                                Plataforma Tecnológica.
+                            </li>
+                        </ul>
+
+                        <h3 className="mb-3">V. DECLARACIONES DEL USUARIO.</h3>
+                        <p>
+                            El Usuario reconoce que (i) el Vehículo es usado y que por lo tanto puede ser vendido sin
+                            ningún tipo de garantía; (ii) WCAR no es responsable por inexactitud o falsedad de las
+                            fotografías, información, características especificadas en la Plataforma Tecnológica.
+                        </p>
+
+                        <h3 className="mb-3">VI. OBLIGACIONES DEL USUARIO.</h3>
+                        <ul>
+                            <li>
+                                <strong>6.1.</strong> El Usuario deberá acceder a la página web y/o descargar la
+                                Plataforma Tecnológica en su dispositivo móvil, y deberá completar satisfactoriamente
+                                los procedimientos de registro. Al registrarse se deberá asegurar de que toda la
+                                información proporcionada sea exacta, esté actualizada, completa y válida;
+                            </li>
+                            <li>
+                                <strong>6.2.</strong> El Usuario se compromete a: (ii) Utilizar la Plataforma
+                                Tecnológica de buena fe y solo para los fines de los presentes términos y condiciones;
+                                (ii) abstenerse de utilizarla para fines ilegales;
+                            </li>
+                            <li>
+                                <strong>6.3.</strong> El Usuario reconoce que WCAR podrá actualizar los requisitos del
+                                hardware y software del teléfono móvil de la Plataforma Tecnológica de forma periódica;
+                            </li>
+                            <li>
+                                <strong>6.4.</strong> Abstenerse de afectar intencionalmente el funcionamiento normal de
+                                la red y/o intentar dañar los Servicios y/o la Plataforma Tecnológica;
+                            </li>
+                        </ul>
+                        <h3>VII. OBLIGACIONES DE WCAR.</h3>
+                        <ul>
+                            <li>
+                                {" "}
+                                <strong>7.1.</strong>Emplear sus mejores oficios y esfuerzos, así como los conocimientos
+                                y experiencia profesional de sus dependientes en la búsqueda para formalizar la compra y
+                                venta del Vehículo.
+                            </li>
+                            <li>
+                                <strong>7.2.</strong> Utilizar sus herramientas tecnológicas para que a través de ella
+                                se ofrezcan y comercialicen los Vehículos.
+                            </li>
+                            <li>
+                                <strong>7.3.</strong> Publicar las fotografías e información del vehículo de propiedad
+                                del Vendedor en la Plataforma Tecnológica, la cual incluye página web y/o aplicativo
+                                móvil, durante el tiempo de vigencia de la relación comercial o hasta el momento en que
+                                se logré la venta (lo que primero ocurra), utilizando única y exclusivamente a la
+                                información obtenida en el peritaje previo realizado al vehículo.
+                            </li>
+                            <li>
+                                <strong>7.4.</strong> Guardar absoluta reserva y confidencialidad, tanto a nivel
+                                personal como respecto a sus empleados o dependientes, de toda la información que sea
+                                suministrada por el Usuario.
+                            </li>
+                            <li>
+                                <strong>7.5.</strong> Cualquier gestión necesaria para el cumplimiento de su objeto
+                                social.
+                            </li>
+                        </ul>
+                        <h3 className="mb-3">VIII. LIMITACIÓN DE RESPOSABILIDAD DE WCAR.</h3>
+                        <ul>
+                            <li>
+                                <strong>8.1.</strong> Limitaciones sobre la disponibilidad de los Vehículos.
+                            </li>
+                            <li>
+                                <strong>8.2.</strong> Limitaciones por uso indebido de la Plataforma Tecnológica.
+                            </li>
+                            <li>
+                                <strong>8.3.</strong> Limitaciones respecto a la disponibilidad de la Plataforma
+                                Tecnológica.
+                            </li>
+                        </ul>
+                        <h3 className="mb-3">IX. SUSPENSIÓN DE LA PLATAFORMA.</h3>
+                        <p>
+                            En el caso en el que WCAR identifique que el Usuario está incumpliendo con las obligaciones
+                            y/o deberes establecidos en los presentes Términos y Condiciones, podrá unilateralmente
+                            suspender el uso de la Plataforma Tecnológica al Usuario.
+                        </p>
+
+                        <h3 className="mb-3">X. DURACIÓN DE TÉRMINOS Y CONDICIONES.</h3>
+                        <p>
+                            Estos términos y condiciones tendrán una duración indefinida. WCAR se reserva el derecho de
+                            actualizar o modificar los presentes Términos y Condiciones, en todo caso los trámites de
+                            compra y venta se regirán por la versión de los Términos y Condiciones que se encuentre
+                            vigente en la fecha de reserva del vehículo.
+                        </p>
+
+                        <h3 className="mb-3">XI. SERVICIO AL CLIENTE.</h3>
+                        <p>
+                            El Usuario podrá notificar a WCAR cualquier PQR relacionado con los Términos y Condiciones
+                            aquí previstos, comunicándose directamente con atención al cliente Correo electrónico:
+                            servicioalcliente@wcar.co
+                        </p>
+
+                        <h3 className="mb-3">XII. DERECHOS DE PROPIEDAD INTELECTUAL.</h3>
+                        <p>
+                            Excepto por lo expresamente establecido en estos Términos y Condiciones, nada de lo aquí
+                            establecido se considerará que efectúa la transferencia, cesión o asignación de cualquier
+                            derecho de propiedad intelectual u otros derechos de propiedad de una Parte a la otra Parte.
+                        </p>
+
+                        <p>
+                            Bajo ningún supuesto, los presentes Términos y Condiciones se podrán entender como
+                            transferencia a cualquier título de la tecnología de la cual es propietaria WCAR, su matriz,
+                            sus subsidiarias y/o compañías filiales. WCAR es el titular y conserva todos los derechos de
+                            propiedad intelectual relacionados con la Plataforma Tecnológica.
+                        </p>
+
+                        <h3 className="mb-3">XIII. INDEPENDENCIA DE LAS PARTES.</h3>
+                        <p>
+                            El Usuario y WCAR son personas independientes y nada en estos Términos y Condiciones tiene
+                            la intención o crea algún tipo de empresa conjunta, sociedad, join venture o relación
+                            empleador/empleado entre las Partes.
+                        </p>
+
+                        <h3 className="mb-3">XIV. CASO FORTUITO O FUERZA MAYOR.</h3>
+                        <p>
+                            Ninguna de las Partes será responsable de cualquier retraso o incumplimiento de estos
+                            Términos y Condiciones que resulte, directa o indirectamente, de caso fortuito o fuerza
+                            mayor. Por "fuerza mayor” o “caso Fortuito” se entenderán todas las causas o acontecimientos
+                            que escapen al control de cualquiera de las Partes y que no puedan preverse o que, si
+                            pudieran preverse, no podrían evitarse y que se produzcan una vez aceptados los presentes
+                            Términos y Condiciones e impidan, retarden obstaculicen el cumplimiento de las obligaciones
+                            de alguna de las Partes.
+                        </p>
+
+                        <h3 className="mb-3">XV. INDEMNIDAD Y RESPONSABILIDAD.</h3>
+                        <p>
+                            Las Partes acuerdan mantenerse indemnes respecto de terceros que pudieran ser afectados por
+                            el incumplimiento de estos Términos y Condiciones y la Ley Aplicable. En atención a la
+                            obligación de mantenerse indemnes, responderán por los daños y/o perjuicios que sus acciones
+                            u omisiones pudieran causar a terceros y por los que la otra Parte pudiere resultar
+                            afectada.
+                        </p>
+
+                        <h3 className="mb-3">XVI. CONFIDENCIALIDAD</h3>
+                        <p>
+                            Las Partes tratará en forma estrictamente confidencial toda información no pública que
+                            llegue a su conocimiento relacionada con estos Términos y Condiciones, incluyendo sin
+                            limitarse, a la información personal, capacidad financiera y/o corporativa, entre otros.
+                        </p>
+
+                        <h3 className="mb-3">XVII. DATOS PERSONALES.</h3>
+                        <p>
+                            El Usuario declara y acepta que para el desarrollo de las actividades aquí previstas es
+                            posible que comparta datos personales que se encuentran en su poder con WCAR y con cualquier
+                            interviniente necesario, lo que implica una transmisión de datos. En todo caso WCAR declara
+                            que cumple con las obligaciones y los parámetros determinados por la ley 1581 de 2012 y sus
+                            normas concordantes para el tratamiento de datos de trabajadores, proveedores y clientes, y
+                            se limitará a lo establecido en la política de protección de datos disponible en
+                            https://wcar.co/politica-de-privacidad/
+                        </p>
+
+                        <h3 className="mb-3">XVIII. RESOLUCIÓN DE CONFLICTOS.</h3>
+                        <p>
+                            Toda controversia o diferencia generada con ocasión de los presentes Términos y Condiciones
+                            o su ejecución, se intentará resolver en primera instancia medias o directo entre las
+                            Partes. Si transcurridos treinta (30) días calendario de surgida la controversia ésta no se
+                            ha resuelto, se intentará conciliación ante cualquier Centro de Conciliación autorizado de
+                            la ciudad de Bucaramanga Si en esta instancia no se logra resolver la diferencia, las Partes
+                            se someterán a los tribunales de la jurisdicción ordinaria de la ciudad de Bogotá D.C.
+                        </p>
+
+                        <h3 className="mb-3">XIX. LEY APLICABLE Y DOMICILIO CONTRACTUAL.</h3>
+                        <p>
+                            Para la interpretación y cumplimiento de los Términos y condiciones, las Partes se someten a
+                            las Leyes de la República de Colombia. Para todos los efectos legales, el domicilio
+                            contractual será la ciudad de Bogotá D.C.
+                        </p>
                     </div>
-                    <h3>CONSIDERACIONES</h3>
-                    <p>
-                        El presente documento define y establece las condiciones para la gestión de venta de vehículo, pactadas entre EL OTORGANTE (CLIENTE VENDEDOR) y WCAR S.A.S. (EL CORREDOR).
-                    </p>
-                    <p>
-                        <strong>Primera:</strong> Que EL OTORGANTE es el propietario del vehículo a continuación descrito (en adelante “EL VEHÍCULO”), y que se encuentra legalmente habilitado para venderlo.
-                    </p>
-                    <table className="table table-bordered">
-                        <tr>
-                            <th>NOMBRE Y APELLIDO DEL OTORGANTE (CLIENTE VENDEDOR)</th>
-                            <td></td>
-                            <th>DOCUMENTO DE IDENTIDAD</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>DIRECCIÓN</th>
-                            <td></td>
-                            <th>CIUDAD</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>TELÉFONO 1</th>
-                            <td></td>
-                            <th>TELÉFONO 2</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>EMAIL</th>
-                            <td></td>
-                            <th>MARCA DEL VEHÍCULO</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>REFERENCIA EXACTA</th>
-                            <td></td>
-                            <th>KILOMETRAJE</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>CHASIS/VIN</th>
-                            <td></td>
-                            <th>MOTOR</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>AÑO MODELO</th>
-                            <td></td>
-                            <th>PLACA</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>CIUDAD PLACA</th>
-                            <td></td>
-                            <th>VALOR PERITAJE</th>
-                            <td></td>
-                        </tr>
-                    </table>
-                    <p>
-                        <strong>Segunda:</strong> Que WCAR S.A.S. es una empresa dedicada a la comercialización de vehículos usados para lo cual cuenta con el conocimiento del mercado y una infraestructura que le permite ofrecerlos al público, facilitando así la posibilidad de encontrar compradores interesados en adquirirlos y una vez ubicado el comprador facilitar el proceso de venta, traspaso y entrega del automotor.
-                    </p>
-                    <p>
-                        <strong>Tercera:</strong> Que EL OTORGANTE desea contratar los servicios de WCAR S.A.S. para que a través de sus oficios como corredor y mediante la utilización de su infraestructura ofrezca en venta EL VEHÍCULO y de esa manera encuentre el comprador interesado, de acuerdo con las siguientes:
-                    </p>
-                    <h3>CLÁUSULAS</h3>
-                    <p>
-                        <strong>Cláusula Primera: Objeto:</strong> Mediante el presente Acuerdo WCAR S.A.S. se compromete a emplear sus mejores esfuerzos para que mediante la utilización de su infraestructura física, humana y tecnológica, se logre la venta del vehículo de propiedad del OTORGANTE que se identifica de la siguiente manera y que en adelante se denominará EL VEHÍCULO, especificado en el contrato en cuestión de cada negocio. Para lo anterior WCAR S.A.S. se compromete a gestionar, promover, facilitar, concertar o inducir la celebración de un negocio jurídico como agente intermediario, entre un cliente o potencial comprador con EL OTORGANTE, sin estar vinculado a ninguna de las dos partes por relaciones de colaboración, dependencia, mandato, representación, agencia o cualquier otra diferente a este Convenio y a cambio de la comisión establecida en la cláusula quinta del presente contrato. Para todos los efectos, el presente Convenio se entenderá como un contrato de corretaje en los términos de los artículos 1340 y siguientes del Código de Comercio.
-                    </p>
-                    <p>
-                        <strong>Cláusula Segunda: Facultades de WCAR S.A.S.:</strong> Para cumplir con el objeto del contrato y particularmente sus compromisos y obligaciones, WCAR S.A.S. ofrecerá en venta EL VEHÍCULO, publicando fotografías e información a través de su portal web y/o su aplicativo móvil o cualquier otro medio que estime conveniente.
-                    </p>
-                    <p>
-                        <strong>Cláusula Tercera: Obligaciones de WCAR S.A.S:</strong> En virtud del presente contrato WCAR S.A.S. se obliga a:
-                        <ul>
-                            <li>a. Emplear sus mejores oficios y esfuerzos, así como los conocimientos y experiencia profesional de sus dependientes en la búsqueda de una tercera persona interesada en la compra de EL VEHÍCULO.</li>
-                            <li>b. Utilizar sus herramientas tecnológicas para que a través de ella se ofrezca EL VEHÍCULO en venta, de acuerdo con las condiciones pactadas con EL OTORGANTE en el documento denominado PERITAJE.</li>
-                            <li>c. Publicar las fotografías e información de EL VEHÍCULO en su página web y/o aplicativo móvil por un periodo no menor a UN (1) mes o hasta lograr su venta, utilizando única y exclusivamente a la información obtenida en el peritaje previo realizado al VEHÍCULO.</li>
-                            <li>d. Realizar en nombre de EL OTORGANTE, en los términos del contrato de mandato otorgado en escrito separado, directamente o a través de contratistas, los trámites de solicitud de traspaso y levantamiento de prenda de ser necesario, una vez sean entregados los documentos requeridos y el comprador interesado cancele los costos respectivos.</li>
-                            <li>e. Una vez hallado el comprador, WCAR S.A.S. se obliga a recibir de él, el precio de venta acordado y pagarlo posteriormente a EL OTORGANTE, descontando los valores descritos por concepto de comisión como consecuencia directa de su gestión en la venta de EL VEHÍCULO (5% del precio de venta), gastos de trámite (1% retención en la fuente, mitad de traspaso, mitad de honorarios tramitador, impuestos si no se han cancelado, certificado de DIJIN y certificado de tradición e improntas en caso de que éstas sean de difícil acceso) y embellecimiento equivalente a $50,000 (cincuenta mil pesos moneda corriente). El pago se realizará al vendedor únicamente cuando el trámite de traspaso de propiedad se encuentre registrado en el organismo de tránsito correspondiente.</li>
-                            <li>f. Mantener informado a EL OTORGANTE respecto de la gestión de venta realizada, la cantidad de personas interesadas en EL VEHÍCULO o cualquier otra situación que pueda resultar necesaria o pertinente según los propósitos de este contrato.</li>
-                            <li>g. Guardar absoluta reserva y confidencialidad, tanto a nivel personal como respecto a sus empleados o dependientes, de toda la información que sea suministrada por EL OTORGANTE, en cumplimiento del objeto de este contrato.</li>
-                            <li>h. Publicar en su plataforma web la información y fotografías de EL VEHÍCULO únicamente en el momento en que EL OTORGANTE le suministre la totalidad de la información o documentación requerida.</li>
-                        </ul>
-                    </p>
-
-                    <p>
-                        <strong>Cláusula Cuarta: Obligaciones de EL OTORGANTE:</strong> EL OTORGANTE se obliga a:
-                        <ul>
-                            <li>a. Permitirle a WCAR S.A.S. realizar las gestiones que encuentre necesarias con el objetivo de lograr la venta de EL VEHÍCULO, entre ellas, publicar la información y fotografías de este en su página web y/o en su aplicativo móvil o en cualquier otro medio según lo considere necesario o pertinente, facilitar la exhibición de EL VEHÍCULO en horarios establecidos de común acuerdo.</li>
-                            <li>b. Pagar a WCAR S.A.S. el valor acordado como comisión o remuneración por la venta de EL VEHÍCULO, mediante la autorización para descontar del pago del precio de la compraventa dicho valor, así como los demás gastos o costos que se deban descontar según lo acordado en el presente contrato, ya descritos en la cláusula tercera.</li>
-                            <li>c. Permitirle a WCAR S.A.S. acceder a EL VEHÍCULO, previa cita o encuentro acordado por Las Partes, siempre y cuando lo requiera en cumplimiento de sus labores de ofrecimiento o venta, para lo cual le permitirá tomar fotografías, inspeccionar el estado técnico, mecánico, estético de EL VEHÍCULO y someterlo a pruebas de ruta con posibles interesados.</li>
-                            <li>d. No ofrecer EL VEHÍCULO en venta a terceras personas diferentes y ajenas a WCAR S.A.S., en los términos del acuerdo de exclusividad contenido en el presente contrato.</li>
-                            <li>e. Entregarle a WCAR S.A.S. la totalidad de los documentos requeridos para la venta, traspaso y entrega material de EL VEHÍCULO a su comprador, incluyendo tarjeta de propiedad o licencia de tránsito, recibos de pago de los impuestos cancelados, declaración de importación, factura de compraventa, formulario de traspaso suscrito y demás que se puedan llegar a requerir. De igual forma EL OTORGANTE se obliga a entregar EL VEHÍCULO libre de toda clase de gravámenes, particularmente de embargos, demandas, condiciones resolutorias, que no está sujeto a pacto de reserva de dominio, garantizando que no ha sido dado en prenda o arrendamiento, que fue introducido legalmente al país y que saldrá al saneamiento de lo ofrecido en venta en los casos previstos por la ley. EL OTORGANTE garantiza que sobre el vehículo no existen multas, ni infracciones o pendientes en la Fiscalía o en la Sijin; que se encuentra a paz y salvo por todo concepto, en especial por impuestos del orden nacional o municipal y que no existen infracciones de tránsito inscritas en la cédula del propietario. En caso que el vehículo se encuentre pignorado EL OTORGANTE deberá entregar carta de levantamiento de prenda sin fecha, autenticada y formulario de levantamiento de prenda. Si el propietario de EL VEHÍCULO es una persona jurídica deberá entregar Certificado de Existencia y Representación Legal expedido con máximo 30 días calendario de antelación.</li>
-                            <li>f. Hacer entrega material de EL VEHÍCULO en las mismas condiciones en que fue peritado, salvo el uso normal y razonable según lo define la presente Cláusula, dentro de los dos (2) días hábiles siguientes a la fecha en que WCAR S.A.S. así lo solicite, con el fin de ser entregado a su nuevo propietario. En caso de incumplimiento de esta obligación por parte de EL OTORGANTE este quedará obligado al pago a favor de WCAR S.A.S. del VEINTE PORCIENTO (20%) del valor de EL VEHÍCULO según el precio de PERITAJE, a título de sanción por el incumplimiento, sin perjuicio de las acciones legales que WCAR S.A.S. pueda iniciar para perseguir el pago integral de la totalidad de los perjuicios sufridos como consecuencia de dicho incumplimiento. La expresión “uso normal y razonable” se entenderá como aquel uso que EL OTORGANTE puede darle al VEHÍCULO una vez haya suscrito el presente contrato y hasta el momento de entrega a su comprado o a WCAR S.A.S. según sea el caso. EL OTORGANTE deberá entregar EL VEHÍCULO con un kilometraje que no podrá ser superior al equivalente a 50 kilómetros por cada día transcurrido desde la fecha y kilometraje en que se realizó el peritaje.</li>
-                            <li>g. Permitir y aceptar que WCAR S.A.S. descontará del precio pagado por el comprador, el valor de las reparaciones a que haya lugar en caso de encontrarse que con posterioridad al peritaje realizado EL VEHÍCULO haya sufrido daños, accidentes o colisiones, con el fin de entregarlo al comprador en las mismas condiciones en que se encontraba a la fecha de la realización del peritaje. De igual forma deberá avisar a WCAR S.A.S. de la ocurrencia de un siniestro, daño o colisión sufrido por EL VEHÍCULO en el periodo comprendido entre la realización del peritaje y la venta o entrega al comprador.</li>
-                            <li>h. EL OTORGANTE deberá suscribir la totalidad de los documentos requeridos por WCAR S.A.S. para permitir la futura venta de EL VEHÍCULO, contrato de mandato, formulario de traspaso o cualquier otro que resulte necesario para permitir la labor de WCAR S.A.S.</li>
-                            <li>i. EL OTORGANTE declara que toda la información y documentos que le ha suministrado y suministrará a WCAR S.A.S. con motivo del presente contrato, son ciertos y precisos y que en caso de no ser así, saldrá a la defensa de cualquier perjuicio que WCAR S.A.S. pudiera sufrir como consecuencia de la inexactitud o falsedad de la información.</li>
-                            <li>j. Las demás obligaciones que explicita e implícitamente se deriven del presente contrato.</li>
-                        </ul>
-                    </p>
-                    <p>
-                        <strong>Cláusula Quinta: Valor y forma de pago:</strong> El documento denominado “PERITAJE” suscrito por las partes al momento de la realización del peritaje de EL VEHÍCULO, determina el valor comercial de venta al cual será ofrecido al público. WCAR S.A.S. descontará el CINCO POR CIENTO (5%) sobre el valor de venta de EL VEHÍCULO como remuneración por su gestión así como los demás gastos mencionados en la cláusula tercera numeral e del presente contrato.
-                        <p><strong>Parágrafo Primero:</strong> WCAR S.A.S. pagará a EL OTORGANTE el saldo de la venta de EL VEHÍCULO en un plazo máximo de 48 horas hábiles posteriores a la inscripción del trámite de traspaso en el organismo de tránsito correspondiente. EL OTORGANTE dejará a resguardo de WCAR S.A.S EL VEHÍCULO una vez se firme el contrato de compraventa con el cliente comprador, bajo el poder de responsabilidad del mismo especificado en la cláusula Octava del presente contrato.</p>
-                    </p>
-                    <p>
-                        <strong>Cláusula Sexta: Exclusividad a favor de WCAR S.A,S.:</strong> EL OTORGANTE se obliga a no utilizar o contratar con terceras plataformas electrónicas, servicios, corretajes, comisiones, mandatos, consignaciones o cualquier otra figura para la venta de EL VEHÍCULO distintas a las ofrecidas por WCAR S.A.S., por un período de UN (1) mes. Una vez culminado este período, EL OTORGANTE podrá ofrecer el vehículo a terceros siempre y cuando envíe un aviso a WCAR S.A.S. por cualquier medio escrito informando que es su deseo ofrecer el vehículo a terceras personas y que desea que el vehículo no sea anunciado por WCAR S.A.S. Lo anterior debido a que Las Partes declaran conocer y aceptar que EL OTORGANTE ha contratado los servicios de WCAR S.A.S. para que solo ella a través de sus servicios preste sus mejores oficios para lograr la venta de EL VEHÍCULO. En caso de incumplimiento de esta obligación de no hacer y/o de retracto en el contrato por parte de EL OTORGANTE quedará obligado al pago a favor de WCAR S.A.S. el 20% del valor establecido en el peritaje, a título de pena por el incumplimiento de las obligaciones, sin perjuicio que WCAR S.A.S. pueda perseguir la indemnización de los perjuicios sufridos como consecuencia del incumplimiento por parte de EL OTORGANTE y el pago de las costas y honorarios que pueda incurrir WCAR S.A.S. en su defensa.</p>
-                    <p>
-                        <strong>Cláusula Séptima: Responsabilidad de WCAR S.A.S. en la venta de EL VEHÍCULO:</strong> Las Partes declaran conocer y aceptar, que la gestión de WCAR S.A.S. como corredor en la venta de EL VEHÍCULO corresponde a una obligación de medio y no de resultado, razón por la cual WCAR S.A.S. no garantiza el éxito o resultado de su gestión en el ofrecimiento en venta de EL VEHÍCULO al público. De cualquier manera, se compromete a prestar sus mejores oficios y esfuerzos en lograr la venta.
-                        <p>Si transcurrido UN (1) meses desde la fecha en que fue publicado el aviso de venta con la información de EL VEHÍCULO en la página web y/o aplicativo móvil de WCAR, no se han recibido ofertas ni se ha encontrado persona interesada en adquirirlo, Las Partes de común acuerdo y por escrito, podrán acordar modificar las condiciones de precio bajo las cuales se ha ofrecido EL VEHÍCULO. En caso de no llegar a un nuevo acuerdo respecto del precio, EL OTORGANTE podrá solicitarle a WCAR S.A.S. retirar EL VEHÍCULO de la venta y ofrecerlo por sus propios medios.</p>
-                    </p>
-                    <p>
-                        <strong>Parágrafo:</strong> Teniendo en cuenta que el presente contrato es de Corretaje, es claro para Las Partes que la posición de vendedor en cualquier caso será de EL OTORGANTE, razón por la cual será él y no WCAR S.A.S. el obligado a responder frente a terceros por el cumplimiento de las disposiciones legales en materia de protección al consumidor, en particular las contenidas en la ley 1480 de 2011 y demás normas que la modifiquen, regulen y complementen.</p>
-                    <p>
-                        <strong>Cláusula Octava: Responsabilidad de WCAR S.A.S. por la tenencia de EL VEHÍCULO:</strong> En los eventos en que EL VEHÍCULO se encuentre bajo la tenencia de WCAR S.A.S., esta se obliga a mantenerlo en el mismo estado en que le fue entregado. De igual forma deberá responder por comparendos de tránsito impuestos a EL VEHÍCULO bajo la cédula del propietario, en los eventos de infracciones cometidas por sus dependientes en pruebas de ruta o traslados.</p>
-                    <p>
-                        <strong>Cláusula Novena: Actividades adicionales o complementarias:</strong> Para generar mayores posibilidades en la venta, WCAR S.A.S. podrá desarrollar labores de corretaje en la búsqueda y consecución de créditos o productos financieros y seguros, a favor de los posibles compradores, evento en el cual podrá cobrar a las entidades que vincule comisiones por la colocación de créditos o ventas de seguros. </p>
-                    <p>
-                        <strong>Cláusula Décima: Vigencia:</strong> El presente contrato tendrá una vigencia de UN (1) mes o hasta la fecha en que se logre la venta de EL VEHÍCULO( lo que primero ocurra). Al vencimiento del plazo sin que se haya logrado la venta, Las Partes podrán modificar las condiciones según lo establecido en la cláusula séptima del presente contrato, renovando así el periodo de vigencia por un plazo igual al inicial. De no lograr acuerdo en la modificación de las condiciones de venta, cualquiera de las Partes podrá optar por no renovar el contrato, evento en el cual WCAR S.A.S. procederá a eliminar toda la información que se haya publicado sobre EL VEHÍCULO y a cesar sus gestiones de venta.</p>
-                    <p>
-                        <strong>Cláusula Décima Primera: Exclusión de la relación laboral, agencia comercial o sociedad:</strong>  Este contrato no supone la existencia de ningún tipo de relación laboral, de agencia comercial, sociedad o cualquier otra diferente al corretaje entre Las Partes, razón por la cual no se generará prestaciones laborales, continuidad laboral, indemnización o cesantía comercial al momento de su terminación.</p>
-                    <p>
-                        <strong>Cláusula Décima Segunda: Mérito Ejecutivo:</strong> El presente contrato presta mérito ejecutivo sin necesidad de requerimiento alguno.</p>
-                    <p>
-                        <strong>Cláusula Décima Tercera: Obligación de medio:</strong> Las partes declaran conocer y aceptar que todas las obligaciones que este o cualquier otro contrato suscrito entre ellas le otorguen a WCAR S.A.S. son de medio y no de resultado.</p>
-                    <p>
-                        <strong>Cláusula Décima Cuarta: Notificaciones:</strong> Notificaciones: Todas las comunicaciones o notificaciones con ocasión de este contrato, ya sean físicas o electrónicas, se harán en forma escrita dirigidas a las siguientes direcciones y a las definidas en cada negocio por EL OTORGANTE: WCAR S.A.S. Dirección: Clle 71 # 50-53 Oficina WCAR S.A.S. Email: <a className="text_orange" href="mailto:wcarvajal@wcar.co">wcarvajal@wcar.co</a> Teléfono: <a className="text_orange" href="tel:3242568893">3242568893</a></p>
-                </div >
-            </div >
-        </div >
-    </Layout >
-
-}
+                </div>
+            </div>
+        </Layout>
+    );
+};
 
 export default BuyerPolicies;
