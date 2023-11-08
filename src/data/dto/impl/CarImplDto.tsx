@@ -17,7 +17,7 @@ const fromJson = (json: any): CarEntity => {
         images: json.files.map((file: any) => file.image),
         price: parseInt(json.price),
         transmission: json.transmission == 1 ? TransmissionCar.AUTOMATIC : TransmissionCar.MANUAL,
-        year: ModelImplDto.fromJson(json.model_car).name,
+        year: json.year,
         rating: parseFloat(json.stars),
         odometer: json.mileage,
         brand: BrandImplDto.fromJson(json.brand_car),
@@ -30,10 +30,11 @@ const fromJson = (json: any): CarEntity => {
         fullPlate: json.tuition,
         doors: json.doors,
         motor: json.engine,
-        status: json.status_vehicle == 1 ? 'Nuevo' : 'Usado',
-        discount: json.discount_price != null && json.discount_price != "0.00" ? parseFloat(json.discount_price) : undefined,
-    }
-}
+        status: json.status_vehicle == 1 ? "Nuevo" : "Usado",
+        discount:
+            json.discount_price != null && json.discount_price != "0.00" ? parseFloat(json.discount_price) : undefined,
+    };
+};
 
 const toJson = (car: CarEntity): any => {
     return {
@@ -58,10 +59,10 @@ const toJson = (car: CarEntity): any => {
         doors: car.doors,
         motor: car.motor,
         status: car.status == "Nuevo" ? 1 : 2,
-    }
-}
+    };
+};
 
 export default {
     fromJson,
     toJson,
-}
+};

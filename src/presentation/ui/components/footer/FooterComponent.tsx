@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { SLOGAN } from "../../../utils/Contants";
 import { routes } from "../../routes/RoutesComponent";
+import { BiLogoInstagram, BiLogoYoutube, BiLogoFacebookCircle } from "react-icons/bi";
 
 const FooterComponent: FC<{}> = () => {
     return (
@@ -63,6 +64,55 @@ const FooterComponent: FC<{}> = () => {
                             >
                                 Calle 98a # 69B-35
                             </a>
+                        </div>
+                    </div>
+                    <div className="col-6 col-md-3 col-lg-2">
+                        <div className="d-flex flex-column w-100">
+                            <h6 className="text_orange text_bold mb-3">Siguenos</h6>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "flex-start",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <BiLogoFacebookCircle fontSize={20} />
+                                <a href="https://www.facebook.com/wcarcolombia?mibextid=ZbWKwL" className="my-2 mx-1">
+                                    Facebook
+                                </a>
+                            </div>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "flex-start",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <BiLogoInstagram fontSize={20} />
+                                <a
+                                    href="https://www.instagram.com/wcar.oficial?igshid=NGVhN2U2NjQ0Yg%3D%3D"
+                                    className="my-2 mx-1"
+                                >
+                                    Instagram
+                                </a>
+                            </div>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "flex-start",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <BiLogoYoutube fontSize={20} />
+                                <a
+                                    href="https://youtube.com/@wcarcolombia?si=SAfvApSkimvFnxHK"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="my-2 mx-1"
+                                >
+                                    Youtube
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

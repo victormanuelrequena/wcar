@@ -84,7 +84,7 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
             )}
             {model && (
                 <div className="delete_filter_item">
-                    <span>Modelo {model?.name}</span>
+                    <span>{model?.name}</span>
                     <div className="icon hover" onClick={_handleRemoveModel}>
                         <Icons.Clear />
                     </div>

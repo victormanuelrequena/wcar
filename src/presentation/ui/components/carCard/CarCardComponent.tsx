@@ -48,7 +48,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                 )}
                 <div className="d-flex w-100 align-items-center">
                     <div className="flex-grow overflow-hidden me-3">
-                        <h5 className="text_ellipsis">{car.name}</h5>
+                        <h5 className="">{car.name}</h5>
                     </div>
                     {_like ? (
                         <IoMdHeart size={32} className="text_red hover" onClick={_handleLike} />
@@ -60,7 +60,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                 <div className="row" style={{ fontSize: ".9em" }}>
                     <div className="col-4 d-flex align-items-center text_gray p-0">
                         <img
-                            src="/assets/icons/year.svg"
+                            src="/assets/icons/calendar.svg"
                             alt="Wcar"
                             title="Wcar"
                             className="img-fluid img_icon  me-2 ms-3"

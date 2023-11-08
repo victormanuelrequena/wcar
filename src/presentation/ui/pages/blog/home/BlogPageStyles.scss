@@ -26,7 +26,7 @@
 .outstanding_blog {
     margin-top: -20%;
     min-width: 100%;
-    min-height: 120px;
+    min-height: 200px;
 }
 
 .outstandingBlog-main-image {
@@ -60,6 +60,9 @@
     .outstanding_blog {
         width: 100%;
         margin-top: 20px;
+    }
+    .outstanding-title {
+        font-size: 36px;
     }
 }
 
