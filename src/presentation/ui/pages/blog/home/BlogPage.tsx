@@ -66,8 +66,7 @@ const BlogPage: FC<{}> = () => {
                                         <div className="bg_white outstanding_container p-4">
                                             <div className="tag">{outstandingBlog?.tagName}</div>
                                             <h1 className="my-2 text_bold outstanding-title">
-                                                {/* {outstandingBlog?.title} */}
-                                                Renault Duster 2023: La SUV perfecta para el mercado colombiano.
+                                                {outstandingBlog?.title}
                                             </h1>
                                             <div className="d-flex align-items-center">
                                                 <div className="flex-grow-1 blog_info_user">

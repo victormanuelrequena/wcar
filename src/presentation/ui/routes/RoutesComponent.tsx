@@ -33,6 +33,7 @@ import SuccesfulPaymentPage from "../pages/succesfulPayment/SuccesfulPaymentPage
 import BuyOrSellPage from "../pages/landings/buyOrSellPage/BuyOrSellPage";
 import { Helmet } from "react-helmet-async";
 import SaleYourCarPage from "../pages/policies/SaleYourCarPage";
+import DontButNewCarBuyAUsed from "../pages/redirect/DontButNewCarBuyAUsed";
 
 export interface iRoute {
     name: string;
@@ -241,6 +242,13 @@ const routes = {
         path: "/compra-o-vende-tu-carro-en-colombia",
         relativePath: "/compra-o-vende-tu-carro-en-colombia",
         component: BuyOrSellPage,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    dontBuyNewCarBuyAUsed: {
+        path: "/no-compres-auto-nuevo-elige-un-usado",
+        relativePath: "/no-compres-auto-nuevo-elige-un-usado",
+        component: DontButNewCarBuyAUsed,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
