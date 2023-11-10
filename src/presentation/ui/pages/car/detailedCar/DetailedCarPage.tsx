@@ -99,7 +99,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                 >
                                                     <div className="d-flex align-items-center text_gray p-0">
                                                         <img
-                                                            src="/assets/icons/year.svg"
+                                                            src="/assets/icons/calendar.svg"
                                                             alt="Wcar"
                                                             title="Wcar"
                                                             className="img-fluid img_icon me-2"
@@ -145,11 +145,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                         </h5>
                                                     )}
                                                 </div>
-                                                <div className="w-100 d-flex">
-                                                    <StarRatingComponent rating={car.rating} />
-                                                    <span className="ms-2 text_gray">Estado del vehículo</span>
-                                                </div>
-                                                <div className="d-inline-flex flex-column justify-content-start align-items-start mt-4">
+                                                <div className="d-inline-flex flex-column justify-content-start align-items-start mt-1">
                                                     <div
                                                         onClick={_bookCarWithPayment}
                                                         className="btn btn_orange my-3 me-3 btn-detailed-car"
@@ -256,12 +252,12 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <div className="col-6 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
-                                                                src="/assets/icons/year.svg"
+                                                                src="/assets/icons/calendar.svg"
                                                                 className="img-fluid me-2"
                                                                 alt="Wcar"
                                                                 title="Wcar"
                                                             />
-                                                            Modelo:
+                                                            Año:
                                                         </span>
                                                         <strong>{car.year}</strong>
                                                     </div>
