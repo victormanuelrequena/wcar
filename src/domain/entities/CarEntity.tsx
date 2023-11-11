@@ -6,8 +6,8 @@ import TypeOfFuelEntity from "./TypeOfFuelEntity";
 import TypeVehicleEntity from "./TypeVehicleEntity";
 
 export enum TransmissionCar {
-    AUTOMATIC = 'Automática',
-    MANUAL = 'Manual'
+    AUTOMATIC = "Automática",
+    MANUAL = "Manual",
 }
 
 export default interface CarEntity {
@@ -28,10 +28,12 @@ export default interface CarEntity {
     priceBook?: PriceBookEntity | undefined;
     description: string;
     tag?: TagEntity | undefined;
-    plate: string,
-    fullPlate?: string | undefined,
-    doors: number,
-    motor: string,
-    status: string,
-    discount?: number | undefined,
+    plate: string;
+    fullPlate?: string | undefined;
+    doors: number;
+    motor: string;
+    status: string;
+    discount?: number | undefined;
+    url_expertise?: string | null;
+    expertise?: string | null;
 }
