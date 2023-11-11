@@ -8,7 +8,6 @@ import CarEntity from "../../../../../domain/entities/CarEntity";
 import NotResultsComponent from "../../../components/notResults/NotResultsComponent";
 import LoadingComponent from "../../../components/LoadingComponent/LoadingComponent";
 import CarCarouselImagesComponent from "../../../components/carCarousel/CarCarouselImagesComponent";
-import StarRatingComponent from "../../../components/starRating/StarRatingComponent";
 import CurrencyParse from "../../../../utils/CurrencyParse";
 import { routes } from "../../../routes/RoutesComponent";
 import CarCardComponent from "../../../components/carCard/CarCardComponent";
@@ -22,12 +21,14 @@ import { Helmet } from "react-helmet-async";
 import BookACarUseCase, { BookACarUseCaseName } from "../../../../../domain/use_cases/book/BookACarUseCase";
 import ModalsContextType from "../../../../../domain/providers/modal/ModalsContextType";
 import ModalsContext from "../../../../../domain/providers/modal/ModalsContext";
+import PreviewImage from "./component/PreviewImage";
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
     const [car, setCar] = useState<CarEntity | undefined | null>(undefined);
     const [relatedCars, setRelatedCars] = useState<CarEntity[] | undefined | null>(undefined);
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
+    const [showPeritajeImage, setShowPeritajeImage] = useState(false);
 
     const _getCar = async () => {
         try {
@@ -190,8 +191,11 @@ const DetailedCarPage: FC<{}> = () => {
                                                 <i>del vehículo</i>
                                             </h3>
                                         </div>
-                                        <div className="btn btn_orange">
-                                            DESCARGAR PERITAJE <Icons.Download />{" "}
+                                        <div
+                                            className="btn btn_orange font-bold"
+                                            onClick={() => setShowPeritajeImage(true)}
+                                        >
+                                            VER PERITAJE <Icons.Download />{" "}
                                         </div>
                                     </div>
                                 </div>
@@ -425,6 +429,14 @@ const DetailedCarPage: FC<{}> = () => {
                             <div>loading</div>
                         )}
                     </div>
+                    {showPeritajeImage && (
+                        <PreviewImage
+                            imageUrl={car.expertise}
+                            close={() => {
+                                setShowPeritajeImage(false);
+                            }}
+                        />
+                    )}
                 </div>
             )}
         </Layout>
