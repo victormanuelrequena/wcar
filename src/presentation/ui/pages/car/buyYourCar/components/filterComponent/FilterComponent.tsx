@@ -46,6 +46,10 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
 
     const _handleChangeBrand = async (brand: any) => {
         setSearchParams({ brand: brand.name });
+        const newQueryParam = brand.name;
+        const url = new URL(window.location.href);
+        url.searchParams.set("brand", newQueryParam);
+        window.history.replaceState({}, "", url.toString());
         if (brand.id === brandIdValue) {
             setValue("brand_id", undefined);
         } else {
@@ -61,6 +65,10 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
     };
 
     const _handleChangeModel = (model: any) => {
+        const newQueryParam = model.name;
+        const url = new URL(window.location.href);
+        url.searchParams.set("model", newQueryParam);
+        window.history.replaceState({}, "", url.toString());
         setSearchParams({ brand: brands.find((b) => b.id === brandIdValue)?.name, model: model.name });
         if (model === modelValue?.id) setValue("model", undefined);
         else {
@@ -70,18 +78,31 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
     };
 
     const _handleChangeYear = (year: number) => {
+        const newQueryParam = year;
+        const url = new URL(window.location.href);
+        url.searchParams.set("year", newQueryParam.toString());
+        window.history.replaceState({}, "", url.toString());
         if (year == watch("year")) setValue("year", undefined);
         else setValue("year", year);
         handleClose();
     };
 
-    const _handleChangeColor = (colorId: string) => {
-        if (colorId == watch("color_id")) setValue("color_id", undefined);
-        else setValue("color_id", colorId);
+    const _handleChangeColor = (color: any) => {
+        const newQueryParam = color.name;
+        console.log(color);
+        const url = new URL(window.location.href);
+        url.searchParams.set("color", newQueryParam);
+        window.history.replaceState({}, "", url.toString());
+        if (color.id == watch("color_id")) setValue("color_id", undefined);
+        else setValue("color_id", color.id);
         handleClose();
     };
 
     const _handleChangePlateNumber = (plate: number) => {
+        const newQueryParam = plate;
+        const url = new URL(window.location.href);
+        url.searchParams.set("plate", newQueryParam.toString());
+        window.history.replaceState({}, "", url.toString());
         if (plate == plateNumberValue) setValue("plate_number", undefined);
         else setValue("plate_number", plate);
         handleClose();
@@ -117,6 +138,21 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
             }
         })();
     }, []);
+
+    const handleChangeAddQueryParam = (
+        value: string,
+        propertyForm: any,
+        param: string,
+        array?: any,
+        property?: string,
+        index: number = null
+    ) => {
+        setValue(propertyForm, value);
+        const newQueryParam = index >= 0 || index ? array[index][property] : value;
+        const url = new URL(window.location.href);
+        url.searchParams.set(param, newQueryParam);
+        window.history.replaceState({}, "", url.toString());
+    };
 
     return (
         <div className={`filter_component ps-5 pt-3 pe-4 ${isOpen && "open"}`}>
@@ -205,7 +241,17 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                     className="form-check-input"
                                     type="radio"
                                     value={typeVehicle.id}
-                                    {...register("type_vehcile_id")}
+                                    checked={watch("type_vehcile_id") == typeVehicle.id}
+                                    onChange={(e) => {
+                                        handleChangeAddQueryParam(
+                                            e.target.value,
+                                            "type_vehcile_id",
+                                            "type_vehicle",
+                                            typeVehicles,
+                                            "name",
+                                            index
+                                        );
+                                    }}
                                 />
                                 <label className="form-check-label">
                                     <img src={typeVehicle.photo} alt={typeVehicle.name} width={25} className="me-2" />
@@ -226,7 +272,9 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                 type="radio"
                                 checked={watch("type_transmission") == TransmissionCar.AUTOMATIC}
                                 value={TransmissionCar.AUTOMATIC}
-                                {...register("type_transmission")}
+                                onChange={(e) => {
+                                    handleChangeAddQueryParam(e.target.value, "type_transmission", "transmission");
+                                }}
                             />
                             <label className="form-check-label">Automática</label>
                         </div>
@@ -238,7 +286,9 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                 type="radio"
                                 checked={watch("type_transmission") == TransmissionCar.MANUAL}
                                 value={TransmissionCar.MANUAL}
-                                {...register("type_transmission")}
+                                onChange={(e) => {
+                                    handleChangeAddQueryParam(e.target.value, "type_transmission", "transmission");
+                                }}
                             />
                             <label className="form-check-label">Manual</label>
                         </div>
@@ -255,7 +305,11 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                     className="form-check-input"
                                     type="radio"
                                     value={tag.id}
-                                    {...register("tag_id")}
+                                    // {...register("tag_id")}
+                                    checked={watch("tag_id") == tag.id}
+                                    onChange={(e) => {
+                                        handleChangeAddQueryParam(e.target.value, "tag_id", "tag", tags, "name", index);
+                                    }}
                                 />
                                 <label className="form-check-label">{tag.name}</label>
                             </div>
@@ -278,7 +332,18 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                     className="form-check-input"
                                     type="radio"
                                     value={typeOfFuel.id}
-                                    {...register("type_fuel_id")}
+                                    checked={watch("type_fuel_id") == typeOfFuel.id}
+                                    onChange={(e) => {
+                                        handleChangeAddQueryParam(
+                                            e.target.value,
+                                            "type_fuel_id",
+                                            "typeOfFuels",
+                                            typeOfFuels,
+                                            "name",
+                                            index
+                                        );
+                                    }}
+                                    // {...register("type_fuel_id")}
                                 />
                                 <label className="form-check-label">{typeOfFuel.name}</label>
                             </div>
@@ -294,7 +359,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                             <div
                                 key={index}
                                 className={`color ${watch("color_id") == color.id && "active"}`}
-                                onClick={() => _handleChangeColor(color.id)}
+                                onClick={() => _handleChangeColor(color)}
                             >
                                 <div className="fill" style={{ backgroundColor: color.colorHex }}></div>
                             </div>

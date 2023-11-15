@@ -3,7 +3,22 @@ import OrderByEntity from "../../../../../domain/entities/OrderByEntity";
 import CarImplDto from "../../../../dto/impl/CarImplDto";
 import HostApi from "../../../../settings/HostApi";
 
-const SearchCarApiImpl = async (page: number, search: string, brand: string | undefined, modelId: string | undefined, year: string | undefined, price: { min: number; max: number; } | undefined, type: string, transmission: TransmissionCar | undefined, tag: string | undefined, km: { min: number; max: number; } | undefined, fuelId: string | undefined, colorId: string | undefined, plateNumber: string | undefined, orderBy: OrderByEntity | undefined): Promise<{ cars: CarEntity[]; maxPages: number; }> => {
+const SearchCarApiImpl = async (
+    page: number,
+    search: string,
+    brand: string | undefined,
+    modelId: string | undefined,
+    year: string | undefined,
+    price: { min: number; max: number } | undefined,
+    type: string,
+    transmission: TransmissionCar | undefined,
+    tag: string | undefined,
+    km: { min: number; max: number } | undefined,
+    fuelId: string | undefined,
+    colorId: string | undefined,
+    plateNumber: string | undefined,
+    orderBy: OrderByEntity | undefined
+): Promise<{ cars: CarEntity[]; maxPages: number }> => {
     try {
         const relativeUrl = `/filter-cars/?page=${page}`;
         const body = {
@@ -23,18 +38,21 @@ const SearchCarApiImpl = async (page: number, search: string, brand: string | un
             search_word: search,
             plate_number: plateNumber,
             orderBy: orderBy?.value != undefined ? (orderBy.value?.desc ? "desc" : "asc") : undefined,
-        }
+        };
+
         const response = await HostApi.post(relativeUrl, body);
         return {
-            cars: response.results.map((car: any) => CarImplDto.fromJson(car)).filter((car: CarEntity) => car.id != "19"),
-            maxPages: response.num_pages
-        }
+            cars: response.results
+                .map((car: any) => CarImplDto.fromJson(car))
+                .filter((car: CarEntity) => car.id != "19"),
+            maxPages: response.num_pages,
+        };
     } catch (error) {
         return {
             cars: [],
-            maxPages: 0
-        }
+            maxPages: 0,
+        };
     }
-}
+};
 
 export default SearchCarApiImpl;

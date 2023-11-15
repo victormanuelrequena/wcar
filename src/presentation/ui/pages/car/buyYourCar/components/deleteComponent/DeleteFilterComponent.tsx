@@ -36,40 +36,56 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
     const color = colors.find((color) => color.id === watch("color_id"));
     const plateNumber = watch("plate_number");
 
+    const _handleRemoveQueryParam = (queryParamName: string) => {
+        const url = new URL(window.location.href);
+        url.searchParams.delete(queryParamName);
+        window.history.replaceState({}, "", url.toString());
+    };
     const _handleRemoveBrand = () => {
         setValue("brand_id", undefined);
         setValue("model", undefined);
+        _handleRemoveQueryParam("model");
+        _handleRemoveQueryParam("brand");
     };
     const _handleRemoveModel = () => {
         setValue("model", undefined);
+        _handleRemoveQueryParam("model");
     };
 
     const _handleRemoveYear = () => {
         setValue("year", undefined);
+        _handleRemoveQueryParam("year");
     };
     const _handleRemovePrice = () => {
         setValue("price", undefined);
+        _handleRemoveQueryParam("price");
     };
     const _handleRemoveType = () => {
         setValue("type_vehcile_id", undefined);
+        _handleRemoveQueryParam("type_vehicle");
     };
     const _handleRemoveTransmission = () => {
         setValue("type_transmission", undefined);
+        _handleRemoveQueryParam("transmission");
     };
     const _handleRemoveTag = () => {
         setValue("tag_id", undefined);
+        _handleRemoveQueryParam("tag");
     };
     const _handleRemoveRangeMileage = () => {
         setValue("km", undefined);
     };
     const _handleRemoveFuel = () => {
         setValue("type_fuel_id", undefined);
+        _handleRemoveQueryParam("typeOfFuels");
     };
     const _handleRemoveColor = () => {
         setValue("color_id", undefined);
+        _handleRemoveQueryParam("color");
     };
     const _handleRemovePlateNumber = () => {
         setValue("plate_number", undefined);
+        _handleRemoveQueryParam("plate");
     };
 
     return (
