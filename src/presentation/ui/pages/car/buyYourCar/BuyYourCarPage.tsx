@@ -66,6 +66,7 @@ const BuyYourCarPage: FC<{}> = () => {
     const { typeVehicles } = useContext(TypeVehicleContext) as TypeVehicleContextType;
     const { typeVehicleName } = useParams();
     const { brands } = useContext(BrandContext) as BrandContextType;
+    const queryParams = new URLSearchParams(window.location.search);
 
     const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
     const [page, setPage] = useState<number>(1);
@@ -73,17 +74,17 @@ const BuyYourCarPage: FC<{}> = () => {
     const [openOrderBy, setOpenOrderBy] = useState(false);
     const [maxPages, setMaxPages] = useState<number>(1);
 
-    const brand = brands.find((brand) => brand.id === watch("brand_id"));
+    const brand = brands.find((brand) => brand.name === queryParams.get("brand"));
     const model = watch("model");
-    const year = watch("year");
+    const year = queryParams.get("year") ? queryParams.get("year") : watch("year");
     const price = watch("price");
-    const typeVehicleId = watch("type_vehcile_id");
+    const typeVehicleId = queryParams.get("type_vehicle") ? queryParams.get("type_vehicle") : watch("type_vehcile_id");
     const transmission = watch("type_transmission");
-    const tagId = watch("tag_id");
+    const tagId = queryParams.get("tag") ? queryParams.get("tag") : watch("tag_id");
     const rangeMileage = watch("km");
-    const fuelId = watch("type_fuel_id");
-    const colorId = watch("color_id");
-    const plateNumber = watch("plate_number");
+    const fuelId = queryParams.get("typeOfFuels") ? queryParams.get("typeOfFuels") : watch("type_fuel_id");
+    const colorId = queryParams.get("color") ? queryParams.get("color") : watch("color_id");
+    const plateNumber = queryParams.get("plate") ? queryParams.get("plate") : watch("plate_number");
     const orderBy = watch("orderBy");
 
     //searcher filters
@@ -95,6 +96,20 @@ const BuyYourCarPage: FC<{}> = () => {
     useEffect(() => {
         _handleSearch();
     }, [page]);
+    useEffect(() => {
+        setValue("year", queryParams.get("year"));
+        setValue("brand_id", queryParams.get("brand"));
+        setValue("model", queryParams.get("model"));
+        // setValue("price", queryParams.get("price"));
+        setValue("type_vehicle_id", queryParams.get("type_vehicle"));
+        setValue("type_transmission", queryParams.get("transmission"));
+        setValue("tag_id", queryParams.get("tag"));
+        // setValue("km", queryParams.get("km"));
+        setValue("type_fuel_id", queryParams.get("typeOfFuels"));
+        setValue("color_id", queryParams.get("color"));
+        setValue("plate_number", queryParams.get("plate"));
+        // setValue("orderBy", queryParams.get("orderBy"));
+    }, []);
 
     const [isTimerActive, setIsTimerActive] = useState(false);
     let timer: NodeJS.Timeout | null = null; // Inicializa el temporizador
