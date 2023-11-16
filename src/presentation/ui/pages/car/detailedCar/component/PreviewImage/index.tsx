@@ -99,7 +99,7 @@ const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, close }) => {
             </div>
             <div className="zoom_car_component_image_container">
                 <div className="closer" onClick={close}></div>
-                <ImageMagnifier width={"600px"} src={imageUrl} />
+                <ImageMagnifier width={"600px"} height="100%" src={imageUrl} />
             </div>
         </div>
     );
