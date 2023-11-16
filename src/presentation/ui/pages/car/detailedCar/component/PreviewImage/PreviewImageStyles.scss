@@ -1,0 +1,45 @@
+.zoom_car_component {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+
+    .closer {
+        background-color: #00000080;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .close {
+        position: absolute;
+        top: 3em;
+        right: 3em;
+    }
+
+    .zoom_car_component_image_container {
+        position: relative;
+        padding: 2em;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            border: 1px solid red;
+            width: auto;
+            height: 100%;
+        }
+    }
+}
