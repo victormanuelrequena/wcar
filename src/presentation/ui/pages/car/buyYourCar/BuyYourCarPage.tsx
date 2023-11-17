@@ -260,7 +260,7 @@ const BuyYourCarPage: FC<{}> = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="car_list from_left_3  container">
+                    <div className="car_list from_left_2">
                         <div className="row">
                             <div className={`bg_white mb-5 mb-md-0 ${openFilters ? "col-md-4 col-lg-3" : "d-none"}`}>
                                 <FilterComponent

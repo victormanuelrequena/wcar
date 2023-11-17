@@ -33,7 +33,7 @@ export default interface CarEntity {
     doors: number;
     motor: string;
     status: string;
-    discount?: number | undefined;
+    discount_price?: number | undefined;
     url_expertise?: string | null;
     expertise?: string | null;
 }
