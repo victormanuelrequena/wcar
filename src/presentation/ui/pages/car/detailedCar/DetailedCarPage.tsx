@@ -138,9 +138,9 @@ const DetailedCarPage: FC<{}> = () => {
                                                 </div>
                                                 <div className="text_ellipsis">
                                                     <h3 className="text_bold car-price">
-                                                        {CurrencyParse.toCop(car.discount ?? car.price)}
+                                                        {CurrencyParse.toCop(car.discount_price ?? car.price)}
                                                     </h3>
-                                                    {car.discount && (
+                                                    {car.discount_price && (
                                                         <h5 className="text_bold text_gray text_through">
                                                             {CurrencyParse.toCop(car.price)}
                                                         </h5>

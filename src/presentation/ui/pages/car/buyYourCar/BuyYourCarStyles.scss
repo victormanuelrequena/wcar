@@ -4,8 +4,7 @@
         background-repeat: no-repeat;
         background-size: cover;
 
-        .input_search{
-
+        .input_search {
             background-color: white;
             border: solid thin black;
             border-radius: 2.5em;
@@ -15,12 +14,14 @@
             max-width: 100%;
             min-width: 350px;
 
-            input{
+            input {
                 border: none;
                 flex-grow: 1;
                 margin-left: 0.5em;
-                
-                &:focus, &:active, &:focus-visible{
+
+                &:focus,
+                &:active,
+                &:focus-visible {
                     outline: none;
                     border: none;
                 }
@@ -30,17 +31,17 @@
         .order_by_container {
             color: white;
 
-            .btn{
+            .btn {
                 background-color: transparent;
                 border: none;
                 padding-right: 2em;
 
-                &.dropdown-toggle::after{
+                &.dropdown-toggle::after {
                     margin-left: -2em;
                 }
 
                 .order_button {
-                    background-color: #666C8966;
+                    background-color: #666c8966;
                     padding: 0.8em 2em 0.8em 1em;
                     border-radius: 0.5em;
                     margin-right: 1em;
@@ -55,7 +56,7 @@
         background-size: cover;
 
         &::after {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
@@ -63,7 +64,49 @@
             height: 100%;
             background-color: white;
         }
-
     }
 
+    @media (min-width: 1024px) {
+        .car_list {
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .car_list {
+            padding: 0 32px;
+        }
+    }
+
+    @media (min-width: 1366px) {
+        .car_list {
+            padding: 0 40px;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        .car_list {
+            padding: 0 80px;
+        }
+    }
+
+    @media (min-width: 1500px) {
+        .car_list {
+            padding: 0 124px;
+        }
+    }
+    @media (min-width: 1600px) {
+        .car_list {
+            padding: 0 240px;
+        }
+    }
+
+    @media (min-width: 2000px) {
+        .car_list {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 240px;
+        }
+    }
 }

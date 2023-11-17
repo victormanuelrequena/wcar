@@ -33,7 +33,10 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
     }, [favoriteCars]);
 
     return (
-        <Link to={`${routes.detailedCar.relativePath}/${getUrlCar(car)}`} className="w-100 card car_card_component">
+        <Link
+            to={`${routes.detailedCar.relativePath}/${getUrlCar(car)}`}
+            className="w-100 card car_card_component pb-2"
+        >
             <img
                 src={car.photoUrl}
                 alt={`${car.name} ${car.brand.name} ${car.type.name}`}
@@ -56,14 +59,16 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                         <IoMdHeartEmpty size={32} className="text_gray hover" onClick={_handleLike} />
                     )}
                 </div>
-                <div className="w-100 text_bold mb-1">{car.type.name}</div>
-                <div className="row" style={{ fontSize: ".9em" }}>
-                    <div className="col-4 d-flex align-items-center text_gray p-0">
+                <div className="w-100 text_bold mt-1" style={{ color: "#666C89" }}>
+                    {car.type.name}
+                </div>
+                <div className="w-100 row justify-content-flex-start mt-3" style={{ fontSize: ".9em", margin: "auto" }}>
+                    <div className="col-3 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/calendar.svg"
                             alt="Wcar"
                             title="Wcar"
-                            className="img-fluid img_icon  me-2 ms-3"
+                            className="img-fluid img_icon me-2"
                         />
                         <span>{car.year}</span>
                     </div>
@@ -76,7 +81,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                         />
                         <span className="text_nowrap">{car.odometer} Km.</span>
                     </div>
-                    <div className="col-4 d-flex align-items-center text_gray p-0">
+                    <div className="col-3 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/transmission.svg"
                             alt="Wcar"
@@ -86,14 +91,20 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                         <span className="text_nowrap">{car.transmission}</span>
                     </div>
                 </div>
-                <div className="w-100 d-flex align-items-center justfy-content-between mt-3">
+                <div
+                    className={`w-100 d-flex align-items-center justfy-content-between ${
+                        car.discount_price ? "mt-2" : "mt-4"
+                    }`}
+                >
                     <div className="flex-grow-1 text_ellipsis">
-                        <h5 className="text_bold">{CurrencyParse.toCop(car.discount ?? car.price)}</h5>
-                        {car.discount && (
-                            <span className="text_bold text_gray text_through">{CurrencyParse.toCop(car.price)}</span>
-                        )}
+                        <h5 className={`text_bold card-price`}>
+                            {CurrencyParse.toCop(car.discount_price ?? car.price)}
+                        </h5>
+                        <span className="text_bold text_gray text_through">
+                            {car.discount_price && CurrencyParse.toCop(car.price)}
+                        </span>
                     </div>
-                    <div className="ms-3 px-4 btn btn_orange">VER</div>
+                    <div className="ms-3 px-4 btn btn_orange view-btn">VER</div>
                 </div>
             </div>
         </Link>

@@ -4,6 +4,8 @@
     position: relative;
     max-width: 330px;
     margin: 0 auto;
+    // border: 1px solid red;
+    width: 100%;
 
     .tag {
         position: absolute;
@@ -24,4 +26,30 @@
         text-decoration: none;
         color: inherit;
     }
+
+    .card-price {
+        font-size: 22px;
+        line-height: 30px;
+        color: #1e1e1e;
+        font-weight: 700;
+    }
+    .view-btn {
+        width: 91px;
+        height: 42px;
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 1024px) {
+    .car_card_component {
+        width: 291px;
+    }
+}
+
+.car_list {
 }

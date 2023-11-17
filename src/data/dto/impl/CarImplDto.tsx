@@ -31,7 +31,7 @@ const fromJson = (json: any): CarEntity => {
         doors: json.doors,
         motor: json.engine,
         status: json.status_vehicle == 1 ? "Nuevo" : "Usado",
-        discount:
+        discount_price:
             json.discount_price != null && json.discount_price != "0.00" ? parseFloat(json.discount_price) : undefined,
         url_expertise: json.url_expertise,
         expertise: json.expertise,
