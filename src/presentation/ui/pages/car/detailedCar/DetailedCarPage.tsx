@@ -22,6 +22,7 @@ import BookACarUseCase, { BookACarUseCaseName } from "../../../../../domain/use_
 import ModalsContextType from "../../../../../domain/providers/modal/ModalsContextType";
 import ModalsContext from "../../../../../domain/providers/modal/ModalsContext";
 import PreviewImage from "./component/PreviewImage";
+import ModalAmount from "./component/ModalAmount";
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -29,6 +30,7 @@ const DetailedCarPage: FC<{}> = () => {
     const [relatedCars, setRelatedCars] = useState<CarEntity[] | undefined | null>(undefined);
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
     const [showPeritajeImage, setShowPeritajeImage] = useState(false);
+    const [showAmountModal, setShowAmountModal] = useState(false);
 
     const _getCar = async () => {
         try {
@@ -62,7 +64,7 @@ const DetailedCarPage: FC<{}> = () => {
 
     const _bookCarWithPayment = async () => {
         try {
-            await di.get<BookACarUseCase>(BookACarUseCaseName).call(id!);
+            setShowAmountModal(true);
         } catch (error) {
             addToast("Error al reservar el vehículo", "error", null);
         }
@@ -435,6 +437,13 @@ const DetailedCarPage: FC<{}> = () => {
                             close={() => {
                                 setShowPeritajeImage(false);
                             }}
+                        />
+                    )}
+                    {showAmountModal && (
+                        <ModalAmount
+                            id={id}
+                            close={() => setShowAmountModal(false)}
+                            carValue={car.discount_price ?? car.price}
                         />
                     )}
                 </div>
