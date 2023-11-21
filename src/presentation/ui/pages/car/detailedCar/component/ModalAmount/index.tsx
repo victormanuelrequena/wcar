@@ -34,10 +34,6 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
     const terms = watch("terms");
     const amount = watch("amount");
 
-    useEffect(() => {
-        console.log("TERMS_____", terms);
-    }, [terms]);
-
     const bookCar = async () => {
         function formatValue(value: string): string {
             const plainValue = value.replace(/[\.,\$]/g, "");
@@ -50,7 +46,7 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
         }
 
         if (parseFloat(formatValue(amount.toString().trimStart())) < 2000000.0) {
-            setError("amount", { message: "Minimo $2.000.000" });
+            setError("amount", { message: "El valor mínimo para separar el vehículo es de $2.000.000 COP." });
             return;
         }
 
@@ -67,11 +63,15 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
             });
             const data = await response.json();
             // @ts-ignore
-            // window.location.href = data?.data_eccolect?.eCollectUrl;
+            window.location.href = data?.data_eccolect?.eCollectUrl;
         } catch (error) {
             console.log(error);
         }
     };
+
+    useEffect(() => {
+        setError("amount", { message: "" });
+    }, [amount]);
 
     return (
         <div className="box">
