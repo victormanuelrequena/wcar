@@ -34,19 +34,20 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
     const terms = watch("terms");
     const amount = watch("amount");
 
+    function formatValue(value: string): string {
+        const plainValue = value?.replace(/[\.,\$]/g, "");
+        const formattedValue = plainValue + ".00";
+        return formattedValue;
+    }
+
     const bookCar = async () => {
-        function formatValue(value: string): string {
-            const plainValue = value.replace(/[\.,\$]/g, "");
-            const formattedValue = plainValue + ".00";
-            return formattedValue;
-        }
         console.log("AMOUNT____", formatValue(amount.toString()));
         if (!terms) {
             return;
         }
 
         if (parseFloat(formatValue(amount.toString().trimStart())) < 2000000.0) {
-            setError("amount", { message: "El valor mínimo para separar el vehículo es de $2.000.000 COP." });
+            // setError("amount", { message: "El valor mínimo para separar el vehículo es de $2.000.000 COP." });
             return;
         }
 
@@ -88,6 +89,9 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
                             placeholder="Monto"
                             {...register("amount", Validators({ price: true, minValue: 2000000, maxValue: carValue }))}
                         />
+                        <p style={{ color: "#888", fontSize: "14px", marginTop: "6px", marginLeft: "8px" }}>
+                            Valor mínimo para separar el vehículo es de $2.000.000 COP.
+                        </p>
                         <ErrorMessage as="aside" errors={errors} name="amount" />
                         <div className="form-check mb-4 mt-4">
                             <input
@@ -112,7 +116,11 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
                         <div
                             className="btn btn_orange btn-modal"
                             style={{
-                                backgroundColor: getValues().terms ? "" : "#ccc",
+                                backgroundColor:
+                                    getValues().terms &&
+                                    parseFloat(formatValue(amount?.toString().trimStart())) >= 2000000
+                                        ? ""
+                                        : "#ccc",
                             }}
                             onClick={bookCar}
                         >
