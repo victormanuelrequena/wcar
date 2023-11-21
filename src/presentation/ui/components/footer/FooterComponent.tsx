@@ -35,13 +35,6 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.procedures.relativePath} className="my-1">
                                 Trámites
                             </Link>
-
-                            <Link to={routes.carForAllPolicies.relativePath} className="my-1">
-                                Términos y Condiciones “Auto para todos, beneficios únicos”
-                            </Link>
-                            <Link to={routes.saleYourCar.relativePath} className="my-1">
-                                Términos y Condiciones "¡Vende tu auto sin tanto rollo!"
-                            </Link>
                             <Link to="https://autospremium.wcar.co/" className="my-1">
                                 Términos y condiciones "Autos premium, beneficios premium".
                             </Link>
