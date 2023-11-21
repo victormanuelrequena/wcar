@@ -58,13 +58,13 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
                     <div className="icon-close" onClick={close}>
                         <Icons.Clear />
                     </div>
-                    <h5 className="modal-title">Que monto deseas abonar?</h5>
+                    <h5 className="modal-title">¿Con qué valor vas a separar el vehículo?</h5>
                     <div className="form-group mt-4 input-box">
                         <input
                             type="text"
                             className="form-control"
                             placeholder="Monto"
-                            {...register("amount", Validators({ price: true, maxValue: carValue }))}
+                            {...register("amount", Validators({ price: true, minValue: 2000000, maxValue: carValue }))}
                         />
                         <ErrorMessage as="aside" errors={errors} name="amount" />
                     </div>
