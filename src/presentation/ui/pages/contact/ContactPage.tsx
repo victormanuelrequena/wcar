@@ -61,8 +61,8 @@ const ContactPage: FC<{}> = () => {
                                     </div>
                                     <div className="col-md-8">
                                         <p className="text-center">
-                                            Leverage agile frameworks to provide a robust synopsis for strategy foster
-                                            collaborative thinking to further the overall value.
+                                            ¡Atenderte es nuestra prioridad! Completa el formulario de contacto y
+                                            experimenta un servicio excepcional Estamos aquí para atenderte.
                                         </p>
                                     </div>
                                 </div>
