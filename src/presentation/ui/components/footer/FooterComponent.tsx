@@ -38,6 +38,9 @@ const FooterComponent: FC<{}> = () => {
                             <Link to="https://autospremium.wcar.co/" className="my-1">
                                 Términos y condiciones "Autos premium, beneficios premium".
                             </Link>
+                            <Link to={routes.termAndConditionsUser.relativePath} className="my-1">
+                                Términos y condiciones usuarios
+                            </Link>
 
                             {/* <Link to={routes.blog.relativePath} className="my-1">Blog</Link> */}
                         </div>
@@ -129,6 +132,7 @@ const FooterComponent: FC<{}> = () => {
                             <div className="mx-3 mt-3 mt-md-0">
                                 <Link to={routes.generalPolicies.relativePath}>Políticas y tratamiento de datos</Link>
                             </div>
+
                             <div className="mx-3 mt-3 mt-md-0">
                                 <Link to={routes.buyerPolicies.relativePath}>Términos y condiciones comprador</Link>
                             </div>

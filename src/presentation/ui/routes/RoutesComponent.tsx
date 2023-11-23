@@ -34,6 +34,7 @@ import BuyOrSellPage from "../pages/landings/buyOrSellPage/BuyOrSellPage";
 import { Helmet } from "react-helmet-async";
 import SaleYourCarPage from "../pages/policies/SaleYourCarPage";
 import DontButNewCarBuyAUsed from "../pages/redirect/DontButNewCarBuyAUsed";
+import TermAndConditionsUser from "../pages/policies/TermAndConditionsUser";
 
 export interface iRoute {
     name: string;
@@ -200,6 +201,13 @@ const routes = {
         path: "/politica-de-privacidad",
         relativePath: "/politica-de-privacidad",
         component: GeneralPoliciesPage,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    termAndConditionsUser: {
+        path: "/terminos-y-condiciones-usuarios",
+        relativePath: "/terminos-y-condiciones-usuarios",
+        component: TermAndConditionsUser,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
