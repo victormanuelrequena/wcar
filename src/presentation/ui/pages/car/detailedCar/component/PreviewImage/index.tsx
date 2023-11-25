@@ -1,7 +1,6 @@
 import { FC, useState } from "react";
 import "../zommedCar/ZoomedCarComponentStyles.scss";
 import Icons from "../../../../../assets/Icons";
-import { Document, Page } from "react-pdf";
 
 interface PreviewImageProps {
     imageUrl: string;
@@ -92,7 +91,6 @@ function ImageMagnifier({
         </div>
     );
 }
-// const pdfURL = "https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/1002543104.pdf";
 const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, idColserauto, close }) => {
     console.log(`https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`);
     return (
@@ -102,15 +100,11 @@ const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, idColserauto, close }) 
             </div>
             <div className="zoom_car_component_image_container">
                 <div className="closer" onClick={close}></div>
-                {/* <ImageMagnifier width={"600px"} height={window.innerWidth > 1024 ? "100%" : ""} src={imageUrl} /> */}
                 <iframe
                     title="pdf"
                     className="pdf-viewer"
                     src={`https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`}
                 />
-                {/* <Document file={pdfURL}>
-                    <Page pageNumber={1} />
-                </Document> */}
             </div>
         </div>
     );
