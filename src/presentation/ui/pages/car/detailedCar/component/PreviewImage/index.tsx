@@ -104,6 +104,7 @@ const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, idColserauto, close }) 
                 <div className="closer" onClick={close}></div>
                 {/* <ImageMagnifier width={"600px"} height={window.innerWidth > 1024 ? "100%" : ""} src={imageUrl} /> */}
                 <iframe
+                    title="pdf"
                     className="pdf-viewer"
                     src={`https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`}
                 />
