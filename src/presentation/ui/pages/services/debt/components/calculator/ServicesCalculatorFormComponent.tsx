@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import ServicesCalculatorFormComponentProps from "./ServicesCalculatorFormComponentProps";
 import Validators from "../../../../../../utils/Validators";
 import PickerBoxComponent from "../../../../../components/form/pickerBox/PickerBoxComponent";
@@ -43,6 +43,17 @@ const ServicesCalculatorFormComponent: FC<ServicesCalculatorFormComponentProps> 
         setValue("insurance", parseInt(value));
         handleOnFormChange();
     };
+
+    useEffect(() => {
+        // console.log(vehicleValue);
+        const principal = 3100000;
+        const rate = 0.12;
+        const time = 12;
+        const result = principal * (rate / (1 - Math.pow(1 + rate, -time))) + principal;
+        console.log(result);
+        console.log(10000000 * (0.12 / (1 - Math.pow(1 + 0.12, -12))) + 1000000);
+        // #2614368.075939957
+    }, [vehicleValue]);
 
     return (
         <div className={`services_calculator_form_component border_gray card ${className}`}>

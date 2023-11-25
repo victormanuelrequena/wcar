@@ -53,8 +53,16 @@ const ServicesPage: FC = () => {
     const _handleOnFormChange = () => {
         const values = getValues();
         console.log(values);
-        if (values.vehicleValue && values.initialQuote && values.months && values.insurance) {
-            _handleSubmit(values);
+
+        if (values.vehicleValue && values.initialQuote && values.months) {
+            // _handleSubmit(values);
+            // const valor_total =
+            //     (values.vehicleValue * ((1 + 0.1) ** values.months - 1)) / (0.1 * ((1 + 0.1) ** values.months - 1)) +
+            //     values.initialQuote * values.months;
+            let cuota_mensual =
+                ((values.vehicleValue - values.initialQuote) * (1.9 / 100)) / (1 - (1 + 1.9 / 100) ** -values.months);
+
+            setEstimatedDebt(cuota_mensual);
         } else {
             setEstimatedDebt(undefined);
         }
@@ -151,7 +159,7 @@ const ServicesPage: FC = () => {
                                             <div className="col-8 d-flex flex-column">
                                                 <p className="text_light mb-1">Tu cuota mensual sería de:</p>
                                                 <h3 className="text_orange mb-0">
-                                                    {CurrencyParse.toCop(estimatedDebt ?? 0).slice(0, -3)}
+                                                    {CurrencyParse.toCop(Math.round(estimatedDebt ?? 0))}
                                                 </h3>
                                             </div>
                                         </div>
