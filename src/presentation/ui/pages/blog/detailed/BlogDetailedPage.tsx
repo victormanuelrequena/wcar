@@ -96,58 +96,34 @@ const BlogDetailedPage = () => {
                                     />
                                 </section>
                                 <section className="col-md-10 mt-5 section_2 section-content">
-                                    {/* <div dangerouslySetInnerHTML={{ __html: blog.content ?? "" }}></div> */}
-                                    <p>
-                                        Traveling is an enriching experience that opens up new horizons, exposes us to
-                                        different cultures, and creates memories that last a lifetime. However,
-                                        traveling can also be stressful and overwhelming, especially if you don't plan
-                                        and prepare adequately. In this blog article, we'll explore tips and tricks for
-                                        a memorable journey and how to make the most of your travels.
-                                        <br />
-                                        <br />
-                                        One of the most rewarding aspects of traveling is immersing yourself in the
-                                        local culture and customs. This includes trying local cuisine, attending
-                                        cultural events and festivals, and interacting with locals. Learning a few
-                                        phrases in the local language can also go a long way in making connections and
-                                        showing respect.
-                                    </p>
-                                    <div className="quote">
-                                        <p>
-                                            “ Traveling can expose you to new environments and potential health risks,
-                                            so it's crucial to take precautions to stay safe and healthy. ”
-                                        </p>
-                                    </div>
-                                    <img
-                                        src={
-                                            "https://images.unsplash.com/photo-1541410374363-986ee54b03f7?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                        }
-                                        alt="Wcar"
-                                        title="Wcar"
-                                        className="img-fluid w-100 object_cover img_card_blog my-4"
-                                        style={{
-                                            minHeight: "260px",
-                                            maxHeight: "462px",
-                                            objectFit: "cover",
-                                            borderRadius: "12px",
-                                        }}
-                                    />
-                                    <h6>Pack Lightly and Smartly</h6>
-                                    <p style={{ marginTop: "16px" }}>
-                                        Packing can be a daunting task, but with some careful planning and smart
-                                        choices, you can pack light and efficiently. Start by making a packing list and
-                                        sticking to it, focusing on versatile and comfortable clothing that can be mixed
-                                        and matched. Invest in quality luggage and packing organizers to maximize space
-                                        and minimize wrinkles.
-                                    </p>
-                                    <h6>Stay Safe and Healthy</h6>
-                                    <p style={{ marginTop: "16px" }}>
-                                        Traveling can expose you to new environments and potential health risks, so it's
-                                        crucial to take precautions to stay safe and healthy. This includes researching
-                                        any required vaccinations or medications, staying hydrated, washing your hands
-                                        frequently, and using sunscreen and insect repellent. It's also essential to
-                                        keep your valuables safe and secure and to be aware of your surroundings at all
-                                        times.
-                                    </p>
+                                    {blogData?.paragraphs?.map((paragraph: any, index: number) => (
+                                        // <p  key={index}>{paragraph.content}</p>
+                                        <>
+                                            {paragraph.file && (
+                                                <img
+                                                    src={paragraph.file}
+                                                    alt="Wcar"
+                                                    title="Wcar"
+                                                    className="img-fluid w-100 object_cover img_card_blog my-4"
+                                                    style={{
+                                                        minHeight: "260px",
+                                                        maxHeight: "462px",
+                                                        objectFit: "cover",
+                                                        borderRadius: "12px",
+                                                    }}
+                                                />
+                                            )}
+                                            {paragraph.title_paragraph && (
+                                                <h6 style={{ marginBottom: 16 }}>{paragraph.title_paragraph}</h6>
+                                            )}
+
+                                            <p
+                                                key={index}
+                                                dangerouslySetInnerHTML={{ __html: paragraph.content ?? "" }}
+                                            ></p>
+                                            <br />
+                                        </>
+                                    ))}
                                 </section>
                             </div>
                         </div>
