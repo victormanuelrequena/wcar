@@ -35,6 +35,7 @@ const fromJson = (json: any): CarEntity => {
             json.discount_price != null && json.discount_price != "0.00" ? parseFloat(json.discount_price) : undefined,
         url_expertise: json.url_expertise,
         expertise: json.expertise,
+        id_colserauto: json.id_colserauto,
     };
 };
 
