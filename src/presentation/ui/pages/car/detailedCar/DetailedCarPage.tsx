@@ -434,6 +434,7 @@ const DetailedCarPage: FC<{}> = () => {
                     {showPeritajeImage && (
                         <PreviewImage
                             imageUrl={car.expertise}
+                            idColserauto={car.id_colserauto}
                             close={() => {
                                 setShowPeritajeImage(false);
                             }}

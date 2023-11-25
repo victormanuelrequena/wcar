@@ -36,4 +36,5 @@ export default interface CarEntity {
     discount_price?: number | undefined;
     url_expertise?: string | null;
     expertise?: string | null;
+    id_colserauto?: string | null;
 }
