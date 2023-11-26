@@ -158,6 +158,7 @@ const ServicesPage: FC = () => {
                                             </div>
                                             <div className="col-8 d-flex flex-column">
                                                 <p className="text_light mb-1">Tu cuota mensual sería de:</p>
+
                                                 <h3 className="text_orange mb-0">
                                                     {CurrencyParse.toCop(Math.round(estimatedDebt ?? 0))}
                                                 </h3>
