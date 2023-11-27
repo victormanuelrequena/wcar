@@ -23,6 +23,7 @@ import ModalsContextType from "../../../../../domain/providers/modal/ModalsConte
 import ModalsContext from "../../../../../domain/providers/modal/ModalsContext";
 import PreviewImage from "./component/PreviewImage";
 import ModalAmount from "./component/ModalAmount";
+import { PopupButton } from "react-calendly";
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -31,6 +32,7 @@ const DetailedCarPage: FC<{}> = () => {
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
     const [showPeritajeImage, setShowPeritajeImage] = useState(false);
     const [showAmountModal, setShowAmountModal] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const _getCar = async () => {
         try {
@@ -78,6 +80,10 @@ const DetailedCarPage: FC<{}> = () => {
             setCar(null);
         }
     }, [id]);
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     return (
         <Layout>
@@ -167,6 +173,16 @@ const DetailedCarPage: FC<{}> = () => {
                                                     >
                                                         QUIERO CONOCERLO <Icons.ArrowCircle />
                                                     </Link>
+                                                    <div
+                                                        // onClick={_bookCarWithPayment}
+                                                        id={"roots"}
+                                                    ></div>
+                                                    {/* <PopupButton
+                                                        url="https://calendly.com/wcar-1fk"
+                                                        className="btn btn_orange_outline my-3 me-3 btn-detailed-car"
+                                                        rootElement={document.getElementById("roots")}
+                                                        text={"AGENDA TU LLAMADA CON UN ASESOR"}
+                                                    /> */}
                                                 </div>
                                             </div>
                                         </div>

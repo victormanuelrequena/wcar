@@ -13,6 +13,7 @@ import FavoriteCarsContextType from "../../../../domain/providers/favoriteCars/F
 import { getUrlCar } from "../../../utils/Contants";
 
 const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
+    console.log("🚀 ~ file: CarCardComponent.tsx:16 ~ car:", car);
     const [_like, _setLike] = useState<boolean>(false);
     const { favoriteCars } = useContext(FavoriteCarsContext) as FavoriteCarsContextType;
 
@@ -38,7 +39,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
             className="w-100 card car_card_component pb-2"
         >
             <img
-                src={car.photoUrl}
+                src={parseInt(car.id) === 162 ? "/assets/car-mocked.jpeg" : car.photoUrl}
                 alt={`${car.name} ${car.brand.name} ${car.type.name}`}
                 title="Wcar"
                 className="img-fluid img_car"
