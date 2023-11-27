@@ -38,7 +38,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
             className="w-100 card car_card_component pb-2"
         >
             <img
-                src={parseInt(car.id) === 162 ? "/assets/car-mocked.jpeg" : car.photoUrl}
+                src={parseInt(car.id) === 162 ? "/assets/logos/car-mocked.jpeg" : car.photoUrl}
                 alt={`${car.name} ${car.brand.name} ${car.type.name}`}
                 title="Wcar"
                 className="img-fluid img_car"
