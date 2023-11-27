@@ -37,9 +37,8 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
             to={`${routes.detailedCar.relativePath}/${getUrlCar(car)}`}
             className="w-100 card car_card_component pb-2"
         >
-            {/* // src={parseInt(car.id) === 162 ? "/assets/car-mocked.jpeg" : car.photoUrl} */}
             <img
-                src={car.photoUrl}
+                src={parseInt(car.id) === 162 ? "/assets/car-mocked.jpeg" : car.photoUrl}
                 alt={`${car.name} ${car.brand.name} ${car.type.name}`}
                 title="Wcar"
                 className="img-fluid img_car"
