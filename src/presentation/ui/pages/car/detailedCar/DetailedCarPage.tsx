@@ -177,12 +177,12 @@ const DetailedCarPage: FC<{}> = () => {
                                                         // onClick={_bookCarWithPayment}
                                                         id={"roots"}
                                                     ></div>
-                                                    <PopupButton
+                                                    {/* <PopupButton
                                                         url="https://calendly.com/wcar-1fk"
                                                         className="btn btn_orange_outline my-3 me-3 btn-detailed-car"
                                                         rootElement={document.getElementById("roots")}
                                                         text={"AGENDA TU LLAMADA CON UN ASESOR"}
-                                                    />
+                                                    /> */}
                                                 </div>
                                             </div>
                                         </div>
