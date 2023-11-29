@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "../zommedCar/ZoomedCarComponentStyles.scss";
 import Icons from "../../../../../assets/Icons";
-// import { Document, Page } from "react-pdf";
+import { Document, Page } from "react-pdf";
 
 interface PreviewImageProps {
     imageUrl: string;
@@ -101,12 +101,12 @@ const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, idColserauto, close }) 
             </div>
             <div className="zoom_car_component_image_container">
                 <div className="closer" onClick={close}></div>
-                <iframe
+                {/* <iframe
                     title="pdf"
                     className="pdf-viewer"
                     src={`https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`}
-                />
-                {/* <Document
+                /> */}
+                <Document
                     file={{
                         url: `https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`,
                     }}
@@ -114,7 +114,7 @@ const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, idColserauto, close }) 
                     error="Error al cargar el documento"
                 >
                     <Page pageNumber={1} />
-                </Document> */}
+                </Document>
             </div>
         </div>
     );
