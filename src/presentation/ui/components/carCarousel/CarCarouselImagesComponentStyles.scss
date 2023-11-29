@@ -10,7 +10,8 @@
         z-index: 1000;
         overflow: hidden;
 
-        img {}
+        img {
+        }
     }
 
     .zoom_wrapper {
@@ -44,7 +45,6 @@
                 }
             }
         }
-
     }
 
     .container_image_showing {
@@ -130,7 +130,8 @@
             max-width: 600px;
         }
 
-        @media (min-width: 768px) {}
+        @media (min-width: 768px) {
+        }
 
         @media (min-width: 1440px) {
             max-width: 787px;
@@ -157,5 +158,27 @@
                 }
             }
         }
+    }
+}
+
+.tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    padding: 5px 16px;
+    border-top-left-radius: 8px;
+}
+.tag-text {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+@media (min-width: 1300px) {
+    .tag {
+        padding: 8px 24px;
+    }
+    .tag-text {
+        font-size: 16px;
     }
 }

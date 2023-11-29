@@ -46,7 +46,10 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
             />
             <div className="card-body">
                 {car.tag && (
-                    <div className="tag" style={{ backgroundColor: car.tag.color }}>
+                    <div
+                        className="tag"
+                        style={{ backgroundColor: car.tag.color, color: car.tag.color === "#000" && "#fff" }}
+                    >
                         {car.tag.name}
                     </div>
                 )}

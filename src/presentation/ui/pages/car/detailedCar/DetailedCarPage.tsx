@@ -96,7 +96,7 @@ const DetailedCarPage: FC<{}> = () => {
                             <div className="container">
                                 <div className="row d-flex justify-content-center">
                                     <div className="col-12 col-lg-7 col-xl-8">
-                                        <CarCarouselImagesComponent images={car.images} />
+                                        <CarCarouselImagesComponent car={car} images={car.images} />
                                     </div>
                                     <div className="col-12 col-lg-5 col-xl-4">
                                         <div>
@@ -155,24 +155,30 @@ const DetailedCarPage: FC<{}> = () => {
                                                     )}
                                                 </div>
                                                 <div className="d-inline-flex flex-column justify-content-start align-items-start mt-1">
-                                                    <div
-                                                        onClick={_bookCarWithPayment}
-                                                        className="btn btn_orange my-3 me-3 btn-detailed-car"
-                                                    >
-                                                        SEPÁRALO AQUÍ <Icons.ArrowCircle />
-                                                    </div>
-                                                    <Link
-                                                        to={
-                                                            routes.dateForCar.relativePath +
-                                                            "/" +
-                                                            BookADateActions.see +
-                                                            "/" +
-                                                            id
-                                                        }
-                                                        className="btn btn_orange_outline my-2 btn-detailed-car"
-                                                    >
-                                                        QUIERO CONOCERLO <Icons.ArrowCircle />
-                                                    </Link>
+                                                    {car.tag.name === "Reservado" ? (
+                                                        <></>
+                                                    ) : (
+                                                        <>
+                                                            <div
+                                                                onClick={_bookCarWithPayment}
+                                                                className="btn btn_orange my-3 me-3 btn-detailed-car"
+                                                            >
+                                                                SEPÁRALO AQUÍ <Icons.ArrowCircle />
+                                                            </div>
+                                                            <Link
+                                                                to={
+                                                                    routes.dateForCar.relativePath +
+                                                                    "/" +
+                                                                    BookADateActions.see +
+                                                                    "/" +
+                                                                    id
+                                                                }
+                                                                className="btn btn_orange_outline my-2 btn-detailed-car"
+                                                            >
+                                                                QUIERO CONOCERLO <Icons.ArrowCircle />
+                                                            </Link>
+                                                        </>
+                                                    )}
                                                     <div
                                                         // onClick={_bookCarWithPayment}
                                                         id={"roots"}
@@ -403,9 +409,9 @@ const DetailedCarPage: FC<{}> = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div id="plateNumber" data-fullplate={car.fullPlate}>
+                            {/* <div id="plateNumber" data-fullplate={car.fullPlate}>
                                 {car.fullPlate}
-                            </div>
+                            </div> */}
                         </div>
                         <Helmet>
                             <script src="https://integrator.swipetospin.com" />
