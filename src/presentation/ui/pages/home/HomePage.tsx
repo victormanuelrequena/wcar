@@ -43,7 +43,7 @@ const HomePage: FC<{}> = () => {
             <div className="home_page">
                 <section className="first_section position-relative d-md-block d-flex flex-column-reverse">
                     <img
-                        src="/assets/home/car_01.png"
+                        src="/assets/home/car_01.svg"
                         alt="Comprar con wcar"
                         title="Comprar con wcar"
                         className="position-sm-absolute img_car_01"

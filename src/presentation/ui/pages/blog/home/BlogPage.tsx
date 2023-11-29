@@ -70,7 +70,7 @@ const BlogPage: FC<{}> = () => {
                                             </h1>
                                             <div className="d-flex align-items-center">
                                                 <div className="flex-grow-1 blog_info_user">
-                                                    <img
+                                                    {/* <img
                                                         src={
                                                             outstandingBlog?.user?.photo ||
                                                             "https://images.unsplash.com/photo-1506863530036-1efeddceb993?auto=format&fit=crop&q=80&w=1944&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -82,7 +82,7 @@ const BlogPage: FC<{}> = () => {
                                                     />
                                                     <span className="text_gray text_bold" style={{ fontSize: "14px" }}>
                                                         {outstandingBlog?.user?.name || ""}
-                                                    </span>
+                                                    </span> */}
                                                     <span className="text_gray date">
                                                         {new Intl.DateTimeFormat("es-ES", {
                                                             year: "numeric",

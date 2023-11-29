@@ -113,7 +113,9 @@ const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, idColserauto, close }) 
                     src={`https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`}
                 /> */}
                 <Document
-                    file={`https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`}
+                    file={{
+                        url: `https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`,
+                    }}
                     onLoadSuccess={onDocumentLoadSuccess}
                     loading="Cargando Documento"
                     error="Error al cargar el documento"
