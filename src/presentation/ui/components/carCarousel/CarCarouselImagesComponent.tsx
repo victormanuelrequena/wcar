@@ -5,7 +5,7 @@ import Carousel from "react-multi-carousel";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import ZoomedCarComponent from "../../pages/car/detailedCar/component/zommedCar/ZoomedCarComponent";
 
-const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ images }) => {
+const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ images, car }) => {
     const [imageShowing, setImageShowing] = useState<number>(0);
     const carouselRef = useRef<Carousel>(null);
     const imgContainerRef = useRef<HTMLDivElement>(null);
@@ -156,16 +156,36 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                                     )}
                                 </div>
                                 <div className="carousel_thumbail" key={index} onClick={() => setOpenZoom(openable)}>
-                                    <img
-                                        src={image}
-                                        alt="Wcar"
-                                        title="Wcar"
-                                        className="img-fluid w-100"
-                                        style={{
-                                            objectFit: "fill",
-                                            borderRadius: "8px",
-                                        }}
-                                    />
+                                    <div className="position-relative">
+                                        <img
+                                            src={image}
+                                            alt="Wcar"
+                                            title="Wcar"
+                                            className="img-fluid w-100"
+                                            style={{
+                                                objectFit: "fill",
+                                                borderRadius: "8px",
+                                            }}
+                                        />
+                                        {/* Tag */}
+                                        {car.tag && (
+                                            <div
+                                                className="tag"
+                                                style={{
+                                                    backgroundColor: car.tag.color,
+                                                }}
+                                            >
+                                                <p
+                                                    className="tag-text"
+                                                    style={{
+                                                        color: car.tag.color === "#000" ? "#fff" : "#fff",
+                                                    }}
+                                                >
+                                                    {car.tag.name}
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         ))}

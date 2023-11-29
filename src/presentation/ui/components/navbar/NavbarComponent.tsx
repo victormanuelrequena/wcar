@@ -23,6 +23,8 @@ import di from "../../../../di/DependencyInjection";
 import SignOutUseCase, { SignOutUseCaseName } from "../../../../domain/use_cases/auth/SignOutUseCase";
 import TypeVehicleContext from "../../../../domain/providers/typeVehicle/TypeVehicleContext";
 import TypeVehicleContextType from "../../../../domain/providers/typeVehicle/TypeVehicleContextType";
+import HeartOutlined from "../../assets/HeartIconOutlined";
+import AccountCircleIcon from "../../assets/AccountCircleIcon";
 
 const NavbarComponent = () => {
     const { user } = useContext(UserContext) as UserContextType;
@@ -140,15 +142,17 @@ const NavbarComponent = () => {
             <div className="d-flex navbar_icons">
                 <div className="dropdown d-flex justify-content-center align-items-center">
                     <div className="">
-                        <Icons.FavoriteHearth width={20} height={20} />
+                        <HeartOutlined size={33} />
                     </div>
                     <div className="dropdown_content" style={{ left: "-180px" }}>
                         <CardFavoriteComponent />
                     </div>
                 </div>
-                <div className="btn d-flex align-items-center" onClick={_handleAccountButton}>
-                    <Icons.PersonRounded width={20} height={20} />
-                    <div className="d-none d-xl-block">{user?.name ?? "Cuenta"}</div>
+                <div className="btn d-flex align-items-center btn-account" onClick={_handleAccountButton}>
+                    <AccountCircleIcon size={33} />
+                    <div className="d-none d-xl-block" style={{ marginLeft: "20px" }}>
+                        {user?.name ?? "Cuenta"}
+                    </div>
                 </div>
                 <button
                     className="navbar-toggler border-0"
