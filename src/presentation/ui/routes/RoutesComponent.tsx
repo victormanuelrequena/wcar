@@ -71,6 +71,13 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
+    // buyYourCarPage: {
+    //     path: "/compra-tu-carro/camionetas-usadas",
+    //     relativePath: "/compra-tu-carro/camionetas-usadas",
+    //     component: BuyYourCarPage,
+    //     auth: (user: UserEntity | undefined) => true,
+    //     helmet: null,
+    // },
     detailedCar: {
         path: "/compra-tu-carro/:typeVehicle/:nameVehicle/:id",
         relativePath: "/compra-tu-carro",
