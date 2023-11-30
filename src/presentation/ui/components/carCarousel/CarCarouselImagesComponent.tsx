@@ -165,6 +165,7 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                                             style={{
                                                 objectFit: "fill",
                                                 borderRadius: "8px",
+                                                zIndex: 9999999999999,
                                             }}
                                         />
                                         {/* Tag */}
