@@ -60,6 +60,11 @@ const FooterComponent: FC<{}> = () => {
                             >
                                 Calle 98a # 69B-35
                             </a>
+                            <br />
+                            <a className="my-1">WCAR Sabana Norte.</a>
+                            <a>Sabana Park Health & Business</a>
+                            <a>Carrera 5 #9 - 26 sur, Cajica, Cundinamarca</a>
+                            <a>Torre 3, Local 3.</a>
                         </div>
                     </div>
                     <div className="col-6 col-md-3 col-lg-2">
