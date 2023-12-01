@@ -175,13 +175,13 @@ const DetailedCarPage: FC<{}> = () => {
                                                         QUIERO CONOCERLO <Icons.ArrowCircle />
                                                     </Link>
                                                     <div ref={rootElement} />
-                                                    <PopupButton
+                                                    {/* <PopupButton
                                                         url="https://calendly.com/wcar-1fk/30min"
                                                         className="btn btn_orange_outline my-3 me-3 btn-detailed-car"
                                                         rootElement={rootElement.current}
                                                         text={"AGENDA TU LLAMADA CON UN ASESOR"}
-                                                    />
-                                                    {true && <InlineWidget url="https://calendly.com/wcar-1fk/30min" />}
+                                                    /> */}
+                                                    {/* {true && <InlineWidget url="https://calendly.com/wcar-1fk/30min" />} */}
                                                 </div>
                                             </div>
                                         </div>
