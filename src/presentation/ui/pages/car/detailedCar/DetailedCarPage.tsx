@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import "./DetailedCarPageStyles.scss";
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useRef, useState } from "react";
 import Layout from "../../../layout/Layout";
 import di from "../../../../../di/DependencyInjection";
 import GetCarByIdUseCase, { GetCarByIdUseCaseName } from "../../../../../domain/use_cases/car/GetCarByIdUseCase";
@@ -23,7 +23,7 @@ import ModalsContextType from "../../../../../domain/providers/modal/ModalsConte
 import ModalsContext from "../../../../../domain/providers/modal/ModalsContext";
 import PreviewImage from "./component/PreviewImage";
 import ModalAmount from "./component/ModalAmount";
-import { PopupButton } from "react-calendly";
+import { InlineWidget, PopupButton } from "react-calendly";
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -33,6 +33,7 @@ const DetailedCarPage: FC<{}> = () => {
     const [showPeritajeImage, setShowPeritajeImage] = useState(false);
     const [showAmountModal, setShowAmountModal] = useState(false);
     const [open, setOpen] = useState(false);
+    const rootElement = useRef(null);
 
     const _getCar = async () => {
         try {
@@ -155,40 +156,32 @@ const DetailedCarPage: FC<{}> = () => {
                                                     )}
                                                 </div>
                                                 <div className="d-inline-flex flex-column justify-content-start align-items-start mt-1">
-                                                    {car.tag.name === "Reservado" ? (
-                                                        <></>
-                                                    ) : (
-                                                        <>
-                                                            <div
-                                                                onClick={_bookCarWithPayment}
-                                                                className="btn btn_orange my-3 me-3 btn-detailed-car"
-                                                            >
-                                                                SEPÁRALO AQUÍ <Icons.ArrowCircle />
-                                                            </div>
-                                                            <Link
-                                                                to={
-                                                                    routes.dateForCar.relativePath +
-                                                                    "/" +
-                                                                    BookADateActions.see +
-                                                                    "/" +
-                                                                    id
-                                                                }
-                                                                className="btn btn_orange_outline my-2 btn-detailed-car"
-                                                            >
-                                                                QUIERO CONOCERLO <Icons.ArrowCircle />
-                                                            </Link>
-                                                        </>
-                                                    )}
                                                     <div
-                                                        // onClick={_bookCarWithPayment}
-                                                        id={"roots"}
-                                                    ></div>
-                                                    {/* <PopupButton
-                                                        url="https://calendly.com/wcar-1fk"
+                                                        onClick={_bookCarWithPayment}
+                                                        className="btn btn_orange my-3 me-3 btn-detailed-car"
+                                                    >
+                                                        SEPÁRALO AQUÍ <Icons.ArrowCircle />
+                                                    </div>
+                                                    <Link
+                                                        to={
+                                                            routes.dateForCar.relativePath +
+                                                            "/" +
+                                                            BookADateActions.see +
+                                                            "/" +
+                                                            id
+                                                        }
+                                                        className="btn btn_orange_outline my-2 btn-detailed-car"
+                                                    >
+                                                        QUIERO CONOCERLO <Icons.ArrowCircle />
+                                                    </Link>
+                                                    <div ref={rootElement} />
+                                                    <PopupButton
+                                                        url="https://calendly.com/wcar-1fk/30min"
                                                         className="btn btn_orange_outline my-3 me-3 btn-detailed-car"
-                                                        rootElement={document.getElementById("roots")}
+                                                        rootElement={rootElement.current}
                                                         text={"AGENDA TU LLAMADA CON UN ASESOR"}
-                                                    /> */}
+                                                    />
+                                                    {true && <InlineWidget url="https://calendly.com/wcar-1fk/30min" />}
                                                 </div>
                                             </div>
                                         </div>
