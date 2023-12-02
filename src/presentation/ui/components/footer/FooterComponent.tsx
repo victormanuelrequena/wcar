@@ -8,7 +8,7 @@ import { Map, Marker as MarkerP } from "pigeon-maps";
 
 const FooterComponent: FC<{}> = () => {
     const mapContainerStyle = {
-        width: "100%",
+        width: "98%",
         height: "180px",
     };
 
@@ -25,6 +25,12 @@ const FooterComponent: FC<{}> = () => {
         lng: (location1.lng + location2.lng) / 2,
     };
 
+    const newIcon = {
+        url: "https://wcar.co/assets/logos/vertical.svg",
+        scaledSize: new window.google.maps.Size(35, 35),
+        labelOrigin: new window.google.maps.Point(11, 5),
+    };
+
     return (
         <footer className="footer pt-5 bg_white">
             <div className="container">
@@ -38,8 +44,11 @@ const FooterComponent: FC<{}> = () => {
                             <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={9}>
                                 <Marker position={location1} />
                                 <Marker position={location2} />
-                                <Marker position={location1} />
+                                <Marker position={location1} icon={newIcon} />
+
                                 <Marker position={location2} />
+                                <Marker position={location1} icon={newIcon} />
+                                <Marker position={location2} icon={newIcon} />
                             </GoogleMap>
                         </LoadScript>
                     </div>
