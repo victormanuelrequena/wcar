@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
+    "@react-google-maps/api": "^2.19.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -15,6 +16,7 @@
     "fp-ts": "^2.16.1",
     "inversify": "^6.0.1",
     "inversify-react": "^1.1.0",
+    "pigeon-maps": "^0.21.3",
     "react": "^18.2.0",
     "react-calendly": "^4.3.0",
     "react-dom": "^18.2.0",
