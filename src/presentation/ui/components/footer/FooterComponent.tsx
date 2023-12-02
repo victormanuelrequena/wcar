@@ -26,7 +26,7 @@ const FooterComponent: FC<{}> = () => {
     };
 
     const newIcon = {
-        url: "https://wcar.co/assets/logos/vertical.svg",
+        url: "assets/logos/vertical.svg",
         scaledSize: new window.google.maps.Size(35, 35),
         labelOrigin: new window.google.maps.Point(11, 5),
     };
@@ -43,9 +43,6 @@ const FooterComponent: FC<{}> = () => {
                         <LoadScript googleMapsApiKey="AIzaSyD8q92si456MOmd_nZIQnL_EcvPteWc2K8">
                             <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={9}>
                                 <Marker position={location1} />
-                                <Marker position={location2} />
-                                <Marker position={location1} icon={newIcon} />
-
                                 <Marker position={location2} />
                                 <Marker position={location1} icon={newIcon} />
                                 <Marker position={location2} icon={newIcon} />
