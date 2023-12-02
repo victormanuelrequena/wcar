@@ -174,7 +174,13 @@ const DetailedCarPage: FC<{}> = () => {
                                                     >
                                                         QUIERO CONOCERLO <Icons.ArrowCircle />
                                                     </Link>
-                                                    <div ref={rootElement} />
+                                                    <Link
+                                                        target="_blank"
+                                                        to={"https://calendar.app.google/9Ak2MQecfkFpdCjG7"}
+                                                        className="btn btn_orange_outline my-2 btn-detailed-car"
+                                                    >
+                                                        AGENDA TU LLAMADA CON UN ASESOR <Icons.ArrowCircle />
+                                                    </Link>
                                                     {/* <PopupButton
                                                         url="https://calendly.com/wcar-1fk/30min"
                                                         className="btn btn_orange_outline my-3 me-3 btn-detailed-car"
