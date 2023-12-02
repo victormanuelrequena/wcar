@@ -30,6 +30,7 @@ const FooterComponent: FC<{}> = () => {
         scaledSize: new window.google.maps.Size(35, 35),
         labelOrigin: new window.google.maps.Point(11, 5),
     };
+    console.log(newIcon);
 
     return (
         <footer className="footer pt-5 bg_white">
