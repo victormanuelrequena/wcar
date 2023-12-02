@@ -25,13 +25,6 @@ const FooterComponent: FC<{}> = () => {
         lng: (location1.lng + location2.lng) / 2,
     };
 
-    const newIcon = {
-        url: "assets/logos/vertical.svg",
-        scaledSize: new window.google.maps.Size(35, 35),
-        labelOrigin: new window.google.maps.Point(11, 5),
-    };
-    console.log(newIcon);
-
     return (
         <footer className="footer pt-5 bg_white">
             <div className="container">
@@ -45,8 +38,10 @@ const FooterComponent: FC<{}> = () => {
                             <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={9}>
                                 <Marker position={location1} />
                                 <Marker position={location2} />
-                                <Marker position={location1} icon={newIcon} />
-                                <Marker position={location2} icon={newIcon} />
+                                <Marker position={location1} />
+                                <Marker position={location2} />
+                                <Marker position={location1} />
+                                <Marker position={location2} />
                             </GoogleMap>
                         </LoadScript>
                     </div>
