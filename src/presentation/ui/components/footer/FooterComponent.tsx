@@ -20,6 +20,10 @@ const FooterComponent: FC<{}> = () => {
         lat: 4.9019198382935745,
         lng: -74.03035805172732,
     };
+    const location3 = {
+        lat: 4.6337959,
+        lng: -74.1306854,
+    };
     const center = {
         lat: (location1.lat + location2.lat) / 2,
         lng: (location1.lng + location2.lng) / 2,
@@ -38,10 +42,7 @@ const FooterComponent: FC<{}> = () => {
                             <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={9}>
                                 <Marker position={location1} />
                                 <Marker position={location2} />
-                                <Marker position={location1} />
-                                <Marker position={location2} />
-                                <Marker position={location1} />
-                                <Marker position={location2} />
+                                <Marker position={location3} />
                             </GoogleMap>
                         </LoadScript>
                     </div>
