@@ -3,8 +3,32 @@ import { Link } from "react-router-dom";
 import { SLOGAN } from "../../../utils/Contants";
 import { routes } from "../../routes/RoutesComponent";
 import { BiLogoInstagram, BiLogoYoutube, BiLogoFacebookCircle } from "react-icons/bi";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { Map, Marker as MarkerP } from "pigeon-maps";
 
 const FooterComponent: FC<{}> = () => {
+    const mapContainerStyle = {
+        width: "98%",
+        height: "180px",
+    };
+
+    const location1 = {
+        lat: 4.692129381386467,
+        lng: -74.07610437567183,
+    };
+    const location2 = {
+        lat: 4.9019198382935745,
+        lng: -74.03035805172732,
+    };
+    const location3 = {
+        lat: 4.6337959,
+        lng: -74.1306854,
+    };
+    const center = {
+        lat: (location1.lat + location2.lat) / 2,
+        lng: (location1.lng + location2.lng) / 2,
+    };
+
     return (
         <footer className="footer pt-5 bg_white">
             <div className="container">
@@ -13,6 +37,14 @@ const FooterComponent: FC<{}> = () => {
                         <img className="mb-3" src="/assets/logos/horizontal.svg" alt="Wcar" title="Wcar" />
                         <br />
                         <span className="d-block">{SLOGAN}</span>
+                        <br />
+                        <LoadScript googleMapsApiKey="AIzaSyD8q92si456MOmd_nZIQnL_EcvPteWc2K8">
+                            <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={9}>
+                                <Marker position={location1} />
+                                <Marker position={location2} />
+                                <Marker position={location3} />
+                            </GoogleMap>
+                        </LoadScript>
                     </div>
                     <div className="col-6 col-md-3 col-lg-2">
                         <div className="d-flex flex-column w-100">
