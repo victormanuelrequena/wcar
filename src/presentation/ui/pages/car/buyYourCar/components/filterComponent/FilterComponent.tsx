@@ -19,7 +19,7 @@ import SelectOpenComponent from "../../../../../components/selectOpen/SelectOpen
 import TagContext from "../../../../../../../domain/providers/tag/TagContext";
 import TagContextType from "../../../../../../../domain/providers/tag/TagContextType";
 import ModelEntity from "../../../../../../../domain/entities/ModelEntity";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useRoutes, useSearchParams } from "react-router-dom";
 
 const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setIsOpen }) => {
     const { register, setValue, watch } = formFunctions;
@@ -37,6 +37,8 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
     const availability = watch("tag_id");
     const typeFuelId = watch("type_fuel_id");
     const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleClose = () => {
         if (window.innerWidth < 700) {
@@ -154,6 +156,15 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
         window.history.replaceState({}, "", url.toString());
     };
 
+    // useEffect para establecer el filtro de camionetas usadas por defecto en la pagina de camionetas usadas
+    useEffect(() => {
+        console.log(location.pathname)
+        if (location.pathname === "/compra-tu-carro/camionetas-usadas") {
+            console.log('Se ejecuta')
+            setValue("type_vehcile_id", "8");
+        }
+    }, [location]);
+
     return (
         <div className={`filter_component ps-5 pt-3 pe-4 ${isOpen && "open"}`}>
             <div className="back_drop" onClick={() => setIsOpen(false)}></div>
@@ -243,6 +254,10 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                     value={typeVehicle.id}
                                     checked={watch("type_vehcile_id") == typeVehicle.id}
                                     onChange={(e) => {
+                                        console.log("TYPE VEHICLE____", e.target.value);
+                                        if (e.target.value === "8") {
+                                            return navigate("/compra-tu-carro/camionetas-usadas");
+                                        }
                                         handleChangeAddQueryParam(
                                             e.target.value,
                                             "type_vehcile_id",

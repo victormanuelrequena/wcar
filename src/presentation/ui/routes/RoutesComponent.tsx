@@ -35,6 +35,7 @@ import { Helmet } from "react-helmet-async";
 import SaleYourCarPage from "../pages/policies/SaleYourCarPage";
 import DontButNewCarBuyAUsed from "../pages/redirect/DontButNewCarBuyAUsed";
 import TermAndConditionsUser from "../pages/policies/TermAndConditionsUser";
+import BuyYourCarPageUsedTrucks from "../pages/car/buyYourCar/BuyYourCarPageUsedTrucks";
 
 export interface iRoute {
     name: string;
@@ -68,6 +69,13 @@ const routes = {
         path: "/compra-tu-carro/:typeVehicleName?",
         relativePath: "/compra-tu-carro",
         component: BuyYourCarPage,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    buyYourCarUsedTrucks: {
+        path: "/compra-tu-carro/camionetas-usadas",
+        relativePath: "/compra-tu-carro/camionetas-usadas",
+        component: BuyYourCarPageUsedTrucks,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },

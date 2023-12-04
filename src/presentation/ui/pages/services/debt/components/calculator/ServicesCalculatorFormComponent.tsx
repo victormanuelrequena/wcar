@@ -20,6 +20,7 @@ const ServicesCalculatorFormComponent: FC<ServicesCalculatorFormComponentProps> 
     const vehicleValue = watch("vehicleValue");
 
     const options = [
+        { label: "0", value: 0, enabled: true },
         { label: "12", value: 12, enabled: true },
         { label: "24", value: 24, enabled: true },
         { label: "36", value: 36, enabled: true },

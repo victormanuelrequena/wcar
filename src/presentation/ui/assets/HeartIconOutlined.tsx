@@ -1,7 +1,6 @@
 interface IIcon {
     size?: number;
 }
-
 export default function HeartOutlined({ size }: IIcon) {
     return (
         <svg width={size || 34} height={size || 30} viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg">

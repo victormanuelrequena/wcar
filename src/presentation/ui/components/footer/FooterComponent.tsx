@@ -80,23 +80,29 @@ const FooterComponent: FC<{}> = () => {
                     <div className="col-6 col-md-3 col-lg-2">
                         <div className="d-flex flex-column w-100">
                             <h6 className="text_orange text_bold mb-3">Contacto</h6>
-                            <a href="tel:+573244001212" className="my-1">
-                                +57 324 4001212
-                            </a>
+                            
                             <a href="mailto:contacto@wcar.co" className="my-1">
                                 contacto@wcar.co
                             </a>
-                            <a
-                                href="https://www.google.com/maps/search/?api=1&query=Calle+98a+%23+69B-35"
-                                target="_blank"
-                            >
-                                Calle 98a # 69B-35
+                            <a className="mt-1 font-weight-bold text_bold" href="https://maps.app.goo.gl/HDat5NSBR9Ap2PyD8" target="_blank">
+                                Wcar Morato
                             </a>
-                            <br />
-                            <a className="my-1">WCAR Sabana Norte.</a>
-                            <a>Sabana Park Health & Business</a>
-                            <a>Carrera 5 #9 - 26 sur, Cajica, Cundinamarca</a>
-                            <a>Torre 3, Local 3.</a>
+                            <p>
+                                Calle 98a # 69B-35
+                                <br />
+                                +57 324 4001212
+                            </p>
+                            <a className="mb-0 mt-2 font-weight-bold text_bold" href="https://maps.app.goo.gl/8NmdBefUDhEUd8Ud7" target="_blank">
+                                Wcar Sabana.
+                            </a>
+                            <p>
+                                Carrera 5 #9 - 26 sur, Cajicá, Cundinamarca Torre 3, Local 3. Sabana Park Health &
+                                Business
+                            </p>
+                            <a className="mt-2 font-weight-bold text_bold" href="https://maps.app.goo.gl/DuoSfrxDbLMzExZq5" target="_blank">
+                                Wcar Taller.
+                            </a>
+                            <p>Cra 69b #98-28</p>
                         </div>
                     </div>
                     <div className="col-6 col-md-3 col-lg-2">

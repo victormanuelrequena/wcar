@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import "../zommedCar/ZoomedCarComponentStyles.scss";
 import Icons from "../../../../../assets/Icons";
-import { Document, Page } from "react-pdf";
+// import { Document, Page } from "react-pdf";
 
 interface PreviewImageProps {
     imageUrl: string;
@@ -94,6 +94,12 @@ interface PreviewImageProps {
 // }
 const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, idColserauto, close }) => {
     console.log(`https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`);
+    const [numPages, setNumPages] = useState<number>();
+    const [pageNumber, setPageNumber] = useState<number>(1);
+
+    function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+        setNumPages(numPages);
+    }
     return (
         <div className="zoom_car_component">
             <div className="close hover z-index-10" onClick={close}>
@@ -101,20 +107,22 @@ const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, idColserauto, close }) 
             </div>
             <div className="zoom_car_component_image_container">
                 <div className="closer" onClick={close}></div>
-                {/* <iframe
+                <iframe
                     title="pdf"
                     className="pdf-viewer"
                     src={`https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`}
-                /> */}
-                <Document
+                />
+                {/* <Document
                     file={{
                         url: `https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`,
                     }}
+                    onLoadSuccess={onDocumentLoadSuccess}
                     loading="Cargando Documento"
                     error="Error al cargar el documento"
+                    renderMode="svg"
                 >
-                    <Page pageNumber={1} />
-                </Document>
+                    <Page pageNumber={pageNumber} />
+                </Document> */}
             </div>
         </div>
     );
