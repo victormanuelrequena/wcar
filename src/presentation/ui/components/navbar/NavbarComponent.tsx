@@ -83,7 +83,11 @@ const NavbarComponent = () => {
                                         {typeVehicles.map((typeVehicle, index) => (
                                             <Link
                                                 key={index}
-                                                to={routes.buyYourCar.relativePath + "/" + typeVehicle.name}
+                                                to={
+                                                    parseInt(typeVehicle.id) === 8
+                                                        ? "/compra-tu-carro/camionetas-usadas"
+                                                        : routes.buyYourCar.relativePath + "/" + typeVehicle.name
+                                                }
                                                 className="dropdown-item"
                                             >
                                                 <img
