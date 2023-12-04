@@ -157,24 +157,30 @@ const DetailedCarPage: FC<{}> = () => {
                                                 </div>
                                                 <div className="d-inline-flex flex-column justify-content-start align-items-start mt-1">
                                                     <div
-                                                        onClick={_bookCarWithPayment}
                                                         className="btn btn_orange my-3 me-3 btn-detailed-car"
+                                                        onClick={() => setShowPeritajeImage(true)}
                                                     >
-                                                        SEPÁRALO AQUÍ <Icons.ArrowCircle />
+                                                        VER PERITAJE <Icons.Download />{" "}
                                                     </div>
-                                                    <Link
-                                                        to={
-                                                            routes.dateForCar.relativePath +
-                                                            "/" +
-                                                            BookADateActions.see +
-                                                            "/" +
-                                                            id
-                                                        }
-                                                        className="btn btn_orange_outline my-2 btn-detailed-car"
-                                                    >
-                                                        QUIERO CONOCERLO <Icons.ArrowCircle />
-                                                    </Link>
-                                                    <div ref={rootElement} />
+                                                    <div style={{ display: "flex", flexWrap: "wrap" }}>
+                                                        <div
+                                                            onClick={_bookCarWithPayment}
+                                                            className="btn btn_orange my-1 me-3 btn-detailed-car"
+                                                        >
+                                                            SEPÁRALO AQUÍ <Icons.ArrowCircle />
+                                                        </div>
+
+                                                        {/* <Link
+                                                            target="_blank"
+                                                            to={"https://calendar.app.google/9Ak2MQecfkFpdCjG7"}
+                                                            className="btn btn_orange_outline my-1 btn-detailed-car "
+                                                            style={{ fontSize: 11 }}
+                                                        >
+                                                            AGENDA TU LLAMADA
+                                                            <Icons.ArrowCircle />
+                                                        </Link> */}
+                                                    </div>
+
                                                     {/* <PopupButton
                                                         url="https://calendly.com/wcar-1fk/30min"
                                                         className="btn btn_orange_outline my-3 me-3 btn-detailed-car"
@@ -208,12 +214,18 @@ const DetailedCarPage: FC<{}> = () => {
                                                 <i>del vehículo</i>
                                             </h3>
                                         </div>
-                                        <div
+                                        {/* <div
                                             className="btn btn_orange font-bold"
                                             onClick={() => setShowPeritajeImage(true)}
                                         >
                                             VER PERITAJE <Icons.Download />{" "}
-                                        </div>
+                                        </div> */}
+                                        <Link
+                                            to={routes.dateForCar.relativePath + "/" + BookADateActions.see + "/" + id}
+                                            className="btn btn_orange btn-detailed-car"
+                                        >
+                                            QUIERO CONOCERLO <Icons.ArrowCircle />
+                                        </Link>
                                     </div>
                                 </div>
                                 <hr className="d-md-none" />

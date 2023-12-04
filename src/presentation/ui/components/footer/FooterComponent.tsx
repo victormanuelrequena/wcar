@@ -3,8 +3,32 @@ import { Link } from "react-router-dom";
 import { SLOGAN } from "../../../utils/Contants";
 import { routes } from "../../routes/RoutesComponent";
 import { BiLogoInstagram, BiLogoYoutube, BiLogoFacebookCircle } from "react-icons/bi";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { Map, Marker as MarkerP } from "pigeon-maps";
 
 const FooterComponent: FC<{}> = () => {
+    const mapContainerStyle = {
+        width: "98%",
+        height: "180px",
+    };
+
+    const location1 = {
+        lat: 4.692129381386467,
+        lng: -74.07610437567183,
+    };
+    const location2 = {
+        lat: 4.9019198382935745,
+        lng: -74.03035805172732,
+    };
+    const location3 = {
+        lat: 4.6337959,
+        lng: -74.1306854,
+    };
+    const center = {
+        lat: (location1.lat + location2.lat) / 2,
+        lng: (location1.lng + location2.lng) / 2,
+    };
+
     return (
         <footer className="footer pt-5 bg_white">
             <div className="container">
@@ -13,6 +37,14 @@ const FooterComponent: FC<{}> = () => {
                         <img className="mb-3" src="/assets/logos/horizontal.svg" alt="Wcar" title="Wcar" />
                         <br />
                         <span className="d-block">{SLOGAN}</span>
+                        <br />
+                        <LoadScript googleMapsApiKey="AIzaSyD8q92si456MOmd_nZIQnL_EcvPteWc2K8">
+                            <GoogleMap mapContainerStyle={mapContainerStyle} center={center} zoom={9}>
+                                <Marker position={location1} />
+                                <Marker position={location2} />
+                                <Marker position={location3} />
+                            </GoogleMap>
+                        </LoadScript>
                     </div>
                     <div className="col-6 col-md-3 col-lg-2">
                         <div className="d-flex flex-column w-100">
@@ -48,23 +80,29 @@ const FooterComponent: FC<{}> = () => {
                     <div className="col-6 col-md-3 col-lg-2">
                         <div className="d-flex flex-column w-100">
                             <h6 className="text_orange text_bold mb-3">Contacto</h6>
-                            <a href="tel:+573244001212" className="my-1">
-                                +57 324 4001212
-                            </a>
+                            
                             <a href="mailto:contacto@wcar.co" className="my-1">
                                 contacto@wcar.co
                             </a>
-                            <a
-                                href="https://www.google.com/maps/search/?api=1&query=Calle+98a+%23+69B-35"
-                                target="_blank"
-                            >
-                                Calle 98a # 69B-35
+                            <a className="mt-1 font-weight-bold text_bold" href="https://maps.app.goo.gl/HDat5NSBR9Ap2PyD8" target="_blank">
+                                Wcar Morato
                             </a>
-                            <br />
-                            <a className="my-1">WCAR Sabana Norte.</a>
-                            <a>Sabana Park Health & Business</a>
-                            <a>Carrera 5 #9 - 26 sur, Cajica, Cundinamarca</a>
-                            <a>Torre 3, Local 3.</a>
+                            <p>
+                                Calle 98a # 69B-35
+                                <br />
+                                +57 324 4001212
+                            </p>
+                            <a className="mb-0 mt-2 font-weight-bold text_bold" href="https://maps.app.goo.gl/8NmdBefUDhEUd8Ud7" target="_blank">
+                                Wcar Sabana.
+                            </a>
+                            <p>
+                                Carrera 5 #9 - 26 sur, Cajicá, Cundinamarca Torre 3, Local 3. Sabana Park Health &
+                                Business
+                            </p>
+                            <a className="mt-2 font-weight-bold text_bold" href="https://maps.app.goo.gl/DuoSfrxDbLMzExZq5" target="_blank">
+                                Wcar Taller.
+                            </a>
+                            <p>Cra 69b #98-28</p>
                         </div>
                     </div>
                     <div className="col-6 col-md-3 col-lg-2">

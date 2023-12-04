@@ -4,25 +4,25 @@ const GetAllTypeFuelApiImpl = async (): Promise<TypeOfFuelEntity[]> => {
     try {
         return [
             {
-                id: 'Gasolina',
-                name: 'Gasolina',
+                id: "Gasolina",
+                name: "Gasolina",
             },
             {
-                id: 'Diesel',
-                name: 'Diésel',
+                id: "Diesel",
+                name: "Diésel",
             },
             {
-                id: 'Hibrido',
-                name: 'Híbrido',
+                id: "hibrida",
+                name: "Híbrido",
             },
             {
-                id: 'Electrico',
-                name: 'Eléctrico',
-            }
-        ]
+                id: "Electrico",
+                name: "Eléctrico",
+            },
+        ];
     } catch (error) {
         return [];
     }
-}
+};
 
 export default GetAllTypeFuelApiImpl;

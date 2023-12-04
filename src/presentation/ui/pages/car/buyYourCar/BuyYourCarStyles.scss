@@ -111,3 +111,25 @@
         }
     }
 }
+
+// .car_seo {
+//     h1 {
+//         font-size: 10px !important;
+//     }
+//     h2 {
+//         font-size: 8px;
+//     }
+//     h3 {
+//         font-size: 8px;
+//     }
+//     p {
+//         font-size: 6px;
+//     }
+// }
+
+
+@media (min-width: 768px) {
+    .container-drop {
+        display: flex;
+    }
+}
