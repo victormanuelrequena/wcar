@@ -222,7 +222,7 @@ const DetailedCarPage: FC<{}> = () => {
                                         </div> */}
                                         <Link
                                             to={routes.dateForCar.relativePath + "/" + BookADateActions.see + "/" + id}
-                                            className="btn btn_orange font-bold"
+                                            className="btn btn_orange btn-detailed-car"
                                         >
                                             QUIERO CONOCERLO <Icons.ArrowCircle />
                                         </Link>
