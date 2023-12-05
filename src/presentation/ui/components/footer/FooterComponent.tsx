@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { SLOGAN } from "../../../utils/Contants";
 import { routes } from "../../routes/RoutesComponent";
-import { BiLogoInstagram, BiLogoYoutube, BiLogoFacebookCircle } from "react-icons/bi";
+import { BiLogoInstagram, BiLogoYoutube, BiLogoFacebookCircle, BiLogoLinkedin } from "react-icons/bi";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { Map, Marker as MarkerP } from "pigeon-maps";
 
@@ -80,11 +80,15 @@ const FooterComponent: FC<{}> = () => {
                     <div className="col-6 col-md-3 col-lg-2">
                         <div className="d-flex flex-column w-100">
                             <h6 className="text_orange text_bold mb-3">Contacto</h6>
-                            
+
                             <a href="mailto:contacto@wcar.co" className="my-1">
                                 contacto@wcar.co
                             </a>
-                            <a className="mt-1 font-weight-bold text_bold" href="https://maps.app.goo.gl/HDat5NSBR9Ap2PyD8" target="_blank">
+                            <a
+                                className="mt-1 font-weight-bold text_bold"
+                                href="https://maps.app.goo.gl/HDat5NSBR9Ap2PyD8"
+                                target="_blank"
+                            >
                                 Wcar Morato
                             </a>
                             <p>
@@ -92,14 +96,22 @@ const FooterComponent: FC<{}> = () => {
                                 <br />
                                 +57 324 4001212
                             </p>
-                            <a className="mb-0 mt-2 font-weight-bold text_bold" href="https://maps.app.goo.gl/8NmdBefUDhEUd8Ud7" target="_blank">
+                            <a
+                                className="mb-0 mt-2 font-weight-bold text_bold"
+                                href="https://maps.app.goo.gl/8NmdBefUDhEUd8Ud7"
+                                target="_blank"
+                            >
                                 Wcar Sabana.
                             </a>
                             <p>
                                 Carrera 5 #9 - 26 sur, Cajicá, Cundinamarca Torre 3, Local 3. Sabana Park Health &
                                 Business
                             </p>
-                            <a className="mt-2 font-weight-bold text_bold" href="https://maps.app.goo.gl/DuoSfrxDbLMzExZq5" target="_blank">
+                            <a
+                                className="mt-2 font-weight-bold text_bold"
+                                href="https://maps.app.goo.gl/DuoSfrxDbLMzExZq5"
+                                target="_blank"
+                            >
                                 Wcar Taller.
                             </a>
                             <p>Cra 69b #98-28</p>
@@ -150,6 +162,23 @@ const FooterComponent: FC<{}> = () => {
                                     className="my-2 mx-1"
                                 >
                                     Youtube
+                                </a>
+                            </div>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "flex-start",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <BiLogoLinkedin fontSize={20} />
+                                <a
+                                    href="https://www.linkedin.com/company/wcarcol/mycompany/"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="my-2 mx-1"
+                                >
+                                    <span className="mt-3">Linkedin</span>
                                 </a>
                             </div>
                         </div>
