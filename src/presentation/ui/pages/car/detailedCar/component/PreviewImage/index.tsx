@@ -109,11 +109,11 @@ const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, idColserauto, close }) 
             </div>
             <div className="zoom_car_component_image_container">
                 <div className="closer" onClick={close}></div>
-                <iframe
+                {/* <iframe
                     title="pdf"
                     className="pdf-viewer"
                     src={`https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`}
-                />
+                /> */}
 
                 <div className="pdf_container" style={{ height: "95vh", overflow: "auto" }}>
                     <Document
