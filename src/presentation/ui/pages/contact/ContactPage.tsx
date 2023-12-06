@@ -42,6 +42,7 @@ const ContactPage: FC<{}> = () => {
                     name="description"
                     content="Por favor, completa nuestro formulario de contacto y nos pondremos en contacto contigo lo antes posible. ¡Tu opinión es importante para nosotros y estamos"
                 />
+                <meta httpEquiv="Content-type" content="text/html; charset=UTF-8"></meta>
             </Helmet>
             <Layout>
                 <div
@@ -138,13 +139,13 @@ const ContactPage: FC<{}> = () => {
                                     </div>
                                 </div>
                                 <form
-                                    onSubmit={handleSubmit(_handleSubmit)}
+                                    method="POST"
                                     action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DHs000000QMEB"
                                 >
-                                    <input type="hidden" value="00DHs000000QMEB" {...register("oid")} />
-                                    <input type="hidden" value="Web orgánico" {...register("lead_source")} />
-                                    <input type="hidden" value={routes.contact.relativePath} {...register("retURL")} />
+                                    <input type="hidden" name="oid" value="00DHs000000QMEB" />
+                                    <input type="hidden" name="retURL" value="https://wcar.co/contacto" />
                                     <div className="row">
+                                        {/* First name 👍🏻 */}
                                         <div className="col-md-6">
                                             <div className="form-group mb-3">
                                                 <label htmlFor="first_name" className="mandatory">
@@ -168,6 +169,7 @@ const ContactPage: FC<{}> = () => {
                                                 <ErrorMessage as="aside" errors={errors} name="first_name" />
                                             </div>
                                         </div>
+                                        {/* Last name 👍🏻 */}
                                         <div className="col-md-6">
                                             <div className="form-group mb-3">
                                                 <label htmlFor="last_name" className="mandatory">
@@ -192,6 +194,7 @@ const ContactPage: FC<{}> = () => {
                                                 <ErrorMessage as="aside" errors={errors} name="last_name" />
                                             </div>
                                         </div>
+                                        {/* Phone 👍🏻 */}
                                         <div className="col-md-6">
                                             <div className="form-group mb-3">
                                                 <label htmlFor="phone" className="mandatory">
@@ -217,6 +220,7 @@ const ContactPage: FC<{}> = () => {
                                                 <ErrorMessage as="aside" errors={errors} name="phone" />
                                             </div>
                                         </div>
+                                        {/* Email 👍🏻 */}
                                         <div className="col-md-6">
                                             <div className="form-group mb-3">
                                                 <label htmlFor="email" className="mandatory">
@@ -241,7 +245,8 @@ const ContactPage: FC<{}> = () => {
                                                 <ErrorMessage as="aside" errors={errors} name="email" />
                                             </div>
                                         </div>
-                                        <div className="col-md-6">
+                                        {/* Old city ❌  */}
+                                        {/* <div className="col-md-6">
                                             <div className="form-group mb-3">
                                                 <label htmlFor="city" className="optional">
                                                     Ciudad
@@ -369,8 +374,33 @@ const ContactPage: FC<{}> = () => {
                                                 </select>
                                                 <ErrorMessage as="aside" errors={errors} name="00NHs00000G976q" />
                                             </div>
+                                        </div> */}
+                                        {/* City 👍🏻 */}
+                                        <div className="col-md-6">
+                                            <div className="form-group mb-3">
+                                                <label htmlFor="city" className="mandatory">
+                                                    Ciudad
+                                                </label>
+                                                <input
+                                                    id="city"
+                                                    name="city"
+                                                    type="text"
+                                                    size={20}
+                                                    placeholder="Ciudad"
+                                                    className="form-control"
+                                                    {...register(
+                                                        "city",
+                                                        Validators({
+                                                            required: true,
+                                                            maxLength: 80,
+                                                            minLength: 3,
+                                                        })
+                                                    )}
+                                                />
+                                                <ErrorMessage as="aside" errors={errors} name="city" />
+                                            </div>
                                         </div>
-
+                                        {/* Line of business 👍🏻 */}
                                         <div className="col-md-6">
                                             <div className="form-group mb-3">
                                                 <label className="optional">Línea de negocio</label>
@@ -397,7 +427,7 @@ const ContactPage: FC<{}> = () => {
                                                 <ErrorMessage as="aside" errors={errors} name="00NHs00000G8pgO" />
                                             </div>
                                         </div>
-
+                                        {/* Year 👍🏻 */}
                                         <div className="col-md-6">
                                             <div className="form-group mb-3">
                                                 <label className="optional">Año</label>
@@ -405,27 +435,38 @@ const ContactPage: FC<{}> = () => {
                                                     id="00NHs00000G97uJ"
                                                     name="00NHs00000G97uJ"
                                                     className="form-control"
-                                                    {...register(
-                                                        "00NHs00000G97uJ",
-                                                        Validators({
-                                                            //required: true,
-                                                        })
-                                                    )}
+                                                    {...register("00NHs00000G97uJ")}
                                                 >
                                                     <option value="">Seleccione un año</option>
-                                                    {Array.from(
-                                                        { length: new Date().getFullYear() - 2000 + 1 },
-                                                        (_, index) => 2000 + index
-                                                    ).map((year, index) => (
-                                                        <option key={index} value={year}>
-                                                            {year}
-                                                        </option>
-                                                    ))}
+                                                    <option value="2001">2001</option>
+                                                    <option value="2002">2002</option>
+                                                    <option value="2003">2003</option>
+                                                    <option value="2004">2004</option>
+                                                    <option value="2005">2005</option>
+                                                    <option value="2006">2006</option>
+                                                    <option value="2007">2007</option>
+                                                    <option value="2008">2008</option>
+                                                    <option value="2009">2009</option>
+                                                    <option value="2010">2010</option>
+                                                    <option value="2011">2011</option>
+                                                    <option value="2012">2012</option>
+                                                    <option value="2013">2013</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2023">2023</option>
+                                                    <option value="2024">2024</option>
                                                 </select>
                                                 <ErrorMessage as="aside" errors={errors} name="00NHs00000G97uJ" />
                                             </div>
                                         </div>
-
+                                        {/* Marca */}
                                         <div className="col-md-6">
                                             <div className="form-group mb-3">
                                                 <label className="optional">Marca</label>
@@ -441,7 +482,6 @@ const ContactPage: FC<{}> = () => {
                                                     )}
                                                 >
                                                     <option value="">--Ninguno--</option>
-                                                    <option value="Alfa Romeo">Alfa Romeo</option>
                                                     <option value="Audi">Audi</option>
                                                     <option value="Bajaj">Bajaj</option>
                                                     <option value="BMW">BMW</option>
@@ -532,11 +572,12 @@ const ContactPage: FC<{}> = () => {
                                             </div>
                                         </div> */}
                                         <input required type="hidden" name="lead_source" value="Web orgánico"></input>
-
+                                        {/* Description 👍🏻 */}
                                         <div className="col-12">
                                             <div className="form-group mb-3">
                                                 <label className="optional">Descripción</label>
                                                 <textarea
+                                                    name="description"
                                                     placeholder="Descripción"
                                                     className="form-control"
                                                     {...register(
@@ -552,10 +593,11 @@ const ContactPage: FC<{}> = () => {
                                     </div>
 
                                     <div className="mt-3 d-flex justify-content-center">
-                                        <button className="btn btn_orange">
+                                        {/* <button className="btn btn_orange">
                                             Enviar
                                             <Icons.ArrowCircle />
-                                        </button>
+                                        </button> */}
+                                        <input className="btn-send btn-orange" type="submit" name="submit"></input>
                                     </div>
                                 </form>
                             </div>
