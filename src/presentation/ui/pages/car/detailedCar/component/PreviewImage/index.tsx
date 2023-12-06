@@ -2,6 +2,8 @@ import { FC } from "react";
 import "../zommedCar/ZoomedCarComponentStyles.scss";
 import Icons from "../../../../../assets/Icons";
 import { Document, Page } from "react-pdf";
+import "react-pdf/dist/Page/TextLayer.css";
+import "react-pdf/dist/Page/AnnotationLayer.css";
 
 interface PreviewImageProps {
     imageUrl: string;
@@ -106,15 +108,17 @@ const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, idColserauto, close }) 
                     className="pdf-viewer"
                     src={`https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`}
                 /> */}
-                <Document
-                    file={{
-                        url: `https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`,
-                    }}
-                    loading="Cargando Documento"
-                    error="Error al cargar el documento"
-                >
-                    <Page pageNumber={1} />
-                </Document>
+                <div className="pdf_container" style={{ height: "95vh", overflow: "auto" }}>
+                    <Document
+                        file={{
+                            url: `https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`,
+                        }}
+                        loading="Cargando Documento"
+                        error="Error al cargar el documento"
+                    >
+                        <Page pageNumber={1} />
+                    </Document>
+                </div>
             </div>
         </div>
     );
