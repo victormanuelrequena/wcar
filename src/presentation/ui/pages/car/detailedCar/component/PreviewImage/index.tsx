@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import "../zommedCar/ZoomedCarComponentStyles.scss";
 import Icons from "../../../../../assets/Icons";
 import { Document, Page } from "react-pdf";
@@ -96,6 +96,12 @@ interface PreviewImageProps {
 // }
 const PreviewImage: FC<PreviewImageProps> = ({ imageUrl, idColserauto, close }) => {
     console.log(`https://apps.colserauto.com/ReportesColserauto/Pdf/PeritajeComercial/${idColserauto}.pdf`);
+    const [numPages, setNumPages] = useState<number>();
+    const [pageNumber, setPageNumber] = useState<number>(1);
+
+    function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+        setNumPages(numPages);
+    }
     return (
         <div className="zoom_car_component">
             <div className="close hover z-index-10" onClick={close}>
