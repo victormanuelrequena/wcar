@@ -20,24 +20,38 @@ export interface CalculateOfferForCarProps {
         email: string;
         phone: string;
         companyName: string | undefined;
-    }, car: {
+    };
+    car: {
         year: number;
         brandId: string;
         model: string;
         version: string;
         kilometers: number;
         cityId: string;
+        departmentId: string;
         colorId: string;
-    },
+    };
     book: {
         dateId: string;
         hourId: string;
-    }
+    };
 }
 export default interface CalculatorRepository {
-    calculateCredit(vehicleValue: number, initialQuote: number, months: number, insurance: number): Promise<Either<ExceptionEntity, number>>;
-    calculateInsurance(name: string, phone: string, email: string, cityId: string, licensePlate: string, whatsApp: boolean): Promise<Either<ExceptionEntity, void>>;
+    calculateCredit(
+        vehicleValue: number,
+        initialQuote: number,
+        months: number,
+        insurance: number
+    ): Promise<Either<ExceptionEntity, number>>;
+    calculateInsurance(
+        name: string,
+        phone: string,
+        email: string,
+        cityId: string,
+        licensePlate: string,
+        whatsApp: boolean
+    ): Promise<Either<ExceptionEntity, void>>;
     calculateOfferForCar(_: CalculateOfferForCarProps): Promise<Either<ExceptionEntity, CalculatedEntity>>;
 }
 
-export const CalculatorRepositoryName = 'CalculatorRepository';
+export const CalculatorRepositoryName = "CalculatorRepository";

@@ -4,23 +4,26 @@ import HostApi from "../../../../settings/HostApi";
 import ExceptionEntity from "../../../../../domain/entities/ExceptionEntity";
 import { CalculateOfferForCarProps } from "../../../../../domain/repositories/CalculatorRepository";
 
-const CalculateOfferForCarApiImpl = async (_: CalculateOfferForCarProps): Promise<Either<ExceptionEntity, CalculatedEntity>> => {
+const CalculateOfferForCarApiImpl = async (
+    _: CalculateOfferForCarProps
+): Promise<Either<ExceptionEntity, CalculatedEntity>> => {
     const relativeUrl = "/sale-cars/create/";
     const body = {
-        "year": _.car.year,
-        "brand": _.car.brandId,
-        "version": _.car.version,
-        "model": _.car.model,
-        "city": _.car.cityId,
-        "mileage": _.car.kilometers,
-        "color": _.car.colorId,
-        "name": _.contact.name,
-        "lastName": _.contact.lastname,
-        "email": _.contact.email,
-        "phone": _.contact.phone,
-        "company": _.contact.companyName,
-        "hour_avaliable": _.book.hourId,
-        "date_avaliable": _.book.dateId,
+        year: _.car.year,
+        brand: _.car.brandId,
+        version: _.car.version,
+        model: _.car.model,
+        city: _.car.cityId,
+        departament: _.car.departmentId,
+        mileage: _.car.kilometers,
+        color: _.car.colorId,
+        name: _.contact.name,
+        lastName: _.contact.lastname,
+        email: _.contact.email,
+        phone: _.contact.phone,
+        company: _.contact.companyName,
+        hour_avaliable: _.book.hourId,
+        date_avaliable: _.book.dateId,
     };
 
     try {
@@ -28,11 +31,11 @@ const CalculateOfferForCarApiImpl = async (_: CalculateOfferForCarProps): Promis
         const _test: CalculatedEntity = {
             id: "1",
             value: 23323232,
-        }
+        };
         return right(_test);
     } catch (error) {
         return left({});
     }
-}
+};
 
 export default CalculateOfferForCarApiImpl;
