@@ -131,7 +131,7 @@ const BookADatePage: FC<{}> = () => {
                     .get<BookADateForSeeUseCase>(BookADateForSeeUseCaseName)
                     .call(data.date, data.hour, carId!, data.contact);
             else return;
-            addToast("Realiza el pago para confirmar tu reserva", "success", undefined);
+            addToast("Tu registro a sido enviado exitosamente", "success", undefined);
             navigate(routes.home.relativePath);
         } catch (error) {
             console.log("error", error);

@@ -1,5 +1,5 @@
 import "./QuoteYourCarPageStyles.scss";
-import { FC, useContext, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import Layout from "../../../layout/Layout";
 import Icons from "../../../assets/Icons";
 import { Link, useNavigate } from "react-router-dom";
@@ -30,6 +30,14 @@ import { routes } from "../../../routes/RoutesComponent";
 import { isRight } from "fp-ts/lib/Either";
 import ModelEntity from "../../../../../domain/entities/ModelEntity";
 import VersionModelEntity from "../../../../../domain/entities/VersionModelEntity";
+import GetAllDepartmentsUseCase, {
+    GetAllDepartmentsUseCaseName,
+} from "../../../../../domain/use_cases/department/GetAllDepartmentsUseCase";
+import DepartmentEntity from "../../../../../domain/entities/DepartmentEntity";
+import CityEntity from "../../../../../domain/entities/CityEntity";
+import GetCitiesByDepartmentIdUseCase, {
+    GetCitiesByDepartmentIdUseCaseName,
+} from "../../../../../domain/use_cases/city/GetCitiesByDepartmentIdUseCase";
 
 const _min_year = 1999;
 const QuoteYourCarPage: FC<{}> = () => {
@@ -51,6 +59,8 @@ const QuoteYourCarPage: FC<{}> = () => {
     const [models, setModels] = useState<ModelEntity[]>([]);
     const [versions, setVersions] = useState<VersionModelEntity[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
+    const [departments, setDepartments] = useState<DepartmentEntity[]>([]);
+    const [citiesByDepartment, setCitiesByDepartment] = useState<CityEntity[]>([]);
 
     const _handleOnSubmit = (data: any) => {
         if (currentStep == 0) setCurrentStep(1);
@@ -73,8 +83,10 @@ const QuoteYourCarPage: FC<{}> = () => {
             email: data?.contact?.email,
             phone: data?.contact?.phone,
             company: data?.contact?.companyName,
+            departament: data?.car?.departmentId,
         };
         console.log("🚀 ~ file: QuoteYourCarPage.tsx:77 ~ const_handleSave= ~ dataToSend:", dataToSend);
+        console.log("DATAAA____", data);
         navigate(routes.dateForSell.relativePath, { state: { buyData: data } });
         const calculated = await di.get<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCaseName).call(data);
         if (isRight(calculated)) {
@@ -110,6 +122,24 @@ const QuoteYourCarPage: FC<{}> = () => {
     };
 
     const _handleGoBack = () => navigate(-1);
+
+    const getDepartaments = async () => {
+        const response = await di.get<GetAllDepartmentsUseCase>(GetAllDepartmentsUseCaseName).call();
+        setDepartments(response);
+        console.log("🚀 ~ file: QuoteYourCarPage.tsx:117 ~ getDepartaments ~ response:", response);
+    };
+
+    const getCitiesByDeparment = async (departmentId: string) => {
+        const response = await di
+            .get<GetCitiesByDepartmentIdUseCase>(GetCitiesByDepartmentIdUseCaseName)
+            .call(departmentId);
+        setCitiesByDepartment(response);
+        console.log("🚀 ~ file: QuoteYourCarPage.tsx:133 ~ getCitiesByDeparment ~ response:", response);
+    };
+
+    useEffect(() => {
+        getDepartaments();
+    }, []);
 
     return (
         <Layout>
@@ -368,6 +398,66 @@ const QuoteYourCarPage: FC<{}> = () => {
                                         )}
                                         {currentStep == 2 ? (
                                             <div className="row">
+                                                {/* Departamento */}
+                                                <div className="col-md-6 my-2">
+                                                    <div className="form-group">
+                                                        <label className="mandatory">
+                                                            ¿En qué departamento está matriculado el carro?
+                                                        </label>
+                                                        <select
+                                                            className="form-control"
+                                                            {...register(
+                                                                "car.departmentId",
+                                                                Validators({
+                                                                    required: true,
+                                                                })
+                                                            )}
+                                                            onChange={(e) => {
+                                                                setValue("car.departmentId", e.target.value);
+                                                                getCitiesByDeparment(e.target.value);
+                                                            }}
+                                                        >
+                                                            <option value="" selected>
+                                                                seleccionar
+                                                            </option>
+                                                            {departments.map((department, index) => (
+                                                                <option key={index} value={department.id}>
+                                                                    {department.name}
+                                                                </option>
+                                                            ))}
+                                                        </select>
+                                                        <ErrorMessage
+                                                            as="aside"
+                                                            errors={errors}
+                                                            name="car.departmentId"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                {/* Ciudad */}
+                                                <div className="col-md-6 my-2">
+                                                    <div className="form-group">
+                                                        <label className="mandatory">
+                                                            ¿En qué ciudad está matriculado el carro?
+                                                        </label>
+                                                        <select
+                                                            className="form-control"
+                                                            {...register(
+                                                                "car.cityId",
+                                                                Validators({
+                                                                    required: true,
+                                                                })
+                                                            )}
+                                                        >
+                                                            <option value="">seleccionar</option>
+                                                            {citiesByDepartment.map((city, index) => (
+                                                                <option key={index} value={city.id}>
+                                                                    {city.name}
+                                                                </option>
+                                                            ))}
+                                                        </select>
+                                                        <ErrorMessage as="aside" errors={errors} name="car.cityId" />
+                                                    </div>
+                                                </div>
                                                 <div className="col-md-6 my-2">
                                                     <div className="form-group">
                                                         <label className="mandatory">Kilometraje</label>
@@ -388,30 +478,6 @@ const QuoteYourCarPage: FC<{}> = () => {
                                                             errors={errors}
                                                             name="car.kilometers"
                                                         />
-                                                    </div>
-                                                </div>
-                                                <div className="col-md-6 my-2">
-                                                    <div className="form-group">
-                                                        <label className="mandatory">
-                                                            ¿En qué ciudad está matriculado el carro?
-                                                        </label>
-                                                        <select
-                                                            className="form-control"
-                                                            {...register(
-                                                                "car.cityId",
-                                                                Validators({
-                                                                    required: true,
-                                                                })
-                                                            )}
-                                                        >
-                                                            <option value="">seleccionar</option>
-                                                            {cities.map((city, index) => (
-                                                                <option key={index} value={city.id}>
-                                                                    {city.name}
-                                                                </option>
-                                                            ))}
-                                                        </select>
-                                                        <ErrorMessage as="aside" errors={errors} name="car.cityId" />
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 my-2">
