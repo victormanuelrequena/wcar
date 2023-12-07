@@ -133,3 +133,13 @@
         display: flex;
     }
 }
+
+.scroll-filter{
+    overflow:scroll;
+    max-height: 100vh;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+

@@ -262,12 +262,18 @@ const BuyYourCarPage: FC<{}> = () => {
                     </div>
                     <div className="car_list from_left_2">
                         <div className="row">
-                            <div className={`bg_white mb-5 mb-md-0 ${openFilters ? "col-md-4 col-lg-3" : "d-none"}`}>
-                                <FilterComponent
-                                    formFunctions={formFunctions}
-                                    isOpen={openFilters}
-                                    setIsOpen={setOpenFilters}
-                                />
+                            <div
+                                className={`bg_white mb-5 mb-md-0  ${
+                                    openFilters ? "col-md-4 col-lg-3" : "d-none"
+                                }  position-relative `}
+                            >
+                                <div className={" position-sticky top-0 pe-2 scroll-filter"}>
+                                    <FilterComponent
+                                        formFunctions={formFunctions}
+                                        isOpen={openFilters}
+                                        setIsOpen={setOpenFilters}
+                                    />
+                                </div>
                             </div>
                             <div className={` ${openFilters ? "col-md-8 col-lg-9" : "col-md-12"} container_cars`}>
                                 <div className="d-none d-md-flex justify-content-between">
