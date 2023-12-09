@@ -12,7 +12,10 @@ const CardBlogComponent: FC<CardBlogComponentProps> = ({ blog }) => {
 
     return (
         <Link
-            to={routes.detailedBlog.relativePath + `/${blog.title.replace(/ /g, "-")}?id=${blog.id}`}
+            to={
+                routes.detailedBlog.relativePath +
+                `/${blog.url_post ? blog.url_post.replace(/ /g, "-") : blog.title.replace(/ /g, "-")}?id=${blog.id}`
+            }
             className="card_blog_component"
         >
             <div className="card">

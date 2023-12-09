@@ -99,6 +99,9 @@ const BlogDetailedPage = () => {
                                     {blogData?.paragraphs?.map((paragraph: any, index: number) => (
                                         // <p  key={index}>{paragraph.content}</p>
                                         <>
+                                            {paragraph.title_paragraph && (
+                                                <h6 style={{ marginBottom: 16 }}>{paragraph.title_paragraph}</h6>
+                                            )}
                                             {paragraph.file && (
                                                 <img
                                                     src={paragraph.file}
@@ -112,9 +115,6 @@ const BlogDetailedPage = () => {
                                                         borderRadius: "12px",
                                                     }}
                                                 />
-                                            )}
-                                            {paragraph.title_paragraph && (
-                                                <h6 style={{ marginBottom: 16 }}>{paragraph.title_paragraph}</h6>
                                             )}
 
                                             <p
