@@ -85,6 +85,7 @@ const QuoteYourCarPage: FC<{}> = () => {
             company: data?.contact?.companyName,
             departament: data?.car?.departmentId,
         };
+
         navigate(routes.dateForSell.relativePath, { state: { buyData: data } });
         const calculated = await di.get<CalculateOfferForCarUseCase>(CalculateOfferForCarUseCaseName).call(data);
         if (isRight(calculated)) {
