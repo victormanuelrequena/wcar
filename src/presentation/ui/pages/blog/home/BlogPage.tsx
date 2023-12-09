@@ -30,7 +30,8 @@ const BlogPage: FC<{}> = () => {
             const blogsData = await response.blogs;
             const mainPostData = await response.main_post;
             console.log("🚀 ~ file: BlogPage.tsx:30 ~ const_loadBlogs= ~ blogsData:", blogsData);
-            setBlogs(blogsData);
+            const activeBlogs = blogsData.filter((blog: any) => blog.active === true);
+            setBlogs(activeBlogs);
             setOutstandingBlog(mainPostData);
         } catch (error) {
             console.log(error);
@@ -59,7 +60,11 @@ const BlogPage: FC<{}> = () => {
                                     <Link
                                         to={
                                             routes.detailedBlog.relativePath +
-                                            `/${outstandingBlog.title.replace(/ /g, "-")}?id=${outstandingBlog.id}`
+                                            `/${
+                                                outstandingBlog.url_post
+                                                    ? outstandingBlog.url_post.replace(/ /g, "-")
+                                                    : outstandingBlog.title.replace(/ /g, "-")
+                                            }?id=${outstandingBlog.id}`
                                         }
                                         className="col-md-6 ms-md-5"
                                     >
