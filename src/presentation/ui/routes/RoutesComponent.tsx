@@ -37,6 +37,8 @@ import DontButNewCarBuyAUsed from "../pages/redirect/DontButNewCarBuyAUsed";
 import TermAndConditionsUser from "../pages/policies/TermAndConditionsUser";
 import BuyYourCarPageUsedTrucks from "../pages/car/buyYourCar/BuyYourCarPageUsedTrucks";
 import TermAndConditionsSalseYesOrYes from "../pages/policies/TermAndConditionsSalesYesOrYes";
+import TermAndConditionsNewUsed6MonthWarrany from "../pages/policies/TermAndConditionsNewUsed6MonthWarrany";
+import TermAndConditionsNewUsed6MonthWarrany2 from "../pages/policies/TermAndConditionsNewUsed6MonthWarrany2";
 
 export interface iRoute {
     name: string;
@@ -224,6 +226,20 @@ const routes = {
         path: "/vende-tu-carro-si-o-si",
         relativePath: "/vende-tu-carro-si-o-si",
         component: TermAndConditionsSalseYesOrYes,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    termAndConditionsNewUsed6MonthWarrany: {
+        path: "/tu-nuevo-usado-en-wcar-con-garantica-de-6-meses",
+        relativePath: "/tu-nuevo-usado-en-wcar-con-garantica-de-6-meses",
+        component: TermAndConditionsNewUsed6MonthWarrany,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    termAndConditionsNewUsed6MonthWarrany2: {
+        path: "/tu-nuevo-usado-en-wcar-con-garantica-de-6-meses2",
+        relativePath: "/tu-nuevo-usado-en-wcar-con-garantica-de-6-meses2",
+        component: TermAndConditionsNewUsed6MonthWarrany2,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
