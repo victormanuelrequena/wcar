@@ -36,6 +36,7 @@ import SaleYourCarPage from "../pages/policies/SaleYourCarPage";
 import DontButNewCarBuyAUsed from "../pages/redirect/DontButNewCarBuyAUsed";
 import TermAndConditionsUser from "../pages/policies/TermAndConditionsUser";
 import BuyYourCarPageUsedTrucks from "../pages/car/buyYourCar/BuyYourCarPageUsedTrucks";
+import TermAndConditionsSalseYesOrYes from "../pages/policies/TermAndConditionsSalesYesOrYes";
 
 export interface iRoute {
     name: string;
@@ -216,6 +217,13 @@ const routes = {
         path: "/terminos-y-condiciones-usuarios",
         relativePath: "/terminos-y-condiciones-usuarios",
         component: TermAndConditionsUser,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    termAndConditionsSalesYesOrYes: {
+        path: "/vende-tu-carro-si-o-si",
+        relativePath: "/vende-tu-carro-si-o-si",
+        component: TermAndConditionsSalseYesOrYes,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
