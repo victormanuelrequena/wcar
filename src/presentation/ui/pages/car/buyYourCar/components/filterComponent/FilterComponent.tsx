@@ -158,9 +158,9 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
 
     // useEffect para establecer el filtro de camionetas usadas por defecto en la pagina de camionetas usadas
     useEffect(() => {
-        console.log(location.pathname)
+        console.log(location.pathname);
         if (location.pathname === "/compra-tu-carro/camionetas-usadas") {
-            console.log('Se ejecuta')
+            console.log("Se ejecuta");
             setValue("type_vehcile_id", "8");
         }
     }, [location]);
@@ -255,9 +255,9 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                     checked={watch("type_vehcile_id") == typeVehicle.id}
                                     onChange={(e) => {
                                         console.log("TYPE VEHICLE____", e.target.value);
-                                        if (e.target.value === "8") {
-                                            return navigate("/compra-tu-carro/camionetas-usadas");
-                                        }
+                                        // if (e.target.value === "8") {
+                                        //     return navigate("/compra-tu-carro/camionetas-usadas");
+                                        // }
                                         handleChangeAddQueryParam(
                                             e.target.value,
                                             "type_vehcile_id",

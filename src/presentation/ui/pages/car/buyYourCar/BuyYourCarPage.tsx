@@ -27,6 +27,8 @@ import TagContext from "../../../../../domain/providers/tag/TagContext";
 import TagContextType from "../../../../../domain/providers/tag/TagContextType";
 import TypeOfFuelContext from "../../../../../domain/providers/typeOfFuel/TypeOfFuelContext";
 import TypeOfFuelContextType from "../../../../../domain/providers/typeOfFuel/TypeOfFuelContextType";
+import SeoDropdown from "./components/seoDropdown/SeoDropdown";
+import { contentListUsedTrucksSeo, contentListUsedTrucksSeo2 } from "./constants";
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -204,6 +206,11 @@ const BuyYourCarPage: FC<{}> = () => {
         setPage(1);
     };
 
+    // !Check type_vehicle_id
+    useEffect(() => {
+        console.log("TYPE_VEHICLE_ID____", typeVehicleId);
+    }, [typeVehicleId]);
+
     return (
         <Layout>
             <Helmet>
@@ -267,7 +274,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                     openFilters ? "col-md-4 col-lg-3" : "d-none"
                                 }  position-relative `}
                             >
-                                <div className={" position-sticky top-0 pe-2 scroll-filter"}>
+                                <div className={"position-sticky top-0 pe-2 scroll-filter"}>
                                     <FilterComponent
                                         formFunctions={formFunctions}
                                         isOpen={openFilters}
@@ -389,6 +396,29 @@ const BuyYourCarPage: FC<{}> = () => {
                     </div>
                 </div>
             </form>
+            {/* SEO camoionetas usadas */}
+            {typeVehicleId === "Camioneta - SUV" && (
+                <div className="my-6 pt-4 container container-drop" style={{ marginTop: "80px", marginBottom: "40px" }}>
+                    <SeoDropdown
+                        options={contentListUsedTrucksSeo.map((content) => {
+                            return {
+                                title: content.title,
+                                content: content.content,
+                                typeElement: content.type,
+                            };
+                        })}
+                    />
+                    <SeoDropdown
+                        options={contentListUsedTrucksSeo2.map((content) => {
+                            return {
+                                title: content.title,
+                                content: content.content,
+                                typeElement: content.type,
+                            };
+                        })}
+                    />
+                </div>
+            )}
         </Layout>
     );
 };
