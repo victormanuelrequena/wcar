@@ -41,6 +41,13 @@
         .content {
             display: none;
         }
+
+        .accordeon_image{
+            width: 300px;
+            height: 200px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
     }
 }
 

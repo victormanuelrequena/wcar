@@ -8,6 +8,7 @@ interface SeoDropdownProps {
         title: String | React.ReactNode;
         content: string | React.ReactNode;
         typeElement: string;
+        image: string;
     }[];
 }
 
@@ -45,7 +46,11 @@ const SeoDropdown: FC<SeoDropdownProps> = ({ subtitle, options }) => {
                                 )}
                                 <div>{index == open ? <Icons.Clear /> : <Icons.Plus />}</div>
                             </div>
-                            <div className="content pt-3 px-3 pt-2 pb-4">{option.content}</div>
+                            <div className="content pt-3 px-3 pt-2 pb-4">
+                                {option.content}
+                                <br />
+                                {option.image && <img src={option.image} className="accordeon_image" alt="" />}
+                            </div>
                         </div>
                     ))}
                 </div>
