@@ -125,3 +125,123 @@ export const contentListUsedTrucksSeo2: { title: string; content: string | React
         type: "h2",
     },
 ];
+
+// * Carros Hibridos------------------------------------------------------------------------------------------------------------------------------------------------
+
+export const contentListHybridCarSeo: { title: string; content: string | React.ReactNode; type: string }[] = [
+    {
+        title: "Carros Híbridos Colombia",
+        content: (
+            <p>
+                En wcar, somos expertos en el sector transaccional automotriz y estamos comprometidos con la promoción
+                de tecnologías limpias en Colombia. Conoce nuestra amplia gama de carros híbridos que combinan lo mejor
+                de la eficiencia y el rendimiento. Sin contar que en Colombia a la fecha de esta publicación se cuentan
+                con beneficios como la excepción de pico y placa en varias ciudades a vehículos con tecnologías limpias.
+                Compra tu Híbrido
+            </p>
+        ),
+        type: "h1",
+    },
+    {
+        title: "Qué es un Híbrido",
+        content: (
+            <p>
+                Los carros híbridos son vehículos que utilizan dos fuentes de energía para impulsarse: un motor de
+                combustión interna y un motor eléctrico. Esta combinación permite un mayor ahorro de combustible y una
+                reducción significativa en las emisiones de CO2.
+            </p>
+        ),
+        type: "h2",
+    },
+    {
+        title: "Tecnologías Vehiculares Limpias",
+        content: (
+            <p>
+                En un mundo cada vez más consciente del medio ambiente, las tecnologías limpias se han convertido en una
+                prioridad. Los carros híbridos representan una solución sostenible al combinar un motor de combustión
+                interna con un motor eléctrico, reduciendo así las emisiones de gases contaminantes.
+            </p>
+        ),
+        type: "h2",
+    },
+    {
+        title: "Carros híbridos",
+        content: (
+            <p>
+                En wcar, ofrecemos una amplia selección de carros híbridos de alta calidad. Nuestra variedad de modelos
+                te permitirá encontrar el carro híbrido perfecto que se adapte a tus necesidades y estilo de vida.
+            </p>
+        ),
+        type: "h3",
+    },
+    {
+        title: "Vehículos Híbridos más populares",
+        content: (
+            <p>
+                En nuestro concesionario, destacamos los vehículos híbridos más populares en Colombia. Estos modelos han
+                sido aclamados por su rendimiento, eficiencia y tecnología innovadora. ¡Descubre cuál es el adecuado
+                para ti! aquí
+            </p>
+        ),
+        type: "h2",
+    },
+];
+
+export const contentListHybridCarSeo2: { title: string; content: string | React.ReactNode; type: string }[] = [
+    {
+        title: "Hyundai Híbrido",
+        content: (
+            <p>
+                Los carros híbridos de Hyundai combinan elegancia, tecnología y eficiencia en un solo vehículo. Con
+                características impresionantes y sistemas avanzados, los modelos híbridos de Hyundai ofrecen una
+                experiencia de conducción excepcional.
+            </p>
+        ),
+        type: "h3",
+    },
+    {
+        title: "Toyota Híbrido",
+        content: (
+            <p>
+                Toyota es un referente mundial en carros híbridos y en wcar te ofrecemos una amplia selección de sus
+                modelos más populares. Estos vehículos son reconocidos por su calidad, confiabilidad y tecnología
+                avanzada, lo que los convierte en una elección inteligente para aquellos que buscan un carro híbrido en
+                Colombia.
+            </p>
+        ),
+        type: "h3",
+    },
+    {
+        title: "Susuki Híbrido",
+        content: (
+            <p>
+                Suzuki ha incursionado en el mundo de los carros híbridos con propuestas innovadoras y llenas de estilo.
+                Sus modelos híbridos destacan por su diseño moderno, economía de combustible y rendimiento confiable en
+                las carreteras colombianas.
+            </p>
+        ),
+        type: "h3",
+    },
+    {
+        title: "Mazda Híbrido",
+        content: (
+            <p>
+                Los carros híbridos de Mazda combinan diseño elegante, confort y eficiencia. Con su enfoque en la
+                experiencia de conducción, Mazda ha logrado crear vehículos híbridos que ofrecen un rendimiento
+                excepcional y una alta eficiencia energética.
+            </p>
+        ),
+        type: "h3",
+    },
+    {
+        title: "En wcar le apuntamos a las nuevas tecnologías de energía limpia",
+        content: (
+            <p>
+                En wcar, estamos comprometidos con brindarte información transparente y veraz sobre los carros híbridos
+                en Colombia. Visítanos y descubre cómo la tecnología híbrida puede transformar tu forma de conducir de
+                manera sostenible. ¡Te esperamos en nuestro concesionario!
+            </p>
+        ),
+        type: "h2",
+    },
+];

@@ -28,7 +28,12 @@ import TagContextType from "../../../../../domain/providers/tag/TagContextType";
 import TypeOfFuelContext from "../../../../../domain/providers/typeOfFuel/TypeOfFuelContext";
 import TypeOfFuelContextType from "../../../../../domain/providers/typeOfFuel/TypeOfFuelContextType";
 import SeoDropdown from "./components/seoDropdown/SeoDropdown";
-import { contentListUsedTrucksSeo, contentListUsedTrucksSeo2 } from "./constants";
+import {
+    contentListHybridCarSeo,
+    contentListHybridCarSeo2,
+    contentListUsedTrucksSeo,
+    contentListUsedTrucksSeo2,
+} from "./constants";
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -206,10 +211,16 @@ const BuyYourCarPage: FC<{}> = () => {
         setPage(1);
     };
 
-    // !Check type_vehicle_id
+    // * Check type_vehicle_id
+    // * Filter name: Tipo
     useEffect(() => {
         console.log("TYPE_VEHICLE_ID____", typeVehicleId);
     }, [typeVehicleId]);
+    // * Check type_fuel_id
+    // * Filter name: Combustible
+    useEffect(() => {
+        console.log("TYPE_FUEL_ID_____", fuelId);
+    }, [fuelId]);
 
     return (
         <Layout>
@@ -397,7 +408,7 @@ const BuyYourCarPage: FC<{}> = () => {
                 </div>
             </form>
             {/* SEO camoionetas usadas */}
-            {typeVehicleId === "Camioneta - SUV" && (
+            {typeVehicleId === "8" && fuelId !== "Híbrido" && (
                 <div className="my-6 pt-4 container container-drop" style={{ marginTop: "80px", marginBottom: "40px" }}>
                     <SeoDropdown
                         options={contentListUsedTrucksSeo.map((content) => {
@@ -410,6 +421,35 @@ const BuyYourCarPage: FC<{}> = () => {
                     />
                     <SeoDropdown
                         options={contentListUsedTrucksSeo2.map((content) => {
+                            return {
+                                title: content.title,
+                                content: content.content,
+                                typeElement: content.type,
+                            };
+                        })}
+                    />
+                </div>
+            )}
+            {/* SEO - Combustible: Hibrido */}
+            {fuelId === "Híbrido" && typeVehicleId !== "8" && (
+                <div
+                    className="my-6 pt-4 container container-drop"
+                    style={{
+                        marginTop: "80px",
+                        marginBottom: "40px",
+                    }}
+                >
+                    <SeoDropdown
+                        options={contentListHybridCarSeo.map((content) => {
+                            return {
+                                title: content.title,
+                                content: content.content,
+                                typeElement: content.type,
+                            };
+                        })}
+                    />
+                    <SeoDropdown
+                        options={contentListHybridCarSeo2.map((content) => {
                             return {
                                 title: content.title,
                                 content: content.content,

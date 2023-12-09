@@ -130,6 +130,7 @@
 @media (min-width: 768px) {
     .container-drop {
         display: flex;
+        justify-content: center;
     }
     .scroll-filter {
         overflow: scroll;

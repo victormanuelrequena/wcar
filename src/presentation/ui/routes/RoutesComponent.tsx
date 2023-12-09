@@ -76,7 +76,7 @@ const routes = {
     buyYourCarUsedTrucks: {
         path: "/compra-tu-carro/camionetas-usadas",
         relativePath: "/compra-tu-carro/camionetas-usadas",
-        component: BuyYourCarPageUsedTrucks,
+        component: BuyYourCarPage,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },

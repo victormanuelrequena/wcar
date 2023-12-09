@@ -255,9 +255,6 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                     checked={watch("type_vehcile_id") == typeVehicle.id}
                                     onChange={(e) => {
                                         console.log("TYPE VEHICLE____", e.target.value);
-                                        // if (e.target.value === "8") {
-                                        //     return navigate("/compra-tu-carro/camionetas-usadas");
-                                        // }
                                         handleChangeAddQueryParam(
                                             e.target.value,
                                             "type_vehcile_id",
@@ -266,6 +263,9 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                             "name",
                                             index
                                         );
+                                        if (e.target.value === "8") {
+                                            return navigate("/compra-tu-carro/camionetas-usadas");
+                                        }
                                     }}
                                 />
                                 <label className="form-check-label">
