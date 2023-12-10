@@ -35,7 +35,6 @@ import { Helmet } from "react-helmet-async";
 import SaleYourCarPage from "../pages/policies/SaleYourCarPage";
 import DontButNewCarBuyAUsed from "../pages/redirect/DontButNewCarBuyAUsed";
 import TermAndConditionsUser from "../pages/policies/TermAndConditionsUser";
-import BuyYourCarPageUsedTrucks from "../pages/car/buyYourCar/BuyYourCarPageUsedTrucks";
 import TermAndConditionsSalseYesOrYes from "../pages/policies/TermAndConditionsSalesYesOrYes";
 import TermAndConditionsNewUsed6MonthWarrany from "../pages/policies/TermAndConditionsNewUsed6MonthWarrany";
 import TermAndConditionsNewUsed6MonthWarrany2 from "../pages/policies/TermAndConditionsNewUsed6MonthWarrany2";
