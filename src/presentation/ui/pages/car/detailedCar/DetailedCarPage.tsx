@@ -157,7 +157,13 @@ const DetailedCarPage: FC<{}> = () => {
                                                 </div>
                                                 <div className="d-inline-flex flex-column justify-content-start align-items-start mt-1">
                                                     <div
-                                                        className="btn btn_orange my-3 me-3 btn-detailed-car"
+                                                        className="btn my-3 me-3 btn-detailed-car"
+                                                        style={{
+                                                            color: "#000",
+                                                            height: "42px",
+                                                            border: "none",
+                                                            backgroundColor: "#00fefe",
+                                                        }}
                                                         onClick={() => setShowPeritajeImage(true)}
                                                     >
                                                         VER PERITAJE <Icons.Download />{" "}
