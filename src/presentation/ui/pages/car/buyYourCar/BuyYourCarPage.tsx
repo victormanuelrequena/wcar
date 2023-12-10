@@ -417,6 +417,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                 content: content.content,
                                 typeElement: content.type,
                                 image: content.imageUrl,
+                                alt: content.alt,
                             };
                         })}
                     />
@@ -427,6 +428,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                 content: content.content,
                                 typeElement: content.type,
                                 image: content.imageUrl,
+                                alt: content.alt,
                             };
                         })}
                     />
@@ -448,6 +450,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                 content: content.content,
                                 typeElement: content.type,
                                 image: content.imageUrl,
+                                alt: content.alt,
                             };
                         })}
                     />
@@ -458,6 +461,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                 content: content.content,
                                 typeElement: content.type,
                                 image: content.imageUrl,
+                                alt: content.alt,
                             };
                         })}
                     />
