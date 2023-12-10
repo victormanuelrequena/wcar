@@ -1,9 +1,10 @@
-export const contentListUsedTrucksSeo: { title: string; content: string | React.ReactNode; type: string; imageUrl: string  }[] = [
+export const contentListUsedTrucksSeo: { title: string; content: string | React.ReactNode; type: string; imageUrl: string; alt: string  }[] = [
     {
         title: "Camionetas Usadas",
         content: "",
         type: "h1",
         imageUrl: "",
+        alt: ""
     },
     {
         title: "Camionetas Usadas Colombia",
@@ -19,6 +20,7 @@ export const contentListUsedTrucksSeo: { title: string; content: string | React.
         ),
         type: "h2",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/camionetasUsadas/Camionetas-Usadas-Colombia-1536x1024.jpg`,
+        alt: "Camionetas usadas colombia"
     },
     {
         title: "Camioneta Chevrolet y Toyota Colombia: Las mejores opciones en camionetas usadas en Colombia",
@@ -33,6 +35,7 @@ export const contentListUsedTrucksSeo: { title: string; content: string | React.
         ),
         type: "h2",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/camionetasUsadas/Toyota-Colombia-1536x1024.jpg`,
+        alt: "Toyota colombia"
     },
     {
         title: "Chevrolet Montana",
@@ -45,6 +48,7 @@ export const contentListUsedTrucksSeo: { title: string; content: string | React.
         ),
         type: "h3",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/camionetasUsadas/chevrolet-montana-1024x631.webp`,
+        alt: "chevrolet montana"
     },
     {
         title: "Ford en Colombia: Calidad y rendimiento garantizados",
@@ -59,10 +63,11 @@ export const contentListUsedTrucksSeo: { title: string; content: string | React.
         ),
         type: "h3",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/camionetasUsadas/Ford-en-Colombia-768x468.jpg`,
+        alt: "Ford en Colombia"
     },
 ];
 
-export const contentListUsedTrucksSeo2: { title: string; content: string | React.ReactNode; type: string; imageUrl: string }[] = [
+export const contentListUsedTrucksSeo2: { title: string; content: string | React.ReactNode; type: string; imageUrl: string; alt: string }[] = [
     {
         title: "Camionetas con platón: Espacio y versatilidad",
         content: (
@@ -79,6 +84,7 @@ export const contentListUsedTrucksSeo2: { title: string; content: string | React
         ),
         type: "h2",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/camionetasUsadas/Camioneta-con-platon-768x513.jpg`,
+        alt: "Camioneta con platon"
     },
     {
         title: "Camionetas chinas: Calidad a precios accesibles",
@@ -93,6 +99,7 @@ export const contentListUsedTrucksSeo2: { title: string; content: string | React
         ),
         type: "h2",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/camionetasUsadas/Camioneta-china.webp`,
+        alt: "Camioneta china"
     },
     {
         title: "Camionetas usadas Bogotá, encuentra la perfecta para ti",
@@ -107,6 +114,7 @@ export const contentListUsedTrucksSeo2: { title: string; content: string | React
         ),
         type: "h2",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/camionetasUsadas/Camionetas-usadas-Bogota-1024x683.jpg`,
+        alt: "Camionetas usadas Bogota"
     },
     {
         title: "Experiencia y compromiso en la venta de camionetas usadas",
@@ -120,6 +128,7 @@ export const contentListUsedTrucksSeo2: { title: string; content: string | React
         ),
         type: "h2",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/camionetasUsadas/Experiencia-compromiso.jpg`,
+        alt: "Experiencia y compromiso"
     },
     {
         title: "¡Descubre la mejor selección de Camionetas Usadas en Colombia en WCar!",
@@ -133,12 +142,13 @@ export const contentListUsedTrucksSeo2: { title: string; content: string | React
         ),
         type: "h2",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/camionetasUsadas/Camioneta-Chevrolet-1536x1066.jpg`,
+        alt: "Camioneta Chevrolet"
     },
 ];
 
 // * Carros Hibridos------------------------------------------------------------------------------------------------------------------------------------------------
 
-export const contentListHybridCarSeo: { title: string; content: string | React.ReactNode; type: string; imageUrl: string }[] = [
+export const contentListHybridCarSeo: { title: string; content: string | React.ReactNode; type: string; imageUrl: string; alt: string }[] = [
     {
         title: "Carros Híbridos Colombia",
         content: (
@@ -152,6 +162,7 @@ export const contentListHybridCarSeo: { title: string; content: string | React.R
         ),
         type: "h1",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/carrosHibridos/Carros-Hibridos-Colombia-1536x1024.jpg`,
+        alt: "Carros Hibridos Colombia"
     },
     {
         title: "Qué es un Híbrido",
@@ -163,7 +174,8 @@ export const contentListHybridCarSeo: { title: string; content: string | React.R
             </p>
         ),
         type: "h2",
-        imageUrl: `${process.env.PUBLIC_URL}/assets/pages/carrosHibridos/Tecnologías Limpias.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/assets/pages/carrosHibridos/Tecnologías-Limpias.jpg`,
+        alt: "Tecnologías Limpias"
     },
     {
         title: "Tecnologías Vehiculares Limpias",
@@ -176,6 +188,7 @@ export const contentListHybridCarSeo: { title: string; content: string | React.R
         ),
         type: "h2",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/carrosHibridos/Tecnologias-Limpias-1536x1022.jpg`,
+        alt: "Tecnologias Limpias"
     },
     {
         title: "Carros híbridos",
@@ -187,6 +200,7 @@ export const contentListHybridCarSeo: { title: string; content: string | React.R
         ),
         type: "h3",
         imageUrl: "",
+        alt: ""
     },
     {
         title: "Vehículos Híbridos más populares",
@@ -199,10 +213,11 @@ export const contentListHybridCarSeo: { title: string; content: string | React.R
         ),
         type: "h2",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/carrosHibridos/Vehiculos-Hibridos-mas-populares-1-768x512.jpg`,
+        alt: "Vehiculos hibridos mas populares"
     },
 ];
 
-export const contentListHybridCarSeo2: { title: string; content: string | React.ReactNode; type: string; imageUrl: string }[] = [
+export const contentListHybridCarSeo2: { title: string; content: string | React.ReactNode; type: string; imageUrl: string; alt: string }[] = [
     {
         title: "Hyundai Híbrido",
         content: (
@@ -213,7 +228,8 @@ export const contentListHybridCarSeo2: { title: string; content: string | React.
             </p>
         ),
         type: "h3",
-        imageUrl: `${process.env.PUBLIC_URL}/assets/pages/carrosHibridos/Hyundai Hibrido.jpg`,
+        imageUrl: `${process.env.PUBLIC_URL}/assets/pages/carrosHibridos/Hyundai-Hibrido.jpg`,
+        alt: "Hyundai hibrido"
     },
     {
         title: "Toyota Híbrido",
@@ -227,6 +243,7 @@ export const contentListHybridCarSeo2: { title: string; content: string | React.
         ),
         type: "h3",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/carrosHibridos/Toyota-Hibrido-2-1024x512.jpg`,
+        alt: "Toyota hibrido"
     },
     {
         title: "Susuki Híbrido",
@@ -239,6 +256,7 @@ export const contentListHybridCarSeo2: { title: string; content: string | React.
         ),
         type: "h3",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/carrosHibridos/Susuki-Hibrido-2-1024x512.jpg`,
+        alt: "Susuki hibrido"
     },
     {
         title: "Mazda Híbrido",
@@ -251,6 +269,7 @@ export const contentListHybridCarSeo2: { title: string; content: string | React.
         ),
         type: "h3",
         imageUrl: `${process.env.PUBLIC_URL}/assets/pages/carrosHibridos/Mazda-Hibrido-1024x512.jpg`,
+        alt: "Mazda hibrido"
     },
     {
         title: "En wcar le apuntamos a las nuevas tecnologías de energía limpia",
@@ -263,5 +282,7 @@ export const contentListHybridCarSeo2: { title: string; content: string | React.
         ),
         type: "h2",
         imageUrl: "",
+        alt: ""
+
     },
 ];
