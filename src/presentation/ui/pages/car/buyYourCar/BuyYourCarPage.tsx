@@ -76,7 +76,7 @@ const BuyYourCarPage: FC<{}> = () => {
     const queryParams = new URLSearchParams(window.location.search);
 
     const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
-    const [page, setPage] = useState<number>(1);
+    const [page, setPage] = useState<number>(queryParams.get("page") ? Number(queryParams.get("page")) : 1);
     const [openFilters, setOpenFilters] = useState<boolean>(document.body.clientWidth > 968);
     const [openOrderBy, setOpenOrderBy] = useState(false);
     const [maxPages, setMaxPages] = useState<number>(1);
@@ -96,7 +96,7 @@ const BuyYourCarPage: FC<{}> = () => {
 
     //searcher filters
     useEffect(() => {
-        setPage(1);
+        setPage(queryParams.get("page") ? Number(queryParams.get("page")) : 1);
         _handleSearch();
     }, [brand, model, year, typeVehicleId, transmission, tagId, fuelId, colorId, plateNumber, orderBy]);
 
@@ -192,11 +192,17 @@ const BuyYourCarPage: FC<{}> = () => {
     };
 
     const _handleNextPage = async () => {
-        setPage(page + 1);
+        const nextPage = page + 1;
+        setPage(nextPage);
+        queryParams.set("page", nextPage.toString());
+        window.history.replaceState(null, "", "?" + queryParams.toString());
     };
 
     const _handlePreviousPage = async () => {
-        setPage(page - 1);
+        const previousPage = page - 1;
+        setPage(previousPage);
+        queryParams.set("page", previousPage.toString());
+        window.history.replaceState(null, "", "?" + queryParams.toString());
     };
 
     const _handleClearFilters = async () => {
@@ -394,7 +400,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                             </p>
                                             <div
                                                 className={`arrow_slider next ms-1 ${
-                                                    page >= maxPages - 1 ? "disabled" : ""
+                                                    page >= maxPages ? "disabled" : ""
                                                 }`}
                                             >
                                                 <AiOutlineArrowRight size={20} onClick={_handleNextPage} />
