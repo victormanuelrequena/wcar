@@ -8,10 +8,9 @@ import "./LayoutStyles.scss";
 import { routes } from "../routes/RoutesComponent";
 
 const Layout: FC<LayoutProps> = ({ children }) => {
-    const { pathname } = useLocation();
+    const { pathname, search } = useLocation();
     const containerDataRef = useRef<HTMLDivElement>(null);
     const [scrolled, setScrolled] = useState<boolean>(false);
-
 
     const _handleScroll = () => {
         //get scroll top of containerDataRef
@@ -21,32 +20,44 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         } else {
             setScrolled(false);
         }
-    }
+    };
     useEffect(() => {
-        containerDataRef.current?.addEventListener('scroll', _handleScroll);
+        containerDataRef.current?.addEventListener("scroll", _handleScroll);
     }, []);
 
     // Automatically scrolls to top whenever pathname changes
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [pathname]);
+        console.log(pathname, search);
+        document.querySelector(".content_app").scrollTo(0, 0);
+    }, [pathname, search]);
 
     return (
         <>
-            <div className="contact_fixed" >
-                <a href="https://wa.me/573018063302?text=¡Hola%21+Quiero+recibir+asesoría+�&type=phone_number&app_absent=0" className="btn btn_cyan" target="_blank">Contacta un asesor</a>
+            <div className="contact_fixed">
+                <a
+                    href="https://wa.me/573018063302?text=¡Hola%21+Quiero+recibir+asesoría+�&type=phone_number&app_absent=0"
+                    className="btn btn_cyan"
+                    target="_blank"
+                >
+                    Contacta un asesor
+                </a>
             </div>
             <ModalsComponent>
-                <div className={`layout_container ${!scrolled && window.location.pathname == routes.home.relativePath && "no_scrolled"}`}>
+                <div
+                    className={`layout_container ${
+                        !scrolled && window.location.pathname == routes.home.relativePath && "no_scrolled"
+                    }`}
+                >
                     <NavbarComponent />
-                    <div className="content_app"  ref={containerDataRef}>
+                    <div className="content_app" ref={containerDataRef}>
                         {children}
                         <FooterComponent />
                     </div>
-                </div >
+                </div>
             </ModalsComponent>
         </>
-    )
-}
+    );
+};
 
 export default Layout;
