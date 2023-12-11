@@ -182,6 +182,10 @@ const BuyYourCarPage: FC<{}> = () => {
                 );
             setCars(response.cars);
             setMaxPages(response.maxPages);
+            window.scrollTo({
+                top: 0,
+                behavior: "auto",
+            });
         } catch (error) {
             setCars([]);
         }
@@ -196,20 +200,10 @@ const BuyYourCarPage: FC<{}> = () => {
         setPage(nextPage);
         queryParams.set("page", nextPage.toString());
         window.history.replaceState(null, "", "?" + queryParams.toString());
-        document.body.scrollTo({
+        document.querySelector(".content_app").scrollTo({
             top: 0,
             behavior: "smooth",
         });
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-        document.documentElement.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTop = 0;
     };
 
     const _handlePreviousPage = async () => {
@@ -217,19 +211,10 @@ const BuyYourCarPage: FC<{}> = () => {
         setPage(previousPage);
         queryParams.set("page", previousPage.toString());
         window.history.replaceState(null, "", "?" + queryParams.toString());
-        document.body.scrollTo({
+        document.querySelector(".content_app").scrollTo({
             top: 0,
             behavior: "smooth",
         });
-        document.documentElement.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-        window.scrollTo(0, 0);
     };
 
     const _handleClearFilters = async () => {
