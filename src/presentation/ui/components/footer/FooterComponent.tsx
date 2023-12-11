@@ -77,9 +77,6 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.termAndConditionsNewUsed6MonthWarrany.relativePath} className="my-1">
                                 Términos y Condiciones Campaña "Tu nuevo Usado en wcar con garantía de 6 meses"
                             </Link>
-                            <Link to={routes.termAndConditionsNewUsed6MonthWarrany2.relativePath} className="my-1">
-                                Términos y Condiciones Campaña "Tu nuevo Usado en wcar con garantía de 6 meses"
-                            </Link>
 
                             {/* <Link to={routes.blog.relativePath} className="my-1">Blog</Link> */}
                         </div>
