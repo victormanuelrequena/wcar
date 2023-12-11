@@ -28,9 +28,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     // Automatically scrolls to top whenever pathname changes
     useEffect(() => {
         window.scrollTo(0, 0);
-        console.log(pathname, search);
-        document.querySelector(".content_app").scrollTo(0, 0);
-    }, [pathname, search]);
+    }, [pathname]);
 
     return (
         <>
