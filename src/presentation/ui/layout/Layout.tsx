@@ -10,6 +10,7 @@ import { routes } from "../routes/RoutesComponent";
 const Layout: FC<LayoutProps> = ({ children }) => {
     const { pathname, search } = useLocation();
     const containerDataRef = useRef<HTMLDivElement>(null);
+
     const [scrolled, setScrolled] = useState<boolean>(false);
 
     const _handleScroll = () => {
