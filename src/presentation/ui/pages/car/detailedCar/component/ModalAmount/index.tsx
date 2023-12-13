@@ -90,7 +90,7 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
                             {...register("amount", Validators({ price: true, minValue: 1000000, maxValue: carValue }))}
                         />
                         <p style={{ color: "#888", fontSize: "14px", marginTop: "6px", marginLeft: "8px" }}>
-                            Valor mínimo para separar el vehículo es de $2.000.000 COP.
+                            Valor mínimo para separar el vehículo es de $1.000.000 COP.
                         </p>
                         <ErrorMessage as="aside" errors={errors} name="amount" />
                         <div className="form-check mb-4 mt-4">
