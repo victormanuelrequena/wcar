@@ -46,7 +46,7 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
             return;
         }
 
-        if (parseFloat(formatValue(amount.toString().trimStart())) < 2000000.0) {
+        if (parseFloat(formatValue(amount.toString().trimStart())) < 1000000.0) {
             // setError("amount", { message: "El valor mínimo para separar el vehículo es de $2.000.000 COP." });
             return;
         }
@@ -87,7 +87,7 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
                             type="text"
                             className="form-control"
                             placeholder="Monto"
-                            {...register("amount", Validators({ price: true, minValue: 2000000, maxValue: carValue }))}
+                            {...register("amount", Validators({ price: true, minValue: 1000000, maxValue: carValue }))}
                         />
                         <p style={{ color: "#888", fontSize: "14px", marginTop: "6px", marginLeft: "8px" }}>
                             Valor mínimo para separar el vehículo es de $2.000.000 COP.
@@ -118,7 +118,7 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
                             style={{
                                 backgroundColor:
                                     getValues().terms &&
-                                    parseFloat(formatValue(amount?.toString().trimStart())) >= 2000000
+                                    parseFloat(formatValue(amount?.toString().trimStart())) >= 1000000
                                         ? ""
                                         : "#ccc",
                             }}
