@@ -166,7 +166,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
     }, [location]);
 
     return (
-        <div className={`filter_component ps-5 pt-3 pe-4 ${isOpen && "open"}`}>
+        <div className={`filter_component ps-4 pt-3 pe-4 ${isOpen && "open"}`}>
             <div className="back_drop" onClick={() => setIsOpen(false)}></div>
             <div className="w-100 d-flex align-items-center hover" onClick={() => setIsOpen(false)}>
                 <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />

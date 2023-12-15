@@ -1,14 +1,17 @@
 .navbar {
-    background-color: transparent;
-    z-index: 999;
+    background-color: #fff;
+    z-index: 999999999999999999999999999999999999;
+    position: relative;
 
     .navbar_icons {
         position: absolute;
         right: 1em;
         top: 1em;
+        z-index: 999999999999999999999999999999999999;
     }
 
     .dropdown-container {
+        z-index: 999999999999999999999999999999999999;
         position: relative;
         display: inline-block;
     }
