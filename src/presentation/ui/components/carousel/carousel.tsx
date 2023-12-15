@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, useRef } from "react";
 import { CardCarousel } from "../cardCarousel/cardCarousel";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -8,45 +8,40 @@ import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 export const Carousel1: FC<{ id: any }> = ({ id }) => {
     const [cards, setCards] = useState([]);
     const [indexCard, setIndexCard] = useState(0);
+    const carouselRef = useRef(null);
 
     useEffect(() => {
         fetch(`https://api.wcaronline.com/api/cars-related/${id}/`)
             .then((res) => res.json())
             .then((res) => setCards(res))
             .catch((e) => console.error(e));
-    }, []);
+    }, [id]);
 
-    const previous = () => {};
+    const previous = () => {
+        if (carouselRef.current && indexCard !== 0) {
+            carouselRef.current.goToSlide(indexCard - 1);
+            setIndexCard(indexCard - 1);
+        }
+    };
 
-    const next = () => {};
+    const next = () => {
+        if (carouselRef.current && indexCard + 1 !== cards.length) {
+            carouselRef.current.goToSlide(indexCard + 1);
+            setIndexCard(indexCard + 1);
+        }
+    };
 
     const responsive = {
         desktop: {
-            breakpoint: { max: 3000, min: 1400 },
-            items: 3.3,
-        },
-        miniDesktop: {
-            breakpoint: { max: 1400, min: 1199 },
+            breakpoint: { max: 4000, min: 1300 },
             items: 3,
         },
         tablet: {
-            breakpoint: { max: 1199, min: 991 },
-            items: 2.4,
-        },
-        miniTablet: {
-            breakpoint: { max: 991, min: 767 },
+            breakpoint: { max: 1300, min: 767 },
             items: 2,
         },
-        bigMobile: {
-            breakpoint: { max: 767, min: 510 },
-            items: 1.3,
-        },
         mobile: {
-            breakpoint: { max: 510, min: 450 },
-            items: 1.2,
-        },
-        miniMobile: {
-            breakpoint: { max: 450, min: 0 },
+            breakpoint: { max: 767, min: 0 },
             items: 1,
         },
     };
@@ -54,8 +49,9 @@ export const Carousel1: FC<{ id: any }> = ({ id }) => {
     return (
         <>
             <Carousel
+                ref={carouselRef}
                 responsive={responsive}
-                removeArrowOnDeviceType={["tablet", "mobile", "miniTablet", "miniMobile", "bigMobile"]}
+                removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
                 beforeChange={(currentSlide, _) => {
                     setIndexCard(currentSlide);
                 }}
@@ -65,20 +61,18 @@ export const Carousel1: FC<{ id: any }> = ({ id }) => {
                 })}
             </Carousel>
             <div className="container_nav w-100 d-flex">
-                <div className={`arrow_slider_card me-1 ${indexCard === 0 ? "disabled" : null}`}>
+                <div className={`arrow_slider_card me-1 ${indexCard === 0 ? "disabled" : null}`} onClick={previous}>
                     <AiOutlineArrowLeft />
                 </div>
-                <div className={`arrow_slider_card ms-1 ${indexCard === cards.length - 1 ? "disabled" : null}`}>
+                <div
+                    className={`arrow_slider_card ms-1 ${indexCard === cards.length - 1 ? "disabled" : null}`}
+                    onClick={next}
+                >
                     <AiOutlineArrowRight />
                 </div>
                 <div className="container_item_card d-flex flex-wrap justify-content-around align-items-center">
                     {cards.map((card, i) => {
-                        return (
-                            <div
-                                className={`item_card ${Math.round(indexCard) === i ? "active" : "disabled"}`}
-                                key={i}
-                            ></div>
-                        );
+                        return <div className={`item_card ${indexCard === i ? "active" : "disabled"}`} key={i}></div>;
                     })}
                 </div>
             </div>
