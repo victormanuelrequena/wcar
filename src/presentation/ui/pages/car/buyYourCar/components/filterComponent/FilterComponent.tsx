@@ -254,7 +254,6 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                     value={typeVehicle.id}
                                     checked={watch("type_vehcile_id") == typeVehicle.id}
                                     onChange={(e) => {
-                                        console.log("TYPE VEHICLE____", e.target.value);
                                         handleChangeAddQueryParam(
                                             e.target.value,
                                             "type_vehcile_id",
