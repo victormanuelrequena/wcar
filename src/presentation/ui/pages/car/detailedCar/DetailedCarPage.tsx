@@ -24,6 +24,7 @@ import ModalsContext from "../../../../../domain/providers/modal/ModalsContext";
 import PreviewImage from "./component/PreviewImage";
 import ModalAmount from "./component/ModalAmount";
 import { InlineWidget, PopupButton } from "react-calendly";
+import { Carousel1 } from "../../../components/carousel/carousel";
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -421,6 +422,9 @@ const DetailedCarPage: FC<{}> = () => {
                         <Helmet>
                             <script src="https://integrator.swipetospin.com" />
                         </Helmet>
+                    </section>
+                    <section className="container w-100 d-flex flex-column justify-content-evenly" style={{height: "500px"}}>
+                        <Carousel1 id={car.id} />
                     </section>
                     <div className="container">
                         {relatedCars ? (

@@ -1,0 +1,36 @@
+.card_carousel{
+    display: block;
+    border: none;
+    box-shadow: 0px 2px 4px 0px #efefef;
+    position: relative;
+    margin: 0 auto;
+    width: 340px;
+
+    .card-body{
+        height: 190px;
+        background: #fff;
+    }
+
+    .img_car {
+        width: 100%;
+        height: 220px;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        object-fit: cover;
+    }
+
+    .botton_container{
+        height: 42px;
+        padding-bottom: 10px;
+    }
+}
+
+.tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    padding: 5px 16px;
+    border-top-left-radius: 8px;
+}
+
