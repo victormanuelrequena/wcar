@@ -133,6 +133,13 @@
     }
 }
 
+.filter-btn-visible {
+    display: flex;
+}
+.filter-btn-hidden {
+    display: flex;
+}
+
 // .car_seo {
 //     h1 {
 //         font-size: 10px !important;
@@ -152,6 +159,9 @@
     .container-drop {
         display: flex;
         justify-content: center;
+    }
+    .filter-btn-hidden {
+        display: none;
     }
     .buy_your_car_page {
         .scroll-filter {

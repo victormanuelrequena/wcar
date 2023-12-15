@@ -330,19 +330,13 @@ const BuyYourCarPage: FC<{}> = () => {
                             )}
                             <div className={` ${openFilters ? "col-md-8 col-lg-9" : "col-md-12"} container_cars`}>
                                 <div className="d-none d-md-flex justify-content-between">
-                                    {/* {!openFilters && (
-                                        <div className="mt-1">
-                                            <div
-                                                className="btn btn_light me-3 mt-2"
-                                                onClick={() => setOpenFilters(true)}
-                                            >
-                                                <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
-                                                <span className="ms-2">Filtrar</span>
-                                            </div>
-                                        </div>
-                                    )} */}
-                                    <div className="mt-1">
-                                        <div className="btn btn_light me-3 mt-2" onClick={() => setOpenFilters(true)}>
+                                    <div className={`mt-1 ${openFilters && "md-d-none"}`}>
+                                        <div
+                                            className={`btn btn_light me-3 mt-2 ${
+                                                !openFilters ? "filter-btn-visible" : "filter-btn-hidden"
+                                            }`}
+                                            onClick={() => setOpenFilters(true)}
+                                        >
                                             <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
                                             <span className="ms-2">Filtrar</span>
                                         </div>
