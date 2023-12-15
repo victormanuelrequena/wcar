@@ -84,10 +84,14 @@ export const CardCarousel: FC<{ car: any }> = ({ car }) => {
                 >
                     <div className="flex-grow-1 text_ellipsis">
                         <h5 className={`text_bold text_black card-price`}>
-                            {CurrencyParse.toCop(car?.discount_price ?? car?.price)}
+                            {CurrencyParse.toCop(
+                                car?.discount_price !== null && car?.discount_price !== "0.00"
+                                    ? car?.discount_price
+                                    : car?.price
+                            )}
                         </h5>
                         <span className="text_bold text_black text_through">
-                            {car?.discount_price && CurrencyParse.toCop(car?.price)}
+                            {car?.discount_price && car?.discount_price !== "0.00" && CurrencyParse.toCop(car?.price)}
                         </span>
                     </div>
                     <div className="ms-3 px-4 btn btn_orange view-btn">VER</div>
