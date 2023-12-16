@@ -48,7 +48,7 @@ const NavbarComponent = () => {
     return (
         <Navbar className="bg-transparent px-3 position-md-fixed w-100" expand="lg">
             <Link className="navbar-brand me-5" to={routes.home.relativePath}>
-                <img src="/assets/logos/horizontal.svg" title="Wcar" alt="Wcar" height="50" />{" "}
+                <img src="/assets/logos/horizontal.svg" title="wcar" alt="wcar" height="50" />{" "}
                 {/* Add the logo image */}
             </Link>
 

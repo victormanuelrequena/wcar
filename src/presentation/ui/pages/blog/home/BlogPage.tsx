@@ -50,8 +50,8 @@ const BlogPage: FC<{}> = () => {
                     <section className="section_1">
                         <img
                             src={outstandingBlog?.photoUrl}
-                            alt="Wcar"
-                            title="Wcar"
+                            alt="wcar"
+                            title="wcar"
                             className="img-fluid object_cover w-100 outstandingBlog-main-image"
                         />
                         <div className="container">
@@ -80,8 +80,8 @@ const BlogPage: FC<{}> = () => {
                                                             outstandingBlog?.user?.photo ||
                                                             "https://images.unsplash.com/photo-1506863530036-1efeddceb993?auto=format&fit=crop&q=80&w=1944&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                                         }
-                                                        alt="Wcar"
-                                                        title="Wcar"
+                                                        alt="wcar"
+                                                        title="wcar"
                                                         style={{ width: "36px", height: "36px", objectFit: "cover" }}
                                                         className="img_rounded me-2"
                                                     />

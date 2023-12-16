@@ -94,8 +94,8 @@ const ServicesPage: FC = () => {
                 <section className="section_1">
                     <img
                         src="/assets/services/bg_services_financing_mobile.jpg"
-                        alt="Wcar"
-                        title="Wcar"
+                        alt="wcar"
+                        title="wcar"
                         className="img-fluid w-100 bg_img d-block d-md-none"
                     />
                     <div className="content position-md-absolute">

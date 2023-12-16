@@ -139,7 +139,7 @@ const HomePage: FC<{}> = () => {
                         src="./assets/recs/lines_box.png"
                         className="d-none d-md-block"
                         title="wcar"
-                        alt="Wcar"
+                        alt="wcar"
                         style={{ position: "absolute", right: 0, bottom: 0 }}
                     />
                     <div className="container">
@@ -149,7 +149,7 @@ const HomePage: FC<{}> = () => {
                                     <img
                                         src="./assets/home/car_03.png"
                                         title="wcar"
-                                        alt="Wcar"
+                                        alt="wcar"
                                         className="object_cover"
                                     />
                                 </div>
@@ -157,14 +157,14 @@ const HomePage: FC<{}> = () => {
                             <div className="col-md-8 position-relative text-white px-5 ps-md-5 px-md-3 py-5">
                                 <img
                                     src="./assets/recs/lines_zigs.png"
-                                    alt="Wcar"
+                                    alt="wcar"
                                     title="wcar"
                                     style={{ position: "absolute", right: "5vw", top: "2vw" }}
                                 />
                                 <img
                                     src="./assets/recs/lines_box.png"
                                     className="d-block d-md-none"
-                                    alt="Wcar"
+                                    alt="wcar"
                                     title="wcar"
                                     style={{ position: "absolute", right: 0, bottom: 0 }}
                                 />

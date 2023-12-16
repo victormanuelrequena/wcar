@@ -169,7 +169,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
         <div className={`filter_component ps-5 pt-3 pe-4 ${isOpen && "open"}`}>
             <div className="back_drop" onClick={() => setIsOpen(false)}></div>
             <div className="w-100 d-flex align-items-center hover" onClick={() => setIsOpen(false)}>
-                <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
+                <img src="/assets/icons/filter.svg" alt="wcar" title="wcar" />
                 <span className="ms-2 py-3"></span>Ocultar filtros
             </div>
             <div className="my-3 model_filter">
@@ -187,8 +187,8 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                     >
                                         <img
                                             src={brand.image}
-                                            alt="Wcar"
-                                            title="Wcar"
+                                            alt="wcar"
+                                            title="wcar"
                                             className="img-fluid img_filter me-2"
                                         />
                                         <span>{brand.name}</span>

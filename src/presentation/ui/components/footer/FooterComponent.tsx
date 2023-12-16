@@ -34,7 +34,7 @@ const FooterComponent: FC<{}> = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-3 col-lg-6 mb-4 mb-md-0">
-                        <img className="mb-3" src="/assets/logos/horizontal.svg" alt="Wcar" title="Wcar" />
+                        <img className="mb-3" src="/assets/logos/horizontal.svg" alt="wcar" title="wcar" />
                         <br />
                         <span className="d-block">{SLOGAN}</span>
                         <br />
@@ -93,7 +93,7 @@ const FooterComponent: FC<{}> = () => {
                                 href="https://maps.app.goo.gl/HDat5NSBR9Ap2PyD8"
                                 target="_blank"
                             >
-                                Wcar Morato
+                                wcar Morato
                             </a>
                             <p>
                                 Calle 98a # 69B-35
@@ -105,7 +105,7 @@ const FooterComponent: FC<{}> = () => {
                                 href="https://maps.app.goo.gl/8NmdBefUDhEUd8Ud7"
                                 target="_blank"
                             >
-                                Wcar Sabana.
+                                wcar Sabana.
                             </a>
                             <p>
                                 Carrera 5 #9 - 26 sur, Cajicá, Cundinamarca Torre 3, Local 3. Sabana Park Health &
@@ -116,7 +116,7 @@ const FooterComponent: FC<{}> = () => {
                                 href="https://maps.app.goo.gl/DuoSfrxDbLMzExZq5"
                                 target="_blank"
                             >
-                                Wcar Taller.
+                                wcar Taller.
                             </a>
                             <p>Cra 69b #98-28</p>
                         </div>
@@ -195,8 +195,8 @@ const FooterComponent: FC<{}> = () => {
                     <div className="col-md-4 d-flex flex-column aling-items-center footer_sic align-items-md-start text_gray py-3 pb-md-0">
                         <img
                             src="/assets/logos/industria_y_comercio.png"
-                            alt="Wcar"
-                            title="Wcar"
+                            alt="wcar"
+                            title="wcar"
                             className="img_fluid mb-3 px-5 px-md-0"
                         />
                         <div className="text-center text-md-start">

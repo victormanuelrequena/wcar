@@ -116,8 +116,8 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                                     width: rect.width * 2.5,
                                     height: rect.height * 2.5,
                                 }}
-                                alt="Wcar"
-                                title="Wcar"
+                                alt="wcar"
+                                title="wcar"
                             />
                         </div>
                     )}
@@ -159,8 +159,8 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                                     <div className="position-relative">
                                         <img
                                             src={image}
-                                            alt="Wcar"
-                                            title="Wcar"
+                                            alt="wcar"
+                                            title="wcar"
                                             className="img-fluid w-100"
                                             style={{
                                                 objectFit: "fill",
@@ -206,7 +206,7 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
             <div className="images_thumbails mt-3">
                 {images.map((image, index) => (
                     <div className={`carousel_thumbail ${imageShowing == index && "active"}`} key={index}>
-                        <img src={image} alt="Wcar" title="Wcar" onClick={() => _handleGoToImage(index)} />
+                        <img src={image} alt="wcar" title="wcar" onClick={() => _handleGoToImage(index)} />
                     </div>
                 ))}
             </div>
