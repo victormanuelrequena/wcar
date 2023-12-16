@@ -604,8 +604,8 @@ const ContactPage: FC<{}> = () => {
                         </div>
                         <img
                             src="/assets/pages/contact/bg_contact.jpg"
-                            alt="Wcar"
-                            title="Wcar"
+                            alt="wcar"
+                            title="wcar"
                             className="img_fluid d-md-none w-100"
                         />
                     </div>

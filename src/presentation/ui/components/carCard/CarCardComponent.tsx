@@ -41,7 +41,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
             <img
                 src={car.photoUrl}
                 alt={`${car.name} ${car.brand.name} ${car.type.name}`}
-                title="Wcar"
+                title="wcar"
                 className="img-fluid img_car"
             />
             <div className="card-body">
@@ -70,8 +70,8 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                     <div className="col-3 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/calendar.svg"
-                            alt="Wcar"
-                            title="Wcar"
+                            alt="wcar"
+                            title="wcar"
                             className="img-fluid img_icon me-2"
                         />
                         <span>{car.year}</span>
@@ -79,8 +79,8 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                     <div className="col-4 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/odometer.svg"
-                            alt="Wcar"
-                            title="Wcar"
+                            alt="wcar"
+                            title="wcar"
                             className="img-fluid img_icon me-2"
                         />
                         <span className="text_nowrap">{car.odometer} Km.</span>
@@ -88,8 +88,8 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                     <div className="col-3 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/transmission.svg"
-                            alt="Wcar"
-                            title="Wcar"
+                            alt="wcar"
+                            title="wcar"
                             className="img-fluid img_icon me-1"
                         />
                         <span className="text_nowrap">{car.transmission}</span>
