@@ -99,7 +99,7 @@ const HomePage: FC<{}> = () => {
                                             </div>
                                             <div className="col-md-4 my-3">
                                                 <CardServiceComponent
-                                                    title="Garantía por seis meses."
+                                                    title="Garantía por seis meses.*"
                                                     image="/assets/icons/star.svg"
                                                     description="Puedes extenderla hasta 2 años si lo deseas."
                                                 />
