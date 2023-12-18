@@ -435,7 +435,7 @@ const DetailedCarPage: FC<{}> = () => {
                         </Helmet>
                     </section>
                     <section className="container w-100 d-flex flex-column justify-content-evenly" style={{height: "500px"}}>
-                        <Carousel1 id={car.id} />
+                        <Carousel1 carUrl={`cars-related/${car.id}`} />
                     </section>
                     <div className="container">
                         {relatedCars ? (

@@ -15,6 +15,8 @@ import AlliesLineComponent from "../../components/alliesLine/AlliesLineComponent
 import { routes } from "../../routes/RoutesComponent";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { Carousel1 } from "../../components/carousel/carousel";
+
 const HomePage: FC<{}> = () => {
     const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
 
@@ -207,6 +209,9 @@ const HomePage: FC<{}> = () => {
                             </h2>
                         </div>
                     </div>
+                    <section className="container w-100 d-flex flex-column justify-content-evenly" style={{height: "500px"}}>
+                        <Carousel1 carUrl={`cars/carousel`} />
+                    </section>
                     <div className="px-3 py-2 bg_gray">
                         <div className="container">
                             {cars ? (
