@@ -244,7 +244,7 @@ const BuyYourCarPage: FC<{}> = () => {
         <Layout>
             <Helmet>
                 <title>Compra tu Carro - wcar</title>
-                <meta name="description" content="Compra tu carro usado de forma fácil y segura con Wcar" />
+                <meta name="description" content="Compra tu carro usado de forma fácil y segura con wcar" />
                 <meta
                     name="keywords"
                     content="Compra o vende tu carro en Colombia, Vende tu carro en Colombia, Compra tu carro en Colombia, consejos para comprar carros usados en colombia, consejos para vender carros usados en colombia"
@@ -255,7 +255,7 @@ const BuyYourCarPage: FC<{}> = () => {
                     <div className="w-100 car_search bg_search py-3">
                         <div className="container d-flex flex-column flex-md-row px-md-5 justify-content-between align-items-center">
                             <div className="input_search">
-                                <img src="/assets/icons/search.svg" className="text_orange" alt="Wcar" title="Wcar" />
+                                <img src="/assets/icons/search.svg" className="text_orange" alt="wcar" title="wcar" />
                                 <input
                                     type="text"
                                     placeholder="Buscar por marca, modelo, color..."
@@ -330,6 +330,7 @@ const BuyYourCarPage: FC<{}> = () => {
                             )}
                             <div className={` ${openFilters ? "col-md-8 col-lg-9" : "col-md-12"} container_cars`}>
                                 <div className="d-none d-md-flex justify-content-between">
+
                                     <div className={`mt-1 ${openFilters && "md-d-none"}`}>
                                         <div
                                             className={`btn btn_light me-3 mt-2 ${
@@ -339,6 +340,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                         >
                                             <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
                                             <span className="ms-2">Filtrar</span>
+
                                         </div>
                                     </div>
                                     <div className="flex-grow-1">
@@ -351,10 +353,12 @@ const BuyYourCarPage: FC<{}> = () => {
                                     </div>
                                 </div>
                                 <div className="d-block d-md-none justify-content-between">
+
                                     <div className="mt-1 d-flex justify-content-between">
                                         <div className="btn btn_light me-3 mt-2" onClick={() => setOpenFilters(true)}>
                                             <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
                                             <span className="ms-2">Filtrar</span>
+
                                         </div>
                                         <Dropdown
                                             isOpen={openOrderBy}

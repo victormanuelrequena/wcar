@@ -25,6 +25,8 @@ import PreviewImage from "./component/PreviewImage";
 import ModalAmount from "./component/ModalAmount";
 import { InlineWidget, PopupButton } from "react-calendly";
 import { Carousel1 } from "../../../components/carousel/carousel";
+import { WebShare } from "../../../components/webShare/webShare";
+
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -103,6 +105,9 @@ const DetailedCarPage: FC<{}> = () => {
                                     <div className="col-12 col-lg-5 col-xl-4">
                                         <div>
                                             <div className="p-3 bg-white rounded w-100 mt-5 mt-lg-0">
+                                                <div className="mb-2 ms-1">
+                                                    <WebShare/>
+                                                </div>
                                                 <h1 className="name-car-detail">{capitalizeFirstLetters(car.name)}</h1>
                                                 <div
                                                     className="d-flex flex-row mt-2 justify-content-start"
@@ -111,8 +116,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <div className="d-flex align-items-center text_gray p-0">
                                                         <img
                                                             src="/assets/icons/calendar.svg"
-                                                            alt="Wcar"
-                                                            title="Wcar"
+                                                            alt="wcar"
+                                                            title="wcar"
                                                             className="img-fluid img_icon me-2"
                                                         />
                                                         <span className="text-spec">{car.year}</span>
@@ -120,8 +125,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <div className="d-flex align-items-center text_gray p-0 ms-2">
                                                         <img
                                                             src="/assets/icons/odometer.svg"
-                                                            alt="Wcar"
-                                                            title="Wcar"
+                                                            alt="wcar"
+                                                            title="wcar"
                                                             className="img-fluid img_icon me-2"
                                                         />
                                                         <span className="text_nowrap text-spec">
@@ -131,8 +136,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <div className="d-flex align-items-center text_gray p-0 ms-2">
                                                         <img
                                                             src="/assets/icons/transmission.svg"
-                                                            alt="Wcar"
-                                                            title="Wcar"
+                                                            alt="wcar"
+                                                            title="wcar"
                                                             className="img-fluid img_icon me-2"
                                                         />
                                                         <span className="text_nowrap text-spec">
@@ -209,8 +214,8 @@ const DetailedCarPage: FC<{}> = () => {
                                 <div className="col-12 col-md-3 bg_black">
                                     <img
                                         src="/assets/recs/lines_box_large.png"
-                                        alt="Wcar"
-                                        title="Wcar"
+                                        alt="wcar"
+                                        title="wcar"
                                         className="h-100 img-fluid bg_img"
                                     />
                                     <div className="d-flex flex-column align-items-center p-4">
@@ -246,8 +251,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/star.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Marca:
                                                         </span>
@@ -258,8 +263,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/door.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Puertas:
                                                         </span>
@@ -270,8 +275,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/reference.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Referencia:
                                                         </span>
@@ -282,8 +287,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/color.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Color:
                                                         </span>
@@ -294,8 +299,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/calendar.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Año:
                                                         </span>
@@ -306,8 +311,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/motor.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Motor:
                                                         </span>
@@ -318,8 +323,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/type_vehicle.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Carroceria:
                                                         </span>
@@ -330,8 +335,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/plate.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Placa:
                                                         </span>
@@ -346,8 +351,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/transmission.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Transmisión:
                                                         </span>
@@ -358,8 +363,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/combustible.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Combustible:
                                                         </span>
@@ -370,8 +375,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/odometer.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Kilometraje:
                                                         </span>
@@ -382,8 +387,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <img
                                                                 src="/assets/icons/status.svg"
                                                                 className="img-fluid me-2"
-                                                                alt="Wcar"
-                                                                title="Wcar"
+                                                                alt="wcar"
+                                                                title="wcar"
                                                             />
                                                             Estado:
                                                         </span>

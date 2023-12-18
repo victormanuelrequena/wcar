@@ -30,7 +30,7 @@ const BuyerPolicies: FC<{}> = () => {
                         <p>
                             WCAR se reserva el derecho de actualizar o modificar los presentes Términos y Condiciones,
                             en cualquier momento en que lo considere necesario. Estas modificaciones estarán disponibles
-                            al público a través de la página web Wcar.co.
+                            al público a través de la página web wcar.co.
                         </p>
 
                         <h3 className="mb-3">I. DEFINICIONES</h3>
@@ -41,7 +41,7 @@ const BuyerPolicies: FC<{}> = () => {
                         <p>
                             <strong>Plataforma tecnológica:</strong> Hace referencia al desarrollo tecnológico que
                             despliega WCAR a favor del COMPRADOR, a través de una página web y aplicación móvil
-                            denominada Wcar.co que permite vincular a personas interesadas en vender un vehículo con
+                            denominada wcar.co que permite vincular a personas interesadas en vender un vehículo con
                             aquellas interesadas en adquirirlo. Adicionalmente, permite prestar servicios de trámites de
                             traspaso, intermediación en la consecución de créditos, entre otros.
                         </p>
