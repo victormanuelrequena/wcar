@@ -16,7 +16,7 @@ export const WebShare = () => {
 
     const selectShareMedium = (socialMedia: string) => {
         const url = window.location.href;
-        const facebook = "https://www.facebook.com/sharer/sharer.php?u=" + url;
+        const facebook = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
         const twitter = `https://twitter.com/intent/tweet?url=${url}`;
         const whatsapp = `https://api.whatsapp.com/send?text=${url}`;
         const email = `mailto:?subject=${url}`;
