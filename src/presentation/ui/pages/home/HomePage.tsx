@@ -249,7 +249,7 @@ const HomePage: FC<{}> = () => {
                                     ))}
                                 </SliderComponent>
                             ) : (
-                                <div>loading</div>
+                                <div></div>
                             )}
                         </div>
                     </div>
