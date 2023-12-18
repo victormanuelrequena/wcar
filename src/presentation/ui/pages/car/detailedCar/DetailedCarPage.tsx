@@ -24,6 +24,8 @@ import ModalsContext from "../../../../../domain/providers/modal/ModalsContext";
 import PreviewImage from "./component/PreviewImage";
 import ModalAmount from "./component/ModalAmount";
 import { InlineWidget, PopupButton } from "react-calendly";
+import { Carousel1 } from "../../../components/carousel/carousel";
+import { WebShare } from "../../../components/webShare/webShare";
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -102,6 +104,9 @@ const DetailedCarPage: FC<{}> = () => {
                                     <div className="col-12 col-lg-5 col-xl-4">
                                         <div>
                                             <div className="p-3 bg-white rounded w-100 mt-5 mt-lg-0">
+                                                <div className="mb-2 ms-1">
+                                                    <WebShare/>
+                                                </div>
                                                 <h1 className="name-car-detail">{capitalizeFirstLetters(car.name)}</h1>
                                                 <div
                                                     className="d-flex flex-row mt-2 justify-content-start"
@@ -427,6 +432,9 @@ const DetailedCarPage: FC<{}> = () => {
                         <Helmet>
                             <script src="https://integrator.swipetospin.com" />
                         </Helmet>
+                    </section>
+                    <section className="container w-100 d-flex flex-column justify-content-evenly" style={{height: "500px"}}>
+                        <Carousel1 id={car.id} />
                     </section>
                     <div className="container">
                         {relatedCars ? (
