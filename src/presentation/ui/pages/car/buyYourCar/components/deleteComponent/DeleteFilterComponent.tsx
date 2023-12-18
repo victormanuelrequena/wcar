@@ -135,7 +135,7 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
             )}
             {type && (
                 <Helmet>
-                    <title>{type.name} | wcar</title>
+                    <title>{type.name === "Camioneta - SUV" ? "Camionetas usadas" : type.name} | wcar</title>
                     {type.id == "3" && (
                         <>
                             <meta

@@ -299,11 +299,19 @@ const BuyYourCarPage: FC<{}> = () => {
                     <div className="car_list from_left_2">
                         <div className="row">
                             <div
-                                className={`bg_white mb-5 mb-md-0  ${
+                                className={`bg_white mb-md-0  ${
                                     openFilters ? "col-md-4 col-lg-3" : "d-none"
-                                }  position-relative `}
+                                }  position-relative`}
+                                style={{ zIndex: 999999 }}
                             >
-                                <div className={"position-sticky top-0 pe-2 scroll-filter"}>
+                                {/* <div className={"position-sticky top-0 pe-2 scroll-filter"}>
+                                    <FilterComponent
+                                        formFunctions={formFunctions}
+                                        isOpen={openFilters}
+                                        setIsOpen={setOpenFilters}
+                                    />
+                                </div> */}
+                                <div className={"pe-2 scroll-filter"}>
                                     <FilterComponent
                                         formFunctions={formFunctions}
                                         isOpen={openFilters}
@@ -311,19 +319,30 @@ const BuyYourCarPage: FC<{}> = () => {
                                     />
                                 </div>
                             </div>
+                            {openFilters && (
+                                <div
+                                    className="bg-filters"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setOpenFilters(false);
+                                    }}
+                                ></div>
+                            )}
                             <div className={` ${openFilters ? "col-md-8 col-lg-9" : "col-md-12"} container_cars`}>
                                 <div className="d-none d-md-flex justify-content-between">
-                                    {!openFilters && (
-                                        <div className="mt-1">
-                                            <div
-                                                className="btn btn_light me-3 mt-2"
-                                                onClick={() => setOpenFilters(true)}
-                                            >
-                                                <img src="/assets/icons/filter.svg" alt="wcar" title="wcar" />
-                                                <span className="ms-2">Filtrar</span>
-                                            </div>
+
+                                    <div className={`mt-1 ${openFilters && "md-d-none"}`}>
+                                        <div
+                                            className={`btn btn_light me-3 mt-2 ${
+                                                !openFilters ? "filter-btn-visible" : "filter-btn-hidden"
+                                            }`}
+                                            onClick={() => setOpenFilters(true)}
+                                        >
+                                            <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
+                                            <span className="ms-2">Filtrar</span>
+
                                         </div>
-                                    )}
+                                    </div>
                                     <div className="flex-grow-1">
                                         <DeleteFilterComponent formFunctions={formFunctions} onChange={_handleSearch} />
                                     </div>
@@ -334,50 +353,47 @@ const BuyYourCarPage: FC<{}> = () => {
                                     </div>
                                 </div>
                                 <div className="d-block d-md-none justify-content-between">
-                                    {!openFilters && (
-                                        <div className="mt-1 d-flex justify-content-between">
-                                            <div
-                                                className="btn btn_light me-3 mt-2"
-                                                onClick={() => setOpenFilters(true)}
-                                            >
-                                                <img src="/assets/icons/filter.svg" alt="wcar" title="wcar" />
-                                                <span className="ms-2">Filtrar</span>
-                                            </div>
-                                            <Dropdown
-                                                isOpen={openOrderBy}
-                                                className=""
-                                                toggle={() =>
-                                                    window.screen.width < 768 ? setOpenOrderBy(!openOrderBy) : null
-                                                }
-                                            >
-                                                <DropdownToggle className="btn btn_light mt-2">
-                                                    Ordenar por:{" "}
-                                                    <strong className="order_button hover">
-                                                        {orderingOptions.find(
-                                                            (orderItem) =>
-                                                                orderItem.value?.keyname ==
-                                                                    watch("orderBy")?.value?.keyname &&
-                                                                orderItem.value?.desc == watch("orderBy")?.value?.desc
-                                                        )?.label ??
-                                                            orderingOptions?.[0]?.label ??
-                                                            ""}
-                                                    </strong>
-                                                </DropdownToggle>
 
-                                                <DropdownMenu>
-                                                    {orderingOptions.map((option, index) => (
-                                                        <DropdownItem
-                                                            key={index}
-                                                            active={watch("orderBy") === option}
-                                                            onClick={() => _handlePickOrderBy(option)}
-                                                        >
-                                                            {option.label}
-                                                        </DropdownItem>
-                                                    ))}
-                                                </DropdownMenu>
-                                            </Dropdown>
+                                    <div className="mt-1 d-flex justify-content-between">
+                                        <div className="btn btn_light me-3 mt-2" onClick={() => setOpenFilters(true)}>
+                                            <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
+                                            <span className="ms-2">Filtrar</span>
+
                                         </div>
-                                    )}
+                                        <Dropdown
+                                            isOpen={openOrderBy}
+                                            className=""
+                                            toggle={() =>
+                                                window.screen.width < 768 ? setOpenOrderBy(!openOrderBy) : null
+                                            }
+                                        >
+                                            <DropdownToggle className="btn btn_light mt-2">
+                                                Ordenar por:{" "}
+                                                <strong className="order_button hover">
+                                                    {orderingOptions.find(
+                                                        (orderItem) =>
+                                                            orderItem.value?.keyname ==
+                                                                watch("orderBy")?.value?.keyname &&
+                                                            orderItem.value?.desc == watch("orderBy")?.value?.desc
+                                                    )?.label ??
+                                                        orderingOptions?.[0]?.label ??
+                                                        ""}
+                                                </strong>
+                                            </DropdownToggle>
+
+                                            <DropdownMenu>
+                                                {orderingOptions.map((option, index) => (
+                                                    <DropdownItem
+                                                        key={index}
+                                                        active={watch("orderBy") === option}
+                                                        onClick={() => _handlePickOrderBy(option)}
+                                                    >
+                                                        {option.label}
+                                                    </DropdownItem>
+                                                ))}
+                                            </DropdownMenu>
+                                        </Dropdown>
+                                    </div>
                                     <div className="flex-grow-1">
                                         <DeleteFilterComponent formFunctions={formFunctions} onChange={_handleSearch} />
                                     </div>

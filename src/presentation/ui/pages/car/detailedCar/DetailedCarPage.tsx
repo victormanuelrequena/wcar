@@ -27,6 +27,7 @@ import { InlineWidget, PopupButton } from "react-calendly";
 import { Carousel1 } from "../../../components/carousel/carousel";
 import { WebShare } from "../../../components/webShare/webShare";
 
+
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
     const [car, setCar] = useState<CarEntity | undefined | null>(undefined);

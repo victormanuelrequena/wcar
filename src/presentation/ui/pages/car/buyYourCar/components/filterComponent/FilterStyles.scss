@@ -1,4 +1,15 @@
 .filter_component {
+    // position: fixed;
+    z-index: 9999999999999999999999999999;
+    background: #fff;
+    width: 320px;
+    // left: 20px;
+    // top: 170px;
+    padding-bottom: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
     .model_filter {
         .img_filter {
             width: 2em;
@@ -9,7 +20,6 @@
         // font-size: 0.8em;
         color: var(--color-gray);
     }
-
 
     .options_box_container {
         display: flex;
@@ -65,5 +75,11 @@
                 }
             }
         }
+    }
+}
+
+@media (min-width: 768px) {
+    .filter_component {
+        width: auto;
     }
 }

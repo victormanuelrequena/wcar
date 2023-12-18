@@ -5,9 +5,11 @@ import "react-multi-carousel/lib/styles.css";
 import "./carouselStyles.scss";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
+
 export const Carousel1: FC<{ id: string }> = ({ id }) => {
     const [cards, setCards] = useState([]);
     const [indexCard, setIndexCard] = useState<number>(0);
+
     const carouselRef = useRef(null);
 
     useEffect(() => {
@@ -31,12 +33,14 @@ export const Carousel1: FC<{ id: string }> = ({ id }) => {
         }
     };
 
+
     const goToIndex = (index: number) => {
         if (carouselRef.current) {
             carouselRef.current.goToSlide(index);
             setIndexCard(index);
         }
     };
+
 
     const responsive = {
         desktop: {
@@ -56,7 +60,9 @@ export const Carousel1: FC<{ id: string }> = ({ id }) => {
     return (
         <>
             <Carousel
+
                 partialVisible
+
                 ref={carouselRef}
                 responsive={responsive}
                 removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
@@ -80,6 +86,7 @@ export const Carousel1: FC<{ id: string }> = ({ id }) => {
                 </div>
                 <div className="container_item_card d-flex flex-wrap justify-content-around align-items-center">
                     {cards.map((card, i) => {
+
                         return (
                             <div
                                 className={`item_card ${indexCard === i ? "active" : "disabled"}`}
@@ -87,6 +94,7 @@ export const Carousel1: FC<{ id: string }> = ({ id }) => {
                                 onClick={() => goToIndex(i)}
                             ></div>
                         );
+
                     })}
                 </div>
             </div>

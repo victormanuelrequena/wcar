@@ -13,16 +13,16 @@ const FooterComponent: FC<{}> = () => {
     };
 
     const location1 = {
-        lat: 4.692129381386467,
-        lng: -74.07610437567183,
+        lat: 4.691959880308249,
+        lng: -74.07611493603319,
     };
     const location2 = {
-        lat: 4.9019198382935745,
-        lng: -74.03035805172732,
+        lat: 4.902005263873653,
+        lng: -74.03039745767153,
     };
     const location3 = {
-        lat: 4.6337959,
-        lng: -74.1306854,
+        lat: 4.691388319180716,
+        lng: -74.07598815868705,
     };
     const center = {
         lat: (location1.lat + location2.lat) / 2,

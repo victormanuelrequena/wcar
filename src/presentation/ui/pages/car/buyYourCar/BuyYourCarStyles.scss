@@ -1,4 +1,25 @@
 .buy_your_car_page {
+    .scroll-filter {
+        overflow: scroll;
+        max-height: 65vh;
+        scrollbar-width: none;
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        left: 34px;
+        top: 60px;
+        position: absolute;
+    }
+    .bg-filters {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1000;
+    }
+
     .bg_search {
         background-image: url(../../../../../../public/assets/recs/bg_search.png);
         background-repeat: no-repeat;
@@ -112,6 +133,13 @@
     }
 }
 
+.filter-btn-visible {
+    display: flex;
+}
+.filter-btn-hidden {
+    display: flex;
+}
+
 // .car_seo {
 //     h1 {
 //         font-size: 10px !important;
@@ -132,12 +160,19 @@
         display: flex;
         justify-content: center;
     }
-    .scroll-filter {
-        overflow: scroll;
-        max-height: 100vh;
-        scrollbar-width: none;
-        ::-webkit-scrollbar {
-            display: none;
+    .filter-btn-hidden {
+        display: none;
+    }
+    .buy_your_car_page {
+        .scroll-filter {
+            overflow: scroll;
+            max-height: 100vh;
+            left: 0;
+            top: 0;
+            position: sticky;
         }
+    }
+    .bg-filters {
+        display: none;
     }
 }
