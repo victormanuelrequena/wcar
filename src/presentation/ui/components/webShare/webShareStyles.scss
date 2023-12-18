@@ -1,0 +1,61 @@
+.share {
+    height: 30px;
+    width: 170px;
+    margin-left: 30px;
+}
+
+.icon_container {
+    cursor: pointer;
+    animation-name: slideIn;
+    animation-duration: 1s;
+}
+
+.icon_close {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+
+    .icon {
+        height: 25px;
+        width: 25px;
+    }
+}
+
+.icon {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.facebook {
+    color: #3b5998;
+}
+
+.twitter {
+    color: #00acee;
+}
+
+.whatsapp {
+    color: #25d366;
+}
+
+.email {
+    color: gray;
+}
+
+.separation {
+    height: 20px;
+    width: 1px;
+    background-color: gray;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
