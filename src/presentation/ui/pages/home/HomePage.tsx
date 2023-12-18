@@ -99,7 +99,7 @@ const HomePage: FC<{}> = () => {
                                             </div>
                                             <div className="col-md-4 my-3">
                                                 <CardServiceComponent
-                                                    title="Garantía light por seis meses."
+                                                    title="Garantía por seis meses."
                                                     image="/assets/icons/star.svg"
                                                     description="Puedes extenderla hasta 2 años si lo deseas."
                                                 />
@@ -209,7 +209,10 @@ const HomePage: FC<{}> = () => {
                             </h2>
                         </div>
                     </div>
-                    <section className="container w-100 d-flex flex-column justify-content-evenly" style={{height: "500px"}}>
+                    <section
+                        className="container w-100 d-flex flex-column justify-content-evenly"
+                        style={{ height: "500px" }}
+                    >
                         <Carousel1 carUrl={`cars/carousel`} />
                     </section>
                     <div className="px-3 py-2 bg_gray">
