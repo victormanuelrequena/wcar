@@ -3,7 +3,7 @@
         z-index: 0;
         background-color: var(--color-gray-light);
 
-        &>* {
+        & > * {
             position: relative;
             z-index: 0;
         }
@@ -19,8 +19,8 @@
         position: relative;
 
         &::before {
-            content: '';
-            background-image: url('./../../../../../public/assets/home/car_02.png');
+            content: "";
+            background-image: url("./../../../../../public/assets/home/car_02.png");
             position: absolute;
             left: 0;
             top: -70%;
@@ -34,6 +34,11 @@
             &::before {
                 content: none;
                 display: none;
+            }
+        }
+        @media (min-width: 900px) and (max-width: 1000px) {
+            &::before {
+                right: 70%;
             }
         }
     }
@@ -51,7 +56,7 @@
         }
 
         &::before {
-            content: '';
+            content: "";
             background-color: black;
             position: absolute;
             left: 25%;
@@ -70,7 +75,7 @@
             }
         }
 
-        @media screen and (min-width:768px) {
+        @media screen and (min-width: 768px) {
             .img_section {
                 height: 150%;
                 min-height: 200px;
@@ -81,9 +86,7 @@
                 top: -20%;
                 bottom: 0;
                 border-right: solid 1em white;
-
             }
-
         }
     }
 
@@ -93,9 +96,9 @@
 
         @media screen and (min-width: 768px) {
             &::before {
-                content: '';
+                content: "";
                 background-color: black;
-                background-image: url('./../../../../../public/assets/recs/lines_box_large.png');
+                background-image: url("./../../../../../public/assets/recs/lines_box_large.png");
                 background-repeat: no-repeat;
                 background-size: contain;
                 position: absolute;
@@ -106,7 +109,6 @@
                 z-index: 0;
             }
         }
-
     }
 }
 
@@ -134,7 +136,7 @@
         }
     }
 
-    .home_page~.footer {
+    .home_page ~ .footer {
         background-color: var(--color-gray-light) !important;
     }
 }
