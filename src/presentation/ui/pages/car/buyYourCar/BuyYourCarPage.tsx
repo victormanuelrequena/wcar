@@ -330,7 +330,6 @@ const BuyYourCarPage: FC<{}> = () => {
                             )}
                             <div className={` ${openFilters ? "col-md-8 col-lg-9" : "col-md-12"} container_cars`}>
                                 <div className="d-none d-md-flex justify-content-between">
-
                                     <div className={`mt-1 ${openFilters && "md-d-none"}`}>
                                         <div
                                             className={`btn btn_light me-3 mt-2 ${
@@ -340,7 +339,6 @@ const BuyYourCarPage: FC<{}> = () => {
                                         >
                                             <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
                                             <span className="ms-2">Filtrar</span>
-
                                         </div>
                                     </div>
                                     <div className="flex-grow-1">
@@ -353,12 +351,10 @@ const BuyYourCarPage: FC<{}> = () => {
                                     </div>
                                 </div>
                                 <div className="d-block d-md-none justify-content-between">
-
-                                    <div className="mt-1 d-flex justify-content-between">
-                                        <div className="btn btn_light me-3 mt-2" onClick={() => setOpenFilters(true)}>
+                                    <div className="mt-1 d-flex flex-row-reverse justify-content-between">
+                                        <div className="btn btn_light mt-2" onClick={() => setOpenFilters(true)}>
                                             <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
                                             <span className="ms-2">Filtrar</span>
-
                                         </div>
                                         <Dropdown
                                             isOpen={openOrderBy}
