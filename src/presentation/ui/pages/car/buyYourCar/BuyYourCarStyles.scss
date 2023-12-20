@@ -1,12 +1,12 @@
 .buy_your_car_page {
     .scroll-filter {
         overflow: scroll;
-        max-height: 65vh;
+        max-height: 78vh;
         scrollbar-width: none;
         ::-webkit-scrollbar {
             display: none;
         }
-        left: 34px;
+        right: 10px;
         top: 60px;
         position: absolute;
     }
