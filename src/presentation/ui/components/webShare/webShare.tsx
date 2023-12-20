@@ -69,7 +69,7 @@ export const WebShare = () => {
             <div
                 className="icon_close position-absolute d-flex justify-content-center align-items-center"
                 style={{ border: isShare ? "1px solid gray" : "0" }}
-                onClick={isMobile ? () => webShareApi({ url: "window.location.href" }) : openShareMenu}
+                onClick={isMobile ? () => webShareApi({ url: window.location.href }) : openShareMenu}
             >
                 {isShare ? <IoMdClose className="icon" /> : <HiOutlinePaperAirplane className="icon" />}
             </div>
