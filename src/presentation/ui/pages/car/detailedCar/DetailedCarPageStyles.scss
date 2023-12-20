@@ -61,4 +61,34 @@
         line-height: 22px;
         color: #90aebf;
     }
+
+    .description {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+    }
+
+    .item {
+        margin: 0;
+    }
+
+    .item:nth-last-child(1),
+    .item:nth-last-child(2),
+    .item:nth-last-child(3) {
+        grid-column: 1/4;
+    }
 }
+
+@media screen and (max-width: 767px) {
+    .description {
+        grid-template-columns: 1fr !important;
+
+        .item:nth-last-child(1),
+        .item:nth-last-child(2),
+        .item:nth-last-child(3) {
+            grid-column: 1/2;
+        }
+    }
+}
+
+// 767
