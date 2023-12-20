@@ -74,6 +74,9 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.termAndConditionsSalesYesOrYes.relativePath} className="my-1">
                                 Términos y Condiciones "Vende tu Carro Si o Si"
                             </Link>
+                            <Link to={routes.termAndConditions.relativePath} className="my-1">
+                                Términos y Condiciones
+                            </Link>
 
                             {/* <Link to={routes.blog.relativePath} className="my-1">Blog</Link> */}
                         </div>
