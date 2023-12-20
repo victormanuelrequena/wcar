@@ -1,9 +1,10 @@
-.delete_filter_component{
+.delete_filter_component {
     padding: 1em 0;
     display: flex;
     flex-wrap: wrap;
+    padding-left: 32px;
 
-    .delete_filter_item{
+    .delete_filter_item {
         color: var(--color-orange);
         padding: 0.5em 1em;
         display: flex;
@@ -13,15 +14,21 @@
         border: solid thin var(--color-gray);
         margin-right: 0.5em;
 
-        svg{
+        svg {
             margin-left: 0.5em;
             color: var(--color-gray);
         }
 
-        .color_fill{
+        .color_fill {
             width: 1em;
             height: 1em;
             border-radius: 100%;
         }
+    }
+}
+
+@media (min-width: 700px) {
+    .delete_filter_component {
+        padding-left: 6px;
     }
 }

@@ -34,6 +34,7 @@ import {
     contentListUsedTrucksSeo,
     contentListUsedTrucksSeo2,
 } from "./constants";
+import BannerYourCar from "./components/banner/BannerYourCar";
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -329,6 +330,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                 ></div>
                             )}
                             <div className={` ${openFilters ? "col-md-8 col-lg-9" : "col-md-12"} container_cars`}>
+                                {typeVehicleId === "8" && fuelId !== "Híbrido" && <BannerYourCar />}
                                 <div className="d-none d-md-flex justify-content-between">
                                     <div className={`mt-1 ${openFilters && "md-d-none"}`}>
                                         <div
@@ -390,6 +392,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                             </DropdownMenu>
                                         </Dropdown>
                                     </div>
+                                    {typeVehicleId === "8" && fuelId !== "Híbrido" && <BannerYourCar />}
                                     <div className="flex-grow-1">
                                         <DeleteFilterComponent formFunctions={formFunctions} onChange={_handleSearch} />
                                     </div>
