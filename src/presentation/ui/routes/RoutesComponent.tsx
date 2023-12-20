@@ -38,6 +38,7 @@ import TermAndConditionsUser from "../pages/policies/TermAndConditionsUser";
 import TermAndConditionsSalseYesOrYes from "../pages/policies/TermAndConditionsSalesYesOrYes";
 import TermAndConditionsNewUsed6MonthWarrany from "../pages/policies/TermAndConditionsNewUsed6MonthWarrany";
 import TermAndConditionsNewUsed6MonthWarrany2 from "../pages/policies/TermAndConditionsNewUsed6MonthWarrany2";
+import TermAndConditions from "../pages/policies/termAndConditions";
 
 export interface iRoute {
     name: string;
@@ -239,6 +240,11 @@ const routes = {
         path: "/tu-nuevo-usado-en-wcar-con-garantica-de-6-meses2",
         relativePath: "/tu-nuevo-usado-en-wcar-con-garantica-de-6-meses2",
         component: TermAndConditionsNewUsed6MonthWarrany2,
+    },
+    termAndConditions: {
+        path: "/terminos-y-condiciones-garantia",
+        relativePath: "/terminos-y-condiciones-garantia",
+        component: TermAndConditions,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
