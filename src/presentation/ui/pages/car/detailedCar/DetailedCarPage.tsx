@@ -37,6 +37,8 @@ const DetailedCarPage: FC<{}> = () => {
     const [open, setOpen] = useState(false);
     const rootElement = useRef(null);
 
+    console.log(car?.description.replace(/\n/g, "\n").split("\n"));
+
     const _getCar = async () => {
         try {
             const car = await di.get<GetCarByIdUseCase>(GetCarByIdUseCaseName).call(id!);
@@ -105,7 +107,7 @@ const DetailedCarPage: FC<{}> = () => {
                                         <div>
                                             <div className="p-3 bg-white rounded w-100 mt-5 mt-lg-0">
                                                 <div className="mb-2 ms-1">
-                                                    <WebShare/>
+                                                    <WebShare />
                                                 </div>
                                                 <h1 className="name-car-detail">{capitalizeFirstLetters(car.name)}</h1>
                                                 <div
@@ -407,7 +409,19 @@ const DetailedCarPage: FC<{}> = () => {
                                         <h3 className="text_bold side side_top">
                                             <strong>Descripción</strong>
                                         </h3>
-                                        <div dangerouslySetInnerHTML={{ __html: car.description ?? "" }}></div>
+                                        <div className="description">
+                                            {car?.description
+                                                .split("\n")
+                                                .map((item, i) => {
+                                                    return (
+                                                        item !== "\r" && (
+                                                            <p key={i} className="item">
+                                                                {item}
+                                                            </p>
+                                                        )
+                                                    );
+                                                })}
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-md-3"></div>
@@ -427,7 +441,10 @@ const DetailedCarPage: FC<{}> = () => {
                             <script src="https://integrator.swipetospin.com" />
                         </Helmet>
                     </section>
-                    <section className="container w-100 d-flex flex-column justify-content-evenly" style={{height: "500px"}}>
+                    <section
+                        className="container w-100 d-flex flex-column justify-content-evenly"
+                        style={{ height: "500px" }}
+                    >
                         <Carousel1 carUrl={`cars-related/${car.id}`} />
                     </section>
                     <div className="container">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
@@ -9,6 +9,20 @@ import "./webShareStyles.scss";
 
 export const WebShare = () => {
     const [isShare, setIsShare] = useState<boolean>(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 800);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        // Limpiar el evento al desmontar el componente
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     const openShareMenu = () => {
         setIsShare(!isShare);
@@ -19,7 +33,7 @@ export const WebShare = () => {
         const facebook = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
         const twitter = `https://twitter.com/intent/tweet?url=${url}`;
         const whatsapp = `https://api.whatsapp.com/send?text=${url}`;
-        const email = `mailto:?subject=${url}`;
+        const email = `mailto:?body=${url}`;
 
         switch (socialMedia) {
             case "facebook":
@@ -39,12 +53,23 @@ export const WebShare = () => {
         }
     };
 
+    const webShareApi = (obj) => {
+        if (navigator.share) {
+            navigator
+                .share(obj)
+                .then(() => console.log("share"))
+                .catch((e) => console.error(e));
+        } else {
+            setIsShare(!isShare);
+        }
+    };
+
     return (
         <div className="position-relative">
             <div
                 className="icon_close position-absolute d-flex justify-content-center align-items-center"
                 style={{ border: isShare ? "1px solid gray" : "0" }}
-                onClick={openShareMenu}
+                onClick={isMobile ? () => webShareApi({ url: "window.location.href" }) : openShareMenu}
             >
                 {isShare ? <IoMdClose className="icon" /> : <HiOutlinePaperAirplane className="icon" />}
             </div>
