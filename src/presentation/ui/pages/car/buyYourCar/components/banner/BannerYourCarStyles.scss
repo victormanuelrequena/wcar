@@ -1,0 +1,36 @@
+div.banner {
+    margin-left: 32px;
+    margin-right: 32px;
+    background: #ec671b;
+    padding: 16px 24px;
+    border-radius: 8px;
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 10px;
+}
+
+div.banner > .lines {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+}
+
+div.banner > h1 {
+    text-align: left;
+    color: white;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 30px;
+    font-family: "Urbanist";
+}
+
+@media (min-width: 700px) {
+    div.banner {
+        margin: 0;
+        margin-top: 24px;
+        margin-bottom: 10px;
+    }
+}

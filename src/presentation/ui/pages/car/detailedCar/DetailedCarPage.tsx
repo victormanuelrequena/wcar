@@ -27,7 +27,6 @@ import { InlineWidget, PopupButton } from "react-calendly";
 import { Carousel1 } from "../../../components/carousel/carousel";
 import { WebShare } from "../../../components/webShare/webShare";
 
-
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
     const [car, setCar] = useState<CarEntity | undefined | null>(undefined);
@@ -90,6 +89,10 @@ const DetailedCarPage: FC<{}> = () => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    useEffect(() => {
+        console.log("CAR TAG", car?.tag?.name);
+    }, [car]);
 
     return (
         <Layout>
@@ -155,7 +158,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                 </div>
                                                 <div className="text_ellipsis">
                                                     <h3 className="text_bold car-price">
-                                                        {CurrencyParse.toCop(car.discount_price ?? car.price)}
+                                                        {car?.tag?.name !== "Reservado" &&
+                                                            CurrencyParse.toCop(car.discount_price ?? car.price)}
                                                     </h3>
                                                     {car.discount_price && (
                                                         <h5 className="text_bold text_gray text_through">
@@ -177,12 +181,14 @@ const DetailedCarPage: FC<{}> = () => {
                                                         VER PERITAJE <Icons.Download />{" "}
                                                     </div>
                                                     <div style={{ display: "flex", flexWrap: "wrap" }}>
-                                                        <div
-                                                            onClick={_bookCarWithPayment}
-                                                            className="btn btn_orange my-1 me-3 btn-detailed-car"
-                                                        >
-                                                            SEPÁRALO AQUÍ <Icons.ArrowCircle />
-                                                        </div>
+                                                        {car?.tag?.name !== "Reservado" && (
+                                                            <div
+                                                                onClick={_bookCarWithPayment}
+                                                                className="btn btn_orange my-1 me-3 btn-detailed-car"
+                                                            >
+                                                                SEPÁRALO AQUÍ <Icons.ArrowCircle />
+                                                            </div>
+                                                        )}
 
                                                         {/* <Link
                                                             target="_blank"
