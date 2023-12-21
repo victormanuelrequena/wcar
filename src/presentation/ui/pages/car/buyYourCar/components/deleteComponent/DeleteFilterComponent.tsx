@@ -15,6 +15,7 @@ import Icons from "../../../../../assets/Icons";
 import { Helmet } from "react-helmet-async";
 import { TransmissionCar } from "../../../../../../../domain/entities/CarEntity";
 import CurrencyParse from "../../../../../../utils/CurrencyParse";
+import { useNavigate } from "react-router-dom";
 
 const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, onChange }) => {
     const { setValue, watch } = formFunctions;
@@ -23,6 +24,7 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
     const { tags } = useContext(TagContext) as TagContextType;
     const { typeOfFuels } = useContext(TypeOfFuelContext) as TypeOfFuelContextType;
     const { typeVehicles } = useContext(TypeVehicleContext) as TypeVehicleContextType;
+    const navigate = useNavigate();
 
     const brand = brands.find((brand) => brand.id === watch("brand_id"));
     const model = watch("model");
@@ -61,8 +63,14 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
         _handleRemoveQueryParam("price");
     };
     const _handleRemoveType = () => {
-        setValue("type_vehcile_id", undefined);
-        _handleRemoveQueryParam("type_vehicle");
+        if (type.id.toString() === "8") {
+            setValue("type_vehcile_id", undefined);
+            _handleRemoveQueryParam("type_vehicle");
+            navigate("/compra-tu-carro/");
+        } else {
+            setValue("type_vehcile_id", undefined);
+            _handleRemoveQueryParam("type_vehicle");
+        }
     };
     const _handleRemoveTransmission = () => {
         setValue("type_transmission", undefined);
