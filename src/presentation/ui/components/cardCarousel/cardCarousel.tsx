@@ -20,7 +20,7 @@ export const CardCarousel: FC<{ car: any }> = ({ car }) => {
             <img
                 src={car?.image_first}
                 alt={`${car?.car} ${car?.brand_car.brand} ${car?.type.type}`}
-                title="Wcar"
+                title="wcar"
                 className="img_car"
             />
             <div className="card-body rounded-bottom p-2 d-flex flex-column">
@@ -52,8 +52,8 @@ export const CardCarousel: FC<{ car: any }> = ({ car }) => {
                     <div className="col-3 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/calendar.svg"
-                            alt="Wcar"
-                            title="Wcar"
+                            alt="wcar"
+                            title="wcar"
                             className="img-fluid img_icon me-2"
                         />
                         <span>{car?.year}</span>
@@ -61,8 +61,8 @@ export const CardCarousel: FC<{ car: any }> = ({ car }) => {
                     <div className="col-4 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/odometer.svg"
-                            alt="Wcar"
-                            title="Wcar"
+                            alt="wcar"
+                            title="wcar"
                             className="img-fluid img_icon me-2"
                         />
                         <span className="text_nowrap">{car?.mileage} Km.</span>
@@ -70,8 +70,8 @@ export const CardCarousel: FC<{ car: any }> = ({ car }) => {
                     <div className="col-3 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/transmission.svg"
-                            alt="Wcar"
-                            title="Wcar"
+                            alt="wcar"
+                            title="wcar"
                             className="img-fluid img_icon me-1"
                         />
                         <span className="text_nowrap">{car?.transmission === 1 ? "Automática" : "Manual"}</span>

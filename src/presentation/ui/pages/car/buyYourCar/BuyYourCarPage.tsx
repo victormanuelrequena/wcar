@@ -339,7 +339,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                             }`}
                                             onClick={() => setOpenFilters(true)}
                                         >
-                                            <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
+                                            <img src="/assets/icons/filter.svg" alt="wcar" title="wcar" />
                                             <span className="ms-2">Filtrar</span>
                                         </div>
                                     </div>
@@ -355,7 +355,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                 <div className="d-block d-md-none justify-content-between">
                                     <div className="mt-1 d-flex flex-row-reverse justify-content-between">
                                         <div className="btn btn_light mt-2" onClick={() => setOpenFilters(true)}>
-                                            <img src="/assets/icons/filter.svg" alt="Wcar" title="Wcar" />
+                                            <img src="/assets/icons/filter.svg" alt="wcar" title="wcar" />
                                             <span className="ms-2">Filtrar</span>
                                         </div>
                                         <Dropdown
