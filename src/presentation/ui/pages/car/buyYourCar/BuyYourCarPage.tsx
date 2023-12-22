@@ -35,6 +35,7 @@ import {
     contentListUsedTrucksSeo2,
 } from "./constants";
 import BannerYourCar from "./components/banner/BannerYourCar";
+import { useNavigate } from "react-router-dom";
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -61,6 +62,7 @@ const orderingOptions: OrderByEntity[] = [
 ];
 
 const BuyYourCarPage: FC<{}> = () => {
+    const navigate = useNavigate();
     const formFunctions = useForm();
     const {
         register,
@@ -221,6 +223,7 @@ const BuyYourCarPage: FC<{}> = () => {
     const _handleClearFilters = async () => {
         reset();
         setPage(1);
+        navigate("/compra-tu-carro/");
     };
 
     const _handlePickOrderBy = (orderByValue: OrderByEntity) => {

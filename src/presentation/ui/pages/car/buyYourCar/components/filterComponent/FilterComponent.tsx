@@ -129,7 +129,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
         (async () => {
             const model = searchParams.get("model");
             const brandFound = brands.find((b) => b.name === brand);
-            const modelsData = await di.get<GetModelsByBrandUseCase>(GetModelsByBrandUseCaseName).call(brandFound.id);
+            const modelsData = await di.get<GetModelsByBrandUseCase>(GetModelsByBrandUseCaseName).call(brandFound?.id);
             setModels(modelsData);
             if (model) {
                 const modelFound = modelsData.find((m) => m.name === model);
@@ -252,7 +252,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                     className="form-check-input"
                                     type="radio"
                                     value={typeVehicle.id}
-                                    checked={watch("type_vehcile_id") == typeVehicle.id}
+                                    checked={watch("type_vehcile_id") === typeVehicle.id}
                                     onChange={(e) => {
                                         handleChangeAddQueryParam(
                                             e.target.value,
