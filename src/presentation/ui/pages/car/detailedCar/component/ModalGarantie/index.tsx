@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Validators from "../../../../../../utils/Validators";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import CurrencyParse from "../../../../../../utils/CurrencyParse";
 
 interface ModalAmountProps {
     close: () => void;
@@ -32,6 +33,44 @@ export default function ModalGarantie({ close, id, carValue }: ModalAmountProps)
     const terms = watch("terms");
     const amount = watch("amount");
 
+    const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [typeIdentification, setTypeIdentification] = useState("CC");
+    const [document, setDocument] = useState("");
+    const [security, setSecurity] = useState("0");
+    const [disabledButton, setDisabledButton] = useState(false);
+    const seguroOptions = [
+        { label: "Seguro 1", value: 500000.0 },
+        { label: "Seguro 2", value: 1000000.0 },
+        { label: "Seguro 3", value: 1500000.0 },
+        { label: "Seguro 4", value: 2000000.0 },
+        { label: "Seguro 5", value: 2500000.0 },
+        { label: "Seguro 6", value: 3000000.0 },
+        { label: "Seguro 7", value: 3500000.0 },
+        { label: "Seguro 8", value: 4000000.0 },
+        { label: "Seguro 9", value: 4500000.0 },
+        { label: "Seguro 10", value: 5000000.0 },
+        { label: "Seguro 11", value: 5500000.0 },
+        { label: "Seguro 12", value: 6000000.0 },
+        { label: "Seguro 13", value: 6500000.0 },
+        { label: "Seguro 14", value: 7000000.0 },
+        { label: "Seguro 15", value: 7500000.0 },
+        { label: "Seguro 16", value: 8000000.0 },
+        { label: "Seguro 17", value: 8500000.0 },
+        { label: "Seguro 18", value: 9000000.0 },
+        { label: "Seguro 19", value: 9500000.0 },
+        { label: "Seguro 20", value: 10000000.0 },
+    ];
+
+    useEffect(() => {
+        if (name.length > 3 && lastName.length > 3 && typeIdentification && document.length > 3 && security) {
+            setDisabledButton(true);
+        } else {
+            setDisabledButton(false);
+        }
+        console.log(typeIdentification, security);
+    }, [name, lastName, typeIdentification, document, security]);
+
     function formatValue(value: string): string {
         const plainValue = value?.replace(/[\.,\$]/g, "");
         const formattedValue = plainValue + ".00";
@@ -39,38 +78,41 @@ export default function ModalGarantie({ close, id, carValue }: ModalAmountProps)
     }
 
     const bookCar = async () => {
-        console.log("AMOUNT____", formatValue(amount.toString()));
-        if (!terms) {
-            return;
-        }
+        // console.log("AMOUNT____", formatValue(amount.toString()));
 
-        if (parseFloat(formatValue(amount.toString().trimStart())) < 1000000.0) {
-            // setError("amount", { message: "El valor mínimo para separar el vehículo es de $2.000.000 COP." });
-            return;
-        }
-
+        console.log({
+            name,
+            SrvCode: "1002",
+            lastName,
+            typeIdentification,
+            document,
+            typeSecurityOrGarantie: seguroOptions[security].label,
+            totalToPay: parseFloat(formatValue(seguroOptions[security].value.toString().trimStart())),
+        });
         try {
-            const response = await window.fetch("https://api.wcaronline.com/api/scheduling-review/create/", {
+            const response = await window.fetch("https://api.wcaronline.com/api/garantie-security/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    car: id,
-                    totalToPay: parseFloat(formatValue(getValues().amount.toString().trimStart())),
+                    name,
+                    lastName,
+                    SrvCode: "1002",
+                    typeIdentification,
+                    document,
+                    typeSecurityOrGarantie: seguroOptions[security].label,
+                    totalToPay: parseFloat(formatValue(seguroOptions[security].value.toString().trimStart())),
                 }),
             });
             const data = await response.json();
+            console.log(data);
             // @ts-ignore
             window.location.href = data?.data_eccolect?.eCollectUrl;
         } catch (error) {
             console.log(error);
         }
     };
-
-    useEffect(() => {
-        setError("amount", { message: "" });
-    }, [amount]);
 
     return (
         <div className="box">
@@ -79,88 +121,84 @@ export default function ModalGarantie({ close, id, carValue }: ModalAmountProps)
                     <div className="icon-close" onClick={close}>
                         <Icons.Clear />
                     </div>
-                    <h5 className="modal-title">¿Con qué valor vas a separar el vehículo?</h5>
+                    <h5 className="modal-title">Garantia</h5>
                     <div className="form-group mt-4 input-box">
                         <div className="d-flex " style={{ gap: 12 }}>
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Nombre"
-                                {...register(
-                                    "amount",
-                                    Validators({ price: true, minValue: 1000000, maxValue: carValue })
-                                )}
-                            />
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Apellido"
-                                {...register(
-                                    "amount",
-                                    Validators({ price: true, minValue: 1000000, maxValue: carValue })
-                                )}
-                            />
+                            <div className="form-group w-50">
+                                <label className="mandatory">Nombre</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="form-group w-50">
+                                <label className="mandatory">Apellido</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                />
+                            </div>
                         </div>
-                        <div className="d-flex mt-2" style={{ gap: 12 }}>
-                            <div className="w-25">
+                        <div className="d-flex mt-3" style={{ gap: 12 }}>
+                            <div className="" style={{ width: "30%" }}>
                                 <div className="form-group ">
-                                    <select className="form-control" defaultValue={""} {...register("amount")}>
-                                        <option value="" disabled>
-                                            Tipo
+                                    <label className="mandatory">Tipo</label>
+                                    <select
+                                        className="form-control"
+                                        value={typeIdentification}
+                                        onChange={(e) => setTypeIdentification(e.target.value)}
+                                    >
+                                        <option value={"CC"} selected>
+                                            Cédula de Ciudadanía
                                         </option>
-                                        <option value={"CC"}>Cédula de Ciudadanía</option>
-                                        <option value={"CC"}>Pasaporte</option>
-                                        <option value={"CC"}>NIT</option>
+                                        <option value={"PS"}>Pasaporte</option>
+                                        <option value={"NIT"}>NIT</option>
                                     </select>
                                 </div>
                             </div>
-                            <input
-                                type="text"
-                                className="form-control w-75"
-                                placeholder="Documento"
-                                {...register(
-                                    "amount",
-                                    Validators({ price: true, minValue: 1000000, maxValue: carValue })
-                                )}
-                            />
+                            <div className="form-group" style={{ width: "70%" }}>
+                                <label className="mandatory">Documento</label>
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    value={document}
+                                    onChange={(e) => setDocument(e.target.value)}
+                                />
+                            </div>
                         </div>
-                        <p style={{ color: "#888", fontSize: "14px", marginTop: "6px", marginLeft: "8px" }}>
-                            Valor mínimo para separar el vehículo es de $1.000.000 COP.
-                        </p>
-                        <ErrorMessage as="aside" errors={errors} name="amount" />
-                        <div className="form-check mb-4 mt-4">
-                            <input
-                                className="form-check-input"
-                                type="checkbox"
-                                onChange={() => {
-                                    console.log(acceptedTerms);
-                                    setAcceptedTerms(!acceptedTerms);
-                                    setValue("terms", !acceptedTerms);
-                                }}
-                                {...register("terms")}
-                            />
-                            <label className="form-check-label">
-                                <Link target="_blank" to={"/politicas-comprador"} className="text_underline text_gray">
-                                    Acepto términos y condiciones
-                                </Link>
-                            </label>
-                            <ErrorMessage as="aside" errors={errors} name="terms" />
+
+                        <div className="form-group w-full mt-3">
+                            <label className="mandatory">Seguro</label>
+                            <select
+                                className="form-control"
+                                defaultValue={0}
+                                value={security}
+                                onChange={(e) => setSecurity(e.target.value)}
+                            >
+                                {seguroOptions.map((item, index) => (
+                                    <option value={index} key={index}>
+                                        {CurrencyParse.toCop(item.value)}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                     </div>
                     <div className="modal-buttons">
-                        <div
+                        <button
+                            disabled={!disabledButton}
                             className="btn btn_orange btn-modal"
                             style={{
-                                backgroundColor:
-                                    getValues().terms &&
-                                    parseFloat(formatValue(amount?.toString().trimStart())) >= 1000000
-                                        ? ""
-                                        : "#ccc",
+                                backgroundColor: disabledButton ? "" : "#ccc",
                             }}
                             onClick={bookCar}
                         >
                             <p>Apartar</p>
-                        </div>
+                        </button>
                         <div className="btn btn_orange_outline" onClick={close}>
                             Cancelar
                         </div>

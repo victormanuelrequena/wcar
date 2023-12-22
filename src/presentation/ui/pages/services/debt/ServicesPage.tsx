@@ -20,9 +20,11 @@ import GetAllInsuranceQuestionsUseCase, {
 } from "../../../../../domain/use_cases/frequentQuestion/GetAllInsuranceQuestionsUseCase";
 import FrequentQuestionEntity from "../../../../../domain/entities/FrequentQuestionEntity";
 import { Helmet } from "react-helmet-async";
+import ModalGarantie from "../../car/detailedCar/component/ModalGarantie";
 
 const ServicesPage: FC = () => {
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
+    const [showGaratieModal, setShowGarantieModal] = useState(false);
 
     const formFunctions = useForm();
     const [estimatedDebt, setEstimatedDebt] = useState<number | undefined>(undefined);
@@ -175,6 +177,14 @@ const ServicesPage: FC = () => {
                                                     promesas de contratar.
                                                 </p>
                                             </div>
+                                            <div className={"w-full d-flex justify-content-end"}>
+                                                <button
+                                                    className="btn btn_orange my-1 me-3 btn-detailed-car mt-3"
+                                                    onClick={() => setShowGarantieModal(true)}
+                                                >
+                                                    Garantia
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -203,6 +213,9 @@ const ServicesPage: FC = () => {
                     </div>
                 </section>
             </Layout>
+            {showGaratieModal && (
+                <ModalGarantie id={"185"} close={() => setShowGarantieModal(false)} carValue={100000} />
+            )}
         </div>
     );
 };
