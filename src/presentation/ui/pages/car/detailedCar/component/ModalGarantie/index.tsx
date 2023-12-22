@@ -183,6 +183,16 @@ export default function ModalGarantie({ close, id, carValue, SrvCode }: ModalAmo
                         </div>
 
                         <div className="form-group w-full mt-3">
+                            <label className="mandatory">Placa</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                value={plate}
+                                onChange={(e) => setPlate(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="form-group w-full mt-3">
                             <label className="mandatory">Seguro</label>
                             <select
                                 className="form-control"
