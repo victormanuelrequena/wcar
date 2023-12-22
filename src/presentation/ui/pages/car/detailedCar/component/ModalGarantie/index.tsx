@@ -11,6 +11,7 @@ interface ModalAmountProps {
     close: () => void;
     id: string;
     carValue: number;
+    SrvCode: string;
 }
 
 type Inputs = {
@@ -18,7 +19,7 @@ type Inputs = {
     terms: boolean;
 };
 
-export default function ModalGarantie({ close, id, carValue }: ModalAmountProps) {
+export default function ModalGarantie({ close, id, carValue, SrvCode }: ModalAmountProps) {
     console.log("🚀 ~ file: index.tsx:23 ~ ModalAmount ~ carValue:", carValue);
     const [acceptedTerms, setAcceptedTerms] = useState(false);
     const {
@@ -39,6 +40,7 @@ export default function ModalGarantie({ close, id, carValue }: ModalAmountProps)
     const [document, setDocument] = useState("");
     const [security, setSecurity] = useState("0");
     const [disabledButton, setDisabledButton] = useState(false);
+    const [plate, setPlate] = useState("");
     const seguroOptions = [
         { label: "Seguro 1", value: 500000.0 },
         { label: "Seguro 2", value: 1000000.0 },
@@ -63,13 +65,20 @@ export default function ModalGarantie({ close, id, carValue }: ModalAmountProps)
     ];
 
     useEffect(() => {
-        if (name.length > 3 && lastName.length > 3 && typeIdentification && document.length > 3 && security) {
+        if (
+            name.length > 3 &&
+            lastName.length > 3 &&
+            typeIdentification &&
+            document.length > 3 &&
+            security &&
+            plate.length > 3
+        ) {
             setDisabledButton(true);
         } else {
             setDisabledButton(false);
         }
         console.log(typeIdentification, security);
-    }, [name, lastName, typeIdentification, document, security]);
+    }, [name, lastName, typeIdentification, document, security, plate]);
 
     function formatValue(value: string): string {
         const plainValue = value?.replace(/[\.,\$]/g, "");
@@ -85,6 +94,7 @@ export default function ModalGarantie({ close, id, carValue }: ModalAmountProps)
             SrvCode: "1002",
             lastName,
             typeIdentification,
+            plate,
             document,
             typeSecurityOrGarantie: seguroOptions[security].label,
             totalToPay: parseFloat(formatValue(seguroOptions[security].value.toString().trimStart())),
@@ -121,7 +131,7 @@ export default function ModalGarantie({ close, id, carValue }: ModalAmountProps)
                     <div className="icon-close" onClick={close}>
                         <Icons.Clear />
                     </div>
-                    <h5 className="modal-title">Garantia</h5>
+                    <h5 className="modal-title">Adquiere tu Garantia</h5>
                     <div className="form-group mt-4 input-box">
                         <div className="d-flex " style={{ gap: 12 }}>
                             <div className="form-group w-50">
