@@ -64,6 +64,30 @@ export default function ModalGarantie({ close, id, carValue, SrvCode }: ModalAmo
         { label: "Seguro 20", value: 10000000.0 },
     ];
 
+    const garantiaOptions = [
+        { label: "Garantia 1", value: 1000000.0 },
+        { label: "Garantia 2", value: 1500000.0 },
+        { label: "Garantia 3", value: 2000000.0 },
+        { label: "Garantia 4", value: 2500000.0 },
+        { label: "Garantia 5", value: 3000000.0 },
+        { label: "Garantia 6", value: 3500000.0 },
+        { label: "Garantia 7", value: 4000000.0 },
+        { label: "Garantia 8", value: 4500000.0 },
+        { label: "Garantia 9", value: 5000000.0 },
+        { label: "Garantia 10", value: 5500000.0 },
+        { label: "Garantia 11", value: 6000000.0 },
+        { label: "Garantia 12", value: 6500000.0 },
+        { label: "Garantia 13", value: 7000000.0 },
+        { label: "Garantia 14", value: 7500000.0 },
+        { label: "Garantia 15", value: 8000000.0 },
+        { label: "Garantia 16", value: 8500000.0 },
+        { label: "Garantia 17", value: 9000000.0 },
+        { label: "Garantia 18", value: 9500000.0 },
+        { label: "Garantia 19", value: 10000000.0 },
+    ];
+
+    const options = SrvCode == "1002" ? seguroOptions : garantiaOptions;
+
     useEffect(() => {
         if (
             name.length > 3 &&
@@ -96,11 +120,12 @@ export default function ModalGarantie({ close, id, carValue, SrvCode }: ModalAmo
             typeIdentification,
             plate,
             document,
-            typeSecurityOrGarantie: seguroOptions[security].label,
-            totalToPay: parseFloat(formatValue(seguroOptions[security].value.toString().trimStart())),
+            typeSecurityOrGarantie: options[security].label,
+            totalToPay: parseFloat(formatValue(options[security].value.toString().trimStart())),
         });
         try {
-            const response = await window.fetch("https://api.wcaronline.com/api/garantie-security/", {
+            // const response = await window.fetch("https://api.wcaronline.com/api/garantie-security/", {
+            const response = await window.fetch("http://localhost:8000/api/garantie-security/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -110,9 +135,10 @@ export default function ModalGarantie({ close, id, carValue, SrvCode }: ModalAmo
                     lastName,
                     SrvCode: "1002",
                     typeIdentification,
+                    plate,
                     document,
-                    typeSecurityOrGarantie: seguroOptions[security].label,
-                    totalToPay: parseFloat(formatValue(seguroOptions[security].value.toString().trimStart())),
+                    typeSecurityOrGarantie: options[security].label,
+                    totalToPay: parseFloat(formatValue(options[security].value.toString().trimStart())),
                 }),
             });
             const data = await response.json();
@@ -131,7 +157,7 @@ export default function ModalGarantie({ close, id, carValue, SrvCode }: ModalAmo
                     <div className="icon-close" onClick={close}>
                         <Icons.Clear />
                     </div>
-                    <h5 className="modal-title">Adquiere tu Garantia</h5>
+                    <h5 className="modal-title">Adquiere tu {SrvCode == "1002" ? "Seguro" : "Garantia"}</h5>
                     <div className="form-group mt-4 input-box">
                         <div className="d-flex " style={{ gap: 12 }}>
                             <div className="form-group w-50">
@@ -193,14 +219,14 @@ export default function ModalGarantie({ close, id, carValue, SrvCode }: ModalAmo
                         </div>
 
                         <div className="form-group w-full mt-3">
-                            <label className="mandatory">Seguro</label>
+                            <label className="mandatory">{SrvCode == "1002" ? "Seguro" : "Garantia"}</label>
                             <select
                                 className="form-control"
                                 defaultValue={0}
                                 value={security}
                                 onChange={(e) => setSecurity(e.target.value)}
                             >
-                                {seguroOptions.map((item, index) => (
+                                {options.map((item, index) => (
                                     <option value={index} key={index}>
                                         {CurrencyParse.toCop(item.value)}
                                     </option>
