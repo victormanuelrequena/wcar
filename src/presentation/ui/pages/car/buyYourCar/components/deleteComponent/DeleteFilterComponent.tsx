@@ -32,12 +32,11 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
     const price = watch("price");
     const type = typeVehicles.find((type) => type.id == watch("type_vehcile_id"));
     const transmission = watch("type_transmission");
-    const tag = tags.find((tag) => tag.id === watch("tag_id"));
+    const tag = tags.find((tag) => tag.id == watch("tag_id"));
     const rangeMileage = watch("km");
     const fuel = typeOfFuels.find((fuel) => fuel.id === watch("type_fuel_id"));
     const color = colors.find((color) => color.id === watch("color_id"));
     const plateNumber = watch("plate_number");
-
     const _handleRemoveQueryParam = (queryParamName: string) => {
         const url = new URL(window.location.href);
         url.searchParams.delete(queryParamName);
@@ -184,7 +183,7 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
             )}
             {transmission && (
                 <div className="delete_filter_item">
-                    <span>{transmission == TransmissionCar.AUTOMATIC ? "Automática" : "Manual"}</span>
+                    <span>{transmission == 1 || transmission == "Automática" ? "Automática" : "Manual"}</span>
                     <div className="icon hover" onClick={_handleRemoveTransmission}>
                         <Icons.Clear />
                     </div>

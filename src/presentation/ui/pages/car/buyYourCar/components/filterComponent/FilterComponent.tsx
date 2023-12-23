@@ -149,19 +149,54 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
         property?: string,
         index: number = null
     ) => {
+        if (param == "transmission") {
+            console.log("transmission");
+            console.log(value, "value");
+            // value = value == "1" ? "Automática" : "Manual";
+            console.log(propertyForm, value);
+            setValue(propertyForm, value);
+            const newQueryParam = value;
+            const url = new URL(window.location.href);
+            url.searchParams.set(param, newQueryParam);
+            window.history.replaceState({}, "", url.toString());
+            return;
+        }
         setValue(propertyForm, value);
-        const newQueryParam = index >= 0 || index ? array[index][property] : value;
+        console.log(index != null ? array[index][property] : value, "index >= 0 || index", index);
+        // return;
+        if (
+            location.pathname === "/compra-tu-carro/camionetas-usadas/" ||
+            location.pathname === "/compra-tu-carro/camionetas-usadas"
+        ) {
+            navigate("/compra-tu-carro");
+            const url = new URL(window.location.href);
+            window.history.replaceState({}, "", url.toString());
+        }
+
+        if (index == 2) {
+            // navigate("/compra-tu-carro/camionetas-usadas");
+            window.history.replaceState({}, "", new URL(window.location.href).toString());
+
+            navigate(
+                "/compra-tu-carro/camionetas-usadas/?type_vehicle=" +
+                    (index != null ? array[index][property] : value).toString()
+            );
+            setValue("type_vehcile_id", 2);
+            return;
+        }
+
+        const newQueryParam = index != null ? array[index][property] : value;
         const url = new URL(window.location.href);
         url.searchParams.set(param, newQueryParam);
         window.history.replaceState({}, "", url.toString());
     };
 
-    // useEffect para establecer el filtro de camionetas usadas por defecto en la pagina de camionetas usadas
+    //useEffect para establecer el filtro de camionetas usadas por defecto en la pagina de camionetas usadas
     useEffect(() => {
         console.log(location.pathname);
         if (location.pathname === "/compra-tu-carro/camionetas-usadas") {
             console.log("Se ejecuta");
-            setValue("type_vehcile_id", "8");
+            setValue("type_vehcile_id", "Camioneta - SUV");
         }
     }, [location]);
 
@@ -252,8 +287,11 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                     className="form-check-input"
                                     type="radio"
                                     value={typeVehicle.id}
-                                    checked={watch("type_vehcile_id") === typeVehicle.id}
+                                    checked={watch("type_vehcile_id") == typeVehicle.id}
                                     onChange={(e) => {
+                                        // if (e.target.value === "8") {
+                                        //     return navigate("/compra-tu-carro/camionetas-usadas");
+                                        // } else {
                                         handleChangeAddQueryParam(
                                             e.target.value,
                                             "type_vehcile_id",
@@ -262,9 +300,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                             "name",
                                             index
                                         );
-                                        if (e.target.value === "8") {
-                                            return navigate("/compra-tu-carro/camionetas-usadas");
-                                        }
+                                        // }
                                     }}
                                 />
                                 <label className="form-check-label">
@@ -287,7 +323,14 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                 checked={watch("type_transmission") == TransmissionCar.AUTOMATIC}
                                 value={TransmissionCar.AUTOMATIC}
                                 onChange={(e) => {
-                                    handleChangeAddQueryParam(e.target.value, "type_transmission", "transmission");
+                                    handleChangeAddQueryParam(
+                                        e.target.value,
+                                        "type_transmission",
+                                        "transmission",
+                                        null,
+                                        null,
+                                        null
+                                    );
                                 }}
                             />
                             <label className="form-check-label">Automática</label>
@@ -301,7 +344,14 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
                                 checked={watch("type_transmission") == TransmissionCar.MANUAL}
                                 value={TransmissionCar.MANUAL}
                                 onChange={(e) => {
-                                    handleChangeAddQueryParam(e.target.value, "type_transmission", "transmission");
+                                    handleChangeAddQueryParam(
+                                        e.target.value,
+                                        "type_transmission",
+                                        "transmission",
+                                        null,
+                                        null,
+                                        null
+                                    );
                                 }}
                             />
                             <label className="form-check-label">Manual</label>
