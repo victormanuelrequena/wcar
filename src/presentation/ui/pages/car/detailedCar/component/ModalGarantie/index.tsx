@@ -124,8 +124,8 @@ export default function ModalGarantie({ close, id, carValue, SrvCode }: ModalAmo
             totalToPay: parseFloat(formatValue(options[security].value.toString().trimStart())),
         });
         try {
-            // const response = await window.fetch("https://api.wcaronline.com/api/garantie-security/", {
-            const response = await window.fetch("http://localhost:8000/api/garantie-security/", {
+            const response = await window.fetch("https://api.wcaronline.com/api/garantie-security/", {
+                // const response = await window.fetch("http://localhost:8000/api/garantie-security/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
