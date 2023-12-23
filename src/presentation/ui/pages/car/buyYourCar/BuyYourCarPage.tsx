@@ -93,7 +93,11 @@ const BuyYourCarPage: FC<{}> = () => {
     const year = queryParams.get("year") ? queryParams.get("year") : watch("year");
     const price = watch("price");
     const typeVehicleId = queryParams.get("type_vehicle") ? queryParams.get("type_vehicle") : watch("type_vehcile_id");
-    const transmission = watch("type_transmission");
+    let transmission = watch("type_transmission");
+    if (watch("type_transmission") == 1 || watch("type_transmission") == 0) {
+        transmission = watch("type_transmission") == "1" ? "Automática" : "Manual";
+    }
+    console.log(transmission, "transmission");
     const tagId = queryParams.get("tag") ? queryParams.get("tag") : watch("tag_id");
     const rangeMileage = watch("km");
     const fuelId = queryParams.get("typeOfFuels") ? queryParams.get("typeOfFuels") : watch("type_fuel_id");
@@ -155,6 +159,12 @@ const BuyYourCarPage: FC<{}> = () => {
             // setValue("price", queryParams.get("price"));
             // setValue("type_vehcile_id", queryParams.get("type_vehicle"));
             setValue("type_transmission", queryParams.get("transmission"));
+            if (queryParams.get("transmission") == "1" || queryParams.get("transmission") == "0") {
+                setValue("type_transmission", queryParams.get("transmission") == "1" ? "Automática" : "Manual");
+                console.log("Paso");
+            }
+
+            console.log(queryParams.get("transmission"), "transmission");
             setValue("tag_id", queryParams.get("tag"));
             // setValue("km", queryParams.get("km"));
             setValue("type_fuel_id", queryParams.get("typeOfFuels"));
@@ -170,9 +180,7 @@ const BuyYourCarPage: FC<{}> = () => {
             setValue("color_id", colorQuery[0]?.id ? colorQuery[0].id : "");
             const tagQuery: any = tags.filter((item: any) => item.name == queryParams.get("tag"));
             setValue("tag_id", tagQuery[0]?.id ? tagQuery[0].id : "");
-            if (queryParams.get("transmission")) {
-                setValue("type_transmission", queryParams.get("transmission") == "Manual" ? "Manual" : "Automática");
-            }
+
             const typeFuelsQuery: any = typeOfFuels.filter((item: any) => item.name == queryParams.get("typeOfFuels"));
             setValue("type_fuel_id", typeFuelsQuery[0]?.id ? typeFuelsQuery[0].id : "");
 

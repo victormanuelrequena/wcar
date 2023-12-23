@@ -26,7 +26,7 @@ const CardContactComponent: FC<{}> = () => {
                 </Link>
             </div>
             <button
-                className="btn btn_orange_outline my-1 me-3 btn-detailed-car mt-3"
+                className="btn btn_cyan my-1 me-3 btn-detailed-car mt-3"
                 onClick={() => {
                     setSrvCode("1002");
                     setShowGarantieModal(true);
@@ -35,7 +35,7 @@ const CardContactComponent: FC<{}> = () => {
                 ADQUIERE TU SEGURO
             </button>
             <button
-                className="btn btn_orange_outline my-1 me-3 btn-detailed-car mt-3"
+                className="btn btn_cyan my-1 me-3 btn-detailed-car mt-3"
                 onClick={() => {
                     setSrvCode("1003");
                     setShowGarantieModal(true);

@@ -126,7 +126,7 @@ const ServicesPage: FC = () => {
                                 </a>
                             </div>
                             <button
-                                className="btn btn_orange_outline my-1 me-3 btn-detailed-car mt-3"
+                                className="btn btn_cyan my-1 me-3 btn-detailed-car mt-3"
                                 onClick={() => setShowGarantieModal(true)}
                             >
                                 ADQUIERE TU GARANTIA

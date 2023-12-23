@@ -173,7 +173,7 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
             window.history.replaceState({}, "", url.toString());
         }
 
-        if (index == 2) {
+        if (index == 2 && param == "transmission") {
             // navigate("/compra-tu-carro/camionetas-usadas");
             window.history.replaceState({}, "", new URL(window.location.href).toString());
 
