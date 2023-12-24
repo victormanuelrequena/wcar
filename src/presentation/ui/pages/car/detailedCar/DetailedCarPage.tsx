@@ -39,6 +39,8 @@ const DetailedCarPage: FC<{}> = () => {
 
     console.log(car?.description.replace(/\n/g, "\n").split("\n"));
 
+    console.log(car);
+
     const _getCar = async () => {
         try {
             const car = await di.get<GetCarByIdUseCase>(GetCarByIdUseCaseName).call(id!);
@@ -252,9 +254,9 @@ const DetailedCarPage: FC<{}> = () => {
                                 <div className="col-12 col-md-9">
                                     <div className="p-4">
                                         <div className="row">
-                                            <div className="col-12 col-md-8">
+                                            <div className="col-lg-3 col-md-6 col-sm-12">
                                                 <div className="row">
-                                                    <div className="col-6 my-3">
+                                                    <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
                                                                 src="/assets/icons/star.svg"
@@ -266,7 +268,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                         </span>
                                                         <strong>{car.brand.name}</strong>
                                                     </div>
-                                                    <div className="col-6 my-3">
+                                                    <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
                                                                 src="/assets/icons/door.svg"
@@ -278,7 +280,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                         </span>
                                                         <strong>{car.doors}</strong>
                                                     </div>
-                                                    <div className="col-6 my-3">
+                                                    <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
                                                                 src="/assets/icons/reference.svg"
@@ -290,7 +292,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                         </span>
                                                         <strong>{car.model}</strong>
                                                     </div>
-                                                    <div className="col-6 my-3">
+                                                    <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
                                                                 src="/assets/icons/color.svg"
@@ -302,7 +304,11 @@ const DetailedCarPage: FC<{}> = () => {
                                                         </span>
                                                         <strong>{car.color.name}</strong>
                                                     </div>
-                                                    <div className="col-6 my-3">
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-3 col-md-6 col-sm-12">
+                                                <div className="row">
+                                                    <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
                                                                 src="/assets/icons/calendar.svg"
@@ -314,7 +320,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                         </span>
                                                         <strong>{car.year}</strong>
                                                     </div>
-                                                    <div className="col-6 my-3">
+                                                    <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
                                                                 src="/assets/icons/motor.svg"
@@ -326,7 +332,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                         </span>
                                                         <strong>{car.motor}</strong>
                                                     </div>
-                                                    <div className="col-6 my-3">
+                                                    <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
                                                                 src="/assets/icons/type_vehicle.svg"
@@ -338,7 +344,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                         </span>
                                                         <strong>{car.type.name}</strong>
                                                     </div>
-                                                    <div className="col-6 my-3">
+                                                    <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
                                                                 src="/assets/icons/plate.svg"
@@ -352,7 +358,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="col-12 col-md-4">
+                                            <div className="col-lg-3 col-md-6 col-sm-12">
                                                 <div className="row">
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
@@ -404,6 +410,68 @@ const DetailedCarPage: FC<{}> = () => {
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div className="col-lg-3 col-md-6 col-sm-12">
+                                                <div className="row">
+                                                    <div className="col-12 my-3">
+                                                        <span className="text_gray me-2">
+                                                            <img
+                                                                style={{ width: "24px" }}
+                                                                src="/assets/icons/valor.png"
+                                                                className="img-fluid me-2"
+                                                                alt="wcar"
+                                                                title="wcar"
+                                                            />
+                                                            Reclamaciones:
+                                                        </span>
+                                                        <strong>
+                                                            {car.claims ? `Sí | $${car.amount_claims}` : "No"}
+                                                        </strong>
+                                                    </div>
+                                                    {/* {car.claims && (
+                                                        <div className="col-12 my-3">
+                                                            <span className="text_gray me-2">
+                                                                <img
+                                                                    src="/assets/icons/combustible.svg"
+                                                                    className="img-fluid me-2"
+                                                                    alt="wcar"
+                                                                    title="wcar"
+                                                                />
+                                                                Cuantía:
+                                                            </span>
+                                                            <strong>{car.amount_claims}</strong>
+                                                        </div>
+                                                    )} */}
+                                                    <div className="col-12 my-3">
+                                                        <span className="text_gray me-2">
+                                                            <img
+                                                                style={{ width: "24px" }}
+                                                                src="/assets/icons/reclamaciones.png"
+                                                                className="img-fluid me-2"
+                                                                alt="wcar"
+                                                                title="wcar"
+                                                            />
+                                                            Garantía:
+                                                        </span>
+                                                        <strong>
+                                                            {car.warranty ? `Si | ${car.type_warranty}` : "No"}
+                                                        </strong>
+                                                    </div>
+                                                    {/* {car.warranty && (
+                                                        <div className="col-12 my-3">
+                                                            <span className="text_gray me-2">
+                                                                <img
+                                                                    src="/assets/icons/status.svg"
+                                                                    className="img-fluid me-2"
+                                                                    alt="wcar"
+                                                                    title="wcar"
+                                                                />
+                                                                Tipo de garantía:
+                                                            </span>
+                                                            <strong>{car.type_warranty}</strong>
+                                                        </div>
+                                                    )} */}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -423,17 +491,15 @@ const DetailedCarPage: FC<{}> = () => {
                                             <strong>Descripción</strong>
                                         </h3>
                                         <div className="description">
-                                            {car?.description
-                                                .split("\n")
-                                                .map((item, i) => {
-                                                    return (
-                                                        item !== "\r" && (
-                                                            <p key={i} className="item">
-                                                                {item}
-                                                            </p>
-                                                        )
-                                                    );
-                                                })}
+                                            {car?.description.split("\n").map((item, i) => {
+                                                return (
+                                                    item !== "\r" && (
+                                                        <p key={i} className="item">
+                                                            {item}
+                                                        </p>
+                                                    )
+                                                );
+                                            })}
                                         </div>
                                     </div>
                                 </div>

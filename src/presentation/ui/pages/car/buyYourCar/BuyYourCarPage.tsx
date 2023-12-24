@@ -199,7 +199,11 @@ const BuyYourCarPage: FC<{}> = () => {
                     data.type_fuel_id,
                     data.color_id,
                     data.plate_number,
-                    data.orderBy
+                    data.orderBy,
+                    data.claims,
+                    data.amount_claims,
+                    data.warranty,
+                    data.type_warranty
                 );
             setCars(response.cars);
             setMaxPages(response.maxPages);
