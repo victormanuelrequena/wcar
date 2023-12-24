@@ -21,6 +21,7 @@ const SearchCarApiImpl = async (
 ): Promise<{ cars: CarEntity[]; maxPages: number }> => {
     try {
         const relativeUrl = `/filter-cars/?page=${page}`;
+
         const body = {
             brand: brand,
             model: modelId,
@@ -39,6 +40,7 @@ const SearchCarApiImpl = async (
             plate_number: plateNumber,
             orderBy: orderBy?.value != undefined ? (orderBy.value?.desc ? "desc" : "asc") : undefined,
         };
+        console.log(body, "body filter");
 
         const response = await HostApi.post(relativeUrl, body);
         return {

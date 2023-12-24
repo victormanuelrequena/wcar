@@ -9,6 +9,7 @@ import { Either, right } from "fp-ts/lib/Either";
 import ExceptionEntity from "../../../domain/entities/ExceptionEntity";
 
 const _testCar: CarEntity = {
+    claims: false,
     doors: 4,
     motor: '1.6 16v 115cv',
     plate: '8 de Bogota',

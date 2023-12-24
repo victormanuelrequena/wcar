@@ -35,6 +35,8 @@ import {
     contentListUsedTrucksSeo2,
 } from "./constants";
 import BannerYourCar from "./components/banner/BannerYourCar";
+import { useNavigate } from "react-router-dom";
+import BrandEntity from "../../../../../domain/entities/BrandEntity";
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -61,6 +63,7 @@ const orderingOptions: OrderByEntity[] = [
 ];
 
 const BuyYourCarPage: FC<{}> = () => {
+    const navigate = useNavigate();
     const formFunctions = useForm();
     const {
         register,
@@ -74,6 +77,9 @@ const BuyYourCarPage: FC<{}> = () => {
     const { typeVehicles } = useContext(TypeVehicleContext) as TypeVehicleContextType;
     const { typeVehicleName } = useParams();
     const { brands } = useContext(BrandContext) as BrandContextType;
+    const { colors } = useContext(ColorContext) as ColorContextType;
+    const { tags } = useContext(TagContext) as TagContextType;
+    const { typeOfFuels } = useContext(TypeOfFuelContext) as TypeOfFuelContextType;
     const queryParams = new URLSearchParams(window.location.search);
 
     const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
@@ -87,7 +93,11 @@ const BuyYourCarPage: FC<{}> = () => {
     const year = queryParams.get("year") ? queryParams.get("year") : watch("year");
     const price = watch("price");
     const typeVehicleId = queryParams.get("type_vehicle") ? queryParams.get("type_vehicle") : watch("type_vehcile_id");
-    const transmission = watch("type_transmission");
+    let transmission = watch("type_transmission");
+    if (watch("type_transmission") == 1 || watch("type_transmission") == 0) {
+        transmission = watch("type_transmission") == "1" ? "Automática" : "Manual";
+    }
+    console.log(transmission, "transmission");
     const tagId = queryParams.get("tag") ? queryParams.get("tag") : watch("tag_id");
     const rangeMileage = watch("km");
     const fuelId = queryParams.get("typeOfFuels") ? queryParams.get("typeOfFuels") : watch("type_fuel_id");
@@ -104,24 +114,9 @@ const BuyYourCarPage: FC<{}> = () => {
     useEffect(() => {
         _handleSearch();
     }, [page]);
-    useEffect(() => {
-        setValue("year", queryParams.get("year"));
-        setValue("brand_id", queryParams.get("brand"));
-        setValue("model", queryParams.get("model"));
-        // setValue("price", queryParams.get("price"));
-        setValue("type_vehicle_id", queryParams.get("type_vehicle"));
-        setValue("type_transmission", queryParams.get("transmission"));
-        setValue("tag_id", queryParams.get("tag"));
-        // setValue("km", queryParams.get("km"));
-        setValue("type_fuel_id", queryParams.get("typeOfFuels"));
-        setValue("color_id", queryParams.get("color"));
-        setValue("plate_number", queryParams.get("plate"));
-        // setValue("orderBy", queryParams.get("orderBy"));
-    }, []);
 
     const [isTimerActive, setIsTimerActive] = useState(false);
     let timer: NodeJS.Timeout | null = null; // Inicializa el temporizador
-
     useEffect(() => {
         if (isTimerActive) {
             timer = setTimeout(() => {
@@ -147,17 +142,50 @@ const BuyYourCarPage: FC<{}> = () => {
         handleToggleTimer();
     }, [price?.min, price?.max, rangeMileage?.min, rangeMileage?.max]);
 
-    const _handleChangeTypeVehicle = () => {
-        setValue("type_vehcile_id", typeVehicles.find((typeVehicle) => typeVehicle.name == typeVehicleName)?.id);
-    };
+    // const _handleChangeTypeVehicle = () => {
+    //     setValue("type_vehcile_id", typeVehicles.find((typeVehicle) => typeVehicle.name == typeVehicleName)?.id);
+    // };
 
-    useEffect(() => {
-        _handleChangeTypeVehicle();
-    }, [typeVehicleName]);
+    // useEffect(() => {
+    //     _handleChangeTypeVehicle();
+    //     console.log(typeVehicleName, "typeVehicleName");
+    // }, [typeVehicleName]);
 
     const _handleSearch = async () => {
         try {
+            setValue("year", queryParams.get("year"));
+            setValue("plate_number", queryParams.get("plate"));
+            // setValue("model", queryParams.get("model"));
+            // setValue("price", queryParams.get("price"));
+            // setValue("type_vehcile_id", queryParams.get("type_vehicle"));
+            setValue("type_transmission", queryParams.get("transmission"));
+            if (queryParams.get("transmission") == "1" || queryParams.get("transmission") == "0") {
+                setValue("type_transmission", queryParams.get("transmission") == "1" ? "Automática" : "Manual");
+                console.log("Paso");
+            }
+
+            console.log(queryParams.get("transmission"), "transmission");
+            setValue("tag_id", queryParams.get("tag"));
+            // setValue("km", queryParams.get("km"));
+            setValue("type_fuel_id", queryParams.get("typeOfFuels"));
+            setValue("color_id", queryParams.get("color"));
+            setValue("plate_number", queryParams.get("plate"));
+            // setValue("orderBy", queryParams.get("orderBy"));
+            const brandQuery: any = brands.filter((item: any) => item.name == queryParams.get("brand"));
+            setValue("brand_id", brandQuery[0]?.id ? brandQuery[0].id : "");
+            const typeQuery: any = typeVehicles.filter((item: any) => item.name == queryParams.get("type_vehicle"));
+            setValue("type_vehcile_id", typeQuery[0]?.id ? typeQuery[0].id : "");
+            if (watch("type_vehcile_id") == 8) setValue("type_vehcile_id", 8);
+            const colorQuery: any = colors.filter((item: any) => item.name == queryParams.get("color"));
+            setValue("color_id", colorQuery[0]?.id ? colorQuery[0].id : "");
+            const tagQuery: any = tags.filter((item: any) => item.name == queryParams.get("tag"));
+            setValue("tag_id", tagQuery[0]?.id ? tagQuery[0].id : "");
+
+            const typeFuelsQuery: any = typeOfFuels.filter((item: any) => item.name == queryParams.get("typeOfFuels"));
+            setValue("type_fuel_id", typeFuelsQuery[0]?.id ? typeFuelsQuery[0].id : "");
+
             const data = formFunctions.getValues();
+            console.log(data, "data filter");
             window.scrollTo({
                 top: 0,
                 behavior: "auto",
@@ -179,7 +207,11 @@ const BuyYourCarPage: FC<{}> = () => {
                     data.type_fuel_id,
                     data.color_id,
                     data.plate_number,
-                    data.orderBy
+                    data.orderBy,
+                    data.claims,
+                    data.amount_claims,
+                    data.warranty,
+                    data.type_warranty
                 );
             setCars(response.cars);
             setMaxPages(response.maxPages);
@@ -221,6 +253,7 @@ const BuyYourCarPage: FC<{}> = () => {
     const _handleClearFilters = async () => {
         reset();
         setPage(1);
+        navigate("/compra-tu-carro/");
     };
 
     const _handlePickOrderBy = (orderByValue: OrderByEntity) => {
@@ -330,7 +363,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                 ></div>
                             )}
                             <div className={` ${openFilters ? "col-md-8 col-lg-9" : "col-md-12"} container_cars`}>
-                                {typeVehicleId === "8" && fuelId !== "Híbrido" && <BannerYourCar />}
+                                {typeVehicleId === "Camioneta - SUV" && fuelId !== "Híbrido" && <BannerYourCar />}
                                 <div className="d-none d-md-flex justify-content-between">
                                     <div className={`mt-1 ${openFilters && "md-d-none"}`}>
                                         <div
@@ -392,7 +425,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                             </DropdownMenu>
                                         </Dropdown>
                                     </div>
-                                    {typeVehicleId === "8" && fuelId !== "Híbrido" && <BannerYourCar />}
+                                    {typeVehicleId === "Camioneta - SUV" && fuelId !== "Híbrido" && <BannerYourCar />}
                                     <div className="flex-grow-1">
                                         <DeleteFilterComponent formFunctions={formFunctions} onChange={_handleSearch} />
                                     </div>
@@ -441,7 +474,7 @@ const BuyYourCarPage: FC<{}> = () => {
                 </div>
             </form>
             {/* SEO camoionetas usadas */}
-            {typeVehicleId === "8" && fuelId !== "Híbrido" && (
+            {typeVehicleId === "Camioneta - SUV" && fuelId !== "Híbrido" && (
                 <div className="my-6 pt-4 container container-drop" style={{ marginTop: "80px", marginBottom: "40px" }}>
                     <SeoDropdown
                         options={contentListUsedTrucksSeo.map((content) => {
@@ -468,7 +501,7 @@ const BuyYourCarPage: FC<{}> = () => {
                 </div>
             )}
             {/* SEO - Combustible: Hibrido */}
-            {fuelId === "Híbrido" && typeVehicleId !== "8" && (
+            {fuelId === "Híbrido" && typeVehicleId !== "Camioneta - SUV" && (
                 <div
                     className="my-6 pt-4 container container-drop"
                     style={{

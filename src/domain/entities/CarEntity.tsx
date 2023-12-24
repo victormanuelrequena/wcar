@@ -37,4 +37,8 @@ export default interface CarEntity {
     url_expertise?: string | null;
     expertise?: string | null;
     id_colserauto?: string | null;
+    claims: boolean,
+    amount_claims: number,
+    warranty: boolean,
+    type_warranty: string
 }

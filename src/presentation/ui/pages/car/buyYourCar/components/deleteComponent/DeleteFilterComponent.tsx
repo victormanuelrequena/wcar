@@ -15,6 +15,7 @@ import Icons from "../../../../../assets/Icons";
 import { Helmet } from "react-helmet-async";
 import { TransmissionCar } from "../../../../../../../domain/entities/CarEntity";
 import CurrencyParse from "../../../../../../utils/CurrencyParse";
+import { useNavigate } from "react-router-dom";
 
 const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, onChange }) => {
     const { setValue, watch } = formFunctions;
@@ -23,6 +24,7 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
     const { tags } = useContext(TagContext) as TagContextType;
     const { typeOfFuels } = useContext(TypeOfFuelContext) as TypeOfFuelContextType;
     const { typeVehicles } = useContext(TypeVehicleContext) as TypeVehicleContextType;
+    const navigate = useNavigate();
 
     const brand = brands.find((brand) => brand.id === watch("brand_id"));
     const model = watch("model");
@@ -30,12 +32,11 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
     const price = watch("price");
     const type = typeVehicles.find((type) => type.id == watch("type_vehcile_id"));
     const transmission = watch("type_transmission");
-    const tag = tags.find((tag) => tag.id === watch("tag_id"));
+    const tag = tags.find((tag) => tag.id == watch("tag_id"));
     const rangeMileage = watch("km");
     const fuel = typeOfFuels.find((fuel) => fuel.id === watch("type_fuel_id"));
     const color = colors.find((color) => color.id === watch("color_id"));
     const plateNumber = watch("plate_number");
-
     const _handleRemoveQueryParam = (queryParamName: string) => {
         const url = new URL(window.location.href);
         url.searchParams.delete(queryParamName);
@@ -61,8 +62,14 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
         _handleRemoveQueryParam("price");
     };
     const _handleRemoveType = () => {
-        setValue("type_vehcile_id", undefined);
-        _handleRemoveQueryParam("type_vehicle");
+        if (type.id.toString() === "8") {
+            setValue("type_vehcile_id", undefined);
+            _handleRemoveQueryParam("type_vehicle");
+            navigate("/compra-tu-carro/");
+        } else {
+            setValue("type_vehcile_id", undefined);
+            _handleRemoveQueryParam("type_vehicle");
+        }
     };
     const _handleRemoveTransmission = () => {
         setValue("type_transmission", undefined);
@@ -176,7 +183,7 @@ const DeleteFilterComponent: FC<DeleteFilterComponentProps> = ({ formFunctions, 
             )}
             {transmission && (
                 <div className="delete_filter_item">
-                    <span>{transmission == TransmissionCar.AUTOMATIC ? "Automática" : "Manual"}</span>
+                    <span>{transmission == 1 || transmission == "Automática" ? "Automática" : "Manual"}</span>
                     <div className="icon hover" onClick={_handleRemoveTransmission}>
                         <Icons.Clear />
                     </div>

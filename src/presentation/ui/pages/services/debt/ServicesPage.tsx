@@ -20,9 +20,11 @@ import GetAllInsuranceQuestionsUseCase, {
 } from "../../../../../domain/use_cases/frequentQuestion/GetAllInsuranceQuestionsUseCase";
 import FrequentQuestionEntity from "../../../../../domain/entities/FrequentQuestionEntity";
 import { Helmet } from "react-helmet-async";
+import ModalGarantie from "../../car/detailedCar/component/ModalGarantie";
 
 const ServicesPage: FC = () => {
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
+    const [showGaratieModal, setShowGarantieModal] = useState(false);
 
     const formFunctions = useForm();
     const [estimatedDebt, setEstimatedDebt] = useState<number | undefined>(undefined);
@@ -114,13 +116,21 @@ const ServicesPage: FC = () => {
                                 </h2>
                             </div>
                             <br />
-                            <a
-                                target="_blank"
-                                href="https://oneid.com.co/#/public/fill_flow/ce8db55d1f1171202f6dbc70cb98f2be60e76bb111648e76797acdcfbde35410bb63c0be056b822829ae44c2254824073a8026850ec3ddded6960b86d4c0e594369afc1a5083a1105760e86933"
-                                className="px-4 btn btn_orange d-block d-md-inline-block"
+                            <div className="block">
+                                <a
+                                    target="_blank"
+                                    href="https://oneid.com.co/#/public/fill_flow/ce8db55d1f1171202f6dbc70cb98f2be60e76bb111648e76797acdcfbde35410bb63c0be056b822829ae44c2254824073a8026850ec3ddded6960b86d4c0e594369afc1a5083a1105760e86933"
+                                    className="px-4 btn btn_orange d-block d-md-inline-block block"
+                                >
+                                    HAZ AQUÍ TU SOLICITUD DE CRÉDITO
+                                </a>
+                            </div>
+                            <button
+                                className="btn btn_cyan my-1 me-3 btn-detailed-car mt-3"
+                                onClick={() => setShowGarantieModal(true)}
                             >
-                                HAZ AQUÍ TU SOLICITUD DE CRÉDITO
-                            </a>
+                                ADQUIERE TU GARANTIA
+                            </button>
                         </div>
                     </div>
                     <img
@@ -203,6 +213,14 @@ const ServicesPage: FC = () => {
                     </div>
                 </section>
             </Layout>
+            {showGaratieModal && (
+                <ModalGarantie
+                    id={"185"}
+                    close={() => setShowGarantieModal(false)}
+                    carValue={100000}
+                    SrvCode={"1003"}
+                />
+            )}
         </div>
     );
 };

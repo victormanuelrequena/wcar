@@ -7,7 +7,7 @@ import ModalsContext from "../../../../../domain/providers/modal/ModalsContext";
 import ModalsContextType from "../../../../../domain/providers/modal/ModalsContextType";
 import AlliesLineComponent from "../../../components/alliesLine/AlliesLineComponent";
 import Layout from "../../../layout/Layout";
-import { FC, useContext } from "react";
+import { FC, useContext, useState } from "react";
 import Validators from "../../../../utils/Validators";
 import { ErrorMessage } from "@hookform/error-message";
 import Icons from "../../../assets/Icons";
@@ -18,10 +18,13 @@ import CalculateInsuranceUseCase, {
 } from "../../../../../domain/use_cases/calculator/CalculateInsuranceUseCase";
 import { isRight } from "fp-ts/lib/Either";
 import { Helmet } from "react-helmet-async";
+import ModalGarantie from "../../car/detailedCar/component/ModalGarantie";
 
 const InsurancePage: FC<{}> = () => {
     const { cities } = useContext(CityContext) as CityContextType;
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
+    const [showGaratieModal, setShowGarantieModal] = useState(false);
+
     const {
         register,
         setValue,
@@ -107,10 +110,19 @@ const InsurancePage: FC<{}> = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <Link to={routes.contact.relativePath} className="btn btn_cyan">
-                                            CONTACTA UN ASESOR
-                                            <Icons.Contact />
-                                        </Link>
+                                        <div className="">
+                                            <Link to={routes.contact.relativePath} className="btn btn_cyan">
+                                                CONTACTA UN ASESOR
+                                                <Icons.Contact />
+                                            </Link>
+                                        </div>
+
+                                        <button
+                                            className="btn btn_cyan my-1 me-3 btn-detailed-car mt-3"
+                                            onClick={() => setShowGarantieModal(true)}
+                                        >
+                                            ADQUIERE TU SEGURO
+                                        </button>
                                     </div>
                                 </div>
                                 <div className="col-md-2 d-none d-md-flex justify-content-end">
@@ -280,6 +292,14 @@ const InsurancePage: FC<{}> = () => {
                     <AlliesLineComponent />
                 </section>
             </Layout>
+            {showGaratieModal && (
+                <ModalGarantie
+                    id={"185"}
+                    close={() => setShowGarantieModal(false)}
+                    carValue={100000}
+                    SrvCode={"1002"}
+                />
+            )}
         </div>
     );
 };
