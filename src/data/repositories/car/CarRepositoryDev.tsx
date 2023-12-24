@@ -10,17 +10,20 @@ import ExceptionEntity from "../../../domain/entities/ExceptionEntity";
 
 const _testCar: CarEntity = {
     claims: false,
+    amount_claims: 12312,
+    warranty: false,
+    type_warranty: "",
     doors: 4,
-    motor: '1.6 16v 115cv',
-    plate: '8 de Bogota',
-    status: 'nuevo',
+    motor: "1.6 16v 115cv",
+    plate: "8 de Bogota",
+    status: "nuevo",
     id: "1",
     name: "Mercedez Benz C 180 Mt 20 1.6 156cv 4p",
-    model: 'Class C',
+    model: "Class C",
     type: {
         id: "1",
         name: "Sedan",
-        photo: '/data/typeVehicles/suv.svg',
+        photo: "/data/typeVehicles/suv.svg",
     },
     tag: {
         id: "1",
@@ -42,25 +45,35 @@ const _testCar: CarEntity = {
         "https://images.pexels.com/photos/5086489/pexels-photo-5086489.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     ],
     description:
-        'Version Renault Life' + "\n" +
-        'Motor 1.6 16v 115cv' + "\n" +
-        'Caja Manual de 5 marchas' + "\n" +
-        'Llantas de aleación de 15"' + "\n" +
-        'Faros antiniebla delanteros' + "\n" +
-        'Computadora de abordo' + "\n" +
-        'Limitador y regulador de velocidad' + "\n" +
-        'Cierre centralizado de puertas' + "\n" +
-        'Levantacristales eléctricos delanteros' + "\n" +
-        'Espejos exteriores eléctricos' + "\n" +
-        'Volante regulable en altura' + "\n" +
-        'Asiento del conductor regulable en altura'
-    ,
+        "Version Renault Life" +
+        "\n" +
+        "Motor 1.6 16v 115cv" +
+        "\n" +
+        "Caja Manual de 5 marchas" +
+        "\n" +
+        'Llantas de aleación de 15"' +
+        "\n" +
+        "Faros antiniebla delanteros" +
+        "\n" +
+        "Computadora de abordo" +
+        "\n" +
+        "Limitador y regulador de velocidad" +
+        "\n" +
+        "Cierre centralizado de puertas" +
+        "\n" +
+        "Levantacristales eléctricos delanteros" +
+        "\n" +
+        "Espejos exteriores eléctricos" +
+        "\n" +
+        "Volante regulable en altura" +
+        "\n" +
+        "Asiento del conductor regulable en altura",
     photoUrl: "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
     price: 120000000,
     priceBook: {
         subtotal: 758000,
         rest: 242000,
-        total: 1000000
+        total: 1000000,
     },
     transmission: TransmissionCar.AUTOMATIC,
     year: 2020,
@@ -68,7 +81,7 @@ const _testCar: CarEntity = {
     brand: {
         id: "1",
         name: "Mercedez",
-        image: "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png"
+        image: "https://cdn.pixabay.com/photo/2013/07/13/11/26/porsche-158149_960_720.png",
     },
     color: {
         id: "1",
@@ -77,23 +90,30 @@ const _testCar: CarEntity = {
     },
     typeOfFuel: {
         id: "1",
-        name: "Híbrido"
-    }
-}
+        name: "Híbrido",
+    },
+};
 
 @injectable()
 class CarRepositoryDev implements CarRepository {
     getSomeRandomCars = (): Promise<CarEntity[]> => GetSomeRandomCarsApiImpl();
-    search(page: number, search: string, brand: string | undefined,
+    search(
+        page: number,
+        search: string,
+        brand: string | undefined,
         modelId: string | undefined,
         year: string | undefined,
-        price: { min: number, max: number } | undefined,
-        type: string, transmission: TransmissionCar | undefined,
-        tag: string | undefined, km: { min: number, max: number } | undefined,
-        fuelId: string | undefined, colorId: string | undefined,
-        plateNumber: string | undefined, orderBy: OrderByEntity | undefined,
-    ): Promise<{ cars: CarEntity[], maxPages: number }> {
-        return new Promise<{ cars: CarEntity[], maxPages: number }>(async (resolve, reject) => {
+        price: { min: number; max: number } | undefined,
+        type: string,
+        transmission: TransmissionCar | undefined,
+        tag: string | undefined,
+        km: { min: number; max: number } | undefined,
+        fuelId: string | undefined,
+        colorId: string | undefined,
+        plateNumber: string | undefined,
+        orderBy: OrderByEntity | undefined
+    ): Promise<{ cars: CarEntity[]; maxPages: number }> {
+        return new Promise<{ cars: CarEntity[]; maxPages: number }>(async (resolve, reject) => {
             //add a delay of 1s
             await sleeper(1000)(1);
 
@@ -115,22 +135,14 @@ class CarRepositoryDev implements CarRepository {
                     _testCar,
                     _testCar,
                     _testCar,
-                ], maxPages: 10
+                ],
+                maxPages: 10,
             });
         });
     }
     public async getRelatedCarsByCardIdUseCase(id: string): Promise<CarEntity[]> {
         return new Promise<CarEntity[]>((resolve, reject) => {
-            return resolve([
-                _testCar,
-                _testCar,
-                _testCar,
-                _testCar,
-                _testCar,
-                _testCar,
-                _testCar,
-                _testCar,
-            ])
+            return resolve([_testCar, _testCar, _testCar, _testCar, _testCar, _testCar, _testCar, _testCar]);
         });
     }
     public async likeCar(id: string, like: boolean): Promise<void> {
