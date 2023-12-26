@@ -92,54 +92,56 @@ const ServicesPage: FC = () => {
                 />
             </Helmet>
             <Layout>
-                <h1 className="d-none">Financiación</h1>
-                <section className="section_1">
-                    <img
-                        src="/assets/services/bg_services_financing_mobile.jpg"
-                        alt="wcar"
-                        title="wcar"
-                        className="img-fluid w-100 bg_img d-block d-md-none"
-                    />
-                    <div className="content position-md-absolute">
-                        <div className="container">
-                            <div className="col-md-4">
-                                <div className="side side_top side_blue_neon mb-3" />
-                                <h2 className="text_md_white text_bold text-center text-md-start">
-                                    ¿Cómo funciona
-                                    <br className="d-none d-md-block" /> nuestro proceso{" "}
-                                    <br className="d-none d-md-block" />
-                                    <span className="text_md_italic text_md_lighter"> de</span>{" "}
-                                    <span className="text_md_white text_light text_italic text_orange">
-                                        {" "}
-                                        financiación?
-                                    </span>
-                                </h2>
-                            </div>
-                            <br />
-                            <div className="block">
-                                <a
-                                    target="_blank"
-                                    href="https://oneid.com.co/#/public/fill_flow/ce8db55d1f1171202f6dbc70cb98f2be60e76bb111648e76797acdcfbde35410bb63c0be056b822829ae44c2254824073a8026850ec3ddded6960b86d4c0e594369afc1a5083a1105760e86933"
-                                    className="px-4 btn btn_orange d-block d-md-inline-block block"
+                <div className="z-6">
+                    <h1 className="d-none">Financiación</h1>
+                    <section className="section_1">
+                        <img
+                            src="/assets/services/bg_services_financing_mobile.jpg"
+                            alt="wcar"
+                            title="wcar"
+                            className="img-fluid w-100 bg_img d-block d-md-none"
+                        />
+                        <div className="content position-md-absolute">
+                            <div className="container">
+                                <div className="col-md-4">
+                                    <div className="side side_top side_blue_neon mb-3" />
+                                    <h2 className="text_md_white text_bold text-center text-md-start">
+                                        ¿Cómo funciona
+                                        <br className="d-none d-md-block" /> nuestro proceso{" "}
+                                        <br className="d-none d-md-block" />
+                                        <span className="text_md_italic text_md_lighter"> de</span>{" "}
+                                        <span className="text_md_white text_light text_italic text_orange">
+                                            {" "}
+                                            financiación?
+                                        </span>
+                                    </h2>
+                                </div>
+                                <br />
+                                <div className="block">
+                                    <a
+                                        target="_blank"
+                                        href="https://oneid.com.co/#/public/fill_flow/ce8db55d1f1171202f6dbc70cb98f2be60e76bb111648e76797acdcfbde35410bb63c0be056b822829ae44c2254824073a8026850ec3ddded6960b86d4c0e594369afc1a5083a1105760e86933"
+                                        className="px-4 btn btn_orange d-block d-md-inline-block block"
+                                    >
+                                        HAZ AQUÍ TU SOLICITUD DE CRÉDITO
+                                    </a>
+                                </div>
+                                <button
+                                    className="btn btn_cyan my-1 me-3 btn-detailed-car mt-3"
+                                    onClick={() => setShowGarantieModal(true)}
                                 >
-                                    HAZ AQUÍ TU SOLICITUD DE CRÉDITO
-                                </a>
+                                    ADQUIERE TU GARANTIA
+                                </button>
                             </div>
-                            <button
-                                className="btn btn_cyan my-1 me-3 btn-detailed-car mt-3"
-                                onClick={() => setShowGarantieModal(true)}
-                            >
-                                ADQUIERE TU GARANTIA
-                            </button>
                         </div>
-                    </div>
-                    <img
-                        src="/assets/services/bg_services_financing_pc.jpg"
-                        className="img-fluid w-100 d-none d-md-block bg_img bg_1"
-                        alt="Financiación con wcar"
-                        title="Financiación con wcar"
-                    />
-                </section>
+                        <img
+                            src="/assets/services/bg_services_financing_pc.jpg"
+                            className="img-fluid w-100 d-none d-md-block bg_img bg_1"
+                            alt="Financiación con wcar"
+                            title="Financiación con wcar"
+                        />
+                    </section>
+                </div>
                 <section className="section_2">
                     <FinancingServicesLineComponent />
                 </section>

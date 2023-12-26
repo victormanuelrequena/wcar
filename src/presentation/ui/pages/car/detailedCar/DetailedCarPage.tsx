@@ -412,7 +412,7 @@ const DetailedCarPage: FC<{}> = () => {
                                             </div>
                                             <div className="col-lg-3 col-md-6 col-sm-12">
                                                 <div className="row">
-                                                    <div className="col-12 my-3 bg-danger">
+                                                    <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
                                                                 style={{ width: "24px" }}
