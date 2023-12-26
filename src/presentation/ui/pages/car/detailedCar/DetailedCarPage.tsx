@@ -412,7 +412,7 @@ const DetailedCarPage: FC<{}> = () => {
                                             </div>
                                             <div className="col-lg-3 col-md-6 col-sm-12">
                                                 <div className="row">
-                                                    <div className="col-12 my-3">
+                                                    <div className="col-12 my-3 bg-danger">
                                                         <span className="text_gray me-2">
                                                             <img
                                                                 style={{ width: "24px" }}
@@ -424,7 +424,9 @@ const DetailedCarPage: FC<{}> = () => {
                                                             Reclamaciones:
                                                         </span>
                                                         <strong>
-                                                            {car.claims ? `Sí | $${car.amount_claims}` : "No"}
+                                                            {car.claims
+                                                                ? `Sí | ${CurrencyParse.toCop(car.amount_claims)}`
+                                                                : "No"}
                                                         </strong>
                                                     </div>
                                                     {/* {car.claims && (
