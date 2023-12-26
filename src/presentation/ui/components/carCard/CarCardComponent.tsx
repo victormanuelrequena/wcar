@@ -41,7 +41,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
             <img
                 src={car.photoUrl}
                 alt={`${car.name} ${car.brand.name} ${car.type.name}`}
-                title="wcar"
+                title={car.name}
                 className="img-fluid img_car"
             />
             <div className="card-body">
