@@ -80,6 +80,9 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.privacyPolicyMobileApp.relativePath} className="my-1">
                                 Políticas de privacidad para la aplicación móvil WCAR
                             </Link>
+                            <Link to={routes.dataPrivacyNoticeWcarAppUsers.relativePath} className="my-1">
+                                AVISO DE PRIVACIDAD DE DATOS PARA USUARIOS APP WCAR
+                            </Link>
 
                             {/* <Link to={routes.blog.relativePath} className="my-1">Blog</Link> */}
                         </div>

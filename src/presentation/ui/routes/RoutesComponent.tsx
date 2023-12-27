@@ -40,6 +40,7 @@ import TermAndConditionsNewUsed6MonthWarrany from "../pages/policies/TermAndCond
 import TermAndConditionsNewUsed6MonthWarrany2 from "../pages/policies/TermAndConditionsNewUsed6MonthWarrany2";
 import TermAndConditions from "../pages/policies/termAndConditions";
 import PrivacyPoliciesForMobileApp from "../pages/policies/PrivacyPoliciesForMobileApp";
+import DataPrivacyNoticeForWcarAppUsers from "../pages/policies/DataPrivacyNoticeForWcarAppUsers";
 
 export interface iRoute {
     name: string;
@@ -253,6 +254,13 @@ const routes = {
         path: "/politicas-de-privacidad-para-la-aplicacion-movil-wcar",
         relativePath: "/politicas-de-privacidad-para-la-aplicacion-movil-wcar",
         component: PrivacyPoliciesForMobileApp,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    dataPrivacyNoticeWcarAppUsers: {
+        path: "/aviso-de-privacidad-de-datos-para-usuarios-app-wcar",
+        relativePath: "/aviso-de-privacidad-de-datos-para-usuarios-app-wcar",
+        component: DataPrivacyNoticeForWcarAppUsers,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
