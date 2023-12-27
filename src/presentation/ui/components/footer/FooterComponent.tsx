@@ -78,10 +78,10 @@ const FooterComponent: FC<{}> = () => {
                                 Términos y Condiciones Garantia
                             </Link>
                             <Link to={routes.privacyPolicyMobileApp.relativePath} className="my-1">
-                                Políticas de privacidad para la aplicación móvil WCAR
+                                Políticas de privacidad para la aplicación móvil wcar
                             </Link>
                             <Link to={routes.dataPrivacyNoticeWcarAppUsers.relativePath} className="my-1">
-                                AVISO DE PRIVACIDAD DE DATOS PARA USUARIOS APP WCAR
+                                Aviso de privacidad de datos para usuarios app wcar
                             </Link>
 
                             {/* <Link to={routes.blog.relativePath} className="my-1">Blog</Link> */}
