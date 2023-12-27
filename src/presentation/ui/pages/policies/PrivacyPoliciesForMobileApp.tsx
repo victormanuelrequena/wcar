@@ -11,15 +11,15 @@ const PrivacyPoliciesForMobileApp: FC<{}> = () => {
                 <div className="container">
                     <div className="bg-white p-5">
                         <div className="side side_top mb-3">
-                            <h2>Políticas de privacidad para la aplicación móvil WCAR</h2>
+                            <h2>Políticas de privacidad para la aplicación móvil wcar</h2>
                         </div>
                         <div className="side mb-3">
                             <h4>Introducción</h4>
                         </div>
                         <p>
-                            WCAR SAS se compromete a proteger la privacidad de sus usuarios. Esta Política de privacidad
-                            describe la información que recopilamos sobre nuestros usuarios, cómo la usamos y cómo la
-                            protegemos.
+                            Estas políticas de privacidad ("Políticas") describen cómo recopilamos, utilizamos y
+                            divulgamos la información personal que recopilamos de los usuarios de nuestra aplicación
+                            wcar ("Aplicación").
                         </p>
                         <div className="side side_top mb-3">
                             <h4 style={{ marginLeft: 16 }}>Información que recopilamos</h4>
@@ -27,79 +27,117 @@ const PrivacyPoliciesForMobileApp: FC<{}> = () => {
                         <p>Recopilamos información sobre nuestros usuarios de las siguientes maneras:</p>
                         <ul>
                             <li>
-                                Información que usted nos proporciona: Cuando se registra para usar WCAR, nos
-                                proporciona cierta información personal, como su nombre, dirección de correo electrónico
-                                y número de teléfono. También podemos recopilar información personal adicional de usted,
-                                como su dirección de facturación y de envío, si nos la proporciona.
+                                Información que nos proporciona directamente: Recopilamos información personal que nos
+                                proporciona directamente, como su nombre, dirección de correo electrónico, número de
+                                teléfono, dirección de facturación y dirección de entrega. Recopilamos esta información
+                                cuando se registra para utilizar la Aplicación, cuando realiza una compra a través de la
+                                Aplicación o cuando se pone en contacto con nosotros con una pregunta o solicitud.
                             </li>
                             <li>
-                                Información que recopilamos automáticamente: Cuando utiliza WCAR, también recopilamos
-                                cierta información automáticamente, como su dirección IP, el tipo de navegador que
-                                utiliza, el sistema operativo que utiliza y la página web que lo remitió a WCAR.
-                            </li>
-                            <li>
-                                Información de terceros: Podemos recopilar información de terceros, como información de
-                                sus redes sociales o de otras fuentes de datos públicas.
+                                Información que recopilamos automáticamente: También recopilamos información
+                                automáticamente cuando utiliza la Aplicación, como su dirección IP, información de
+                                dispositivo, información de uso de la Aplicación y datos de ubicación. Recopilamos esta
+                                información para proporcionarle los servicios de la Aplicación, para mejorar la
+                                experiencia del usuario y para fines de marketing.
                             </li>
                         </ul>
                         <div className="side side_top mb-3">
-                            <h4 style={{ marginLeft: 16 }}>Cómo usamos la información</h4>
+                            <h4 style={{ marginLeft: 16 }}>Uso de la información</h4>
                         </div>
-                        <p>Usamos la información que recopilamos para los siguientes fines:</p>
+                        <p>Utilizamos la información personal que recopilamos de las siguientes maneras:</p>
                         <ul>
                             <li>
-                                Para proporcionarle nuestros servicios: Usamos su información para proporcionarle los
-                                servicios que ha solicitado, como la entrega de productos o servicios, la resolución de
-                                problemas o la asistencia al cliente.
+                                Para proporcionarle los servicios de la Aplicación: Utilizamos la información personal
+                                que recopilamos para proporcionarle los servicios de la Aplicación, como para crear su
+                                cuenta, procesar sus compras, enviarle notificaciones y responder a sus preguntas.
                             </li>
                             <li>
-                                Para mejorar nuestros servicios: Usamos su información para mejorar nuestros servicios,
-                                como comprender mejor sus necesidades y preferencias, y para desarrollar nuevos
-                                productos y servicios.
+                                Para mejorar la experiencia del usuario: Utilizamos la información personal que
+                                recopilamos para mejorar la experiencia del usuario de la Aplicación, como para
+                                personalizar el contenido y los anuncios que ve.
                             </li>
                             <li>
-                                Para fines de marketing: Usamos su información para enviarle información sobre nuestros
-                                productos, servicios y ofertas especiales.
-                            </li>
-                            <li>
-                                Para cumplir con la ley: Usamos su información para cumplir con nuestras obligaciones
-                                legales, como responder a solicitudes de información de las autoridades gubernamentales.
+                                Para fines de marketing: Utilizamos la información personal que recopilamos para fines
+                                de marketing, como para enviarle correos electrónicos promocionales y anuncios
+                                personalizados.
                             </li>
                         </ul>
                         <div className="side side_top mb-3">
-                            <h4 style={{ marginLeft: 16 }}>Cómo protegemos su información</h4>
+                            <h4 style={{ marginLeft: 16 }}>Divulgación de la información</h4>
                         </div>
-                        <p>
-                            Tomamos medidas de seguridad para proteger su información, como el cifrado de datos, el
-                            acceso restringido a la información y el monitoreo de la seguridad de nuestros sistemas.
-                            Cómo compartir su información
-                        </p>
-                        <p>Podemos compartir su información con terceros en las siguientes circunstancias:</p>
+                        <p>Podemos divulgar su información personal a terceros en las siguientes circunstancias:</p>
                         <ul>
                             <li>
-                                Con proveedores de servicios: Podemos compartir su información con nuestros proveedores
-                                de servicios, que nos ayudan a proporcionar nuestros servicios, como el procesamiento de
-                                pagos o el envío de productos.
+                                A proveedores de servicios: Podemos compartir su información personal con proveedores de
+                                servicios que nos ayudan a proporcionar los servicios de la Aplicación, como empresas de
+                                procesamiento de pagos y empresas de análisis de datos.
                             </li>
                             <li>
-                                Con terceros autorizados: Podemos compartir su información con terceros autorizados,
-                                como las autoridades gubernamentales, cuando sea necesario para cumplir con la ley o
-                                para proteger nuestros derechos.
+                                A empresas afiliadas: Podemos compartir su información personal con nuestras empresas
+                                afiliadas, que pueden utilizarla para los mismos fines que nosotros.
+                            </li>
+                            <li>
+                                A terceros conforme a la ley: Podemos divulgar su información personal a terceros
+                                conforme a la ley, como en respuesta a una citación o una orden judicial.
                             </li>
                         </ul>
                         <div className="side side_top mb-3">
-                            <h4 style={{ marginLeft: 16 }}>Sus derechos</h4>
+                            <h4 style={{ marginLeft: 16 }}>Controles de privacidad</h4>
                         </div>
                         <p>
-                            Usted tiene derecho a acceder, actualizar y corregir su información personal. También tiene
-                            derecho a revocar su consentimiento para que usemos su información. Para ejercer estos
-                            derechos, puede ponerse en contacto con nosotros en servicioalcliente @wcar.co o al número
-                            celular +57 324 4001212
+                            Puede controlar la información personal que recopilamos y utilizamos de las siguientes
+                            maneras:
                         </p>
+                        <ul>
+                            <li>
+                                Configuración de la cuenta: Puede actualizar su información de cuenta y sus preferencias
+                                de privacidad en cualquier momento en la configuración de su cuenta.
+                            </li>
+                            <li>
+                                Cookies: Puede controlar las cookies que utilizamos en su dispositivo mediante la
+                                configuración de su navegador.
+                            </li>
+                        </ul>
+                        <div className="side side_top mb-3">
+                            <h4 style={{ marginLeft: 16 }}>Seguridad de la información</h4>
+                        </div>
                         <p>
-                            Cambios en esta Política de privacidad Podemos cambiar esta Política de privacidad en
-                            cualquier momento. Cualquier cambio será efectivo una vez sea publicado en esta página web.
+                            Implementamos medidas de seguridad para proteger su información personal contra el acceso no
+                            autorizado, la divulgación, la alteración o la destrucción. Estas medidas incluyen:
                         </p>
+                        <ul>
+                            <li>
+                                Seguridad física: Protegemos nuestros servidores físicos con medidas de seguridad
+                                físicas, como controles de acceso y cámaras de seguridad.
+                            </li>
+                            <li>
+                                Seguridad de la red: Utilizamos firewalls y otros controles de seguridad de la red para
+                                proteger nuestra red contra ataques.
+                            </li>
+                            <li>
+                                Seguridad de los datos: Utilizamos encriptación y otras medidas de seguridad de los
+                                datos para proteger su información personal almacenada en nuestros sistemas.
+                            </li>
+                        </ul>
+                        <div className="side side_top mb-3">
+                            <h4 style={{ marginLeft: 16 }}>Cambios en las políticas de privacidad</h4>
+                        </div>
+                        <p>
+                            Podemos modificar estas Políticas de privacidad en cualquier momento. Si realizamos algún
+                            cambio importante, le notificaremos por correo electrónico o mediante un aviso en la
+                            Aplicación.
+                        </p>
+                        <div className="side side_top mb-3">
+                            <h4 style={{ marginLeft: 16 }}>Cómo contactarnos</h4>
+                        </div>
+                        <p>
+                            Si tiene alguna pregunta sobre estas Políticas de privacidad, puede ponerse en contacto con
+                            nosotros en: servicioalcliente @wcar.co o al número celular +57 324 4001212
+                        </p>
+                        <div className="side side_top mb-3">
+                            <h4 style={{ marginLeft: 16 }}>Consentimiento</h4>
+                        </div>
+                        <p>Al utilizar la Aplicación, usted acepta estas Políticas de privacidad.</p>
                     </div>
                 </div>
             </div>
