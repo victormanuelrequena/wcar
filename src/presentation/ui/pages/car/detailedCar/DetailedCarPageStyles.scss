@@ -1,6 +1,11 @@
 .detailed_car_page {
+    .carCarouselContainer {
+        padding: 0 16px;
+    }
+
     .section_2 {
         position: relative;
+
         &::before {
             content: "";
             position: absolute;
@@ -23,7 +28,7 @@
         .bg_black {
             position: relative;
 
-            & > img.bg_img {
+            &>img.bg_img {
                 position: absolute;
                 left: 0;
                 bottom: 0;
@@ -31,23 +36,27 @@
             }
         }
     }
+
     .car-price {
         font-size: 36px;
         color: #1e1e1e;
         margin-top: 16px;
         margin-bottom: 5px;
     }
+
     .car-spec {
         font-size: 14px;
         color: #666c89;
         font-weight: 500;
         line-height: 22px;
+
         strong {
             font-size: 16px;
             color: #666c89;
             font-weight: 700;
         }
     }
+
     .btn-detailed-car {
         font-size: 14px;
         font-weight: 700;
@@ -55,6 +64,7 @@
         display: flex;
         align-items: center;
     }
+
     .text-spec {
         font-size: 14px;
         font-weight: 500;
@@ -77,6 +87,27 @@
     .item:nth-last-child(3) {
         grid-column: 1/4;
     }
+
+    .banner-tag-container {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .banner-tag {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        font-style: italic;
+        padding: 12px 16px;
+    }
+
+    .banner-tag p span {
+        font-weight: 600;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -87,6 +118,46 @@
         .item:nth-last-child(2),
         .item:nth-last-child(3) {
             grid-column: 1/2;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .detailed_car_page {
+        .banner-tag-container {
+            padding: 0;
+        }
+
+        .banner-tag {
+            width: 100%;
+        }
+    }
+
+    .carCarouselContainer {
+        padding: 0;
+    }
+}
+
+@media (max-width: 1440px) {
+    .detailed_car_page {
+        .banner-tag-container {
+            padding-left: 78px;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .detailed_car_page {
+        .banner-tag-container {
+            padding-left: 16px;
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    .detailed_car_page {
+        .banner-tag-container {
+            padding-left: 38px;
         }
     }
 }

@@ -106,12 +106,34 @@ const DetailedCarPage: FC<{}> = () => {
                         <div className="bg_gray py-5">
                             <div className="container">
                                 <div className="row d-flex justify-content-center">
-                                    <div className="col-12 col-lg-7 col-xl-8">
+                                    {(parseInt(car?.tag?.id) === 5 || parseInt(car?.tag?.id) === 7) && (
+                                        <div className="col-12 banner-tag-container">
+                                            <div className="banner-tag">
+                                                <img
+                                                    src="/assets/icons/info.svg"
+                                                    alt="wcar"
+                                                    title="wcar"
+                                                    className="img-fluid img_icon me-2"
+                                                />
+                                                {parseInt(car?.tag?.id) === 5 && (
+                                                    <p>
+                                                        <span>Vehículos fuera de estándar:</span> Son vehículos con
+                                                        alguna modificación que no viene de fábrica o vehículos con más
+                                                        de 150.000 km
+                                                    </p>
+                                                )}
+                                                {parseInt(car?.tag?.id) === 7 && (
+                                                    <p>Este vehículo ya fue reservado por otro usuario.</p>
+                                                )}
+                                            </div>
+                                        </div>
+                                    )}
+                                    <div className="col-12 col-lg-7 col-xl-8 carCarouselContainer">
                                         <CarCarouselImagesComponent car={car} images={car.images} />
                                     </div>
-                                    <div className="col-12 col-lg-5 col-xl-4">
+                                    <div className="col-12 col-lg-5 col-xl-4 px-0">
                                         <div>
-                                            <div className="p-3 bg-white rounded w-100 mt-5 mt-lg-0">
+                                            <div className="py-4 px-4 bg-white rounded w-100 mt-5 mt-lg-0">
                                                 <div className="mb-2 ms-1">
                                                     <WebShare />
                                                 </div>
