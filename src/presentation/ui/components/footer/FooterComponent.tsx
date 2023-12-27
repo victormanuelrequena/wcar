@@ -77,6 +77,9 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.termAndConditions.relativePath} className="my-1">
                                 Términos y Condiciones Garantia
                             </Link>
+                            <Link to={routes.privacyPolicyMobileApp.relativePath} className="my-1">
+                                Políticas de privacidad para la aplicación móvil WCAR
+                            </Link>
 
                             {/* <Link to={routes.blog.relativePath} className="my-1">Blog</Link> */}
                         </div>

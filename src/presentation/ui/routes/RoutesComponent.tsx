@@ -39,6 +39,7 @@ import TermAndConditionsSalseYesOrYes from "../pages/policies/TermAndConditionsS
 import TermAndConditionsNewUsed6MonthWarrany from "../pages/policies/TermAndConditionsNewUsed6MonthWarrany";
 import TermAndConditionsNewUsed6MonthWarrany2 from "../pages/policies/TermAndConditionsNewUsed6MonthWarrany2";
 import TermAndConditions from "../pages/policies/termAndConditions";
+import PrivacyPoliciesForMobileApp from "../pages/policies/PrivacyPoliciesForMobileApp";
 
 export interface iRoute {
     name: string;
@@ -245,6 +246,13 @@ const routes = {
         path: "/terminos-y-condiciones-garantia",
         relativePath: "/terminos-y-condiciones-garantia",
         component: TermAndConditions,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    privacyPolicyMobileApp: {
+        path: "/politicas-de-privacidad-para-la-aplicacion-movil-wcar",
+        relativePath: "/politicas-de-privacidad-para-la-aplicacion-movil-wcar",
+        component: PrivacyPoliciesForMobileApp,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
