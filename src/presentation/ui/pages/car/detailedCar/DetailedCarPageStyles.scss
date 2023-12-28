@@ -108,6 +108,41 @@
     .banner-tag p span {
         font-weight: 600;
     }
+    .container_tooltip {
+        position: relative;
+        font-size: 14px;
+    }
+
+    .tool_tip {
+        position: absolute;
+        color: #fff;
+        margin-bottom: 5px;
+        right: 27%;
+        bottom: 100%;
+        width: 300px;
+        background: #000;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-align: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.5s ease;
+    }
+
+    .tool_tip::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        transform: translateX(-50%);
+        border: 10px solid;
+        border-color: #000 transparent transparent transparent;
+    }
+
+    .container_tooltip:hover .tool_tip {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -119,6 +154,10 @@
         .item:nth-last-child(3) {
             grid-column: 1/2;
         }
+    }
+
+    .tool_tip {
+        left: -5%;
     }
 }
 
