@@ -243,7 +243,7 @@ export default function ModalGarantie({ close, id, carValue, SrvCode }: ModalAmo
                             }}
                             onClick={bookCar}
                         >
-                            <p>Apartar</p>
+                            <p>Compra tu {SrvCode == "1002" ? "seguro" : "garantia"} </p>
                         </button>
                         <div className="btn btn_orange_outline" onClick={close}>
                             Cancelar
