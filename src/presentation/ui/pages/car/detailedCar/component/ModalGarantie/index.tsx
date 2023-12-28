@@ -65,7 +65,7 @@ export default function ModalGarantie({ close, id, carValue, SrvCode }: ModalAmo
     ];
 
     const garantiaOptions = [
-        { label: "Garantia 1", value: 1000000.0 },
+        { label: "Garantia 1", value: 950000.0 },
         { label: "Garantia 2", value: 1500000.0 },
         { label: "Garantia 3", value: 2000000.0 },
         { label: "Garantia 4", value: 2500000.0 },
