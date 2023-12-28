@@ -126,46 +126,6 @@ const DataPrivacyNoticeForWcarAppUsers: FC<{}> = () => {
                             Si tiene alguna pregunta o comentario sobre este Aviso de privacidad, puede ponerse en
                             contacto con nosotros en servicioalcliente @wcar.co o al número celular +57 324 4001212
                         </p>
-                        <div className="side side_top mb-3">
-                            <h4 style={{ marginLeft: 16 }}>Adiciones y modificaciones</h4>
-                        </div>
-                        <p>
-                            En comparación con el Aviso de privacidad de la App WCAR, he realizado las siguientes
-                            adiciones y modificaciones:
-                        </p>
-                        <ul>
-                            <li>
-                                He agregado un título y una introducción que proporcionan una descripción general del
-                                Aviso de privacidad.
-                            </li>
-                            <li>
-                                He aclarado que la información que recopilamos se recopila de manera directa, automática
-                                y de terceros.
-                            </li>
-                            <li>
-                                He especificado los fines específicos para los que usamos la información que
-                                recopilamos.
-                            </li>
-                            <li>He agregado información sobre cómo protegemos la información que recopilamos.</li>
-                            <li>He ampliado la información sobre cómo compartimos la información que recopilamos.</li>
-                            <li>
-                                He agregado información sobre los derechos de los usuarios con respecto a su información
-                                personal.
-                            </li>
-                            <li>
-                                He agregado información sobre cómo los usuarios pueden ejercer sus derechos con respecto
-                                a su información personal.
-                            </li>
-                            <li>
-                                He agregado información sobre cómo los usuarios pueden contactarnos con preguntas o
-                                comentarios.
-                            </li>
-                        </ul>
-                        <p>
-                            Estas adiciones y modificaciones están diseñadas para garantizar que el Aviso de privacidad
-                            de la App WCAR sea claro, conciso y fácil de entender. También están diseñadas para cumplir
-                            con las leyes y regulaciones aplicables en Colombia.
-                        </p>
                     </div>
                 </div>
             </div>
