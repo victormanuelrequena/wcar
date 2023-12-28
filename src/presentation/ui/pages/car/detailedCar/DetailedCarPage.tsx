@@ -412,64 +412,52 @@ const DetailedCarPage: FC<{}> = () => {
                                             </div>
                                             <div className="col-lg-3 col-md-6 col-sm-12">
                                                 <div className="row">
-                                                    <div className="col-12 my-3">
-                                                        <span className="text_gray me-2">
-                                                            <img
-                                                                style={{ width: "24px" }}
-                                                                src="/assets/icons/valor.png"
-                                                                className="img-fluid me-2"
-                                                                alt="wcar"
-                                                                title="wcar"
-                                                            />
-                                                            Reclamaciones:
+                                                    <div className="container_tooltip">
+                                                        <span className="tool_tip">
+                                                            Reclamaciones: una solicitud en la que se le pide a la
+                                                            compañia de seguros que pague por daños o lesiones.
                                                         </span>
-                                                        <strong>
-                                                            {car.claims ? `Sí | $${car.amount_claims}` : "No"}
-                                                        </strong>
-                                                    </div>
-                                                    {/* {car.claims && (
                                                         <div className="col-12 my-3">
                                                             <span className="text_gray me-2">
                                                                 <img
-                                                                    src="/assets/icons/combustible.svg"
+                                                                    style={{ width: "24px" }}
+                                                                    src="/assets/icons/valor.png"
                                                                     className="img-fluid me-2"
                                                                     alt="wcar"
                                                                     title="wcar"
                                                                 />
-                                                                Cuantía:
+                                                                Reclamaciones:
                                                             </span>
-                                                            <strong>{car.amount_claims}</strong>
+                                                            <strong>
+                                                                {car.claims ? `Sí | $${car.amount_claims}` : "No"}
+                                                            </strong>
                                                         </div>
-                                                    )} */}
-                                                    <div className="col-12 my-3">
-                                                        <span className="text_gray me-2">
-                                                            <img
-                                                                style={{ width: "24px" }}
-                                                                src="/assets/icons/reclamaciones.png"
-                                                                className="img-fluid me-2"
-                                                                alt="wcar"
-                                                                title="wcar"
-                                                            />
-                                                            Garantía:
-                                                        </span>
-                                                        <strong>
-                                                            {car.warranty ? `Si | ${car.type_warranty}` : "No"}
-                                                        </strong>
                                                     </div>
-                                                    {/* {car.warranty && (
+                                                    <div className="container_tooltip">
+                                                        <span className="tool_tip tool_tip_one">
+                                                            Garantía: la garantia de calidad y servicio de posventa
+                                                            amparará el producto por todos los defectos no imputables al
+                                                            consumidor y asegurará la obligación de proporcionar la
+                                                            asistencia técnica, asi como el suministro de repuestos que
+                                                            permitan el adecuado funcionamiento y disfrute del vehiculo
+                                                            por parte del consumidor.
+                                                        </span>
                                                         <div className="col-12 my-3">
                                                             <span className="text_gray me-2">
                                                                 <img
-                                                                    src="/assets/icons/status.svg"
+                                                                    style={{ width: "24px" }}
+                                                                    src="/assets/icons/reclamaciones.png"
                                                                     className="img-fluid me-2"
                                                                     alt="wcar"
                                                                     title="wcar"
                                                                 />
-                                                                Tipo de garantía:
+                                                                Garantía:
                                                             </span>
-                                                            <strong>{car.type_warranty}</strong>
+                                                            <strong>
+                                                                {car.warranty ? `Si | ${car.type_warranty}` : "No"}
+                                                            </strong>
                                                         </div>
-                                                    )} */}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
