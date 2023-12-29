@@ -121,7 +121,7 @@ const InsurancePage: FC<{}> = () => {
                                             className="btn btn_cyan my-1 me-3 btn-detailed-car mt-3"
                                             onClick={() => setShowGarantieModal(true)}
                                         >
-                                            ADQUIERE TU SEGURO
+                                            COMPRA TU SEGURO
                                         </button>
                                     </div>
                                 </div>
