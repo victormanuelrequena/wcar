@@ -32,7 +32,7 @@ const CardContactComponent: FC<{}> = () => {
                     setShowGarantieModal(true);
                 }}
             >
-                ADQUIERE TU SEGURO
+                COMPRA TU SEGURO
             </button>
             <button
                 className="btn btn_cyan my-1 me-3 btn-detailed-car mt-3"
