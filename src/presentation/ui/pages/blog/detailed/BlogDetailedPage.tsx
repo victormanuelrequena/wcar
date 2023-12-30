@@ -11,6 +11,7 @@ import GetBlogPostByIdUseCase, {
 } from "../../../../../domain/use_cases/blog/GetBlogPostByIdUseCase.tsx";
 import di from "../../../../../di/DependencyInjection";
 import HostApi from "../../../../../data/settings/HostApi";
+// import { Carousel1 } from "../../../components/carousel/carousel";
 
 const BlogDetailedPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -129,6 +130,10 @@ const BlogDetailedPage = () => {
                         </div>
                     </div>
                 )}
+                {/* <section className="container mb-5 mt-4">
+                    <p className="mb-4 ms-4 text-black fs-2 text fw-normal">Vehículos en ventas</p>
+                    <Carousel1 carUrl={`cars/carousel`} />
+                </section> */}
             </Layout>
         </div>
     );

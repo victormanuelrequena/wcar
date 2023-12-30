@@ -69,7 +69,6 @@ const BlogPage: FC<{}> = () => {
                                         className="col-md-6 ms-md-5"
                                     >
                                         <div className="bg_white outstanding_container p-4">
-                                            <div className="tag">{outstandingBlog?.tagName}</div>
                                             <h1 className="my-2 text_bold outstanding-title">
                                                 {outstandingBlog?.title}
                                             </h1>
