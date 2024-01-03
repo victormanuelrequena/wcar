@@ -35,7 +35,8 @@ const SearchCarApiImpl = async (
             body_type: type,
             colors: colorId ? [colorId] : [],
             fuel_type: fuelId,
-            transmission: transmission == TransmissionCar.AUTOMATIC ? 1 : 0,
+            transmission:
+                transmission == TransmissionCar.AUTOMATIC ? 1 : transmission == TransmissionCar.MANUAL ? 0 : "",
             search_word: search,
             plate_number: plateNumber,
             orderBy: orderBy?.value != undefined ? (orderBy.value?.desc ? "desc" : "asc") : undefined,
