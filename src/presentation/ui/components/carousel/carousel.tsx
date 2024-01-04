@@ -1,22 +1,15 @@
-import { FC, useEffect, useState, useRef } from "react";
+import { FC, useState, useRef } from "react";
 import { CardCarousel } from "../cardCarousel/cardCarousel";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./carouselStyles.scss";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
-export const Carousel1: FC<{ carUrl: string }> = ({ carUrl }) => {
-    const [cards, setCards] = useState([]);
+export const Carousel1: FC<{ cars: any }> = ({ cars }) => {
+    console.log(cars);
     const [indexCard, setIndexCard] = useState<number>(0);
 
     const carouselRef = useRef(null);
-
-    useEffect(() => {
-        fetch(`https://api.wcaronline.com/api/${carUrl}/`)
-            .then((res) => res.json())
-            .then((res) => setCards(res))
-            .catch((e) => console.error(e));
-    }, [carUrl]);
 
     const previous = () => {
         if (carouselRef.current && indexCard !== 0) {
@@ -26,7 +19,7 @@ export const Carousel1: FC<{ carUrl: string }> = ({ carUrl }) => {
     };
 
     const next = () => {
-        if (carouselRef.current && indexCard + 1 !== cards.length) {
+        if (carouselRef.current && indexCard + 1 !== cars?.length) {
             carouselRef.current.goToSlide(indexCard + 1);
             setIndexCard(indexCard + 1);
         }
@@ -65,8 +58,8 @@ export const Carousel1: FC<{ carUrl: string }> = ({ carUrl }) => {
                     setIndexCard(currentSlide);
                 }}
             >
-                {cards.map((card, i) => {
-                    return <CardCarousel car={card} key={i} />;
+                {cars?.map((car: any, i: number) => {
+                    return <CardCarousel car={car} key={i} />;
                 })}
             </Carousel>
             <div className="container_nav w-100 d-flex">
@@ -74,13 +67,13 @@ export const Carousel1: FC<{ carUrl: string }> = ({ carUrl }) => {
                     <AiOutlineArrowLeft />
                 </div>
                 <div
-                    className={`arrow_slider_card ms-1 ${indexCard === cards.length - 1 ? "disabled" : null}`}
+                    className={`arrow_slider_card ms-1 ${indexCard === cars?.length - 1 ? "disabled" : null}`}
                     onClick={next}
                 >
                     <AiOutlineArrowRight />
                 </div>
                 <div className="container_item_card d-flex flex-wrap justify-content-around align-items-center">
-                    {cards.map((card, i) => {
+                    {cars?.map((car: any, i: number) => {
                         return (
                             <div
                                 className={`item_card ${indexCard === i ? "active" : "disabled"}`}

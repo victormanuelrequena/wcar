@@ -11,7 +11,7 @@ import GetBlogPostByIdUseCase, {
 } from "../../../../../domain/use_cases/blog/GetBlogPostByIdUseCase.tsx";
 import di from "../../../../../di/DependencyInjection";
 import HostApi from "../../../../../data/settings/HostApi";
-// import { Carousel1 } from "../../../components/carousel/carousel";
+import { Carousel1 } from "../../../components/carousel/carousel";
 
 const BlogDetailedPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -55,7 +55,7 @@ const BlogDetailedPage = () => {
                         <div className="container outstanding_container p-4">
                             <div className="row d-flex justify-content-center">
                                 <section className="col-md-10 section_1">
-                                    <div className="tag">{blogData?.post?.tagName}</div>
+                                    {/* <div className="tag">{blogData?.post?.tagName}</div> */}
                                     <h1 className="my-2 text_bold" style={{ fontSize: "36px" }}>
                                         {blogData?.post?.title}
                                     </h1>
@@ -130,10 +130,12 @@ const BlogDetailedPage = () => {
                         </div>
                     </div>
                 )}
-                {/* <section className="container mb-5 mt-4">
-                    <p className="mb-4 ms-4 text-black fs-2 text fw-normal">Vehículos en ventas</p>
-                    <Carousel1 carUrl={`cars/carousel`} />
-                </section> */}
+                {blogData?.cars.length !== 0 && (
+                    <section className="container mb-5 mt-4">
+                        <p className="mb-4 ms-4 text-black fs-2 text fw-normal">Vehículos en ventas</p>
+                        <Carousel1 cars={!blogData?.cars ? [] : blogData?.cars} />
+                    </section>
+                )}
             </Layout>
         </div>
     );
