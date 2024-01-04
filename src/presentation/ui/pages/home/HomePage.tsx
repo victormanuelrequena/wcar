@@ -18,7 +18,15 @@ import { Helmet } from "react-helmet-async";
 import { Carousel1 } from "../../components/carousel/carousel";
 
 const HomePage: FC<{}> = () => {
+    const [carsInfo, setCarsInfo] = useState([]);
     const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
+
+    useEffect(() => {
+        fetch(`https://api.wcaronline.com/api/cars/carousel`)
+            .then((res) => res.json())
+            .then((res) => setCarsInfo(res))
+            .catch((e) => console.error(e));
+    }, []);
 
     const _getSomeCars = async () => {
         try {
@@ -217,7 +225,7 @@ const HomePage: FC<{}> = () => {
                         className="container w-100 d-flex flex-column justify-content-evenly"
                         style={{ height: "500px" }}
                     >
-                        <Carousel1 carUrl={`cars/carousel`} />
+                        <Carousel1 cars={carsInfo} />
                     </section>
                     <div className="px-3 py-2 bg_gray">
                         <div className="container">
