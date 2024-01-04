@@ -35,11 +35,15 @@ const DetailedCarPage: FC<{}> = () => {
     const [showPeritajeImage, setShowPeritajeImage] = useState(false);
     const [showAmountModal, setShowAmountModal] = useState(false);
     const [open, setOpen] = useState(false);
+    const [carsInfo, setCarsInfo] = useState([]);
     const rootElement = useRef(null);
 
-    console.log(car?.description.replace(/\n/g, "\n").split("\n"));
-
-    console.log(car);
+    useEffect(() => {
+        fetch(`https://api.wcaronline.com/api/cars-related/${car?.id}`)
+            .then((res) => res.json())
+            .then((res) => setCarsInfo(res))
+            .catch((e) => console.error(e));
+    }, [car?.id]);
 
     const _getCar = async () => {
         try {
@@ -534,7 +538,7 @@ const DetailedCarPage: FC<{}> = () => {
                         className="container w-100 d-flex flex-column justify-content-evenly"
                         style={{ height: "500px" }}
                     >
-                        <Carousel1 carUrl={`cars-related/${car.id}`} />
+                        <Carousel1 cars={carsInfo} />
                     </section>
                     <div className="container">
                         {relatedCars ? (
