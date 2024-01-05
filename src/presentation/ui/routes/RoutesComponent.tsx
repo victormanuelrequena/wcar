@@ -41,6 +41,7 @@ import TermAndConditionsNewUsed6MonthWarrany2 from "../pages/policies/TermAndCon
 import TermAndConditions from "../pages/policies/termAndConditions";
 import PrivacyPoliciesForMobileApp from "../pages/policies/PrivacyPoliciesForMobileApp";
 import DataPrivacyNoticeForWcarAppUsers from "../pages/policies/DataPrivacyNoticeForWcarAppUsers";
+import PrivacyPolicies from "../pages/policies/privacyPolicies";
 
 export interface iRoute {
     name: string;
@@ -247,6 +248,13 @@ const routes = {
         path: "/terminos-y-condiciones-garantia",
         relativePath: "/terminos-y-condiciones-garantia",
         component: TermAndConditions,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    privacyPolicies: {
+        path: "/politicas-de-privacidad-para-la-aplicacion-movil-wcar",
+        relativePath: "/politicas-de-privacidad-para-la-aplicacion-movil-wcar",
+        component: PrivacyPolicies,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
