@@ -290,8 +290,29 @@ const DetailedCarPage: FC<{}> = () => {
                                 <div className="col-12 col-md-9">
                                     <div className="p-4">
                                         <div className="row">
-                                            <div className="col-lg-3 col-md-6 col-sm-12">
+                                            <div className="col-lg-4 col-md-6 col-sm-12">
                                                 <div className="row">
+                                                    <div className="container_tooltip">
+                                                        <span className="tool_tip claims">
+                                                            <p>Accidentes menores</p>
+                                                            <hr />
+                                                            <p>Vandalismo</p>
+                                                        </span>
+                                                        <div className="col-12 my-3">
+                                                            <span className="text_gray me-2">
+                                                                <img
+                                                                    style={{ width: "24px" }}
+                                                                    src="/assets/icons/shield.svg"
+                                                                    className="img-fluid me-2"
+                                                                    alt="wcar"
+                                                                />
+                                                                Reclamaciones:
+                                                            </span>
+                                                            <strong>
+                                                                {car.claims ? `Sí | $${car.amount_claims}` : "No"}
+                                                            </strong>
+                                                        </div>
+                                                    </div>
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
@@ -303,18 +324,6 @@ const DetailedCarPage: FC<{}> = () => {
                                                             Marca:
                                                         </span>
                                                         <strong>{car.brand.name}</strong>
-                                                    </div>
-                                                    <div className="col-12 my-3">
-                                                        <span className="text_gray me-2">
-                                                            <img
-                                                                src="/assets/icons/door.svg"
-                                                                className="img-fluid me-2"
-                                                                alt="wcar"
-                                                                title="wcar"
-                                                            />
-                                                            Puertas:
-                                                        </span>
-                                                        <strong>{car.doors}</strong>
                                                     </div>
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
@@ -331,22 +340,6 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
-                                                                src="/assets/icons/color.svg"
-                                                                className="img-fluid me-2"
-                                                                alt="wcar"
-                                                                title="wcar"
-                                                            />
-                                                            Color:
-                                                        </span>
-                                                        <strong>{car.color.name}</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-lg-3 col-md-6 col-sm-12">
-                                                <div className="row">
-                                                    <div className="col-12 my-3">
-                                                        <span className="text_gray me-2">
-                                                            <img
                                                                 src="/assets/icons/calendar.svg"
                                                                 className="img-fluid me-2"
                                                                 alt="wcar"
@@ -355,6 +348,66 @@ const DetailedCarPage: FC<{}> = () => {
                                                             Año:
                                                         </span>
                                                         <strong>{car.year}</strong>
+                                                    </div>
+                                                    <div className="col-12 my-3">
+                                                        <span className="text_gray me-2">
+                                                            <img
+                                                                src="/assets/icons/type_vehicle.svg"
+                                                                className="img-fluid me-2"
+                                                                alt="wcar"
+                                                                title="wcar"
+                                                            />
+                                                            Carroceria:
+                                                        </span>
+                                                        <strong>{car.type.name}</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-4 col-md-6 col-sm-12">
+                                                <div className="row">
+                                                    <div className="container_tooltip">
+                                                        <span className="tool_tip claims">
+                                                            <p>Accidentes menores</p>
+                                                            <hr />
+                                                            <p>Vandalismo</p>
+                                                        </span>
+                                                        <div className="col-12 my-3">
+                                                            <span className="text_gray me-2">
+                                                                <img
+                                                                    style={{ width: "24px" }}
+                                                                    src="/assets/icons/amount.svg"
+                                                                    className="img-fluid me-2"
+                                                                    alt="wcar"
+                                                                />
+                                                                Cuantía:
+                                                            </span>
+                                                            <strong>{car.amount_claims ?? "0$"}</strong>
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-12 my-3">
+                                                        <span className="text_gray me-2">
+                                                            <img
+                                                                src="/assets/icons/door.svg"
+                                                                className="img-fluid me-2"
+                                                                alt="wcar"
+                                                                title="wcar"
+                                                            />
+                                                            Puertas:
+                                                        </span>
+                                                        <strong>{car.doors}</strong>
+                                                    </div>
+
+                                                    <div className="col-12 my-3">
+                                                        <span className="text_gray me-2">
+                                                            <img
+                                                                src="/assets/icons/color.svg"
+                                                                className="img-fluid me-2"
+                                                                alt="wcar"
+                                                                title="wcar"
+                                                            />
+                                                            Color:
+                                                        </span>
+                                                        <strong>{car.color.name}</strong>
                                                     </div>
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
@@ -371,18 +424,6 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
-                                                                src="/assets/icons/type_vehicle.svg"
-                                                                className="img-fluid me-2"
-                                                                alt="wcar"
-                                                                title="wcar"
-                                                            />
-                                                            Carroceria:
-                                                        </span>
-                                                        <strong>{car.type.name}</strong>
-                                                    </div>
-                                                    <div className="col-12 my-3">
-                                                        <span className="text_gray me-2">
-                                                            <img
                                                                 src="/assets/icons/plate.svg"
                                                                 className="img-fluid me-2"
                                                                 alt="wcar"
@@ -394,8 +435,33 @@ const DetailedCarPage: FC<{}> = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="col-lg-3 col-md-6 col-sm-12">
+                                            <div className="col-lg-4 col-md-12 col-sm-12">
                                                 <div className="row">
+                                                    <div className="container_tooltip">
+                                                        <span className="tool_tip tool_tip_one">
+                                                            Garantía: la garantia de calidad y servicio de posventa
+                                                            amparará el producto por todos los defectos no imputables al
+                                                            consumidor y asegurará la obligación de proporcionar la
+                                                            asistencia técnica, asi como el suministro de repuestos que
+                                                            permitan el adecuado funcionamiento y disfrute del vehiculo
+                                                            por parte del consumidor.
+                                                        </span>
+                                                        <div className="col-12 my-3">
+                                                            <span className="text_gray me-2">
+                                                                <img
+                                                                    style={{ width: "24px" }}
+                                                                    src="/assets/icons/warranty.svg"
+                                                                    className="img-fluid me-2"
+                                                                    alt="wcar"
+                                                                    title="wcar"
+                                                                />
+                                                                Garantía:
+                                                            </span>
+                                                            <strong>
+                                                                {car.warranty ? `Si | ${car.type_warranty}` : "No"}
+                                                            </strong>
+                                                        </div>
+                                                    </div>
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
@@ -443,56 +509,6 @@ const DetailedCarPage: FC<{}> = () => {
                                                             Estado:
                                                         </span>
                                                         <strong>{car.status}</strong>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-lg-3 col-md-6 col-sm-12">
-                                                <div className="row">
-                                                    <div className="container_tooltip">
-                                                        <span className="tool_tip claims">
-                                                            <p>Accidentes menores</p>
-                                                            <hr />
-                                                            <p>Vandalismo</p>
-                                                        </span>
-                                                        <div className="col-12 my-3">
-                                                            <span className="text_gray me-2">
-                                                                <img
-                                                                    style={{ width: "24px" }}
-                                                                    src="/assets/icons/valor.png"
-                                                                    className="img-fluid me-2"
-                                                                    alt="wcar"
-                                                                />
-                                                                Reclamaciones:
-                                                            </span>
-                                                            <strong>
-                                                                {car.claims ? `Sí | $${car.amount_claims}` : "No"}
-                                                            </strong>
-                                                        </div>
-                                                    </div>
-                                                    <div className="container_tooltip">
-                                                        <span className="tool_tip tool_tip_one">
-                                                            Garantía: la garantia de calidad y servicio de posventa
-                                                            amparará el producto por todos los defectos no imputables al
-                                                            consumidor y asegurará la obligación de proporcionar la
-                                                            asistencia técnica, asi como el suministro de repuestos que
-                                                            permitan el adecuado funcionamiento y disfrute del vehiculo
-                                                            por parte del consumidor.
-                                                        </span>
-                                                        <div className="col-12 my-3">
-                                                            <span className="text_gray me-2">
-                                                                <img
-                                                                    style={{ width: "24px" }}
-                                                                    src="/assets/icons/reclamaciones.png"
-                                                                    className="img-fluid me-2"
-                                                                    alt="wcar"
-                                                                    title="wcar"
-                                                                />
-                                                                Garantía:
-                                                            </span>
-                                                            <strong>
-                                                                {car.warranty ? `Si | ${car.type_warranty}` : "No"}
-                                                            </strong>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
