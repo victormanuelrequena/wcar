@@ -323,17 +323,19 @@ const DetailedCarPage: FC<{}> = () => {
                                                                         : "rotate(180deg)",
                                                                 }}
                                                             >
-                                                                <Arrow />
+                                                                {car.amount_claims && <Arrow />}
                                                             </div>
                                                         </div>
-                                                        <span
-                                                            className="claims position-absolute"
-                                                            style={{ display: claimsInfo ? "block" : "none" }}
-                                                        >
-                                                            <p>Accidentes menores</p>
-                                                            <hr />
-                                                            <p>Vandalismo</p>
-                                                        </span>
+                                                        {car.amount_claims && (
+                                                            <span
+                                                                className="claims position-absolute"
+                                                                style={{ display: claimsInfo ? "block" : "none" }}
+                                                            >
+                                                                <p>Accidentes menores</p>
+                                                                <hr />
+                                                                <p>Vandalismo</p>
+                                                            </span>
+                                                        )}
                                                     </div>
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">

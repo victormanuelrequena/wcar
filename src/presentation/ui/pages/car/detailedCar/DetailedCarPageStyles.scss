@@ -111,9 +111,9 @@
 
     .warranty_tool_tip {
         display: block;
-        left: -50px;
+        left: -32px;
         color: #666c89;
-        margin-top: 5px;
+        margin-top: 10px;
         width: 300px;
         background: #f6f7f9;
         padding: 5px 10px;
@@ -122,10 +122,25 @@
         text-align: center;
     }
 
-    .warranty_tool_tip::before {
-        background-image: url(../../../../../../public/assets/icons/arrow_tool_tip.svg);
+    .warranty_tool_tip::after {
+        content: "";
         position: absolute;
-        top: 0;
+        top: -20px;
+        left: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 10px solid;
+        border-color: transparent transparent #f6f7f9 transparent;
+    }
+
+    .warranty_tool_tip::before {
+        content: "";
+        position: absolute;
+        top: -21px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 10px solid;
+        border-color: transparent transparent #90a3bf80 transparent;
     }
 
     .warranty {
