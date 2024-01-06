@@ -108,41 +108,24 @@
     .banner-tag p span {
         font-weight: 600;
     }
-    .container_tooltip {
-        position: relative;
-        font-size: 14px;
-    }
 
-    .tool_tip {
-        position: absolute;
+    .warranty_tool_tip {
+        display: block;
+        left: -50px;
         color: #666c89;
-        margin-bottom: 5px;
-        right: 27%;
-        bottom: 100%;
+        margin-top: 5px;
         width: 300px;
         background: #f6f7f9;
         padding: 5px 10px;
         border: 1px solid #90a3bf80;
         border-radius: 5px;
         text-align: center;
-        visibility: hidden;
-        opacity: 0;
-        transition: 0.5s ease;
     }
 
-    .tool_tip::before {
-        content: "";
+    .warranty_tool_tip::before {
+        background-image: url(../../../../../../public/assets/icons/arrow_tool_tip.svg);
         position: absolute;
-        left: 50%;
-        top: 100%;
-        transform: translateX(-50%);
-        border: 10px solid;
-        border-color: #f6f7f9 transparent transparent transparent;
-    }
-
-    .container_tooltip:hover .tool_tip {
-        visibility: visible;
-        opacity: 1;
+        top: 0;
     }
 
     .warranty {
@@ -160,9 +143,13 @@
     }
 
     .claims {
+        display: block;
         background-color: #fff;
-        width: 250px;
+        width: 200px;
         padding: 5px 0;
+        margin-top: 5px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 14px 0px #0000001a;
         p {
             display: flex;
             height: 44px;
@@ -176,14 +163,6 @@
             border-color: #c4c4c4;
         }
     }
-
-    .claims::before {
-        position: static;
-        left: 0;
-        top: 0;
-        transform: translateX(0);
-        border: none;
-    }
 }
 
 @media screen and (max-width: 767px) {
@@ -195,10 +174,6 @@
         .item:nth-last-child(3) {
             grid-column: 1/2;
         }
-    }
-
-    .tool_tip {
-        left: -5%;
     }
 }
 
