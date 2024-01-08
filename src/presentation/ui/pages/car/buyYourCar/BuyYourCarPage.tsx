@@ -172,7 +172,6 @@ const BuyYourCarPage: FC<{}> = () => {
                 setValue("type_transmission", queryParams.get("transmission") == "1" ? "Automática" : "Manual");
                 console.log("Paso");
             }
-
             console.log(queryParams.get("transmission"), "transmission");
             setValue("tag_id", queryParams.get("tag"));
             // setValue("km", queryParams.get("km"));
