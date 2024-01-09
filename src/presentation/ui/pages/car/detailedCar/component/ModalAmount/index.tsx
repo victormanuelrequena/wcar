@@ -124,7 +124,7 @@ export default function ModalAmount({ close, id, carValue }: ModalAmountProps) {
                             }}
                             onClick={bookCar}
                         >
-                            <p>Apartar</p>
+                            <p>Separar vehículo</p>
                         </div>
                         <div className="btn btn_orange_outline" onClick={close}>
                             Cancelar

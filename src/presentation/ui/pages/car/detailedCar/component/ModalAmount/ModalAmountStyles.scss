@@ -61,7 +61,7 @@
 }
 
 .modal-amount .btn {
-    width: 120px !important;
+    min-width: 160px !important;
 }
 
 @media (min-width: 601px) {
@@ -70,16 +70,23 @@
         align-items: center;
         justify-content: center;
     }
+
     .modal-amount {
         max-width: 600px;
         margin: auto;
         border-radius: 10px;
+
+        .btn {
+            min-width: 160px !important;
+        }
     }
+
     .input-box {
         min-width: 460px;
         max-width: 460px;
         margin: auto;
     }
+
     .modal-buttons {
         margin-top: 32px;
     }
