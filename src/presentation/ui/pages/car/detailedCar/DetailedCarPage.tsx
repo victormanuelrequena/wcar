@@ -27,6 +27,8 @@ import { InlineWidget, PopupButton } from "react-calendly";
 import { Carousel1 } from "../../../components/carousel/carousel";
 import { WebShare } from "../../../components/webShare/webShare";
 import { Warranty } from "../../../assets/warranty";
+import { Alert } from "../../../assets/alert";
+import { Arrow } from "../../../assets/arrow";
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -37,6 +39,8 @@ const DetailedCarPage: FC<{}> = () => {
     const [showAmountModal, setShowAmountModal] = useState(false);
     const [open, setOpen] = useState(false);
     const [carsInfo, setCarsInfo] = useState([]);
+    const [claimsInfo, setClaimsInfo] = useState(false);
+    const [warrantyInfo, setWarrantyInfo] = useState(false);
     const rootElement = useRef(null);
 
     useEffect(() => {
@@ -292,26 +296,46 @@ const DetailedCarPage: FC<{}> = () => {
                                         <div className="row">
                                             <div className="col-lg-4 col-md-6 col-sm-12">
                                                 <div className="row">
-                                                    <div className="container_tooltip">
-                                                        <span className="tool_tip claims">
-                                                            <p>Accidentes menores</p>
-                                                            <hr />
-                                                            <p>Vandalismo</p>
+                                                    <div
+                                                        className="col-12 my-3 position-relative "
+                                                        onClick={() => setClaimsInfo(!claimsInfo)}
+                                                    >
+                                                        <span className="text_gray me-2">
+                                                            <img
+                                                                style={{ width: "24px" }}
+                                                                src="/assets/icons/shield.svg"
+                                                                className="img-fluid me-2"
+                                                                alt="wcar"
+                                                                title="wcar"
+                                                            />
+                                                            Reclamaciones:
                                                         </span>
-                                                        <div className="col-12 my-3">
-                                                            <span className="text_gray me-2">
-                                                                <img
-                                                                    style={{ width: "24px" }}
-                                                                    src="/assets/icons/shield.svg"
-                                                                    className="img-fluid me-2"
-                                                                    alt="wcar"
-                                                                />
-                                                                Reclamaciones:
-                                                            </span>
-                                                            <strong>
-                                                                {car.claims ? `Sí | $${car.amount_claims}` : "No"}
+                                                        <div style={{ display: "inline-flex", alignItems: "center" }}>
+                                                            <Alert />
+                                                            <strong style={{ margin: "0 5px" }}>
+                                                                {car.claims ? `SÍ | $${car.amount_claims}` : "NO"}
                                                             </strong>
+                                                            <div
+                                                                className="claims_arrow"
+                                                                style={{
+                                                                    transform: claimsInfo
+                                                                        ? "rotate(0deg)"
+                                                                        : "rotate(180deg)",
+                                                                }}
+                                                            >
+                                                                {car.amount_claims && <Arrow />}
+                                                            </div>
                                                         </div>
+                                                        {car.amount_claims && (
+                                                            <span
+                                                                className="claims position-absolute"
+                                                                style={{ display: claimsInfo ? "block" : "none" }}
+                                                            >
+                                                                <p>Accidentes menores</p>
+                                                                <hr />
+                                                                <p>Vandalismo</p>
+                                                            </span>
+                                                        )}
                                                     </div>
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
@@ -365,24 +389,17 @@ const DetailedCarPage: FC<{}> = () => {
                                             </div>
                                             <div className="col-lg-4 col-md-6 col-sm-12">
                                                 <div className="row">
-                                                    <div className="container_tooltip">
-                                                        <span className="tool_tip claims">
-                                                            <p>Accidentes menores</p>
-                                                            <hr />
-                                                            <p>Vandalismo</p>
+                                                    <div className="col-12 my-3">
+                                                        <span className="text_gray me-2">
+                                                            <img
+                                                                style={{ width: "24px" }}
+                                                                src="/assets/icons/amount.svg"
+                                                                className="img-fluid me-2"
+                                                                alt="wcar"
+                                                            />
+                                                            Cuantía:
                                                         </span>
-                                                        <div className="col-12 my-3">
-                                                            <span className="text_gray me-2">
-                                                                <img
-                                                                    style={{ width: "24px" }}
-                                                                    src="/assets/icons/amount.svg"
-                                                                    className="img-fluid me-2"
-                                                                    alt="wcar"
-                                                                />
-                                                                Cuantía:
-                                                            </span>
-                                                            <strong>{car.amount_claims ?? "0$"}</strong>
-                                                        </div>
+                                                        <strong>{car.amount_claims ?? "0$"}</strong>
                                                     </div>
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
@@ -437,8 +454,47 @@ const DetailedCarPage: FC<{}> = () => {
                                             </div>
                                             <div className="col-lg-4 col-md-12 col-sm-12">
                                                 <div className="row">
-                                                    <div className="container_tooltip">
-                                                        <span className="tool_tip tool_tip_one">
+                                                    <div
+                                                        className="col-12 my-3 position-relative"
+                                                        onClick={() => setWarrantyInfo(!warrantyInfo)}
+                                                    >
+                                                        <span className="text_gray me-2">
+                                                            <img
+                                                                style={{ width: "24px" }}
+                                                                src="/assets/icons/warranty.svg"
+                                                                className="img-fluid me-2"
+                                                                alt="wcar"
+                                                                title="wcar"
+                                                            />
+                                                            Garantía:
+                                                        </span>
+                                                        <div
+                                                            style={{
+                                                                display: "inline-flex",
+                                                                alignItems: "center",
+                                                                marginTop: 0,
+                                                            }}
+                                                        >
+                                                            <Alert />
+
+                                                            <strong style={{ margin: "0 5px" }}>
+                                                                {car.warranty ? `SÍ | ${car.type_warranty}` : "NO"}
+                                                            </strong>
+                                                            <div
+                                                                className="claims_arrow"
+                                                                style={{
+                                                                    transform: warrantyInfo
+                                                                        ? "rotate(0deg)"
+                                                                        : "rotate(180deg)",
+                                                                }}
+                                                            >
+                                                                <Arrow />
+                                                            </div>
+                                                        </div>
+                                                        <span
+                                                            className="warranty_tool_tip position-absolute"
+                                                            style={{ display: warrantyInfo ? "block" : "none" }}
+                                                        >
                                                             Garantía: la garantia de calidad y servicio de posventa
                                                             amparará el producto por todos los defectos no imputables al
                                                             consumidor y asegurará la obligación de proporcionar la
@@ -446,21 +502,6 @@ const DetailedCarPage: FC<{}> = () => {
                                                             permitan el adecuado funcionamiento y disfrute del vehiculo
                                                             por parte del consumidor.
                                                         </span>
-                                                        <div className="col-12 my-3">
-                                                            <span className="text_gray me-2">
-                                                                <img
-                                                                    style={{ width: "24px" }}
-                                                                    src="/assets/icons/warranty.svg"
-                                                                    className="img-fluid me-2"
-                                                                    alt="wcar"
-                                                                    title="wcar"
-                                                                />
-                                                                Garantía:
-                                                            </span>
-                                                            <strong>
-                                                                {car.warranty ? `Si | ${car.type_warranty}` : "No"}
-                                                            </strong>
-                                                        </div>
                                                     </div>
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">

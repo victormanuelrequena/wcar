@@ -60,6 +60,13 @@ const orderingOptions: OrderByEntity[] = [
             desc: false,
         },
     },
+    {
+        label: "Garantía",
+        value: {
+            keyname: "warranty",
+            desc: undefined,
+        },
+    },
 ];
 
 const BuyYourCarPage: FC<{}> = () => {
