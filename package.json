@@ -41,8 +41,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postbuild": "react-snap"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -64,7 +63,6 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.22.10",
-    "react-snap": "^1.23.0",
     "ts-loader": "^9.4.4"
   }
 }
