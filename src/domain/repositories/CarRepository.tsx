@@ -26,9 +26,8 @@ export default interface CarRepository {
         claims: boolean | undefined,
         amount_claims: number | undefined,
         warranty: boolean | undefined,
-        type_warranty
-        
-        : string | undefined
+        type_warranty: string | undefined,
+        types_claims: string | undefined
     ): Promise<{ cars: CarEntity[]; maxPages: number }>;
     getCarById(id: string): Promise<CarEntity | undefined>;
     bookACarPayment(carId: string, paymentInfo: any): Promise<Either<ExceptionEntity, void>>;

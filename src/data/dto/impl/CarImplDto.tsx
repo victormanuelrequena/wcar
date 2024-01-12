@@ -40,6 +40,7 @@ const fromJson = (json: any): CarEntity => {
         amount_claims: json.amount_claims,
         warranty: json.warranty,
         type_warranty: json.type_warranty,
+        types_claims: json.types_claims,
     };
 };
 
@@ -70,6 +71,7 @@ const toJson = (car: CarEntity): any => {
         amount_claims: car.amount_claims,
         warranty: car.warranty,
         type_warranty: car.type_warranty,
+        types_claims: car.types_claims,
     };
 };
 
