@@ -1,0 +1,75 @@
+.home_page1 {
+    section.first_section {
+        margin-bottom: 100px;
+        background-color: var(--color-gray-light);
+        top: 0;
+
+        & > * {
+            position: relative;
+        }
+
+        .img_car {
+            margin-left: 0;
+            margin-right: 0;
+            left: 0;
+            right: -20vw;
+            bottom: -70px;
+            width: calc(100% + 14vw);
+            object-fit: cover;
+        }
+
+        .title {
+            font-family: "Urbanist";
+            font-weight: 600;
+            font-size: 60px;
+            line-height: 65px;
+        }
+
+        .title_orange {
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        @media screen and (max-width: 768px) {
+            .title {
+                font-size: 50px;
+            }
+        }
+    }
+
+    .second_section {
+        position: relative;
+
+        &::before {
+            content: "";
+            width: 300px;
+            background-image: url("./../../../../../public/assets/home/car_02.png");
+            position: absolute;
+            left: 0;
+            top: -55%;
+            bottom: -125%;
+            right: 76%;
+            background-size: cover;
+        }
+
+        @media screen and (max-width: 768px) {
+            &::before {
+                content: none;
+                display: none;
+            }
+        }
+        @media (min-width: 900px) and (max-width: 1000px) {
+            &::before {
+                right: 70%;
+            }
+        }
+    }
+}
+
+@media (min-width: 1300px) {
+    .no_scrolled {
+        .home_page {
+            padding-top: 98px;
+        }
+    }
+}

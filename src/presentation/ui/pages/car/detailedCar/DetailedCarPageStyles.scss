@@ -161,10 +161,13 @@
         display: block;
         background-color: #fff;
         width: 200px;
+        max-height: 250px;
         padding: 5px 0;
         margin-top: 5px;
         border-radius: 10px;
         box-shadow: 0px 4px 14px 0px #0000001a;
+        overflow: auto;
+
         p {
             display: flex;
             height: 44px;
@@ -173,14 +176,22 @@
             align-self: stretch;
         }
 
-        hr {
+        .claim_line {
             margin: 0;
             border-color: #c4c4c4;
         }
+
+        .claim_line:last-of-type {
+            border: none;
+        }
+    }
+
+    .claims::-webkit-scrollbar {
+        display: none;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .description {
         grid-template-columns: 1fr !important;
 

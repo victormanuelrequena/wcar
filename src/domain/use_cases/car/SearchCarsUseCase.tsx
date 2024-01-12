@@ -36,7 +36,8 @@ export default class SearchCarsUseCase {
         claims: boolean | undefined,
         amount_claims: number | undefined,
         warranty: boolean | undefined,
-        type_warranty: string | undefined
+        type_warranty: string | undefined,
+        types_claims: string | undefined
     ): Promise<Response> {
         return await this._carRepository.search(
             page,
@@ -56,7 +57,8 @@ export default class SearchCarsUseCase {
             claims,
             amount_claims,
             warranty,
-            type_warranty
+            type_warranty,
+            types_claims
         );
     }
 }

@@ -218,7 +218,8 @@ const BuyYourCarPage: FC<{}> = () => {
                     data.claims,
                     data.amount_claims,
                     data.warranty,
-                    data.type_warranty
+                    data.type_warranty,
+                    data.types_claims
                 );
             setCars(response.cars);
             setMaxPages(response.maxPages);

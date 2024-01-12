@@ -41,4 +41,5 @@ export default interface CarEntity {
     amount_claims?: number;
     warranty?: boolean;
     type_warranty?: string;
+    types_claims?: string
 }

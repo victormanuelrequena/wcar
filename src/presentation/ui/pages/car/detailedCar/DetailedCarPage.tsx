@@ -313,7 +313,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                         <div style={{ display: "inline-flex", alignItems: "center" }}>
                                                             <Alert />
                                                             <strong style={{ margin: "0 5px" }}>
-                                                                {car.claims ? `SÍ | $${car.amount_claims}` : "NO"}
+                                                                {car.claims ? "SÍ" : "NO"}
                                                             </strong>
                                                             <div
                                                                 className="claims_arrow"
@@ -323,17 +323,25 @@ const DetailedCarPage: FC<{}> = () => {
                                                                         : "rotate(180deg)",
                                                                 }}
                                                             >
-                                                                {car.amount_claims && <Arrow />}
+                                                                {car.types_claims && <Arrow />}
                                                             </div>
                                                         </div>
-                                                        {car.amount_claims && (
+                                                        {car.types_claims && (
                                                             <span
                                                                 className="claims position-absolute"
                                                                 style={{ display: claimsInfo ? "block" : "none" }}
                                                             >
-                                                                <p>Accidentes menores</p>
-                                                                <hr />
-                                                                <p>Vandalismo</p>
+                                                                {car.types_claims &&
+                                                                    JSON.parse(car.types_claims)?.map(
+                                                                        (claim: string, i: number) => {
+                                                                            return (
+                                                                                <>
+                                                                                    <p>{claim}</p>
+                                                                                    <hr className="claim_line" />
+                                                                                </>
+                                                                            );
+                                                                        }
+                                                                    )}
                                                             </span>
                                                         )}
                                                     </div>
