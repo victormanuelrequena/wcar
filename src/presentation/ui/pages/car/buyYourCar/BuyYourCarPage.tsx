@@ -44,6 +44,7 @@ const orderingOptions: OrderByEntity[] = [
         value: {
             keyname: "relevance",
             desc: undefined,
+            warranty: false,
         },
     },
     {
@@ -51,6 +52,7 @@ const orderingOptions: OrderByEntity[] = [
         value: {
             keyname: "price",
             desc: true,
+            warranty: false,
         },
     },
     {
@@ -58,6 +60,7 @@ const orderingOptions: OrderByEntity[] = [
         value: {
             keyname: "price",
             desc: false,
+            warranty: false,
         },
     },
     {
@@ -65,6 +68,7 @@ const orderingOptions: OrderByEntity[] = [
         value: {
             keyname: "warranty",
             desc: undefined,
+            warranty: true,
         },
     },
 ];

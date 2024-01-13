@@ -17,8 +17,42 @@ export default class CarRepositoryImpl implements CarRepository {
     getSomeRandomCars = (): Promise<CarEntity[]> => GetSomeRandomCarsApiImpl();
     getRelatedCarsByCardIdUseCase = (id: string): Promise<CarEntity[]> => GetRelatedCarsByCardIdApiImpl(id);
     likeCar = (carId: string, like: boolean): Promise<void> => LikeCarApiImpl(carId, like);
-    search = (page: number, search: string, brand: string | undefined, modelId: string | undefined, year: string | undefined, price: { min: number; max: number; } | undefined, type: string, transmission: TransmissionCar | undefined, tag: string | undefined, km: { min: number; max: number; } | undefined, fuelId: string | undefined, colorId: string | undefined, plateNumber: string | undefined, orderBy: OrderByEntity | undefined): Promise<{ cars: CarEntity[]; maxPages: number; }> => SearchCarApiImpl(page, search, brand, modelId, year, price, type, transmission, tag, km, fuelId, colorId, plateNumber, orderBy);
+    search = (
+        page: number,
+        search: string,
+        brand: string | undefined,
+        modelId: string | undefined,
+        year: string | undefined,
+        price: { min: number; max: number } | undefined,
+        type: string,
+        transmission: TransmissionCar | undefined,
+        tag: string | undefined,
+        km: { min: number; max: number } | undefined,
+        fuelId: string | undefined,
+        colorId: string | undefined,
+        plateNumber: string | undefined,
+        orderBy: OrderByEntity | undefined,
+        warranty: boolean
+    ): Promise<{ cars: CarEntity[]; maxPages: number }> =>
+        SearchCarApiImpl(
+            page,
+            search,
+            brand,
+            modelId,
+            year,
+            price,
+            type,
+            transmission,
+            tag,
+            km,
+            fuelId,
+            colorId,
+            plateNumber,
+            orderBy,
+            warranty
+        );
     getCarById = (id: string): Promise<CarEntity | undefined> => GetCarByIdApiImpl(id);
-    bookACarPayment = (carId: string, paymentInfo: any): Promise<Either<ExceptionEntity, void>> => BookACarPaymentApiImpl(carId, paymentInfo);
+    bookACarPayment = (carId: string, paymentInfo: any): Promise<Either<ExceptionEntity, void>> =>
+        BookACarPaymentApiImpl(carId, paymentInfo);
     getFavoriteCars = (): Promise<CarEntity[]> => GetFavoriteCarsApiImpl();
 }

@@ -17,7 +17,8 @@ const SearchCarApiImpl = async (
     fuelId: string | undefined,
     colorId: string | undefined,
     plateNumber: string | undefined,
-    orderBy: OrderByEntity | undefined
+    orderBy: OrderByEntity | undefined,
+    warranty: boolean
 ): Promise<{ cars: CarEntity[]; maxPages: number }> => {
     try {
         const relativeUrl = `/filter-cars/?page=${page}`;
@@ -39,6 +40,7 @@ const SearchCarApiImpl = async (
             search_word: search,
             plate_number: plateNumber,
             orderBy: orderBy?.value != undefined ? (orderBy.value?.desc ? "desc" : "asc") : undefined,
+            warranty: orderBy?.value?.warranty
         };
         console.log(body, "body filter");
 
