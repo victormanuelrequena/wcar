@@ -323,10 +323,10 @@ const DetailedCarPage: FC<{}> = () => {
                                                                         : "rotate(180deg)",
                                                                 }}
                                                             >
-                                                                {car.types_claims && <Arrow />}
+                                                                {car.claims && <Arrow />}
                                                             </div>
                                                         </div>
-                                                        {car.types_claims && (
+                                                        {car.claims && (
                                                             <span
                                                                 className="claims position-absolute"
                                                                 style={{ display: claimsInfo ? "block" : "none" }}
@@ -480,7 +480,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <Alert />
 
                                                             <strong style={{ margin: "0 5px" }}>
-                                                                {car.warranty ? `SÍ | ${car.type_warranty}` : "NO"}
+                                                                {car.warranty ? car.type_warranty ?? "SÍ" : "NO"}
                                                             </strong>
                                                             <div
                                                                 className="claims_arrow"
