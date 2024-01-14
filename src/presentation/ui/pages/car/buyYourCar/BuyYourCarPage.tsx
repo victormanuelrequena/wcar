@@ -44,6 +44,7 @@ const orderingOptions: OrderByEntity[] = [
         value: {
             keyname: "relevance",
             desc: undefined,
+            warranty: false,
         },
     },
     {
@@ -51,6 +52,7 @@ const orderingOptions: OrderByEntity[] = [
         value: {
             keyname: "price",
             desc: true,
+            warranty: false,
         },
     },
     {
@@ -58,6 +60,15 @@ const orderingOptions: OrderByEntity[] = [
         value: {
             keyname: "price",
             desc: false,
+            warranty: false,
+        },
+    },
+    {
+        label: "Garantía",
+        value: {
+            keyname: "warranty",
+            desc: undefined,
+            warranty: true,
         },
     },
 ];
@@ -219,7 +230,8 @@ const BuyYourCarPage: FC<{}> = () => {
                     data.claims,
                     data.amount_claims,
                     data.warranty,
-                    data.type_warranty
+                    data.type_warranty,
+                    data.types_claims
                 );
             setCars(response.cars);
             setMaxPages(response.maxPages);

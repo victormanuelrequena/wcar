@@ -42,6 +42,7 @@ import TermAndConditions from "../pages/policies/termAndConditions";
 import PrivacyPoliciesForMobileApp from "../pages/policies/PrivacyPoliciesForMobileApp";
 import DataPrivacyNoticeForWcarAppUsers from "../pages/policies/DataPrivacyNoticeForWcarAppUsers";
 import PrivacyPolicies from "../pages/policies/privacyPolicies";
+import HomePage1 from "../pages/home-1/HomePage";
 
 export interface iRoute {
     name: string;
@@ -71,6 +72,13 @@ const routes = {
         helmet: null,
         auth: (user: UserEntity | undefined) => true,
     },
+    // home1: {
+    //     path: "/home",
+    //     relativePath: "/home",
+    //     component: HomePage1,
+    //     helmet: null,
+    //     auth: (user: UserEntity | undefined) => true,
+    // },
     buyYourCar: {
         path: "/compra-tu-carro/:typeVehicleName?",
         relativePath: "/compra-tu-carro",

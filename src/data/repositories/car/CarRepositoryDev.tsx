@@ -13,6 +13,7 @@ const _testCar: CarEntity = {
     amount_claims: 12312,
     warranty: false,
     type_warranty: "",
+    types_claims: "",
     doors: 4,
     motor: "1.6 16v 115cv",
     plate: "8 de Bogota",

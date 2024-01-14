@@ -6,7 +6,6 @@ import "./carouselStyles.scss";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 export const Carousel1: FC<{ cars: any }> = ({ cars }) => {
-    console.log(cars);
     const [indexCard, setIndexCard] = useState<number>(0);
 
     const carouselRef = useRef(null);

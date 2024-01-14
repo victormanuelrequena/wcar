@@ -44,7 +44,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             </div>
             <ModalsComponent>
                 <div
-                    className={`layout_container ${
+                    className={`layout_container ${            // routes.home1.relativePath
                         !scrolled && window.location.pathname == routes.home.relativePath && "no_scrolled"
                     }`}
                 >
