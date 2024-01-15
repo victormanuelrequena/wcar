@@ -335,10 +335,10 @@ const DetailedCarPage: FC<{}> = () => {
                                                                     JSON.parse(car.types_claims)?.map(
                                                                         (claim: string, i: number) => {
                                                                             return (
-                                                                                <>
+                                                                                <div key={i}>
                                                                                     <p>{claim}</p>
                                                                                     <hr className="claim_line" />
-                                                                                </>
+                                                                                </div>
                                                                             );
                                                                         }
                                                                     )}
@@ -397,18 +397,6 @@ const DetailedCarPage: FC<{}> = () => {
                                             </div>
                                             <div className="col-lg-4 col-md-6 col-sm-12">
                                                 <div className="row">
-                                                    <div className="col-12 my-3">
-                                                        <span className="text_gray me-2">
-                                                            <img
-                                                                style={{ width: "24px" }}
-                                                                src="/assets/icons/amount.svg"
-                                                                className="img-fluid me-2"
-                                                                alt="wcar"
-                                                            />
-                                                            Cuantía:
-                                                        </span>
-                                                        <strong>{car.amount_claims ?? "0$"}</strong>
-                                                    </div>
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
