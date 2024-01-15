@@ -323,25 +323,24 @@ const DetailedCarPage: FC<{}> = () => {
                                                                         : "rotate(180deg)",
                                                                 }}
                                                             >
-                                                                {car.claims && <Arrow />}
+                                                                {car.types_claims && <Arrow />}
                                                             </div>
                                                         </div>
-                                                        {car.claims && (
+                                                        {car.types_claims && (
                                                             <span
                                                                 className="claims position-absolute"
                                                                 style={{ display: claimsInfo ? "block" : "none" }}
                                                             >
-                                                                {car.types_claims &&
-                                                                    JSON.parse(car.types_claims)?.map(
-                                                                        (claim: string, i: number) => {
-                                                                            return (
-                                                                                <div key={i}>
-                                                                                    <p>{claim}</p>
-                                                                                    <hr className="claim_line" />
-                                                                                </div>
-                                                                            );
-                                                                        }
-                                                                    )}
+                                                                {JSON.parse(car.types_claims)?.map(
+                                                                    (claim: string, i: number) => {
+                                                                        return (
+                                                                            <div key={i}>
+                                                                                <p>{claim}</p>
+                                                                                <hr className="claim_line" />
+                                                                            </div>
+                                                                        );
+                                                                    }
+                                                                )}
                                                             </span>
                                                         )}
                                                     </div>
