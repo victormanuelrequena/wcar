@@ -101,7 +101,9 @@ const BlogDetailedPage = () => {
                                         // <p  key={index}>{paragraph.content}</p>
                                         <>
                                             {paragraph.title_paragraph && (
-                                                <h6 style={{ marginBottom: 16 }}>{paragraph.title_paragraph}</h6>
+                                                <h2 style={{ marginBottom: 16, fontSize: 28 }}>
+                                                    {paragraph.title_paragraph}
+                                                </h2>
                                             )}
                                             {paragraph.file && (
                                                 <img
