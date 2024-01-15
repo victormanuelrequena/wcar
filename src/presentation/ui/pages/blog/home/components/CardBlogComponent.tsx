@@ -27,7 +27,7 @@ const CardBlogComponent: FC<CardBlogComponentProps> = ({ blog }) => {
                         className="img-fluid w-100 object_cover img_card_blog"
                     />
                     <div className="tag mt-3">{blog?.tagName}</div>
-                    <h2 className="my-3 text_bold">{blog.title}</h2>
+                    <h5 className="my-3 text_bold">{blog.title}</h5>
                     <div className="blog_info_user">
                         {/* <img
                             src={
