@@ -445,6 +445,18 @@ const DetailedCarPage: FC<{}> = () => {
                                                         </span>
                                                         <strong>{car.plate}</strong>
                                                     </div>
+                                                    <div className="col-12 my-3">
+                                                        <span className="text_gray me-2">
+                                                            <img
+                                                                src="/assets/icons/status.svg"
+                                                                className="img-fluid me-2"
+                                                                alt="wcar"
+                                                                title="wcar"
+                                                            />
+                                                            Estado:
+                                                        </span>
+                                                        <strong>{car.status}</strong>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="col-lg-4 col-md-12 col-sm-12">
@@ -527,18 +539,6 @@ const DetailedCarPage: FC<{}> = () => {
                                                             Kilometraje:
                                                         </span>
                                                         <strong>{car.odometer}</strong>
-                                                    </div>
-                                                    <div className="col-12 my-3">
-                                                        <span className="text_gray me-2">
-                                                            <img
-                                                                src="/assets/icons/status.svg"
-                                                                className="img-fluid me-2"
-                                                                alt="wcar"
-                                                                title="wcar"
-                                                            />
-                                                            Estado:
-                                                        </span>
-                                                        <strong>{car.status}</strong>
                                                     </div>
                                                 </div>
                                             </div>
