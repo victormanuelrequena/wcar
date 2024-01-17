@@ -49,7 +49,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                     }`}
                 >
                     <NavbarComponent />
-                    <div className="content_app" ref={containerDataRef}>
+                    <div className="content_app z-0" ref={containerDataRef}>
                         {children}
                         <FooterComponent />
                     </div>
