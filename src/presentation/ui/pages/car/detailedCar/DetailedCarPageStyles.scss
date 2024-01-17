@@ -111,15 +111,16 @@
 
     .warranty_tool_tip {
         display: block;
-        left: -32px;
+        left: 0px;
         color: #666c89;
         margin-top: 10px;
-        width: 300px;
+        width: 235px;
         background: #f6f7f9;
         padding: 5px 10px;
         border: 1px solid #90a3bf80;
         border-radius: 5px;
         text-align: center;
+        z-index: 10000;
     }
 
     .warranty_tool_tip::after {
@@ -144,7 +145,7 @@
     }
 
     .warranty {
-        background-color: #fdb649;
+        background-color: #C5F466;
         width: 94px;
         height: 30px;
         padding: 4px 16px 4px 8px;
@@ -170,7 +171,7 @@
 
         p {
             display: flex;
-            height: 44px;
+            // height: 44px;
             padding: 12px 53px 10px 16px;
             align-items: center;
             align-self: stretch;
