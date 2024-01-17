@@ -331,17 +331,16 @@ const DetailedCarPage: FC<{}> = () => {
                                                                 className="claims position-absolute"
                                                                 style={{ display: claimsInfo ? "block" : "none" }}
                                                             >
-                                                                {car.types_claims &&
-                                                                    JSON.parse(car.types_claims)?.map(
-                                                                        (claim: string, i: number) => {
-                                                                            return (
-                                                                                <>
-                                                                                    <p>{claim}</p>
-                                                                                    <hr className="claim_line" />
-                                                                                </>
-                                                                            );
-                                                                        }
-                                                                    )}
+                                                                {JSON.parse(car.types_claims)?.map(
+                                                                    (claim: string, i: number) => {
+                                                                        return (
+                                                                            <div key={i}>
+                                                                                <p>{claim}</p>
+                                                                                <hr className="claim_line" />
+                                                                            </div>
+                                                                        );
+                                                                    }
+                                                                )}
                                                             </span>
                                                         )}
                                                     </div>
@@ -400,18 +399,6 @@ const DetailedCarPage: FC<{}> = () => {
                                                     <div className="col-12 my-3">
                                                         <span className="text_gray me-2">
                                                             <img
-                                                                style={{ width: "24px" }}
-                                                                src="/assets/icons/amount.svg"
-                                                                className="img-fluid me-2"
-                                                                alt="wcar"
-                                                            />
-                                                            Cuantía:
-                                                        </span>
-                                                        <strong>{car.amount_claims ?? "0$"}</strong>
-                                                    </div>
-                                                    <div className="col-12 my-3">
-                                                        <span className="text_gray me-2">
-                                                            <img
                                                                 src="/assets/icons/door.svg"
                                                                 className="img-fluid me-2"
                                                                 alt="wcar"
@@ -458,6 +445,18 @@ const DetailedCarPage: FC<{}> = () => {
                                                         </span>
                                                         <strong>{car.plate}</strong>
                                                     </div>
+                                                    <div className="col-12 my-3">
+                                                        <span className="text_gray me-2">
+                                                            <img
+                                                                src="/assets/icons/status.svg"
+                                                                className="img-fluid me-2"
+                                                                alt="wcar"
+                                                                title="wcar"
+                                                            />
+                                                            Estado:
+                                                        </span>
+                                                        <strong>{car.status}</strong>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div className="col-lg-4 col-md-12 col-sm-12">
@@ -486,7 +485,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                             <Alert />
 
                                                             <strong style={{ margin: "0 5px" }}>
-                                                                {car.warranty ? `SÍ | ${car.type_warranty}` : "NO"}
+                                                                {car.warranty ? car.type_warranty ?? "SÍ" : "NO"}
                                                             </strong>
                                                             <div
                                                                 className="claims_arrow"
@@ -546,18 +545,6 @@ const DetailedCarPage: FC<{}> = () => {
                                                             Kilometraje:
                                                         </span>
                                                         <strong>{car.odometer}</strong>
-                                                    </div>
-                                                    <div className="col-12 my-3">
-                                                        <span className="text_gray me-2">
-                                                            <img
-                                                                src="/assets/icons/status.svg"
-                                                                className="img-fluid me-2"
-                                                                alt="wcar"
-                                                                title="wcar"
-                                                            />
-                                                            Estado:
-                                                        </span>
-                                                        <strong>{car.status}</strong>
                                                     </div>
                                                 </div>
                                             </div>

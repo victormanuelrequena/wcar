@@ -5,6 +5,7 @@ import { useState } from "react";
 import { routes } from "../../routes/RoutesComponent";
 import CurrencyParse from "../../../utils/CurrencyParse";
 import "./cardCarouselStyles.scss";
+import { Warranty } from "../../assets/warranty";
 
 export const CardCarousel: FC<{ car: any }> = ({ car }) => {
     const [_like, _setLike] = useState<boolean>(false);
@@ -16,14 +17,14 @@ export const CardCarousel: FC<{ car: any }> = ({ car }) => {
     };
 
     return (
-        <Link to={`${routes.detailedCar.relativePath}/${getUrlCar(car)}`} className="card_carousel">
+        <Link to={`${routes.detailedCar.relativePath}/${getUrlCar(car)}`} className="card_carousel my-4">
             <img
                 src={car?.image_first}
                 alt={`${car?.car} ${car?.brand_car.brand} ${car?.type.type}`}
                 title="wcar"
                 className="img_car"
             />
-            <div className="card-body rounded-bottom p-2 d-flex flex-column">
+            <div className="card-body rounded-bottom p-2 d-flex flex-column justify-content-evenly">
                 {car?.tag_car && (
                     <div
                         className="tag px-2"
@@ -48,7 +49,14 @@ export const CardCarousel: FC<{ car: any }> = ({ car }) => {
                 <div className="w-100 text_bold mt-1" style={{ color: "#666C89" }}>
                     {car?.type.type}
                 </div>
-                <div className="w-100 row justify-content-flex-start mt-3" style={{ fontSize: ".9em", margin: "auto" }}>
+                {car.warranty && (
+                    <div className="my-2">
+                        <div className="warranty d-flex justify-content-center align-items-center">
+                            <Warranty /> Garantía
+                        </div>
+                    </div>
+                )}
+                <div className="w-100 row justify-content-flex-start mt-3" style={{ fontSize: ".9em", margin: "0 auto" }}>
                     <div className="col-3 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/calendar.svg"

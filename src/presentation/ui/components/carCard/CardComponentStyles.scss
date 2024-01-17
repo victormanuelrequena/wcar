@@ -7,6 +7,10 @@
     // border: 1px solid red;
     width: 100%;
 
+    .card-body{
+        height: 230px;
+    }
+
     .tag {
         position: absolute;
         top: 0;
@@ -42,6 +46,20 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .warranty {
+        background-color: #fdb649;
+        width: 94px;
+        height: 30px;
+        padding: 4px 16px 4px 8px;
+        border: 1px solid #1e1e1e;
+        border-radius: 50px;
+        color: #1e1e1e;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 22px;
+        gap: 4px;
     }
 }
 
