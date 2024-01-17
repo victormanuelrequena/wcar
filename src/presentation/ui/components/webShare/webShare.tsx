@@ -4,12 +4,13 @@ import { FaTwitter } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { MdOutlineMail } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
-import { HiOutlinePaperAirplane } from "react-icons/hi2";
+import { FaRegClipboard } from "react-icons/fa";
 import "./webShareStyles.scss";
 
 export const WebShare = () => {
     const [isShare, setIsShare] = useState<boolean>(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 800);
+    const url = window.location.href;
 
     useEffect(() => {
         const handleResize = () => {
@@ -24,12 +25,16 @@ export const WebShare = () => {
         };
     }, []);
 
+    const copy = async () => {
+        await navigator.clipboard.writeText(url);
+        alert("Link copiado");
+    };
+
     const openShareMenu = () => {
         setIsShare(!isShare);
     };
 
     const selectShareMedium = (socialMedia: string) => {
-        const url = window.location.href;
         const facebook = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
         const twitter = `https://twitter.com/intent/tweet?url=${url}`;
         const whatsapp = `https://api.whatsapp.com/send?text=${url}`;
@@ -47,6 +52,9 @@ export const WebShare = () => {
                 break;
             case "email":
                 window.open(email);
+                break;
+            case "copy":
+                copy()
                 break;
             default:
                 break;
@@ -96,6 +104,9 @@ export const WebShare = () => {
                         </div>
                         <div className="icon_container" onClick={() => selectShareMedium("email")}>
                             <MdOutlineMail className="icon email" />
+                        </div>
+                        <div className="icon_container" onClick={() => selectShareMedium("copy")}>
+                            <FaRegClipboard className="icon email" />
                         </div>
                     </>
                 )}
