@@ -7,7 +7,7 @@
     width: 340px;
 
     .card-body{
-        height: 190px;
+        height: 230px;
         background: #fff;
     }
 
@@ -22,6 +22,20 @@
     .botton_container{
         height: 42px;
         padding-bottom: 10px;
+    }
+
+    .warranty {
+        background-color: #fdb649;
+        width: 94px;
+        height: 30px;
+        padding: 4px 16px 4px 8px;
+        border: 1px solid #1e1e1e;
+        border-radius: 50px;
+        color: #1e1e1e;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 22px;
+        gap: 4px;
     }
 }
 

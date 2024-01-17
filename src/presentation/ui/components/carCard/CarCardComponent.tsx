@@ -11,6 +11,7 @@ import { isLeft } from "fp-ts/lib/Either";
 import FavoriteCarsContext from "../../../../domain/providers/favoriteCars/FavoriteCarsContext";
 import FavoriteCarsContextType from "../../../../domain/providers/favoriteCars/FavoriteCarsContextType";
 import { getUrlCar } from "../../../utils/Contants";
+import { Warranty } from "../../assets/warranty";
 
 const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
     const [_like, _setLike] = useState<boolean>(false);
@@ -44,7 +45,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                 title={car.name}
                 className="img-fluid img_car"
             />
-            <div className="card-body">
+            <div className="card-body d-flex flex-column justify-content-evenly">
                 {car.tag && (
                     <div
                         className="tag"
@@ -66,7 +67,14 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                 <div className="w-100 text_bold mt-1" style={{ color: "#666C89" }}>
                     {car.type.name}
                 </div>
-                <div className="w-100 row justify-content-flex-start mt-3" style={{ fontSize: ".9em", margin: "auto" }}>
+                {car.warranty && (
+                    <div className="my-2">
+                        <div className="warranty d-flex justify-content-center align-items-center">
+                            <Warranty /> Garantía
+                        </div>
+                    </div>
+                )}
+                <div className="w-100 row justify-content-between mt-3" style={{ fontSize: ".9em", margin: "0 auto" }}>
                     <div className="col-3 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/calendar.svg"

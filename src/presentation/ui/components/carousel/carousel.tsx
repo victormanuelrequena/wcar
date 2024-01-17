@@ -61,7 +61,7 @@ export const Carousel1: FC<{ cars: any }> = ({ cars }) => {
                     return <CardCarousel car={car} key={i} />;
                 })}
             </Carousel>
-            <div className="container_nav w-100 d-flex">
+            <div className="container_nav w-80 d-flex">
                 <div className={`arrow_slider_card me-1 ${indexCard === 0 ? "disabled" : null}`} onClick={previous}>
                     <AiOutlineArrowLeft />
                 </div>
