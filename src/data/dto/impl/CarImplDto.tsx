@@ -14,7 +14,7 @@ const fromJson = (json: any): CarEntity => {
         model: json.version,
         type: TypeVehicleImplDto.fromJson(json.type),
         photoUrl: json.image_first,
-        images: json.files.map((file: any) => file.image),
+        images: json.files?.map((file: any) => file.image),
         price: parseInt(json.price),
         transmission: json.transmission == 1 ? TransmissionCar.AUTOMATIC : TransmissionCar.MANUAL,
         year: json.year,

@@ -16,7 +16,7 @@ export default interface CarEntity {
     model: string;
     type: TypeVehicleEntity;
     photoUrl: string;
-    images: string[];
+    images?: string[];
     price: number;
     transmission: TransmissionCar;
     year: any;
@@ -41,5 +41,5 @@ export default interface CarEntity {
     amount_claims?: number;
     warranty?: boolean;
     type_warranty?: string;
-    types_claims?: string
+    types_claims?: string;
 }
