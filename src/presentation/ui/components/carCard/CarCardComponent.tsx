@@ -74,7 +74,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                         </div>
                     </div>
                 )}
-                <div className="w-100 row justify-content-between mt-3" style={{ fontSize: ".9em", margin: "0 auto" }}>
+                <div className="w-100 row justify-content-around mt-3" style={{ fontSize: ".9em", margin: "0 auto" }}>
                     <div className="col-3 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/calendar.svg"
@@ -93,7 +93,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                         />
                         <span className="text_nowrap">{car.odometer} Km.</span>
                     </div>
-                    <div className="col-3 d-flex align-items-center text_gray p-0">
+                    <div className="col-4 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/transmission.svg"
                             alt="wcar"

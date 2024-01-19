@@ -6,6 +6,8 @@ import { MdOutlineMail } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { FaRegClipboard } from "react-icons/fa";
 import "./webShareStyles.scss";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const WebShare = () => {
     const [isShare, setIsShare] = useState<boolean>(false);
@@ -26,8 +28,29 @@ export const WebShare = () => {
     }, []);
 
     const copy = async () => {
-        await navigator.clipboard.writeText(url);
-        alert("Link copiado");
+        try {
+            await navigator.clipboard.writeText(url);
+            toast.success("Link copiado", {
+                position: "top-right",
+                hideProgressBar: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "light",
+                autoClose: 3000,
+                toastId: "toast",
+            });
+        } catch (error) {
+            console.error(error);
+            toast.error("Error al copiar el link", {
+                position: "top-right",
+                hideProgressBar: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "light",
+                autoClose: 3000,
+                toastId: "toast",
+            });
+        }
     };
 
     const openShareMenu = () => {
@@ -54,7 +77,7 @@ export const WebShare = () => {
                 window.open(email);
                 break;
             case "copy":
-                copy()
+                copy();
                 break;
             default:
                 break;
