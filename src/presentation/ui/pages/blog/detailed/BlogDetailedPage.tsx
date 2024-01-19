@@ -12,6 +12,7 @@ import GetBlogPostByIdUseCase, {
 import di from "../../../../../di/DependencyInjection";
 import HostApi from "../../../../../data/settings/HostApi";
 import { Carousel1 } from "../../../components/carousel/carousel";
+import { Helmet } from "react-helmet-async";
 
 const BlogDetailedPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -38,6 +39,12 @@ const BlogDetailedPage = () => {
 
     return (
         <div className="blog_detailed_page">
+            <Helmet>
+                <title>{blogData?.post.metaTitle}</title>
+                <meta name="description" content={blogData?.post.metaDescription || blogData?.post.metaTitle} />
+                <meta name="keywords" content={blogData?.post.keywords} />
+                <meta name="title" content={blogData?.post.metaTitle} />
+            </Helmet>
             <Layout>
                 {id === undefined ||
                     (blogData === null && (
@@ -100,8 +107,6 @@ const BlogDetailedPage = () => {
                                     {blogData?.paragraphs?.map((paragraph: any, index: number) => (
                                         // <p  key={index}>{paragraph.content}</p>
                                         <>
-                                            {console.log(paragraph.title_h3)}
-
                                             {paragraph.title_paragraph && paragraph.title_h3 ? (
                                                 <h3 style={{ marginBottom: 16 }}>{paragraph.title_paragraph}</h3>
                                             ) : (

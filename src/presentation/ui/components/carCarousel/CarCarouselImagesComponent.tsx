@@ -186,6 +186,11 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                                                 </p>
                                             </div>
                                         )}
+                                        {images[0] === image && (
+                                            <div className="stamp">
+                                                <img src="/assets/icons/Stamp.svg" alt="" />
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
