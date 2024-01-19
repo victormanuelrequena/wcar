@@ -85,8 +85,8 @@ const NavbarComponent = () => {
                                                 key={index}
                                                 to={
                                                     parseInt(typeVehicle.id) === 8
-                                                        ? "/compra-tu-carro/camionetas-usadas"
-                                                        : routes.buyYourCar.relativePath + "/" + typeVehicle.name
+                                                        ? "/compra-tu-carro/camionetas-usadas" + "?type_vehicle=" + typeVehicle.name
+                                                        : routes.buyYourCar.relativePath + "?type_vehicle=" + typeVehicle.name
                                                 }
                                                 className="dropdown-item"
                                             >
