@@ -106,6 +106,7 @@ const BlogDetailedPage = () => {
                                 <section className="col-md-10 mt-5 section_2 section-content">
                                     {blogData?.paragraphs?.map((paragraph: any, index: number) => (
                                         // <p  key={index}>{paragraph.content}</p>
+
                                         <>
                                             {paragraph.title_paragraph && paragraph.title_h3 ? (
                                                 <h3 style={{ marginBottom: 16 }}>{paragraph.title_paragraph}</h3>
