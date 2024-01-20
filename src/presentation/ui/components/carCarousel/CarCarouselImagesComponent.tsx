@@ -186,7 +186,7 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                                                 </p>
                                             </div>
                                         )}
-                                        {images[0] === image && (
+                                        {images[0] === image && car.warranty && (
                                             <div className="stamp">
                                                 <img src="/assets/icons/Stamp.svg" alt="" />
                                             </div>
