@@ -118,7 +118,7 @@ const ServicesCalculatorFormComponent: FC<ServicesCalculatorFormComponentProps> 
                     </div>
                     <a
                         target="_blank"
-                        href="https://oneid.com.co/#/public/fill_flow/ce8db55d1f1171202f6dbc70cb98f2be60e76bb111648e76797acdcfbde35410bb63c0be056b822829ae44c2254824073a8026850ec3ddded6960b86d4c0e594369afc1a5083a1105760e86933"
+                        href=" https://app.arkdia.co/validate-request-public-wcar"
                         className="px-4 btn btn_orange d-block d-md-inline-block mt-4"
                     >
                         HAZ AQUÍ TU SOLICITUD DE CRÉDITO
