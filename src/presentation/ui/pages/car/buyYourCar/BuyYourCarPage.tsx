@@ -15,7 +15,7 @@ import FilterComponent from "./components/filterComponent/FilterComponent";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import Icons from "../../../assets/Icons";
 import DeleteFilterComponent from "./components/deleteComponent/DeleteFilterComponent";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams, useRoutes } from "react-router-dom";
 import TypeVehicleContext from "../../../../../domain/providers/typeVehicle/TypeVehicleContext";
 import TypeVehicleContextType from "../../../../../domain/providers/typeVehicle/TypeVehicleContextType";
 import { Helmet } from "react-helmet-async";
@@ -92,6 +92,7 @@ const BuyYourCarPage: FC<{}> = () => {
     const { tags } = useContext(TagContext) as TagContextType;
     const { typeOfFuels } = useContext(TypeOfFuelContext) as TypeOfFuelContextType;
     const queryParams = new URLSearchParams(window.location.search);
+    const location = useLocation();
 
     const [cars, setCars] = useState<CarEntity[] | undefined>(undefined);
     const [page, setPage] = useState<number>(queryParams.get("page") ? Number(queryParams.get("page")) : 1);
@@ -125,6 +126,14 @@ const BuyYourCarPage: FC<{}> = () => {
     useEffect(() => {
         _handleSearch();
     }, [page]);
+    useEffect(() => {
+        if (
+            location.pathname === "/compra-tu-carro/camionetas-usadas/" ||
+            location.pathname === "/compra-tu-carro/camionetas-usadas"
+        ) {
+            setValue("type_vehcile_id", 2);
+        }
+    }, []);
 
     const [isTimerActive, setIsTimerActive] = useState(false);
     let timer: NodeJS.Timeout | null = null; // Inicializa el temporizador
@@ -174,7 +183,6 @@ const BuyYourCarPage: FC<{}> = () => {
                 setValue("type_transmission", queryParams.get("transmission") == "1" ? "Automática" : "Manual");
                 console.log("Paso");
             }
-
             console.log(queryParams.get("transmission"), "transmission");
             setValue("tag_id", queryParams.get("tag"));
             // setValue("km", queryParams.get("km"));
@@ -284,6 +292,7 @@ const BuyYourCarPage: FC<{}> = () => {
     // * Filter name: Combustible
     useEffect(() => {
         console.log("TYPE_FUEL_ID_____", fuelId);
+        console.log("LOCATION", location);
     }, [fuelId]);
 
     return (
@@ -348,7 +357,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                 className={`bg_white mb-md-0  ${
                                     openFilters ? "col-md-4 col-lg-3" : "d-none"
                                 }  position-relative`}
-                                style={{ zIndex: 999999 }}
+                                style={{ zIndex: openFilters && window.innerWidth < 800 && 999999 }}
                             >
                                 {/* <div className={"position-sticky top-0 pe-2 scroll-filter"}>
                                     <FilterComponent
@@ -357,7 +366,7 @@ const BuyYourCarPage: FC<{}> = () => {
                                         setIsOpen={setOpenFilters}
                                     />
                                 </div> */}
-                                <div className={"pe-2 scroll-filter"}>
+                                <div className={"scroll-filter"}>
                                     <FilterComponent
                                         formFunctions={formFunctions}
                                         isOpen={openFilters}
@@ -375,7 +384,8 @@ const BuyYourCarPage: FC<{}> = () => {
                                 ></div>
                             )}
                             <div className={` ${openFilters ? "col-md-8 col-lg-9" : "col-md-12"} container_cars`}>
-                                {typeVehicleId === "Camioneta - SUV" && fuelId !== "Híbrido" && <BannerYourCar />}
+                                {((typeVehicleId === "Camioneta - SUV" && fuelId !== "Híbrido") ||
+                                    location.pathname === "/compra-tu-carro/camionetas-usadas") && <BannerYourCar />}
                                 <div className="d-none d-md-flex justify-content-between">
                                     <div className={`mt-1 ${openFilters && "md-d-none"}`}>
                                         <div
@@ -486,7 +496,8 @@ const BuyYourCarPage: FC<{}> = () => {
                 </div>
             </form>
             {/* SEO camoionetas usadas */}
-            {typeVehicleId === "Camioneta - SUV" && fuelId !== "Híbrido" && (
+            {((typeVehicleId === "Camioneta - SUV" && fuelId !== "Híbrido") ||
+                location.pathname === "/compra-tu-carro/camionetas-usadas") && (
                 <div className="my-6 pt-4 container container-drop" style={{ marginTop: "80px", marginBottom: "40px" }}>
                     <SeoDropdown
                         options={contentListUsedTrucksSeo.map((content) => {
