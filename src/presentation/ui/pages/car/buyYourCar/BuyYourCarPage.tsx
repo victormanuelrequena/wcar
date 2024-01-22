@@ -133,7 +133,7 @@ const BuyYourCarPage: FC<{}> = () => {
             timer = setTimeout(() => {
                 console.log("Temporizador finalizado");
                 _handleSearch(); // Llama a la función _handleSearch después del tiempo especificado
-            }, 500);
+            }, 1000);
         } else if (timer !== null) {
             clearTimeout(timer); // Detener el temporizador si isTimerActive cambia a false
         }
