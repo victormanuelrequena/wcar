@@ -40,8 +40,8 @@ const BlogDetailedPage = () => {
     return (
         <div className="blog_detailed_page">
             <Helmet>
-                <title>{blogData?.post.metaTitle}</title>
-                <meta name="description" content={blogData?.post.metaDescription || blogData?.post.metaTitle} />
+                <title>{blogData?.post.metaTitle || blogData?.post.title}</title>
+                <meta name="description" content={blogData?.post.metaDescription} />
                 <meta name="keywords" content={blogData?.post.keywords} />
                 <meta name="title" content={blogData?.post.metaTitle} />
             </Helmet>
