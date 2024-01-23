@@ -167,7 +167,6 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
             location.pathname === "/compra-tu-carro/camionetas-usadas/" ||
             location.pathname === "/compra-tu-carro/camionetas-usadas"
         ) {
-            // alert(`${param} ${index}`);
             navigate("/compra-tu-carro");
             const url = new URL(window.location.href);
             window.history.replaceState({}, "", url.toString());
@@ -196,10 +195,6 @@ const FilterComponent: FC<FilterComponentProps> = ({ formFunctions, isOpen, setI
         if (location.pathname === "/compra-tu-carro/camionetas-usadas") {
             console.log("Se ejecuta");
             setValue("type_vehcile_id", "8");
-            const newQueryParam = typeVehicles[2]["name"];
-            const url = new URL(window.location.href);
-            url.searchParams.set("type_vehicle", newQueryParam);
-            window.history.replaceState({}, "", url.toString());
         }
     }, [location]);
 
