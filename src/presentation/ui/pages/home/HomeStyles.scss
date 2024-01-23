@@ -46,21 +46,12 @@
     .third_section {
         position: relative;
 
-        @media screen and (max-width: 768px) {
-            background-color: black;
-
-            &::before {
-                content: none;
-                display: none;
-            }
-        }
-
         &::before {
             content: "";
             background-color: black;
             position: absolute;
             left: 25%;
-            top: 0;
+            top: 25%;
             bottom: 0;
             right: 0;
         }
@@ -88,6 +79,44 @@
                 border-right: solid 1em white;
             }
         }
+
+        .financiacion {
+            display: block;
+            background-image: url("./../../../../../public/assets/home/financiacion.svg");
+            background-size: cover;
+            min-height: 80px;
+            background-color: #00fefe;
+
+            .description {
+                font-size: 36px;
+            }
+
+            .wcar-icon{
+                left: 2%;
+                top: 20%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            background-color: black;
+
+            .financiacion {
+                height: 290px;
+                margin: 0 5%;
+            
+                .wcar-icon{
+                    left: 5%;
+                    top: 5%;
+                }
+
+            }
+
+            &::before {
+                content: none;
+                display: none;
+            }
+        }
+
     }
 
     .fifth_section {
