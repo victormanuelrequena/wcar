@@ -53,7 +53,7 @@ const HomePage: FC<{}> = () => {
             <div className="home_page">
                 <section className="first_section position-relative d-md-block d-flex flex-column-reverse">
                     <img
-                        src="/assets/home/car_01.svg"
+                        src="/assets/home/car_01.png"
                         alt="Comprar con wcar"
                         title="Comprar con wcar"
                         className="position-sm-absolute img_car_01"
@@ -65,17 +65,17 @@ const HomePage: FC<{}> = () => {
                                     <h1 className="side side_top h5">wcar</h1>
                                     <h2 className="mt-3 h1">
                                         Más que <br />
-                                        vender te <br />{" "}
+                                        vender te <br />
                                         <span className="my-3 text_orange text_italic">aconsejamos</span>
                                     </h2>
                                     <Link to={routes.buyYourCar.relativePath}>
                                         <button className="my-3 btn btn_orange btn_shadow btn_cut">
-                                            COMPRA TU CARRO <Icons.ArrowCircle />{" "}
+                                            COMPRA TU CARRO <Icons.ArrowCircle />
                                         </button>
                                     </Link>
                                     <Link to={routes.sellYourCar.relativePath} className="mb-5">
                                         <button className="my-3 btn btn_orange_outline btn_shadow">
-                                            VENDE TU CARRO <Icons.ArrowCircle />{" "}
+                                            VENDE TU CARRO <Icons.ArrowCircle />
                                         </button>
                                     </Link>
                                 </div>
@@ -85,7 +85,7 @@ const HomePage: FC<{}> = () => {
                 </section>
                 <section className="second_section mt-3 car_02 from_left_3">
                     <div className="container">
-                        <div className="row ">
+                        <div className="row">
                             <div className="col-md-3 d-flex d-md-block justify-content-center">
                                 <div className="side side_top text_black text_md_white">
                                     <h2 className="d-flex flex-md-column flex-row">
@@ -168,46 +168,68 @@ const HomePage: FC<{}> = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="col-md-8 position-relative text-white px-5 ps-md-5 px-md-3 py-5">
-                                <img
-                                    src="./assets/recs/lines_zigs.png"
-                                    alt="wcar"
-                                    title="wcar"
-                                    style={{ position: "absolute", right: "5vw", top: "2vw" }}
-                                />
-                                <img
-                                    src="./assets/recs/lines_box.png"
-                                    className="d-block d-md-none"
-                                    alt="wcar"
-                                    title="wcar"
-                                    style={{ position: "absolute", right: 0, bottom: 0 }}
-                                />
-                                <div className="line_left_orange">Nosotros</div>
-                                <h3 className="h3">
-                                    <b>Razones para comprar y</b> <br />
-                                    <i>vender con wcar</i>
-                                </h3>
-                                <div>
-                                    <p>¡Somos el anti-dealer para que compres y vendas con cero estrés! </p>
-                                    <p>
-                                        En este revolucionario ecosistema encuentras una consejería personalizada. Somos
-                                        brutalmente transparentes, dando a conocer el estado real del vehículo y
-                                        ofreciendo precios razonables con un alto estándar de calidad.
-                                    </p>
+                            <div className="col-md-8">
+                                <div className="financiacion col-md-12 position-relative text-black d-flex justify-content-center align-items-center">
+                                    <img
+                                        className="position-absolute wcar-icon"
+                                        src="./assets/home/wcar_icon.svg"
+                                        alt="wcar_icon"
+                                    />
+                                    <div className="d-flex justify-content-center align-items-center flex-wrap" style={{margin: "0 10%"}}>
+                                        <p className="description text-center">
+                                            <strong>Financiación hasta</strong>
+                                            <span className="fst-italic"> del 70%</span>
+                                        </p>
+                                        <Link
+                                            to={routes.services.relativePath}
+                                            className="ms-3 my-3 btn btn_orange btn_cut"
+                                            style={{padding: "12px 10px"}}
+                                        >
+                                            EVALÚA TU CRÉDITO
+                                        </Link>
+                                    </div>
                                 </div>
-                                <div className="d-flex flex-column flex-md-row">
-                                    <a
-                                        href={routes.buyYourCar.relativePath}
-                                        className="btn btn_in_black_orange btn_cut btn_shadow me-3 my-2 w_fit_content"
-                                    >
-                                        COMPRA TU CARRO <Icons.ArrowCircle />
-                                    </a>
-                                    <a
-                                        href={routes.sellYourCar.relativePath}
-                                        className="btn btn_black  btn_cut btn_shadow my-2 w_fit_content"
-                                    >
-                                        VENDE TU CARRO <Icons.ArrowCircle />
-                                    </a>
+                                <div className="col-md-12 position-relative text-white px-5 ps-md-5 px-md-3 py-5">
+                                    <img
+                                        src="./assets/recs/lines_zigs.png"
+                                        alt="wcar"
+                                        title="wcar"
+                                        style={{ position: "absolute", right: "5vw", top: "2vw" }}
+                                    />
+                                    <img
+                                        src="./assets/recs/lines_box.png"
+                                        className="d-block d-md-none"
+                                        alt="wcar"
+                                        title="wcar"
+                                        style={{ position: "absolute", right: 0, bottom: 0 }}
+                                    />
+                                    <div className="line_left_orange">Nosotros</div>
+                                    <h3 className="h3">
+                                        <b>Razones para comprar y</b> <br />
+                                        <i>vender con wcar</i>
+                                    </h3>
+                                    <div>
+                                        <p>¡Somos el anti-dealer para que compres y vendas con cero estrés! </p>
+                                        <p>
+                                            En este revolucionario ecosistema encuentras una consejería personalizada.
+                                            Somos brutalmente transparentes, dando a conocer el estado real del vehículo
+                                            y ofreciendo precios razonables con un alto estándar de calidad.
+                                        </p>
+                                    </div>
+                                    <div className="d-flex flex-column flex-md-row">
+                                        <a
+                                            href={routes.buyYourCar.relativePath}
+                                            className="btn btn_in_black_orange btn_cut btn_shadow me-3 my-2 w_fit_content"
+                                        >
+                                            COMPRA TU CARRO <Icons.ArrowCircle />
+                                        </a>
+                                        <a
+                                            href={routes.sellYourCar.relativePath}
+                                            className="btn btn_black  btn_cut btn_shadow my-2 w_fit_content"
+                                        >
+                                            VENDE TU CARRO <Icons.ArrowCircle />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
