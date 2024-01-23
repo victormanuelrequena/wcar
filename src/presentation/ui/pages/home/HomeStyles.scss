@@ -91,32 +91,30 @@
                 font-size: 36px;
             }
 
-            .wcar-icon{
+            .wcar-icon {
                 left: 2%;
                 top: 20%;
             }
         }
 
         @media screen and (max-width: 768px) {
-            background-color: black;
-
             .financiacion {
                 height: 290px;
                 margin: 0 5%;
-            
-                .wcar-icon{
+
+                .wcar-icon {
                     left: 5%;
                     top: 5%;
                 }
-
             }
 
             &::before {
-                content: none;
-                display: none;
+                left: 0%;
+                top: 25%;
+                bottom: 0;
+                right: 0;
             }
         }
-
     }
 
     .fifth_section {
