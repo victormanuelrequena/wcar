@@ -223,7 +223,7 @@ const HomePage: FC<{}> = () => {
                     </div>
                     <section
                         className="container w-100 d-flex flex-column justify-content-evenly"
-                        style={{ height: "500px" }}
+                        style={{ height: "530px" }}
                     >
                         <Carousel1 cars={carsInfo} />
                     </section>
