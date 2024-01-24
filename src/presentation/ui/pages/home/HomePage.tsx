@@ -16,6 +16,7 @@ import { routes } from "../../routes/RoutesComponent";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Carousel1 } from "../../components/carousel/carousel";
+import { Financing } from "../../components/financing/financing";
 
 const HomePage: FC<{}> = () => {
     const [carsInfo, setCarsInfo] = useState([]);
@@ -83,7 +84,7 @@ const HomePage: FC<{}> = () => {
                         </div>
                     </div>
                 </section>
-                <section className="second_section mt-3 car_02 from_left_3">
+                <section className="second_section mt-3 car_02 from_left_3 container">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-3 d-flex d-md-block justify-content-center">
@@ -148,7 +149,7 @@ const HomePage: FC<{}> = () => {
                         </div>
                     </div>
                 </section>
-                <section className="third_section mt-3">
+                <section className="third_section mt-3 container">
                     <img
                         src="./assets/recs/lines_box.png"
                         className="d-none d-md-block"
@@ -169,27 +170,8 @@ const HomePage: FC<{}> = () => {
                                 </div>
                             </div>
                             <div className="col-md-8">
-                                <div className="financiacion col-md-12 position-relative text-black d-flex justify-content-center align-items-center">
-                                    <img
-                                        className="position-absolute wcar-icon"
-                                        src="./assets/home/wcar_icon.svg"
-                                        alt="wcar_icon"
-                                    />
-                                    <div className="d-flex justify-content-center align-items-center flex-wrap" style={{margin: "0 10%"}}>
-                                        <p className="description text-center">
-                                            <strong>Financiación hasta</strong>
-                                            <span className="fst-italic"> del 70%</span>
-                                        </p>
-                                        <Link
-                                            to={routes.services.relativePath}
-                                            className="ms-3 my-3 btn btn_orange btn_cut"
-                                            style={{padding: "12px 10px"}}
-                                        >
-                                            EVALÚA TU CRÉDITO
-                                        </Link>
-                                    </div>
-                                </div>
-                                <div className="col-md-12 position-relative text-white px-5 ps-md-5 px-md-3 py-5">
+                                <Financing />
+                                <div className="col-md-12 position-relative text-white px-5 ps-md-5 px-md-3 py-5 ms-4">
                                     <img
                                         src="./assets/recs/lines_zigs.png"
                                         alt="wcar"
@@ -203,19 +185,31 @@ const HomePage: FC<{}> = () => {
                                         title="wcar"
                                         style={{ position: "absolute", right: 0, bottom: 0 }}
                                     />
-                                    <div className="line_left_orange">Nosotros</div>
-                                    <h3 className="h3">
-                                        <b>Razones para comprar y</b> <br />
-                                        <i>vender con wcar</i>
+                                    <div className="d-flex align-items-center pb-1">
+                                        <div
+                                            className="me-2"
+                                            style={{
+                                                width: "48px",
+                                                height: "1px",
+                                                background: "#00FEFE",
+                                            }}
+                                        ></div>
+                                        <div>Nosotros</div>
+                                    </div>
+                                    <h3 className="h3 pb-2">
+                                        <b>Razones para comprar</b> <br />
+                                        <i>y vender con wcar</i>
                                     </h3>
-                                    <div>
+                                    <div className="w-75">
                                         <p>¡Somos el anti-dealer para que compres y vendas con cero estrés! </p>
+                                        <br />
                                         <p>
                                             En este revolucionario ecosistema encuentras una consejería personalizada.
                                             Somos brutalmente transparentes, dando a conocer el estado real del vehículo
                                             y ofreciendo precios razonables con un alto estándar de calidad.
                                         </p>
                                     </div>
+                                    <br />
                                     <div className="d-flex flex-column flex-md-row">
                                         <a
                                             href={routes.buyYourCar.relativePath}
@@ -223,10 +217,7 @@ const HomePage: FC<{}> = () => {
                                         >
                                             COMPRA TU CARRO <Icons.ArrowCircle />
                                         </a>
-                                        <a
-                                            href={routes.sellYourCar.relativePath}
-                                            className="btn btn_black  btn_cut btn_shadow my-2 w_fit_content"
-                                        >
+                                        <a href={routes.sellYourCar.relativePath} className="btn btn_black my-2 ">
                                             VENDE TU CARRO <Icons.ArrowCircle />
                                         </a>
                                     </div>
