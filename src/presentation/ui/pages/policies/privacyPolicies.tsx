@@ -300,12 +300,19 @@ const PrivacyPolicies = () => {
                                 uso que les han dado a sus Datos Personales.
                             </li>
                             <li>
-                                Supresión Solicitar la supresión de sus Datos Personales de las Bases de Datos de WCAR,
-                                siempre y cuando no exista un deber legal o una obligación de carácter contractual en
-                                cabeza del Titular con WCAR, según la cual el Titular no tenga el derecho de solicitar
-                                la supresión de sus Datos Personales.
+                                <strong>Solicitar la supresión:</strong> de sus Datos Personales de las Bases de Datos
+                                de WCAR, siempre y cuando no exista un deber legal o una obligación de carácter
+                                contractual en cabeza del Titular con WCAR, según la cual el Titular no tenga el derecho
+                                de solicitar la supresión de sus Datos Personales.
                             </li>
                         </ul>
+                        <div className="side  mb-3">
+                            <h4>PERIODO DE ALMACENAMIENTO DE DATOS PERSONALES</h4>
+                        </div>
+                        <p>
+                            WCAR SAS, mantendrán los datos personales del Titular mientras éste tenga una cuenta en la
+                            aplicación móvil denominada “WCAR”.
+                        </p>
                         <div className="side  mb-3">
                             <h4>AUTORIZACIONES Y AVISOS</h4>
                         </div>
@@ -343,6 +350,41 @@ const PrivacyPolicies = () => {
                             haberse surtido la misma por parte del Titular o la persona legitimada para ello, los Datos
                             Personales no se hubieran almacenado o recolectado en la Base de Datos. Dicha Autorización
                             será solicitada por WCAR.
+                        </p>
+                        <div className="side mb-3">
+                            <h4>ATENCIÓN DE PETICIONES, CONSULTAS Y RECLAMOS</h4>
+                        </div>
+                        <p>
+                            El Área de Servicio al Cliente es la dependencia que tiene a cargo dar trámite a las
+                            solicitudes de los titulares para hacer efectivos sus derechos. Las peticiones, consultas y
+                            reclamos pueden ser enviadas al correo electrónico: contacto@wcar.co o través del número de
+                            contacto +57 301 8063302. PROCEDIMIENTO PARA EL EJERCICIO DEL DERECHO DE PROTECCIÓN DE DATOS
+                            PERSONALES En cumplimiento de las normas sobre protección de datos personales, WCAR SAS,
+                            presenta el procedimiento y requisitos mínimos para el ejercicio de sus derechos: Para la
+                            radicación y atención de su solicitud le solicitamos suministrar la siguiente información:
+                        </p>
+                        <ul>
+                            <li>Nombre completo y apellidos.</li>
+                            <li>Datos de contacto (Dirección electrónica y teléfonos de contacto).</li>
+                            <li>Medios para recibir respuesta a su solicitud.</li>
+                            <li>
+                                Motivo(s)/hecho(s) que dan lugar al reclamo con una breve descripción del derecho que
+                                desea ejercer (conocer, actualizar, rectificar, solicitar prueba de la autorización
+                                otorgada, revocarla, suprimir, acceder a la información).
+                            </li>
+                            <li>Firma (si aplica) y número de identificación.</li>
+                        </ul>
+                        <p>
+                            El término máximo previsto por la ley para resolver su reclamación es de quince (15) días
+                            hábiles, contado a partir del día siguiente a la fecha de su recibo. Cuando no fuere posible
+                            atender el reclamo dentro de dicho término, WCAR S.A.S, informará al interesado los motivos
+                            de la demora y la fecha en que se atenderá́su reclamo, la cual en ningún caso podrá superar
+                            los ocho (8) días hábiles siguientes al vencimiento del primer término. Una vez cumplidos
+                            los términos señalados por la Ley 1581 de 2012 y las demás normas que la reglamenten o
+                            complementen, el Titular al que se deniegue, total o parcialmente, el ejercicio de los
+                            derechos de acceso, actualización, rectificación, supresión y revocación podrá poner su caso
+                            en conocimiento de la Superintendencia de Industria y Comercio –Delegatura para la
+                            Protección de Datos Personales
                         </p>
                         <div className="side mb-3">
                             <h4>FINALIDADES PERSONALES DEL TRATAMIENTO DE DATOS</h4>
@@ -464,6 +506,11 @@ const PrivacyPolicies = () => {
                             actualización, supresión y revocatoria a que se refiere la Ley 1581 de 2012. A nivel
                             interno, se han establecido procedimientos para la oportuna y eficaz atención de las
                             consultas y reclamos teniendo en cuenta los responsables de las diferentes bases de datos.
+                        </p>
+                        <p>
+                            <strong>Cancelación de cuenta:</strong> En cumplimiento de las normas sobre protección de
+                            datos personales, el Titular podrá eliminar a voluntad sus datos y su cuenta de la
+                            aplicación yendo a la sección de perfil y dando clic en la opción “Eliminar cuenta”.
                         </p>
                         <div className="side  mb-3 ">
                             <h4>PUBLICIDAD Y MODIFICACIONES DE LA POLÍTICA</h4>
