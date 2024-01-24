@@ -126,10 +126,10 @@ export const WebShare = () => {
                             <IoLogoWhatsapp className="icon whatsapp" />
                         </div>
                         <div className="icon_container" onClick={() => selectShareMedium("email")}>
-                            <MdOutlineMail className="icon email" />
+                            <img src="/assets/icons/mail.svg" className="img-fluid" alt="wcar" title="wcar" />
                         </div>
                         <div className="icon_container" onClick={() => selectShareMedium("copy")}>
-                            <FaRegClipboard className="icon email" />
+                            <img src="/assets/icons/link.svg" className="img-fluid" alt="wcar" title="wcar" />
                         </div>
                     </>
                 )}
