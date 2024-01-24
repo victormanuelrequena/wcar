@@ -471,8 +471,8 @@ const BuyYourCarPage: FC<{}> = () => {
                                                     <CarCardComponent car={car} />
                                                 </div>
                                                 {index === (openFilters ? 5 : 7) && (
-                                                    <div className="col-12 mb-4 mt-3">
-                                                        <Financing />
+                                                    <div className="d-flex justify-content-center col-12 mb-4 mt-3">
+                                                        <Financing bgColor="#00fefe" textColor="#000" />
                                                     </div>
                                                 )}
                                             </>
