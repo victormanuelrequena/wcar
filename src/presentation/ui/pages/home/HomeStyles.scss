@@ -9,8 +9,7 @@
         }
 
         .img_car_01 {
-            top: -10%;
-            bottom: 800px;
+            // top: -10%;
             margin-left: -50vw;
             margin-right: -25vw;
             width: calc(100% + 75vw);
@@ -146,7 +145,7 @@
 @media (min-width: 1100px) {
     .no_scrolled {
         .home_page {
-            padding-top: 50px;
+            padding-top: 100px;
         }
     }
 }
