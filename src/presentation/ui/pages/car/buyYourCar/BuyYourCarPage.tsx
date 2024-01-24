@@ -37,6 +37,7 @@ import {
 import BannerYourCar from "./components/banner/BannerYourCar";
 import { useNavigate } from "react-router-dom";
 import BrandEntity from "../../../../../domain/entities/BrandEntity";
+import { Financing } from "../../../components/financing/financing";
 
 const orderingOptions: OrderByEntity[] = [
     {
@@ -452,21 +453,29 @@ const BuyYourCarPage: FC<{}> = () => {
                                         <DeleteFilterComponent formFunctions={formFunctions} onChange={_handleSearch} />
                                     </div>
                                 </div>
-
                                 <div className="row">
                                     {cars == undefined && <LoadingComponent />}
                                     {cars != undefined && cars.length == 0 && <h5>NO HAY RESULTADOS</h5>}
                                     {cars != undefined &&
                                         cars.length > 0 &&
                                         cars.map((car, index) => (
-                                            <div
-                                                className={`mb-3 ${
-                                                    openFilters ? "col-md-12 col-lg-6 col-xl-4" : "col-md-4 col-xl-3"
-                                                }`}
-                                                key={index}
-                                            >
-                                                <CarCardComponent car={car} />
-                                            </div>
+                                            <>
+                                                <div
+                                                    className={`mb-3 ${
+                                                        openFilters
+                                                            ? "col-md-12 col-lg-6 col-xl-4"
+                                                            : "col-md-4 col-xl-3"
+                                                    }`}
+                                                    key={index}
+                                                >
+                                                    <CarCardComponent car={car} />
+                                                </div>
+                                                {index === (openFilters ? 5 : 7) && (
+                                                    <div className="col-12 mb-4 mt-3">
+                                                        <Financing />
+                                                    </div>
+                                                )}
+                                            </>
                                         ))}
                                 </div>
                                 {maxPages > 1 && (

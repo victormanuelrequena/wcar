@@ -1,0 +1,28 @@
+.financiacion {
+    display: block;
+    background-image: url("./../../../../../public/assets/home/financiacion.svg");
+    background-size: cover;
+    min-height: 80px;
+    background-color: #00fefe;
+
+    .description {
+        font-size: 36px;
+    }
+
+    .wcar-icon {
+        left: 2%;
+        top: 20%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .financiacion {
+        height: 290px;
+        margin: 0 5%;
+
+        .wcar-icon {
+            left: 5%;
+            top: 5%;
+        }
+    }
+}

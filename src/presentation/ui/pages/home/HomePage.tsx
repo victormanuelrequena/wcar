@@ -16,6 +16,7 @@ import { routes } from "../../routes/RoutesComponent";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Carousel1 } from "../../components/carousel/carousel";
+import { Financing } from "../../components/financing/financing";
 
 const HomePage: FC<{}> = () => {
     const [carsInfo, setCarsInfo] = useState([]);
@@ -169,29 +170,7 @@ const HomePage: FC<{}> = () => {
                                 </div>
                             </div>
                             <div className="col-md-8">
-                                <div className="financiacion col-md-12 position-relative text-black d-flex justify-content-center align-items-center">
-                                    <img
-                                        className="position-absolute wcar-icon"
-                                        src="./assets/home/wcar_icon.svg"
-                                        alt="wcar_icon"
-                                    />
-                                    <div
-                                        className="d-flex justify-content-center align-items-center flex-wrap"
-                                        style={{ margin: "0 10%" }}
-                                    >
-                                        <p className="description text-center">
-                                            <strong>Financiación hasta</strong>
-                                            <span className="fst-italic"> del 70%</span>
-                                        </p>
-                                        <Link
-                                            to={routes.services.relativePath}
-                                            className="ms-3 my-3 btn btn_orange btn_cut"
-                                            style={{ padding: "12px 10px" }}
-                                        >
-                                            EVALÚA TU CRÉDITO
-                                        </Link>
-                                    </div>
-                                </div>
+                                <Financing />
                                 <div className="col-md-12 position-relative text-white px-5 ps-md-5 px-md-3 py-5 ms-4">
                                     <img
                                         src="./assets/recs/lines_zigs.png"
@@ -238,10 +217,7 @@ const HomePage: FC<{}> = () => {
                                         >
                                             COMPRA TU CARRO <Icons.ArrowCircle />
                                         </a>
-                                        <a
-                                            href={routes.sellYourCar.relativePath}
-                                            className="btn btn_black my-2 "
-                                        >
+                                        <a href={routes.sellYourCar.relativePath} className="btn btn_black my-2 ">
                                             VENDE TU CARRO <Icons.ArrowCircle />
                                         </a>
                                     </div>
