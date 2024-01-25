@@ -170,7 +170,7 @@ const HomePage: FC<{}> = () => {
                                 </div>
                             </div>
                             <div className="col-md-8">
-                                <Financing />
+                                <Financing bgColor="#00fefe" textColor="#000" />
                                 <div className="col-md-12 position-relative text-white px-5 ps-md-5 px-md-3 py-5 ms-4">
                                     <img
                                         src="./assets/recs/lines_zigs.png"
