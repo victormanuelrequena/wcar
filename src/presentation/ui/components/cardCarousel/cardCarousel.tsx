@@ -52,7 +52,7 @@ export const CardCarousel: FC<{ car: any }> = ({ car }) => {
                 {car.warranty && (
                     <div className="my-2">
                         <div className="warranty d-flex justify-content-center align-items-center">
-                            <Warranty /> Garantía
+                            <Warranty fill="#000" /> Garantía
                         </div>
                     </div>
                 )}

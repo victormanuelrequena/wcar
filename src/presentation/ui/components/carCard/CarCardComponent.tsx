@@ -54,6 +54,13 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                         {car.tag.name}
                     </div>
                 )}
+                {car.warranty && (
+                    <div>
+                        <div className="warranty d-flex justify-content-center align-items-center">
+                            <Warranty fill="#000" /> Garantía
+                        </div>
+                    </div>
+                )}
                 <div className="d-flex w-100 align-items-center">
                     <div className="flex-grow overflow-hidden me-3">
                         <h5 className="">{car.name}</h5>
@@ -67,13 +74,7 @@ const CarCardComponent: FC<CarCardComponentProps> = ({ car }) => {
                 <div className="w-100 text_bold mt-1" style={{ color: "#666C89" }}>
                     {car.type.name}
                 </div>
-                {car.warranty && (
-                    <div className="my-2">
-                        <div className="warranty d-flex justify-content-center align-items-center">
-                            <Warranty /> Garantía
-                        </div>
-                    </div>
-                )}
+
                 <div className="w-100 row justify-content-around mt-3" style={{ fontSize: ".9em", margin: "0 auto" }}>
                     <div className="col-3 d-flex align-items-center text_gray p-0">
                         <img

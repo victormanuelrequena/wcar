@@ -182,6 +182,14 @@
     width: 180px;
 }
 
+@media screen and (max-width: 678px) {
+    .stamp {
+        bottom: 10px;
+        left: 10px;
+        width: 110px;
+    }
+}
+
 @media (min-width: 1300px) {
     .tag {
         padding: 8px 24px;
