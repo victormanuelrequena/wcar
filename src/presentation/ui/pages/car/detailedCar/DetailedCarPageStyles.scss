@@ -145,17 +145,19 @@
     }
 
     .warranty {
-        background-color: #C5F466;
-        width: 94px;
-        height: 30px;
-        padding: 4px 16px 4px 8px;
-        border: 1px solid #1e1e1e;
-        border-radius: 50px;
-        color: #1e1e1e;
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 22px;
-        gap: 4px;
+        cursor: default;
+        border-radius: 0;
+        border-bottom-left-radius: 2em;
+        border-top-right-radius: 2em;
+        padding: 0.5em 1em;
+        background-color: var(--color-orange);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease-in-out;
+
+        svg {
+            width: 2em;
+        }
     }
 
     .claims {
