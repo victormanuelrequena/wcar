@@ -21,6 +21,7 @@ import GetAllInsuranceQuestionsUseCase, {
 import FrequentQuestionEntity from "../../../../../domain/entities/FrequentQuestionEntity";
 import { Helmet } from "react-helmet-async";
 import ModalGarantie from "../../car/detailedCar/component/ModalGarantie";
+import { Financing } from "../../../components/financing/financing";
 
 const ServicesPage: FC = () => {
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
@@ -107,11 +108,10 @@ const ServicesPage: FC = () => {
                                     <div className="side side_top side_blue_neon mb-3" />
                                     <h2 className="text_md_white text_bold text-center text-md-start">
                                         ¿Cómo funciona
-                                        <br className="d-none d-md-block" /> nuestro proceso{" "}
+                                        <br className="d-none d-md-block" /> nuestro proceso
                                         <br className="d-none d-md-block" />
-                                        <span className="text_md_italic text_md_lighter"> de</span>{" "}
+                                        <span className="text_md_italic text_md_lighter"> de</span>
                                         <span className="text_md_white text_light text_italic text_orange">
-                                            {" "}
                                             financiación?
                                         </span>
                                     </h2>
@@ -145,6 +145,9 @@ const ServicesPage: FC = () => {
                 <section className="section_2">
                     <FinancingServicesLineComponent />
                 </section>
+                <div className="d-flex justify-content-center align-items-center">
+                    <Financing bgColor="#666C89" textColor="#F6F7F9"/>
+                </div>
                 <section className="section_3 py-5 position-relative">
                     <div className="container">
                         <div className="row">
