@@ -149,8 +149,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                     </div>
                                                     {car.warranty && (
                                                         <div className="mb-2 ms-1">
-                                                            <div className="warranty d-flex justify-content-center align-items-center">
-                                                                <Warranty /> Garantía
+                                                            <div className="warranty me-3 btn-detailed-car">
+                                                                <Warranty fill="#fff" /> Garantía
                                                             </div>
                                                         </div>
                                                     )}
