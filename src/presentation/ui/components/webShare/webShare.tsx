@@ -96,10 +96,10 @@ export const WebShare = () => {
     };
 
     return (
-        <div className="position-relative">
+        <div className="position-relative ">
             <div
                 className="icon_close position-absolute d-flex justify-content-center align-items-center"
-                style={{ border: isShare ? "1px solid gray" : "0" }}
+                style={{ border: isShare ? "1px solid gray" : "0", zIndex: 110 }}
                 onClick={isMobile ? () => webShareApi({ url: window.location.href }) : openShareMenu}
             >
                 {/* {isShare ? <IoMdClose className="icon" /> : <HiOutlinePaperAirplane className="icon" />} */}
@@ -109,11 +109,15 @@ export const WebShare = () => {
                     <img src="/assets/icons/share.png" alt="" className="icon" />
                 )}
             </div>
-            <div
-                className="share d-flex justify-content-evenly align-items-center pl-3"
-                style={{ justifyContent: isShare ? "space-around" : "start" }}
-            >
-                {isShare && (
+            {isShare && (
+                <div
+                    className="share d-flex justify-content-evenly align-items-center pl-3 position-absolute icon_container ms-2 rounded-4 ps-3 bg-light"
+                    style={{
+                        justifyContent: isShare ? "space-around" : "start",
+                        zIndex: 100,
+                        boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.2)",
+                    }}
+                >
                     <>
                         <div className="icon_container" onClick={() => selectShareMedium("facebook")}>
                             <FaFacebookF className="icon facebook" />
@@ -132,8 +136,8 @@ export const WebShare = () => {
                             <img src="/assets/icons/link.svg" className="img-fluid" alt="wcar" title="wcar" />
                         </div>
                     </>
-                )}
-            </div>
+                </div>
+            )}
         </div>
     );
 };
