@@ -150,8 +150,8 @@ const DetailedCarPage: FC<{}> = () => {
                                                     {car.warranty && (
                                                         <div className="mb-2 me-2">
                                                             <div
-                                                                className="btn btn_orange btn-detailed-car"
-                                                                style={{ width: 200 }}
+                                                                className="btn btn_orange btn-detailed-car text-center pe-2"
+                                                                style={{ width: 210 }}
                                                             >
                                                                 <Warranty fill="#fff" /> Garantía de 6 meses
                                                             </div>
