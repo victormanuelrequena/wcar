@@ -17,6 +17,7 @@ export const WebShare = () => {
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 800);
+            setIsShare(false);
         };
 
         window.addEventListener("resize", handleResize);
@@ -96,7 +97,7 @@ export const WebShare = () => {
     };
 
     return (
-        <div className="position-relative ">
+        <div className="position-relative" style={{ height: "35px" }}>
             <div
                 className="icon_close position-absolute d-flex justify-content-center align-items-center"
                 style={{ border: isShare ? "1px solid gray" : "0", zIndex: 110 }}
