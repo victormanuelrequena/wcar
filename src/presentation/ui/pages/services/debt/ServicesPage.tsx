@@ -146,7 +146,7 @@ const ServicesPage: FC = () => {
                     <FinancingServicesLineComponent />
                 </section>
                 <div className="d-flex justify-content-center align-items-center">
-                    <Financing bgColor="#666C89" textColor="#F6F7F9"/>
+                    <Financing bgColor="#666C89" textColor="#F6F7F9" redirectButton={true} />
                 </div>
                 <section className="section_3 py-5 position-relative">
                     <div className="container">

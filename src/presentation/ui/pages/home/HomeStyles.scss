@@ -8,11 +8,26 @@
             z-index: 0;
         }
 
+        .img_car_01_container {
+            margin-top: -150px;
+        }
+
         .img_car_01 {
-            // top: -10%;
-            margin-left: -50vw;
-            margin-right: -25vw;
-            width: calc(100% + 75vw);
+            max-width: 2000px;
+            height: 800px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .img_car_01_container {
+                margin-top: 0;
+            }
+
+            .img_car_01 {
+                width: calc(100% + 75vw);
+                height: inherit;
+                margin-left: -50vw;
+                margin-right: -25vw;
+            }
         }
     }
 
@@ -49,7 +64,7 @@
 
         &::before {
             content: "";
-            background-color: #1E1E1E;
+            background-color: #1e1e1e;
             position: absolute;
             left: 25%;
             top: 20%;

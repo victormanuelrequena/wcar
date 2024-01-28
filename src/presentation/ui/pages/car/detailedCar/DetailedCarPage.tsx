@@ -148,9 +148,12 @@ const DetailedCarPage: FC<{}> = () => {
                                                         <WebShare />
                                                     </div>
                                                     {car.warranty && (
-                                                        <div className="mb-2 ms-1">
-                                                            <div className="warranty me-3 btn-detailed-car">
-                                                                <Warranty fill="#fff" /> Garantía
+                                                        <div className="mb-2 me-2">
+                                                            <div
+                                                                className="btn btn_orange btn-detailed-car text-center pe-2"
+                                                                style={{ width: 210 }}
+                                                            >
+                                                                <Warranty fill="#fff" /> Garantía de 6 meses
                                                             </div>
                                                         </div>
                                                     )}

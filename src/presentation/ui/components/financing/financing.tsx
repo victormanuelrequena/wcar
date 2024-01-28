@@ -6,9 +6,10 @@ import { FC } from "react";
 interface financingProps {
     bgColor: string;
     textColor: string;
+    redirectButton?: boolean;
 }
 
-export const Financing: FC<financingProps> = ({ bgColor, textColor }) => {
+export const Financing: FC<financingProps> = ({ bgColor, textColor, redirectButton = false }) => {
     return (
         <div
             style={{ backgroundColor: bgColor }}
@@ -21,7 +22,12 @@ export const Financing: FC<financingProps> = ({ bgColor, textColor }) => {
                     <span className="fst-italic"> del 70%</span>
                 </p>
                 <Link
-                    to={routes.services.relativePath}
+                    to={
+                        redirectButton
+                            ? "https://app.arkdia.co/validate-request-public-wcar"
+                            : routes.services.relativePath
+                    }
+                    target={redirectButton && "_blank"}
                     className="ms-3 my-3 btn btn_orange btn_cut"
                     style={{ padding: "12px 10px" }}
                 >

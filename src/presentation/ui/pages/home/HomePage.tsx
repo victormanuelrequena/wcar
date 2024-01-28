@@ -53,12 +53,14 @@ const HomePage: FC<{}> = () => {
             </Helmet>
             <div className="home_page">
                 <section className="first_section position-relative d-md-block d-flex flex-column-reverse">
-                    <img
-                        src="/assets/home/car_01.png"
-                        alt="Comprar con wcar"
-                        title="Comprar con wcar"
-                        className="position-sm-absolute img_car_01"
-                    />
+                    <div className="position-sm-absolute w-100 d-flex justify-content-center img_car_01_container">
+                        <img
+                            src="/assets/home/car_01.png"
+                            alt="Comprar con wcar"
+                            title="Comprar con wcar"
+                            className="img_car_01"
+                        />
+                    </div>
                     <div className="container py-5">
                         <div className="row">
                             <div className="col-12 col-sm-6">
