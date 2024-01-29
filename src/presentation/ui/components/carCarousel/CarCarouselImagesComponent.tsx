@@ -179,7 +179,12 @@ const CarCarouselImagesComponent: FC<CarCarouselImagesComponentProps> = ({ image
                                                 <p
                                                     className="tag-text"
                                                     style={{
-                                                        color: car.tag.color === "#000" ? "#fff" : "#fff",
+                                                        color:
+                                                            car.tag.name === "Vendido"
+                                                                ? "#000"
+                                                                : car.tag.color === "#000"
+                                                                ? "#fff"
+                                                                : "#fff",
                                                     }}
                                                 >
                                                     {car.tag.name}
