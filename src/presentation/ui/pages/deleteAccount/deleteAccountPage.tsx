@@ -108,7 +108,7 @@ const DeleteAccountPage = () => {
                                             {...register("accept")}
                                         />
                                         <label htmlFor="accept" className="form-check-label">
-                                            He leido y acepto los{" "}
+                                            He leido y acepto los
                                             <Link to={routes.termAndConditionsUser.relativePath}>
                                                 terminos y condiciones
                                             </Link>
