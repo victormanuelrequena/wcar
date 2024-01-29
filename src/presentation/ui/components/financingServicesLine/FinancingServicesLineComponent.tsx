@@ -29,9 +29,6 @@ const FinancingServicesLineComponent: FC<{}> = () => {
                         <div className="col-md-4 my-3">
                             <CardServiceComponent title="5. Desembolso" description="Espera el desembolso del banco, y empieza a disfrutar de tu nuevo carro." image='/assets/icons/person.svg'></CardServiceComponent>
                         </div>
-                        <div className="col-md-4 my-3">
-                            <CardServiceComponent title="6. Documentación" description="Completa los documentos para enviar a un estudio de crédito." image='/assets/icons/person.svg'></CardServiceComponent>
-                        </div>
                     </div>
                 </div>
             </SliderComponent>
