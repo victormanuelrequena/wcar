@@ -1,0 +1,35 @@
+.delete_account_page {
+    .card_form {
+        width: 50%;
+
+        input.form-control {
+            background-color: var(--color-dark-gray);
+            color: white;
+
+            &::placeholder {
+                color: #ffffff70;
+            }
+        }
+
+        textarea.form-control {
+            background-color: transparent;
+            border: solid thin white;
+            color: white;
+            padding: 1em 1em;
+
+            &:focus {
+                background-color: var(--color-dark-gray);
+            }
+
+            &::placeholder {
+                color: white;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .card_form {
+            width: 100%;
+        }
+    }
+}
