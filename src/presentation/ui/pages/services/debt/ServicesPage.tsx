@@ -20,12 +20,10 @@ import GetAllInsuranceQuestionsUseCase, {
 } from "../../../../../domain/use_cases/frequentQuestion/GetAllInsuranceQuestionsUseCase";
 import FrequentQuestionEntity from "../../../../../domain/entities/FrequentQuestionEntity";
 import { Helmet } from "react-helmet-async";
-import ModalGarantie from "../../car/detailedCar/component/ModalGarantie";
 import { Financing } from "../../../components/financing/financing";
 
 const ServicesPage: FC = () => {
     const { addToast } = useContext(ModalsContext) as ModalsContextType;
-    const [showGaratieModal, setShowGarantieModal] = useState(false);
 
     const formFunctions = useForm();
     const [estimatedDebt, setEstimatedDebt] = useState<number | undefined>(undefined);
@@ -126,12 +124,6 @@ const ServicesPage: FC = () => {
                                         HAZ AQUÍ TU SOLICITUD DE CRÉDITO
                                     </a>
                                 </div>
-                                <button
-                                    className="btn btn_cyan my-1 me-3 btn-detailed-car mt-3"
-                                    onClick={() => setShowGarantieModal(true)}
-                                >
-                                    ADQUIERE TU GARANTIA
-                                </button>
                             </div>
                         </div>
                         <img
@@ -218,14 +210,6 @@ const ServicesPage: FC = () => {
                     </div>
                 </section>
             </Layout>
-            {showGaratieModal && (
-                <ModalGarantie
-                    id={"185"}
-                    close={() => setShowGarantieModal(false)}
-                    carValue={100000}
-                    SrvCode={"1003"}
-                />
-            )}
         </div>
     );
 };
