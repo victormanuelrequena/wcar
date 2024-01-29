@@ -195,7 +195,9 @@ const DetailedCarPage: FC<{}> = () => {
                                                 <p className="car-spec">
                                                     {car.type.name} / {car.name} {car.year}
                                                 </p>
-                                                <strong className="car-spec-strong d-block mt-1">Stock ID: {car.id}</strong>
+                                                <strong className="car-spec-strong d-block mt-1">
+                                                    Stock ID: {car.id}
+                                                </strong>
                                             </div>
                                             <div className="text_ellipsis">
                                                 <h3 className="text_bold car-price">
@@ -222,14 +224,15 @@ const DetailedCarPage: FC<{}> = () => {
                                                     VER PERITAJE <Icons.Download />
                                                 </div>
                                                 <div style={{ display: "flex", flexWrap: "wrap" }}>
-                                                    {car?.tag?.name !== "Reservado" && (
-                                                        <div
-                                                            onClick={_bookCarWithPayment}
-                                                            className="btn btn_orange my-1 me-3 btn-detailed-car"
-                                                        >
-                                                            SEPÁRALO AQUÍ <Icons.ArrowCircle />
-                                                        </div>
-                                                    )}
+                                                    {car?.tag?.name !== "Reservado" &&
+                                                        car?.tag?.name !== "Vendido" && (
+                                                            <div
+                                                                onClick={_bookCarWithPayment}
+                                                                className="btn btn_orange my-1 me-3 btn-detailed-car"
+                                                            >
+                                                                SEPÁRALO AQUÍ <Icons.ArrowCircle />
+                                                            </div>
+                                                        )}
 
                                                     {/* <Link
                                                             target="_blank"
