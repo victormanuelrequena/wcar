@@ -15,6 +15,13 @@ const DeleteAccountPage = () => {
         watch,
         formState: { errors },
     } = useForm();
+
+    const onSubmit = handleSubmit((data: { full_name: string; email: string; description: string }) => {
+        window.location.href = `mailto:desarrollador@wcar.co?subject=Eliminación%20de%20cuenta%20App%20WCAR&body=${data.full_name}%0D%0A%0D%0A${data.email}%0D%0A%0D%0A${data.description}`;
+        reset();
+        // %0D%0A
+    });
+
     return (
         <>
             <div className="delete_account_page">
@@ -39,7 +46,7 @@ const DeleteAccountPage = () => {
                             <div className="card_form bg_black text_white py-5 px-4 rounded">
                                 <h2 className="text-center">Eliminación de cuenta App WCAR</h2>
                                 <br />
-                                <form>
+                                <form onSubmit={onSubmit}>
                                     <div className="form-group mb-3">
                                         <label htmlFor="full-name" className="mandatory">
                                             Nombre completo
@@ -59,13 +66,13 @@ const DeleteAccountPage = () => {
                                         />
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label htmlFor="full-name" className="mandatory">
+                                        <label htmlFor="email" className="mandatory">
                                             Email
                                         </label>
                                         <input
                                             type="text"
                                             className="form-control"
-                                            id="full-name"
+                                            id="email"
                                             placeholder="ejemplo@gmail.com"
                                             {...register(
                                                 "email",
@@ -77,18 +84,18 @@ const DeleteAccountPage = () => {
                                         />
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label htmlFor="full-name" className="mandatory">
+                                        <label htmlFor="description" className="mandatory">
                                             ¿Porqué deseas eliminar tu cuenta?
                                         </label>
                                         <textarea
                                             className="form-control"
-                                            id="full-name"
+                                            id="description"
                                             placeholder=""
                                             {...register(
                                                 "description",
                                                 Validators({
                                                     required: true,
-                                                    maxLength: 40,
+                                                    maxLength: 1000,
                                                 })
                                             )}
                                         ></textarea>
@@ -97,21 +104,23 @@ const DeleteAccountPage = () => {
                                         <input
                                             type="checkbox"
                                             className="form-check-input"
-                                            id="full-name"
-                                            {...register(
-                                                "email",
-                                                Validators({
-                                                    required: true,
-                                                    maxLength: 40,
-                                                })
-                                            )}
+                                            id="accept"
+                                            {...register("accept")}
                                         />
-                                        <Link to={routes.privacyPolicies.path} className="form-check-label">
-                                            Terminos y condiciones
-                                        </Link>
+                                        <label htmlFor="accept" className="form-check-label">
+                                            He leido y acepto los{" "}
+                                            <Link to={routes.termAndConditionsUser.relativePath}>
+                                                terminos y condiciones
+                                            </Link>
+                                        </label>
                                     </div>
                                     <div className="d-flex justify-content-center">
-                                        <input className="btn-send btn-orange" type="submit" name="submit"></input>
+                                        <input
+                                            disabled={!watch("accept")}
+                                            className="btn-send btn-orange"
+                                            type="submit"
+                                            name="submit"
+                                        ></input>
                                     </div>
                                 </form>
                             </div>
