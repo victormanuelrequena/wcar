@@ -66,10 +66,10 @@ const HomePage: FC<{}> = () => {
                             <div className="col-12 col-sm-6">
                                 <div className="d-flex flex-column">
                                     <h1 className="side side_top h5">wcar</h1>
-                                    <h2 className="mt-3 h1">
+                                    <h2 className="mt-3 h1 text_black">
                                         Más que <br />
                                         vender te <br />
-                                        <span className="my-3 text_orange text_italic">aconsejamos</span>
+                                        <span className="my-3 text_orange text_italic title_orange">aconsejamos</span>
                                     </h2>
                                     <Link to={routes.buyYourCar.relativePath}>
                                         <button className="my-3 btn btn_orange btn_shadow btn_cut">
