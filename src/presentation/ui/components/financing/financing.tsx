@@ -11,7 +11,9 @@ interface financingProps {
 
 export const Financing: FC<financingProps> = ({ bgColor, textColor, redirectButton = false }) => {
     return (
-        <div
+        <Link
+            to={redirectButton ? "https://app.arkdia.co/validate-request-public-wcar" : routes.services.relativePath}
+            target={redirectButton && "_blank"}
             style={{ backgroundColor: bgColor }}
             className="financing col-md-12 position-relative text-black d-flex justify-content-center align-items-center"
         >
@@ -21,19 +23,10 @@ export const Financing: FC<financingProps> = ({ bgColor, textColor, redirectButt
                     <strong>Financiación hasta</strong>
                     <span className="fst-italic"> del 70%</span>
                 </p>
-                <Link
-                    to={
-                        redirectButton
-                            ? "https://app.arkdia.co/validate-request-public-wcar"
-                            : routes.services.relativePath
-                    }
-                    target={redirectButton && "_blank"}
-                    className="ms-3 my-3 btn btn_orange btn_cut"
-                    style={{ padding: "12px 10px" }}
-                >
+                <div className="ms-3 my-3 btn btn_orange btn_cut" style={{ padding: "12px 10px" }}>
                     EVALÚA TU CRÉDITO
-                </Link>
+                </div>
             </div>
-        </div>
+        </Link>
     );
 };
