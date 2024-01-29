@@ -43,6 +43,7 @@ import PrivacyPoliciesForMobileApp from "../pages/policies/PrivacyPoliciesForMob
 import DataPrivacyNoticeForWcarAppUsers from "../pages/policies/DataPrivacyNoticeForWcarAppUsers";
 import PrivacyPolicies from "../pages/policies/privacyPolicies";
 import HomePage1 from "../pages/home-1/HomePage";
+import DeleteAccountPage from "../pages/deleteAccount/deleteAccountPage";
 
 export interface iRoute {
     name: string;
@@ -160,6 +161,13 @@ const routes = {
         path: "/contacto",
         relativePath: "/contacto",
         component: ContactPage,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    deleteAccount: {
+        path: "/eliminacion-de-cuenta",
+        relativePath: "/eliminacion-de-cuenta",
+        component: DeleteAccountPage,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },

@@ -29,6 +29,7 @@ import { WebShare } from "../../../components/webShare/webShare";
 import { Warranty } from "../../../assets/warranty";
 import { Alert } from "../../../assets/alert";
 import { Arrow } from "../../../assets/arrow";
+import { WarrantyStar } from "../../../assets/warrantyStar";
 
 const DetailedCarPage: FC<{}> = () => {
     const { id } = useParams<{ id: string }>();
@@ -141,101 +142,96 @@ const DetailedCarPage: FC<{}> = () => {
                                         <CarCarouselImagesComponent car={car} images={car.images} />
                                     </div>
                                     <div className="col-12 col-lg-5 col-xl-4 px-0">
-                                        <div>
-                                            <div className="py-4 px-4 bg-white rounded w-100 mt-5 mt-lg-0">
-                                                <div className="d-flex justify-content-between">
-                                                    <div className="mb-2 ms-1">
-                                                        <WebShare />
+                                        <div className="detailed_car_container py-4 px-4 bg-white rounded w-100 mt-5 mt-lg-0">
+                                            <div className="d-flex justify-content-between mb-3">
+                                                <div className="mb-2 ms-1">
+                                                    <WebShare />
+                                                </div>
+                                                {car.warranty && (
+                                                    <div className="mb-2 me-2">
+                                                        <div
+                                                            className="btn btn_orange btn-detailed-car text-center pe-2"
+                                                            style={{ width: 210 }}
+                                                        >
+                                                            <Warranty fill="#fff" /> Garantía de 6 meses
+                                                        </div>
                                                     </div>
-                                                    {car.warranty && (
-                                                        <div className="mb-2 me-2">
-                                                            <div
-                                                                className="btn btn_orange btn-detailed-car text-center pe-2"
-                                                                style={{ width: 210 }}
-                                                            >
-                                                                <Warranty fill="#fff" /> Garantía de 6 meses
-                                                            </div>
+                                                )}
+                                            </div>
+                                            <h1 className="name-car-detail">{capitalizeFirstLetters(car.name)}</h1>
+                                            <div
+                                                className="d-flex flex-row mt-2 justify-content-start"
+                                                style={{ fontSize: ".9em" }}
+                                            >
+                                                <div className="d-flex align-items-center text_gray p-0">
+                                                    <img
+                                                        src="/assets/icons/calendar.svg"
+                                                        alt="wcar"
+                                                        title="wcar"
+                                                        className="img-fluid img_icon me-2"
+                                                    />
+                                                    <span className="text-spec">{car.year}</span>
+                                                </div>
+                                                <div className="d-flex align-items-center text_gray p-0 ms-2">
+                                                    <img
+                                                        src="/assets/icons/odometer.svg"
+                                                        alt="wcar"
+                                                        title="wcar"
+                                                        className="img-fluid img_icon me-2"
+                                                    />
+                                                    <span className="text_nowrap text-spec">{car.odometer} Km.</span>
+                                                </div>
+                                                <div className="d-flex align-items-center text_gray p-0 ms-2">
+                                                    <img
+                                                        src="/assets/icons/transmission.svg"
+                                                        alt="wcar"
+                                                        title="wcar"
+                                                        className="img-fluid img_icon me-2"
+                                                    />
+                                                    <span className="text_nowrap text-spec">{car.transmission}</span>
+                                                </div>
+                                            </div>
+                                            <div className="mt-4">
+                                                <p className="car-spec">
+                                                    {car.type.name} / {car.name} {car.year}
+                                                </p>
+                                                <strong className="car-spec-strong d-block mt-1">Stock ID: {car.id}</strong>
+                                            </div>
+                                            <div className="text_ellipsis">
+                                                <h3 className="text_bold car-price">
+                                                    {car?.tag?.name !== "Reservado" &&
+                                                        CurrencyParse.toCop(car.discount_price ?? car.price)}
+                                                </h3>
+                                                {car.discount_price && (
+                                                    <h5 className="text_bold text_gray text_through">
+                                                        {CurrencyParse.toCop(car.price)}
+                                                    </h5>
+                                                )}
+                                            </div>
+                                            <div className="d-inline-flex flex-column justify-content-start align-items-start mt-4">
+                                                <div
+                                                    className="btn my-3 me-3 btn-detailed-car"
+                                                    style={{
+                                                        color: "#000",
+                                                        height: "42px",
+                                                        border: "none",
+                                                        backgroundColor: "#00fefe",
+                                                    }}
+                                                    onClick={() => setShowPeritajeImage(true)}
+                                                >
+                                                    VER PERITAJE <Icons.Download />
+                                                </div>
+                                                <div style={{ display: "flex", flexWrap: "wrap" }}>
+                                                    {car?.tag?.name !== "Reservado" && (
+                                                        <div
+                                                            onClick={_bookCarWithPayment}
+                                                            className="btn btn_orange my-1 me-3 btn-detailed-car"
+                                                        >
+                                                            SEPÁRALO AQUÍ <Icons.ArrowCircle />
                                                         </div>
                                                     )}
-                                                </div>
-                                                <h1 className="name-car-detail">{capitalizeFirstLetters(car.name)}</h1>
-                                                <div
-                                                    className="d-flex flex-row mt-2 justify-content-start"
-                                                    style={{ fontSize: ".9em" }}
-                                                >
-                                                    <div className="d-flex align-items-center text_gray p-0">
-                                                        <img
-                                                            src="/assets/icons/calendar.svg"
-                                                            alt="wcar"
-                                                            title="wcar"
-                                                            className="img-fluid img_icon me-2"
-                                                        />
-                                                        <span className="text-spec">{car.year}</span>
-                                                    </div>
-                                                    <div className="d-flex align-items-center text_gray p-0 ms-2">
-                                                        <img
-                                                            src="/assets/icons/odometer.svg"
-                                                            alt="wcar"
-                                                            title="wcar"
-                                                            className="img-fluid img_icon me-2"
-                                                        />
-                                                        <span className="text_nowrap text-spec">
-                                                            {car.odometer} Km.
-                                                        </span>
-                                                    </div>
-                                                    <div className="d-flex align-items-center text_gray p-0 ms-2">
-                                                        <img
-                                                            src="/assets/icons/transmission.svg"
-                                                            alt="wcar"
-                                                            title="wcar"
-                                                            className="img-fluid img_icon me-2"
-                                                        />
-                                                        <span className="text_nowrap text-spec">
-                                                            {car.transmission}
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div className="mt-4">
-                                                    <p className="car-spec">
-                                                        {car.type.name} / {car.name} {car.year}
-                                                    </p>{" "}
-                                                    <strong>Stock ID: {car.id}</strong>
-                                                </div>
-                                                <div className="text_ellipsis">
-                                                    <h3 className="text_bold car-price">
-                                                        {car?.tag?.name !== "Reservado" &&
-                                                            CurrencyParse.toCop(car.discount_price ?? car.price)}
-                                                    </h3>
-                                                    {car.discount_price && (
-                                                        <h5 className="text_bold text_gray text_through">
-                                                            {CurrencyParse.toCop(car.price)}
-                                                        </h5>
-                                                    )}
-                                                </div>
-                                                <div className="d-inline-flex flex-column justify-content-start align-items-start mt-1">
-                                                    <div
-                                                        className="btn my-3 me-3 btn-detailed-car"
-                                                        style={{
-                                                            color: "#000",
-                                                            height: "42px",
-                                                            border: "none",
-                                                            backgroundColor: "#00fefe",
-                                                        }}
-                                                        onClick={() => setShowPeritajeImage(true)}
-                                                    >
-                                                        VER PERITAJE <Icons.Download />{" "}
-                                                    </div>
-                                                    <div style={{ display: "flex", flexWrap: "wrap" }}>
-                                                        {car?.tag?.name !== "Reservado" && (
-                                                            <div
-                                                                onClick={_bookCarWithPayment}
-                                                                className="btn btn_orange my-1 me-3 btn-detailed-car"
-                                                            >
-                                                                SEPÁRALO AQUÍ <Icons.ArrowCircle />
-                                                            </div>
-                                                        )}
 
-                                                        {/* <Link
+                                                    {/* <Link
                                                             target="_blank"
                                                             to={"https://calendar.app.google/9Ak2MQecfkFpdCjG7"}
                                                             className="btn btn_orange_outline my-1 btn-detailed-car "
@@ -244,16 +240,15 @@ const DetailedCarPage: FC<{}> = () => {
                                                             AGENDA TU LLAMADA
                                                             <Icons.ArrowCircle />
                                                         </Link> */}
-                                                    </div>
+                                                </div>
 
-                                                    {/* <PopupButton
+                                                {/* <PopupButton
                                                         url="https://calendly.com/wcar-1fk/30min"
                                                         className="btn btn_orange_outline my-3 me-3 btn-detailed-car"
                                                         rootElement={rootElement.current}
                                                         text={"AGENDA TU LLAMADA CON UN ASESOR"}
                                                     /> */}
-                                                    {/* {true && <InlineWidget url="https://calendly.com/wcar-1fk/30min" />} */}
-                                                </div>
+                                                {/* {true && <InlineWidget url="https://calendly.com/wcar-1fk/30min" />} */}
                                             </div>
                                         </div>
                                     </div>
@@ -283,7 +278,7 @@ const DetailedCarPage: FC<{}> = () => {
                                             className="btn btn_orange font-bold"
                                             onClick={() => setShowPeritajeImage(true)}
                                         >
-                                            VER PERITAJE <Icons.Download />{" "}
+                                            VER PERITAJE <Icons.Download />
                                         </div> */}
                                         <Link
                                             to={routes.dateForCar.relativePath + "/" + BookADateActions.see + "/" + id}
@@ -482,16 +477,22 @@ const DetailedCarPage: FC<{}> = () => {
                                                             style={{
                                                                 display: "inline-flex",
                                                                 alignItems: "center",
-                                                                marginTop: 0,
+                                                                marginTop: "0",
                                                             }}
                                                         >
                                                             <Alert />
 
-                                                            <strong style={{ margin: "0 5px" }}>
-                                                                {car.warranty ? car.type_warranty ?? "SÍ" : "NO"}
+                                                            <strong
+                                                                style={{ margin: "0 2px 0 0", height: "18px" }}
+                                                                className="ms-2"
+                                                            >
+                                                                {car.warranty ? "SÍ" : "NO"}
                                                             </strong>
+
+                                                            {car.warranty && <WarrantyStar />}
+
                                                             <div
-                                                                className="claims_arrow"
+                                                                className="ms-2 claims_arrow"
                                                                 style={{
                                                                     transform: warrantyInfo
                                                                         ? "rotate(0deg)"
@@ -551,6 +552,30 @@ const DetailedCarPage: FC<{}> = () => {
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            {car?.warranty && (
+                                                <div className="col-12 my-3">
+                                                    <span className="text_gray me-2">
+                                                        <img
+                                                            style={{ width: "24px" }}
+                                                            src="/assets/icons/warranty.svg"
+                                                            className="img-fluid me-2"
+                                                            alt="wcar"
+                                                            title="wcar"
+                                                        />
+                                                        Tipo de garantía:
+                                                    </span>
+                                                    <div
+                                                        style={{
+                                                            display: "inline-flex",
+                                                            alignItems: "center",
+                                                            marginTop: 0,
+                                                        }}
+                                                    >
+                                                        <strong style={{ margin: "0 5px" }}>{car.type_warranty}</strong>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>

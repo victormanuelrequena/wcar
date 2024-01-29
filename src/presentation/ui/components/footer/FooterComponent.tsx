@@ -67,7 +67,9 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.procedures.relativePath} className="my-1">
                                 Trámites
                             </Link>
-
+                            <Link to={routes.deleteAccount.relativePath} className="my-1">
+                                Eliminación de cuenta App WCAR
+                            </Link>
                             <Link to={routes.termAndConditionsUser.relativePath} className="my-1">
                                 Términos y condiciones usuarios
                             </Link>
