@@ -1,0 +1,67 @@
+.contact_card {
+    width: 480px;
+    border-radius: 12px;
+    background-image: url("../../../../../public/assets/icons_contact/Rectangle.png");
+    background-size: cover;
+
+    .top {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .wanda_icon {
+            margin-bottom: 16px;
+        }
+
+        .contact_text_uno {
+            font-family: Urbanist;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 30px;
+        }
+
+        .contact_text_dos {
+            font-family: Urbanist;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+        }
+    }
+
+    .middle {
+        padding: 0 24px;
+        margin-bottom: 32px;
+
+        .options {
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            cursor: pointer;
+
+            p {
+                display: inline;
+                font-family: Urbanist;
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 24px;
+                text-align: left;
+                margin-left: 8px;
+            }
+
+        }
+
+        .options:last-of-type{
+            margin-bottom: 0;
+        }
+    }
+
+    .botton {
+        padding: 24px;
+        display: flex;
+        justify-content: end;
+    }
+}
+
