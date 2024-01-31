@@ -54,12 +54,10 @@ const SellYourCarPage: FC<{}> = () => {
                             <div className="col-md-4 text-white py-3">
                                 <div className="mb-3">
                                     <h1>
-                                        {" "}
                                         <span className="text_bold">
-                                            {" "}
                                             Vende tu Carro
                                             <br /> a un precio
-                                        </span>{" "}
+                                        </span>
                                         <br />
                                         <span className="text_italic">razonable</span>
                                     </h1>
@@ -149,7 +147,7 @@ const SellYourCarPage: FC<{}> = () => {
                                     to={routes.quoteYourCar.relativePath}
                                     className="btn btn_orange me-0 me-sm-4 px-5 my-2"
                                 >
-                                    Vende tu carro <Icons.ArrowCircle />{" "}
+                                    Vende tu carro <Icons.ArrowCircle />
                                 </Link>
                                 <Link to={routes.contact.relativePath} className="btn btn_orange_transparent px-5 my-2">
                                     Contacta a un asesor <Icons.ArrowCrossUp />

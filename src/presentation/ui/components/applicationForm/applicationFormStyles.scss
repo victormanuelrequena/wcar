@@ -1,0 +1,53 @@
+.application_form {
+    width: 480px;
+    border-radius: 12px;
+    background-image: url("../../../../../public/assets/icons_contact/Rectangle.png");
+    background-size: cover;
+
+    .form {
+        margin: 32px 24px 24px 24px;
+
+        .title {
+            font-family: Urbanist;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 30px;
+            padding-bottom: 24px;
+        }
+
+        .input_container {
+            padding-bottom: 24px;
+        }
+
+        .label_input {
+            color: #90a3bf;
+            font-family: Urbanist;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+        }
+
+        .input {
+            background-color: transparent;
+            border-radius: 8px;
+            border: 2px solid #90a3bf;
+            color: #fff;
+            font-size: 14px;
+            padding: 12px;
+        }
+
+        .input:focus {
+            border: 2px solid #00fefe;
+        }
+
+        .input::placeholder {
+            color: #666c89;
+        }
+
+        .botton {
+            padding-top: 32px;
+            display: flex;
+            justify-content: end;
+        }
+    }
+}
