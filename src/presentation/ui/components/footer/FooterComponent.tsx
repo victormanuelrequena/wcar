@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { SLOGAN } from "../../../utils/Contants";
 import { routes } from "../../routes/RoutesComponent";
@@ -7,6 +7,15 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { Map, Marker as MarkerP } from "pigeon-maps";
 
 const FooterComponent: FC<{}> = () => {
+    const [termAndConditionsLinks, setTermAndConditionsLinks] = useState([]);
+
+    useEffect(() => {
+        fetch("https://api.wcaronline.com/api/terms/no-contents")
+            .then((res) => res.json())
+            .then((res) => setTermAndConditionsLinks(res))
+            .catch((e) => console.error(e));
+    }, []);
+
     const mapContainerStyle = {
         width: "98%",
         height: "180px",
@@ -88,6 +97,17 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.privacyPolicies.relativePath} className="my-1">
                                 wcar politica de tratamiento de datos app
                             </Link>
+                            {termAndConditionsLinks.map((link: any, i: number) => {
+                                return (
+                                    <Link
+                                        key={i}
+                                        to={`${routes.termAndConditions.relativePath}/${link.title.replace(/ /g, "-")}/${link.id}`}
+                                        className="my-1"
+                                    >
+                                        {link.title}
+                                    </Link>
+                                );
+                            })}
 
                             {/* <Link to={routes.blog.relativePath} className="my-1">Blog</Link> */}
                         </div>
