@@ -96,7 +96,11 @@ const FooterComponent: FC<{}> = () => {
                                 return (
                                     <Link
                                         key={i}
-                                        to={`${routes.termAndConditions.relativePath}/${link.title.replace(/ /g, "-")}/${link.id}`}
+                                        to={`${routes.termAndConditions.relativePath}/${link.title
+                                            .toLowerCase()
+                                            .normalize("NFD")
+                                            .replace(/[\u0300-\u036f]/g, "")
+                                            .replace(/ /g, "-")}/${link.id}`}
                                         className="my-1"
                                     >
                                         {link.title}
