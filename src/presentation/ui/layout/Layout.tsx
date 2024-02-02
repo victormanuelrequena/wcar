@@ -6,10 +6,15 @@ import ModalsComponent from "../../providers/modals/modals/ModalsComponent";
 import { useLocation } from "react-router-dom";
 import "./LayoutStyles.scss";
 import { routes } from "../routes/RoutesComponent";
+import { ContactCard } from "../components/contactCard/contactCard";
+import { ApplicationForm } from "../components/applicationForm/applicationForm";
 
 const Layout: FC<LayoutProps> = ({ children }) => {
     const { pathname, search } = useLocation();
     const containerDataRef = useRef<HTMLDivElement>(null);
+
+    const [openModal, setOpenModal] = useState<boolean>(false);
+    const [openForm, setOpenForm] = useState<boolean>(false);
 
     const [scrolled, setScrolled] = useState<boolean>(false);
 
@@ -34,17 +39,24 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     return (
         <>
             <div className="contact_fixed">
-                <a
-                    href="https://wa.me/573018063302?text=¡Hola%21+Quiero+recibir+asesoría+�&type=phone_number&app_absent=0"
-                    className="btn btn_cyan"
-                    target="_blank"
-                >
+                <button className="btn btn_cyan" onClick={() => setOpenModal(true)}>
                     Contacta un asesor
-                </a>
+                </button>
             </div>
+            {openModal && (
+                <div className="video_conference d-flex justify-content-center align-items-center">
+                    <ContactCard setOpenModal={setOpenModal} setOpenForm={setOpenForm} />
+                </div>
+            )}
+            {openForm && (
+                <div className="video_conference d-flex justify-content-center align-items-center">
+                    <ApplicationForm setOpenForm={setOpenForm} setOpenModal={setOpenModal} />
+                </div>
+            )}
             <ModalsComponent>
                 <div
-                    className={`layout_container ${            // routes.home1.relativePath
+                    className={`layout_container ${
+                        // routes.home1.relativePath
                         !scrolled && window.location.pathname == routes.home.relativePath && "no_scrolled"
                     }`}
                 >
