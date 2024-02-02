@@ -38,12 +38,13 @@ import TermAndConditionsUser from "../pages/policies/TermAndConditionsUser";
 import TermAndConditionsSalseYesOrYes from "../pages/policies/TermAndConditionsSalesYesOrYes";
 import TermAndConditionsNewUsed6MonthWarrany from "../pages/policies/TermAndConditionsNewUsed6MonthWarrany";
 import TermAndConditionsNewUsed6MonthWarrany2 from "../pages/policies/TermAndConditionsNewUsed6MonthWarrany2";
-import TermAndConditions from "../pages/policies/termAndConditions";
+// import TermAndConditions from "../pages/policies/termAndConditions";
 import PrivacyPoliciesForMobileApp from "../pages/policies/PrivacyPoliciesForMobileApp";
 import DataPrivacyNoticeForWcarAppUsers from "../pages/policies/DataPrivacyNoticeForWcarAppUsers";
 import PrivacyPolicies from "../pages/policies/privacyPolicies";
 import HomePage1 from "../pages/home-1/HomePage";
 import DeleteAccountPage from "../pages/deleteAccount/deleteAccountPage";
+import TermAndConditions from "../pages/termAndConditions/termAndConditions";
 
 export interface iRoute {
     name: string;
@@ -260,13 +261,13 @@ const routes = {
         relativePath: "/tu-nuevo-usado-en-wcar-con-garantica-de-6-meses2",
         component: TermAndConditionsNewUsed6MonthWarrany2,
     },
-    termAndConditions: {
-        path: "/terminos-y-condiciones-garantia",
-        relativePath: "/terminos-y-condiciones-garantia",
-        component: TermAndConditions,
-        auth: (user: UserEntity | undefined) => true,
-        helmet: null,
-    },
+    // termAndConditions: {
+    //     path: "/terminos-y-condiciones-garantia",
+    //     relativePath: "/terminos-y-condiciones-garantia",
+    //     component: TermAndConditions,
+    //     auth: (user: UserEntity | undefined) => true,
+    //     helmet: null,
+    // },
     privacyPolicies: {
         path: "/politicas-de-privacidad-para-la-aplicacion-movil-wcar",
         relativePath: "/politicas-de-privacidad-para-la-aplicacion-movil-wcar",
@@ -334,6 +335,13 @@ const routes = {
         path: "/no-compres-auto-nuevo-elige-un-usado",
         relativePath: "/no-compres-auto-nuevo-elige-un-usado",
         component: DontButNewCarBuyAUsed,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    termAndConditions: {
+        path: "/terminos-y-condiciones/:title/:id",
+        relativePath: "/terminos-y-condiciones",
+        component: TermAndConditions,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
