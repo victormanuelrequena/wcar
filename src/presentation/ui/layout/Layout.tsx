@@ -8,6 +8,7 @@ import "./LayoutStyles.scss";
 import { routes } from "../routes/RoutesComponent";
 import { ContactCard } from "../components/contactCard/contactCard";
 import { ApplicationForm } from "../components/applicationForm/applicationForm";
+import { ModalNotAvailable } from "../components/modalResult/modalNotAvailable";
 
 const Layout: FC<LayoutProps> = ({ children }) => {
     const { pathname, search } = useLocation();
@@ -15,6 +16,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
 
     const [openModal, setOpenModal] = useState<boolean>(false);
     const [openForm, setOpenForm] = useState<boolean>(false);
+    const [alert, setAlert] = useState<boolean>(false);
 
     const [scrolled, setScrolled] = useState<boolean>(false);
 
@@ -50,7 +52,12 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             )}
             {openForm && (
                 <div className="video_conference d-flex justify-content-center align-items-center">
-                    <ApplicationForm setOpenForm={setOpenForm} setOpenModal={setOpenModal} />
+                    <ApplicationForm setOpenForm={setOpenForm} setOpenModal={setOpenModal} setAlert={setAlert} />
+                </div>
+            )}
+            {alert && (
+                <div className="video_conference d-flex justify-content-center align-items-center">
+                    <ModalNotAvailable setOpenForm={setOpenForm}  setAlert={setAlert} />
                 </div>
             )}
             <ModalsComponent>

@@ -1,6 +1,6 @@
 import "./applicationFormStyles.scss";
 
-export const ApplicationForm = ({ setOpenForm, setOpenModal }) => {
+export const ApplicationForm = ({ setOpenForm, setOpenModal, setAlert }) => {
     return (
         <>
             <div className="application_form text-white">
@@ -30,12 +30,6 @@ export const ApplicationForm = ({ setOpenForm, setOpenModal }) => {
                         </label>
                         <input type="email" id="email" placeholder="ejemplo@gmail.com" className="input form-control" />
                     </div>
-                    <div className="input_container last_input_container form-group">
-                        <label htmlFor="name" className="label_input mandatory">
-                            Horario de llamada
-                        </label>
-                        <input type="text" id="name" className="input form-control" />
-                    </div>
                     <div className="botton">
                         <button
                             className="btn btn_orange_transparent"
@@ -47,7 +41,15 @@ export const ApplicationForm = ({ setOpenForm, setOpenModal }) => {
                         >
                             CANCELAR
                         </button>
-                        <button className="ms-3 btn btn_orange">CONTINUAR</button>
+                        <button
+                            className="ms-3 btn btn_orange"
+                            onClick={() => {
+                                setAlert(true);
+                                setOpenForm(false);
+                            }}
+                        >
+                            CONTINUAR
+                        </button>
                     </div>
                 </form>
             </div>
