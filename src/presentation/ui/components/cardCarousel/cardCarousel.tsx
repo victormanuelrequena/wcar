@@ -36,6 +36,13 @@ export const CardCarousel: FC<{ car: any }> = ({ car }) => {
                         {car.tag_car.tag.toLowerCase() === "disponible" ? null : car.tag_car.tag}
                     </div>
                 )}
+                {car.warranty && (
+                    <div className="my-2">
+                        <div className="warranty d-flex justify-content-center align-items-center">
+                            <Warranty fill="#000" /> Garantía
+                        </div>
+                    </div>
+                )}
                 <div className="d-flex w-100 align-items-center justify-content-between px-1">
                     <div className="flex-grow overflow-hidden me-3">
                         <h5 className="text_black">{car?.car}</h5>
@@ -49,14 +56,10 @@ export const CardCarousel: FC<{ car: any }> = ({ car }) => {
                 <div className="w-100 text_bold mt-1" style={{ color: "#666C89" }}>
                     {car?.type.type}
                 </div>
-                {car.warranty && (
-                    <div className="my-2">
-                        <div className="warranty d-flex justify-content-center align-items-center">
-                            <Warranty fill="#000" /> Garantía
-                        </div>
-                    </div>
-                )}
-                <div className="w-100 row justify-content-flex-start mt-3" style={{ fontSize: ".9em", margin: "0 auto" }}>
+                <div
+                    className="w-100 row justify-content-flex-start mt-3"
+                    style={{ fontSize: ".9em", margin: "0 auto" }}
+                >
                     <div className="col-3 d-flex align-items-center text_gray p-0">
                         <img
                             src="/assets/icons/calendar.svg"
