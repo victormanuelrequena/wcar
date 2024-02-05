@@ -138,6 +138,17 @@ const DetailedCarPage: FC<{}> = () => {
                                             </div>
                                         </div>
                                     )}
+                                    <div className="btn-back-container">
+                                        <button className="btn">
+                                            <img
+                                                src="/assets/icons/arrow-back.svg"
+                                                alt="wcar"
+                                                title="wcar"
+                                                className="img-fluid img_icon me-2"
+                                            />
+                                            Volver
+                                        </button>
+                                    </div>
                                     <div className="col-12 col-lg-7 col-xl-8 carCarouselContainer">
                                         <CarCarouselImagesComponent car={car} images={car.images} />
                                     </div>

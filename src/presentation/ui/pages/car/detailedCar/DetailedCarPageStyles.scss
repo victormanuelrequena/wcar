@@ -3,8 +3,16 @@
         padding: 0 16px;
     }
 
-    .detailed_car_container {
-        height: 85%;
+    .btn-back-container {
+        margin-bottom: 10px;
+        padding-left: 17px;
+
+        button {
+            display: flex;
+            align-items: center;
+            color: #484848;
+            font-weight: 600;
+        }
     }
 
     .section_2 {
@@ -32,7 +40,7 @@
         .bg_black {
             position: relative;
 
-            & > img.bg_img {
+            &>img.bg_img {
                 position: absolute;
                 left: 0;
                 bottom: 0;
@@ -196,6 +204,8 @@
         display: none;
     }
 }
+
+
 
 @media screen and (max-width: 768px) {
     .description {
