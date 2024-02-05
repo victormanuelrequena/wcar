@@ -12,6 +12,8 @@
     "@types/node": "^16.18.28",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
+    "@zoom/videosdk": "^1.10.5",
+    "@zoomus/websdk": "^2.18.2",
     "bootstrap": "^5.2.3",
     "fp-ts": "^2.16.1",
     "inversify": "^6.0.1",
