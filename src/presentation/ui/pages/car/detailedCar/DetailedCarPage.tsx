@@ -224,15 +224,14 @@ const DetailedCarPage: FC<{}> = () => {
                                                     VER PERITAJE <Icons.Download />
                                                 </div>
                                                 <div style={{ display: "flex", flexWrap: "wrap" }}>
-                                                    {car?.tag?.name !== "Reservado" &&
-                                                        car?.tag?.name !== "Vendido" && (
-                                                            <div
-                                                                onClick={_bookCarWithPayment}
-                                                                className="btn btn_orange my-1 me-3 btn-detailed-car"
-                                                            >
-                                                                SEPÁRALO AQUÍ <Icons.ArrowCircle />
-                                                            </div>
-                                                        )}
+                                                    {car?.tag?.name !== "Reservado" && car?.tag?.name !== "Vendido" && (
+                                                        <div
+                                                            onClick={_bookCarWithPayment}
+                                                            className="btn btn_orange my-1 me-3 btn-detailed-car"
+                                                        >
+                                                            SEPÁRALO AQUÍ <Icons.ArrowCircle />
+                                                        </div>
+                                                    )}
 
                                                     {/* <Link
                                                             target="_blank"
@@ -456,7 +455,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                             />
                                                             Estado:
                                                         </span>
-                                                        <strong>{car.status}</strong>
+                                                        <strong>Usado</strong>
                                                     </div>
                                                 </div>
                                             </div>
