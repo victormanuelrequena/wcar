@@ -1,0 +1,7 @@
+runtime: nodejs18
+instance_class: F4 # Puedes ajustar la clase de instancia según tu necesidad
+automatic_scaling:
+    target_cpu_utilization: 0.65
+    min_instances: 1
+    max_instances: 15
+entrypoint: npm start
