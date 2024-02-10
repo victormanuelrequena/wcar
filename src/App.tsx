@@ -38,7 +38,6 @@ function App() {
     const typeOfFuelProvider = di.get<TypeOfFuelProvider>(TypeOfFuelProviderName);
     const typeVehicleProvider = di.get<TypeVehicleProvider>(TypeVehicleProviderName);
     const userProvider = di.get<UserProvider>(UserProviderName);
-
     useEffect(() => {
         if (navigator.userAgent.indexOf("Win") !== -1) {
             // Obtiene el elemento body
