@@ -7,7 +7,7 @@ steps:
       args: ["run", "build"]
     # Desplegar en un servidor estático en Google Cloud
     - name: "gcr.io/cloud-builders/gsutil"
-      args: ["-m", "rsync", "-r", "-c", "-d", "./build", "web-wcar-co.appspot.com"]
+      args: ["-m", "rsync", "-r", "-c", "-n", "-d", "./build", "web-wcar-co/build-v1"]
 options:
     logging: CLOUD_LOGGING_ONLY
 serviceAccount: "web-wcar-co@appspot.gserviceaccount.com"
