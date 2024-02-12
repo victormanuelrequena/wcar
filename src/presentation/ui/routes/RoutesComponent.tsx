@@ -45,6 +45,7 @@ import PrivacyPolicies from "../pages/policies/privacyPolicies";
 import HomePage1 from "../pages/home-1/HomePage";
 import DeleteAccountPage from "../pages/deleteAccount/deleteAccountPage";
 import TermAndConditions from "../pages/termAndConditions/termAndConditions";
+import { JoinTheCall } from "../pages/joinTheCall/joinTheCall";
 
 export interface iRoute {
     name: string;
@@ -342,6 +343,13 @@ const routes = {
         path: "/terminos-y-condiciones/:title/:id",
         relativePath: "/terminos-y-condiciones",
         component: TermAndConditions,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    joinTheCall: {
+        path: "/unirse-a-la-llamada",
+        relativePath: "/terminos-y-condiciones",
+        component: JoinTheCall,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
