@@ -64,12 +64,13 @@ export const ZoomVideoSDK = () => {
                                 });
                         }
                         client.getAllUser().forEach((user) => {
+                            console.log(user);
                             if (user.bVideoOn) {
                                 stream.renderVideo(
                                     document.querySelector("#participant-videos-canvas"),
                                     user.userId,
-                                    1920,
-                                    1080,
+                                    250,
+                                    250,
                                     0,
                                     0,
                                     3
