@@ -9,6 +9,7 @@ import { routes } from "../routes/RoutesComponent";
 import { ContactCard } from "../components/contactCard/contactCard";
 import { ApplicationForm } from "../components/applicationForm/applicationForm";
 import { ModalNotAvailable } from "../components/modalResult/modalNotAvailable";
+import { ZoomVideoSDK } from "../components/zoomVideoSDK/zoomVideoSDK";
 
 const Layout: FC<LayoutProps> = ({ children }) => {
     const { pathname, search } = useLocation();
@@ -57,7 +58,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             )}
             {alert && (
                 <div className="video_conference d-flex justify-content-center align-items-center">
-                    <ModalNotAvailable setOpenForm={setOpenForm}  setAlert={setAlert} />
+                    <ZoomVideoSDK />
                 </div>
             )}
             <ModalsComponent>
