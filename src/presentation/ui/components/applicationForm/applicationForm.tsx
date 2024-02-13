@@ -1,7 +1,11 @@
 import "./applicationFormStyles.scss";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../routes/RoutesComponent";
 
 export const ApplicationForm = ({ setOpenForm, setOpenModal, setAlert }) => {
+    const Navigate = useNavigate();
+
     const { register, handleSubmit } = useForm();
     const url = "https://api.wcaronline.com/api";
 
@@ -86,7 +90,12 @@ export const ApplicationForm = ({ setOpenForm, setOpenModal, setAlert }) => {
                         >
                             CANCELAR
                         </button>
-                        <button className="ms-3 btn btn_orange">CONTINUAR</button>
+                        <button
+                            className="ms-3 btn btn_orange"
+                            onClick={() => Navigate(routes.Videoasistencia.relativePath)}
+                        >
+                            CONTINUAR
+                        </button>
                     </div>
                 </form>
             </div>

@@ -46,6 +46,7 @@ import HomePage1 from "../pages/home-1/HomePage";
 import DeleteAccountPage from "../pages/deleteAccount/deleteAccountPage";
 import TermAndConditions from "../pages/termAndConditions/termAndConditions";
 import { JoinTheCall } from "../pages/joinTheCall/joinTheCall";
+import { ZoomVideoSDK } from "../components/zoomVideoSDK/zoomVideoSDK";
 
 export interface iRoute {
     name: string;
@@ -348,8 +349,15 @@ const routes = {
     },
     joinTheCall: {
         path: "/unirse-a-la-llamada",
-        relativePath: "/terminos-y-condiciones",
+        relativePath: "/unirse-a-la-llamada",
         component: JoinTheCall,
+        auth: (user: UserEntity | undefined) => true,
+        helmet: null,
+    },
+    Videoasistencia: {
+        path: "/videoasistencia",
+        relativePath: "/videoasistencia",
+        component: ZoomVideoSDK,
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
