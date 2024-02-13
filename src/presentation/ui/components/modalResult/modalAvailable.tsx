@@ -24,8 +24,8 @@ export const ModalAvailable = () => {
                     </p>
                 </div>
                 <div className="bottom">
-                    <button onClick={() => Navigate(routes.Videoasistencia.relativePath)} className="btn btn_orange">
-                        IR
+                    <button className="btn btn_orange">
+                        VOLVER
                     </button>
                 </div>
             </div>

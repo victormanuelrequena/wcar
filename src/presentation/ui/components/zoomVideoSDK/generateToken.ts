@@ -57,6 +57,5 @@ export function generateVideoToken(
     } catch (e) {
         console.error(e);
     }
-    console.log(signature);
     return signature;
 }

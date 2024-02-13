@@ -56,11 +56,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                     <ApplicationForm setOpenForm={setOpenForm} setOpenModal={setOpenModal} setAlert={setAlert} />
                 </div>
             )}
-            {alert && (
-                <div className="video_conference d-flex justify-content-center align-items-center">
-                    <ModalAvailable />
-                </div>
-            )}
+            
             <ModalsComponent>
                 <div
                     className={`layout_container ${
