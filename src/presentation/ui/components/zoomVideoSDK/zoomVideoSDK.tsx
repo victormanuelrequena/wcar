@@ -57,7 +57,7 @@ export const ZoomVideoSDK = () => {
         client.getAllUser().forEach((user) => {
             if (user.bVideoOn) {
                 stream
-                    .renderVideo(document.querySelector("#participant-videos-canvas"), user.userId, 655, 360, 0, 0, 720)
+                    .renderVideo(document.querySelector("#participant-videos-canvas"), user.userId, 672, 378, 0, 0, 3)
                     .then((res) => {
                         console.log(res);
                     })
@@ -66,9 +66,15 @@ export const ZoomVideoSDK = () => {
         });
     }, [newUser]);
 
-    client.on("user-added", (payload) => {
-        setNewUser(payload[0].userId.toString());
+    client.on("device-change", () => {
+        stream = client.getMediaStream();
+        const newCamera = stream.getCameraList();
+        setNewUser(newCamera[0].deviceId)
     });
+
+    // client.on("user-added", (payload) => {
+    //     setNewUser(payload[0].userId.toString());
+    // });
 
     return (
         <div
@@ -76,15 +82,17 @@ export const ZoomVideoSDK = () => {
             style={{ width: "100%", height: "100vh" }}
         >
             <video
-                style={{ border: "1px solid red", width: "655px", aspectRatio: 16 / 9, borderRadius: "10px" }}
+                style={{ border: "1px solid red", width: "672px", height: "378px", borderRadius: "10px" }}
                 id="my-self-view-video"
             ></video>
 
             {/* <canvas style={{border: "1px solid gray"}} id="my-self-view-canvas" width="720" height="480"></canvas> */}
 
             <canvas
-                style={{ border: "1px solid blue", width: "655px", aspectRatio: 16 / 9, borderRadius: "10px" }}
+                style={{ border: "1px solid blue", width: "672px", height: "378px", borderRadius: "10px" }}
                 id="participant-videos-canvas"
+                height="378"
+                width="672"
             ></canvas>
         </div>
     );
