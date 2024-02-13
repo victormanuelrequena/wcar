@@ -40,6 +40,7 @@ export const ZoomVideoSDK = () => {
                                     console.error(error);
                                 });
                         }
+                        stream.startAudio();
                     })
                     .catch((e) => console.error(e));
             });
@@ -90,17 +91,19 @@ export const ZoomVideoSDK = () => {
             {/* <canvas style={{border: "1px solid gray"}} id="my-self-view-canvas" width="720" height="480"></canvas> */}
 
             <canvas
+                key={newUser}
                 style={{ border: "1px solid blue", width: "672px", height: "378px", borderRadius: "10px" }}
                 id="participant-videos-canvas1"
                 height="378"
                 width="672"
             ></canvas>
-            <canvas
+            {/* <canvas
+                key={newUser}
                 style={{ border: "1px solid blue", width: "672px", height: "378px", borderRadius: "10px" }}
                 id="participant-videos-canvas2"
                 height="378"
                 width="672"
-            ></canvas>
+            ></canvas> */}
         </div>
     );
 };
