@@ -85,7 +85,13 @@ export const ZoomVideoSDK = () => {
             style={{ width: "100%", height: "100vh" }}
         >
             <video
-                style={{ border: "1px solid red", width: "672px", height: "378px", borderRadius: "10px", transform: "scaleX(-1)" }}
+                style={{
+                    border: "1px solid red",
+                    width: "672px",
+                    height: "378px",
+                    borderRadius: "10px",
+                    transform: "scaleX(-1)",
+                }}
                 id="my-self-view-video"
             ></video>
 
@@ -112,7 +118,7 @@ export const ZoomVideoSDK = () => {
                 id="participant-videos-canvas2"
                 height="378"
                 width="672"
-            ></canvas> */}
+            ></canvas>
         </div>
     );
 };
