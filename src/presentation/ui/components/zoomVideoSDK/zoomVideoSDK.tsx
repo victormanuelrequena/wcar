@@ -46,8 +46,8 @@ export const ZoomVideoSDK = () => {
                                         .renderVideo(
                                             document.querySelector("#my-self-view-canvas"),
                                             client.getCurrentUserInfo().userId,
-                                            1920,
-                                            1080,
+                                            700,
+                                            395,
                                             0,
                                             0,
                                             3
@@ -69,8 +69,8 @@ export const ZoomVideoSDK = () => {
                                 stream.renderVideo(
                                     document.querySelector("#participant-videos-canvas"),
                                     user.userId,
-                                    250,
-                                    250,
+                                    700,
+                                    395,
                                     0,
                                     0,
                                     3
@@ -88,10 +88,20 @@ export const ZoomVideoSDK = () => {
     }, []);
 
     return (
-        <>
-            <video id="my-self-view-video" width="250" height="250"></video>
-            <canvas id="my-self-view-canvas" width="250" height="250"></canvas>
-            <canvas id="participant-videos-canvas" width="250" height="250"></canvas>
-        </>
+        <div className="d-flex justify-content-around align-items-center bg-black" style={{ width: "100%", height: "100vh" }}>
+            <video
+                style={{ border: "1px solid gray", width: "700px", height: "395", borderRadius: "10px" }}
+                id="my-self-view-video"
+                width="700"
+                height="395"
+            ></video>
+            {/* <canvas style={{border: "1px solid gray"}} id="my-self-view-canvas" width="720" height="480"></canvas> */}
+            <canvas
+                style={{ border: "1px solid gray", width: "700px", height: "395", borderRadius: "10px" }}
+                id="participant-videos-canvas"
+                width="700"
+                height="395"
+            ></canvas>
+        </div>
     );
 };

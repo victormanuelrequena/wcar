@@ -1,6 +1,10 @@
 import "./modalStyles.scss";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../routes/RoutesComponent";
 
 export const ModalAvailable = () => {
+    const Navigate = useNavigate();
+
     return (
         <>
             <div className="modal_container position-relative">
@@ -20,7 +24,9 @@ export const ModalAvailable = () => {
                     </p>
                 </div>
                 <div className="bottom">
-                    <button className="btn btn_orange">VOLVER</button>
+                    <button onClick={() => Navigate(routes.Videoasistencia.relativePath)} className="btn btn_orange">
+                        IR
+                    </button>
                 </div>
             </div>
         </>
