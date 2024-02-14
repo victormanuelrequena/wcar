@@ -40,26 +40,6 @@ export const ZoomVideoSDK = () => {
         }
     }, []);
 
-    const prueba = () => {
-        stream = client.getMediaStream();
-        console.log("nuevo usuario");
-
-        client.getAllUser().forEach((user) => {
-            console.log(user);
-            try {
-                const canvasId = `#participant-videos-canvas`;
-                stream
-                    .renderVideo(document.querySelector(canvasId), user.userId, 672, 378, 0, 0, 3)
-                    .then((res) => {
-                        console.log(res);
-                    })
-                    .catch((e) => console.error(e));
-            } catch {
-                console.log("espeando camara");
-            }
-        });
-    };
-
     const videoInit = () => {
         stream = client.getMediaStream();
         if (stream.isRenderSelfViewWithVideoElement()) {
@@ -98,6 +78,15 @@ export const ZoomVideoSDK = () => {
         stream = client.getMediaStream();
         stream.stopShareScreen();
     };
+
+    client.on("peer-video-state-change", (payload) => {
+        stream = client.getMediaStream();
+        if (payload.action === "Start") {
+            stream.renderVideo(document.querySelector("#participant-videos-canvas"), payload.userId, 672, 378, 0, 0, 3);
+        } else if (payload.action === "Stop") {
+            stream.stopRenderVideo(document.querySelector("#participant-videos-canvas"), payload.userId);
+        }
+    });
 
     client.on("active-share-change", (payload) => {
         stream = client.getMediaStream();
@@ -177,9 +166,6 @@ export const ZoomVideoSDK = () => {
                 <video id="my-screen-share-content-video" style={{ display: "none" }}></video>
             </div>
             <div style={{ width: "100%", height: "10vh", color: "red" }}>
-                <button className="me-5" onClick={prueba}>
-                    Ver video
-                </button>
                 <button className="me-5" onClick={videoInit}>
                     Iniciar video
                 </button>
