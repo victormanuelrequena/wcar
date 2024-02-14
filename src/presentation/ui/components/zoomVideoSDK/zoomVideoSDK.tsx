@@ -114,43 +114,45 @@ export const ZoomVideoSDK = () => {
 
     return (
         <div className="bg-black" style={{ width: "100%", height: "100vh" }}>
-            <div
-                className="d-flex justify-content-evenly align-items-center flex-wrap"
-                style={{ width: "100%", height: "90vh" }}
-            >
-                {!shareVideo && (
+            <div style={{ width: "100%", height: "90%", position: "relative" }}>
+                <div
+                    className="d-flex justify-content-evenly align-items-center flex-wrap"
+                    style={{ width: "100%", height: "90vh" }}
+                >
                     <video
                         style={{
-                            width: "45%",
+                            width: shareVideo ? "15%" : "45%",
                             height: "auto",
                             border: "1px solid red",
                             aspectRatio: 16 / 9,
                             borderRadius: "10px",
                             transform: "scaleX(-1)",
+                            position: "absolute",
+                            left: shareVideo ? "10%" : "3%",
+                            bottom: shareVideo ? "3.3%" : "20%",
                         }}
                         id="my-self-view-video"
                     ></video>
-                )}
 
-                {/* <canvas style={{border: "1px solid gray"}} id="my-self-view-canvas" width="720" height="480"></canvas> */}
+                    {/* <canvas style={{border: "1px solid gray"}} id="my-self-view-canvas" width="720" height="480"></canvas> */}
 
-                {!shareVideo && (
                     <canvas
                         style={{
-                            width: "45%",
+                            width: shareVideo ? "15%" : "45%",
                             height: "auto",
                             border: "1px solid blue",
                             aspectRatio: 16 / 9,
                             borderRadius: "10px",
                             transform: "scaleX(-1)",
+                            position: "absolute",
+                            right: shareVideo ? "10%" : "3%",
+                            bottom: shareVideo ? "3.3%" : "20%",
                         }}
                         id="participant-videos-canvas"
                         height="378"
                         width="672"
                     ></canvas>
-                )}
 
-                {shareVideo && (
                     <canvas
                         id="participants-screen-share-content-canvas"
                         style={{
@@ -159,23 +161,24 @@ export const ZoomVideoSDK = () => {
                             border: "1px solid green",
                             aspectRatio: 16 / 9,
                             borderRadius: "10px",
+                            display: shareVideo ? "block" : "none",
                         }}
                     ></canvas>
-                )}
 
-                <video id="my-screen-share-content-video" style={{ display: "none" }}></video>
-            </div>
-            <div style={{ width: "100%", height: "10vh", color: "red" }}>
-                <button className="me-5" onClick={videoInit}>
-                    Iniciar video
-                </button>
-                <button className="me-5" onClick={videoStop}>
-                    Detener video
-                </button>
-                <button className="me-5" onClick={shareScreen}>
-                    Compartir mi pantalla
-                </button>
-                <button onClick={shareScreenStop}>Dejar de compartir mi pantalla</button>
+                    <video id="my-screen-share-content-video" style={{ display: "none" }}></video>
+                </div>
+                <div style={{ width: "100%", height: "10vh", color: "red" }}>
+                    <button className="me-5" onClick={videoInit}>
+                        Iniciar video
+                    </button>
+                    <button className="me-5" onClick={videoStop}>
+                        Detener video
+                    </button>
+                    <button className="me-5" onClick={shareScreen}>
+                        Compartir mi pantalla
+                    </button>
+                    <button onClick={shareScreenStop}>Dejar de compartir mi pantalla</button>
+                </div>
             </div>
         </div>
     );
