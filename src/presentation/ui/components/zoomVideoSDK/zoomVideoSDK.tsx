@@ -1,11 +1,20 @@
+import "./zoomVideoSDKStyles.scss";
 import ZoomVideo from "@zoom/videosdk";
 import { useEffect, useState } from "react";
 import { generateVideoToken } from "./generateToken";
+import Speaker from "./speaker";
+import Mic from "./mic";
+import ThreeDots from "./threeDots";
+import Camera from "./camera";
+import ScreenRecord from "./screenRecord";
 
 export const ZoomVideoSDK = () => {
     let client = ZoomVideo.createClient();
     let stream: any;
     const [shareVideo, setShareVideo] = useState(false);
+    const [initVideo, setInitVideo] = useState(false);
+    const [initMic, setInitMic] = useState(false);
+    const [initScreenRecord, setInitScreenRecord] = useState(false);
 
     useEffect(() => {
         const token = generateVideoToken(
@@ -62,6 +71,16 @@ export const ZoomVideoSDK = () => {
         stream.stopVideo();
     };
 
+    const mute = () => {
+        stream = client.getMediaStream();
+        stream.muteAudio();
+    };
+
+    const unMute = () => {
+        stream = client.getMediaStream();
+        stream.unmuteAudio();
+    };
+
     const shareScreen = () => {
         stream = client.getMediaStream();
         stream
@@ -79,6 +98,7 @@ export const ZoomVideoSDK = () => {
         stream.stopShareScreen();
     };
 
+    // Evento para saber cuando un usuario enciende su camara
     client.on("peer-video-state-change", (payload) => {
         stream = client.getMediaStream();
         if (payload.action === "Start") {
@@ -88,9 +108,12 @@ export const ZoomVideoSDK = () => {
         }
     });
 
+    // Evento para saber cuando un usuario comparte pantalla
     client.on("active-share-change", (payload) => {
         stream = client.getMediaStream();
         if (payload.state === "Active") {
+            setShareVideo(true);
+
             client.getAllUser().forEach((user) => {
                 if (user.sharerOn) {
                     stream.startShareView(
@@ -99,12 +122,14 @@ export const ZoomVideoSDK = () => {
                     );
                 }
             });
-            setShareVideo(true);
         } else if (payload.state === "Inactive") {
             stream.stopShareView();
             setShareVideo(false);
         }
     });
+
+    // Evento para saber cuando el usuario esta hablando
+    client.on("active-speaker", (payload) => {});
 
     // client.on("passively-stop-share", (payload) => {});
 
@@ -113,71 +138,82 @@ export const ZoomVideoSDK = () => {
     // client.on("user-added", (payload) => {});
 
     return (
-        <div className="bg-black" style={{ width: "100%", height: "100vh" }}>
-            <div style={{ width: "100%", height: "90%", position: "relative" }}>
-                <div
-                    className="d-flex justify-content-evenly align-items-center flex-wrap"
-                    style={{ width: "100%", height: "90vh" }}
-                >
-                    <video
-                        style={{
-                            width: shareVideo ? "15%" : "45%",
-                            height: "auto",
-                            border: "1px solid red",
-                            aspectRatio: 16 / 9,
-                            borderRadius: "10px",
-                            transform: "scaleX(-1)",
-                            position: "absolute",
-                            left: shareVideo ? "10%" : "3%",
-                            bottom: shareVideo ? "3.3%" : "20%",
+        <div className="bg-black containter_sdk">
+            <div className="top">
+                <img src="./assets/icons/wcar_icon.svg" alt="icono wcar" />
+                <Speaker />
+                <p>Video asistencia wcar</p>
+            </div>
+            <div className="middle">
+                <video
+                    className="my_video"
+                    id="my-self-view-video"
+                    style={{ display: shareVideo ? "none" : "block" }}
+                ></video>
+
+                <canvas
+                    className="participant_video"
+                    id="participant-videos-canvas"
+                    height="378"
+                    width="672"
+                    style={{ display: shareVideo ? "none" : "block" }}
+                ></canvas>
+
+                <canvas
+                    id="participants-screen-share-content-canvas"
+                    style={{
+                        width: "75%",
+                        height: "auto",
+                        aspectRatio: 16 / 9,
+                        borderRadius: "10px",
+                        display: shareVideo ? "block" : "none",
+                        margin: "0 auto"
+                    }}
+                ></canvas>
+
+                <video id="my-screen-share-content-video" style={{ display: "none" }}></video>
+            </div>
+            <div className="bottom">
+                <div className="video_button me-5">
+                    <button
+                        onClick={() => {
+                            !initMic ? mute() : unMute();
+                            setInitMic(!initMic);
                         }}
-                        id="my-self-view-video"
-                    ></video>
-
-                    {/* <canvas style={{border: "1px solid gray"}} id="my-self-view-canvas" width="720" height="480"></canvas> */}
-
-                    <canvas
-                        style={{
-                            width: shareVideo ? "15%" : "45%",
-                            height: "auto",
-                            border: "1px solid blue",
-                            aspectRatio: 16 / 9,
-                            borderRadius: "10px",
-                            transform: "scaleX(-1)",
-                            position: "absolute",
-                            right: shareVideo ? "10%" : "3%",
-                            bottom: shareVideo ? "3.3%" : "20%",
-                        }}
-                        id="participant-videos-canvas"
-                        height="378"
-                        width="672"
-                    ></canvas>
-
-                    <canvas
-                        id="participants-screen-share-content-canvas"
-                        style={{
-                            width: "80%",
-                            height: "auto",
-                            border: "1px solid green",
-                            aspectRatio: 16 / 9,
-                            borderRadius: "10px",
-                            display: shareVideo ? "block" : "none",
-                        }}
-                    ></canvas>
-
-                    <video id="my-screen-share-content-video" style={{ display: "none" }}></video>
+                    >
+                        <Mic />
+                    </button>
+                    <div>
+                        <ThreeDots />
+                    </div>
                 </div>
-                <div style={{ width: "100%", height: "10vh", color: "red" }}>
-                    <button className="me-5" onClick={videoInit}>
-                        Iniciar video
+
+                <div className="video_button me-5">
+                    <button
+                        onClick={() => {
+                            initVideo ? videoStop() : videoInit();
+                            setInitVideo(!initVideo);
+                        }}
+                    >
+                        <Camera />
                     </button>
-                    <button className="me-5" onClick={videoStop}>
-                        Detener video
+                    <div>
+                        <ThreeDots />
+                    </div>
+                </div>
+
+                <div className="video_button">
+                    <button
+                        onClick={() => {
+                            initScreenRecord ? shareScreenStop() : shareScreen();
+                            setInitScreenRecord(!initScreenRecord);
+                        }}
+                    >
+                        <ScreenRecord />
                     </button>
-                    <button className="me-5" onClick={shareScreen}>
-                        Compartir mi pantalla
-                    </button>
-                    <button onClick={shareScreenStop}>Dejar de compartir mi pantalla</button>
+                    <div>
+                        <ThreeDots />
+                    </div>
                 </div>
             </div>
         </div>
