@@ -138,7 +138,7 @@ const DetailedCarPage: FC<{}> = () => {
                                             </div>
                                         </div>
                                     )}
-                                    {/* <div className="btn-back-container">
+                                    <Link to="/compra-tu-carro" className="btn-back-container">
                                         <button className="btn">
                                             <img
                                                 src="/assets/icons/arrow-back.svg"
@@ -148,7 +148,7 @@ const DetailedCarPage: FC<{}> = () => {
                                             />
                                             Volver
                                         </button>
-                                    </div> */}
+                                    </Link>
                                     <div className="col-12 col-lg-7 col-xl-8 carCarouselContainer">
                                         <CarCarouselImagesComponent car={car} images={car.images} />
                                     </div>
