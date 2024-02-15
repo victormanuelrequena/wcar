@@ -66,6 +66,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.22.10",
+    "@types/jsrsasign": "^10.5.12",
     "ts-loader": "^9.4.4"
   }
 }

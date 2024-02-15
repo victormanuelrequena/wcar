@@ -268,12 +268,10 @@ body * {
         &.btn_cut {
             clip-path: polygon(100% 0, 100% calc(100% - 1em), calc(100% - 1em) 100%, 0 100%, 0 0);
             box-shadow: 0 0 0 3px var(--color-orange);
-            background: linear-gradient(
-                315deg,
-                var(--color-orange) 0.65em,
-                var(--color-gray-light) 0.65em,
-                var(--color-gray-light) 100%
-            );
+            background: linear-gradient(315deg,
+                    var(--color-orange) 0.65em,
+                    var(--color-gray-light) 0.65em,
+                    var(--color-gray-light) 100%);
         }
 
         &:hover {
@@ -301,22 +299,20 @@ body * {
         bottom: 0;
         height: 100%;
         background: transparent;
-        background: linear-gradient(
-            145deg,
-            transparent 0%,
-            transparent 40%,
-            var(--color-blue-neon) 40%,
-            var(--color-blue-neon) 43%,
-            transparent 43%,
-            transparent 46%,
-            var(--color-blue-neon) 46%,
-            var(--color-blue-neon) 49%,
-            transparent 49%,
-            transparent 52%,
-            var(--color-blue-neon) 52%,
-            var(--color-blue-neon) 55%,
-            transparent 55%
-        );
+        background: linear-gradient(145deg,
+                transparent 0%,
+                transparent 40%,
+                var(--color-blue-neon) 40%,
+                var(--color-blue-neon) 43%,
+                transparent 43%,
+                transparent 46%,
+                var(--color-blue-neon) 46%,
+                var(--color-blue-neon) 49%,
+                transparent 49%,
+                transparent 52%,
+                var(--color-blue-neon) 52%,
+                var(--color-blue-neon) 55%,
+                transparent 55%);
         animation: animationButton 2s linear infinite;
     }
 
@@ -373,7 +369,7 @@ body * {
     }
 }
 
-.btn_cyan{
+.btn_cyan {
     &:hover::before {
         position: absolute;
         content: "";
@@ -381,22 +377,20 @@ body * {
         bottom: 0;
         height: 100%;
         background: transparent;
-        background: linear-gradient(
-            145deg,
-            transparent 0%,
-            transparent 40%,
-            var(--color-orange) 40%,
-            var(--color-orange) 43%,
-            transparent 43%,
-            transparent 46%,
-            var(--color-orange) 46%,
-            var(--color-orange) 49%,
-            transparent 49%,
-            transparent 52%,
-            var(--color-orange) 52%,
-            var(--color-orange) 55%,
-            transparent 55%
-        );
+        background: linear-gradient(145deg,
+                transparent 0%,
+                transparent 40%,
+                var(--color-orange) 40%,
+                var(--color-orange) 43%,
+                transparent 43%,
+                transparent 46%,
+                var(--color-orange) 46%,
+                var(--color-orange) 49%,
+                transparent 49%,
+                transparent 52%,
+                var(--color-orange) 52%,
+                var(--color-orange) 55%,
+                transparent 55%);
         animation: animationButton 2s linear infinite;
     }
 
@@ -528,7 +522,7 @@ input {
         background-color: var(--color-gray-light);
         border: none;
 
-        ~ aside {
+        ~aside {
             margin-top: 0.3em;
             font-size: 0.95em;
             color: red;
@@ -537,7 +531,7 @@ input {
 }
 
 .form-check-input {
-    ~ aside {
+    ~aside {
         margin-top: 0.3em;
         font-size: 0.95em;
         color: red;
@@ -552,7 +546,7 @@ input {
     }
 }
 
-.gray_footer ~ .footer {
+.gray_footer~.footer {
     background-color: var(--color-gray-light);
 }
 
@@ -743,6 +737,7 @@ body h2 {
 }
 
 .p_spaced {
+
     p,
     li {
         margin-bottom: 2em;
@@ -768,7 +763,7 @@ input[type="radio"] {
         cursor: pointer;
     }
 
-    + label::before {
+    +label::before {
         content: "";
         display: inline-block;
         width: 15px;
@@ -781,12 +776,12 @@ input[type="radio"] {
         margin-right: 5px;
     }
 
-    + label {
+    +label {
         margin-left: -1.5em;
         font-weight: normal;
     }
 
-    &:checked + label::before {
+    &:checked+label::before {
         background-color: var(--color-orange);
         border: 1px solid var(--color-orange);
         /* Add a border for the checked state */
@@ -796,6 +791,7 @@ input[type="radio"] {
 }
 
 body {
+
     h1,
     h2,
     h3,

@@ -1,0 +1,13 @@
+steps:
+    # Instalar dependencias
+    - name: "gcr.io/cloud-builders/npm"
+      args: ["install"]
+    # Crear la build del proyecto React
+    - name: "gcr.io/cloud-builders/npm"
+      args: ["run", "build"]
+    # Desplegar en un servidor estático en Google Cloud
+    - name: "gcr.io/cloud-builders/gsutil"
+      args: ["-m", "rsync", "-r", "-c", "-d", "-n", "build", "gs://web-wcar.co.appspot.com"]
+options:
+    logging: CLOUD_LOGGING_ONLY
+serviceAccount: "web-wcar-co@appspot.gserviceaccount.com"

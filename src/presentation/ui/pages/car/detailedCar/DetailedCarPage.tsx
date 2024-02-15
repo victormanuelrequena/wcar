@@ -138,6 +138,17 @@ const DetailedCarPage: FC<{}> = () => {
                                             </div>
                                         </div>
                                     )}
+                                    <Link to="/compra-tu-carro" className="btn-back-container">
+                                        <button className="btn">
+                                            <img
+                                                src="/assets/icons/arrow-back.svg"
+                                                alt="wcar"
+                                                title="wcar"
+                                                className="img-fluid img_icon me-2"
+                                            />
+                                            Volver
+                                        </button>
+                                    </Link>
                                     <div className="col-12 col-lg-7 col-xl-8 carCarouselContainer">
                                         <CarCarouselImagesComponent car={car} images={car.images} />
                                     </div>
@@ -224,15 +235,14 @@ const DetailedCarPage: FC<{}> = () => {
                                                     VER PERITAJE <Icons.Download />
                                                 </div>
                                                 <div style={{ display: "flex", flexWrap: "wrap" }}>
-                                                    {car?.tag?.name !== "Reservado" &&
-                                                        car?.tag?.name !== "Vendido" && (
-                                                            <div
-                                                                onClick={_bookCarWithPayment}
-                                                                className="btn btn_orange my-1 me-3 btn-detailed-car"
-                                                            >
-                                                                SEPÁRALO AQUÍ <Icons.ArrowCircle />
-                                                            </div>
-                                                        )}
+                                                    {car?.tag?.name !== "Reservado" && car?.tag?.name !== "Vendido" && (
+                                                        <div
+                                                            onClick={_bookCarWithPayment}
+                                                            className="btn btn_orange my-1 me-3 btn-detailed-car"
+                                                        >
+                                                            SEPÁRALO AQUÍ <Icons.ArrowCircle />
+                                                        </div>
+                                                    )}
 
                                                     {/* <Link
                                                             target="_blank"
@@ -456,7 +466,7 @@ const DetailedCarPage: FC<{}> = () => {
                                                             />
                                                             Estado:
                                                         </span>
-                                                        <strong>{car.status}</strong>
+                                                        <strong>Usado</strong>
                                                     </div>
                                                 </div>
                                             </div>

@@ -244,13 +244,13 @@ const routes = {
         auth: (user: UserEntity | undefined) => true,
         helmet: null,
     },
-    termAndConditionsSalesYesOrYes: {
-        path: "/vende-tu-carro-si-o-si",
-        relativePath: "/vende-tu-carro-si-o-si",
-        component: TermAndConditionsSalseYesOrYes,
-        auth: (user: UserEntity | undefined) => true,
-        helmet: null,
-    },
+    // termAndConditionsSalesYesOrYes: {
+    //     path: "/vende-tu-carro-si-o-si",
+    //     relativePath: "/vende-tu-carro-si-o-si",
+    //     component: TermAndConditionsSalseYesOrYes,
+    //     auth: (user: UserEntity | undefined) => true,
+    //     helmet: null,
+    // },
     termAndConditionsNewUsed6MonthWarrany: {
         path: "/tu-nuevo-usado-en-wcar-con-garantica-de-6-meses",
         relativePath: "/tu-nuevo-usado-en-wcar-con-garantica-de-6-meses",

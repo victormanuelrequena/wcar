@@ -82,18 +82,13 @@ const FooterComponent: FC<{}> = () => {
                             <Link to={routes.termAndConditionsUser.relativePath} className="my-1">
                                 Términos y condiciones usuarios
                             </Link>
-                            <Link to={routes.termAndConditionsSalesYesOrYes.relativePath} className="my-1">
-                                Términos y Condiciones "Vende tu Carro Si o Si"
-                            </Link>
                             <Link to={routes.termAndConditions.relativePath} className="my-1">
                                 Términos y Condiciones Garantia
                             </Link>
                             <Link to={routes.privacyPolicyMobileApp.relativePath} className="my-1">
                                 Políticas de privacidad para la aplicación móvil wcar
                             </Link>
-                            <Link to={routes.dataPrivacyNoticeWcarAppUsers.relativePath} className="my-1">
-                                Aviso de privacidad de datos para usuarios app wcar
-                            </Link>
+
                             <Link to={routes.privacyPolicies.relativePath} className="my-1">
                                 wcar politica de tratamiento de datos app
                             </Link>
@@ -101,7 +96,11 @@ const FooterComponent: FC<{}> = () => {
                                 return (
                                     <Link
                                         key={i}
-                                        to={`${routes.termAndConditions.relativePath}/${link.title.replace(/ /g, "-")}/${link.id}`}
+                                        to={`${routes.termAndConditions.relativePath}/${link.title
+                                            .toLowerCase()
+                                            .normalize("NFD")
+                                            .replace(/[\u0300-\u036f]/g, "")
+                                            .replace(/ /g, "-")}/${link.id}`}
                                         className="my-1"
                                     >
                                         {link.title}
