@@ -61,10 +61,18 @@
                 height: 100%;
                 width: 40px;
                 background-color: transparent;
-                border-right: 1px solid #272a31;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+            }
+        }
+
+        .video_button:last-of-type {
+            background-color: #c74e5b;
+            border: 1px solid #000;
+
+            button {
+                border-right: 1px solid #000;
             }
         }
     }
@@ -83,7 +91,6 @@
             justify-content: center;
             align-items: center;
             min-height: 450px;
-
 
             .my_video,
             .participant_video {

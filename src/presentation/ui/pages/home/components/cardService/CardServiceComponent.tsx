@@ -6,7 +6,7 @@ const CardServiceComponent: FC<CardServiceComponentProps> = ({ title, descriptio
         <div>
             <div className="row">
                 <div className="col-md-2 text_gray px-5 px-md-3 d-flex align-items-start justify-content-center mb-3">
-                    <img src={image} alt="wcar" title="wcar" />
+                    <img src={image} alt="wcar" title="wcar" style={{width: "32px"}} />
                 </div>
                 <div className="col-md-10 text-center text-md-start px-5 px-md-3">
                     <h3>

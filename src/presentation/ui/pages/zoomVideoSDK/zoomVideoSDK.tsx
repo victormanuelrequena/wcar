@@ -2,13 +2,17 @@ import "./zoomVideoSDKStyles.scss";
 import ZoomVideo from "@zoom/videosdk";
 import { useEffect, useState } from "react";
 import { generateVideoToken } from "./generateToken";
-import Speaker from "./speaker";
-import Mic from "./mic";
-import ThreeDots from "./threeDots";
-import Camera from "./camera";
-import ScreenRecord from "./screenRecord";
+import Speaker from "./icons/speaker";
+import Mic from "./icons/mic";
+import ThreeDots from "./icons/threeDots";
+import Camera from "./icons/camera";
+import ScreenRecord from "./icons/screenRecord";
+import Exit from "./icons/exit";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../routes/RoutesComponent";
 
 export const ZoomVideoSDK = () => {
+    const Navigate = useNavigate();
     let client = ZoomVideo.createClient();
     let stream: any;
     const [shareVideo, setShareVideo] = useState(false);
@@ -98,6 +102,12 @@ export const ZoomVideoSDK = () => {
         stream.stopShareScreen();
     };
 
+    const exit = () => {
+        client.leave().then(() => {
+            Navigate(routes.home.relativePath);
+        });
+    };
+
     // Evento para saber cuando un usuario enciende su camara
     client.on("peer-video-state-change", (payload) => {
         stream = client.getMediaStream();
@@ -167,7 +177,7 @@ export const ZoomVideoSDK = () => {
                         aspectRatio: 16 / 9,
                         borderRadius: "10px",
                         display: shareVideo ? "block" : "none",
-                        margin: "0 auto"
+                        margin: "0 auto",
                     }}
                 ></canvas>
 
@@ -202,7 +212,7 @@ export const ZoomVideoSDK = () => {
                     </div>
                 </div>
 
-                <div className="video_button">
+                <div className="video_button me-5">
                     <button
                         onClick={() => {
                             initScreenRecord ? shareScreenStop() : shareScreen();
@@ -210,6 +220,15 @@ export const ZoomVideoSDK = () => {
                         }}
                     >
                         <ScreenRecord />
+                    </button>
+                    <div>
+                        <ThreeDots />
+                    </div>
+                </div>
+
+                <div className="video_button">
+                    <button onClick={exit}>
+                        <Exit />
                     </button>
                     <div>
                         <ThreeDots />

@@ -46,7 +46,7 @@ import HomePage1 from "../pages/home-1/HomePage";
 import DeleteAccountPage from "../pages/deleteAccount/deleteAccountPage";
 import TermAndConditions from "../pages/termAndConditions/termAndConditions";
 import { JoinTheCall } from "../pages/joinTheCall/joinTheCall";
-import { ZoomVideoSDK } from "../components/zoomVideoSDK/zoomVideoSDK";
+import { ZoomVideoSDK } from "../pages/zoomVideoSDK/zoomVideoSDK";
 
 export interface iRoute {
     name: string;

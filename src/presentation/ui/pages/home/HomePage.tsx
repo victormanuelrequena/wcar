@@ -148,6 +148,56 @@ const HomePage: FC<{}> = () => {
                                     </div>
                                 </SliderComponent>
                             </div>
+                            <div className="col-12 mb-5"></div>
+                            <div className="col-md-3 d-flex d-md-block justify-content-center">
+                                <div className="side side_top text_black text_md_white">
+                                    <h2 className="d-flex flex-md-column flex-row">
+                                        <b className="me-2 me-md-0" style={{ color: "#aaa" }}>
+                                            Compras online con atención personalizada.
+                                        </b>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div className="col-md-9">
+                                <SliderComponent>
+                                    <div>
+                                        <div className="row">
+                                            <div className="col-md-4 my-3">
+                                                <CardServiceComponent
+                                                    title="Compras tu auto online."
+                                                    image="/assets/icons/Compras.png"
+                                                    description="Puedes reservarlo o pagarlo totalmente a través de nuestra plataforma. url icono."
+                                                />
+                                            </div>
+                                            <div className="col-md-4 my-3">
+                                                <CardServiceComponent
+                                                    title="Financiación en unos cuantos clicks."
+                                                    image="/assets/icons/Financiacion.png"
+                                                    description="Aplica para un crédito en minutos desde nuestra web."
+                                                />
+                                            </div>
+                                            <div className="col-md-4 my-3">
+                                                <CardServiceComponent
+                                                    title="Tecnología para acercar las personas a las personas."
+                                                    image="/assets/icons/Tecnologia.png"
+                                                    description="obtén atención personalizada a través de WCAR para resolver cualquier duda."
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="row">
+                                            <div className="col-md-4 my-3">
+                                                <CardServiceComponent
+                                                    title="Enviamos tu auto a tu casa."
+                                                    image="/assets/icons/Enviamos.png"
+                                                    description="compra a través de nuestra plataforma y enviamos el auto a la comodidad de tu hogar."
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </SliderComponent>
+                            </div>
                         </div>
                     </div>
                 </section>
