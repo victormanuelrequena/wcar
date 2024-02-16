@@ -8,6 +8,7 @@ import ThreeDots from "./icons/threeDots";
 import Camera from "./icons/camera";
 import ScreenRecord from "./icons/screenRecord";
 import Exit from "./icons/exit";
+import Hand from "./icons/hand";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../routes/RoutesComponent";
 
@@ -24,7 +25,7 @@ export const ZoomVideoSDK = () => {
         const token = generateVideoToken(
             "47A5MLkZR3azitNm6vkw1Q",
             "2H09wgkJkPP5Iy4WOwuvkLpComQVEWDvJnYp",
-            "prueba",
+            "pruebaa",
             "",
             "",
             "",
@@ -37,7 +38,7 @@ export const ZoomVideoSDK = () => {
         if (ZoomVideo.checkSystemRequirements().video && ZoomVideo.checkSystemRequirements().audio) {
             client.init("en-US", "Global", { patchJsMedia: true }).then(() => {
                 client
-                    .join("prueba", token, `user-${Math.round(Math.random() * 10000)}`)
+                    .join("pruebaa", token, `user-${Math.round(Math.random() * 10000)}`)
                     .then((res) => {
                         stream = client.getMediaStream();
                         stream.startAudio().then(() => {
@@ -155,83 +156,133 @@ export const ZoomVideoSDK = () => {
                 <p>Video asistencia wcar</p>
             </div>
             <div className="middle">
-                <video
-                    className="my_video"
-                    id="my-self-view-video"
-                    style={{ display: shareVideo ? "none" : "block" }}
-                ></video>
-
-                <canvas
-                    className="participant_video"
-                    id="participant-videos-canvas"
-                    height="378"
-                    width="672"
-                    style={{ display: shareVideo ? "none" : "block" }}
-                ></canvas>
-
-                <canvas
-                    id="participants-screen-share-content-canvas"
+                <div
+                    className="user_screens"
                     style={{
-                        width: "75%",
-                        height: "auto",
-                        aspectRatio: 16 / 9,
-                        borderRadius: "10px",
-                        display: shareVideo ? "block" : "none",
-                        margin: "0 auto",
+                        justifyContent: "space-between",
+                        width: shareVideo ? "25%" : "100%",
+                        height: shareVideo ? "100%" : "auto",
+                        flexDirection: shareVideo ? "column" : "row",
                     }}
-                ></canvas>
+                >
+                    <div className="my_video_container" style={{ width: shareVideo ? "100%" : "49%" }}>
+                        <video className="my_video" id="my-self-view-video"></video>
+                    </div>
+
+                    <div className="participant_video_container" style={{ width: shareVideo ? "100%" : "49%" }}>
+                        <canvas
+                            className="participant_video"
+                            id="participant-videos-canvas"
+                            height="378"
+                            width="672"
+                        ></canvas>
+                    </div>
+                </div>
+
+                <div
+                    style={{
+                        width: "73%",
+                        height: "100%",
+                        backgroundColor: "#131313",
+                        aspectRatio: 16 / 9,
+                        borderRadius: "8px",
+                        display: shareVideo ? "flex" : "none",
+                        alignItems: "center",
+                    }}
+                >
+                    <canvas
+                        id="participants-screen-share-content-canvas"
+                        style={{
+                            width: "100%",
+                            aspectRatio: 16 / 9,
+                        }}
+                    ></canvas>
+                </div>
 
                 <video id="my-screen-share-content-video" style={{ display: "none" }}></video>
             </div>
             <div className="bottom">
-                <div className="video_button me-5">
-                    <button
-                        onClick={() => {
-                            !initMic ? mute() : unMute();
-                            setInitMic(!initMic);
-                        }}
-                    >
-                        <Mic />
-                    </button>
-                    <div>
-                        <ThreeDots />
+                <div className="button_group">
+                    <div className="video_button">
+                        <button
+                            onClick={() => {
+                                !initMic ? mute() : unMute();
+                                setInitMic(!initMic);
+                            }}
+                        >
+                            <Mic />
+                        </button>
+                        <div>
+                            <ThreeDots />
+                        </div>
+                    </div>
+
+                    <div className="video_button">
+                        <button
+                            onClick={() => {
+                                initVideo ? videoStop() : videoInit();
+                                setInitVideo(!initVideo);
+                            }}
+                        >
+                            <Camera />
+                        </button>
+                        <div>
+                            <ThreeDots />
+                        </div>
                     </div>
                 </div>
 
-                <div className="video_button me-5">
-                    <button
-                        onClick={() => {
-                            initVideo ? videoStop() : videoInit();
-                            setInitVideo(!initVideo);
-                        }}
-                    >
-                        <Camera />
+                <div className="button_group">
+                    <div className="video_button">
+                        <button
+                            onClick={() => {
+                                initScreenRecord ? shareScreenStop() : shareScreen();
+                                setInitScreenRecord(!initScreenRecord);
+                            }}
+                        >
+                            <ScreenRecord />
+                        </button>
+                        <div>
+                            <ThreeDots />
+                        </div>
+                    </div>
+
+                    <button className="hand_button">
+                        <Hand />
                     </button>
-                    <div>
-                        <ThreeDots />
+
+                    <div className="video_button exit">
+                        <button onClick={exit}>
+                            <Exit />
+                        </button>
+                        <div>
+                            <ThreeDots />
+                        </div>
                     </div>
                 </div>
 
-                <div className="video_button me-5">
-                    <button
-                        onClick={() => {
-                            initScreenRecord ? shareScreenStop() : shareScreen();
-                            setInitScreenRecord(!initScreenRecord);
-                        }}
-                    >
-                        <ScreenRecord />
-                    </button>
-                    <div>
-                        <ThreeDots />
+                <div style={{ visibility: "hidden" }} className="button_group">
+                    <div className="video_button">
+                        <button
+                            onClick={() => {
+                                initScreenRecord ? shareScreenStop() : shareScreen();
+                                setInitScreenRecord(!initScreenRecord);
+                            }}
+                        >
+                            <ScreenRecord />
+                        </button>
+                        <div>
+                            <ThreeDots />
+                        </div>
                     </div>
-                </div>
 
-                <div className="video_button">
-                    <button onClick={exit}>
-                        <Exit />
-                    </button>
-                    <div>
-                        <ThreeDots />
+                    <div className="video_button exit">
+                        <button onClick={exit}>
+                            <Exit />
+                        </button>
+                        <div>
+                            <ThreeDots />
+                        </div>
                     </div>
                 </div>
             </div>

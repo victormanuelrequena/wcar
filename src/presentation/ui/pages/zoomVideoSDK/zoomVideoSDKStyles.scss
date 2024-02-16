@@ -22,24 +22,47 @@
     .middle {
         width: 100%;
         height: calc(100vh - 200px);
+        min-height: 490px;
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
+
+        .user_screens {
+            display: flex;
+            align-items: center;
+        }
+
+        .my_video_container,
+        .participant_video_container {
+            // border: 3px solid #2572ed;
+            border: 3px solid transparent;
+            background-color: #131313;
+            border-radius: 8px;
+            aspect-ratio: 16 / 9;
+            width: 49%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         .my_video,
         .participant_video {
-            transform: rotateX("-1");
-            border: 3px solid #2572ed;
-            border-radius: 10px;
-            aspect-ratio: 16 / 9;
-            width: 49%;
+            transform: scaleX(-1);
+            border-radius: 5px;
+            width: 100%;
         }
     }
 
     .bottom {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         height: 100px;
+
+        .button_group {
+            display: flex;
+            gap: 16px;
+        }
 
         .video_button {
             width: 90px;
@@ -67,13 +90,21 @@
             }
         }
 
-        .video_button:last-of-type {
+        .exit {
             background-color: #c74e5b;
             border: 1px solid #000;
 
             button {
                 border-right: 1px solid #000;
             }
+        }
+
+        .hand_button {
+            height: 48px;
+            width: 48px;
+            border: 1px solid #272a31;
+            border-radius: 8px;
+            background-color: transparent;
         }
     }
 
@@ -87,23 +118,27 @@
         }
 
         .middle {
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 450px;
+            min-height: 520px;
 
-            .my_video,
-            .participant_video {
-                width: 99%;
-                max-width: 465px;
-                height: 50%;
+            .user_screens {
+                flex-direction: column !important;
+                justify-content: center;
+                align-items: center;
             }
 
-            .my_video {
+            .my_video_container,
+            .participant_video_container {
+                width: 99% !important;
+                max-width: 465px;
+                height: 50%;
+                min-height: 260px;
+            }
+
+            .my_video_container {
                 margin-bottom: 10px;
             }
 
-            .participant_video {
+            .participant_video_container {
                 margin-top: 10px;
             }
         }
