@@ -105,8 +105,10 @@ export const ZoomVideoSDK = () => {
 
     const exit = () => {
         client.leave().then(() => {
-            Navigate(routes.home.relativePath);
-        });
+            Navigate(routes.home.relativePath)
+          }).catch((error) => {
+            console.log('Failed to leave the session', error);
+          });
     };
 
     // Evento para saber cuando un usuario enciende su camara
@@ -261,7 +263,7 @@ export const ZoomVideoSDK = () => {
                     </div>
                 </div>
 
-                <div style={{ visibility: "hidden" }} className="button_group">
+                <div className="display_none button_group">
                     <div className="video_button">
                         <button
                             onClick={() => {

@@ -90,6 +90,10 @@
             }
         }
 
+        .display_none{
+            visibility: hidden;
+        }
+
         .exit {
             background-color: #c74e5b;
             border: 1px solid #000;
@@ -140,6 +144,59 @@
 
             .participant_video_container {
                 margin-top: 10px;
+            }
+        }
+
+        .bottom {
+            justify-content: center;
+    
+            .button_group {
+
+                &:first-of-type{
+                    margin-right: 16px;
+                }
+            }
+    
+            .video_button {
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+                border: 1px solid #272a31;
+                display: flex;
+                
+                button {
+                    width: 100%;
+                    border-top-left-radius: 8px;
+                    border-bottom-left-radius: 8px;
+                    background-color: transparent;
+                    border-right: none;
+
+                    svg{
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+    
+                div {
+                    display: none;
+                }
+            }
+
+            .display_none{
+                display: none;
+            }
+    
+            .exit {
+                background-color: #c74e5b;
+                border: 1px solid #000;
+    
+                button {
+                    border-right: 1px solid #000;
+                }
+            }
+    
+            .hand_button {
+                display: none;
             }
         }
     }
