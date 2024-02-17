@@ -11,6 +11,7 @@ import Exit from "./icons/exit";
 import Hand from "./icons/hand";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../routes/RoutesComponent";
+import { toast } from "react-toastify";
 
 export const ZoomVideoSDK = () => {
     const Navigate = useNavigate();
@@ -25,7 +26,7 @@ export const ZoomVideoSDK = () => {
         const token = generateVideoToken(
             "47A5MLkZR3azitNm6vkw1Q",
             "2H09wgkJkPP5Iy4WOwuvkLpComQVEWDvJnYp",
-            "pruebaa",
+            "tester",
             "",
             "",
             "",
@@ -38,11 +39,11 @@ export const ZoomVideoSDK = () => {
         if (ZoomVideo.checkSystemRequirements().video && ZoomVideo.checkSystemRequirements().audio) {
             client.init("en-US", "Global", { patchJsMedia: true }).then(() => {
                 client
-                    .join("pruebaa", token, `user-${Math.round(Math.random() * 10000)}`)
+                    .join("tester", token, `user-${Math.round(Math.random() * 10000)}`)
                     .then((res) => {
                         stream = client.getMediaStream();
                         stream.startAudio().then(() => {
-                            alert("se inicio la llamada con audio");
+                            setInitMic(true);
                         });
                     })
                     .catch((e) => console.error(e));
@@ -54,6 +55,8 @@ export const ZoomVideoSDK = () => {
         }
     }, []);
 
+    // Funciones para apagar y encender la camara \/
+
     const videoInit = () => {
         stream = client.getMediaStream();
         if (stream.isRenderSelfViewWithVideoElement()) {
@@ -63,7 +66,7 @@ export const ZoomVideoSDK = () => {
                     videoElement: document.querySelector("#my-self-view-video"),
                 })
                 .then(() => {
-                    // video successfully started and rendered
+                    setInitVideo(true);
                 })
                 .catch((error) => {
                     console.error(error);
@@ -73,25 +76,70 @@ export const ZoomVideoSDK = () => {
 
     const videoStop = () => {
         stream = client.getMediaStream();
-        stream.stopVideo();
+        stream
+            .stopVideo()
+            .then(() => {
+                setInitVideo(false);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     };
+
+    const video = () => {
+        if (client.getCurrentUserInfo().bVideoOn) {
+            videoStop();
+        } else {
+            videoInit();
+        }
+    };
+
+    // Funciones para apagar y encender la camara /\
+
+    // Funciones para mutear y desmutear el audio \/
 
     const mute = () => {
         stream = client.getMediaStream();
-        stream.muteAudio();
+        stream
+            .muteAudio()
+            .then(() => {
+                setInitMic(false);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     };
 
     const unMute = () => {
         stream = client.getMediaStream();
-        stream.unmuteAudio();
+        stream
+            .unmuteAudio()
+            .then(() => {
+                setInitMic(true);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     };
+
+    const audio = () => {
+        if (client.getCurrentUserInfo().muted) {
+            unMute();
+        } else {
+            mute();
+        }
+    };
+
+    // Funciones para mutear y desmutear el audio /\
+
+    // Funciones para compartir pantalla \/
 
     const shareScreen = () => {
         stream = client.getMediaStream();
         stream
             .startShareScreen(document.querySelector("#my-screen-share-content-video"))
             .then(() => {
-                // screen share successfully started and rendered
+                setInitScreenRecord(true);
             })
             .catch((error) => {
                 console.log(error);
@@ -100,16 +148,59 @@ export const ZoomVideoSDK = () => {
 
     const shareScreenStop = () => {
         stream = client.getMediaStream();
-        stream.stopShareScreen();
+        stream
+            .stopShareScreen()
+            .then(() => {
+                setInitScreenRecord(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
-    const exit = () => {
-        client.leave().then(() => {
-            Navigate(routes.home.relativePath)
-          }).catch((error) => {
-            console.log('Failed to leave the session', error);
-          });
+    const share = () => {
+        let isAnyoneSharing = false;
+
+        client.getAllUser().forEach((user) => {
+            if (user.sharerOn) {
+                isAnyoneSharing = true;
+                if (user.userId === client.getCurrentUserInfo().userId) {
+                    shareScreenStop();
+                } else {
+                    toast.warn(`${user.displayName} esta compartiendo su pantalla`, {
+                        position: "top-right",
+                        hideProgressBar: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        theme: "light",
+                        autoClose: 3000,
+                        toastId: "toast",
+                    });
+                }
+            }
+        });
+
+        if (!isAnyoneSharing) {
+            shareScreen();
+        }
     };
+
+    // Funciones para compartir pantalla /\
+
+    // Funciones para salir de la llamada \/
+
+    const exit = () => {
+        client
+            .leave()
+            .then(() => {
+                Navigate(routes.home.relativePath);
+            })
+            .catch((error) => {
+                console.log("Failed to leave the session", error);
+            });
+    };
+
+    // Funciones para salir de la llamada /\
 
     // Evento para saber cuando un usuario enciende su camara
     client.on("peer-video-state-change", (payload) => {
@@ -141,10 +232,13 @@ export const ZoomVideoSDK = () => {
         }
     });
 
+    // Evento para saber cuando el usuario dejo de compartir pantalla
+    client.on("passively-stop-share", (payload) => {
+        setInitScreenRecord(false);
+    });
+
     // Evento para saber cuando el usuario esta hablando
     client.on("active-speaker", (payload) => {});
-
-    // client.on("passively-stop-share", (payload) => {});
 
     // client.on("device-change", (payload) => {});
 
@@ -205,13 +299,14 @@ export const ZoomVideoSDK = () => {
             </div>
             <div className="bottom">
                 <div className="button_group">
-                    <div className="video_button">
-                        <button
-                            onClick={() => {
-                                !initMic ? mute() : unMute();
-                                setInitMic(!initMic);
-                            }}
-                        >
+                    <div
+                        style={{
+                            background: initMic ? "#272a31" : "#000000",
+                            borderColor: initMic ? "#000000" : "#272a31",
+                        }}
+                        className="video_button"
+                    >
+                        <button style={{ borderRightColor: initMic ? "#000000" : "#272a31" }} onClick={audio}>
                             <Mic />
                         </button>
                         <div>
@@ -219,13 +314,14 @@ export const ZoomVideoSDK = () => {
                         </div>
                     </div>
 
-                    <div className="video_button">
-                        <button
-                            onClick={() => {
-                                initVideo ? videoStop() : videoInit();
-                                setInitVideo(!initVideo);
-                            }}
-                        >
+                    <div
+                        style={{
+                            background: initVideo ? "#272a31" : "#000000",
+                            borderColor: initVideo ? "#000000" : "#272a31",
+                        }}
+                        className="video_button"
+                    >
+                        <button style={{ borderRightColor: initVideo ? "#000000" : "#272a31" }} onClick={video}>
                             <Camera />
                         </button>
                         <div>
@@ -235,13 +331,14 @@ export const ZoomVideoSDK = () => {
                 </div>
 
                 <div className="button_group">
-                    <div className="video_button">
-                        <button
-                            onClick={() => {
-                                initScreenRecord ? shareScreenStop() : shareScreen();
-                                setInitScreenRecord(!initScreenRecord);
-                            }}
-                        >
+                    <div
+                        style={{
+                            background: initScreenRecord ? "#272a31" : "#000000",
+                            borderColor: initScreenRecord ? "#000000" : "#272a31",
+                        }}
+                        className="video_button"
+                    >
+                        <button style={{ borderRightColor: initScreenRecord ? "#000000" : "#272a31" }} onClick={share}>
                             <ScreenRecord />
                         </button>
                         <div>
@@ -249,9 +346,9 @@ export const ZoomVideoSDK = () => {
                         </div>
                     </div>
 
-                    <button className="hand_button">
+                    {/* <button className="hand_button">
                         <Hand />
-                    </button>
+                    </button> */}
 
                     <div className="video_button exit">
                         <button onClick={exit}>
@@ -265,12 +362,7 @@ export const ZoomVideoSDK = () => {
 
                 <div className="display_none button_group">
                     <div className="video_button">
-                        <button
-                            onClick={() => {
-                                initScreenRecord ? shareScreenStop() : shareScreen();
-                                setInitScreenRecord(!initScreenRecord);
-                            }}
-                        >
+                        <button>
                             <ScreenRecord />
                         </button>
                         <div>
