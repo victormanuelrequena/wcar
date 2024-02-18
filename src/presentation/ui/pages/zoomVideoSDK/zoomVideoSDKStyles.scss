@@ -24,12 +24,12 @@
         height: calc(100vh - 200px);
         min-height: 490px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
 
         .user_screens {
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
 
         .my_video_container,
@@ -124,26 +124,14 @@
         .middle {
             min-height: 520px;
 
-            .user_screens {
-                flex-direction: column !important;
-                justify-content: center;
-                align-items: center;
-            }
-
             .my_video_container,
             .participant_video_container {
-                width: 99% !important;
                 max-width: 465px;
-                height: 50%;
-                min-height: 260px;
+                min-height: 200px;
             }
 
-            .my_video_container {
-                margin-bottom: 10px;
-            }
-
-            .participant_video_container {
-                margin-top: 10px;
+            .participants_screen_container {
+                max-width: 630px;
             }
         }
 

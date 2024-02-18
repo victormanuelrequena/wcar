@@ -21,6 +21,20 @@ export const ZoomVideoSDK = () => {
     const [initVideo, setInitVideo] = useState(false);
     const [initMic, setInitMic] = useState(false);
     const [initScreenRecord, setInitScreenRecord] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        // Limpiar el evento al desmontar el componente
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         const token = generateVideoToken(
@@ -54,6 +68,16 @@ export const ZoomVideoSDK = () => {
             };
         }
     }, []);
+
+    // const endTheCall = () => {
+    //     fetch(`https://api.wcaronline.com/api/video-assistances-rooms/${""}/update/`, {
+    //         method: "PATCH",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify()
+    //     });
+    // };
 
     // Funciones para apagar y encender la camara \/
 
@@ -193,6 +217,7 @@ export const ZoomVideoSDK = () => {
         client
             .leave()
             .then(() => {
+                // endTheCall()
                 Navigate(routes.home.relativePath);
             })
             .catch((error) => {
@@ -242,7 +267,9 @@ export const ZoomVideoSDK = () => {
 
     // client.on("device-change", (payload) => {});
 
-    // client.on("user-added", (payload) => {});
+    client.on("user-added", (payload) => {});
+
+    client.on("user-removed", (payload) => {});
 
     return (
         <div className="bg-black containter_sdk">
@@ -251,21 +278,46 @@ export const ZoomVideoSDK = () => {
                 <Speaker />
                 <p>Video asistencia wcar</p>
             </div>
-            <div className="middle">
+            <div
+                style={{
+                    flexDirection: shareVideo && isMobile ? "column-reverse" : "row",
+                    justifyContent: isMobile ? "center" : "space-between",
+                }}
+                className="middle"
+            >
                 <div
                     className="user_screens"
                     style={{
-                        justifyContent: "space-between",
-                        width: shareVideo ? "25%" : "100%",
+                        maxWidth: shareVideo && isMobile ? "630px" : "inherit",
+                        width: shareVideo && isMobile ? "100%" : shareVideo && !isMobile ? "25%" : "100%",
                         height: shareVideo ? "100%" : "auto",
-                        flexDirection: shareVideo ? "column" : "row",
+                        flexDirection:
+                            shareVideo && isMobile
+                                ? "row"
+                                : shareVideo && !isMobile
+                                ? "column"
+                                : !shareVideo && isMobile
+                                ? "column"
+                                : "row",
                     }}
                 >
-                    <div className="my_video_container" style={{ width: shareVideo ? "100%" : "49%" }}>
+                    <div
+                        className="my_video_container"
+                        style={{
+                            width: !shareVideo && isMobile ? "100%" : shareVideo && !isMobile ? "100%" : "49%",
+                            marginBottom: !shareVideo && isMobile ? "10px" : 0,
+                        }}
+                    >
                         <video className="my_video" id="my-self-view-video"></video>
                     </div>
 
-                    <div className="participant_video_container" style={{ width: shareVideo ? "100%" : "49%" }}>
+                    <div
+                        className="participant_video_container"
+                        style={{
+                            width: !shareVideo && isMobile ? "100%" : shareVideo && !isMobile ? "100%" : "49%",
+                            marginTop: !shareVideo && isMobile ? "10px" : 0,
+                        }}
+                    >
                         <canvas
                             className="participant_video"
                             id="participant-videos-canvas"
@@ -276,8 +328,9 @@ export const ZoomVideoSDK = () => {
                 </div>
 
                 <div
+                    className="participants_screen_container"
                     style={{
-                        width: "73%",
+                        width: isMobile ? "100%" : "73%",
                         height: "100%",
                         backgroundColor: "#131313",
                         aspectRatio: 16 / 9,
@@ -351,7 +404,7 @@ export const ZoomVideoSDK = () => {
                     </button> */}
 
                     <div className="video_button exit">
-                        <button onClick={exit}>
+                        <button style={{ borderRight: "none" }} onClick={exit}>
                             <Exit />
                         </button>
                         <div>
