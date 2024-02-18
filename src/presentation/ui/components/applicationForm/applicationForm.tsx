@@ -10,8 +10,6 @@ export const ApplicationForm = ({ setOpenForm, setOpenModal, setAlert }) => {
     const url = "https://api.wcaronline.com/api";
 
     const onSubmit = handleSubmit((data) => {
-        console.log(data);
-
         fetch(`${url}/video-assistances/create/`, {
             method: "POST",
             headers: {
@@ -19,11 +17,24 @@ export const ApplicationForm = ({ setOpenForm, setOpenModal, setAlert }) => {
             },
             body: JSON.stringify(data),
         })
-            .then(() => {
+            .then(() => {})
+            .catch((e) => console.error(e));
+
+        fetch(`${url}/video-assistances-rooms/connect/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ role: "0" }),
+        })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((e) => {
                 setOpenForm(false);
                 setAlert(true);
-            })
-            .catch((e) => console.error(e));
+                console.error(e);
+            });
     });
 
     return (

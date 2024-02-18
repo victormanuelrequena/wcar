@@ -436,3 +436,16 @@ export const ZoomVideoSDK = () => {
         </div>
     );
 };
+
+// useEffect(() => {
+//     const handleBeforeUnload = (event) => {
+//         // Aquí puedes realizar acciones antes de que la ventana se cierre
+//     };
+
+//     window.addEventListener('beforeunload', handleBeforeUnload);
+
+//     // Limpiar el evento cuando el componente se desmonte
+//     return () => {
+//         window.removeEventListener('beforeunload', handleBeforeUnload);
+//     };
+// }, []);
