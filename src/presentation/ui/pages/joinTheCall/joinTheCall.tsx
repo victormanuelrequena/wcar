@@ -1,6 +1,21 @@
 import "./joinTheCallStyles.scss";
+import { useForm } from "react-hook-form";
+import { routes } from "../../routes/RoutesComponent";
+import { useNavigate } from "react-router-dom";
 
 export const JoinTheCall = () => {
+    const { register, handleSubmit } = useForm();
+    const Navigate = useNavigate();
+
+    interface FormData {
+        userName: string;
+    }
+
+    const onSubmit = handleSubmit((data: FormData) => {
+        localStorage.setItem("userName", JSON.stringify(data));
+        Navigate(routes.Videoasistencia.relativePath);
+    });
+
     return (
         <>
             <div className="call_container">
@@ -13,11 +28,8 @@ export const JoinTheCall = () => {
                             Ajusta tu video y audio antes de unirte
                         </p>
                     </div>
-                    <div
-                        className="middle mt-3"
-                        style={{ height: "360px", background: "red", width: "100%", borderRadius: "16px" }}
-                    ></div>
-                    <div>
+                    <div className="middle mt-3"></div>
+                    <div className="bottom">
                         <div className="d-flex justify-content-between w-100 mt-3">
                             <div>
                                 <img src="./assets/icons_contact/mic_icon.svg" alt="microfono" />
@@ -27,10 +39,15 @@ export const JoinTheCall = () => {
                                 <img className="m-0" src="./assets/icons_contact/tools_icon.svg" alt="ajustes" />
                             </div>
                         </div>
-                        <div className=" bottom d-flex w-100 justify-content-between mt-3">
-                            <input type="text" placeholder="Catalina Henao" />
+                        <form onSubmit={onSubmit} className="join d-flex w-100 justify-content-between mt-3">
+                            <input
+                                type="text"
+                                id="user_name"
+                                placeholder="Catalina Henao"
+                                {...register("userName")}
+                            />
                             <button className="btn btn_orange">UNIRSE</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -37,6 +37,8 @@ export const ZoomVideoSDK = () => {
     }, []);
 
     useEffect(() => {
+        const userName = JSON.parse(localStorage.getItem("userName"));
+
         const token = generateVideoToken(
             "47A5MLkZR3azitNm6vkw1Q",
             "2H09wgkJkPP5Iy4WOwuvkLpComQVEWDvJnYp",
@@ -44,7 +46,7 @@ export const ZoomVideoSDK = () => {
             "",
             "",
             "",
-            1,
+            0,
             "",
             "",
             ""
@@ -53,7 +55,7 @@ export const ZoomVideoSDK = () => {
         if (ZoomVideo.checkSystemRequirements().video && ZoomVideo.checkSystemRequirements().audio) {
             client.init("en-US", "Global", { patchJsMedia: true }).then(() => {
                 client
-                    .join("tester", token, `user-${Math.round(Math.random() * 10000)}`)
+                    .join("tester", token, userName.userName)
                     .then((res) => {
                         stream = client.getMediaStream();
                         stream.startAudio().then(() => {
@@ -262,14 +264,20 @@ export const ZoomVideoSDK = () => {
         setInitScreenRecord(false);
     });
 
+    client.on("connection-change", (payload) => {
+        if (payload.state === "Closed") {
+            Navigate(routes.home.relativePath);
+        }
+    });
+
     // Evento para saber cuando el usuario esta hablando
-    client.on("active-speaker", (payload) => {});
+    // client.on("active-speaker", (payload) => {});
 
     // client.on("device-change", (payload) => {});
 
-    client.on("user-added", (payload) => {});
+    // client.on("user-added", (payload) => {});
 
-    client.on("user-removed", (payload) => {});
+    // client.on("user-removed", (payload) => {});
 
     return (
         <div className="bg-black containter_sdk">

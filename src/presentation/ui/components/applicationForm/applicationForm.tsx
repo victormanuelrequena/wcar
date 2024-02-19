@@ -5,7 +5,6 @@ import { routes } from "../../routes/RoutesComponent";
 
 export const ApplicationForm = ({ setOpenForm, setOpenModal, setAlert }) => {
     const Navigate = useNavigate();
-
     const { register, handleSubmit } = useForm();
     const url = "https://api.wcaronline.com/api";
 
@@ -17,7 +16,8 @@ export const ApplicationForm = ({ setOpenForm, setOpenModal, setAlert }) => {
             },
             body: JSON.stringify(data),
         })
-            .then(() => {})
+            .then((res) => res.json())
+            .then((res) => {})
             .catch((e) => console.error(e));
 
         fetch(`${url}/video-assistances-rooms/connect/`, {
@@ -27,8 +27,14 @@ export const ApplicationForm = ({ setOpenForm, setOpenModal, setAlert }) => {
             },
             body: JSON.stringify({ role: "0" }),
         })
+            .then((res) => res.json())
             .then((res) => {
-                console.log(res);
+                if (res.room.quantity_persons === 0) {  
+                    Navigate(routes.joinTheCall.relativePath);
+                } else {
+                    setOpenForm(false);
+                    setAlert(true);
+                }
             })
             .catch((e) => {
                 setOpenForm(false);
@@ -101,12 +107,7 @@ export const ApplicationForm = ({ setOpenForm, setOpenModal, setAlert }) => {
                         >
                             CANCELAR
                         </button>
-                        <button
-                            className="ms-3 btn btn_orange"
-                            onClick={() => Navigate(routes.Videoasistencia.relativePath)}
-                        >
-                            CONTINUAR
-                        </button>
+                        <button className="ms-3 btn btn_orange">CONTINUAR</button>
                     </div>
                 </form>
             </div>
