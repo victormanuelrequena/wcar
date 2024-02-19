@@ -316,6 +316,7 @@ export const ZoomVideoSDK = () => {
                             marginBottom: !shareVideo && isMobile ? "10px" : 0,
                         }}
                     >
+                        {!initVideo && <img className="icon" src="./assets/icons/wcar_icon.svg" alt="wcar" />}
                         <video className="my_video" id="my-self-view-video"></video>
                     </div>
 
@@ -326,6 +327,7 @@ export const ZoomVideoSDK = () => {
                             marginTop: !shareVideo && isMobile ? "10px" : 0,
                         }}
                     >
+                        {!shareVideo && <img className="icon" src="./assets/icons/wcar_icon.svg" alt="wcar" />}
                         <canvas
                             className="participant_video"
                             id="participant-videos-canvas"
