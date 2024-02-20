@@ -17,30 +17,31 @@ export const ApplicationForm = ({ setOpenForm, setOpenModal, setAlert }) => {
             body: JSON.stringify(data),
         })
             .then((res) => res.json())
-            .then((res) => {})
-            .catch((e) => console.error(e));
-
-        fetch(`${url}/video-assistances-rooms/connect/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ role: "0" }),
-        })
-            .then((res) => res.json())
             .then((res) => {
-                if (res.room.quantity_persons === 0) {  
-                    Navigate(routes.joinTheCall.relativePath);
-                } else {
-                    setOpenForm(false);
-                    setAlert(true);
-                }
+                fetch(`${url}/video-assistances-rooms/connect/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ role: "0" }),
+                })
+                    .then((res) => res.json())
+                    .then((res) => {
+                        if (res.room.quantity_persons === 1) {
+                            localStorage.setItem("topic", res.room.name_room);
+                            Navigate(routes.joinTheCall.relativePath);
+                        } else {
+                            setOpenForm(false);
+                            setAlert(true);
+                        }
+                    })
+                    .catch((e) => {
+                        setOpenForm(false);
+                        setAlert(true);
+                        console.error(e);
+                    });
             })
-            .catch((e) => {
-                setOpenForm(false);
-                setAlert(true);
-                console.error(e);
-            });
+            .catch((e) => console.error(e));
     });
 
     return (

@@ -90,14 +90,10 @@ const HomePage: FC<{}> = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-3 d-flex d-md-block justify-content-center">
-                                <div className="side side_top text_black text_md_white">
-                                    <h2 className="d-flex flex-md-column flex-row">
-                                        <b className="me-2 me-md-0" style={{ color: "#aaa" }}>
-                                            ¿Por qué
-                                        </b>
-                                        <div className="text_wcar" style={{ color: "#aaa" }}>
-                                            wcar?
-                                        </div>
+                                <div className="side side_top side_blue_neon text_black text_md_white">
+                                    <h2 className="text_wcar d-flex flex-md-column flex-row">
+                                        <strong className="me-2 me-md-0">¿Por qué</strong>
+                                        <i>wcar?</i>
                                     </h2>
                                 </div>
                             </div>
@@ -149,55 +145,6 @@ const HomePage: FC<{}> = () => {
                                 </SliderComponent>
                             </div>
                             <div className="col-12 mb-5"></div>
-                            <div className="col-md-3 d-flex d-md-block justify-content-center">
-                                <div className="side side_top text_black text_md_white">
-                                    <h2 className="d-flex flex-md-column flex-row">
-                                        <b className="me-2 me-md-0" style={{ color: "#aaa" }}>
-                                            Compras online con atención personalizada.
-                                        </b>
-                                    </h2>
-                                </div>
-                            </div>
-                            <div className="col-md-9">
-                                <SliderComponent>
-                                    <div>
-                                        <div className="row">
-                                            <div className="col-md-4 my-3">
-                                                <CardServiceComponent
-                                                    title="Compras tu auto online."
-                                                    image="/assets/icons/Compras.png"
-                                                    description="Puedes reservarlo o pagarlo totalmente a través de nuestra plataforma. url icono."
-                                                />
-                                            </div>
-                                            <div className="col-md-4 my-3">
-                                                <CardServiceComponent
-                                                    title="Financiación en unos cuantos clicks."
-                                                    image="/assets/icons/Financiacion.png"
-                                                    description="Aplica para un crédito en minutos desde nuestra web."
-                                                />
-                                            </div>
-                                            <div className="col-md-4 my-3">
-                                                <CardServiceComponent
-                                                    title="Tecnología para acercar las personas a las personas."
-                                                    image="/assets/icons/Tecnologia.png"
-                                                    description="obtén atención personalizada a través de WCAR para resolver cualquier duda."
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div className="row">
-                                            <div className="col-md-4 my-3">
-                                                <CardServiceComponent
-                                                    title="Enviamos tu auto a tu casa."
-                                                    image="/assets/icons/Enviamos.png"
-                                                    description="compra a través de nuestra plataforma y enviamos el auto a la comodidad de tu hogar."
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SliderComponent>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -278,63 +225,71 @@ const HomePage: FC<{}> = () => {
                         </div>
                     </div>
                 </section>
-                <section className="forth_section">
-                    <div className="d-flex justify-content-center py-5">
-                        <div className="side side_top">
-                            <h2 className="h3">
-                                Vehículos <i className="text_orange">en venta</i>
+                <section className="quater_section container pb-5">
+                    <div className="d-flex justify-content-center ms-5 py-5">
+                        <div className="col-sm-0 col-md-4"></div>
+                        <div className="side side_top col-sm-12 col-md-8">
+                            <h2 className="sub_title text_black">
+                                Compras online con <i className="text_orange">atención personalizada.</i>
                             </h2>
                         </div>
                     </div>
-                    <section
-                        className="container w-100 d-flex flex-column justify-content-evenly"
-                        style={{ height: "530px" }}
-                    >
-                        <Carousel1 cars={carsInfo} />
-                    </section>
-                    <div className="px-3 py-2 bg_gray">
-                        <div className="container">
-                            {cars ? (
-                                <SliderComponent
-                                    responsive={{
-                                        mobile: {
-                                            breakpoint: { max: 769, min: 0 },
-                                            items: 1,
-                                            slidesToSlide: 1, // optional, default to 1.
-                                        },
-                                        tablet: {
-                                            breakpoint: { max: 1024, min: 769 },
-                                            items: 2,
-                                            slidesToSlide: 2, // optional, default to 1.
-                                        },
-                                        desktop: {
-                                            breakpoint: { max: 1500, min: 1024 },
-                                            items: 3,
-                                            slidesToSlide: 3, // optional, default to 1.
-                                        },
-                                        largeDesktop: {
-                                            breakpoint: { max: 3000, min: 1500 },
-                                            items: 4,
-                                            slidesToSlide: 4, // optional, default to 1.
-                                        },
-                                    }}
-                                >
-                                    {cars?.map((car, index) => (
-                                        <div className="m-3" key={index}>
-                                            <CarCardComponent car={car} />
-                                        </div>
-                                    ))}
-                                </SliderComponent>
-                            ) : (
-                                <div></div>
-                            )}
-                        </div>
+                    <div className="carousel_info col-12">
+                        <SliderComponent>
+                            <div>
+                                <div className="row">
+                                    <div className="col-md-3 my-3">
+                                        <CardServiceComponent
+                                            title="Compras tu auto online."
+                                            image="/assets/icons/Compras.png"
+                                            description="Puedes reservarlo o pagarlo totalmente a través de nuestra plataforma. url icono."
+                                        />
+                                    </div>
+                                    <div className="col-md-3 my-3">
+                                        <CardServiceComponent
+                                            title="Financiación en unos cuantos clicks."
+                                            image="/assets/icons/Financiacion.png"
+                                            description="Aplica para un crédito en minutos desde nuestra web."
+                                        />
+                                    </div>
+                                    <div className="col-md-3 my-3">
+                                        <CardServiceComponent
+                                            title="Tecnología para acercar las personas a las personas."
+                                            image="/assets/icons/Tecnologia.png"
+                                            description="obtén atención personalizada a través de WCAR para resolver cualquier duda."
+                                        />
+                                    </div>
+                                    <div className="col-md-3 my-3">
+                                        <CardServiceComponent
+                                            title="Enviamos tu auto a tu casa."
+                                            image="/assets/icons/Enviamos.png"
+                                            description="compra a través de nuestra plataforma y enviamos el auto a la comodidad de tu hogar."
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div></div>
+                        </SliderComponent>
                     </div>
                 </section>
-                <section className="fifth_section from_left_3">
-                    <div className="container">
-                        <AlliesLineComponent />
-                    </div>
+                <div style={{ width: "100%", backgroundColor: "#F6F7F9" }}>
+                    <section className="fifth_section container py-5">
+                        <div className="sub_title mb-4 col-12">
+                            <h2>
+                                Vehículos <i>en venta</i>
+                            </h2>
+                        </div>
+
+                        <div
+                            className="container w-100 d-flex flex-column justify-content-evenly"
+                            style={{ height: "530px" }}
+                        >
+                            <Carousel1 cars={carsInfo} />
+                        </div>
+                    </section>
+                </div>
+                <section className="sixth_section from_left_3 container">
+                    <AlliesLineComponent />
                 </section>
             </div>
         </Layout>

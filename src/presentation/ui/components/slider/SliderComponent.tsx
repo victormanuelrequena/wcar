@@ -39,12 +39,18 @@ const SliderComponent: FC<SliderComponentProps> = ({ children, responsive }) => 
                     {children}
                 </Carousel>
             </div>
-            <div className="px-5 px-md-3 mb-3 d-flex align-items-center">
+            <div className="mb-3 d-flex align-items-center">
                 <div className="d-none d-md-flex me-3">
-                    <div onClick={previous} className={`arrow_slider previous me-1 ${indexCard === 0 ? "disabled" : null}`}>
+                    <div
+                        onClick={previous}
+                        className={`arrow_slider previous me-1 ${indexCard === 0 ? "disabled" : null}`}
+                    >
                         <AiOutlineArrowLeft />
                     </div>
-                    <div onClick={next} className={`arrow_slider next ms-1 ${indexCard === children?.length - 1 ? "disabled" : null}`}>
+                    <div
+                        onClick={next}
+                        className={`arrow_slider next ms-1 ${indexCard === children?.length - 1 ? "disabled" : null}`}
+                    >
                         <AiOutlineArrowRight />
                     </div>
                 </div>

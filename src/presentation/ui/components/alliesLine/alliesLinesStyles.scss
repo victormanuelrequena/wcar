@@ -1,0 +1,35 @@
+.allies_component {
+    .box {
+        background-color: #1e1e1e;
+        padding-right: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+
+        .sub_title {
+            padding-top: 8px;
+            font-weight: 700;
+            font-family: Urbanist;
+            color: #fff;
+            line-height: 44px;
+            font-size: 36px;
+            word-wrap: break-word;
+
+            i {
+                font-weight: 400;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .box {
+            background-color: transparent;
+            padding-right: 0;
+            justify-content: start;
+
+            .sub_title {
+                color: #1e1e1e;
+            }
+        }
+    }
+}

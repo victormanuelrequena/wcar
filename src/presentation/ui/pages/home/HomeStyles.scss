@@ -44,8 +44,8 @@
             background-image: url("./../../../../../public/assets/home/car_02.png");
             position: absolute;
             left: -5%;
-            top: -30%;
-            bottom: -90%;
+            top: -60%;
+            bottom: -175%;
             right: 76%;
             background-size: cover;
             z-index: 0;
@@ -60,6 +60,20 @@
         @media (min-width: 900px) and (max-width: 1000px) {
             &::before {
                 right: 70%;
+            }
+        }
+    }
+
+    .second_section {
+        .text_wcar {
+            font-family: "Urbanist";
+            font-size: 36px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 44px;
+
+            i {
+                font-weight: 400;
             }
         }
     }
@@ -89,15 +103,14 @@
 
         @media screen and (min-width: 768px) {
             .img_section {
-                height: 120%;
+                height: 125%;
                 min-height: 200px;
                 position: absolute;
                 right: 1em;
                 width: auto;
                 left: 10%;
-                top: 5%;
+                top: -5%;
                 bottom: 0;
-                border-right: solid 1em white;
             }
         }
 
@@ -110,26 +123,59 @@
             }
         }
     }
+    .quater_section {
+        .sub_title {
+            font-family: "Urbanist";
+            font-weight: 700;
+            font-size: 36px;
+            color: #1e1e1e;
+            line-height: 44px;
+
+            i {
+                font-weight: 400;
+            }
+        }
+
+        .carousel_info {
+            padding: 0 40px;
+        }
+    }
 
     .fifth_section {
+        .sub_title {
+            font-family: "Urbanist";
+            color: #1e1e1e;
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 44px;
+            margin-left: 56px;
+        }
+
+        i {
+            color: #ec671b;
+            font-weight: 400;
+        }
+    }
+
+    .sixth_section {
         background-color: white;
         position: relative;
 
-        @media screen and (min-width: 768px) {
-            &::before {
-                content: "";
-                background-color: black;
-                background-image: url("./../../../../../public/assets/recs/lines_box_large.png");
-                background-repeat: no-repeat;
-                background-size: contain;
-                position: absolute;
-                right: 74%;
-                left: 0;
-                top: 0;
-                bottom: 0;
-                z-index: 0;
-            }
-        }
+        // @media screen and (min-width: 768px) {
+        //     &::before {
+        //         content: "";
+        //         background-color: black;
+        //         background-image: url("./../../../../../public/assets/recs/lines_box_large.png");
+        //         background-repeat: no-repeat;
+        //         background-size: contain;
+        //         position: absolute;
+        //         right: 74%;
+        //         left: 0;
+        //         top: 0;
+        //         bottom: 0;
+        //         z-index: 0;
+        //     }
+        // }
     }
 }
 

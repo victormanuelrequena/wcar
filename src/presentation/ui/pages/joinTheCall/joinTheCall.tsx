@@ -4,6 +4,7 @@ import { routes } from "../../routes/RoutesComponent";
 import { useNavigate } from "react-router-dom";
 
 export const JoinTheCall = () => {
+    const url = "https://api.wcaronline.com/api";
     const { register, handleSubmit } = useForm();
     const Navigate = useNavigate();
 
@@ -12,8 +13,37 @@ export const JoinTheCall = () => {
     }
 
     const onSubmit = handleSubmit((data: FormData) => {
-        localStorage.setItem("userName", JSON.stringify(data));
-        Navigate(routes.Videoasistencia.relativePath);
+        fetch(`${url}/video-assistances-rooms/connect/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ role: "0" }),
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                if (res.room.quantity_persons === 1) {
+                    fetch(`https://api.wcaronline.com/api/video-assistances-rooms/${res.room.id}/update/`, {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ quantity_persons: "2" }),
+                    })
+                        .then(() => {
+                            localStorage.setItem("userName", JSON.stringify(data));
+                            Navigate(routes.Videoasistencia.relativePath);
+                        })
+                        .catch((err) => {
+                            console.error(err);
+                        });
+                } else {
+                    Navigate(routes.home.relativePath);
+                }
+            })
+            .catch((e) => {
+                console.error(e);
+            });
     });
 
     return (
@@ -40,12 +70,7 @@ export const JoinTheCall = () => {
                             </div>
                         </div>
                         <form onSubmit={onSubmit} className="join d-flex w-100 justify-content-between mt-3">
-                            <input
-                                type="text"
-                                id="user_name"
-                                placeholder="Catalina Henao"
-                                {...register("userName")}
-                            />
+                            <input type="text" id="user_name" placeholder="Catalina Henao" {...register("userName")} />
                             <button className="btn btn_orange">UNIRSE</button>
                         </form>
                     </div>

@@ -38,11 +38,12 @@ export const ZoomVideoSDK = () => {
 
     useEffect(() => {
         const userName = JSON.parse(localStorage.getItem("userName"));
+        const topic = localStorage.getItem("topic");
 
         const token = generateVideoToken(
             "47A5MLkZR3azitNm6vkw1Q",
             "2H09wgkJkPP5Iy4WOwuvkLpComQVEWDvJnYp",
-            "tester",
+            topic,
             "",
             "",
             "",
@@ -55,7 +56,7 @@ export const ZoomVideoSDK = () => {
         if (ZoomVideo.checkSystemRequirements().video && ZoomVideo.checkSystemRequirements().audio) {
             client.init("en-US", "Global", { patchJsMedia: true }).then(() => {
                 client
-                    .join("tester", token, userName.userName)
+                    .join(topic, token, userName.userName)
                     .then((res) => {
                         stream = client.getMediaStream();
                         stream.startAudio().then(() => {
